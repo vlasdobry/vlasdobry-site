@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  vlasdobry-site:
+    image: ghcr.io/vlasdobry/vlasdobry-site:latest
+    container_name: vlasdobry-site
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.vlasdobry.rule=Host(`vlasdobry.ru`) || Host(`www.vlasdobry.ru`)"
+      - "traefik.http.routers.vlasdobry.entrypoints=websecure"
+      - "traefik.http.routers.vlasdobry.tls.certresolver=letsencrypt"
+      - "traefik.http.services.vlasdobry.loadbalancer.server.port=80"
+      # Редирект www -> без www
+      - "traefik.http.middlewares.vlasdobry-redirect-www.redirectregex.regex=^https://www\\.vlasdobry\\.ru/(.*)"
+      - "traefik.http.middlewares.vlasdobry-redirect-www.redirectregex.replacement=https://vlasdobry.ru/$${1}"
+      - "traefik.http.middlewares.vlasdobry-redirect-www.redirectregex.permanent=true"
+      - "traefik.http.routers.vlasdobry.middlewares=vlasdobry-redirect-www"
+    networks:
+      - web
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  web:
+    external: true
