@@ -31,7 +31,7 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* Content Layer - on top */}
-      <div className="relative z-20 h-full w-full flex flex-col justify-end pt-8 px-6 pb-6 pr-12 sm:pt-12 sm:px-12 sm:pb-8 sm:pr-24 lg:pt-24 lg:px-24 lg:pb-12 lg:pr-32">
+      <div className="relative z-20 h-full w-full flex flex-col justify-end pt-4 px-6 pb-4 pr-12 sm:pt-12 sm:px-12 sm:pb-8 sm:pr-24 lg:pt-24 lg:px-24 lg:pb-12 lg:pr-32 overflow-hidden">
 
         {/* Top Label */}
         <div className="absolute top-10 left-6 lg:top-12 lg:left-24 animate-in fade-in duration-1000">
@@ -42,7 +42,7 @@ export const Hero: React.FC = () => {
         </div>
 
         {/* Main Text Area */}
-        <div className="w-full mb-16 sm:mb-20 landscape:mb-4 landscape:mt-auto lg:landscape:mb-20 lg:landscape:mt-0 max-w-[90vw] md:max-w-6xl landscape:max-w-[45vw] lg:landscape:max-w-6xl">
+        <div className="w-full mb-8 sm:mb-20 landscape:mb-4 landscape:mt-auto lg:landscape:mb-20 lg:landscape:mt-0 max-w-[90vw] md:max-w-6xl landscape:max-w-[45vw] lg:landscape:max-w-6xl">
           <h1 className="text-[2.5rem] landscape:text-[clamp(2rem,12vh,4rem)] sm:text-[3.4rem] md:text-[4rem] lg:!text-[5.4rem] xl:!text-[7.2rem] font-black leading-[0.85] tracking-tighter uppercase mb-6 landscape:mb-2 lg:landscape:mb-6 animate-in fade-in slide-in-from-bottom-10 duration-1000 text-white whitespace-normal md:break-normal overflow-visible">
             Performance<br className="hidden md:block landscape:block" /> marketing
           </h1>
