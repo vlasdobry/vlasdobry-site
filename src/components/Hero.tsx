@@ -47,8 +47,8 @@ export const Hero: React.FC = () => {
             Performance<br className="hidden md:block landscape:block" /> marketing
           </h1>
 
-          <p className="text-base landscape:text-sm lg:landscape:text-2xl md:text-xl lg:text-2xl font-light text-white/80 max-w-lg animate-in fade-in slide-in-from-bottom-5 duration-1000 delay-200 leading-tight">
-            Системный подход к платному трафику
+          <p className="text-base landscape:text-sm lg:landscape:text-2xl md:text-xl lg:text-2xl font-light text-white/80 max-w-lg md:max-w-none md:whitespace-nowrap animate-in fade-in slide-in-from-bottom-5 duration-1000 delay-200 leading-tight">
+            10+ лет системного подхода к платному трафику
           </p>
         </div>
 
