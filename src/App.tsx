@@ -24,6 +24,10 @@ const App: React.FC = () => {
   const onTouchStart = (e: React.TouchEvent) => {
     touchEnd.current = null;
     touchStart.current = e.targetTouches[0].clientX;
+    // Активируем Vibration API при первом касании (silent warmup)
+    if ('vibrate' in navigator) {
+      navigator.vibrate(1);
+    }
   };
 
   const onTouchMove = (e: React.TouchEvent) => {
