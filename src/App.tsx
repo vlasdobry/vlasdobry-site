@@ -7,8 +7,16 @@ const App: React.FC = () => {
   const [view, setView] = useState<'hero' | 'landing'>('hero');
   const touchStart = useRef<number | null>(null);
   const touchEnd = useRef<number | null>(null);
+  const vibrationActivated = useRef(false);
 
   const minSwipeDistance = 70;
+
+  const activateVibration = () => {
+    if (!vibrationActivated.current && 'vibrate' in navigator) {
+      navigator.vibrate(1);
+      vibrationActivated.current = true;
+    }
+  };
 
   const triggerHaptic = () => {
     if ('vibrate' in navigator) {
@@ -24,10 +32,6 @@ const App: React.FC = () => {
   const onTouchStart = (e: React.TouchEvent) => {
     touchEnd.current = null;
     touchStart.current = e.targetTouches[0].clientX;
-    // Активируем Vibration API при первом касании (silent warmup)
-    if ('vibrate' in navigator) {
-      navigator.vibrate(1);
-    }
   };
 
   const onTouchMove = (e: React.TouchEvent) => {
@@ -67,8 +71,9 @@ const App: React.FC = () => {
   }, [view]);
 
   return (
-    <div 
+    <div
       className="relative h-[100svh] w-full overflow-hidden bg-white text-[#121212]"
+      onClick={activateVibration}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
