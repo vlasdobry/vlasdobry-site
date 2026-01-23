@@ -65,7 +65,7 @@ const App: React.FC = () => {
 
   return (
     <div 
-      className="relative h-screen w-full overflow-hidden bg-white text-[#121212]"
+      className="relative h-screen h-[100dvh] w-full overflow-hidden bg-white text-[#121212]"
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
