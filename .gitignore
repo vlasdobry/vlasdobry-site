@@ -1,6 +1,11 @@
 # Windows special files
 nul
 
+# Personal notes
+idey.md
+PLAN.md
+docs/
+
 # Logs
 logs
 *.log
