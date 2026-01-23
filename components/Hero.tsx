@@ -8,7 +8,7 @@ export const Hero: React.FC = () => {
       <div className="absolute inset-0 z-0 lg:hidden">
         <div
           className="absolute inset-0 bg-cover bg-center grayscale"
-          style={{ backgroundImage: `url('https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/i/XNnJ4x1rBsdvYA')` }}
+          style={{ backgroundImage: `url('/vlas-photo.jpg')` }}
         />
         <div className="absolute inset-0 bg-black/45" />
       </div>
@@ -17,7 +17,7 @@ export const Hero: React.FC = () => {
       <div className="hidden lg:block absolute right-0 top-0 w-1/2 h-full z-0 flex items-center justify-center">
         <div className="relative w-[68%] h-full">
         <img
-          src="https://getfile.dokpub.com/yandex/get/https://disk.yandex.ru/i/XNnJ4x1rBsdvYA"
+          src="/vlas-photo.jpg"
           alt="Влас Федоров"
           className="absolute inset-0 w-full h-full object-cover object-top grayscale"
         />
