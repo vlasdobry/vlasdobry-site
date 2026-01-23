@@ -11,9 +11,15 @@ const App: React.FC = () => {
   const minSwipeDistance = 70;
 
   const triggerHaptic = () => {
-    // Оставляем только физическую вибрацию для мобильных устройств
-    if (typeof window !== 'undefined' && window.navigator && window.navigator.vibrate) {
-      window.navigator.vibrate(20);
+    // Диагностика вибрации
+    console.log('triggerHaptic called');
+    console.log('vibrate exists:', typeof navigator.vibrate);
+
+    if ('vibrate' in navigator) {
+      const result = navigator.vibrate(50);
+      console.log('vibrate result:', result);
+    } else {
+      console.log('Vibration API not supported');
     }
   };
 
