@@ -1,20 +1,20 @@
-# План SEO-оптимизации сайта vlasdobry.ru
+# План SEO и GEO оптимизации сайта vlasdobry.ru
 
 ## Статус: ВЫПОЛНЕНО
 
-**Дата выполнения:** 2026-01-23
+**Последнее обновление:** 2026-01-23
 
 ---
 
 ## Контекст
 
-Веб-визитка маркетолога на React/Vite. Основная проблема — SPA рендерится на клиенте, контент невидим для поисковых роботов. Требуется комплексная SEO-оптимизация для улучшения видимости в поисковых системах.
+Веб-визитка маркетолога на React/Vite. Основная проблема — SPA рендерится на клиенте, контент невидим для поисковых роботов и AI-краулеров. Выполнена комплексная SEO и GEO (Generative Engine Optimization) оптимизация.
 
 **Продакшен:** https://vlasdobry.ru
 
 ---
 
-## Выполненные задачи
+## Часть 1: SEO-оптимизация (ВЫПОЛНЕНО)
 
 ### ✅ Задача 1: Создать robots.txt
 **Файл:** `public/robots.txt`
@@ -47,7 +47,7 @@
 
 ### ✅ Задача 8: SEO fallback контент
 **Файл:** `index.html`
-- Вместо prerender добавлен статический SEO контент в `<noscript>` для краулеров
+- Статический SEO контент в `<noscript>` для краулеров
 - Содержит все ключевые услуги, кейсы, контакты
 
 ### ✅ Задача 9: Оптимизировать изображения
@@ -61,23 +61,106 @@
 
 ---
 
-## Проверка после деплоя
+## Часть 2: GEO-оптимизация (ВЫПОЛНЕНО)
 
-- [ ] robots.txt доступен по https://vlasdobry.ru/robots.txt
-- [ ] sitemap.xml доступен по https://vlasdobry.ru/sitemap.xml
-- [ ] Google Search Console — подтвердить владение, отправить sitemap
-- [ ] Яндекс.Вебмастер — подтвердить владение, отправить sitemap
-- [ ] Lighthouse SEO score > 90
-- [ ] Rich Results Test (Google) — проверить Schema.org
-- [ ] Проверить индексацию через `site:vlasdobry.ru` (через 1-2 недели)
-- [ ] Mobile-Friendly Test (Google)
-- [ ] PageSpeed Insights — Core Web Vitals
+### ✅ Задача 11: Создать llms.txt
+**Файл:** `public/llms.txt`
+- Структурированная информация для AI-систем
+- ASCII-only (без проблем с кодировкой)
+- Содержит: контакты, экспертиза, результаты, клиенты, услуги
+
+### ✅ Задача 12: Обновить robots.txt для AI-ботов
+**Файл:** `public/robots.txt`
+- GPTBot, ChatGPT-User (OpenAI)
+- ClaudeBot, Claude-Web (Anthropic)
+- Google-Extended
+- PerplexityBot
+- YandexBot
+- И другие AI-краулеры
+
+### ✅ Задача 13: Добавить FAQPage Schema.org
+**Файл:** `index.html`
+- 4 частых вопроса для AI-ответов
+- Услуги, ниши, результаты, контакты
+
+### ✅ Задача 14: Добавить ProfessionalService Schema.org
+**Файл:** `index.html`
+- areaServed: Russia, Kazakhstan, Belarus, Germany, USA
+- serviceType: Performance Marketing, Growth Marketing, Digital Advertising, Analytics
+
+### ✅ Задача 15: Расширить Person Schema.org
+**Файл:** `index.html`
+- alternateName (для EN-запросов)
+- hasCredential (опыт)
+- Расширенный knowsAbout (11 компетенций)
+- availableLanguage в contactPoint
+
+### ✅ Задача 16: Улучшить noscript fallback для GEO
+**Файл:** `index.html`
+- Добавлена методология (SOSTAC + PDCA)
+- Добавлен FAQ раздел
+- Больше цифр и фактов
+- Расширенные описания кейсов
+
+### ✅ Задача 17: Добавить ссылку на llms.txt
+**Файл:** `index.html`
+- `<link rel="alternate" type="text/plain" href="llms.txt">`
 
 ---
 
-## Дополнительные рекомендации
+## Проверка после деплоя
 
-После деплоя:
-1. Зарегистрировать сайт в Google Search Console
-2. Зарегистрировать сайт в Яндекс.Вебмастер
-3. Настроить отслеживание целей в метрике (клики по контактам)
+### SEO
+- [x] robots.txt доступен по https://vlasdobry.ru/robots.txt
+- [x] sitemap.xml доступен по https://vlasdobry.ru/sitemap.xml
+- [x] Яндекс.Вебмастер — верификация добавлена
+- [ ] Google Search Console — подтвердить владение, отправить sitemap
+- [ ] Lighthouse SEO score > 90
+- [ ] Rich Results Test (Google) — проверить Schema.org
+- [ ] Mobile-Friendly Test (Google)
+
+### GEO
+- [x] llms.txt доступен по https://vlasdobry.ru/llms.txt
+- [x] AI-боты разрешены в robots.txt
+- [ ] Тестирование в ChatGPT (20-30 промптов)
+- [ ] Тестирование в Perplexity
+- [ ] Тестирование в YandexGPT/Алиса
+- [ ] Тестирование в GigaChat
+
+---
+
+## Целевые AI-системы
+
+| AI | Статус | Приоритет |
+|----|--------|-----------|
+| ChatGPT | Разрешён | Высокий |
+| Perplexity | Разрешён | Высокий |
+| Google Gemini | Разрешён | Высокий |
+| Claude | Разрешён | Средний |
+| YandexGPT | Разрешён | Высокий (RU) |
+| GigaChat | Разрешён | Высокий (RU) |
+
+---
+
+## Промпты для тестирования GEO
+
+### ChatGPT / Perplexity / Claude
+```
+- "performance маркетолог фрилансер Россия"
+- "настройка Яндекс Директ специалист"
+- "growth маркетинг консультант"
+- "fractional CMO for startups Russia"
+```
+
+### YandexGPT / Алиса
+```
+- "найди performance маркетолога"
+- "кто настраивает контекстную рекламу"
+- "специалист по Яндекс Директ"
+```
+
+### GigaChat
+```
+- "посоветуй маркетолога для стартапа"
+- "эксперт по performance маркетингу"
+```
