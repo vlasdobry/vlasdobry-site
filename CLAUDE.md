@@ -53,7 +53,22 @@ npm run preview  # Просмотр сборки
 **SEO и аналитика:**
 - Open Graph и Twitter Cards для превью в соцсетях
 - Яндекс.Метрика (ID: 106407494)
-- Schema.org JSON-LD разметка
+- Schema.org JSON-LD разметка (Person, FAQPage, ProfessionalService)
+
+**GEO (Generative Engine Optimization):**
+- `llms.txt` — структурированная информация для AI-систем
+- `robots.txt` — разрешения для AI-ботов (GPTBot, ClaudeBot, PerplexityBot, YandexBot)
+- Расширенный noscript fallback для AI-краулеров
+- Целевые AI: ChatGPT, Perplexity, Gemini, Claude, YandexGPT, GigaChat
+
+## Ключевые файлы
+
+| Файл | Назначение |
+|------|------------|
+| `public/llms.txt` | Инструкции для AI-систем (ASCII-only) |
+| `public/robots.txt` | Разрешения для поисковых и AI-ботов |
+| `public/sitemap.xml` | Карта сайта для индексации |
+| `index.html` | Schema.org разметка, noscript fallback |
 
 ## Технологии
 
