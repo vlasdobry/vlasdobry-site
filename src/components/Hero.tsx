@@ -43,7 +43,7 @@ export const Hero: React.FC = () => {
 
         {/* Main Text Area */}
         <div className="w-full mb-16 sm:mb-20 landscape:mb-4 landscape:mt-auto lg:landscape:mb-20 lg:landscape:mt-0 max-w-[90vw] md:max-w-6xl landscape:max-w-[45vw] lg:landscape:max-w-6xl">
-          <h1 className="text-[3rem] landscape:text-[clamp(2rem,12vh,4rem)] sm:text-[3.4rem] md:text-[4rem] lg:!text-[5.4rem] xl:!text-[7.2rem] font-black leading-[0.85] tracking-tighter uppercase mb-6 landscape:mb-2 lg:landscape:mb-6 animate-in fade-in slide-in-from-bottom-10 duration-1000 text-white whitespace-normal break-words md:break-normal overflow-visible">
+          <h1 className="text-[2.5rem] landscape:text-[clamp(2rem,12vh,4rem)] sm:text-[3.4rem] md:text-[4rem] lg:!text-[5.4rem] xl:!text-[7.2rem] font-black leading-[0.85] tracking-tighter uppercase mb-6 landscape:mb-2 lg:landscape:mb-6 animate-in fade-in slide-in-from-bottom-10 duration-1000 text-white whitespace-normal md:break-normal overflow-visible">
             Performance<br className="hidden md:block landscape:block" /> marketing
           </h1>
 
