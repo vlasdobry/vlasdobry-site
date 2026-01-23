@@ -46,6 +46,7 @@ jobs:
   deploy:
     needs: build-and-push
     runs-on: ubuntu-latest
+    environment: production
 
     steps:
       - name: Deploy to server
@@ -63,6 +64,6 @@ jobs:
               curl -sL https://raw.githubusercontent.com/vlasdobry/vlasdobry-site/master/docker-compose.prod.yml -o docker-compose.prod.yml
             fi
 
-            docker-compose -f docker-compose.prod.yml pull
-            docker-compose -f docker-compose.prod.yml up -d
-            docker image prune -f
+            sudo docker compose -f docker-compose.prod.yml pull
+            sudo docker compose -f docker-compose.prod.yml up -d
+            sudo docker image prune -f
