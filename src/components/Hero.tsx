@@ -4,8 +4,8 @@ export const Hero: React.FC = () => {
   return (
     <div className="relative h-full w-full bg-[#121212] overflow-hidden">
 
-      {/* Mobile: Full-screen background image */}
-      <div className="absolute inset-0 z-0 lg:hidden">
+      {/* Mobile portrait: Full-screen background image */}
+      <div className="absolute inset-0 z-0 portrait:block hidden">
         <div
           className="absolute inset-0 bg-cover bg-center grayscale"
           style={{ backgroundImage: `url('/vlas-photo.jpg')` }}
@@ -13,15 +13,20 @@ export const Hero: React.FC = () => {
         <div className="absolute inset-0 bg-black/45" />
       </div>
 
-      {/* Desktop: Photo on right side */}
-      <div className="hidden lg:block absolute right-0 top-0 w-1/2 h-full z-0 flex items-center justify-center">
-        <div className="relative w-[68%] h-full">
-        <img
-          src="/vlas-photo.jpg"
-          alt="Влас Федоров"
-          className="absolute inset-0 w-full h-full object-cover object-top grayscale"
-        />
-        <div className="absolute inset-0 bg-black/45" />
+      {/* Desktop & mobile landscape: Photo on right side */}
+      <div className="hidden landscape:flex lg:flex absolute right-0 top-0 w-1/2 h-full z-0 items-center justify-center">
+        <div className="relative w-[68%] h-[85%]">
+          <img
+            src="/vlas-photo.jpg"
+            alt="Влас Федоров"
+            className="w-full h-full object-contain grayscale"
+          />
+          <div className="absolute inset-0 bg-black/45" />
+          {/* Gradient edges for smooth blend */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#121212] to-transparent" />
+            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#121212] to-transparent" />
+          </div>
         </div>
       </div>
 
@@ -32,17 +37,17 @@ export const Hero: React.FC = () => {
         <div className="absolute top-10 left-6 lg:top-12 lg:left-24 animate-in fade-in duration-1000">
           <div className="flex items-center gap-4">
             <div className="w-6 md:w-8 h-[1px] bg-white/30" />
-            <span className="text-[9px] md:text-[10px] uppercase tracking-[0.5em] font-bold text-white/50 whitespace-nowrap">Основано в 2018</span>
+            <span className="text-[9px] md:text-[10px] uppercase tracking-[0.5em] font-bold text-white/50 whitespace-nowrap">10+ лет практики</span>
           </div>
         </div>
 
         {/* Main Text Area */}
-        <div className="w-full mb-12 sm:mb-20 max-w-[90vw] md:max-w-6xl">
-          <h1 className="text-[2.7rem] sm:text-[3.4rem] md:text-[4rem] lg:text-[5.4rem] xl:text-[7.2rem] font-black leading-[0.85] tracking-tighter uppercase mb-6 animate-in fade-in slide-in-from-bottom-10 duration-1000 text-white whitespace-normal break-words md:break-normal overflow-visible">
-            Performance<br className="hidden md:block" /> marketing
+        <div className="w-full mb-16 sm:mb-20 landscape:mb-4 landscape:mt-auto lg:landscape:mb-20 lg:landscape:mt-0 max-w-[90vw] md:max-w-6xl landscape:max-w-[45vw] lg:landscape:max-w-6xl">
+          <h1 className="text-[3rem] landscape:text-[clamp(2rem,12vh,4rem)] sm:text-[3.4rem] md:text-[4rem] lg:!text-[5.4rem] xl:!text-[7.2rem] font-black leading-[0.85] tracking-tighter uppercase mb-6 landscape:mb-2 lg:landscape:mb-6 animate-in fade-in slide-in-from-bottom-10 duration-1000 text-white whitespace-normal break-words md:break-normal overflow-visible">
+            Performance<br className="hidden md:block landscape:block" /> marketing
           </h1>
 
-          <p className="text-base md:text-xl lg:text-2xl font-light text-white/80 max-w-lg animate-in fade-in slide-in-from-bottom-5 duration-1000 delay-200 leading-tight">
+          <p className="text-base landscape:text-sm lg:landscape:text-2xl md:text-xl lg:text-2xl font-light text-white/80 max-w-lg animate-in fade-in slide-in-from-bottom-5 duration-1000 delay-200 leading-tight">
             Стратегическое проектирование и масштабирование прибыли через аналитику.
           </p>
         </div>

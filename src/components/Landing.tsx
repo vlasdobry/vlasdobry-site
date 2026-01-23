@@ -31,23 +31,23 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
 
       {/* Stats Section */}
       <section className="mb-40">
-        <h2 className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-16">Цифры</h2>
+        <h2 className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-16">В цифрах</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
           <div>
-            <div className="text-5xl md:text-7xl font-black tracking-tighter">8+</div>
+            <div className="text-5xl md:text-7xl font-black tracking-tighter">10+</div>
             <p className="text-zinc-400 text-sm md:text-base mt-2">лет в digital-маркетинге</p>
           </div>
           <div>
-            <div className="text-5xl md:text-7xl font-black tracking-tighter">4</div>
-            <p className="text-zinc-400 text-sm md:text-base mt-2">ниши: HoReCa, EdTech, Travel, MedTech</p>
+            <div className="text-5xl md:text-7xl font-black tracking-tighter">4+</div>
+            <p className="text-zinc-400 text-sm md:text-base mt-2">ниши: HoReCa, EdTech, Travel, MedTech и др.</p>
           </div>
           <div>
             <div className="text-5xl md:text-7xl font-black tracking-tighter">×10</div>
-            <p className="text-zinc-400 text-sm md:text-base mt-2">максимальный рост продаж</p>
+            <p className="text-zinc-400 text-sm md:text-base mt-2">рекордный рост продаж за 6 месяцев</p>
           </div>
           <div>
             <div className="text-5xl md:text-7xl font-black tracking-tighter">$110K</div>
-            <p className="text-zinc-400 text-sm md:text-base mt-2">максимальный рекламный бюджет в месяц</p>
+            <p className="text-zinc-400 text-sm md:text-base mt-2">под управлением в месяц на один проект</p>
           </div>
         </div>
       </section>
@@ -57,10 +57,10 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
         <h2 className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-16">Услуги</h2>
         <div className="space-y-16">
           {[
-            { title: "Контекстная реклама", desc: "Google Ads и Яндекс Директ с фокусом на ROI и снижение CPA." },
-            { title: "Performance-маркетинг", desc: "Управление платными каналами с контролем юнит-экономики." },
-            { title: "Аналитика и оптимизация", desc: "Настройка сквозной аналитики, A/B-тесты, data-driven решения." },
-            { title: "Масштабирование", desc: "Рост бюджетов и конверсий без потери эффективности." }
+            { title: "Платный трафик", desc: "Контекстная и геомедийная реклама: Google Ads, Яндекс Директ, Яндекс Карты, 2ГИС" },
+            { title: "Воронки продаж", desc: "Проектирование пути клиента от первого касания до сделки" },
+            { title: "Сквозная аналитика", desc: "Дашборды для управления, маркетинга и продаж — полная картина эффективности" },
+            { title: "Масштабирование", desc: "Рост бюджетов и конверсий с сохранением юнит-экономики" }
           ].map((item, i) => (
             <div key={i} className="max-w-3xl">
               <h3 className="text-2xl md:text-4xl font-bold mb-4">{item.title}</h3>
@@ -83,9 +83,10 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
                 <span key={tag} className="text-[10px] tracking-widest uppercase text-zinc-400 font-bold">{tag}</span>
               ))}
             </div>
-            <h3 className="text-4xl md:text-6xl font-bold mb-8">Grace Group</h3>
+            <h3 className="text-4xl md:text-6xl font-bold mb-4">Grace Group</h3>
+            <p className="text-lg text-zinc-400 font-light mb-4">Международная сеть отелей</p>
             <p className="text-xl md:text-3xl text-zinc-500 font-light mb-8 leading-tight max-w-4xl">
-              От одного проекта к управлению всем маркетингом
+              Рост от одного проекта до трёх направлений бизнеса
             </p>
             <button
               onClick={() => setGraceExpanded(!graceExpanded)}
@@ -96,16 +97,16 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
             {graceExpanded && (
               <div className="mt-8 space-y-6 pl-4 border-l-2 border-zinc-100">
                 <div>
-                  <span className="text-zinc-400 text-sm font-bold">2022 — СПА-сеть</span>
-                  <p className="text-lg text-zinc-600 mt-1">Продажи ×10, ДРР 48%→13%</p>
+                  <span className="text-zinc-400 text-sm font-bold">Grace Hotels</span>
+                  <p className="text-lg text-zinc-600 mt-1">Международная сеть отелей. +60% выручки, конверсия ×2</p>
                 </div>
                 <div>
-                  <span className="text-zinc-400 text-sm font-bold">2023 — Коттеджи</span>
-                  <p className="text-lg text-zinc-600 mt-1">71 сделка, 44,8 млн ₽, ДРР 6,76%</p>
+                  <span className="text-zinc-400 text-sm font-bold">Lucky Town</span>
+                  <p className="text-lg text-zinc-600 mt-1">Длительная аренда домов бизнес-класса в Сочи. ДРР с 60%+ → 7% за 4 месяца</p>
                 </div>
                 <div>
-                  <span className="text-zinc-400 text-sm font-bold">2024 — Отели</span>
-                  <p className="text-lg text-zinc-600 mt-1">+60% выручки, конверсия ×2</p>
+                  <span className="text-zinc-400 text-sm font-bold">«Цветок Одиссея»</span>
+                  <p className="text-lg text-zinc-600 mt-1">Сеть спа-комплексов на Черноморском побережье. Продажи ×10, ДРР 48%→13%</p>
                 </div>
               </div>
             )}
@@ -114,19 +115,22 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
           {/* Other cases */}
           {[
             {
-              title: "ДНК-тесты",
+              title: "ДНК-диагностика",
+              subtitle: "Международная сеть ДНК-диагностики",
               desc: "CPA в 5 раз ниже плана ($1.05 при цели $5)",
-              details: "8,762 конверсии, 5 стран СНГ",
-              tags: ["MedTech", "СНГ", "Performance"]
+              details: "8,762 конверсии, Россия/Европа/СНГ",
+              tags: ["MedTech", "Performance", "Аналитика", "Гео"]
             },
             {
               title: "All Right",
+              subtitle: "Онлайн-школа английского для детей, Delaware, США",
               desc: "+167% продаж",
-              details: "Бюджет $110K, США/Европа/Азия",
+              details: "Бюджет $110K, реклама на 15+ языках, США/Европа/Азия",
               tags: ["EdTech", "International", "B2C"]
             },
             {
               title: "Kiwitaxi",
+              subtitle: "Первый российский агрегатор трансферных услуг, 102 страны",
               desc: "ROMI ×2.39, доход ×2",
               details: "400+ кампаний на 5 языках",
               tags: ["Travel", "Performance", "Scale"]
@@ -138,7 +142,8 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
                   <span key={tag} className="text-[10px] tracking-widest uppercase text-zinc-400 font-bold">{tag}</span>
                 ))}
               </div>
-              <h3 className="text-4xl md:text-6xl font-bold mb-8">{project.title}</h3>
+              <h3 className="text-4xl md:text-6xl font-bold mb-4">{project.title}</h3>
+              <p className="text-lg text-zinc-400 font-light mb-4">{project.subtitle}</p>
               <p className="text-xl md:text-3xl text-zinc-500 font-light mb-4 leading-tight max-w-4xl">
                 {project.desc}
               </p>
@@ -152,13 +157,14 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
 
       {/* Process Section */}
       <section className="mb-40">
-        <h2 className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-16">Процесс работы</h2>
+        <h2 className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-6">Процесс работы</h2>
+        <p className="text-zinc-400 font-light mb-16">Методология: SOSTAC + PDCA</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {[
-            { step: "01", title: "Аудит", desc: "Анализ текущих каналов и метрик" },
-            { step: "02", title: "Стратегия", desc: "Медиаплан с прогнозом ROI" },
-            { step: "03", title: "Запуск", desc: "Настройка и оптимизация кампаний" },
-            { step: "04", title: "Масштабирование", desc: "Рост при сохранении юнит-экономики" }
+            { step: "01", title: "Аудит (1-2 дня)", desc: "Декомпозиция метрик, поиск драйверов роста" },
+            { step: "02", title: "Стратегия (3-5 дней)", desc: "Согласование KPI + медиаплан с прогнозом ROI" },
+            { step: "03", title: "Запуск (1-2 недели)", desc: "Быстрые тесты, еженедельные итерации" },
+            { step: "04", title: "Контроль (постоянно)", desc: "Unit Economics и дашборды в реальном времени" }
           ].map((item) => (
             <div key={item.step} className="flex gap-6">
               <span className="text-zinc-200 text-4xl font-black">{item.step}</span>
@@ -173,15 +179,14 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
 
       {/* Contact Section */}
       <section className="py-40 text-center border-t border-zinc-100">
-          <h2 className="text-5xl md:text-8xl font-black mb-16 tracking-tighter uppercase">Бесплатный экспресс-аудит</h2>
-          <p className="text-xl md:text-3xl font-light text-zinc-400 mb-20 max-w-2xl mx-auto">Получите анализ ваших рекламных каналов за 24 часа</p>
+          <h2 className="text-5xl md:text-8xl font-black mb-16 tracking-tighter uppercase">Обсудить задачу</h2>
           <a
-            href="https://t.me/vlasdobry?text=%D0%A5%D0%BE%D1%87%D1%83%20%D0%B0%D1%83%D0%B4%D0%B8%D1%82"
+            href="https://t.me/vlasdobry"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block text-xl md:text-3xl font-bold uppercase tracking-[0.3em] border-2 border-black px-12 py-6 hover:bg-black hover:text-white transition-all"
           >
-              Получить аудит
+              Написать в Telegram
           </a>
           <p className="mt-8 text-zinc-400 text-lg">
             или напишите на <a href="mailto:vlasdobry@gmail.com" className="underline hover:text-black transition-colors">vlasdobry@gmail.com</a>
@@ -192,7 +197,7 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
       <footer className="pt-16 pb-24 flex flex-col md:flex-row justify-between items-center gap-12 border-t border-zinc-100">
         <div className="text-center md:text-left">
           <h4 className="text-2xl font-bold">Влас Федоров</h4>
-          <p className="text-zinc-400 text-sm font-light mt-1">Превращаю внимание в твердый капитал.</p>
+          <p className="text-zinc-400 text-sm font-light mt-1">Growth & Analytics</p>
         </div>
         <div className="flex gap-10 text-[11px] font-bold tracking-[0.4em] uppercase text-zinc-400">
           <a href="https://t.me/vlasdobry" target="_blank" rel="noopener noreferrer" className="hover:text-black">Telegram</a>
