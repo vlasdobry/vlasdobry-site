@@ -37,7 +37,7 @@ export const Hero: React.FC = () => {
         <div className="absolute top-10 left-6 lg:top-12 lg:left-24 animate-in fade-in duration-1000">
           <div className="flex items-center gap-4">
             <div className="w-6 md:w-8 h-[1px] bg-white/30" />
-            <span className="text-[9px] md:text-[10px] uppercase tracking-[0.5em] font-bold text-white/50 whitespace-nowrap">10+ лет практики</span>
+            <span className="text-[9px] md:text-[10px] uppercase tracking-[0.5em] font-bold text-white/50 whitespace-nowrap">Влас Федоров</span>
           </div>
         </div>
 
@@ -48,7 +48,7 @@ export const Hero: React.FC = () => {
           </h1>
 
           <p className="text-base landscape:text-sm lg:landscape:text-2xl md:text-xl lg:text-2xl font-light text-white/80 max-w-lg animate-in fade-in slide-in-from-bottom-5 duration-1000 delay-200 leading-tight">
-            Стратегическое проектирование и масштабирование прибыли через аналитику.
+            Системный подход к платному трафику
           </p>
         </div>
 

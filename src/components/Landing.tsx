@@ -25,7 +25,7 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
       <header className="mb-40">
         <h2 className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-10">Вступление</h2>
         <p className="text-4xl sm:text-6xl md:text-7xl font-light leading-[1.05]">
-          Стимулирую рост через <span className="font-medium italic underline underline-offset-8 decoration-zinc-100">data-driven</span> истории и тактическую точность.
+          Выстраиваю систему платного трафика, которая масштабируется <span className="font-medium italic underline underline-offset-8 decoration-zinc-100">без потери эффективности</span>.
         </p>
       </header>
 
