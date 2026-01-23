@@ -9,7 +9,7 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
   const [graceExpanded, setGraceExpanded] = useState(false);
 
   return (
-    <div className="max-w-5xl mx-auto px-6 sm:px-12 py-16 md:py-32 bg-white text-[#121212]">
+    <main className="max-w-5xl mx-auto px-6 sm:px-12 py-16 md:py-32 bg-white text-[#121212]">
       {/* Top Navigation */}
       <nav className="flex justify-between items-center mb-32">
         <div className="text-2xl font-black tracking-tighter">VD.</div>
@@ -30,8 +30,8 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
       </header>
 
       {/* Stats Section */}
-      <section className="mb-40">
-        <h2 className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-16">В цифрах</h2>
+      <section className="mb-40" aria-labelledby="stats-heading">
+        <h2 id="stats-heading" className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-16">В цифрах</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
           <div>
             <div className="text-5xl md:text-7xl font-black tracking-tighter">10+</div>
@@ -53,8 +53,8 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
       </section>
 
       {/* Services List */}
-      <section className="mb-40">
-        <h2 className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-16">Услуги</h2>
+      <section className="mb-40" aria-labelledby="services-heading">
+        <h2 id="services-heading" className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-16">Услуги</h2>
         <div className="space-y-16">
           {[
             { title: "Платный трафик", desc: "Контекстная и геомедийная реклама: Google Ads, Яндекс Директ, Яндекс Карты, 2ГИС" },
@@ -73,11 +73,11 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
       </section>
 
       {/* Featured Projects */}
-      <section className="mb-40">
-        <h2 className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-20">Избранные кейсы</h2>
+      <section className="mb-40" aria-labelledby="cases-heading">
+        <h2 id="cases-heading" className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-20">Избранные кейсы</h2>
         <div className="space-y-32">
           {/* Grace Group - with accordion */}
-          <div className="border-t border-zinc-100 pt-16">
+          <article className="border-t border-zinc-100 pt-16">
             <div className="flex flex-wrap gap-4 mb-8">
               {["HoReCa", "Недвижимость", "Growth"].map(tag => (
                 <span key={tag} className="text-[10px] tracking-widest uppercase text-zinc-400 font-bold">{tag}</span>
@@ -110,7 +110,7 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
                 </div>
               </div>
             )}
-          </div>
+          </article>
 
           {/* Other cases */}
           {[
@@ -136,7 +136,7 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
               tags: ["Travel", "Performance", "Scale"]
             }
           ].map((project, idx) => (
-            <div key={idx} className="border-t border-zinc-100 pt-16">
+            <article key={idx} className="border-t border-zinc-100 pt-16">
               <div className="flex flex-wrap gap-4 mb-8">
                 {project.tags.map(tag => (
                   <span key={tag} className="text-[10px] tracking-widest uppercase text-zinc-400 font-bold">{tag}</span>
@@ -150,14 +150,14 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
               <p className="text-lg text-zinc-400 font-light">
                 {project.details}
               </p>
-            </div>
+            </article>
           ))}
         </div>
       </section>
 
       {/* Process Section */}
-      <section className="mb-40">
-        <h2 className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-6">Процесс работы</h2>
+      <section className="mb-40" aria-labelledby="process-heading">
+        <h2 id="process-heading" className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-6">Процесс работы</h2>
         <p className="text-zinc-400 font-light mb-16">Методология: SOSTAC + PDCA</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {[
@@ -178,8 +178,8 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
       </section>
 
       {/* Contact Section */}
-      <section className="py-40 text-center border-t border-zinc-100">
-          <h2 className="text-5xl md:text-8xl font-black mb-16 tracking-tighter uppercase">Обсудить задачу</h2>
+      <section className="py-40 text-center border-t border-zinc-100" aria-labelledby="contact-heading">
+          <h2 id="contact-heading" className="text-5xl md:text-8xl font-black mb-16 tracking-tighter uppercase">Обсудить задачу</h2>
           <a
             href="https://t.me/vlasdobry"
             target="_blank"
@@ -205,6 +205,6 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
           <a href="mailto:vlasdobry@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-black">Email</a>
         </div>
       </footer>
-    </div>
+    </main>
   );
 };

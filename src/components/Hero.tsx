@@ -2,10 +2,10 @@ import React from 'react';
 
 export const Hero: React.FC = () => {
   return (
-    <div className="relative h-full w-full bg-[#121212] overflow-hidden">
+    <section aria-label="Главный экран" className="relative h-full w-full bg-[#121212] overflow-hidden">
 
       {/* Mobile portrait: Full-screen background image */}
-      <div className="absolute inset-0 z-0 portrait:block hidden">
+      <div className="absolute inset-0 z-0 portrait:block hidden" role="img" aria-hidden="true">
         <div
           className="absolute inset-0 bg-cover bg-center grayscale"
           style={{ backgroundImage: `url('/vlas-photo.jpg')` }}
@@ -16,11 +16,16 @@ export const Hero: React.FC = () => {
       {/* Desktop & mobile landscape: Photo on right side */}
       <div className="hidden landscape:flex lg:flex absolute right-0 top-0 w-1/2 h-full z-0 items-center justify-center">
         <div className="relative w-[68%] h-[85%]">
-          <img
-            src="/vlas-photo.jpg"
-            alt="Влас Федоров"
-            className="w-full h-full object-contain grayscale"
-          />
+          <picture>
+            <source srcSet="/vlas-photo.webp" type="image/webp" />
+            <img
+              src="/vlas-photo.jpg"
+              alt="Влас Федоров — performance-маркетолог, специалист по платному трафику и growth-аналитике"
+              className="w-full h-full object-contain grayscale"
+              loading="eager"
+              fetchPriority="high"
+            />
+          </picture>
           <div className="absolute inset-0 bg-black/45" />
           {/* Gradient edges for smooth blend */}
           <div className="absolute inset-0 pointer-events-none">
@@ -70,6 +75,6 @@ export const Hero: React.FC = () => {
         </div>
       </div>
 
-    </div>
+    </section>
   );
 };

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Sitemap: https://vlasdobry.ru/sitemap.xml
+
+Host: vlasdobry.ru
