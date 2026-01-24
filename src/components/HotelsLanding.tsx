@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { ArrowLeft, ChevronDown, ChevronUp } from 'lucide-react';
 import { useI18n } from '../i18n';
 import { LanguageSwitcher } from './LanguageSwitcher';
@@ -7,10 +7,57 @@ export const HotelsLanding: React.FC = () => {
   const { t, lang } = useI18n();
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
+  // Swipe and vibration
+  const touchStart = useRef<number | null>(null);
+  const touchEnd = useRef<number | null>(null);
+  const vibrationActivated = useRef(false);
+  const minSwipeDistance = 70;
+
   const landingUrl = lang === 'ru' ? '/#landing' : '/en/#landing';
 
+  const activateVibration = () => {
+    if (!vibrationActivated.current && 'vibrate' in navigator) {
+      navigator.vibrate(1);
+      vibrationActivated.current = true;
+    }
+  };
+
+  const triggerHaptic = () => {
+    if ('vibrate' in navigator) {
+      navigator.vibrate(50);
+    }
+  };
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    activateVibration();
+    touchEnd.current = null;
+    touchStart.current = e.targetTouches[0].clientX;
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    touchEnd.current = e.targetTouches[0].clientX;
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart.current || !touchEnd.current) return;
+
+    const distance = touchStart.current - touchEnd.current;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    // Swipe right to go back to landing
+    if (isRightSwipe) {
+      triggerHaptic();
+      window.location.href = landingUrl;
+    }
+  };
+
   return (
-    <main className="min-h-screen bg-white text-[#121212]">
+    <main
+      className="min-h-screen bg-white text-[#121212]"
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
       {/* Navigation */}
       <nav className="max-w-5xl mx-auto px-6 sm:px-12 py-8 flex justify-between items-center">
         <div className="flex items-center gap-6">
@@ -142,7 +189,10 @@ export const HotelsLanding: React.FC = () => {
             {t.hotels.faq.items.map((item, i) => (
               <div key={i} className="border border-zinc-100 rounded-lg overflow-hidden">
                 <button
-                  onClick={() => setExpandedFaq(expandedFaq === i ? null : i)}
+                  onClick={() => {
+                    triggerHaptic();
+                    setExpandedFaq(expandedFaq === i ? null : i);
+                  }}
                   className="w-full px-6 py-5 flex justify-between items-center text-left hover:bg-zinc-50 transition-colors"
                 >
                   <span className="font-bold text-lg">{item.question}</span>

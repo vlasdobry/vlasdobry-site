@@ -45,6 +45,7 @@ const App: React.FC = () => {
   };
 
   const onTouchStart = (e: React.TouchEvent) => {
+    activateVibration();
     touchEnd.current = null;
     touchStart.current = e.targetTouches[0].clientX;
   };
