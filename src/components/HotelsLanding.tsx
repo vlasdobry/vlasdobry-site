@@ -7,20 +7,20 @@ export const HotelsLanding: React.FC = () => {
   const { t, lang } = useI18n();
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
-  const mainPageUrl = lang === 'ru' ? '/' : '/en/';
+  const landingUrl = lang === 'ru' ? '/#landing' : '/en/#landing';
 
   return (
     <main className="min-h-screen bg-white text-[#121212]">
       {/* Navigation */}
       <nav className="max-w-5xl mx-auto px-6 sm:px-12 py-8 flex justify-between items-center">
         <div className="flex items-center gap-6">
-          <a href={mainPageUrl} className="text-2xl font-black tracking-tighter hover:opacity-70 transition-opacity">
+          <a href={landingUrl} className="text-2xl font-black tracking-tighter hover:opacity-70 transition-opacity">
             VD.
           </a>
           <LanguageSwitcher basePath="/for-hotels" />
         </div>
         <a
-          href={mainPageUrl}
+          href={landingUrl}
           className="flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-400 hover:text-black transition-colors"
         >
           <ArrowLeft className="w-3 h-3" />
@@ -108,17 +108,6 @@ export const HotelsLanding: React.FC = () => {
                   <div className="text-zinc-400 text-sm mt-1">{result.label}</div>
                 </div>
               ))}
-            </div>
-          </div>
-
-          {/* Testimonial */}
-          <div className="mt-8 pl-6 border-l-2 border-zinc-200">
-            <blockquote className="text-lg text-zinc-600 italic mb-4">
-              "{t.hotels.socialProof.testimonial.text}"
-            </blockquote>
-            <div className="text-sm">
-              <span className="font-bold">{t.hotels.socialProof.testimonial.author}</span>
-              <span className="text-zinc-400"> — {t.hotels.socialProof.testimonial.role}</span>
             </div>
           </div>
         </section>
@@ -223,11 +212,6 @@ export const HotelsLanding: React.FC = () => {
             <a href={`mailto:${t.hotels.cta.email}`} className="underline hover:text-black transition-colors">
               {t.hotels.cta.email}
             </a>
-          </p>
-
-          {/* Scarcity */}
-          <p className="mt-8 text-sm text-zinc-400 font-medium">
-            {t.hotels.cta.scarcity}
           </p>
         </section>
 

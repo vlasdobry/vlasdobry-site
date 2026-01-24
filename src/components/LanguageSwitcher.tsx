@@ -24,21 +24,30 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ variant = 'l
 
   const s = styles[variant];
 
-  // Build URLs based on basePath
-  const ruUrl = basePath ? `${basePath}/` : '/';
-  const enUrl = basePath ? `/en${basePath}/` : '/en/';
+  // Handle language switch with hash preservation
+  const handleSwitch = (targetLang: 'ru' | 'en') => (e: React.MouseEvent) => {
+    e.preventDefault();
+    // Get current hash at click time (not render time)
+    const hash = window.location.hash;
+    const targetPath = basePath
+      ? (targetLang === 'ru' ? `${basePath}/` : `/en${basePath}/`)
+      : (targetLang === 'ru' ? `/${hash}` : `/en/${hash}`);
+    window.location.href = targetPath;
+  };
 
   return (
     <div className="flex items-center gap-2 text-[10px] font-bold tracking-[0.2em] uppercase">
       <a
-        href={ruUrl}
+        href="#"
+        onClick={handleSwitch('ru')}
         className={`transition-colors ${lang === 'ru' ? s.active : s.inactive}`}
       >
         RU
       </a>
       <span className={s.separator}>|</span>
       <a
-        href={enUrl}
+        href="#"
+        onClick={handleSwitch('en')}
         className={`transition-colors ${lang === 'en' ? s.active : s.inactive}`}
       >
         EN

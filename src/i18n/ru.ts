@@ -1,6 +1,12 @@
 import { Translations } from './types';
 
 export const ru: Translations = {
+  offersMenu: {
+    label: 'Предложения',
+    items: [
+      { title: 'Для отелей', href: '/for-hotels/' },
+    ],
+  },
   hero: {
     name: 'Влас Федоров',
     navForward: 'Туда',
@@ -11,7 +17,7 @@ export const ru: Translations = {
   },
   hotels: {
     nav: {
-      backToMain: 'На главную',
+      backToMain: 'Назад',
     },
     hero: {
       title: 'Больше прямых бронирований — меньше комиссий OTA',
@@ -132,14 +138,8 @@ export const ru: Translations = {
       button: 'Написать в Telegram',
       alternative: 'или напишите на',
       email: 'vlasdobry@gmail.com',
-      scarcity: 'Беру 2-3 новых отеля в месяц',
     },
     socialProof: {
-      testimonial: {
-        text: 'Влас выстроил систему, которая работает для каждого отеля отдельно и для всей сети. Теперь мы видим реальный ROI по каждому объекту.',
-        author: 'Grace Hotels',
-        role: 'Директор по маркетингу',
-      },
       freeAudit: 'Бесплатный аудит каналов бронирования',
     },
     footer: {

@@ -1,6 +1,12 @@
 import { Translations } from './types';
 
 export const en: Translations = {
+  offersMenu: {
+    label: 'Services',
+    items: [
+      { title: 'For Hotels', href: '/en/for-hotels/' },
+    ],
+  },
   hero: {
     name: 'Vlas Fedorov',
     navForward: 'Enter',
@@ -11,7 +17,7 @@ export const en: Translations = {
   },
   hotels: {
     nav: {
-      backToMain: 'Back to main',
+      backToMain: 'Back',
     },
     hero: {
       title: 'More Direct Bookings — Less OTA Commissions',
@@ -132,14 +138,8 @@ export const en: Translations = {
       button: 'Message on Telegram',
       alternative: 'or email',
       email: 'vlasdobry@gmail.com',
-      scarcity: 'Taking 2-3 new hotels per month',
     },
     socialProof: {
-      testimonial: {
-        text: 'Vlas built a system that works for each hotel individually and for the entire chain. Now we see real ROI for every property.',
-        author: 'Grace Hotels',
-        role: 'Marketing Director',
-      },
       freeAudit: 'Free booking channel audit',
     },
     footer: {

@@ -5,13 +5,26 @@ import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { useI18n } from './i18n';
 
 const App: React.FC = () => {
-  const [view, setView] = useState<'hero' | 'landing'>('hero');
+  // Initialize view from URL hash
+  const getInitialView = () => {
+    return window.location.hash === '#landing' ? 'landing' : 'hero';
+  };
+
+  const [view, setView] = useState<'hero' | 'landing'>(getInitialView);
   const touchStart = useRef<number | null>(null);
   const touchEnd = useRef<number | null>(null);
   const vibrationActivated = useRef(false);
   const { t } = useI18n();
 
   const minSwipeDistance = 70;
+
+  // Sync view state with URL hash
+  useEffect(() => {
+    const newHash = view === 'landing' ? '#landing' : '';
+    if (window.location.hash !== newHash) {
+      window.history.replaceState(null, '', newHash || window.location.pathname);
+    }
+  }, [view]);
 
   const activateVibration = () => {
     if (!vibrationActivated.current && 'vibrate' in navigator) {

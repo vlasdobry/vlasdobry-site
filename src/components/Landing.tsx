@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useI18n } from '../i18n';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { OffersMenu } from './OffersMenu';
 
 interface LandingProps {
   onBack?: () => void;
@@ -18,12 +19,7 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
           <div className="text-2xl font-black tracking-tighter">VD.</div>
           <LanguageSwitcher />
         </div>
-        <button
-          onClick={onBack}
-          className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-400 hover:text-black transition-colors"
-        >
-          {t.landing.nav.backNav}
-        </button>
+        <OffersMenu />
       </nav>
 
       {/* Header Section */}

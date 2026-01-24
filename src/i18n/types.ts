@@ -1,6 +1,13 @@
 export type Lang = 'ru' | 'en';
 
 export interface Translations {
+  offersMenu: {
+    label: string;
+    items: Array<{
+      title: string;
+      href: string;
+    }>;
+  };
   hero: {
     name: string;
     navForward: string;
@@ -69,14 +76,8 @@ export interface Translations {
       button: string;
       alternative: string;
       email: string;
-      scarcity: string;
     };
     socialProof: {
-      testimonial: {
-        text: string;
-        author: string;
-        role: string;
-      };
       freeAudit: string;
     };
     footer: {
