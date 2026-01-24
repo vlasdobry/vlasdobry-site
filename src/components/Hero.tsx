@@ -1,8 +1,11 @@
 import React from 'react';
+import { useI18n } from '../i18n';
 
 export const Hero: React.FC = () => {
+  const { t } = useI18n();
+
   return (
-    <section aria-label="Главный экран" className="relative h-full w-full bg-[#121212] overflow-hidden">
+    <section aria-label="Main screen" className="relative h-full w-full bg-[#121212] overflow-hidden">
 
       {/* Mobile portrait: Full-screen background image */}
       <div className="absolute inset-0 z-0 portrait:block hidden" role="img" aria-hidden="true">
@@ -20,7 +23,7 @@ export const Hero: React.FC = () => {
             <source srcSet="/vlas-photo.webp" type="image/webp" />
             <img
               src="/vlas-photo.jpg"
-              alt="Влас Федоров — performance-маркетолог, специалист по платному трафику и growth-аналитике"
+              alt={t.hero.photoAlt}
               className="w-full h-full object-contain grayscale"
               loading="eager"
               fetchPriority="high"
@@ -42,7 +45,7 @@ export const Hero: React.FC = () => {
         <div className="absolute top-10 left-6 lg:top-12 lg:left-24 animate-in fade-in duration-1000">
           <div className="flex items-center gap-4">
             <div className="w-6 md:w-8 h-[1px] bg-white/30" />
-            <span className="text-[9px] md:text-[10px] uppercase tracking-[0.5em] font-bold text-white/50 whitespace-nowrap">Влас Федоров</span>
+            <span className="text-[9px] md:text-[10px] uppercase tracking-[0.5em] font-bold text-white/50 whitespace-nowrap">{t.hero.name}</span>
           </div>
         </div>
 
@@ -53,17 +56,17 @@ export const Hero: React.FC = () => {
           </h1>
 
           <p className="text-base landscape:text-sm md:landscape:text-xl lg:landscape:text-2xl md:text-xl lg:text-2xl font-light text-white/80 max-w-lg md:max-w-none md:whitespace-nowrap animate-in fade-in slide-in-from-bottom-5 duration-1000 delay-200 leading-tight">
-            10+ лет системного подхода к платному трафику
+            {t.hero.tagline}
           </p>
         </div>
 
         {/* Bottom Info Block */}
         <div className="w-full grid grid-cols-[max-content_max-content] gap-x-8 md:gap-x-24 gap-y-1 animate-in fade-in duration-1000 delay-500 pb-2">
           <span className="text-white/40 uppercase tracking-[0.2em] text-[9px] font-bold whitespace-nowrap">
-            Фокус
+            {t.hero.focus}
           </span>
           <span className="text-white/40 uppercase tracking-[0.2em] text-[9px] font-bold whitespace-nowrap">
-            Социальные сети
+            {t.hero.social}
           </span>
 
           <div className="text-xs md:text-lg font-light text-white whitespace-nowrap leading-none self-end">

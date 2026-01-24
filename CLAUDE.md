@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Веб-визитка маркетолога Власа Федорова — минималистичное портфолио с интерактивной навигацией между двумя основными экранами.
 
-**Продакшен:** https://vlasdobry.ru
+**Продакшен:** https://vlasdobry.ru (RU), https://vlasdobry.ru/en/ (EN)
 
 ## Правила
 
@@ -45,6 +45,13 @@ npm run preview  # Просмотр сборки
 
 **Стилизация:** Tailwind CSS через CDN, шрифт Inter. Используется glassmorphism-эффект для UI-элементов.
 
+**Мультиязычность (i18n):**
+- URL-based routing: `/` (RU), `/en/` (EN)
+- Самописная i18n-система в `src/i18n/` (KISS: без i18next)
+- Два HTML файла: `index.html` (RU), `en.html` (EN) для SEO
+- Переводы: `src/i18n/ru.ts`, `src/i18n/en.ts`
+- Переключатель языка: `src/components/LanguageSwitcher.tsx`
+
 **Мобильные функции:**
 - Виброотклик при свайпе (Vibration API, активируется после первого тапа)
 - Viewport height: `100svh` для корректного отображения в мобильных браузерах
@@ -65,10 +72,13 @@ npm run preview  # Просмотр сборки
 
 | Файл | Назначение |
 |------|------------|
+| `index.html` | RU версия: Schema.org, noscript fallback, hreflang |
+| `en.html` | EN версия: английский SEO и контент |
+| `src/i18n/` | Система переводов (types, ru, en, context) |
 | `public/llms.txt` | Инструкции для AI-систем (ASCII-only) |
 | `public/robots.txt` | Разрешения для поисковых и AI-ботов |
-| `public/sitemap.xml` | Карта сайта для индексации |
-| `index.html` | Schema.org разметка, noscript fallback |
+| `public/sitemap.xml` | Карта сайта с xhtml:link для языков |
+| `scripts/postbuild.js` | Перемещение en.html → en/index.html |
 
 ## Технологии
 

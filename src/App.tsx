@@ -2,12 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Hero } from './components/Hero';
 import { Landing } from './components/Landing';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
+import { useI18n } from './i18n';
 
 const App: React.FC = () => {
   const [view, setView] = useState<'hero' | 'landing'>('hero');
   const touchStart = useRef<number | null>(null);
   const touchEnd = useRef<number | null>(null);
   const vibrationActivated = useRef(false);
+  const { t } = useI18n();
 
   const minSwipeDistance = 70;
 
@@ -40,7 +42,7 @@ const App: React.FC = () => {
 
   const onTouchEnd = () => {
     if (!touchStart.current || !touchEnd.current) return;
-    
+
     const distance = touchStart.current - touchEnd.current;
     const isLeftSwipe = distance > minSwipeDistance;
     const isRightSwipe = distance < -minSwipeDistance;
@@ -78,7 +80,7 @@ const App: React.FC = () => {
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
-      <div 
+      <div
         className={`flex w-[200vw] h-full transition-transform duration-700 ease-[cubic-bezier(0.77,0,0.175,1)] ${
           view === 'landing' ? '-translate-x-[100vw]' : 'translate-x-0'
         }`}
@@ -86,7 +88,7 @@ const App: React.FC = () => {
         {/* Main Hero Screen */}
         <div className="w-[100vw] h-full flex-shrink-0 relative">
           <Hero />
-          
+
           {/* Mobile Swipe Guidance Indicator */}
           <div className="absolute top-[75px] left-1/2 -translate-x-1/2 z-40 md:hidden pointer-events-none">
             <div className="w-16 h-[1.5px] bg-white/10 rounded-full overflow-hidden backdrop-blur-sm">
@@ -101,7 +103,7 @@ const App: React.FC = () => {
           >
             <div className="flex flex-col items-center gap-6 md:gap-8 group-hover:scale-110 transition-transform duration-300">
               <span className="[writing-mode:vertical-lr] font-black tracking-[0.4em] md:tracking-[0.5em] uppercase text-[9px] md:text-xs text-white/80">
-                Туда
+                {t.hero.navForward}
               </span>
               <div className="relative">
                 <ChevronRight className="w-4 h-4 md:w-5 md:h-5 text-white animate-[bounce-x_2s_infinite]" />
@@ -120,11 +122,11 @@ const App: React.FC = () => {
             <div className="flex flex-col items-center gap-6 md:gap-8 group-hover:scale-110 transition-transform duration-300">
               <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 text-black animate-[bounce-x-reverse_2s_infinite]" />
               <span className="[writing-mode:vertical-lr] rotate-180 font-black tracking-[0.4em] md:tracking-[0.5em] uppercase text-[9px] md:text-xs text-black/60">
-                Обратно
+                {t.landing.nav.back}
               </span>
             </div>
           </button>
-          
+
           <div className="flex-1 h-full overflow-y-auto overflow-x-hidden">
              <Landing onBack={toggleView} />
           </div>
