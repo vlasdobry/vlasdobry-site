@@ -24,14 +24,27 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ variant = 'l
 
   const s = styles[variant];
 
-  // Handle language switch with hash preservation
+  // Handle language switch with path preservation
   const handleSwitch = (targetLang: 'ru' | 'en') => (e: React.MouseEvent) => {
     e.preventDefault();
-    // Get current hash at click time (not render time)
-    const hash = window.location.hash;
-    const targetPath = basePath
-      ? (targetLang === 'ru' ? `${basePath}/` : `/en${basePath}/`)
-      : (targetLang === 'ru' ? `/${hash}` : `/en/${hash}`);
+    const currentPath = window.location.pathname;
+
+    // Extract the view from current path
+    let view = '';
+    if (currentPath.includes('/landing')) view = '/landing';
+    else if (currentPath.includes('/hotels')) view = '/hotels';
+    else if (currentPath.includes('/for-hotels')) view = '/for-hotels/';
+
+    // Build target path
+    let targetPath: string;
+    if (basePath) {
+      targetPath = targetLang === 'ru' ? `${basePath}/` : `/en${basePath}/`;
+    } else if (view === '/for-hotels/') {
+      targetPath = targetLang === 'ru' ? '/for-hotels/' : '/en/for-hotels/';
+    } else {
+      targetPath = targetLang === 'ru' ? (view || '/') : `/en${view || ''}`;
+    }
+
     window.location.href = targetPath;
   };
 

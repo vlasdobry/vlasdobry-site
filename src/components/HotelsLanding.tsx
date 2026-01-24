@@ -1,26 +1,15 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { ArrowLeft, ChevronDown, ChevronUp } from 'lucide-react';
 import { useI18n } from '../i18n';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
-export const HotelsLanding: React.FC = () => {
-  const { t, lang } = useI18n();
+interface HotelsLandingProps {
+  onBack?: () => void;
+}
+
+export const HotelsLanding: React.FC<HotelsLandingProps> = ({ onBack }) => {
+  const { t } = useI18n();
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
-
-  // Swipe and vibration
-  const touchStart = useRef<number | null>(null);
-  const touchEnd = useRef<number | null>(null);
-  const vibrationActivated = useRef(false);
-  const minSwipeDistance = 70;
-
-  const landingUrl = lang === 'ru' ? '/#landing' : '/en/#landing';
-
-  const activateVibration = () => {
-    if (!vibrationActivated.current && 'vibrate' in navigator) {
-      navigator.vibrate(1);
-      vibrationActivated.current = true;
-    }
-  };
 
   const triggerHaptic = () => {
     if ('vibrate' in navigator) {
@@ -28,51 +17,26 @@ export const HotelsLanding: React.FC = () => {
     }
   };
 
-  const onTouchStart = (e: React.TouchEvent) => {
-    activateVibration();
-    touchEnd.current = null;
-    touchStart.current = e.targetTouches[0].clientX;
-  };
-
-  const onTouchMove = (e: React.TouchEvent) => {
-    touchEnd.current = e.targetTouches[0].clientX;
-  };
-
-  const onTouchEnd = () => {
-    if (!touchStart.current || !touchEnd.current) return;
-
-    const distance = touchStart.current - touchEnd.current;
-    const isRightSwipe = distance < -minSwipeDistance;
-
-    // Swipe right to go back to landing
-    if (isRightSwipe) {
-      triggerHaptic();
-      window.location.href = landingUrl;
-    }
-  };
-
   return (
-    <main
-      className="min-h-screen bg-white text-[#121212]"
-      onTouchStart={onTouchStart}
-      onTouchMove={onTouchMove}
-      onTouchEnd={onTouchEnd}
-    >
+    <main className="min-h-screen bg-white text-[#121212]">
       {/* Navigation */}
       <nav className="max-w-5xl mx-auto px-6 sm:px-12 py-8 flex justify-between items-center">
         <div className="flex items-center gap-6">
-          <a href={landingUrl} className="text-2xl font-black tracking-tighter hover:opacity-70 transition-opacity">
+          <button
+            onClick={onBack}
+            className="text-2xl font-black tracking-tighter hover:opacity-70 transition-opacity"
+          >
             VD.
-          </a>
-          <LanguageSwitcher basePath="/for-hotels" />
+          </button>
+          <LanguageSwitcher />
         </div>
-        <a
-          href={landingUrl}
+        <button
+          onClick={onBack}
           className="flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-400 hover:text-black transition-colors"
         >
           <ArrowLeft className="w-3 h-3" />
           {t.hotels.nav.backToMain}
-        </a>
+        </button>
       </nav>
 
       <div className="max-w-5xl mx-auto px-6 sm:px-12">
