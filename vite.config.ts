@@ -10,10 +10,20 @@ export default defineConfig({
     plugins: [
       react(),
       {
-        name: 'rewrite-en-routes',
+        name: 'rewrite-routes',
         configureServer(server) {
           server.middlewares.use((req, _res, next) => {
-            if (req.url?.startsWith('/en') && !req.url.includes('.')) {
+            const url = req.url || '';
+            // Handle /en/for-hotels routes
+            if (url.startsWith('/en/for-hotels') && !url.includes('.')) {
+              req.url = '/for-hotels-en.html';
+            }
+            // Handle /for-hotels routes (RU)
+            else if (url.startsWith('/for-hotels') && !url.includes('.')) {
+              req.url = '/for-hotels.html';
+            }
+            // Handle /en routes (main EN page)
+            else if (url.startsWith('/en') && !url.includes('.')) {
               req.url = '/en.html';
             }
             next();
@@ -31,6 +41,8 @@ export default defineConfig({
         input: {
           main: path.resolve(__dirname, 'index.html'),
           en: path.resolve(__dirname, 'en.html'),
+          'for-hotels': path.resolve(__dirname, 'for-hotels.html'),
+          'for-hotels-en': path.resolve(__dirname, 'for-hotels-en.html'),
         },
       },
     },

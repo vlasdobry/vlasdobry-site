@@ -3,9 +3,10 @@ import { useI18n } from '../i18n';
 
 interface LanguageSwitcherProps {
   variant?: 'light' | 'dark';
+  basePath?: string; // e.g., '/for-hotels' for hotel pages
 }
 
-export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ variant = 'light' }) => {
+export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ variant = 'light', basePath }) => {
   const { lang } = useI18n();
 
   const styles = {
@@ -23,17 +24,21 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ variant = 'l
 
   const s = styles[variant];
 
+  // Build URLs based on basePath
+  const ruUrl = basePath ? `${basePath}/` : '/';
+  const enUrl = basePath ? `/en${basePath}/` : '/en/';
+
   return (
     <div className="flex items-center gap-2 text-[10px] font-bold tracking-[0.2em] uppercase">
       <a
-        href="/"
+        href={ruUrl}
         className={`transition-colors ${lang === 'ru' ? s.active : s.inactive}`}
       >
         RU
       </a>
       <span className={s.separator}>|</span>
       <a
-        href="/en/"
+        href={enUrl}
         className={`transition-colors ${lang === 'en' ? s.active : s.inactive}`}
       >
         EN

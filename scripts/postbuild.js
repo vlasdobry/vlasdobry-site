@@ -14,3 +14,23 @@ if (existsSync(enSrc)) {
   renameSync(enSrc, enDest);
   console.log('Moved en.html -> en/index.html');
 }
+
+// Move for-hotels.html to for-hotels/index.html for clean URLs
+const hotelsRuSrc = join(distDir, 'for-hotels.html');
+const hotelsRuDest = join(distDir, 'for-hotels', 'index.html');
+
+if (existsSync(hotelsRuSrc)) {
+  mkdirSync(join(distDir, 'for-hotels'), { recursive: true });
+  renameSync(hotelsRuSrc, hotelsRuDest);
+  console.log('Moved for-hotels.html -> for-hotels/index.html');
+}
+
+// Move for-hotels-en.html to en/for-hotels/index.html for clean URLs
+const hotelsEnSrc = join(distDir, 'for-hotels-en.html');
+const hotelsEnDest = join(distDir, 'en', 'for-hotels', 'index.html');
+
+if (existsSync(hotelsEnSrc)) {
+  mkdirSync(join(distDir, 'en', 'for-hotels'), { recursive: true });
+  renameSync(hotelsEnSrc, hotelsEnDest);
+  console.log('Moved for-hotels-en.html -> en/for-hotels/index.html');
+}

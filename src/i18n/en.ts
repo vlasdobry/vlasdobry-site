@@ -9,6 +9,149 @@ export const en: Translations = {
     focus: 'Focus',
     social: 'Social',
   },
+  hotels: {
+    nav: {
+      backToMain: 'Back to main',
+    },
+    hero: {
+      title: 'More Direct Bookings — Less OTA Commissions',
+      subtitle: 'Full-funnel performance marketing for hotels: paid traffic, analytics, booking funnels',
+      stats: '10+ years experience · 20 hotels managed · +60% revenue growth',
+    },
+    problems: {
+      label: 'Sound familiar?',
+      items: [
+        {
+          title: 'OTA commissions eating your margins',
+          desc: 'Booking.com, Expedia, Hotels.com — 15-25% per booking adds up fast',
+        },
+        {
+          title: 'Paid ads not delivering ROI',
+          desc: 'Metasearch costs rise, attribution is broken, direct bookings stay flat',
+        },
+        {
+          title: 'No visibility into what\'s working',
+          desc: 'Cross-device journeys, cookie restrictions, booking engine silos — analytics blind spots everywhere',
+        },
+        {
+          title: 'Competing with brands that outspend you',
+          desc: 'Big chains dominate search results while independents struggle for visibility',
+        },
+      ],
+    },
+    services: {
+      label: 'What I do',
+      items: [
+        {
+          title: 'Paid traffic for hotels',
+          desc: 'Google Ads, Google Hotel Ads, metasearch campaigns — driving guests directly to your website, bypassing OTA commissions',
+        },
+        {
+          title: 'Direct booking funnels',
+          desc: 'Full guest journey from discovery to payment: landing pages, retargeting, email sequences, abandoned booking recovery',
+        },
+        {
+          title: 'End-to-end analytics',
+          desc: 'Connecting ad platforms with your PMS and booking engine — see true ROI by channel and campaign, not vanity metrics',
+        },
+        {
+          title: 'Scaling without losing efficiency',
+          desc: 'Growing budgets while maintaining unit economics: from single property to hotel group with unified strategy',
+        },
+      ],
+    },
+    caseStudy: {
+      label: 'Case study',
+      title: 'Grace Hotels',
+      subtitle: 'International chain of 20 properties',
+      challenge: 'Challenge: build a guest acquisition system that works for individual properties and the brand as a whole',
+      done: [
+        'Individual ad campaigns tailored to each property',
+        'Unified performance marketing strategy across the chain',
+        'End-to-end analytics with per-property attribution',
+      ],
+      results: [
+        { value: '+60%', label: 'revenue' },
+        { value: '×2', label: 'conversion' },
+      ],
+      tags: ['Hospitality', 'Hotel chain', 'Performance', 'Analytics'],
+    },
+    process: {
+      label: 'How it works',
+      methodology: 'Methodology: SOSTAC + PDCA',
+      steps: [
+        {
+          step: '01',
+          title: 'Audit (1-2 days)',
+          desc: 'Current channel analysis, OTA share, cost per booking, seasonality patterns',
+        },
+        {
+          step: '02',
+          title: 'Strategy (3-5 days)',
+          desc: 'Media plan with forecast: direct bookings volume, target cost, channel mix',
+        },
+        {
+          step: '03',
+          title: 'Launch (1-2 weeks)',
+          desc: 'Campaign setup, PMS analytics integration, initial tests and optimization',
+        },
+        {
+          step: '04',
+          title: 'Control (ongoing)',
+          desc: 'Weekly reports: occupancy, cost per guest, real-time ROI by channel',
+        },
+      ],
+    },
+    faq: {
+      label: 'FAQ',
+      items: [
+        {
+          question: 'How much does it cost?',
+          answer: 'Depends on property count and scope. Let\'s discuss on a call — I\'ll explain what\'s possible within your budget.',
+        },
+        {
+          question: 'How fast will I see results?',
+          answer: 'First data in 2-3 weeks after launch. Sustainable direct booking growth in 2-3 months of systematic work.',
+        },
+        {
+          question: 'Do you work with small hotels?',
+          answer: 'Yes, if ad budget is $1,000+/month. Boutique hotels and vacation rentals have working strategies too.',
+        },
+      ],
+    },
+    notFor: {
+      label: 'Not a fit if',
+      items: [
+        'Ad budget under $1,000/month',
+        'No ability to integrate analytics with PMS',
+        'Need "quick results in a week"',
+      ],
+    },
+    cta: {
+      heading: 'Let\'s discuss your hotel\'s occupancy',
+      button: 'Message on Telegram',
+      alternative: 'or email',
+      email: 'vlasdobry@gmail.com',
+      scarcity: 'Taking 2-3 new hotels per month',
+    },
+    socialProof: {
+      testimonial: {
+        text: 'Vlas built a system that works for each hotel individually and for the entire chain. Now we see real ROI for every property.',
+        author: 'Grace Hotels',
+        role: 'Marketing Director',
+      },
+      freeAudit: 'Free booking channel audit',
+    },
+    footer: {
+      name: 'Vlas Fedorov',
+      role: 'Hotel Marketing',
+      links: {
+        telegram: 'Telegram',
+        whatsapp: 'WhatsApp',
+        email: 'Email',
+      },
+    },
+  },
   landing: {
     nav: {
       back: 'Back',
