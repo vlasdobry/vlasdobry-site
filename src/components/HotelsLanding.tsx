@@ -12,11 +12,17 @@ export const HotelsLanding: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      const scrollY = window.scrollY;
+      // Hysteresis: different thresholds to prevent jitter
+      if (!isScrolled && scrollY > 80) {
+        setIsScrolled(true);
+      } else if (isScrolled && scrollY < 20) {
+        setIsScrolled(false);
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isScrolled]);
 
   return (
     <main className="min-h-screen bg-white text-[#121212]">
