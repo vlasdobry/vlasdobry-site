@@ -1,5 +1,6 @@
 import React from 'react';
 import { useI18n } from '../i18n';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 export const Hero: React.FC = () => {
   const { t } = useI18n();
@@ -47,6 +48,11 @@ export const Hero: React.FC = () => {
             <div className="w-6 md:w-8 h-[1px] bg-white/30" />
             <span className="text-[9px] md:text-[10px] uppercase tracking-[0.5em] font-bold text-white/50 whitespace-nowrap">{t.hero.name}</span>
           </div>
+        </div>
+
+        {/* Language Switcher */}
+        <div className="absolute top-10 right-14 md:right-20 lg:top-12 lg:right-28 animate-in fade-in duration-1000">
+          <LanguageSwitcher variant="dark" />
         </div>
 
         {/* Main Text Area */}
