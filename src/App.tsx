@@ -27,19 +27,15 @@ const App: React.FC = () => {
   }, [view]);
 
   const activateVibration = () => {
-    console.log('[VIB] activate:', { activated: vibrationActivated.current, api: 'vibrate' in navigator });
     if (!vibrationActivated.current && 'vibrate' in navigator) {
-      const result = navigator.vibrate(1);
-      console.log('[VIB] activate result:', result);
+      navigator.vibrate(1);
       vibrationActivated.current = true;
     }
   };
 
   const triggerHaptic = () => {
-    console.log('[VIB] haptic:', { api: 'vibrate' in navigator });
     if ('vibrate' in navigator) {
-      const result = navigator.vibrate(50);
-      console.log('[VIB] haptic result:', result);
+      navigator.vibrate(50);
     }
   };
 
