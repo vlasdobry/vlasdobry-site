@@ -3,40 +3,29 @@ import { ArrowLeft, ChevronDown, ChevronUp } from 'lucide-react';
 import { useI18n } from '../i18n';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
-interface HotelsLandingProps {
-  onBack?: () => void;
-}
-
-export const HotelsLanding: React.FC<HotelsLandingProps> = ({ onBack }) => {
-  const { t } = useI18n();
+export const HotelsLanding: React.FC = () => {
+  const { t, lang } = useI18n();
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
-  const triggerHaptic = () => {
-    if ('vibrate' in navigator) {
-      navigator.vibrate(50);
-    }
-  };
+  const landingUrl = lang === 'ru' ? '/#landing' : '/en/#landing';
 
   return (
     <main className="min-h-screen bg-white text-[#121212]">
       {/* Navigation */}
       <nav className="max-w-5xl mx-auto px-6 sm:px-12 py-8 flex justify-between items-center">
         <div className="flex items-center gap-6">
-          <button
-            onClick={onBack}
-            className="text-2xl font-black tracking-tighter hover:opacity-70 transition-opacity"
-          >
+          <a href={landingUrl} className="text-2xl font-black tracking-tighter hover:opacity-70 transition-opacity">
             VD.
-          </button>
-          <LanguageSwitcher />
+          </a>
+          <LanguageSwitcher basePath="/for-hotels" />
         </div>
-        <button
-          onClick={onBack}
+        <a
+          href={landingUrl}
           className="flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-400 hover:text-black transition-colors"
         >
           <ArrowLeft className="w-3 h-3" />
           {t.hotels.nav.backToMain}
-        </button>
+        </a>
       </nav>
 
       <div className="max-w-5xl mx-auto px-6 sm:px-12">

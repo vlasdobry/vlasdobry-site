@@ -1,54 +1,30 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Hero } from './components/Hero';
 import { Landing } from './components/Landing';
-import { HotelsLanding } from './components/HotelsLanding';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { useI18n } from './i18n';
 
-type View = 'hero' | 'landing' | 'hotels';
-
 const App: React.FC = () => {
-  // Initialize view from URL path
-  const getInitialView = (): View => {
-    const path = window.location.pathname;
-    if (path === '/landing' || path === '/en/landing') return 'landing';
-    if (path === '/hotels' || path === '/en/hotels') return 'hotels';
-    // Support hash fallback for backwards compatibility
-    if (window.location.hash === '#landing') return 'landing';
-    if (window.location.hash === '#hotels') return 'hotels';
-    return 'hero';
+  // Initialize view from URL hash
+  const getInitialView = () => {
+    return window.location.hash === '#landing' ? 'landing' : 'hero';
   };
 
-  const [view, setView] = useState<View>(getInitialView);
+  const [view, setView] = useState<'hero' | 'landing'>(getInitialView);
   const touchStart = useRef<number | null>(null);
   const touchEnd = useRef<number | null>(null);
   const vibrationActivated = useRef(false);
-  const { t, lang } = useI18n();
+  const { t } = useI18n();
 
   const minSwipeDistance = 70;
 
-  // Sync view state with URL path using History API
+  // Sync view state with URL hash
   useEffect(() => {
-    const basePath = lang === 'en' ? '/en' : '';
-    const pathMap: Record<View, string> = {
-      hero: basePath || '/',
-      landing: `${basePath}/landing`,
-      hotels: `${basePath}/hotels`
-    };
-    const newPath = pathMap[view];
-    if (window.location.pathname !== newPath) {
-      window.history.pushState({ view }, '', newPath);
+    const newHash = view === 'landing' ? '#landing' : '';
+    if (window.location.hash !== newHash) {
+      window.history.replaceState(null, '', newHash || window.location.pathname);
     }
-  }, [view, lang]);
-
-  // Handle browser back/forward
-  useEffect(() => {
-    const handlePopState = () => {
-      setView(getInitialView());
-    };
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
-  }, []);
+  }, [view]);
 
   const activateVibration = () => {
     if (!vibrationActivated.current && 'vibrate' in navigator) {
@@ -63,22 +39,7 @@ const App: React.FC = () => {
     }
   };
 
-  const goToHero = () => {
-    triggerHaptic();
-    setView('hero');
-  };
-
-  const goToLanding = () => {
-    triggerHaptic();
-    setView('landing');
-  };
-
-  const goToHotels = () => {
-    triggerHaptic();
-    setView('hotels');
-  };
-
-  const toggleHeroLanding = () => {
+  const toggleView = () => {
     triggerHaptic();
     setView(prev => (prev === 'hero' ? 'landing' : 'hero'));
   };
@@ -100,57 +61,30 @@ const App: React.FC = () => {
     const isLeftSwipe = distance > minSwipeDistance;
     const isRightSwipe = distance < -minSwipeDistance;
 
-    // Navigation: hero <-> landing <-> hotels
-    if (isLeftSwipe) {
-      if (view === 'hero') {
-        triggerHaptic();
-        setView('landing');
-      } else if (view === 'landing') {
-        triggerHaptic();
-        setView('hotels');
-      }
+    if (isLeftSwipe && view === 'hero') {
+      triggerHaptic();
+      setView('landing');
     }
-    if (isRightSwipe) {
-      if (view === 'landing') {
-        triggerHaptic();
-        setView('hero');
-      } else if (view === 'hotels') {
-        triggerHaptic();
-        setView('landing');
-      }
+    if (isRightSwipe && view === 'landing') {
+      triggerHaptic();
+      setView('hero');
     }
   };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowRight') {
-        if (view === 'hero') {
-          triggerHaptic();
-          setView('landing');
-        } else if (view === 'landing') {
-          triggerHaptic();
-          setView('hotels');
-        }
+      if (e.key === 'ArrowRight' && view === 'hero') {
+        triggerHaptic();
+        setView('landing');
       }
-      if (e.key === 'ArrowLeft') {
-        if (view === 'landing') {
-          triggerHaptic();
-          setView('hero');
-        } else if (view === 'hotels') {
-          triggerHaptic();
-          setView('landing');
-        }
+      if (e.key === 'ArrowLeft' && view === 'landing') {
+        triggerHaptic();
+        setView('hero');
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [view]);
-
-  const translateClass = {
-    hero: 'translate-x-0',
-    landing: '-translate-x-[100vw]',
-    hotels: '-translate-x-[200vw]'
-  };
 
   return (
     <div
@@ -161,7 +95,9 @@ const App: React.FC = () => {
       onTouchEnd={onTouchEnd}
     >
       <div
-        className={`flex w-[300vw] h-full transition-transform duration-700 ease-[cubic-bezier(0.77,0,0.175,1)] ${translateClass[view]}`}
+        className={`flex w-[200vw] h-full transition-transform duration-700 ease-[cubic-bezier(0.77,0,0.175,1)] ${
+          view === 'landing' ? '-translate-x-[100vw]' : 'translate-x-0'
+        }`}
       >
         {/* Main Hero Screen */}
         <div className="w-[100vw] h-full flex-shrink-0 relative">
@@ -176,7 +112,7 @@ const App: React.FC = () => {
 
           {/* Glassmorphic Portfolio Navigation Handle */}
           <button
-            onClick={goToLanding}
+            onClick={toggleView}
             className="absolute right-0 top-0 h-full w-10 md:w-16 z-50 flex flex-col items-center justify-center bg-black/10 backdrop-blur-2xl border-l border-white/5 hover:bg-black/20 transition-all group overflow-hidden"
           >
             <div className="flex flex-col items-center gap-6 md:gap-8 group-hover:scale-110 transition-transform duration-300">
@@ -194,7 +130,7 @@ const App: React.FC = () => {
         <div className="w-[100vw] h-full flex-shrink-0 relative bg-white flex overflow-hidden">
           {/* Glassmorphic Back handle */}
           <button
-            onClick={goToHero}
+            onClick={toggleView}
             className="h-full w-10 md:w-16 flex-shrink-0 z-50 flex flex-col items-center justify-center bg-white/30 backdrop-blur-2xl border-r border-zinc-200/30 hover:bg-zinc-100/40 transition-all group"
           >
             <div className="flex flex-col items-center gap-6 md:gap-8 group-hover:scale-110 transition-transform duration-300">
@@ -206,27 +142,7 @@ const App: React.FC = () => {
           </button>
 
           <div className="flex-1 h-full overflow-y-auto overflow-x-hidden">
-             <Landing onBack={goToHero} onGoToHotels={goToHotels} />
-          </div>
-        </div>
-
-        {/* Hotels Page Content */}
-        <div className="w-[100vw] h-full flex-shrink-0 relative bg-white flex overflow-hidden">
-          {/* Glassmorphic Back handle */}
-          <button
-            onClick={goToLanding}
-            className="h-full w-10 md:w-16 flex-shrink-0 z-50 flex flex-col items-center justify-center bg-white/30 backdrop-blur-2xl border-r border-zinc-200/30 hover:bg-zinc-100/40 transition-all group"
-          >
-            <div className="flex flex-col items-center gap-6 md:gap-8 group-hover:scale-110 transition-transform duration-300">
-              <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 text-black animate-[bounce-x-reverse_2s_infinite]" />
-              <span className="[writing-mode:vertical-lr] rotate-180 font-black tracking-[0.4em] md:tracking-[0.5em] uppercase text-[9px] md:text-xs text-black/60">
-                {t.landing.nav.back}
-              </span>
-            </div>
-          </button>
-
-          <div className="flex-1 h-full overflow-y-auto overflow-x-hidden">
-             <HotelsLanding onBack={goToLanding} />
+             <Landing onBack={toggleView} />
           </div>
         </div>
       </div>

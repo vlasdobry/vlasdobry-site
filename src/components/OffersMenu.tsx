@@ -4,10 +4,9 @@ import { useI18n } from '../i18n';
 
 interface OffersMenuProps {
   variant?: 'light' | 'dark';
-  onGoToHotels?: () => void;
 }
 
-export const OffersMenu: React.FC<OffersMenuProps> = ({ variant = 'light', onGoToHotels }) => {
+export const OffersMenu: React.FC<OffersMenuProps> = ({ variant = 'light' }) => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const { t } = useI18n();
@@ -51,35 +50,16 @@ export const OffersMenu: React.FC<OffersMenuProps> = ({ variant = 'light', onGoT
 
       {isOpen && (
         <div className={`absolute top-full left-0 mt-2 min-w-[160px] rounded-lg overflow-hidden z-50 ${s.dropdown}`}>
-          {t.offersMenu.items.map((item, i) => {
-            const isHotels = item.href.includes('for-hotels');
-
-            if (isHotels && onGoToHotels) {
-              return (
-                <button
-                  key={i}
-                  className={`block w-full text-left px-4 py-3 text-sm transition-colors ${s.item}`}
-                  onClick={() => {
-                    setIsOpen(false);
-                    onGoToHotels();
-                  }}
-                >
-                  {item.title}
-                </button>
-              );
-            }
-
-            return (
-              <a
-                key={i}
-                href={item.href}
-                className={`block px-4 py-3 text-sm transition-colors ${s.item}`}
-                onClick={() => setIsOpen(false)}
-              >
-                {item.title}
-              </a>
-            );
-          })}
+          {t.offersMenu.items.map((item, i) => (
+            <a
+              key={i}
+              href={item.href}
+              className={`block px-4 py-3 text-sm transition-colors ${s.item}`}
+              onClick={() => setIsOpen(false)}
+            >
+              {item.title}
+            </a>
+          ))}
         </div>
       )}
     </div>

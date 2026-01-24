@@ -5,10 +5,9 @@ import { OffersMenu } from './OffersMenu';
 
 interface LandingProps {
   onBack?: () => void;
-  onGoToHotels?: () => void;
 }
 
-export const Landing: React.FC<LandingProps> = ({ onBack, onGoToHotels }) => {
+export const Landing: React.FC<LandingProps> = ({ onBack }) => {
   const [graceExpanded, setGraceExpanded] = useState(false);
   const { t } = useI18n();
 
@@ -20,7 +19,7 @@ export const Landing: React.FC<LandingProps> = ({ onBack, onGoToHotels }) => {
           <div className="text-2xl font-black tracking-tighter">VD.</div>
           <LanguageSwitcher />
         </div>
-        <OffersMenu onGoToHotels={onGoToHotels} />
+        <OffersMenu />
       </nav>
 
       {/* Header Section */}
