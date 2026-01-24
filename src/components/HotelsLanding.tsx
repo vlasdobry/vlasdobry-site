@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowLeft, ChevronDown, ChevronUp } from 'lucide-react';
 import { useI18n } from '../i18n';
 import { LanguageSwitcher } from './LanguageSwitcher';
@@ -6,31 +6,48 @@ import { LanguageSwitcher } from './LanguageSwitcher';
 export const HotelsLanding: React.FC = () => {
   const { t, lang } = useI18n();
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const landingUrl = lang === 'ru' ? '/#landing' : '/en/#landing';
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <main className="min-h-screen bg-white text-[#121212]">
-      {/* Navigation */}
-      <nav className="max-w-5xl mx-auto px-6 sm:px-12 py-8 flex justify-between items-center">
-        <div className="flex items-center gap-6">
-          <a href={landingUrl} className="text-2xl font-black tracking-tighter hover:opacity-70 transition-opacity">
-            VD.
+      {/* Sticky Navigation - compact on scroll */}
+      <nav className={`sticky top-0 z-50 border-b transition-all duration-500 ease-out ${
+        isScrolled
+          ? 'bg-white/80 backdrop-blur-lg border-zinc-100'
+          : 'bg-white border-transparent'
+      }`}>
+        <div className={`max-w-5xl mx-auto px-6 sm:px-12 flex justify-between items-center transition-all duration-500 ease-out ${
+          isScrolled ? 'py-3' : 'py-16 md:py-32'
+        }`}>
+          <div className="flex items-center gap-6">
+            <a href={landingUrl} className="text-2xl font-black tracking-tighter hover:opacity-70 transition-opacity">
+              VD.
+            </a>
+            <LanguageSwitcher basePath="/for-hotels" />
+          </div>
+          <a
+            href={landingUrl}
+            className="flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-400 hover:text-black transition-colors"
+          >
+            <ArrowLeft className="w-3 h-3" />
+            {t.hotels.nav.backToMain}
           </a>
-          <LanguageSwitcher basePath="/for-hotels" />
         </div>
-        <a
-          href={landingUrl}
-          className="flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-400 hover:text-black transition-colors"
-        >
-          <ArrowLeft className="w-3 h-3" />
-          {t.hotels.nav.backToMain}
-        </a>
       </nav>
 
-      <div className="max-w-5xl mx-auto px-6 sm:px-12">
+      <div className="max-w-5xl mx-auto px-6 sm:px-12 py-16 md:py-24">
         {/* Hero Section */}
-        <header className="py-16 md:py-24">
+        <header className="pb-16 md:pb-24">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight mb-8">
             {t.hotels.hero.title}
           </h1>
