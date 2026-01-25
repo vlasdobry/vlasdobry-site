@@ -45,7 +45,7 @@ export const Hero: React.FC = () => {
         {/* Top Label */}
         <div className="absolute top-10 left-6 lg:top-12 lg:left-24">
           <div className="flex items-center gap-4">
-            <div className="w-6 md:w-8 h-[2px] bg-white/40" />
+            <div className="w-6 md:w-8 h-[1px] bg-white/30" />
             <span className="text-[9px] md:text-[10px] uppercase tracking-[0.5em] font-bold text-white/50 whitespace-nowrap">{t.hero.name}</span>
           </div>
         </div>
