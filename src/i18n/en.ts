@@ -5,6 +5,7 @@ export const en: Translations = {
     label: 'Services',
     items: [
       { title: 'For Hotels', href: '/en/for-hotels/' },
+      { title: 'For DNA Labs', href: '/en/for-labs/' },
     ],
   },
   hero: {
@@ -145,6 +146,155 @@ export const en: Translations = {
     footer: {
       name: 'Vlas Fedorov',
       role: 'Hotel Marketing',
+      links: {
+        telegram: 'Telegram',
+        whatsapp: 'WhatsApp',
+        email: 'Email',
+      },
+    },
+  },
+  labs: {
+    nav: {
+      backToMain: 'Back',
+    },
+    hero: {
+      title: 'Scalable Lead Growth Without Sacrificing ROI',
+      subtitle: 'Performance marketing for DNA labs: finding channels that work for your business — from search ads to geo-targeted campaigns',
+      stats: '5 countries · 8,700+ conversions · CPA 5× below target · #1 Google Ads auction share',
+    },
+    problems: {
+      label: 'Sound familiar?',
+      items: [
+        {
+          title: 'National chains dominate search results',
+          desc: 'Major lab networks take the top spots — your ads get lost in the noise',
+        },
+        {
+          title: 'Expensive clicks that don\'t convert',
+          desc: 'High-intent keywords like "paternity test" are overheated, cost per lead keeps rising, ROI is unclear',
+        },
+        {
+          title: 'No analytics by location',
+          desc: 'Unclear which collection points generate leads and which just burn budget',
+        },
+        {
+          title: 'Hard to scale to new cities',
+          desc: 'Every launch starts from scratch: new campaigns, new keywords, unpredictable results',
+        },
+      ],
+    },
+    services: {
+      label: 'What I do',
+      items: [
+        {
+          title: 'Search advertising',
+          desc: 'Google Ads, Yandex Direct — campaigns that win auctions without overpaying per click',
+        },
+        {
+          title: 'Geo-targeted ads for collection points',
+          desc: 'Google Maps, local platforms — driving clients to specific locations, not just your website',
+        },
+        {
+          title: 'Finding channels that work',
+          desc: 'Not limited to standard sources — testing new traffic channels and scaling what delivers results',
+        },
+        {
+          title: 'Analytics and dashboards',
+          desc: 'Connecting ads to leads — see which channel and location actually brings revenue',
+        },
+        {
+          title: 'Scaling to new markets',
+          desc: 'Launching in new cities and countries using a proven system — no experiments on your budget',
+        },
+      ],
+    },
+    caseStudy: {
+      label: 'Case study',
+      title: 'DNA Lab Network',
+      subtitle: '5 countries: Russia, Georgia, Kazakhstan, Uzbekistan, Azerbaijan',
+      challenge: 'Challenge: build a client acquisition system that works across countries and scales without increasing cost per lead',
+      done: [
+        'Google Ads and Yandex Direct campaigns across all regions',
+        'Geo-targeted ads for sample collection points',
+        'Analytics dashboards with country and location breakdown',
+        'Automated reputation management',
+      ],
+      results: [
+        { value: '$1.05', label: 'CPA (target $5)' },
+        { value: '8,700+', label: 'conversions' },
+        { value: '#1', label: 'Google Ads auction share' },
+      ],
+      tags: ['MedTech', 'International', 'Performance', 'Analytics'],
+    },
+    process: {
+      label: 'How it works',
+      methodology: 'Methodology: SOSTAC + PDCA',
+      steps: [
+        {
+          step: '01',
+          title: 'Audit (1-2 days)',
+          desc: 'Current channel analysis, competitor auction data, cost per lead by location',
+        },
+        {
+          step: '02',
+          title: 'Strategy (3-5 days)',
+          desc: 'Media plan with forecast: how many leads, at what cost, from which channels',
+        },
+        {
+          step: '03',
+          title: 'Launch (1-2 weeks)',
+          desc: 'Campaign setup, analytics integration, initial tests',
+        },
+        {
+          step: '04',
+          title: 'Optimization (ongoing)',
+          desc: 'Weekly reports, auction management, discovering new growth channels',
+        },
+      ],
+    },
+    faq: {
+      label: 'FAQ',
+      items: [
+        {
+          question: 'How much does it cost?',
+          answer: 'Depends on location count and geography. Let\'s discuss on a call — I\'ll explain what\'s possible within your budget.',
+        },
+        {
+          question: 'How fast will I see results?',
+          answer: 'First actionable data in 2-3 weeks after launch. Target metrics in 6-8 weeks of systematic work.',
+        },
+        {
+          question: 'Do you work with small labs?',
+          answer: 'Yes, if there\'s budget for advertising and commitment to systematic work. Single-location strategies exist too.',
+        },
+        {
+          question: 'Can we really compete with major lab chains?',
+          answer: 'Yes. National chains can\'t be the best at everything — niche queries and local geo-ads create room to maneuver.',
+        },
+      ],
+    },
+    notFor: {
+      label: 'Not a fit if',
+      items: [
+        'Ad budget under $1,000/month',
+        'Need "leads by next week"',
+        'No clear goals or priorities change weekly',
+        'Looking for someone who just follows orders — I follow my own methodology and take responsibility for results',
+      ],
+    },
+    cta: {
+      heading: 'Let\'s discuss growing leads for your lab',
+      button: 'Message on Telegram',
+      alternative: 'or email',
+      email: 'vlasdobry@gmail.com',
+    },
+    socialProof: {
+      freeAudit: 'Free mini-audit of your Google Ads or Yandex Direct',
+    },
+    footer: {
+      name: 'Vlas Fedorov',
+      role: 'Performance Marketing for DNA Labs',
+      experience: 'In medical marketing since 2016',
       links: {
         telegram: 'Telegram',
         whatsapp: 'WhatsApp',

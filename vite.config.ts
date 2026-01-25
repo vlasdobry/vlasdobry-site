@@ -20,9 +20,17 @@ export default defineConfig({
             if (url.startsWith('/en/for-hotels') && !url.includes('.')) {
               req.url = '/for-hotels-en.html';
             }
+            // Handle /en/for-labs routes
+            else if (url.startsWith('/en/for-labs') && !url.includes('.')) {
+              req.url = '/for-labs-en.html';
+            }
             // Handle /for-hotels routes (RU)
             else if (url.startsWith('/for-hotels') && !url.includes('.')) {
               req.url = '/for-hotels.html';
+            }
+            // Handle /for-labs routes (RU)
+            else if (url.startsWith('/for-labs') && !url.includes('.')) {
+              req.url = '/for-labs.html';
             }
             // Handle /en routes (main EN page)
             else if (url.startsWith('/en') && !url.includes('.')) {
@@ -45,6 +53,8 @@ export default defineConfig({
           en: path.resolve(__dirname, 'en.html'),
           'for-hotels': path.resolve(__dirname, 'for-hotels.html'),
           'for-hotels-en': path.resolve(__dirname, 'for-hotels-en.html'),
+          'for-labs': path.resolve(__dirname, 'for-labs.html'),
+          'for-labs-en': path.resolve(__dirname, 'for-labs-en.html'),
         },
       },
     },
