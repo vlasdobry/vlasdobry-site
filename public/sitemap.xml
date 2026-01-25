@@ -3,7 +3,7 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://vlasdobry.ru/</loc>
-    <lastmod>2026-01-24</lastmod>
+    <lastmod>2026-01-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/"/>
@@ -12,7 +12,7 @@
   </url>
   <url>
     <loc>https://vlasdobry.ru/en/</loc>
-    <lastmod>2026-01-24</lastmod>
+    <lastmod>2026-01-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/"/>
@@ -21,7 +21,7 @@
   </url>
   <url>
     <loc>https://vlasdobry.ru/for-hotels/</loc>
-    <lastmod>2026-01-24</lastmod>
+    <lastmod>2026-01-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/for-hotels/"/>
@@ -30,7 +30,7 @@
   </url>
   <url>
     <loc>https://vlasdobry.ru/en/for-hotels/</loc>
-    <lastmod>2026-01-24</lastmod>
+    <lastmod>2026-01-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/for-hotels/"/>
