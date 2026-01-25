@@ -78,6 +78,7 @@ npm run preview  # Просмотр сборки
 - `robots.txt` — разрешения для AI-ботов (GPTBot, ClaudeBot, PerplexityBot, YandexBot)
 - Расширенный noscript fallback для AI-краулеров
 - Целевые AI: ChatGPT, Perplexity, Gemini, Claude, YandexGPT, GigaChat
+- **Гео-теги:** намеренно не используются — проект ориентирован на международный рынок (Россия, СНГ, Европа, США). Привязка к конкретной локации снизит видимость для зарубежных запросов.
 
 ## Ключевые файлы
 
