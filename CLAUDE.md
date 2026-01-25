@@ -30,32 +30,43 @@ npm run build    # Сборка для продакшена
 npm run preview  # Просмотр сборки
 ```
 
-
 ## Архитектура
 
-**Двухэкранная навигация:** Приложение использует горизонтальный слайдер с двумя состояниями (`hero` | `landing`). Переключение осуществляется:
+**Двухэкранная навигация:** Главная страница использует горизонтальный слайдер с двумя состояниями (`hero` | `landing`). Переключение осуществляется:
 - Свайпом на мобильных устройствах
 - Стрелками клавиатуры
 - Кликом по боковым панелям-ручкам (glassmorphic handles)
 
-**Структура компонентов:**
-- `src/App.tsx` — корневой компонент, управляет состоянием навигации и анимациями перехода
-- `src/components/Hero.tsx` — главный экран с фото и заголовками
-- `src/components/Landing.tsx` — полноценный лендинг с услугами, кейсами и контактами
+**Структура страниц:**
+- `/` — главная (RU): Hero + Landing
+- `/en/` — главная (EN): Hero + Landing
+- `/for-hotels` — лендинг для отелей (RU)
+- `/en/for-hotels` — лендинг для отелей (EN)
 
-**Стилизация:** Tailwind CSS через CDN, шрифт Inter. Используется glassmorphism-эффект для UI-элементов.
+**Структура компонентов:**
+- `src/App.tsx` — корневой компонент, управляет навигацией hero↔landing, свайпы, виброотклик
+- `src/components/Hero.tsx` — главный экран с фото и заголовками
+- `src/components/Landing.tsx` — лендинг с услугами, кейсами и контактами
+- `src/components/HotelsLanding.tsx` — отдельный лендинг для отелей (sticky header)
+- `src/components/LanguageSwitcher.tsx` — переключатель языка
+- `src/components/OffersMenu.tsx` — меню предложений
+
+**Стилизация:** Tailwind CSS v4 (через Vite plugin), шрифт Inter. Используется glassmorphism-эффект для UI-элементов.
 
 **Мультиязычность (i18n):**
 - URL-based routing: `/` (RU), `/en/` (EN)
 - Самописная i18n-система в `src/i18n/` (KISS: без i18next)
-- Два HTML файла: `index.html` (RU), `en.html` (EN) для SEO
+- HTML файлы: `index.html`, `en.html`, `for-hotels.html`, `for-hotels-en.html`
 - Переводы: `src/i18n/ru.ts`, `src/i18n/en.ts`
-- Переключатель языка: `src/components/LanguageSwitcher.tsx`
 
 **Мобильные функции:**
-- Виброотклик при свайпе (Vibration API, активируется после первого тапа)
+- Виброотклик при свайпе (Vibration API, активируется через onTouchStart)
 - Viewport height: `100svh` для корректного отображения в мобильных браузерах
 - Адаптивные стили для portrait/landscape ориентаций
+
+**Кросс-браузерная совместимость:**
+- `<meta name="color-scheme" content="light only">` — предотвращает авто-затемнение в Яндекс Браузере
+- Тонкие декоративные элементы (1-3px) могут плохо рендериться в некоторых браузерах
 
 **SEO и аналитика:**
 - Open Graph и Twitter Cards для превью в соцсетях
@@ -74,15 +85,17 @@ npm run preview  # Просмотр сборки
 |------|------------|
 | `index.html` | RU версия: Schema.org, noscript fallback, hreflang |
 | `en.html` | EN версия: английский SEO и контент |
+| `for-hotels.html` | RU лендинг для отелей |
+| `for-hotels-en.html` | EN лендинг для отелей |
 | `src/i18n/` | Система переводов (types, ru, en, context) |
 | `public/llms.txt` | Инструкции для AI-систем (ASCII-only) |
 | `public/robots.txt` | Разрешения для поисковых и AI-ботов |
 | `public/sitemap.xml` | Карта сайта с xhtml:link для языков |
-| `scripts/postbuild.js` | Перемещение en.html → en/index.html |
+| `scripts/postbuild.js` | Постобработка: en.html → en/index.html и т.д. |
 
 ## Технологии
 
 - React 19 + TypeScript
 - Vite 6
-- Tailwind CSS (CDN)
+- Tailwind CSS v4 (@tailwindcss/vite)
 - lucide-react для иконок
