@@ -105,8 +105,8 @@ const App: React.FC = () => {
 
           {/* Mobile Swipe Guidance Indicator */}
           <div className="absolute top-[75px] left-1/2 -translate-x-1/2 z-40 md:hidden pointer-events-none">
-            <div className="w-16 h-[3px] bg-white/15 rounded-full overflow-hidden">
-                <div className="h-full w-full bg-gradient-to-r from-transparent via-white/50 to-transparent animate-guide-swipe" />
+            <div className="w-16 h-1 bg-white/25 rounded-full overflow-hidden">
+                <div className="h-full w-full bg-gradient-to-r from-transparent via-white/70 to-transparent animate-guide-swipe" />
             </div>
           </div>
 

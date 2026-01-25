@@ -43,31 +43,31 @@ export const Hero: React.FC = () => {
       <div className="relative z-20 h-full w-full flex flex-col justify-end pt-4 px-6 pb-4 pr-12 sm:pt-12 sm:px-12 sm:pb-8 sm:pr-24 lg:pt-24 lg:px-24 lg:pb-12 lg:pr-32 overflow-hidden">
 
         {/* Top Label */}
-        <div className="absolute top-10 left-6 lg:top-12 lg:left-24 animate-in fade-in duration-1000">
+        <div className="absolute top-10 left-6 lg:top-12 lg:left-24">
           <div className="flex items-center gap-4">
-            <div className="w-6 md:w-8 h-[2px] bg-white/40" />
+            <div className="w-6 md:w-8 h-[3px] bg-white/60" />
             <span className="text-[9px] md:text-[10px] uppercase tracking-[0.5em] font-bold text-white/50 whitespace-nowrap">{t.hero.name}</span>
           </div>
         </div>
 
         {/* Language Switcher */}
-        <div className="absolute top-10 right-14 md:right-20 lg:top-12 lg:right-28 animate-in fade-in duration-1000">
+        <div className="absolute top-10 right-14 md:right-20 lg:top-12 lg:right-28">
           <LanguageSwitcher variant="dark" />
         </div>
 
         {/* Main Text Area */}
         <div className="w-full mb-[10vh] sm:mb-20 landscape:mb-4 landscape:mt-auto lg:landscape:mb-20 lg:landscape:mt-0 max-w-[90vw] md:max-w-6xl landscape:max-w-[45vw] lg:landscape:max-w-6xl">
-          <h1 className="text-[2.5rem] landscape:text-[clamp(2rem,12vh,4rem)] sm:text-[3.4rem] md:text-[4rem] lg:!text-[5.4rem] xl:!text-[7.2rem] font-black leading-[0.85] tracking-tighter uppercase mb-3 sm:mb-6 landscape:mb-2 lg:landscape:mb-6 animate-in fade-in slide-in-from-bottom-10 duration-1000 text-white whitespace-normal md:break-normal overflow-visible">
+          <h1 className="text-[2.5rem] landscape:text-[clamp(2rem,12vh,4rem)] sm:text-[3.4rem] md:text-[4rem] lg:!text-[5.4rem] xl:!text-[7.2rem] font-black leading-[0.85] tracking-tighter uppercase mb-3 sm:mb-6 landscape:mb-2 lg:landscape:mb-6 text-white whitespace-normal md:break-normal overflow-visible">
             Performance<br className="hidden md:block landscape:block" /> marketing
           </h1>
 
-          <p className="text-base landscape:text-sm md:landscape:text-xl lg:landscape:text-2xl md:text-xl lg:text-2xl font-light text-white/80 max-w-lg md:max-w-none md:whitespace-nowrap animate-in fade-in slide-in-from-bottom-5 duration-1000 delay-200 leading-tight">
+          <p className="text-base landscape:text-sm md:landscape:text-xl lg:landscape:text-2xl md:text-xl lg:text-2xl font-light text-white/80 max-w-lg md:max-w-none md:whitespace-nowrap leading-tight">
             {t.hero.tagline}
           </p>
         </div>
 
         {/* Bottom Info Block */}
-        <div className="w-full grid grid-cols-[max-content_max-content] gap-x-8 md:gap-x-24 gap-y-1 animate-in fade-in duration-1000 delay-500 pb-2">
+        <div className="w-full grid grid-cols-[max-content_max-content] gap-x-8 md:gap-x-24 gap-y-1 pb-2">
           <span className="text-white/40 uppercase tracking-[0.2em] text-[9px] font-bold whitespace-nowrap">
             {t.hero.focus}
           </span>
