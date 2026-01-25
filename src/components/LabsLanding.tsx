@@ -123,11 +123,11 @@ export const LabsLanding: React.FC = () => {
               ))}
             </ul>
 
-            <div className="flex gap-6 md:gap-10">
+            <div className="flex gap-4 md:gap-10">
               {t.labs.caseStudy.results.map((result, i) => (
                 <div key={i}>
-                  <div className="text-3xl md:text-4xl font-black">{result.value}</div>
-                  <div className="text-zinc-400 text-xs md:text-sm mt-1">{result.label}</div>
+                  <div className="text-2xl md:text-4xl font-black">{result.value}</div>
+                  <div className="text-zinc-400 text-[10px] md:text-sm mt-1">{result.label}</div>
                 </div>
               ))}
             </div>
