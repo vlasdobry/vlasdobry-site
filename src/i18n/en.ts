@@ -9,7 +9,7 @@ export const en: Translations = {
   },
   hero: {
     name: 'Vlas Fedorov',
-    navForward: 'Enter',
+    navForward: 'Portfolio',
     tagline: '10+ years of data-driven paid traffic management',
     photoAlt: 'Vlas Fedorov — performance marketing specialist, paid traffic and growth analytics expert',
     focus: 'Focus',
@@ -191,7 +191,7 @@ export const en: Translations = {
         hideDetails: 'Hide details',
         details: [
           { name: 'Grace Hotels', result: 'International hotel chain. +60% revenue, 2× conversion rate' },
-          { name: 'Lucky Town', result: 'Premium long-term rentals in Sochi. Ad cost ratio 60%+ → 7% in 4 months' },
+          { name: 'Lucky Town', result: 'Premium long-term rentals on the Black Sea coast. Ad cost ratio 60%+ → 7% in 4 months' },
           { name: 'Odyssey Flower', result: 'Spa resort chain on Black Sea coast. Sales ×10, ad cost 48%→13%' },
         ],
       },
