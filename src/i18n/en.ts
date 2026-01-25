@@ -9,7 +9,7 @@ export const en: Translations = {
   },
   hero: {
     name: 'Vlas Fedorov',
-    navForward: 'Portfolio',
+    navForward: 'Inside',
     tagline: '10+ years of data-driven paid traffic management',
     photoAlt: 'Vlas Fedorov — performance marketing specialist, paid traffic and growth analytics expert',
     focus: 'Focus',
