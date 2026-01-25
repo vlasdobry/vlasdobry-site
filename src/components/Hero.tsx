@@ -14,7 +14,7 @@ export const Hero: React.FC = () => {
           className="absolute inset-0 bg-cover bg-center grayscale"
           style={{ backgroundImage: `url('/vlas-photo.jpg')` }}
         />
-        <div className="absolute inset-0 bg-black/45" />
+        <div className="absolute inset-0 bg-black/25" />
       </div>
 
       {/* Desktop & mobile landscape: Photo on right side */}
@@ -30,7 +30,7 @@ export const Hero: React.FC = () => {
               fetchPriority="high"
             />
           </picture>
-          <div className="absolute inset-0 bg-black/45" />
+          <div className="absolute inset-0 bg-black/25" />
           {/* Gradient edges for smooth blend */}
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#121212] to-transparent" />
