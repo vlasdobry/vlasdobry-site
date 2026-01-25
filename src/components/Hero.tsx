@@ -45,7 +45,7 @@ export const Hero: React.FC = () => {
         {/* Top Label */}
         <div className="absolute top-10 left-6 lg:top-12 lg:left-24 animate-in fade-in duration-1000">
           <div className="flex items-center gap-4">
-            <div className="w-6 md:w-8 h-[1px] bg-white/30" />
+            <div className="w-6 md:w-8 h-[2px] bg-white/40" />
             <span className="text-[9px] md:text-[10px] uppercase tracking-[0.5em] font-bold text-white/50 whitespace-nowrap">{t.hero.name}</span>
           </div>
         </div>
@@ -78,9 +78,14 @@ export const Hero: React.FC = () => {
           <div className="text-xs md:text-lg font-light text-white whitespace-nowrap leading-none self-end">
             Growth & Analytics
           </div>
-          <div className="text-xs md:text-lg font-light text-white tracking-tight border-b border-white/20 whitespace-nowrap leading-none self-end hover:text-white/70 transition-colors cursor-pointer">
+          <a
+            href="https://t.me/vlasdobry"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-xs md:text-lg font-light text-white tracking-tight border-b border-white/20 whitespace-nowrap leading-none self-end hover:text-white/70 transition-colors"
+          >
             @vlasdobry
-          </div>
+          </a>
         </div>
       </div>
 
