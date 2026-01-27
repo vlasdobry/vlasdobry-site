@@ -6,6 +6,7 @@ export const en: Translations = {
     items: [
       { title: 'For Hotels', href: '/en/for-hotels/' },
       { title: 'For DNA Labs', href: '/en/for-labs/' },
+      { title: 'Projects', href: '/en/projects/' },
     ],
   },
   hero: {
@@ -388,6 +389,77 @@ export const en: Translations = {
     footer: {
       name: 'Vlas Fedorov',
       role: 'Growth & Analytics',
+      links: {
+        telegram: 'Telegram',
+        whatsapp: 'WhatsApp',
+        email: 'Email',
+      },
+    },
+  },
+  projects: {
+    nav: {
+      backToMain: 'Back',
+    },
+    hero: {
+      title: 'Projects',
+      subtitle: 'Products and services I build — from AI finance to voice analytics',
+    },
+    items: [
+      {
+        name: 'My Finance AI',
+        description: 'Personal finance web app with an AI consultant. Budgets, spending analytics, smart recommendations.',
+        tags: ['React', 'Node.js', 'PostgreSQL', 'AI'],
+        statusKey: 'live',
+        status: 'Live',
+        url: 'https://finansy.vlasdobry.ru/',
+      },
+      {
+        name: 'onlinezhelaniya',
+        description: 'Online wish-making platform with a cosmic visual experience. Animations, donations, Google Sheets integration.',
+        tags: ['Next.js', 'Framer Motion', 'GSAP'],
+        statusKey: 'live',
+        status: 'Live',
+        url: 'https://onlinezhelaniya.ru/',
+      },
+      {
+        name: 'Vocalis.Expert',
+        description: 'Acoustic analysis and voice training platform. Spectrograms, AI coaching, 3D larynx biomechanics visualization, video sessions.',
+        tags: ['Next.js', 'Web Audio API', 'Three.js', 'WebRTC'],
+        statusKey: 'dev',
+        status: 'In Development',
+      },
+      {
+        name: 'SaaS GEO',
+        description: 'SaaS for automating business visibility in generative AI systems: ChatGPT, YandexGPT, GigaChat.',
+        tags: ['Next.js', 'FastAPI', 'Celery', 'PostgreSQL'],
+        statusKey: 'mvp',
+        status: 'MVP',
+      },
+      {
+        name: 'Metabolism Marathon Bot',
+        description: 'Telegram bot for a 14/21-day nutrition program "Stop Diet". AI questionnaires, progress tracking, automated content delivery.',
+        tags: ['Python', 'PostgreSQL', 'Docker', 'Telegram API'],
+        statusKey: 'live',
+        status: 'Live',
+      },
+    ],
+    alsoBuilt: {
+      label: 'Also built',
+      items: [
+        { name: 'Victory Diary', desc: 'Family achievement gamification — Google Apps Script + Telegram' },
+        { name: 'Habit Tracker', desc: 'Habit tracking with analytics and reminders — Google Apps Script + Telegram' },
+        { name: 'Family WishList', desc: 'Family wish list bot with birthday notifications — Google Apps Script + Telegram' },
+      ],
+    },
+    cta: {
+      heading: 'Let\'s discuss a project',
+      button: 'Message on Telegram',
+      alternative: 'or email',
+      email: 'vlasdobry@gmail.com',
+    },
+    footer: {
+      name: 'Vlas Fedorov',
+      role: 'Marketing & Development',
       links: {
         telegram: 'Telegram',
         whatsapp: 'WhatsApp',
