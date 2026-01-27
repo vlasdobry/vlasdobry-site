@@ -42,6 +42,8 @@ npm run preview  # Просмотр сборки
 - `/en/` — главная (EN): Hero + Landing
 - `/for-hotels` — лендинг для отелей (RU)
 - `/en/for-hotels` — лендинг для отелей (EN)
+- `/projects` — страница проектов (RU)
+- `/en/projects` — страница проектов (EN)
 
 **Структура компонентов:**
 - `src/App.tsx` — корневой компонент, управляет навигацией hero↔landing, свайпы, виброотклик
@@ -50,6 +52,7 @@ npm run preview  # Просмотр сборки
 - `src/components/HotelsLanding.tsx` — отдельный лендинг для отелей (sticky header)
 - `src/components/LanguageSwitcher.tsx` — переключатель языка
 - `src/components/OffersMenu.tsx` — меню предложений
+- `src/components/ProjectsLanding.tsx` — лендинг проектов (sticky header, карточки проектов)
 
 **Стилизация:** Tailwind CSS v4 (через Vite plugin), шрифт Inter. Используется glassmorphism-эффект для UI-элементов.
 
@@ -88,6 +91,8 @@ npm run preview  # Просмотр сборки
 | `en.html` | EN версия: английский SEO и контент |
 | `for-hotels.html` | RU лендинг для отелей |
 | `for-hotels-en.html` | EN лендинг для отелей |
+| `projects.html` | RU лендинг проектов |
+| `projects-en.html` | EN лендинг проектов |
 | `src/i18n/` | Система переводов (types, ru, en, context) |
 | `public/llms.txt` | Инструкции для AI-систем (ASCII-only) |
 | `public/robots.txt` | Разрешения для поисковых и AI-ботов |
