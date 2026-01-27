@@ -236,4 +236,43 @@ export interface Translations {
       };
     };
   };
+  projects: {
+    nav: {
+      backToMain: string;
+    };
+    hero: {
+      title: string;
+      subtitle: string;
+    };
+    items: Array<{
+      name: string;
+      description: string;
+      tags: string[];
+      statusKey: 'live' | 'mvp' | 'dev';
+      status: string;
+      url?: string;
+    }>;
+    alsoBuilt: {
+      label: string;
+      items: Array<{
+        name: string;
+        desc: string;
+      }>;
+    };
+    cta: {
+      heading: string;
+      button: string;
+      alternative: string;
+      email: string;
+    };
+    footer: {
+      name: string;
+      role: string;
+      links: {
+        telegram: string;
+        whatsapp: string;
+        email: string;
+      };
+    };
+  };
 }
