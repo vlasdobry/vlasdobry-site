@@ -49,7 +49,7 @@ export const OffersMenu: React.FC<OffersMenuProps> = ({ variant = 'light' }) => 
       </button>
 
       {isOpen && (
-        <div className={`absolute top-full left-0 mt-2 min-w-[160px] rounded-lg overflow-hidden z-50 ${s.dropdown}`}>
+        <div className={`absolute top-full right-0 mt-2 min-w-[160px] rounded-lg overflow-hidden z-50 ${s.dropdown}`}>
           {t.offersMenu.items.map((item, i) => (
             <a
               key={i}
