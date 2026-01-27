@@ -6,6 +6,7 @@ export const ru: Translations = {
     items: [
       { title: 'Для отелей', href: '/for-hotels/' },
       { title: 'Для ДНК-лабораторий', href: '/for-labs/' },
+      { title: 'Проекты', href: '/projects/' },
     ],
   },
   hero: {
@@ -388,6 +389,77 @@ export const ru: Translations = {
     footer: {
       name: 'Влас Федоров',
       role: 'Growth & Analytics',
+      links: {
+        telegram: 'Telegram',
+        whatsapp: 'WhatsApp',
+        email: 'Email',
+      },
+    },
+  },
+  projects: {
+    nav: {
+      backToMain: 'Назад',
+    },
+    hero: {
+      title: 'Проекты',
+      subtitle: 'Продукты и сервисы, которые я разрабатываю — от AI-финансов до голосовой аналитики',
+    },
+    items: [
+      {
+        name: 'Мои Финансы AI',
+        description: 'Веб-приложение для управления личными финансами с AI-консультантом. Бюджеты, аналитика расходов, рекомендации.',
+        tags: ['React', 'Node.js', 'PostgreSQL', 'AI'],
+        statusKey: 'live',
+        status: 'Работает',
+        url: 'https://finansy.vlasdobry.ru/',
+      },
+      {
+        name: 'onlinezhelaniya',
+        description: 'Платформа для загадывания желаний с космическим визуальным опытом. Анимации, донаты, интеграция с Google Sheets.',
+        tags: ['Next.js', 'Framer Motion', 'GSAP'],
+        statusKey: 'live',
+        status: 'Работает',
+        url: 'https://onlinezhelaniya.ru/',
+      },
+      {
+        name: 'Vocalis.Expert',
+        description: 'Платформа акустического анализа и тренировки голоса. Спектрограммы, AI-коучинг, 3D-визуализация биомеханики гортани, видеосессии.',
+        tags: ['Next.js', 'Web Audio API', 'Three.js', 'WebRTC'],
+        statusKey: 'dev',
+        status: 'В разработке',
+      },
+      {
+        name: 'SaaS GEO',
+        description: 'SaaS для автоматизации видимости бизнеса в генеративных AI-системах: ChatGPT, YandexGPT, GigaChat.',
+        tags: ['Next.js', 'FastAPI', 'Celery', 'PostgreSQL'],
+        statusKey: 'mvp',
+        status: 'MVP',
+      },
+      {
+        name: 'Metabolism Marathon Bot',
+        description: 'Telegram-бот для 14/21-дневной программы питания «Стоп Диета». AI-анкетирование, трекинг прогресса, автоматическая доставка контента.',
+        tags: ['Python', 'PostgreSQL', 'Docker', 'Telegram API'],
+        statusKey: 'live',
+        status: 'Работает',
+      },
+    ],
+    alsoBuilt: {
+      label: 'Также разработал',
+      items: [
+        { name: 'Дневник побед', desc: 'Семейная геймификация ежедневных достижений — Google Apps Script + Telegram' },
+        { name: 'Трекер привычек', desc: 'Отслеживание привычек с аналитикой и напоминаниями — Google Apps Script + Telegram' },
+        { name: 'Family WishList', desc: 'Бот списков желаний для семьи с уведомлениями о днях рождения — Google Apps Script + Telegram' },
+      ],
+    },
+    cta: {
+      heading: 'Обсудить проект',
+      button: 'Написать в Telegram',
+      alternative: 'или напишите на',
+      email: 'vlasdobry@gmail.com',
+    },
+    footer: {
+      name: 'Влас Федоров',
+      role: 'Маркетинг & Разработка',
       links: {
         telegram: 'Telegram',
         whatsapp: 'WhatsApp',
