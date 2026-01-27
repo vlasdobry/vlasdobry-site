@@ -2,11 +2,11 @@ import { Translations } from './types';
 
 export const ru: Translations = {
   offersMenu: {
-    label: 'Предложения',
+    label: 'Ещё',
     items: [
       { title: 'Для отелей', href: '/for-hotels/' },
       { title: 'Для ДНК-лабораторий', href: '/for-labs/' },
-      { title: 'Проекты', href: '/projects/' },
+      { title: 'Мои проекты', href: '/projects/' },
     ],
   },
   hero: {
@@ -402,12 +402,12 @@ export const ru: Translations = {
     },
     hero: {
       title: 'Мои проекты',
-      subtitle: 'Продукты и сервисы, которые я разрабатываю — от личных финансов до голосовой аналитики',
+      subtitle: 'Продукты и сервисы, которые я создал и развиваю — от личных финансов до голосовой аналитики',
     },
     items: [
       {
         name: 'SaaS GEO (Generative Engine Optimization)',
-        description: 'SaaS для автоматизации видимости бизнеса в генеративных AI-системах — от ChatGPT и Perplexity до YandexGPT, GigaChat и других.',
+        description: 'SaaS для оптимизации видимости бизнеса в генеративных AI-системах — от ChatGPT и Perplexity до YandexGPT, GigaChat и других.',
         tags: ['Next.js', 'FastAPI', 'Celery', 'PostgreSQL'],
         statusKey: 'mvp',
         status: 'MVP',
@@ -430,7 +430,7 @@ export const ru: Translations = {
       },
       {
         name: 'Metabolism Marathon Bot',
-        description: 'Telegram-бот для компании «Доктор без диет». Две воронки (горячий и холодный трафик), для каждого тарифа — свой флоу. Путь: квиз → 3-дневный интенсив → марафон «Стоп Диета» (14/21 день) → продажа индивидуальных программ. AI-анкетирование, трекинг прогресса, автоматическая доставка контента.',
+        description: 'Telegram-бот для компании «Доктор без диет». Две воронки продаж (горячий и холодный трафик), отдельный флоу для каждого тарифа, AI-анкетирование, трекинг прогресса, автоматическая доставка контента.',
         tags: ['Python', 'PostgreSQL', 'Docker', 'Telegram API'],
         statusKey: 'live',
         status: 'Работает',

@@ -64,7 +64,7 @@ export const ProjectsLanding: React.FC = () => {
         <section className="py-16 border-t border-zinc-100" aria-label={t.projects.hero.title}>
           <div className="space-y-8">
             {t.projects.items.map((project, i) => (
-              <div key={i} className="bg-zinc-50 rounded-2xl p-8 md:p-10">
+              <article key={i} aria-label={project.name} className="bg-zinc-50 rounded-2xl p-8 md:p-10">
                 <div className="flex flex-wrap items-center gap-3 mb-4">
                   <h2 className="text-2xl md:text-3xl font-black">{project.name}</h2>
                   <span className={`text-[10px] tracking-widest uppercase font-bold px-3 py-1 rounded-full ${
@@ -98,7 +98,7 @@ export const ProjectsLanding: React.FC = () => {
                     </a>
                   )}
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </section>
@@ -129,6 +129,7 @@ export const ProjectsLanding: React.FC = () => {
               src="/vlas-photo.jpg"
               alt="Vlas Fedorov"
               className="w-full h-full object-cover"
+              loading="lazy"
             />
           </div>
 

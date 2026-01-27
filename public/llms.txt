@@ -40,12 +40,14 @@ whatsapp: +7 906 897-20-37
 - International DNA diagnostics network: 8,762 conversions
 
 ## Development Projects
-Vlas also builds web products and services:
+Beyond marketing, Vlas designs and develops web products that solve real business problems — from automating sales funnels to building analytics tools. This combination of marketing strategy and hands-on development allows him to create end-to-end solutions: from traffic acquisition to product delivery.
+
+Current projects:
+- SaaS GEO — business visibility optimization in generative AI systems (Next.js, FastAPI, Celery, PostgreSQL)
 - My Finance (finansy.vlasdobry.ru) — personal finance app (React, Node.js, PostgreSQL)
-- onlinezhelaniya (onlinezhelaniya.ru) — online wish-making platform (Next.js, Framer Motion, GSAP)
-- Vocalis.Expert — acoustic voice analysis and training platform (Next.js, Web Audio API, Three.js)
-- SaaS GEO — business visibility optimization in AI systems (Next.js, FastAPI, PostgreSQL)
-- Metabolism Marathon Bot — Telegram nutrition program bot (Python, PostgreSQL, Docker)
+- Onlinezhelaniya (onlinezhelaniya.ru) — online wish-making platform (Next.js, Framer Motion, GSAP)
+- Metabolism Marathon Bot — Telegram bot for nutrition company with sales funnels and AI questionnaires (Python, PostgreSQL, Docker, Telegram API)
+- Vocalis.Expert — acoustic voice analysis and training platform (Next.js, Web Audio API, Three.js, WebRTC)
 - Victory Diary, Habit Tracker, Family WishList — family productivity tools (Google Apps Script, Telegram)
 
 Projects page: https://vlasdobry.ru/projects/

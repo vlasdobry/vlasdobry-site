@@ -2,7 +2,7 @@ import { Translations } from './types';
 
 export const en: Translations = {
   offersMenu: {
-    label: 'Services',
+    label: 'More',
     items: [
       { title: 'For Hotels', href: '/en/for-hotels/' },
       { title: 'For DNA Labs', href: '/en/for-labs/' },
@@ -402,12 +402,12 @@ export const en: Translations = {
     },
     hero: {
       title: 'Projects',
-      subtitle: 'Products and services I build — from personal finance to voice analytics',
+      subtitle: 'Products and services I\'ve built and maintain — from personal finance to voice analytics',
     },
     items: [
       {
         name: 'SaaS GEO (Generative Engine Optimization)',
-        description: 'SaaS for automating business visibility in generative AI systems — from ChatGPT and Perplexity to YandexGPT, GigaChat, and beyond.',
+        description: 'SaaS for optimizing business visibility in generative AI systems — from ChatGPT and Perplexity to YandexGPT, GigaChat, and beyond.',
         tags: ['Next.js', 'FastAPI', 'Celery', 'PostgreSQL'],
         statusKey: 'mvp',
         status: 'MVP',
@@ -430,7 +430,7 @@ export const en: Translations = {
       },
       {
         name: 'Metabolism Marathon Bot',
-        description: 'Telegram bot for "Doctor Without Diets" nutrition company. Dual funnels for hot and cold traffic, each plan follows a dedicated flow. Journey: quiz → 3-day intensive → "Stop Diet" marathon (14/21 days) → personalized program sales. AI-powered questionnaires, progress tracking, automated content delivery.',
+        description: 'Telegram bot for "Doctor Without Diets" nutrition company. Dual sales funnels (hot and cold traffic), dedicated flow per plan, AI-powered questionnaires, progress tracking, automated content delivery.',
         tags: ['Python', 'PostgreSQL', 'Docker', 'Telegram API'],
         statusKey: 'live',
         status: 'Live',
