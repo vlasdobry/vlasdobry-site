@@ -33,7 +33,7 @@ export const HotelsLanding: React.FC = () => {
           : 'bg-white border-transparent'
       }`}>
         <div className={`max-w-5xl mx-auto px-6 sm:px-12 flex justify-between items-center transition-all duration-500 ease-out ${
-          isScrolled ? 'py-3' : 'py-16 md:py-32'
+          isScrolled ? 'py-3' : 'py-16'
         }`}>
           <div className="flex items-center gap-6">
             <a href={landingUrl} className="text-2xl font-black tracking-tighter hover:opacity-70 transition-opacity">

@@ -41,7 +41,7 @@ whatsapp: +7 906 897-20-37
 
 ## Development Projects
 Vlas also builds web products and services:
-- My Finance AI (finansy.vlasdobry.ru) — personal finance app with AI consultant (React, Node.js, PostgreSQL)
+- My Finance (finansy.vlasdobry.ru) — personal finance app (React, Node.js, PostgreSQL)
 - onlinezhelaniya (onlinezhelaniya.ru) — online wish-making platform (Next.js, Framer Motion, GSAP)
 - Vocalis.Expert — acoustic voice analysis and training platform (Next.js, Web Audio API, Three.js)
 - SaaS GEO — business visibility optimization in AI systems (Next.js, FastAPI, PostgreSQL)

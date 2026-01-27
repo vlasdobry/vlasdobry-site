@@ -12,7 +12,7 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
   const { t } = useI18n();
 
   return (
-    <main className="max-w-5xl mx-auto px-6 sm:px-12 py-16 md:py-32 bg-white text-[#121212]">
+    <main className="max-w-5xl mx-auto px-6 sm:px-12 py-16 bg-white text-[#121212]">
       {/* Top Navigation */}
       <nav className="flex justify-between items-center mb-32">
         <div className="flex items-center gap-6">
