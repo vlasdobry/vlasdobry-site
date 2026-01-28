@@ -55,6 +55,26 @@ if (existsSync(labsEnSrc)) {
   console.log('Moved for-labs-en.html -> en/for-labs/index.html');
 }
 
+// Move for-spa.html to for-spa/index.html for clean URLs
+const spaRuSrc = join(distDir, 'for-spa.html');
+const spaRuDest = join(distDir, 'for-spa', 'index.html');
+
+if (existsSync(spaRuSrc)) {
+  mkdirSync(join(distDir, 'for-spa'), { recursive: true });
+  renameSync(spaRuSrc, spaRuDest);
+  console.log('Moved for-spa.html -> for-spa/index.html');
+}
+
+// Move for-spa-en.html to en/for-spa/index.html for clean URLs
+const spaEnSrc = join(distDir, 'for-spa-en.html');
+const spaEnDest = join(distDir, 'en', 'for-spa', 'index.html');
+
+if (existsSync(spaEnSrc)) {
+  mkdirSync(join(distDir, 'en', 'for-spa'), { recursive: true });
+  renameSync(spaEnSrc, spaEnDest);
+  console.log('Moved for-spa-en.html -> en/for-spa/index.html');
+}
+
 // Move projects.html to projects/index.html for clean URLs
 const projectsRuSrc = join(distDir, 'projects.html');
 const projectsRuDest = join(distDir, 'projects', 'index.html');

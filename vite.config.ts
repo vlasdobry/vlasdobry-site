@@ -24,6 +24,10 @@ export default defineConfig({
             else if (url.startsWith('/en/for-labs') && !url.includes('.')) {
               req.url = '/for-labs-en.html';
             }
+            // Handle /en/for-spa routes
+            else if (url.startsWith('/en/for-spa') && !url.includes('.')) {
+              req.url = '/for-spa-en.html';
+            }
             // Handle /en/projects routes
             else if (url.startsWith('/en/projects') && !url.includes('.')) {
               req.url = '/projects-en.html';
@@ -35,6 +39,10 @@ export default defineConfig({
             // Handle /for-labs routes (RU)
             else if (url.startsWith('/for-labs') && !url.includes('.')) {
               req.url = '/for-labs.html';
+            }
+            // Handle /for-spa routes (RU)
+            else if (url.startsWith('/for-spa') && !url.includes('.')) {
+              req.url = '/for-spa.html';
             }
             // Handle /en routes (main EN page)
             else if (url.startsWith('/en') && !url.includes('.')) {
@@ -63,6 +71,8 @@ export default defineConfig({
           'for-hotels-en': path.resolve(__dirname, 'for-hotels-en.html'),
           'for-labs': path.resolve(__dirname, 'for-labs.html'),
           'for-labs-en': path.resolve(__dirname, 'for-labs-en.html'),
+          'for-spa': path.resolve(__dirname, 'for-spa.html'),
+          'for-spa-en': path.resolve(__dirname, 'for-spa-en.html'),
           'projects': path.resolve(__dirname, 'projects.html'),
           'projects-en': path.resolve(__dirname, 'projects-en.html'),
         },
