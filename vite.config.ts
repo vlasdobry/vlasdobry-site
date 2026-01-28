@@ -14,43 +14,23 @@ export default defineConfig({
       {
         name: 'rewrite-routes',
         configureServer(server) {
+          const routes = [
+            { prefix: '/en/for-hotels', file: '/for-hotels-en.html' },
+            { prefix: '/en/for-labs', file: '/for-labs-en.html' },
+            { prefix: '/en/for-spa', file: '/for-spa-en.html' },
+            { prefix: '/en/projects', file: '/projects-en.html' },
+            { prefix: '/for-hotels', file: '/for-hotels.html' },
+            { prefix: '/for-labs', file: '/for-labs.html' },
+            { prefix: '/for-spa', file: '/for-spa.html' },
+            { prefix: '/projects', file: '/projects.html' },
+            { prefix: '/en', file: '/en.html' },
+          ];
+
           server.middlewares.use((req, _res, next) => {
             const url = req.url || '';
-            // Handle /en/for-hotels routes
-            if (url.startsWith('/en/for-hotels') && !url.includes('.')) {
-              req.url = '/for-hotels-en.html';
-            }
-            // Handle /en/for-labs routes
-            else if (url.startsWith('/en/for-labs') && !url.includes('.')) {
-              req.url = '/for-labs-en.html';
-            }
-            // Handle /en/for-spa routes
-            else if (url.startsWith('/en/for-spa') && !url.includes('.')) {
-              req.url = '/for-spa-en.html';
-            }
-            // Handle /en/projects routes
-            else if (url.startsWith('/en/projects') && !url.includes('.')) {
-              req.url = '/projects-en.html';
-            }
-            // Handle /for-hotels routes (RU)
-            else if (url.startsWith('/for-hotels') && !url.includes('.')) {
-              req.url = '/for-hotels.html';
-            }
-            // Handle /for-labs routes (RU)
-            else if (url.startsWith('/for-labs') && !url.includes('.')) {
-              req.url = '/for-labs.html';
-            }
-            // Handle /for-spa routes (RU)
-            else if (url.startsWith('/for-spa') && !url.includes('.')) {
-              req.url = '/for-spa.html';
-            }
-            // Handle /en routes (main EN page)
-            else if (url.startsWith('/en') && !url.includes('.')) {
-              req.url = '/en.html';
-            }
-            // Handle /projects routes (RU)
-            else if (url.startsWith('/projects') && !url.includes('.')) {
-              req.url = '/projects.html';
+            if (!url.includes('.')) {
+              const route = routes.find(r => url.startsWith(r.prefix));
+              if (route) req.url = route.file;
             }
             next();
           });
