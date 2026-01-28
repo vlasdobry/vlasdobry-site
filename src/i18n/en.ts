@@ -6,6 +6,7 @@ export const en: Translations = {
     items: [
       { title: 'For Hotels', href: '/en/for-hotels/' },
       { title: 'For DNA Labs', href: '/en/for-labs/' },
+      { title: 'For SPA & Wellness', href: '/en/for-spa/' },
     ],
   },
   hero: {
@@ -146,6 +147,162 @@ export const en: Translations = {
     footer: {
       name: 'Vlas Fedorov',
       role: 'Hotel Marketing',
+      links: {
+        telegram: 'Telegram',
+        whatsapp: 'WhatsApp',
+        email: 'Email',
+      },
+    },
+  },
+  spa: {
+    nav: {
+      backToMain: 'Back',
+    },
+    hero: {
+      title: 'SPA & Wellness Marketing That Fills Your Capacity',
+      subtitle: 'Building guest acquisition systems: from strategy and analytics to paid ads, media campaigns, and influencer partnerships',
+      stats: 'Sales ×10 · Ad cost 48%→13% · Brand queries ×5',
+    },
+    problems: {
+      label: 'Sound familiar?',
+      items: [
+        {
+          title: 'Expensive acquisition',
+          desc: 'Cost per guest keeps rising while occupancy stays flat. Ad budget disappears with no clear return',
+        },
+        {
+          title: 'Low occupancy',
+          desc: 'Seasonal dips, empty weekdays — operating at 30-50% capacity while fixed costs remain',
+        },
+        {
+          title: 'No lead generation',
+          desc: 'Leads come randomly: word of mouth, a couple of ads. No systematic flow — impossible to plan capacity',
+        },
+        {
+          title: 'Aggregator dependency',
+          desc: 'Deal sites and aggregators bring discount-seeking clients, lowering your average check and margins',
+        },
+      ],
+    },
+    services: {
+      label: 'What I do',
+      items: [
+        {
+          title: 'Strategy & Analytics',
+          desc: 'Marketing audit, analytics setup, promotion strategy with clear KPIs',
+        },
+        {
+          title: 'Search & Display Advertising',
+          desc: 'Launching and optimizing search and display campaigns. Geo-targeting to attract local audiences',
+        },
+        {
+          title: 'Influencers & SMM',
+          desc: 'Blogger collaborations, social media management, review strategy — systematic brand presence',
+        },
+        {
+          title: 'Lead Generation Funnel',
+          desc: 'Website development, messenger campaigns, SMS targeting — building the funnel from first touch to booking',
+        },
+        {
+          title: 'Team Management',
+          desc: 'Hiring marketing team, managing contractors, outdoor advertising — full marketing operations',
+        },
+      ],
+    },
+    caseStudy: {
+      label: 'Case study',
+      title: 'Odyssey Flower',
+      subtitle: 'SPA resort chain on the Black Sea coast',
+      challenge: 'High acquisition cost (48% ad cost ratio), low occupancy, no systematic lead generation',
+      done: [
+        'Audience research and promotion strategy development',
+        'Analytics setup, traffic channel discovery and optimization',
+        'Lead generation funnel build and budget reallocation',
+        'Audience segment work: messenger campaigns, SMS targeting',
+        'Traffic team and SMM management',
+      ],
+      results: [
+        { value: '×10', label: 'sales' },
+        { value: '13%', label: 'ad cost (was 48%)' },
+        { value: '×5', label: 'brand queries' },
+      ],
+      tags: ['Wellness', 'Performance', 'Geo-targeting', 'Analytics'],
+    },
+    process: {
+      label: 'How it works',
+      methodology: 'Methodology: SOSTAC + PDCA',
+      steps: [
+        {
+          step: '01',
+          title: 'Audit (1-2 days)',
+          desc: 'Current marketing analysis, audience and competitor research. Analytics setup. Finding growth points',
+        },
+        {
+          step: '02',
+          title: 'Strategy (3-5 days)',
+          desc: 'Promotion strategy with channels, budgets, and KPIs',
+        },
+        {
+          step: '03',
+          title: 'Launch (1-2 weeks)',
+          desc: 'Ad campaign setup, funnel build, audience engagement launch',
+        },
+        {
+          step: '04',
+          title: 'Control (ongoing)',
+          desc: 'Weekly optimization, budget reallocation, reporting',
+        },
+      ],
+    },
+    faq: {
+      label: 'FAQ',
+      items: [
+        {
+          question: 'Do you only work with large SPA chains?',
+          answer: 'No, I work with single complexes too. The key requirement is willingness to invest in systematic marketing.',
+        },
+        {
+          question: 'What\'s the minimum ad budget?',
+          answer: 'Depends on region and goals. We\'ll discuss during the audit — I\'ll explain what\'s possible within your budget.',
+        },
+        {
+          question: 'What if we already have a marketer?',
+          answer: 'I work alongside your team or take over marketing entirely.',
+        },
+        {
+          question: 'How fast will I see results?',
+          answer: 'First data in 2-3 weeks after launch. Sustainable occupancy growth in 2-3 months of systematic work.',
+        },
+        {
+          question: 'Do you work with thermal spas and wellness hotels?',
+          answer: 'Yes, all formats: thermal baths, spas, wellness hotels, resorts. The approach is the same — systematic marketing with clear KPIs.',
+        },
+        {
+          question: 'Can I start with an audit, no strings attached?',
+          answer: 'Yes, the first audit is free. I\'ll show you growth opportunities and what can be done.',
+        },
+      ],
+    },
+    notFor: {
+      label: 'Not a fit if',
+      items: [
+        'Looking for a "magic button" without systematic work',
+        'Not ready for transparent analytics',
+        'Expecting results without ad budget',
+      ],
+    },
+    cta: {
+      heading: 'Let\'s discuss your SPA\'s occupancy',
+      button: 'Message on Telegram',
+      alternative: 'or email',
+      email: 'vlasdobry@gmail.com',
+    },
+    socialProof: {
+      freeAudit: 'Free marketing audit',
+    },
+    footer: {
+      name: 'Vlas Fedorov',
+      role: 'SPA & Wellness Marketing',
       links: {
         telegram: 'Telegram',
         whatsapp: 'WhatsApp',
