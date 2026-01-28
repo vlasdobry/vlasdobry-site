@@ -219,7 +219,9 @@ export const IndustryLanding: React.FC<Props> = ({ sectionKey, basePath }) => {
           <div className="w-24 h-24 mx-auto mb-8 rounded-full bg-zinc-100 overflow-hidden">
             <img
               src="/vlas-photo.jpg"
-              alt="Vlas Fedorov"
+              alt={section.footer.name}
+              width={96}
+              height={96}
               className="w-full h-full object-cover"
             />
           </div>

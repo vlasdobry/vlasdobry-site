@@ -53,6 +53,15 @@ Current projects:
 - Victory Diary, Habit Tracker, Family WishList — family productivity tools (Google Apps Script, Telegram)
 
 Projects page: https://vlasdobry.ru/projects/
+Projects page (EN): https://vlasdobry.ru/en/projects/
+
+## Industry Pages
+- Hotels (RU): https://vlasdobry.ru/for-hotels/
+- Hotels (EN): https://vlasdobry.ru/en/for-hotels/
+- DNA Labs (RU): https://vlasdobry.ru/for-labs/
+- DNA Labs (EN): https://vlasdobry.ru/en/for-labs/
+- SPA & Wellness (RU): https://vlasdobry.ru/for-spa/
+- SPA & Wellness (EN): https://vlasdobry.ru/en/for-spa/
 
 ## Services
 1. Paid Traffic: contextual and geo-targeted advertising

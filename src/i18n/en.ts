@@ -161,7 +161,7 @@ export const en: Translations = {
     hero: {
       title: 'SPA & Wellness Marketing That Fills Your Capacity',
       subtitle: 'Building guest acquisition systems: from strategy and analytics to paid ads, media campaigns, and influencer partnerships',
-      stats: 'Sales ×10 · Ad cost 48%→13% · Brand queries ×5',
+      stats: 'Sales ×10 · Ad cost ratio 48%→13% · Brand queries ×5',
     },
     problems: {
       label: 'Sound familiar?',
@@ -180,7 +180,7 @@ export const en: Translations = {
         },
         {
           title: 'Aggregator dependency',
-          desc: 'Deal sites and aggregators bring discount-seeking clients, lowering your average check and margins',
+          desc: 'Deal sites and aggregators bring discount-seeking clients, lowering your average spend and margins',
         },
       ],
     },
@@ -197,7 +197,7 @@ export const en: Translations = {
         },
         {
           title: 'Influencers & SMM',
-          desc: 'Blogger collaborations, social media management, review strategy — systematic brand presence',
+          desc: 'Influencer partnerships, social media management, review strategy — systematic brand presence',
         },
         {
           title: 'Lead Generation Funnel',
@@ -218,12 +218,12 @@ export const en: Translations = {
         'Audience research and promotion strategy development',
         'Analytics setup, traffic channel discovery and optimization',
         'Lead generation funnel build and budget reallocation',
-        'Audience segment work: messenger campaigns, SMS targeting',
-        'Traffic team and SMM management',
+        'Targeted outreach by audience segment: messenger campaigns, SMS targeting',
+        'Traffic team and social media management',
       ],
       results: [
         { value: '×10', label: 'sales' },
-        { value: '13%', label: 'ad cost (was 48%)' },
+        { value: '13%', label: 'ad cost ratio (was 48%)' },
         { value: '×5', label: 'brand queries' },
       ],
       tags: ['Wellness', 'Performance', 'Geo-targeting', 'Analytics'],
@@ -235,7 +235,7 @@ export const en: Translations = {
         {
           step: '01',
           title: 'Audit (1-2 days)',
-          desc: 'Current marketing analysis, audience and competitor research. Analytics setup. Finding growth points',
+          desc: 'Current marketing analysis, audience and competitor research. Analytics setup. Identifying growth opportunities',
         },
         {
           step: '02',
@@ -259,7 +259,7 @@ export const en: Translations = {
       items: [
         {
           question: 'Do you only work with large SPA chains?',
-          answer: 'No, I work with single complexes too. The key requirement is willingness to invest in systematic marketing.',
+          answer: 'No, I work with standalone facilities too. The key requirement is willingness to invest in systematic marketing.',
         },
         {
           question: 'What\'s the minimum ad budget?',
