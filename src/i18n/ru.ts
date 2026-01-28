@@ -2,11 +2,10 @@ import { Translations } from './types';
 
 export const ru: Translations = {
   offersMenu: {
-    label: 'Ещё',
+    label: 'Предложения',
     items: [
       { title: 'Для отелей', href: '/for-hotels/' },
       { title: 'Для ДНК-лабораторий', href: '/for-labs/' },
-      { title: 'Мои проекты', href: '/projects/' },
     ],
   },
   hero: {

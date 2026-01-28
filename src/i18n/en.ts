@@ -2,11 +2,10 @@ import { Translations } from './types';
 
 export const en: Translations = {
   offersMenu: {
-    label: 'More',
+    label: 'Services',
     items: [
       { title: 'For Hotels', href: '/en/for-hotels/' },
       { title: 'For DNA Labs', href: '/en/for-labs/' },
-      { title: 'Projects', href: '/en/projects/' },
     ],
   },
   hero: {

@@ -54,7 +54,7 @@ npm run preview  # Просмотр сборки
 - `src/components/HotelsLanding.tsx` — лендинг для отелей (sticky header)
 - `src/components/LabsLanding.tsx` — лендинг для ДНК-лабораторий (sticky header)
 - `src/components/LanguageSwitcher.tsx` — переключатель языка
-- `src/components/OffersMenu.tsx` — раскрывающееся меню «Ещё» (отраслевые лендинги + проекты)
+- `src/components/OffersMenu.tsx` — раскрывающееся меню «Предложения» (отраслевые лендинги)
 - `src/components/ProjectsLanding.tsx` — лендинг проектов (sticky header, карточки проектов)
 
 **Стилизация:** Tailwind CSS v4 (через Vite plugin), шрифт Inter. Используется glassmorphism-эффект для UI-элементов.

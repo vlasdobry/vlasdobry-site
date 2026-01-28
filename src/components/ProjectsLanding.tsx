@@ -67,13 +67,7 @@ export const ProjectsLanding: React.FC = () => {
               <article key={i} aria-label={project.name} className="bg-zinc-50 rounded-2xl p-8 md:p-10">
                 <div className="flex flex-wrap items-center gap-3 mb-4">
                   <h2 className="text-2xl md:text-3xl font-black">{project.name}</h2>
-                  <span className={`text-[10px] tracking-widest uppercase font-bold px-3 py-1 rounded-full ${
-                    project.statusKey === 'live'
-                      ? 'bg-emerald-100 text-emerald-700'
-                      : project.statusKey === 'mvp'
-                        ? 'bg-amber-100 text-amber-700'
-                        : 'bg-zinc-200 text-zinc-600'
-                  }`}>
+                  <span className="text-[10px] tracking-widest uppercase font-bold px-3 py-1 rounded-full bg-zinc-200 text-zinc-600">
                     {project.status}
                   </span>
                 </div>
