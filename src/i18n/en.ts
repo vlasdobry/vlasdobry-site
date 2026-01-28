@@ -1,14 +1,6 @@
 import { Translations } from './types';
 
 export const en: Translations = {
-  offersMenu: {
-    label: 'Services',
-    items: [
-      { title: 'For Hotels', href: '/en/for-hotels/' },
-      { title: 'For DNA Labs', href: '/en/for-labs/' },
-      { title: 'For SPA & Wellness', href: '/en/for-spa/' },
-    ],
-  },
   hero: {
     name: 'Vlas Fedorov',
     navForward: 'Inside',

@@ -55,7 +55,6 @@ npm run preview  # Просмотр сборки
 - `src/components/Landing.tsx` — лендинг с услугами, кейсами и контактами
 - `src/components/IndustryLanding.tsx` — универсальный лендинг для отраслей (hotels, labs, spa)
 - `src/components/LanguageSwitcher.tsx` — переключатель языка
-- `src/components/OffersMenu.tsx` — раскрывающееся меню «Предложения» (отраслевые лендинги)
 - `src/components/ProjectsLanding.tsx` — лендинг проектов (sticky header, карточки проектов)
 
 **Стилизация:** Tailwind CSS v4 (через Vite plugin), шрифт Inter. Используется glassmorphism-эффект для UI-элементов.

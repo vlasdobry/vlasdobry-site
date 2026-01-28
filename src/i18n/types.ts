@@ -28,13 +28,6 @@ export interface IndustrySection {
 }
 
 export interface Translations {
-  offersMenu: {
-    label: string;
-    items: Array<{
-      title: string;
-      href: string;
-    }>;
-  };
   hero: {
     name: string;
     navForward: string;
