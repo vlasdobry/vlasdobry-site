@@ -44,6 +44,8 @@ npm run preview  # Просмотр сборки
 - `/en/for-hotels` — лендинг для отелей (EN)
 - `/for-labs` — лендинг для ДНК-лабораторий (RU)
 - `/en/for-labs` — лендинг для ДНК-лабораторий (EN)
+- `/for-spa` — лендинг для СПА-комплексов (RU)
+- `/en/for-spa` — лендинг для СПА-комплексов (EN)
 - `/projects` — страница проектов (RU)
 - `/en/projects` — страница проектов (EN)
 
@@ -53,6 +55,7 @@ npm run preview  # Просмотр сборки
 - `src/components/Landing.tsx` — лендинг с услугами, кейсами и контактами
 - `src/components/HotelsLanding.tsx` — лендинг для отелей (sticky header)
 - `src/components/LabsLanding.tsx` — лендинг для ДНК-лабораторий (sticky header)
+- `src/components/SpaLanding.tsx` — лендинг для СПА-комплексов (sticky header)
 - `src/components/LanguageSwitcher.tsx` — переключатель языка
 - `src/components/OffersMenu.tsx` — раскрывающееся меню «Предложения» (отраслевые лендинги)
 - `src/components/ProjectsLanding.tsx` — лендинг проектов (sticky header, карточки проектов)
@@ -62,7 +65,7 @@ npm run preview  # Просмотр сборки
 **Мультиязычность (i18n):**
 - URL-based routing: `/` (RU), `/en/` (EN)
 - Самописная i18n-система в `src/i18n/` (KISS: без i18next)
-- HTML файлы: `index.html`, `en.html`, `for-hotels.html`, `for-hotels-en.html`, `for-labs.html`, `for-labs-en.html`, `projects.html`, `projects-en.html`
+- HTML файлы: `index.html`, `en.html`, `for-hotels.html`, `for-hotels-en.html`, `for-labs.html`, `for-labs-en.html`, `for-spa.html`, `for-spa-en.html`, `projects.html`, `projects-en.html`
 - Переводы: `src/i18n/ru.ts`, `src/i18n/en.ts`
 
 **Мобильные функции:**
@@ -87,7 +90,7 @@ npm run preview  # Просмотр сборки
 - **Гео-теги:** намеренно не используются — проект ориентирован на международный рынок (Россия, СНГ, Европа, США). Привязка к конкретной локации снизит видимость для зарубежных запросов.
 
 **Консистентность данных:**
-При изменении контента страниц-лендингов (проекты, отели, лаборатории) необходимо синхронизировать 6 источников: i18n (ru.ts, en.ts), Schema.org JSON-LD (HTML), noscript fallback (HTML), meta/OG/Twitter (HTML), `llms.txt`. Для проверки — систематический аудит всех источников.
+При изменении контента страниц-лендингов (проекты, отели, лаборатории, СПА) необходимо синхронизировать 6 источников: i18n (ru.ts, en.ts), Schema.org JSON-LD (HTML), noscript fallback (HTML), meta/OG/Twitter (HTML), `llms.txt`. Для проверки — систематический аудит всех источников.
 
 ## Ключевые файлы
 
@@ -99,6 +102,8 @@ npm run preview  # Просмотр сборки
 | `for-hotels-en.html` | EN лендинг для отелей |
 | `for-labs.html` | RU лендинг для ДНК-лабораторий |
 | `for-labs-en.html` | EN лендинг для ДНК-лабораторий |
+| `for-spa.html` | RU лендинг для СПА-комплексов |
+| `for-spa-en.html` | EN лендинг для СПА-комплексов |
 | `projects.html` | RU лендинг проектов |
 | `projects-en.html` | EN лендинг проектов |
 | `src/i18n/` | Система переводов (types, ru, en, context) |

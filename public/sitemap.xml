@@ -73,4 +73,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/projects/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vlasdobry.ru/projects/"/>
   </url>
+  <url>
+    <loc>https://vlasdobry.ru/for-spa/</loc>
+    <lastmod>2026-01-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/for-spa/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/for-spa/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vlasdobry.ru/for-spa/"/>
+  </url>
+  <url>
+    <loc>https://vlasdobry.ru/en/for-spa/</loc>
+    <lastmod>2026-01-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/for-spa/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/for-spa/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vlasdobry.ru/for-spa/"/>
+  </url>
 </urlset>
