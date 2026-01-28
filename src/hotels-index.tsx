@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { HotelsLanding } from './components/HotelsLanding';
+import { IndustryLanding } from './components/IndustryLanding';
 import { I18nProvider, Lang } from './i18n';
 
 const lang: Lang = window.location.pathname.startsWith('/en') ? 'en' : 'ru';
@@ -14,7 +14,7 @@ const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
     <I18nProvider lang={lang}>
-      <HotelsLanding />
+      <IndustryLanding sectionKey="hotels" basePath="/for-hotels" />
     </I18nProvider>
   </React.StrictMode>
 );

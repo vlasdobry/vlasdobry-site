@@ -53,9 +53,7 @@ npm run preview  # Просмотр сборки
 - `src/App.tsx` — корневой компонент, управляет навигацией hero↔landing, свайпы, виброотклик
 - `src/components/Hero.tsx` — главный экран с фото и заголовками
 - `src/components/Landing.tsx` — лендинг с услугами, кейсами и контактами
-- `src/components/HotelsLanding.tsx` — лендинг для отелей (sticky header)
-- `src/components/LabsLanding.tsx` — лендинг для ДНК-лабораторий (sticky header)
-- `src/components/SpaLanding.tsx` — лендинг для СПА-комплексов (sticky header)
+- `src/components/IndustryLanding.tsx` — универсальный лендинг для отраслей (hotels, labs, spa)
 - `src/components/LanguageSwitcher.tsx` — переключатель языка
 - `src/components/OffersMenu.tsx` — раскрывающееся меню «Предложения» (отраслевые лендинги)
 - `src/components/ProjectsLanding.tsx` — лендинг проектов (sticky header, карточки проектов)

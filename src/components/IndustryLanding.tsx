@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, ChevronDown, ChevronUp } from 'lucide-react';
-import { useI18n } from '../i18n';
+import { useI18n, IndustryKey } from '../i18n';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
-export const HotelsLanding: React.FC = () => {
+interface Props {
+  sectionKey: IndustryKey;
+  basePath: string;
+}
+
+export const IndustryLanding: React.FC<Props> = ({ sectionKey, basePath }) => {
   const { t, lang } = useI18n();
+  const section = t[sectionKey];
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -13,7 +19,6 @@ export const HotelsLanding: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      // Hysteresis: different thresholds to prevent jitter
       if (!isScrolled && scrollY > 80) {
         setIsScrolled(true);
       } else if (isScrolled && scrollY < 20) {
@@ -26,7 +31,7 @@ export const HotelsLanding: React.FC = () => {
 
   return (
     <main className="min-h-screen bg-white text-[#121212]">
-      {/* Sticky Navigation - compact on scroll */}
+      {/* Sticky Navigation */}
       <nav className={`sticky top-0 z-50 border-b transition-all duration-500 ease-out ${
         isScrolled
           ? 'bg-white/80 backdrop-blur-lg border-zinc-100'
@@ -39,14 +44,14 @@ export const HotelsLanding: React.FC = () => {
             <a href={landingUrl} className="text-2xl font-black tracking-tighter hover:opacity-70 transition-opacity">
               VD.
             </a>
-            <LanguageSwitcher basePath="/for-hotels" />
+            <LanguageSwitcher basePath={basePath} />
           </div>
           <a
             href={landingUrl}
             className="flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-400 hover:text-black transition-colors"
           >
             <ArrowLeft className="w-3 h-3" />
-            {t.hotels.nav.backToMain}
+            {section.nav.backToMain}
           </a>
         </div>
       </nav>
@@ -55,23 +60,23 @@ export const HotelsLanding: React.FC = () => {
         {/* Hero Section */}
         <header className="pb-16 md:pb-24">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight mb-8">
-            {t.hotels.hero.title}
+            {section.hero.title}
           </h1>
           <p className="text-xl md:text-2xl text-zinc-500 font-light max-w-3xl mb-8">
-            {t.hotels.hero.subtitle}
+            {section.hero.subtitle}
           </p>
           <p className="text-sm md:text-base text-zinc-400 font-medium tracking-wide">
-            {t.hotels.hero.stats}
+            {section.hero.stats}
           </p>
         </header>
 
         {/* Problems Section */}
         <section className="py-16 border-t border-zinc-100" aria-labelledby="problems-heading">
           <h2 id="problems-heading" className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-12">
-            {t.hotels.problems.label}
+            {section.problems.label}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-            {t.hotels.problems.items.map((item, i) => (
+            {section.problems.items.map((item, i) => (
               <div key={i} className="space-y-2">
                 <h3 className="text-xl md:text-2xl font-bold">{item.title}</h3>
                 <p className="text-zinc-500 font-light">{item.desc}</p>
@@ -83,10 +88,10 @@ export const HotelsLanding: React.FC = () => {
         {/* Services Section */}
         <section className="py-16 border-t border-zinc-100" aria-labelledby="services-heading">
           <h2 id="services-heading" className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-12">
-            {t.hotels.services.label}
+            {section.services.label}
           </h2>
           <div className="space-y-12">
-            {t.hotels.services.items.map((item, i) => (
+            {section.services.items.map((item, i) => (
               <div key={i} className="max-w-3xl">
                 <h3 className="text-2xl md:text-3xl font-bold mb-3">{item.title}</h3>
                 <p className="text-zinc-500 text-lg font-light leading-relaxed">{item.desc}</p>
@@ -98,25 +103,25 @@ export const HotelsLanding: React.FC = () => {
         {/* Case Study Section */}
         <section className="py-16 border-t border-zinc-100" aria-labelledby="case-heading">
           <h2 id="case-heading" className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-12">
-            {t.hotels.caseStudy.label}
+            {section.caseStudy.label}
           </h2>
 
           <div className="bg-zinc-50 rounded-2xl p-8 md:p-12">
             <div className="flex flex-wrap gap-3 mb-6">
-              {t.hotels.caseStudy.tags.map(tag => (
+              {section.caseStudy.tags.map(tag => (
                 <span key={tag} className="text-[10px] tracking-widest uppercase text-zinc-400 font-bold">
                   {tag}
                 </span>
               ))}
             </div>
 
-            <h3 className="text-3xl md:text-5xl font-black mb-2">{t.hotels.caseStudy.title}</h3>
-            <p className="text-lg text-zinc-400 font-light mb-6">{t.hotels.caseStudy.subtitle}</p>
+            <h3 className="text-3xl md:text-5xl font-black mb-2">{section.caseStudy.title}</h3>
+            <p className="text-lg text-zinc-400 font-light mb-6">{section.caseStudy.subtitle}</p>
 
-            <p className="text-zinc-600 mb-8 max-w-2xl">{t.hotels.caseStudy.challenge}</p>
+            <p className="text-zinc-600 mb-8 max-w-2xl">{section.caseStudy.challenge}</p>
 
             <ul className="space-y-3 mb-10">
-              {t.hotels.caseStudy.done.map((item, i) => (
+              {section.caseStudy.done.map((item, i) => (
                 <li key={i} className="flex items-start gap-3 text-zinc-600">
                   <span className="text-zinc-300 mt-1">•</span>
                   {item}
@@ -125,7 +130,7 @@ export const HotelsLanding: React.FC = () => {
             </ul>
 
             <div className="flex gap-8 md:gap-16">
-              {t.hotels.caseStudy.results.map((result, i) => (
+              {section.caseStudy.results.map((result, i) => (
                 <div key={i}>
                   <div className="text-4xl md:text-5xl font-black">{result.value}</div>
                   <div className="text-zinc-400 text-sm mt-1">{result.label}</div>
@@ -138,12 +143,12 @@ export const HotelsLanding: React.FC = () => {
         {/* Process Section */}
         <section className="py-16 border-t border-zinc-100" aria-labelledby="process-heading">
           <h2 id="process-heading" className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-4">
-            {t.hotels.process.label}
+            {section.process.label}
           </h2>
-          <p className="text-zinc-400 font-light mb-12">{t.hotels.process.methodology}</p>
+          <p className="text-zinc-400 font-light mb-12">{section.process.methodology}</p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {t.hotels.process.steps.map((item) => (
+            {section.process.steps.map((item) => (
               <div key={item.step} className="flex gap-5">
                 <span className="text-zinc-200 text-4xl font-black">{item.step}</span>
                 <div>
@@ -158,11 +163,11 @@ export const HotelsLanding: React.FC = () => {
         {/* FAQ Section */}
         <section className="py-16 border-t border-zinc-100" aria-labelledby="faq-heading">
           <h2 id="faq-heading" className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-12">
-            {t.hotels.faq.label}
+            {section.faq.label}
           </h2>
 
           <div className="space-y-4">
-            {t.hotels.faq.items.map((item, i) => (
+            {section.faq.items.map((item, i) => (
               <div key={i} className="border border-zinc-100 rounded-lg overflow-hidden">
                 <button
                   onClick={() => setExpandedFaq(expandedFaq === i ? null : i)}
@@ -188,11 +193,11 @@ export const HotelsLanding: React.FC = () => {
         {/* Not For Section */}
         <section className="py-16 border-t border-zinc-100" aria-labelledby="notfor-heading">
           <h2 id="notfor-heading" className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-8">
-            {t.hotels.notFor.label}
+            {section.notFor.label}
           </h2>
 
           <ul className="space-y-3">
-            {t.hotels.notFor.items.map((item, i) => (
+            {section.notFor.items.map((item, i) => (
               <li key={i} className="flex items-center gap-3 text-zinc-500">
                 <span className="text-zinc-300">×</span>
                 {item}
@@ -203,16 +208,14 @@ export const HotelsLanding: React.FC = () => {
 
         {/* CTA Section */}
         <section className="py-24 text-center border-t border-zinc-100" aria-labelledby="cta-heading">
-          {/* Free Audit Badge */}
           <div className="inline-block bg-zinc-100 text-zinc-600 text-sm font-medium px-4 py-2 rounded-full mb-8">
-            {t.hotels.socialProof.freeAudit}
+            {section.socialProof.freeAudit}
           </div>
 
           <h2 id="cta-heading" className="text-4xl md:text-6xl lg:text-7xl font-black mb-8 tracking-tight">
-            {t.hotels.cta.heading}
+            {section.cta.heading}
           </h2>
 
-          {/* Photo placeholder - можно добавить реальное фото */}
           <div className="w-24 h-24 mx-auto mb-8 rounded-full bg-zinc-100 overflow-hidden">
             <img
               src="/vlas-photo.jpg"
@@ -227,13 +230,13 @@ export const HotelsLanding: React.FC = () => {
             rel="noopener noreferrer"
             className="inline-block text-lg md:text-xl font-bold uppercase tracking-[0.2em] border-2 border-black px-10 py-5 hover:bg-black hover:text-white transition-all"
           >
-            {t.hotels.cta.button}
+            {section.cta.button}
           </a>
 
           <p className="mt-6 text-zinc-400">
-            {t.hotels.cta.alternative}{' '}
-            <a href={`mailto:${t.hotels.cta.email}`} className="underline hover:text-black transition-colors">
-              {t.hotels.cta.email}
+            {section.cta.alternative}{' '}
+            <a href={`mailto:${section.cta.email}`} className="underline hover:text-black transition-colors">
+              {section.cta.email}
             </a>
           </p>
         </section>
@@ -241,18 +244,21 @@ export const HotelsLanding: React.FC = () => {
         {/* Footer */}
         <footer className="py-16 flex flex-col md:flex-row justify-between items-center gap-8 border-t border-zinc-100">
           <div className="text-center md:text-left">
-            <h4 className="text-xl font-bold">{t.hotels.footer.name}</h4>
-            <p className="text-zinc-400 text-sm font-light mt-1">{t.hotels.footer.role}</p>
+            <h4 className="text-xl font-bold">{section.footer.name}</h4>
+            <p className="text-zinc-400 text-sm font-light mt-1">{section.footer.role}</p>
+            {section.footer.experience && (
+              <p className="text-zinc-300 text-xs font-light mt-0.5">{section.footer.experience}</p>
+            )}
           </div>
           <div className="flex gap-8 text-[11px] font-bold tracking-[0.4em] uppercase text-zinc-400">
             <a href="https://t.me/vlasdobry" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">
-              {t.hotels.footer.links.telegram}
+              {section.footer.links.telegram}
             </a>
             <a href="https://wa.me/79068972037" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">
-              {t.hotels.footer.links.whatsapp}
+              {section.footer.links.whatsapp}
             </a>
             <a href="mailto:vlasdobry@gmail.com" className="hover:text-black transition-colors">
-              {t.hotels.footer.links.email}
+              {section.footer.links.email}
             </a>
           </div>
         </footer>

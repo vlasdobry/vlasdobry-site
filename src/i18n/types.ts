@@ -1,5 +1,32 @@
 export type Lang = 'ru' | 'en';
 
+export type IndustryKey = 'hotels' | 'labs' | 'spa';
+
+export interface IndustrySection {
+  nav: { backToMain: string };
+  hero: { title: string; subtitle: string; stats: string };
+  problems: { label: string; items: Array<{ title: string; desc: string }> };
+  services: { label: string; items: Array<{ title: string; desc: string }> };
+  caseStudy: {
+    label: string; title: string; subtitle: string; challenge: string;
+    done: Array<string>;
+    results: Array<{ value: string; label: string }>;
+    tags: string[];
+  };
+  process: {
+    label: string; methodology: string;
+    steps: Array<{ step: string; title: string; desc: string }>;
+  };
+  faq: { label: string; items: Array<{ question: string; answer: string }> };
+  notFor: { label: string; items: Array<string> };
+  cta: { heading: string; button: string; alternative: string; email: string };
+  socialProof: { freeAudit: string };
+  footer: {
+    name: string; role: string; experience?: string;
+    links: { telegram: string; whatsapp: string; email: string };
+  };
+}
+
 export interface Translations {
   offersMenu: {
     label: string;
@@ -16,229 +43,9 @@ export interface Translations {
     focus: string;
     social: string;
   };
-  hotels: {
-    nav: {
-      backToMain: string;
-    };
-    hero: {
-      title: string;
-      subtitle: string;
-      stats: string;
-    };
-    problems: {
-      label: string;
-      items: Array<{
-        title: string;
-        desc: string;
-      }>;
-    };
-    services: {
-      label: string;
-      items: Array<{
-        title: string;
-        desc: string;
-      }>;
-    };
-    caseStudy: {
-      label: string;
-      title: string;
-      subtitle: string;
-      challenge: string;
-      done: Array<string>;
-      results: Array<{
-        value: string;
-        label: string;
-      }>;
-      tags: string[];
-    };
-    process: {
-      label: string;
-      methodology: string;
-      steps: Array<{
-        step: string;
-        title: string;
-        desc: string;
-      }>;
-    };
-    faq: {
-      label: string;
-      items: Array<{
-        question: string;
-        answer: string;
-      }>;
-    };
-    notFor: {
-      label: string;
-      items: Array<string>;
-    };
-    cta: {
-      heading: string;
-      button: string;
-      alternative: string;
-      email: string;
-    };
-    socialProof: {
-      freeAudit: string;
-    };
-    footer: {
-      name: string;
-      role: string;
-      links: {
-        telegram: string;
-        whatsapp: string;
-        email: string;
-      };
-    };
-  };
-  spa: {
-    nav: {
-      backToMain: string;
-    };
-    hero: {
-      title: string;
-      subtitle: string;
-      stats: string;
-    };
-    problems: {
-      label: string;
-      items: Array<{
-        title: string;
-        desc: string;
-      }>;
-    };
-    services: {
-      label: string;
-      items: Array<{
-        title: string;
-        desc: string;
-      }>;
-    };
-    caseStudy: {
-      label: string;
-      title: string;
-      subtitle: string;
-      challenge: string;
-      done: Array<string>;
-      results: Array<{
-        value: string;
-        label: string;
-      }>;
-      tags: string[];
-    };
-    process: {
-      label: string;
-      methodology: string;
-      steps: Array<{
-        step: string;
-        title: string;
-        desc: string;
-      }>;
-    };
-    faq: {
-      label: string;
-      items: Array<{
-        question: string;
-        answer: string;
-      }>;
-    };
-    notFor: {
-      label: string;
-      items: Array<string>;
-    };
-    cta: {
-      heading: string;
-      button: string;
-      alternative: string;
-      email: string;
-    };
-    socialProof: {
-      freeAudit: string;
-    };
-    footer: {
-      name: string;
-      role: string;
-      links: {
-        telegram: string;
-        whatsapp: string;
-        email: string;
-      };
-    };
-  };
-  labs: {
-    nav: {
-      backToMain: string;
-    };
-    hero: {
-      title: string;
-      subtitle: string;
-      stats: string;
-    };
-    problems: {
-      label: string;
-      items: Array<{
-        title: string;
-        desc: string;
-      }>;
-    };
-    services: {
-      label: string;
-      items: Array<{
-        title: string;
-        desc: string;
-      }>;
-    };
-    caseStudy: {
-      label: string;
-      title: string;
-      subtitle: string;
-      challenge: string;
-      done: Array<string>;
-      results: Array<{
-        value: string;
-        label: string;
-      }>;
-      tags: string[];
-    };
-    process: {
-      label: string;
-      methodology: string;
-      steps: Array<{
-        step: string;
-        title: string;
-        desc: string;
-      }>;
-    };
-    faq: {
-      label: string;
-      items: Array<{
-        question: string;
-        answer: string;
-      }>;
-    };
-    notFor: {
-      label: string;
-      items: Array<string>;
-    };
-    cta: {
-      heading: string;
-      button: string;
-      alternative: string;
-      email: string;
-    };
-    socialProof: {
-      freeAudit: string;
-    };
-    footer: {
-      name: string;
-      role: string;
-      experience: string;
-      links: {
-        telegram: string;
-        whatsapp: string;
-        email: string;
-      };
-    };
-  };
+  hotels: IndustrySection;
+  spa: IndustrySection;
+  labs: IndustrySection;
   landing: {
     nav: {
       back: string;

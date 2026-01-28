@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { LabsLanding } from './components/LabsLanding';
+import { IndustryLanding } from './components/IndustryLanding';
 import { I18nProvider, Lang } from './i18n';
 
 const lang: Lang = window.location.pathname.startsWith('/en') ? 'en' : 'ru';
@@ -14,7 +14,7 @@ const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
     <I18nProvider lang={lang}>
-      <LabsLanding />
+      <IndustryLanding sectionKey="labs" basePath="/for-labs" />
     </I18nProvider>
   </React.StrictMode>
 );
