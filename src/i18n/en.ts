@@ -544,6 +544,272 @@ export const en: Translations = {
       },
     },
   },
+  services: {
+    seo: {
+      meta: {
+        title: 'SEO Audit | Vlas Fedorov',
+        description: 'Complete SEO audit in 3 days. Find critical errors, get ready-to-use code. From $150. 50+ audits.',
+      },
+      nav: { backToMain: 'Back' },
+      hero: {
+        title: 'SEO Audit',
+        subtitle: 'Find out why your website isn\'t ranking — and how to fix it in 3 days',
+        badges: ['Technical SEO', 'On-Page', 'Local SEO'],
+        miniCta: { text: 'See sample report ↓', anchor: '#example-audit' },
+      },
+      socialProof: {
+        title: 'Experience',
+        stats: [
+          { value: '50+', label: 'SEO audits since 2020' },
+          { value: '3 industries', label: 'hotels, SPA, medical' },
+          { value: 'Russia, CIS, Europe', label: 'client geography' },
+        ],
+      },
+      problem: {
+        title: 'Sound familiar?',
+        scenarios: [
+          { industry: 'Hotel', description: 'You\'re a 4-star hotel marketer. High season is 3 months away. Your site is on page 2 of Google for "hotel [city]". Competitors take 80% of bookings. Management asks: "Why isn\'t it working?"' },
+          { industry: 'SPA', description: 'Opened a $500K SPA complex. Paid $40K for the website. Six months later — 200 organic visitors/month. Spending $1K/month on ads when you could get clients for free.' },
+          { industry: 'Lab', description: 'Patients search "DNA paternity test [city]". You\'re on page 5. Aggregators and competitors are in top 3. Losing 10-20 leads every day.' },
+        ],
+        bullets: [
+          'Spending $500+/month on ads with zero organic traffic',
+          'Competitors in top 3 of Google, you\'re beyond page one',
+          'Paid $30K+ for a website that generates no leads',
+          'Don\'t know where to start: hundreds of recommendations, what\'s first?',
+        ],
+      },
+      methodology: {
+        title: 'What I Check',
+        categories: [
+          { name: 'Technical SEO', description: 'robots.txt, sitemap.xml, page speed, mobile version, HTTPS, canonical' },
+          { name: 'On-Page SEO', description: 'Title, Description, H1-H6 headers, URL structure, internal linking' },
+          { name: 'Content', description: 'Uniqueness, completeness, keywords, image alt tags' },
+          { name: 'Schema.org', description: 'Structured markup for rich snippets in search results' },
+          { name: 'Local SEO', description: 'Google Business, Maps, NAP consistency, reviews' },
+          { name: 'E-E-A-T', description: 'Experience, Expertise, Authoritativeness, Trustworthiness' },
+        ],
+      },
+      example: {
+        title: 'Sample Audit',
+        subtitle: '4-star SPA Hotel in Southern Russia (NDA)',
+        scores: [
+          { category: 'Technical SEO', score: '3/10', status: 'Critical' },
+          { category: 'On-Page SEO', score: '5/10', status: 'Needs work' },
+          { category: 'Content', score: '7/10', status: 'Good' },
+          { category: 'Local SEO', score: '4/10', status: 'Needs work' },
+          { category: 'E-E-A-T', score: '6/10', status: 'Average' },
+        ],
+        findings: [
+          'robots.txt — missing (404)',
+          'sitemap.xml — missing (404)',
+          'Schema.org — not configured',
+          'Homepage title — "Home | Name" (not descriptive)',
+          'Meta Description — missing',
+          'Image alt tags — "room 73 thumbnail 1" (useless for SEO)',
+        ],
+        recommendations: [
+          'Create robots.txt and sitemap.xml — quick wins',
+          'Add site to Google Search Console',
+          'Rewrite Title and Description for all pages',
+          'Add Schema.org markup (Hotel, LocalBusiness)',
+        ],
+        caseLink: 'Detailed case study with results →',
+      },
+      deliverables: {
+        title: 'Audit Deliverables',
+        items: [
+          '~15 page PDF report with scores across 5 categories',
+          '12 tables: issues, priorities, recommendations',
+          '4 ready-to-use code files — robots.txt, sitemap.xml, Schema.org, alt tags',
+          'Action plan: week 1 (critical) → week 2-3 (important) → month 1-2 (growth)',
+        ],
+      },
+      pricing: {
+        title: 'Pricing',
+        packages: [
+          { name: 'Express', price: '$150', features: ['Technical SEO + On-Page', 'Up to 10 pages', 'Delivery: 3 days'] },
+          { name: 'Standard', price: '$350', features: ['Full audit', 'Up to 50 pages', 'Ready-to-use code', 'Delivery: 3 days'], recommended: true },
+          { name: 'Premium', price: 'from $700', features: ['Full audit', 'Implementation included', 'Delivery: 2 weeks'] },
+        ],
+        deliveryTime: '3 business days (Express/Standard), 2 weeks (Premium)',
+      },
+      leadMagnets: [
+        { name: 'SEO Checklist for Hotels & SPAs: 25 Points', description: 'Check for basic errors yourself. PDF, 3 pages.', buttonText: 'Download free checklist' },
+        { name: 'Free Express Analysis', description: 'Send your website link — I\'ll check 5 critical parameters and send results in 24 hours.', buttonText: 'Get express analysis' },
+      ],
+      relatedServices: {
+        title: 'Related Services',
+        links: [
+          { text: 'GEO Audit', url: '/en/services/geo/' },
+          { text: 'Hotel Marketing', url: '/en/for-hotels/' },
+          { text: 'SPA Marketing', url: '/en/for-spa/' },
+          { text: 'Lab Marketing', url: '/en/for-labs/' },
+        ],
+      },
+      cta: {
+        title: 'Get a list of critical errors on your website',
+        subtitle: 'I\'ll respond within 24 hours. If the audit finds no issues — full refund.',
+        primaryButton: 'Order SEO Audit for $150',
+        secondaryButton: 'Download free checklist',
+        tertiaryButton: 'Ask a question on Telegram',
+      },
+      faq: {
+        label: 'FAQ',
+        items: [
+          { question: 'How long does an SEO audit take?', answer: 'Express and Standard — 3 business days. Premium with implementation — 2 weeks.' },
+          { question: 'What will I receive after the audit?', answer: '15-30 page PDF report with scores, prioritized issue table, ready-to-use code (robots.txt, sitemap, Schema.org), and a 1-2 month action plan.' },
+          { question: 'What websites is the audit suitable for?', answer: 'I specialize in hotels, SPA complexes, and medical facilities (DNA labs, clinics). Also work with e-commerce and B2B.' },
+          { question: 'Is there a guarantee?', answer: 'Yes. If the audit finds no issues on your site — full refund.' },
+        ],
+      },
+      footer: {
+        name: 'Vlas Fedorov',
+        role: 'SEO Audit for Business',
+        links: { telegram: 'Telegram', whatsapp: 'WhatsApp', email: 'Email' },
+      },
+    },
+    geo: {
+      meta: {
+        title: 'GEO Audit: Optimization for ChatGPT, Perplexity, AI Search | Vlas Fedorov',
+        description: 'Make your business visible to AI search engines. Testing in 6 systems, ready-to-use llms.txt and Schema.org code. From $250.',
+      },
+      nav: { backToMain: 'Back' },
+      hero: {
+        title: 'GEO Audit: AI Search Optimization',
+        subtitle: 'Make your business visible to ChatGPT, Perplexity, AI search — before your competitors catch on',
+        badges: ['ChatGPT', 'Perplexity', 'Claude'],
+        miniCta: { text: 'What is GEO? ↓', anchor: '#what-is-geo' },
+      },
+      socialProof: {
+        title: 'Experience',
+        stats: [
+          { value: 'Pioneer', label: 'GEO audits since 2024' },
+          { value: '20+', label: 'GEO audits for hotels and medical' },
+          { value: '6 AI systems', label: 'ChatGPT, Perplexity, Claude, Gemini, YandexGPT, GigaChat' },
+        ],
+      },
+      problem: {
+        title: 'Sound familiar?',
+        scenarios: [
+          { industry: 'Hotel', description: 'Guest opens ChatGPT: "Best family hotel in Miami". AI names 3 hotels — none of them yours. You invested $200K in website and SEO, but AI ignores you. And 30% of guests already search via AI.' },
+          { industry: 'SPA', description: 'Client asks Perplexity: "SPA with hammam in New York". Perplexity recommends 5 places. You opened a year ago, invested $1M — but you\'re not there. Competitors with 2015 websites are in the top. Why?' },
+          { industry: 'Lab', description: 'Patient asks AI: "Where to get a DNA paternity test in [city]". AI recommends aggregators and 2 competitors. Your lab is the market leader with 10 years of experience, but AI doesn\'t know that.' },
+        ],
+        bullets: [
+          'Client asks ChatGPT "best [your service] in [city]" — AI recommends competitors',
+          'Perplexity answers questions about your niche — but you\'re not there',
+          'AI recommends 3 companies — and none of them are yours',
+          'You invested $50K+ in SEO, but 30% of clients already search via AI',
+        ],
+      },
+      education: {
+        title: 'What is GEO?',
+        definition: 'GEO (Generative Engine Optimization) — optimization for AI search engines.',
+        explanation: 'People used to search on Google. Now they ask ChatGPT, Perplexity, Claude. AI doesn\'t show 10 links — it gives 2-5 specific recommendations. If you\'re not in those recommendations — you\'re losing clients right now.',
+        comparison: {
+          headers: ['Traditional Search', 'AI Search'],
+          rows: [
+            ['10 links in results', '2-5 recommendations'],
+            ['User chooses themselves', 'AI chooses for them'],
+            ['SEO: keywords, links, speed', 'GEO: facts, structure, reputation'],
+          ],
+        },
+      },
+      methodology: {
+        title: 'What I Check',
+        categories: [
+          { name: 'AI Visibility', description: 'Testing your business in 6 AI systems: ChatGPT, Perplexity, Claude, Gemini, YandexGPT, GigaChat' },
+          { name: 'Structured Data', description: 'Schema.org markup — does AI understand your site structure' },
+          { name: 'llms.txt', description: 'Instructions file for AI bots' },
+          { name: 'Noscript fallback', description: 'Is content accessible without JavaScript (AI crawlers don\'t execute JS)' },
+          { name: 'Factual Density', description: 'Concrete numbers vs marketing fluff' },
+          { name: 'Citations', description: 'Mentions on authoritative resources' },
+          { name: 'Reputation', description: 'Ratings and reviews — AI prefers highly-rated businesses' },
+        ],
+      },
+      example: {
+        title: 'Sample Audit',
+        subtitle: '4-star SPA Hotel in Southern Russia (NDA)',
+        scores: [
+          { category: 'AI Visibility', score: '2/10', status: 'Critical' },
+          { category: 'Structured Data', score: '1/10', status: 'Missing' },
+          { category: 'Factual Density', score: '5/10', status: 'Average' },
+          { category: 'Citations', score: '3/10', status: 'Low' },
+          { category: 'Reputation', score: '4/10', status: 'Issues' },
+        ],
+        findings: [
+          'Schema.org — missing',
+          'llms.txt — missing',
+          'Noscript fallback — missing',
+          'Content — marketing phrases instead of facts ("immerse in world of comfort")',
+          'Rating on aggregators — 3.6/10',
+        ],
+        recommendations: [
+          'Create llms.txt with key business information',
+          'Add Schema.org markup (Hotel, SpaResort, LocalBusiness)',
+          'Add noscript fallback for AI crawlers',
+          'Rewrite copy: facts instead of fluff',
+          'Work on reviews — raise rating to 8+',
+        ],
+        caseLink: 'Detailed case study with results →',
+      },
+      deliverables: {
+        title: 'Audit Deliverables',
+        items: [
+          '~20 page PDF report with scores across 5 categories',
+          '15 tables: AI visibility, competitors, priorities',
+          '5 ready-to-use code files — llms.txt, Schema.org, noscript fallback, FAQPage',
+          '10 monitoring prompts for YandexGPT, GigaChat, ChatGPT, Perplexity',
+          'Action plan: week 1 (basics) → week 2 (content) → week 3-4 (reputation)',
+        ],
+      },
+      pricing: {
+        title: 'Pricing',
+        packages: [
+          { name: 'Express', price: '$250', features: ['Testing in 3 AI', 'Basic analysis', 'Delivery: 5 days'] },
+          { name: 'Standard', price: '$500', features: ['Full audit (6 AI)', 'Competitor analysis', 'Ready-to-use code', 'Delivery: 5 days'], recommended: true },
+          { name: 'Premium', price: 'from $1,000', features: ['Full audit', 'Implementation', '3-month monitoring', 'Delivery: 1 month'] },
+        ],
+        deliveryTime: '5 business days (Express/Standard), 1 month (Premium)',
+      },
+      leadMagnets: [
+        { name: 'AI Visibility Check in 24 Hours', description: 'Send your website link — I\'ll check in ChatGPT and Perplexity, send screenshots. Free, no strings attached.', buttonText: 'Get free check' },
+        { name: 'Guide: How to Create llms.txt for Your Business', description: 'Step-by-step instructions + template. PDF, 5 pages.', buttonText: 'Download free guide' },
+        { name: '10 Prompts to Check AI Visibility', description: 'Ready queries for ChatGPT, Perplexity. Check visibility yourself every month.', buttonText: 'Get prompts' },
+      ],
+      relatedServices: {
+        title: 'Related Services',
+        links: [
+          { text: 'SEO Audit', url: '/en/services/seo/' },
+          { text: 'Hotel Marketing', url: '/en/for-hotels/' },
+          { text: 'Lab Marketing', url: '/en/for-labs/' },
+          { text: 'SPA Marketing', url: '/en/for-spa/' },
+        ],
+      },
+      cta: {
+        title: 'Find out if AI recommends you — free',
+        subtitle: 'Send your website link — I\'ll check in ChatGPT and Perplexity and send a screenshot in 24 hours. Free, no strings attached.',
+        primaryButton: 'Get free check',
+        secondaryButton: 'Download llms.txt guide',
+        tertiaryButton: 'Order full GEO audit for $250',
+      },
+      faq: {
+        label: 'FAQ',
+        items: [
+          { question: 'What is GEO (Generative Engine Optimization)?', answer: 'GEO is optimization for AI search engines: ChatGPT, Perplexity, Claude. Unlike SEO, GEO focuses on structured data, facts, and reputation so AI recommends your business.' },
+          { question: 'How is GEO different from SEO?', answer: 'SEO optimizes for search engines (Google) that show 10 links. GEO optimizes for AI systems that give 2-5 specific recommendations. AI chooses for the user.' },
+          { question: 'How do I check if AI recommends me?', answer: 'Ask ChatGPT or Perplexity about your niche: "best [your service] in [city]". If you\'re not in the answer — you\'re losing clients. Send your website link — I\'ll do a free check.' },
+          { question: 'What is llms.txt?', answer: 'llms.txt is an instructions file for AI bots, similar to robots.txt for search engines. It contains structured information about your business that AI uses to generate responses.' },
+        ],
+      },
+      footer: {
+        name: 'Vlas Fedorov',
+        role: 'GEO Audit for Business',
+        links: { telegram: 'Telegram', whatsapp: 'WhatsApp', email: 'Email' },
+      },
+    },
+  },
   projects: {
     nav: {
       backToMain: 'Back',

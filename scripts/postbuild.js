@@ -15,6 +15,10 @@ const moves = [
   { src: 'for-spa-en.html', dest: 'en/for-spa/index.html' },
   { src: 'projects.html', dest: 'projects/index.html' },
   { src: 'projects-en.html', dest: 'en/projects/index.html' },
+  { src: 'seo.html', dest: 'services/seo/index.html' },
+  { src: 'seo-en.html', dest: 'en/services/seo/index.html' },
+  { src: 'geo.html', dest: 'services/geo/index.html' },
+  { src: 'geo-en.html', dest: 'en/services/geo/index.html' },
 ];
 
 for (const { src, dest } of moves) {

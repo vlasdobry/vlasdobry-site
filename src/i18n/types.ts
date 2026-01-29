@@ -2,6 +2,82 @@ export type Lang = 'ru' | 'en';
 
 export type IndustryKey = 'hotels' | 'labs' | 'spa';
 
+export type ServiceKey = 'seo' | 'geo';
+
+export interface ServiceSection {
+  meta: { title: string; description: string };
+  nav: { backToMain: string };
+  hero: {
+    title: string;
+    subtitle: string;
+    badges: string[];
+    miniCta: { text: string; anchor: string };
+  };
+  socialProof: {
+    title: string;
+    stats: Array<{ value: string; label: string }>;
+  };
+  problem: {
+    title: string;
+    scenarios: Array<{ industry: string; description: string }>;
+    bullets: string[];
+  };
+  methodology: {
+    title: string;
+    categories: Array<{ name: string; description: string }>;
+  };
+  example: {
+    title: string;
+    subtitle: string;
+    scores: Array<{ category: string; score: string; status: string }>;
+    findings: string[];
+    recommendations: string[];
+    caseLink: string;
+  };
+  deliverables: { title: string; items: string[] };
+  pricing: {
+    title: string;
+    packages: Array<{
+      name: string;
+      price: string;
+      features: string[];
+      recommended?: boolean;
+    }>;
+    deliveryTime: string;
+  };
+  leadMagnets: Array<{
+    name: string;
+    description: string;
+    buttonText: string;
+  }>;
+  relatedServices: {
+    title: string;
+    links: Array<{ text: string; url: string }>;
+  };
+  cta: {
+    title: string;
+    subtitle: string;
+    primaryButton: string;
+    secondaryButton: string;
+    tertiaryButton?: string;
+  };
+  faq: { label: string; items: Array<{ question: string; answer: string }> };
+  footer: {
+    name: string;
+    role: string;
+    links: { telegram: string; whatsapp: string; email: string };
+  };
+}
+
+export interface GeoServiceSection extends ServiceSection {
+  education: {
+    title: string;
+    definition: string;
+    explanation: string;
+    comparison: { headers: string[]; rows: string[][] };
+  };
+}
+
 export interface IndustrySection {
   nav: { backToMain: string };
   hero: { title: string; subtitle: string; stats: string };
@@ -39,6 +115,10 @@ export interface Translations {
   hotels: IndustrySection;
   spa: IndustrySection;
   labs: IndustrySection;
+  services: {
+    seo: ServiceSection;
+    geo: GeoServiceSection;
+  };
   landing: {
     nav: {
       back: string;

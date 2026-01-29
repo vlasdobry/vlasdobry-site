@@ -15,6 +15,10 @@ export default defineConfig({
         name: 'rewrite-routes',
         configureServer(server) {
           const routes = [
+            { prefix: '/en/services/seo', file: '/seo-en.html' },
+            { prefix: '/en/services/geo', file: '/geo-en.html' },
+            { prefix: '/services/seo', file: '/seo.html' },
+            { prefix: '/services/geo', file: '/geo.html' },
             { prefix: '/en/for-hotels', file: '/for-hotels-en.html' },
             { prefix: '/en/for-labs', file: '/for-labs-en.html' },
             { prefix: '/en/for-spa', file: '/for-spa-en.html' },
@@ -55,6 +59,10 @@ export default defineConfig({
           'for-spa-en': path.resolve(__dirname, 'for-spa-en.html'),
           'projects': path.resolve(__dirname, 'projects.html'),
           'projects-en': path.resolve(__dirname, 'projects-en.html'),
+          'seo': path.resolve(__dirname, 'seo.html'),
+          'seo-en': path.resolve(__dirname, 'seo-en.html'),
+          'geo': path.resolve(__dirname, 'geo.html'),
+          'geo-en': path.resolve(__dirname, 'geo-en.html'),
         },
       },
     },
