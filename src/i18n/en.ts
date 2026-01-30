@@ -565,46 +565,24 @@ export const en: Translations = {
     seo: {
       meta: {
         title: 'SEO Audit | Vlas Fedorov',
-        description: 'Complete SEO audit in 3 days. Find critical errors, get ready-to-use code. From $150. 50+ audits.',
+        description: 'Complete SEO audit with action plan. Technical analysis, content, local SEO, reputation — in one report. $150.',
       },
       nav: { backToMain: 'Back' },
       hero: {
         title: 'SEO Audit',
-        subtitle: 'Find out why your website isn\'t ranking — and how to fix it in 3 days',
-        badges: ['Technical SEO', 'On-Page', 'Local SEO'],
+        subtitle: 'Complete SEO audit with action plan. Technical analysis, content, local SEO, reputation — in one report',
+        badges: ['Technical SEO', 'Content', 'Local SEO'],
         miniCta: { text: 'See sample report ↓', anchor: '#example-audit' },
-      },
-      socialProof: {
-        title: 'Experience',
-        stats: [
-          { value: '50+', label: 'SEO audits since 2020' },
-          { value: '3 industries', label: 'hotels, SPA, medical' },
-          { value: 'Russia, CIS, Europe', label: 'client geography' },
-        ],
-      },
-      problem: {
-        title: 'Sound familiar?',
-        scenarios: [
-          { industry: 'Hotel', description: 'You\'re a 4-star hotel marketer. High season is 3 months away. Your site is on page 2 of Google for "hotel [city]". Competitors take 80% of bookings. Management asks: "Why isn\'t it working?"' },
-          { industry: 'SPA', description: 'Opened a $500K SPA complex. Paid $40K for the website. Six months later — 200 organic visitors/month. Spending $1K/month on ads when you could get clients for free.' },
-          { industry: 'Lab', description: 'Patients search "DNA paternity test [city]". You\'re on page 5. Aggregators and competitors are in top 3. Losing 10-20 leads every day.' },
-        ],
-        bullets: [
-          'Spending $500+/month on ads with zero organic traffic',
-          'Competitors in top 3 of Google, you\'re beyond page one',
-          'Paid $30K+ for a website that generates no leads',
-          'Don\'t know where to start: hundreds of recommendations, what\'s first?',
-        ],
       },
       methodology: {
         title: 'What I Check',
         categories: [
-          { name: 'Technical SEO', description: 'robots.txt, sitemap.xml, page speed, mobile version, HTTPS, canonical' },
+          { name: 'Technical SEO', description: 'robots.txt, sitemap.xml, page speed, mobile version, HTTPS, canonical, indexing' },
           { name: 'On-Page SEO', description: 'Title, Description, H1-H6 headers, URL structure, internal linking' },
-          { name: 'Content', description: 'Uniqueness, completeness, keywords, image alt tags' },
-          { name: 'Schema.org', description: 'Structured markup for rich snippets in search results' },
-          { name: 'Local SEO', description: 'Google Business, Maps, NAP consistency, reviews' },
-          { name: 'E-E-A-T', description: 'Experience, Expertise, Authoritativeness, Trustworthiness' },
+          { name: 'Content', description: 'Uniqueness, query relevance, image alt tags' },
+          { name: 'Schema.org', description: 'Structured markup for rich snippets: LocalBusiness, Hotel, FAQ' },
+          { name: 'Local SEO', description: 'Google Business Profile, Maps, NAP consistency' },
+          { name: 'E-E-A-T', description: 'Expertise, authoritativeness, and trust signals for search engines' },
         ],
       },
       example: {
@@ -636,47 +614,41 @@ export const en: Translations = {
       deliverables: {
         title: 'Audit Deliverables',
         items: [
-          '~15 page PDF report with scores across 5 categories',
-          '12 tables: issues, priorities, recommendations',
-          '4 ready-to-use code files — robots.txt, sitemap.xml, Schema.org, alt tags',
+          '10-15 page PDF report with scores across 5 categories',
+          'Issue tables with priorities and recommendations',
+          'Ready-to-use code — robots.txt, Schema.org, Alt tag examples',
           'Action plan: week 1 (critical) → week 2-3 (important) → month 1-2 (growth)',
         ],
       },
       pricing: {
         title: 'Pricing',
         packages: [
-          { name: 'Express', price: '$150', features: ['Technical SEO + On-Page', 'Up to 10 pages', 'Delivery: 3 days'] },
-          { name: 'Standard', price: '$350', features: ['Full audit', 'Up to 50 pages', 'Ready-to-use code', 'Delivery: 3 days'], recommended: true },
-          { name: 'Premium', price: 'from $700', features: ['Full audit', 'Implementation included', 'Delivery: 2 weeks'] },
+          { name: 'Full Audit', price: '$150', features: ['50+ parameters checked', 'Scores across 5 categories', 'Ready-to-use code', 'Action plan'], recommended: true },
         ],
-        deliveryTime: '3 business days (Express/Standard), 2 weeks (Premium)',
+        deliveryTime: 'Delivery: 1-2 business days',
       },
       leadMagnets: [
-        { name: 'SEO Checklist for Hotels & SPAs: 25 Points', description: 'Check for basic errors yourself. PDF, 3 pages.', buttonText: 'Download free checklist' },
-        { name: 'Free Express Analysis', description: 'Send your website link — I\'ll check 5 critical parameters and send results in 24 hours.', buttonText: 'Get express analysis' },
+        { name: 'Free Express Analysis', description: 'Send your website link — I\'ll check Title, Description, speed, mobile version, and indexing. Results in 24 hours. Data can be verified with PageSpeed Insights.', buttonText: 'Get express analysis' },
       ],
       relatedServices: {
         title: 'Related Services',
         links: [
           { text: 'GEO Audit', url: '/en/services/geo/' },
-          { text: 'Hotel Marketing', url: '/en/for-hotels/' },
-          { text: 'SPA Marketing', url: '/en/for-spa/' },
-          { text: 'Lab Marketing', url: '/en/for-labs/' },
         ],
       },
       cta: {
         title: 'Get a list of critical errors on your website',
         subtitle: 'I\'ll respond within 24 hours. If the audit finds no issues — full refund.',
         primaryButton: 'Order SEO Audit for $150',
-        secondaryButton: 'Download free checklist',
+        secondaryButton: 'Get free express analysis',
         tertiaryButton: 'Ask a question on Telegram',
       },
       faq: {
         label: 'FAQ',
         items: [
-          { question: 'How long does an SEO audit take?', answer: 'Express and Standard — 3 business days. Premium with implementation — 2 weeks.' },
-          { question: 'What will I receive after the audit?', answer: '15-30 page PDF report with scores, prioritized issue table, ready-to-use code (robots.txt, sitemap, Schema.org), and a 1-2 month action plan.' },
-          { question: 'What websites is the audit suitable for?', answer: 'I specialize in hotels, SPA complexes, and medical facilities (DNA labs, clinics). Also work with e-commerce and B2B.' },
+          { question: 'How long does an SEO audit take?', answer: '1-2 business days. You\'ll receive a complete report with a ready action plan.' },
+          { question: 'What will I receive after the audit?', answer: '10-15 page PDF report with scores across 5 categories, prioritized issue tables, ready-to-use code (robots.txt, Schema.org), and a 1-2 month action plan.' },
+          { question: 'What websites is the audit suitable for?', answer: 'Any website. Especially useful for hotels, SPA complexes, medical facilities, e-commerce, and B2B.' },
           { question: 'Is there a guarantee?', answer: 'Yes. If the audit finds no issues on your site — full refund.' },
         ],
       },
@@ -697,28 +669,6 @@ export const en: Translations = {
         subtitle: 'Make your business visible to ChatGPT, Perplexity, AI search — before your competitors catch on',
         badges: ['ChatGPT', 'Perplexity', 'Claude'],
         miniCta: { text: 'What is GEO? ↓', anchor: '#what-is-geo' },
-      },
-      socialProof: {
-        title: 'Experience',
-        stats: [
-          { value: 'Pioneer', label: 'GEO audits since 2024' },
-          { value: '20+', label: 'GEO audits for hotels and medical' },
-          { value: '6 AI systems', label: 'ChatGPT, Perplexity, Claude, Gemini, YandexGPT, GigaChat' },
-        ],
-      },
-      problem: {
-        title: 'Sound familiar?',
-        scenarios: [
-          { industry: 'Hotel', description: 'Guest opens ChatGPT: "Best family hotel in Miami". AI names 3 hotels — none of them yours. You invested $200K in website and SEO, but AI ignores you. And 30% of guests already search via AI.' },
-          { industry: 'SPA', description: 'Client asks Perplexity: "SPA with hammam in New York". Perplexity recommends 5 places. You opened a year ago, invested $1M — but you\'re not there. Competitors with 2015 websites are in the top. Why?' },
-          { industry: 'Lab', description: 'Patient asks AI: "Where to get a DNA paternity test in [city]". AI recommends aggregators and 2 competitors. Your lab is the market leader with 10 years of experience, but AI doesn\'t know that.' },
-        ],
-        bullets: [
-          'Client asks ChatGPT "best [your service] in [city]" — AI recommends competitors',
-          'Perplexity answers questions about your niche — but you\'re not there',
-          'AI recommends 3 companies — and none of them are yours',
-          'You invested $50K+ in SEO, but 30% of clients already search via AI',
-        ],
       },
       education: {
         title: 'What is GEO?',
@@ -799,9 +749,6 @@ export const en: Translations = {
         title: 'Related Services',
         links: [
           { text: 'SEO Audit', url: '/en/services/seo/' },
-          { text: 'Hotel Marketing', url: '/en/for-hotels/' },
-          { text: 'Lab Marketing', url: '/en/for-labs/' },
-          { text: 'SPA Marketing', url: '/en/for-spa/' },
         ],
       },
       cta: {

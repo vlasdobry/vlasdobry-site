@@ -13,15 +13,6 @@ export interface ServiceSection {
     badges: string[];
     miniCta: { text: string; anchor: string };
   };
-  socialProof: {
-    title: string;
-    stats: Array<{ value: string; label: string }>;
-  };
-  problem: {
-    title: string;
-    scenarios: Array<{ industry: string; description: string }>;
-    bullets: string[];
-  };
   methodology: {
     title: string;
     categories: Array<{ name: string; description: string }>;
