@@ -682,8 +682,8 @@ export const en: Translations = {
       nav: { backToMain: 'Back' },
       hero: {
         title: 'GEO Audit: AI Search Optimization',
-        subtitle: 'Make your business visible to ChatGPT, Perplexity, AI search — before your competitors catch on',
-        badges: ['ChatGPT', 'Perplexity', 'Claude'],
+        subtitle: 'Make your business visible to ChatGPT, Perplexity, Claude and other AI systems',
+        badges: ['6 AI Systems', 'llms.txt', 'Schema.org'],
         miniCta: { text: 'What is GEO? ↓', anchor: '#what-is-geo' },
       },
       education: {
@@ -712,11 +712,13 @@ export const en: Translations = {
         ],
       },
       example: {
-        title: 'Sample Audit',
+        title: 'What I Find in Audits',
         subtitle: '4-star SPA Hotel in Southern Russia (NDA)',
         scores: [
           { category: 'AI Visibility', score: '2/10', status: 'Critical' },
           { category: 'Structured Data', score: '1/10', status: 'Missing' },
+          { category: 'llms.txt', score: '0/10', status: 'Missing' },
+          { category: 'Noscript fallback', score: '0/10', status: 'Missing' },
           { category: 'Factual Density', score: '5/10', status: 'Average' },
           { category: 'Citations', score: '3/10', status: 'Low' },
           { category: 'Reputation', score: '4/10', status: 'Issues' },
@@ -726,7 +728,7 @@ export const en: Translations = {
           'llms.txt — missing',
           'Noscript fallback — missing',
           'Content — marketing phrases instead of facts ("immerse in world of comfort")',
-          'Rating on aggregators — 3.6/10',
+          'Rating on aggregators — 3.6/5',
         ],
         recommendations: [
           'Create llms.txt with key business information',
@@ -738,13 +740,13 @@ export const en: Translations = {
         caseLink: 'Detailed case study with results →',
       },
       deliverables: {
-        title: 'Audit Deliverables',
+        title: 'What You Get',
         items: [
-          '~20 page PDF report with scores across 5 categories',
-          '15 tables: AI visibility, competitors, priorities',
-          '5 ready-to-use code files — llms.txt, Schema.org, noscript fallback, FAQPage',
-          '10 monitoring prompts for YandexGPT, GigaChat, ChatGPT, Perplexity',
-          'Action plan: week 1 (basics) → week 2 (content) → week 3-4 (reputation)',
+          'PDF report with scores across 7 categories',
+          'Tables: AI visibility, competitor analysis, priorities',
+          'Ready-to-use code — llms.txt, Schema.org, noscript fallback',
+          'Prompts for monitoring visibility in AI systems',
+          'Weekly action plan',
         ],
       },
       pricing: {
@@ -775,8 +777,8 @@ export const en: Translations = {
         title: 'Find out if AI recommends you — free',
         subtitle: 'Send your website link — I\'ll check in ChatGPT and Perplexity and send a screenshot in 24 hours. Free, no strings attached.',
         primaryButton: 'Get free check',
-        secondaryButton: 'Download llms.txt guide',
-        tertiaryButton: 'Order full GEO audit for $250',
+        secondaryButton: '',
+        tertiaryButton: '',
       },
       faq: {
         label: 'FAQ',

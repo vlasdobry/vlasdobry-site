@@ -682,8 +682,8 @@ export const ru: Translations = {
       nav: { backToMain: 'Назад' },
       hero: {
         title: 'GEO-аудит: оптимизация для AI-поисковиков',
-        subtitle: 'Сделаю ваш бизнес видимым для ChatGPT, Perplexity, YandexGPT — пока конкуренты об этом не знают',
-        badges: ['ChatGPT', 'Perplexity', 'YandexGPT'],
+        subtitle: 'Сделаю ваш бизнес видимым для ChatGPT, Perplexity, YandexGPT и других AI-систем',
+        badges: ['6 AI-систем', 'llms.txt', 'Schema.org'],
         miniCta: { text: 'Что такое GEO? ↓', anchor: '#что-такое-geo' },
       },
       education: {
@@ -712,11 +712,13 @@ export const ru: Translations = {
         ],
       },
       example: {
-        title: 'Пример аудита',
+        title: 'Что нахожу в аудитах',
         subtitle: 'СПА-отель 4* в Краснодарском крае (NDA)',
         scores: [
           { category: 'Видимость в AI', score: '2/10', status: 'Критично' },
           { category: 'Структурированные данные', score: '1/10', status: 'Отсутствуют' },
+          { category: 'llms.txt', score: '0/10', status: 'Отсутствует' },
+          { category: 'Noscript fallback', score: '0/10', status: 'Отсутствует' },
           { category: 'Фактическая плотность', score: '5/10', status: 'Средне' },
           { category: 'Цитируемость', score: '3/10', status: 'Низкая' },
           { category: 'Репутация', score: '4/10', status: 'Проблемы' },
@@ -726,7 +728,7 @@ export const ru: Translations = {
           'llms.txt — отсутствует',
           'Noscript fallback — отсутствует',
           'Контент — маркетинговые фразы вместо фактов ("окунитесь в мир комфорта")',
-          'Рейтинг на агрегаторах — 3.6/10',
+          'Рейтинг на агрегаторах — 3.6/5',
         ],
         recommendations: [
           'Создать llms.txt с ключевой информацией о бизнесе',
@@ -738,13 +740,13 @@ export const ru: Translations = {
         caseLink: 'Подробный кейс с результатами →',
       },
       deliverables: {
-        title: 'Результат аудита',
+        title: 'Что вы получите',
         items: [
-          'PDF-отчёт ~20 страниц с оценками по 5 категориям',
-          '15 таблиц: видимость в AI, конкуренты, приоритеты',
-          '5 файлов с готовым кодом — llms.txt, Schema.org, noscript fallback, FAQPage',
-          '10 промптов для мониторинга видимости в YandexGPT, GigaChat, ChatGPT, Perplexity',
-          'План действий: неделя 1 (базовое) → неделя 2 (контент) → неделя 3-4 (репутация)',
+          'PDF-отчёт с оценками по 7 категориям',
+          'Таблицы: видимость в AI, анализ конкурентов, приоритеты',
+          'Готовый код — llms.txt, Schema.org, noscript fallback',
+          'Промпты для мониторинга видимости в AI-системах',
+          'План действий по неделям',
         ],
       },
       pricing: {
@@ -775,8 +777,8 @@ export const ru: Translations = {
         title: 'Узнайте, рекомендует ли вас AI — бесплатно',
         subtitle: 'Отправьте ссылку на сайт — проверю в ChatGPT и Perplexity и пришлю скриншот за 24 часа. Бесплатно, без обязательств.',
         primaryButton: 'Получить бесплатную проверку',
-        secondaryButton: 'Скачать гайд по llms.txt',
-        tertiaryButton: 'Заказать полный GEO-аудит за 25 000 ₽',
+        secondaryButton: '',
+        tertiaryButton: '',
       },
       faq: {
         label: 'Частые вопросы',
