@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, ChevronDown, ChevronUp, Check } from 'lucide-react';
+import { ArrowLeft, ChevronDown, ChevronUp, Check, X } from 'lucide-react';
 import { useI18n, ServiceKey } from '../i18n';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import type { GeoServiceSection } from '../i18n/types';
@@ -252,27 +252,38 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
             {section.pricing.title}
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
             {section.pricing.packages.map((pkg, i) => (
               <div
                 key={i}
-                className={`rounded-xl p-6 border-2 ${
+                className={`rounded-xl p-6 border-2 flex flex-col ${
                   pkg.recommended
                     ? 'border-black bg-zinc-50'
                     : 'border-zinc-100'
                 }`}
               >
-                {pkg.recommended && (
-                  <span className="inline-block text-[10px] font-bold uppercase tracking-widest bg-black text-white px-3 py-1 rounded-full mb-4">
-                    {lang === 'ru' ? 'Рекомендую' : 'Recommended'}
-                  </span>
-                )}
+                <div className="h-8 mb-2">
+                  {pkg.recommended && (
+                    <span className="inline-block text-[10px] font-bold uppercase tracking-widest bg-black text-white px-3 py-1 rounded-full">
+                      {lang === 'ru' ? 'Рекомендую' : 'Recommended'}
+                    </span>
+                  )}
+                </div>
                 <h3 className="text-xl font-bold mb-2">{pkg.name}</h3>
                 <div className="text-3xl font-black mb-4">{pkg.price}</div>
-                <ul className="space-y-2">
-                  {pkg.features.map((feature, j) => (
-                    <li key={j} className="flex items-start gap-2 text-sm text-zinc-600">
-                      <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                <ul className="space-y-2 flex-grow">
+                  {section.pricing.allFeatures.map((feature, j) => (
+                    <li
+                      key={j}
+                      className={`flex items-start gap-2 text-sm ${
+                        pkg.features[j] ? 'text-zinc-600' : 'text-zinc-300'
+                      }`}
+                    >
+                      {pkg.features[j] ? (
+                        <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      ) : (
+                        <X className="w-4 h-4 text-zinc-300 mt-0.5 flex-shrink-0" />
+                      )}
                       {feature}
                     </li>
                   ))}
@@ -282,30 +293,6 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
           </div>
 
           <p className="text-sm text-zinc-400 mt-6">{section.pricing.deliveryTime}</p>
-        </section>
-
-        {/* Lead Magnets Section */}
-        <section className="py-16 border-b border-zinc-100" aria-labelledby="leadmagnets-heading">
-          <h2 id="leadmagnets-heading" className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-12">
-            {lang === 'ru' ? 'Начните бесплатно' : 'Start Free'}
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {section.leadMagnets.map((magnet, i) => (
-              <div key={i} className="bg-zinc-50 rounded-xl p-6">
-                <h3 className="font-bold text-lg mb-2">{magnet.name}</h3>
-                <p className="text-zinc-600 text-sm mb-4">{magnet.description}</p>
-                <a
-                  href="https://t.me/vlasdobry"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block text-sm font-bold uppercase tracking-widest border-2 border-black px-5 py-2.5 hover:bg-black hover:text-white transition-all"
-                >
-                  {magnet.buttonText}
-                </a>
-              </div>
-            ))}
-          </div>
         </section>
 
         {/* Related Services Section */}
@@ -381,18 +368,20 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
               href="https://t.me/vlasdobry"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block text-base md:text-lg font-bold uppercase tracking-[0.15em] bg-black text-white px-8 py-4 hover:bg-zinc-800 transition-all"
+              className="inline-block text-lg md:text-xl font-bold uppercase tracking-[0.2em] border-2 border-black px-10 py-5 hover:bg-black hover:text-white transition-all"
             >
               {section.cta.primaryButton}
             </a>
-            <a
-              href="https://t.me/vlasdobry"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block text-base md:text-lg font-bold uppercase tracking-[0.15em] border-2 border-black px-8 py-4 hover:bg-black hover:text-white transition-all"
-            >
-              {section.cta.secondaryButton}
-            </a>
+            {section.cta.secondaryButton && (
+              <a
+                href="https://t.me/vlasdobry"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block text-base md:text-lg font-bold uppercase tracking-[0.15em] border-2 border-black px-8 py-4 hover:bg-black hover:text-white transition-all"
+              >
+                {section.cta.secondaryButton}
+              </a>
+            )}
           </div>
 
           {section.cta.tertiaryButton && (

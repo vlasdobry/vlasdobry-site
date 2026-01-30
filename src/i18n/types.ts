@@ -28,19 +28,15 @@ export interface ServiceSection {
   deliverables: { title: string; items: string[] };
   pricing: {
     title: string;
+    allFeatures: string[];
     packages: Array<{
       name: string;
       price: string;
-      features: string[];
+      features: boolean[];
       recommended?: boolean;
     }>;
     deliveryTime: string;
   };
-  leadMagnets: Array<{
-    name: string;
-    description: string;
-    buttonText: string;
-  }>;
   relatedServices: {
     title: string;
     links: Array<{ text: string; url: string }>;

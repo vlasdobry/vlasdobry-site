@@ -570,23 +570,24 @@ export const en: Translations = {
       nav: { backToMain: 'Back' },
       hero: {
         title: 'SEO Audit',
-        subtitle: 'Complete SEO audit with action plan. Technical analysis, content, local SEO, reputation — in one report',
+        subtitle: '7-category SEO audit with action plan. Technical analysis, content, local SEO, reputation — in one report',
         badges: ['Technical SEO', 'Content', 'Local SEO'],
-        miniCta: { text: 'See sample report ↓', anchor: '#example-audit' },
+        miniCta: { text: 'Typical findings ↓', anchor: '#typical-findings' },
       },
       methodology: {
         title: 'What I Check',
         categories: [
-          { name: 'Technical SEO', description: 'robots.txt, sitemap.xml, page speed, mobile version, HTTPS, canonical, indexing' },
-          { name: 'On-Page SEO', description: 'Title, Description, H1-H6 headers, URL structure, internal linking' },
-          { name: 'Content', description: 'Uniqueness, query relevance, image alt tags' },
-          { name: 'Schema.org', description: 'Structured markup for rich snippets: LocalBusiness, Hotel, FAQ' },
-          { name: 'Local SEO', description: 'Google Business Profile, Maps, NAP consistency' },
+          { name: 'Technical SEO', description: 'robots.txt, sitemap.xml, HTTPS, canonical, indexing, Core Web Vitals (LCP, CLS, INP)' },
+          { name: 'On-Page SEO', description: 'Title, Description, H1-H6 headers, URL structure, internal linking, Open Graph' },
+          { name: 'Content', description: 'Image alt tags, content uniqueness, topic coverage depth' },
+          { name: 'Schema.org', description: 'Structured markup for rich snippets: Hotel, LocalBusiness, FAQ, Product' },
+          { name: 'Local SEO', description: 'Google Maps, Yelp, TripAdvisor, NAP consistency, reviews' },
+          { name: 'Reputation', description: 'Review analysis across platforms, backlink profile, brand mentions' },
           { name: 'E-E-A-T', description: 'Expertise, authoritativeness, and trust signals for search engines' },
         ],
       },
       example: {
-        title: 'Sample Audit',
+        title: 'What I Find in Audits',
         subtitle: '4-star SPA Hotel in Southern Russia (NDA)',
         scores: [
           { category: 'Technical SEO', score: '3/10', status: 'Critical' },
@@ -612,24 +613,36 @@ export const en: Translations = {
         caseLink: 'Detailed case study with results →',
       },
       deliverables: {
-        title: 'Audit Deliverables',
+        title: 'What You Get',
         items: [
           '10-15 page PDF report with scores across 5 categories',
           'Issue tables with priorities and recommendations',
-          'Ready-to-use code — robots.txt, Schema.org, Alt tag examples',
-          'Action plan: week 1 (critical) → week 2-3 (important) → month 1-2 (growth)',
+          'Ready-to-use code — robots.txt, Schema.org, meta tags, Alt tags',
+          'Reputation analysis — platform reviews with quotes',
+          'Links to tools for independent verification',
+          'Weekly action plan with expected results',
         ],
       },
       pricing: {
         title: 'Pricing',
-        packages: [
-          { name: 'Full Audit', price: '$150', features: ['50+ parameters checked', 'Scores across 5 categories', 'Ready-to-use code', 'Action plan'], recommended: true },
+        allFeatures: [
+          'Title, Description, speed check',
+          'Mobile version and indexing',
+          '10-15 page PDF report',
+          'Scores across 5 categories',
+          'Code examples for fixes',
+          'Weekly action plan',
+          'Ready files: robots.txt, sitemap, Schema.org',
+          'Meta tags and Alt tags for all pages',
+          'Full turnkey implementation',
         ],
-        deliveryTime: 'Delivery: 1-2 business days',
+        packages: [
+          { name: 'Express Analysis', price: 'Free', features: [true, true, false, false, false, false, false, false, false] },
+          { name: 'Audit', price: '$150', features: [true, true, true, true, true, true, true, true, false], recommended: true },
+          { name: 'Audit + Implementation', price: '$300', features: [true, true, true, true, true, true, true, true, true] },
+        ],
+        deliveryTime: 'Express: 24 hours · Audit: 1-2 days · Implementation: 1-2 sessions',
       },
-      leadMagnets: [
-        { name: 'Free Express Analysis', description: 'Send your website link — I\'ll check Title, Description, speed, mobile version, and indexing. Results in 24 hours. Data can be verified with PageSpeed Insights.', buttonText: 'Get express analysis' },
-      ],
       relatedServices: {
         title: 'Related Services',
         links: [
@@ -639,16 +652,17 @@ export const en: Translations = {
       cta: {
         title: 'Get a list of critical errors on your website',
         subtitle: 'I\'ll respond within 24 hours. If the audit finds no issues — full refund.',
-        primaryButton: 'Order SEO Audit for $150',
-        secondaryButton: 'Get free express analysis',
-        tertiaryButton: 'Ask a question on Telegram',
+        primaryButton: 'Discuss audit',
+        secondaryButton: '',
+        tertiaryButton: '',
       },
       faq: {
         label: 'FAQ',
         items: [
-          { question: 'How long does an SEO audit take?', answer: '1-2 business days. You\'ll receive a complete report with a ready action plan.' },
-          { question: 'What will I receive after the audit?', answer: '10-15 page PDF report with scores across 5 categories, prioritized issue tables, ready-to-use code (robots.txt, Schema.org), and a 1-2 month action plan.' },
-          { question: 'What websites is the audit suitable for?', answer: 'Any website. Especially useful for hotels, SPA complexes, medical facilities, e-commerce, and B2B.' },
+          { question: 'How long does the audit take?', answer: 'Express analysis — 24 hours. Full audit — 1-2 business days. Implementation — 1-2 sessions of 1-2 hours.' },
+          { question: 'What\'s the difference between Audit and Audit + Implementation?', answer: 'Same report and files. The difference — who implements: you or me.' },
+          { question: 'What\'s needed for implementation?', answer: 'Just site access: FTP/hosting or CMS admin panel (WordPress, Wix, etc.). You provide access — I do everything myself.' },
+          { question: 'What websites is it suitable for?', answer: 'Any website: hotels, SPA, medical facilities, e-commerce, B2B. Especially effective for sites without basic SEO optimization.' },
           { question: 'Is there a guarantee?', answer: 'Yes. If the audit finds no issues on your site — full refund.' },
         ],
       },
@@ -733,18 +747,22 @@ export const en: Translations = {
       },
       pricing: {
         title: 'Pricing',
-        packages: [
-          { name: 'Express', price: '$250', features: ['Testing in 3 AI', 'Basic analysis', 'Delivery: 5 days'] },
-          { name: 'Standard', price: '$500', features: ['Full audit (6 AI)', 'Competitor analysis', 'Ready-to-use code', 'Delivery: 5 days'], recommended: true },
-          { name: 'Premium', price: 'from $1,000', features: ['Full audit', 'Implementation', '3-month monitoring', 'Delivery: 1 month'] },
+        allFeatures: [
+          'Testing in 3 AI systems',
+          'Testing in 6 AI systems',
+          'Basic visibility analysis',
+          'Competitor analysis',
+          'Ready-to-use code (llms.txt, Schema.org)',
+          'Full implementation',
+          '3-month monitoring',
         ],
-        deliveryTime: '5 business days (Express/Standard), 1 month (Premium)',
+        packages: [
+          { name: 'Express', price: '$250', features: [true, false, true, false, false, false, false] },
+          { name: 'Standard', price: '$500', features: [false, true, true, true, true, false, false], recommended: true },
+          { name: 'Premium', price: 'from $1,000', features: [false, true, true, true, true, true, true] },
+        ],
+        deliveryTime: 'Express/Standard: 5 days · Premium: 1 month',
       },
-      leadMagnets: [
-        { name: 'AI Visibility Check in 24 Hours', description: 'Send your website link — I\'ll check in ChatGPT and Perplexity, send screenshots. Free, no strings attached.', buttonText: 'Get free check' },
-        { name: 'Guide: How to Create llms.txt for Your Business', description: 'Step-by-step instructions + template. PDF, 5 pages.', buttonText: 'Download free guide' },
-        { name: '10 Prompts to Check AI Visibility', description: 'Ready queries for ChatGPT, Perplexity. Check visibility yourself every month.', buttonText: 'Get prompts' },
-      ],
       relatedServices: {
         title: 'Related Services',
         links: [
