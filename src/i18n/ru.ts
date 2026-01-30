@@ -593,7 +593,9 @@ export const ru: Translations = {
           { category: 'Техническое SEO', score: '3/10', status: 'Критично' },
           { category: 'On-Page SEO', score: '5/10', status: 'Требует работы' },
           { category: 'Контент', score: '7/10', status: 'Хорошо' },
+          { category: 'Schema.org', score: '2/10', status: 'Критично' },
           { category: 'Локальное SEO', score: '4/10', status: 'Требует работы' },
+          { category: 'Репутация', score: '5/10', status: 'Требует работы' },
           { category: 'E-E-A-T', score: '6/10', status: 'Средне' },
         ],
         findings: [
@@ -615,7 +617,7 @@ export const ru: Translations = {
       deliverables: {
         title: 'Что вы получите',
         items: [
-          'PDF-отчёт 10-15 страниц с оценками по 5 категориям',
+          'PDF-отчёт 10-15 страниц с оценками по 7 категориям',
           'Таблицы проблем с приоритетами и рекомендациями',
           'Готовый код — robots.txt, Schema.org, мета-теги, Alt-теги',
           'Анализ репутации — отзывы на площадках с цитатами',
@@ -629,7 +631,7 @@ export const ru: Translations = {
           'Проверка Title, Description, скорость',
           'Мобильная версия и индексация',
           'PDF-отчёт 10-15 страниц',
-          'Оценка по 5 категориям',
+          'Оценка по 7 категориям',
           'Примеры кода для исправлений',
           'План действий по неделям',
           'Готовые файлы: robots.txt, sitemap, Schema.org',

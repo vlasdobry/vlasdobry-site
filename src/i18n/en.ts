@@ -593,7 +593,9 @@ export const en: Translations = {
           { category: 'Technical SEO', score: '3/10', status: 'Critical' },
           { category: 'On-Page SEO', score: '5/10', status: 'Needs work' },
           { category: 'Content', score: '7/10', status: 'Good' },
+          { category: 'Schema.org', score: '2/10', status: 'Critical' },
           { category: 'Local SEO', score: '4/10', status: 'Needs work' },
+          { category: 'Reputation', score: '5/10', status: 'Needs work' },
           { category: 'E-E-A-T', score: '6/10', status: 'Average' },
         ],
         findings: [
@@ -615,7 +617,7 @@ export const en: Translations = {
       deliverables: {
         title: 'What You Get',
         items: [
-          '10-15 page PDF report with scores across 5 categories',
+          '10-15 page PDF report with scores across 7 categories',
           'Issue tables with priorities and recommendations',
           'Ready-to-use code — robots.txt, Schema.org, meta tags, Alt tags',
           'Reputation analysis — platform reviews with quotes',
@@ -629,7 +631,7 @@ export const en: Translations = {
           'Title, Description, speed check',
           'Mobile version and indexing',
           '10-15 page PDF report',
-          'Scores across 5 categories',
+          'Scores across 7 categories',
           'Code examples for fixes',
           'Weekly action plan',
           'Ready files: robots.txt, sitemap, Schema.org',
