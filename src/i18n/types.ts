@@ -188,6 +188,10 @@ export interface Translations {
         whatsapp: string;
         email: string;
       };
+      nav: {
+        offers: { label: string; items: Array<{ name: string; url: string }> };
+        services: { label: string; items: Array<{ name: string; url: string }> };
+      };
     };
   };
   projects: {

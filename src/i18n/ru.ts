@@ -542,6 +542,23 @@ export const ru: Translations = {
         whatsapp: 'WhatsApp',
         email: 'Email',
       },
+      nav: {
+        offers: {
+          label: 'Предложения',
+          items: [
+            { name: 'Для отелей', url: '/for-hotels' },
+            { name: 'Для СПА', url: '/for-spa' },
+            { name: 'Для лабораторий', url: '/for-labs' },
+          ],
+        },
+        services: {
+          label: 'Услуги',
+          items: [
+            { name: 'SEO-аудит', url: '/services/seo' },
+            { name: 'GEO-аудит', url: '/services/geo' },
+          ],
+        },
+      },
     },
   },
   services: {

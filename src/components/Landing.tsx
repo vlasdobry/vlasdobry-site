@@ -144,16 +144,46 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
       </section>
 
       {/* Footer */}
-      <footer className="pt-16 pb-24 flex flex-col md:flex-row justify-between items-center gap-12 border-t border-zinc-100">
-        <div className="text-center md:text-left">
-          <h4 className="text-2xl font-bold">{t.landing.footer.name}</h4>
-          <p className="text-zinc-400 text-sm font-light mt-1">{t.landing.footer.role}</p>
+      <footer className="pt-16 pb-24 border-t border-zinc-100">
+        <div className="flex flex-col md:flex-row justify-between gap-12">
+          {/* Left: Name, role, contacts */}
+          <div>
+            <h4 className="text-2xl font-bold">{t.landing.footer.name}</h4>
+            <p className="text-zinc-400 text-sm font-light mt-1">{t.landing.footer.role}</p>
+            <a href="tel:+79068972037" className="block mt-4 text-2xl font-bold hover:text-zinc-500 transition-colors">+7 906 897-20-37</a>
+            <div className="flex gap-6 mt-4 text-[11px] font-bold tracking-[0.4em] uppercase text-zinc-400">
+              <a href="https://t.me/vlasdobry" target="_blank" rel="noopener noreferrer" className="hover:text-black">{t.landing.footer.links.telegram}</a>
+              <a href="https://wa.me/79068972037" target="_blank" rel="noopener noreferrer" className="hover:text-black">{t.landing.footer.links.whatsapp}</a>
+              <a href="mailto:vlasdobry@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-black">{t.landing.footer.links.email}</a>
+            </div>
+          </div>
+          {/* Right: Offers & Services */}
+          <div className="flex gap-12">
+            <div>
+              <h5 className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-3">{t.landing.footer.nav.offers.label}</h5>
+              <div className="border-t border-zinc-100 mb-3"></div>
+              <ul className="space-y-2">
+                {t.landing.footer.nav.offers.items.map((item) => (
+                  <li key={item.url}>
+                    <a href={item.url} className="text-sm text-zinc-500 hover:text-black transition-colors">{item.name}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h5 className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-3">{t.landing.footer.nav.services.label}</h5>
+              <div className="border-t border-zinc-100 mb-3"></div>
+              <ul className="space-y-2">
+                {t.landing.footer.nav.services.items.map((item) => (
+                  <li key={item.url}>
+                    <a href={item.url} className="text-sm text-zinc-500 hover:text-black transition-colors">{item.name}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
-        <div className="flex gap-10 text-[11px] font-bold tracking-[0.4em] uppercase text-zinc-400">
-          <a href="https://t.me/vlasdobry" target="_blank" rel="noopener noreferrer" className="hover:text-black">{t.landing.footer.links.telegram}</a>
-          <a href="https://wa.me/79068972037" target="_blank" rel="noopener noreferrer" className="hover:text-black">{t.landing.footer.links.whatsapp}</a>
-          <a href="mailto:vlasdobry@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-black">{t.landing.footer.links.email}</a>
-        </div>
+        <p className="text-zinc-300 text-sm mt-12">&copy; {new Date().getFullYear()} {t.landing.footer.name}</p>
       </footer>
     </main>
   );
