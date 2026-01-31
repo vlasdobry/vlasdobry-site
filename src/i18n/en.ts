@@ -752,15 +752,17 @@ export const en: Translations = {
       pricing: {
         title: 'Pricing',
         allFeatures: [
-          '6 AI systems: ChatGPT, Perplexity, Claude, Gemini, YandexGPT, GigaChat',
-          'Visibility and competitor analysis',
-          'Ready-to-use code — llms.txt, Schema.org, noscript fallback',
+          'Health Score 0-100 in 30 seconds',
+          'Issues list with priorities',
+          'Full audit in 6 AI systems',
+          'Ready-to-use code — llms.txt, Schema.org, noscript',
           '3-month monitoring',
         ],
         packages: [
-          { name: 'GEO Audit', price: '$500', features: [true, true, true, true] },
+          { name: 'Health Score', price: 'Free', features: [true, true, false, false, false] },
+          { name: 'GEO Audit', price: '$500', features: [true, true, true, true, true], recommended: true },
         ],
-        deliveryTime: 'Implementation — on request',
+        deliveryTime: '',
       },
       relatedServices: {
         title: 'Related Services',
@@ -769,9 +771,9 @@ export const en: Translations = {
         ],
       },
       cta: {
-        title: 'Find out if AI recommends you — free',
-        subtitle: 'Send your website link — I\'ll check in ChatGPT and Perplexity and send a screenshot in 24 hours. Free, no strings attached.',
-        primaryButton: 'Get free check',
+        title: 'Get your Health Score — free',
+        subtitle: 'Enter URL — get visibility score 0-100 and issues list in 30 seconds. Automated, no signup required.',
+        primaryButton: 'Check website',
         secondaryButton: '',
         tertiaryButton: '',
       },

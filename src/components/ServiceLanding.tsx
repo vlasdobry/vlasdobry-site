@@ -255,6 +255,8 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
           <div className={`grid gap-6 items-stretch ${
             section.pricing.packages.length === 1
               ? 'grid-cols-1 max-w-md mx-auto'
+              : section.pricing.packages.length === 2
+              ? 'grid-cols-1 md:grid-cols-2 max-w-2xl mx-auto'
               : 'grid-cols-1 md:grid-cols-3'
           }`}>
             {section.pricing.packages.map((pkg, i) => (

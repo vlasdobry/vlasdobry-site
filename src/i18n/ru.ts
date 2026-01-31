@@ -752,15 +752,17 @@ export const ru: Translations = {
       pricing: {
         title: 'Стоимость',
         allFeatures: [
-          '6 AI-систем: ChatGPT, Perplexity, Claude, Gemini, YandexGPT, GigaChat',
-          'Анализ видимости и конкурентов',
-          'Готовый код — llms.txt, Schema.org, noscript fallback',
+          'Health Score 0-100 за 30 секунд',
+          'Список проблем с приоритетами',
+          'Полный аудит в 6 AI-системах',
+          'Готовый код — llms.txt, Schema.org, noscript',
           'Мониторинг 3 месяца',
         ],
         packages: [
-          { name: 'GEO-аудит', price: '50 000 ₽', features: [true, true, true, true] },
+          { name: 'Health Score', price: 'Бесплатно', features: [true, true, false, false, false] },
+          { name: 'GEO-аудит', price: '50 000 ₽', features: [true, true, true, true, true], recommended: true },
         ],
-        deliveryTime: 'Внедрение — по запросу',
+        deliveryTime: '',
       },
       relatedServices: {
         title: 'Связанные услуги',
@@ -769,9 +771,9 @@ export const ru: Translations = {
         ],
       },
       cta: {
-        title: 'Узнайте, рекомендует ли вас AI — бесплатно',
-        subtitle: 'Отправьте ссылку на сайт — проверю в ChatGPT и Perplexity и пришлю скриншот за 24 часа. Бесплатно, без обязательств.',
-        primaryButton: 'Получить бесплатную проверку',
+        title: 'Узнайте свой Health Score — бесплатно',
+        subtitle: 'Введите URL — получите оценку видимости 0-100 и список проблем за 30 секунд. Автоматически, без регистрации.',
+        primaryButton: 'Проверить сайт',
         secondaryButton: '',
         tertiaryButton: '',
       },
