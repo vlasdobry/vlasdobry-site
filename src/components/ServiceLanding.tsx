@@ -252,7 +252,11 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
             {section.pricing.title}
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+          <div className={`grid gap-6 items-stretch ${
+            section.pricing.packages.length === 1
+              ? 'grid-cols-1 max-w-md mx-auto'
+              : 'grid-cols-1 md:grid-cols-3'
+          }`}>
             {section.pricing.packages.map((pkg, i) => (
               <div
                 key={i}
@@ -292,7 +296,9 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
             ))}
           </div>
 
-          <p className="text-sm text-zinc-400 mt-6">{section.pricing.deliveryTime}</p>
+          {section.pricing.deliveryTime && (
+            <p className="text-sm text-zinc-400 mt-6">{section.pricing.deliveryTime}</p>
+          )}
         </section>
 
         {/* Related Services Section */}

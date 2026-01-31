@@ -84,7 +84,7 @@ Projects page (EN): https://vlasdobry.ru/en/projects/
 - Testing in 6 AI systems: ChatGPT, Perplexity, Claude, Gemini, YandexGPT, GigaChat
 - 20+ GEO audits
 - Deliverables: PDF report, AI test screenshots, competitor analysis, llms.txt code
-- Pricing: from 25,000 RUB ($250)
+- Pricing: 50,000 RUB ($500) — includes 3-month monitoring
 - Page (RU): https://vlasdobry.ru/services/geo/
 - Page (EN): https://vlasdobry.ru/en/services/geo/
 

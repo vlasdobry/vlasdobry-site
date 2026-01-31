@@ -677,7 +677,7 @@ export const ru: Translations = {
     geo: {
       meta: {
         title: 'GEO-аудит: оптимизация для ChatGPT, Perplexity, YandexGPT | Влас Фёдоров',
-        description: 'Сделаю ваш бизнес видимым для AI-поисковиков. Тестирование в 6 системах, готовый код llms.txt и Schema.org. От 25 000 ₽.',
+        description: 'Сделаю ваш бизнес видимым для AI-поисковиков. Тестирование в 6 системах, готовый код llms.txt и Schema.org. 50 000 ₽.',
       },
       nav: { backToMain: 'Назад' },
       hero: {
@@ -752,20 +752,15 @@ export const ru: Translations = {
       pricing: {
         title: 'Стоимость',
         allFeatures: [
-          'Тестирование в 3 AI-системах',
-          'Тестирование в 6 AI-системах',
-          'Базовый анализ видимости',
-          'Анализ конкурентов',
-          'Готовый код (llms.txt, Schema.org)',
-          'Полное внедрение',
+          '6 AI-систем: ChatGPT, Perplexity, Claude, Gemini, YandexGPT, GigaChat',
+          'Анализ видимости и конкурентов',
+          'Готовый код — llms.txt, Schema.org, noscript fallback',
           'Мониторинг 3 месяца',
         ],
         packages: [
-          { name: 'Экспресс', price: '25 000 ₽', features: [true, false, true, false, false, false, false] },
-          { name: 'Стандарт', price: '50 000 ₽', features: [false, true, true, true, true, false, false], recommended: true },
-          { name: 'Премиум', price: 'от 100 000 ₽', features: [false, true, true, true, true, true, true] },
+          { name: 'GEO-аудит', price: '50 000 ₽', features: [true, true, true, true] },
         ],
-        deliveryTime: 'Экспресс/Стандарт: 5 дней · Премиум: 1 месяц',
+        deliveryTime: 'Внедрение — по запросу',
       },
       relatedServices: {
         title: 'Связанные услуги',

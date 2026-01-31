@@ -677,7 +677,7 @@ export const en: Translations = {
     geo: {
       meta: {
         title: 'GEO Audit: Optimization for ChatGPT, Perplexity, AI Search | Vlas Fedorov',
-        description: 'Make your business visible to AI search engines. Testing in 6 systems, ready-to-use llms.txt and Schema.org code. From $250.',
+        description: 'Make your business visible to AI search engines. Testing in 6 systems, ready-to-use llms.txt and Schema.org code. $500.',
       },
       nav: { backToMain: 'Back' },
       hero: {
@@ -752,20 +752,15 @@ export const en: Translations = {
       pricing: {
         title: 'Pricing',
         allFeatures: [
-          'Testing in 3 AI systems',
-          'Testing in 6 AI systems',
-          'Basic visibility analysis',
-          'Competitor analysis',
-          'Ready-to-use code (llms.txt, Schema.org)',
-          'Full implementation',
+          '6 AI systems: ChatGPT, Perplexity, Claude, Gemini, YandexGPT, GigaChat',
+          'Visibility and competitor analysis',
+          'Ready-to-use code — llms.txt, Schema.org, noscript fallback',
           '3-month monitoring',
         ],
         packages: [
-          { name: 'Express', price: '$250', features: [true, false, true, false, false, false, false] },
-          { name: 'Standard', price: '$500', features: [false, true, true, true, true, false, false], recommended: true },
-          { name: 'Premium', price: 'from $1,000', features: [false, true, true, true, true, true, true] },
+          { name: 'GEO Audit', price: '$500', features: [true, true, true, true] },
         ],
-        deliveryTime: 'Express/Standard: 5 days · Premium: 1 month',
+        deliveryTime: 'Implementation — on request',
       },
       relatedServices: {
         title: 'Related Services',
