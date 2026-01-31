@@ -752,7 +752,7 @@ export const ru: Translations = {
       pricing: {
         title: 'Стоимость',
         allFeatures: [
-          'Health Score 0-100 за 30 секунд',
+          'Health Score 0-100',
           'Список проблем с приоритетами',
           'Полный аудит в 6 AI-системах',
           'Готовый код — llms.txt, Schema.org, noscript',
@@ -772,7 +772,7 @@ export const ru: Translations = {
       },
       cta: {
         title: 'Узнайте свой Health Score — бесплатно',
-        subtitle: 'Введите URL — получите оценку видимости 0-100 и список проблем за 30 секунд. Автоматически, без регистрации.',
+        subtitle: 'Введите URL — получите оценку видимости 0-100 и список проблем. Автоматически, без регистрации.',
         primaryButton: 'Проверить сайт',
         secondaryButton: '',
         tertiaryButton: '',

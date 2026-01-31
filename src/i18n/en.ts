@@ -752,7 +752,7 @@ export const en: Translations = {
       pricing: {
         title: 'Pricing',
         allFeatures: [
-          'Health Score 0-100 in 30 seconds',
+          'Health Score 0-100',
           'Issues list with priorities',
           'Full audit in 6 AI systems',
           'Ready-to-use code — llms.txt, Schema.org, noscript',
@@ -772,7 +772,7 @@ export const en: Translations = {
       },
       cta: {
         title: 'Get your Health Score — free',
-        subtitle: 'Enter URL — get visibility score 0-100 and issues list in 30 seconds. Automated, no signup required.',
+        subtitle: 'Enter URL — get visibility score 0-100 and issues list. Automated, no signup required.',
         primaryButton: 'Check website',
         secondaryButton: '',
         tertiaryButton: '',
