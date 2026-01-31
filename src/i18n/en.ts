@@ -716,12 +716,12 @@ export const en: Translations = {
         subtitle: '4-star SPA Hotel in Southern Russia (NDA)',
         scores: [
           { category: 'AI Visibility', score: '2/10', status: 'Critical' },
-          { category: 'Structured Data', score: '1/10', status: 'Missing' },
-          { category: 'llms.txt', score: '0/10', status: 'Missing' },
-          { category: 'Noscript fallback', score: '0/10', status: 'Missing' },
+          { category: 'Structured Data', score: '1/10', status: 'Critical' },
+          { category: 'llms.txt', score: '0/10', status: 'Critical' },
+          { category: 'Noscript fallback', score: '0/10', status: 'Critical' },
           { category: 'Factual Density', score: '5/10', status: 'Average' },
           { category: 'Citations', score: '3/10', status: 'Low' },
-          { category: 'Reputation', score: '4/10', status: 'Issues' },
+          { category: 'Reputation', score: '4/10', status: 'Low' },
         ],
         findings: [
           'Schema.org — missing',
@@ -772,7 +772,7 @@ export const en: Translations = {
       },
       cta: {
         title: 'Get your Health Score — free',
-        subtitle: 'Enter URL — get visibility score 0-100 and issues list. Automated, no signup required.',
+        subtitle: 'Send your link — I\'ll run a check and send you Health Score with recommendations. Free.',
         primaryButton: 'Check website',
         secondaryButton: '',
         tertiaryButton: '',

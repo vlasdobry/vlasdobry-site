@@ -39,7 +39,7 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
     if (statusLower.includes('критично') || statusLower.includes('critical') || statusLower.includes('отсутств') || statusLower.includes('missing')) {
       return 'bg-red-100 text-red-700';
     }
-    if (statusLower.includes('требует') || statusLower.includes('needs') || statusLower.includes('низк') || statusLower.includes('low') || statusLower.includes('проблем') || statusLower.includes('issue')) {
+    if (statusLower.includes('требует') || statusLower.includes('needs') || statusLower.includes('низк') || statusLower.includes('low') || statusLower.includes('проблем') || statusLower.includes('issue') || statusLower.includes('слабо')) {
       return 'bg-amber-100 text-amber-700';
     }
     if (statusLower.includes('хорошо') || statusLower.includes('good')) {
@@ -115,12 +115,12 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
               </p>
 
               {/* Comparison Table */}
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse">
+              <div className="overflow-hidden">
+                <table className="w-full border-collapse text-sm md:text-base">
                   <thead>
                     <tr>
                       {geoSection.education.comparison.headers.map((header, i) => (
-                        <th key={i} className="text-left py-4 px-6 bg-zinc-100 font-bold first:rounded-tl-lg last:rounded-tr-lg">
+                        <th key={i} className="text-left py-3 px-3 md:py-4 md:px-6 bg-zinc-100 font-bold first:rounded-tl-lg last:rounded-tr-lg">
                           {header}
                         </th>
                       ))}
@@ -130,7 +130,7 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
                     {geoSection.education.comparison.rows.map((row, i) => (
                       <tr key={i} className="border-b border-zinc-100">
                         {row.map((cell, j) => (
-                          <td key={j} className="py-4 px-6 text-zinc-600">
+                          <td key={j} className="py-3 px-3 md:py-4 md:px-6 text-zinc-600">
                             {cell}
                           </td>
                         ))}
@@ -149,21 +149,17 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
             {section.methodology.title}
           </h2>
 
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
-              <tbody>
-                {section.methodology.categories.map((category, i) => (
-                  <tr key={i} className="border-b border-zinc-100 last:border-0">
-                    <td className="py-5 pr-6 font-bold text-lg align-top w-1/3">
-                      {category.name}
-                    </td>
-                    <td className="py-5 text-zinc-600 font-light">
-                      {category.description}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="space-y-0">
+            {section.methodology.categories.map((category, i) => (
+              <div key={i} className="border-b border-zinc-100 last:border-0 py-4 md:py-5 md:flex md:gap-6">
+                <div className="font-bold text-base md:text-lg md:w-1/3 md:flex-shrink-0 mb-1 md:mb-0">
+                  {category.name}
+                </div>
+                <div className="text-zinc-600 font-light text-sm md:text-base">
+                  {category.description}
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -177,21 +173,21 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
 
             {/* Scores Table */}
             <div className="bg-white rounded-lg border border-slate-200 overflow-hidden mb-10">
-              <table className="w-full">
+              <table className="w-full text-sm md:text-base">
                 <thead className="bg-slate-100 border-b border-slate-200">
                   <tr>
-                    <th className="text-left py-3 px-5 font-bold text-sm">{lang === 'ru' ? 'Категория' : 'Category'}</th>
-                    <th className="text-left py-3 px-5 font-bold text-sm">{lang === 'ru' ? 'Оценка' : 'Score'}</th>
-                    <th className="text-left py-3 px-5 font-bold text-sm">{lang === 'ru' ? 'Статус' : 'Status'}</th>
+                    <th className="text-left py-2 px-2 md:py-3 md:px-5 font-bold text-xs md:text-sm">{lang === 'ru' ? 'Категория' : 'Category'}</th>
+                    <th className="text-left py-2 px-2 md:py-3 md:px-5 font-bold text-xs md:text-sm">{lang === 'ru' ? 'Оценка' : 'Score'}</th>
+                    <th className="text-left py-2 px-2 md:py-3 md:px-5 font-bold text-xs md:text-sm">{lang === 'ru' ? 'Статус' : 'Status'}</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
                   {section.example.scores.map((score, i) => (
                     <tr key={i}>
-                      <td className="py-3 px-5 text-zinc-700">{score.category}</td>
-                      <td className="py-3 px-5 font-bold">{score.score}</td>
-                      <td className="py-3 px-5">
-                        <span className={`inline-block text-xs font-bold px-2.5 py-1 rounded-full ${getStatusColor(score.status)}`}>
+                      <td className="py-2 px-2 md:py-3 md:px-5 text-zinc-700 text-xs md:text-sm">{score.category}</td>
+                      <td className="py-2 px-2 md:py-3 md:px-5 font-bold text-xs md:text-sm">{score.score}</td>
+                      <td className="py-2 px-2 md:py-3 md:px-5">
+                        <span className={`inline-block text-[10px] md:text-xs font-bold px-1.5 md:px-2.5 py-0.5 md:py-1 rounded-full whitespace-nowrap ${getStatusColor(score.status)}`}>
                           {score.status}
                         </span>
                       </td>
@@ -236,10 +232,10 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
             {section.deliverables.title}
           </h2>
 
-          <ul className="space-y-4">
+          <ul className="space-y-3 md:space-y-4">
             {section.deliverables.items.map((item, i) => (
-              <li key={i} className="flex items-start gap-4 text-lg">
-                <Check className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
+              <li key={i} className="flex items-start gap-3 md:gap-4 text-base md:text-lg">
+                <Check className="w-4 h-4 md:w-5 md:h-5 text-green-500 mt-1 flex-shrink-0" />
                 <span>{item}</span>
               </li>
             ))}
@@ -328,14 +324,14 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
             {section.faq.label}
           </h2>
 
-          <div className="space-y-4">
+          <div className="space-y-3 md:space-y-4">
             {section.faq.items.map((item, i) => (
               <div key={i} className="border border-zinc-100 rounded-lg overflow-hidden">
                 <button
                   onClick={() => setExpandedFaq(expandedFaq === i ? null : i)}
-                  className="w-full px-6 py-5 flex justify-between items-center text-left hover:bg-zinc-50 transition-colors"
+                  className="w-full px-4 py-4 md:px-6 md:py-5 flex justify-between items-center text-left hover:bg-zinc-50 transition-colors gap-3"
                 >
-                  <span className="font-bold text-lg">{item.question}</span>
+                  <span className="font-bold text-base md:text-lg">{item.question}</span>
                   {expandedFaq === i ? (
                     <ChevronUp className="w-5 h-5 text-zinc-400 flex-shrink-0" />
                   ) : (
@@ -343,7 +339,7 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
                   )}
                 </button>
                 {expandedFaq === i && (
-                  <div className="px-6 pb-5 text-zinc-600 font-light">
+                  <div className="px-4 pb-4 md:px-6 md:pb-5 text-zinc-600 font-light text-sm md:text-base">
                     {item.answer}
                   </div>
                 )}
@@ -419,7 +415,7 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
               </div>
             </div>
             {/* Right: Offers & Services */}
-            <div className="flex gap-12">
+            <div className="flex flex-col sm:flex-row gap-8 md:gap-12">
               <div>
                 <h5 className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-3">{t.landing.footer.nav.offers.label}</h5>
                 <div className="border-t border-zinc-100 mb-3"></div>

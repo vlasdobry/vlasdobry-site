@@ -716,12 +716,12 @@ export const ru: Translations = {
         subtitle: 'СПА-отель 4* в Краснодарском крае (NDA)',
         scores: [
           { category: 'Видимость в AI', score: '2/10', status: 'Критично' },
-          { category: 'Структурированные данные', score: '1/10', status: 'Отсутствуют' },
-          { category: 'llms.txt', score: '0/10', status: 'Отсутствует' },
-          { category: 'Noscript fallback', score: '0/10', status: 'Отсутствует' },
+          { category: 'Структурированные данные', score: '1/10', status: 'Критично' },
+          { category: 'llms.txt', score: '0/10', status: 'Критично' },
+          { category: 'Noscript fallback', score: '0/10', status: 'Критично' },
           { category: 'Фактическая плотность', score: '5/10', status: 'Средне' },
-          { category: 'Цитируемость', score: '3/10', status: 'Низкая' },
-          { category: 'Репутация', score: '4/10', status: 'Проблемы' },
+          { category: 'Цитируемость', score: '3/10', status: 'Слабо' },
+          { category: 'Репутация', score: '4/10', status: 'Слабо' },
         ],
         findings: [
           'Schema.org — отсутствует',
@@ -772,7 +772,7 @@ export const ru: Translations = {
       },
       cta: {
         title: 'Узнайте свой Health Score — бесплатно',
-        subtitle: 'Введите URL — получите оценку видимости 0-100 и список проблем. Автоматически, без регистрации.',
+        subtitle: 'Отправьте ссылку — проведу проверку и пришлю Health Score с рекомендациями. Бесплатно.',
         primaryButton: 'Проверить сайт',
         secondaryButton: '',
         tertiaryButton: '',
