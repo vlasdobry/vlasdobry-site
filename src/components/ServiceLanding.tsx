@@ -3,6 +3,7 @@ import { ArrowLeft, ChevronDown, ChevronUp, Check, X } from 'lucide-react';
 import { useI18n, ServiceKey } from '../i18n';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { HealthScoreChecker } from './HealthScoreChecker';
+import { analytics } from '../utils/analytics';
 import type { GeoServiceSection } from '../i18n/types';
 
 interface Props {
@@ -386,6 +387,7 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
               href="https://t.me/vlasdobry"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => analytics.clickTelegram(serviceKey)}
               className="inline-block text-lg md:text-xl font-bold uppercase tracking-[0.2em] border-2 border-black px-10 py-5 hover:bg-black hover:text-white transition-all"
             >
               {section.cta.primaryButton}
@@ -395,6 +397,7 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
                 href="https://t.me/vlasdobry"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => analytics.clickTelegram(`${serviceKey}_secondary`)}
                 className="inline-block text-base md:text-lg font-bold uppercase tracking-[0.15em] border-2 border-black px-8 py-4 hover:bg-black hover:text-white transition-all"
               >
                 {section.cta.secondaryButton}
@@ -407,6 +410,7 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
               href="https://t.me/vlasdobry"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => analytics.clickTelegram(`${serviceKey}_tertiary`)}
               className="text-sm text-zinc-500 hover:text-black transition-colors underline"
             >
               {section.cta.tertiaryButton}
@@ -421,11 +425,11 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
             <div>
               <h4 className="text-2xl font-bold">{section.footer.name}</h4>
               <p className="text-zinc-400 text-sm font-light mt-1">{section.footer.role}</p>
-              <a href="tel:+79068972037" className="block mt-4 text-2xl font-bold hover:text-zinc-500 transition-colors">+7 906 897-20-37</a>
+              <a href="tel:+79068972037" onClick={() => analytics.clickPhone(serviceKey)} className="block mt-4 text-2xl font-bold hover:text-zinc-500 transition-colors">+7 906 897-20-37</a>
               <div className="flex gap-6 mt-4 text-[11px] font-bold tracking-[0.4em] uppercase text-zinc-400">
-                <a href="https://t.me/vlasdobry" target="_blank" rel="noopener noreferrer" className="hover:text-black">{section.footer.links.telegram}</a>
-                <a href="https://wa.me/79068972037" target="_blank" rel="noopener noreferrer" className="hover:text-black">{section.footer.links.whatsapp}</a>
-                <a href="mailto:vlasdobry@gmail.com" className="hover:text-black">{section.footer.links.email}</a>
+                <a href="https://t.me/vlasdobry" target="_blank" rel="noopener noreferrer" onClick={() => analytics.clickTelegram(`${serviceKey}_footer`)} className="hover:text-black">{section.footer.links.telegram}</a>
+                <a href="https://wa.me/79068972037" target="_blank" rel="noopener noreferrer" onClick={() => analytics.clickWhatsapp(`${serviceKey}_footer`)} className="hover:text-black">{section.footer.links.whatsapp}</a>
+                <a href="mailto:vlasdobry@gmail.com" onClick={() => analytics.clickEmail(`${serviceKey}_footer`)} className="hover:text-black">{section.footer.links.email}</a>
               </div>
             </div>
             {/* Right: Offers & Services */}

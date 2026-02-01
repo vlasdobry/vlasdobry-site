@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useI18n } from '../i18n';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { analytics } from '../utils/analytics';
 
 
 interface LandingProps {
@@ -134,12 +135,13 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
             href="https://t.me/vlasdobry"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => analytics.clickTelegram('landing')}
             className="inline-block text-xl md:text-3xl font-bold uppercase tracking-[0.3em] border-2 border-black px-12 py-6 hover:bg-black hover:text-white transition-all"
           >
               {t.landing.contact.cta}
           </a>
           <p className="mt-8 text-zinc-400 text-lg">
-            {t.landing.contact.alternative} <a href={`mailto:${t.landing.contact.email}`} className="underline hover:text-black transition-colors">{t.landing.contact.email}</a>
+            {t.landing.contact.alternative} <a href={`mailto:${t.landing.contact.email}`} onClick={() => analytics.clickEmail('landing')} className="underline hover:text-black transition-colors">{t.landing.contact.email}</a>
           </p>
       </section>
 
@@ -150,11 +152,11 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
           <div>
             <h4 className="text-2xl font-bold">{t.landing.footer.name}</h4>
             <p className="text-zinc-400 text-sm font-light mt-1">{t.landing.footer.role}</p>
-            <a href="tel:+79068972037" className="block mt-4 text-2xl font-bold hover:text-zinc-500 transition-colors">+7 906 897-20-37</a>
+            <a href="tel:+79068972037" onClick={() => analytics.clickPhone('landing')} className="block mt-4 text-2xl font-bold hover:text-zinc-500 transition-colors">+7 906 897-20-37</a>
             <div className="flex gap-6 mt-4 text-[11px] font-bold tracking-[0.4em] uppercase text-zinc-400">
-              <a href="https://t.me/vlasdobry" target="_blank" rel="noopener noreferrer" className="hover:text-black">{t.landing.footer.links.telegram}</a>
-              <a href="https://wa.me/79068972037" target="_blank" rel="noopener noreferrer" className="hover:text-black">{t.landing.footer.links.whatsapp}</a>
-              <a href="mailto:vlasdobry@gmail.com" target="_blank" rel="noopener noreferrer" className="hover:text-black">{t.landing.footer.links.email}</a>
+              <a href="https://t.me/vlasdobry" target="_blank" rel="noopener noreferrer" onClick={() => analytics.clickTelegram('landing_footer')} className="hover:text-black">{t.landing.footer.links.telegram}</a>
+              <a href="https://wa.me/79068972037" target="_blank" rel="noopener noreferrer" onClick={() => analytics.clickWhatsapp('landing_footer')} className="hover:text-black">{t.landing.footer.links.whatsapp}</a>
+              <a href="mailto:vlasdobry@gmail.com" target="_blank" rel="noopener noreferrer" onClick={() => analytics.clickEmail('landing_footer')} className="hover:text-black">{t.landing.footer.links.email}</a>
             </div>
           </div>
           {/* Right: Offers & Services */}

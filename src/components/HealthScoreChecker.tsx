@@ -3,16 +3,9 @@ import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import type { Lang } from '../i18n';
 import { calculateCombinedScore, type FetchedData, type CombinedHealthScore } from '../utils/healthScore';
+import { analytics } from '../utils/analytics';
 
 const WORKER_URL = 'https://health-score-proxy.vlasdobry.workers.dev';
-const YM_ID = 106407494;
-
-// Yandex.Metrika goal tracking
-const trackGoal = (goalName: string, params?: Record<string, unknown>) => {
-  if (typeof window !== 'undefined' && typeof (window as any).ym === 'function') {
-    (window as any).ym(YM_ID, 'reachGoal', goalName, params);
-  }
-};
 
 interface Props {
   lang: Lang;
@@ -294,7 +287,7 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
     setError(null);
 
     // Track scan start
-    trackGoal('health_score_start', { type: primary, domain: url });
+    analytics.healthScoreStart(primary, url);
     setProgress(0);
 
     const stepLabels = primary === 'seo' ? t.seoSteps : t.geoSteps;
@@ -351,12 +344,7 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
       setState('result');
 
       // Track successful completion
-      trackGoal('health_score_complete', {
-        type: primary,
-        domain: data.domain,
-        seo_score: scoreResult.seo.total,
-        geo_score: scoreResult.geo.total,
-      });
+      analytics.healthScoreComplete(primary, data.domain, scoreResult.seo.total, scoreResult.geo.total);
 
     } catch (err) {
       const errorMsg = err instanceof Error ? err.message : 'unknown';
@@ -373,7 +361,7 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
       setState('error');
 
       // Track error
-      trackGoal('health_score_error', { type: primary, error: errorType });
+      analytics.healthScoreError(primary, errorType);
     } finally {
       setIsScanning(false);
     }
@@ -526,12 +514,7 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
             href={ctaUrl}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => trackGoal('health_score_cta_click', {
-              type: primary,
-              domain: checkedDomain,
-              seo_score: result?.seo.total,
-              geo_score: result?.geo.total,
-            })}
+            onClick={() => analytics.healthScoreCta(primary, checkedDomain, result?.seo.total, result?.geo.total)}
             className="block w-full text-center py-3 sm:py-4 border-2 border-black font-bold uppercase tracking-wide hover:bg-black hover:text-white transition-all text-xs sm:text-sm"
           >
             {t.getFullAudit} →

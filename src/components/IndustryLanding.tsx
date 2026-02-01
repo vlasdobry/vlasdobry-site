@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowLeft, ChevronDown, ChevronUp } from 'lucide-react';
 import { useI18n, IndustryKey } from '../i18n';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { analytics } from '../utils/analytics';
 
 interface Props {
   sectionKey: IndustryKey;
@@ -230,6 +231,7 @@ export const IndustryLanding: React.FC<Props> = ({ sectionKey, basePath }) => {
             href="https://t.me/vlasdobry"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => analytics.clickTelegram(sectionKey)}
             className="inline-block text-lg md:text-xl font-bold uppercase tracking-[0.2em] border-2 border-black px-10 py-5 hover:bg-black hover:text-white transition-all"
           >
             {section.cta.button}
@@ -237,7 +239,7 @@ export const IndustryLanding: React.FC<Props> = ({ sectionKey, basePath }) => {
 
           <p className="mt-6 text-zinc-400">
             {section.cta.alternative}{' '}
-            <a href={`mailto:${section.cta.email}`} className="underline hover:text-black transition-colors">
+            <a href={`mailto:${section.cta.email}`} onClick={() => analytics.clickEmail(sectionKey)} className="underline hover:text-black transition-colors">
               {section.cta.email}
             </a>
           </p>
@@ -253,11 +255,11 @@ export const IndustryLanding: React.FC<Props> = ({ sectionKey, basePath }) => {
               {section.footer.experience && (
                 <p className="text-zinc-300 text-xs font-light mt-0.5">{section.footer.experience}</p>
               )}
-              <a href="tel:+79068972037" className="block mt-4 text-2xl font-bold hover:text-zinc-500 transition-colors">+7 906 897-20-37</a>
+              <a href="tel:+79068972037" onClick={() => analytics.clickPhone(sectionKey)} className="block mt-4 text-2xl font-bold hover:text-zinc-500 transition-colors">+7 906 897-20-37</a>
               <div className="flex gap-6 mt-4 text-[11px] font-bold tracking-[0.4em] uppercase text-zinc-400">
-                <a href="https://t.me/vlasdobry" target="_blank" rel="noopener noreferrer" className="hover:text-black">{section.footer.links.telegram}</a>
-                <a href="https://wa.me/79068972037" target="_blank" rel="noopener noreferrer" className="hover:text-black">{section.footer.links.whatsapp}</a>
-                <a href="mailto:vlasdobry@gmail.com" className="hover:text-black">{section.footer.links.email}</a>
+                <a href="https://t.me/vlasdobry" target="_blank" rel="noopener noreferrer" onClick={() => analytics.clickTelegram(`${sectionKey}_footer`)} className="hover:text-black">{section.footer.links.telegram}</a>
+                <a href="https://wa.me/79068972037" target="_blank" rel="noopener noreferrer" onClick={() => analytics.clickWhatsapp(`${sectionKey}_footer`)} className="hover:text-black">{section.footer.links.whatsapp}</a>
+                <a href="mailto:vlasdobry@gmail.com" onClick={() => analytics.clickEmail(`${sectionKey}_footer`)} className="hover:text-black">{section.footer.links.email}</a>
               </div>
             </div>
             {/* Right: Offers & Services */}

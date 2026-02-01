@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowLeft, ExternalLink } from 'lucide-react';
 import { useI18n } from '../i18n';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { analytics } from '../utils/analytics';
 
 export const ProjectsLanding: React.FC = () => {
   const { t, lang } = useI18n();
@@ -131,6 +132,7 @@ export const ProjectsLanding: React.FC = () => {
             href="https://t.me/vlasdobry"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => analytics.clickTelegram('projects')}
             className="inline-block text-lg md:text-xl font-bold uppercase tracking-[0.2em] border-2 border-black px-10 py-5 hover:bg-black hover:text-white transition-all"
           >
             {t.projects.cta.button}
@@ -138,7 +140,7 @@ export const ProjectsLanding: React.FC = () => {
 
           <p className="mt-6 text-zinc-400">
             {t.projects.cta.alternative}{' '}
-            <a href={`mailto:${t.projects.cta.email}`} className="underline hover:text-black transition-colors">
+            <a href={`mailto:${t.projects.cta.email}`} onClick={() => analytics.clickEmail('projects')} className="underline hover:text-black transition-colors">
               {t.projects.cta.email}
             </a>
           </p>
@@ -151,11 +153,11 @@ export const ProjectsLanding: React.FC = () => {
             <div>
               <h4 className="text-2xl font-bold">{t.projects.footer.name}</h4>
               <p className="text-zinc-400 text-sm font-light mt-1">{t.projects.footer.role}</p>
-              <a href="tel:+79068972037" className="block mt-4 text-2xl font-bold hover:text-zinc-500 transition-colors">+7 906 897-20-37</a>
+              <a href="tel:+79068972037" onClick={() => analytics.clickPhone('projects')} className="block mt-4 text-2xl font-bold hover:text-zinc-500 transition-colors">+7 906 897-20-37</a>
               <div className="flex gap-6 mt-4 text-[11px] font-bold tracking-[0.4em] uppercase text-zinc-400">
-                <a href="https://t.me/vlasdobry" target="_blank" rel="noopener noreferrer" className="hover:text-black">{t.projects.footer.links.telegram}</a>
-                <a href="https://wa.me/79068972037" target="_blank" rel="noopener noreferrer" className="hover:text-black">{t.projects.footer.links.whatsapp}</a>
-                <a href="mailto:vlasdobry@gmail.com" className="hover:text-black">{t.projects.footer.links.email}</a>
+                <a href="https://t.me/vlasdobry" target="_blank" rel="noopener noreferrer" onClick={() => analytics.clickTelegram('projects_footer')} className="hover:text-black">{t.projects.footer.links.telegram}</a>
+                <a href="https://wa.me/79068972037" target="_blank" rel="noopener noreferrer" onClick={() => analytics.clickWhatsapp('projects_footer')} className="hover:text-black">{t.projects.footer.links.whatsapp}</a>
+                <a href="mailto:vlasdobry@gmail.com" onClick={() => analytics.clickEmail('projects_footer')} className="hover:text-black">{t.projects.footer.links.email}</a>
               </div>
             </div>
             {/* Right: Offers & Services */}
