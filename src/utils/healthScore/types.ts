@@ -17,7 +17,7 @@ export interface FetchedData {
 }
 
 export interface Issue {
-  severity: 'critical' | 'warning' | 'info';
+  severity: 'critical' | 'warning' | 'info' | 'success';
   title: string;
   description: string;
 }
@@ -33,9 +33,12 @@ export interface SeoHealthScore {
   breakdown: {
     title: number;
     description: number;
+    h1: number;
     viewport: number;
-    speed: number;
     indexability: number;
+    robotsTxt: number;
+    sitemap: number;
+    schemaOrg: number;
   };
   issues: Issue[];
   status: 'critical' | 'warning' | 'good' | 'excellent';

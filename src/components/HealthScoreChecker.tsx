@@ -9,8 +9,7 @@ const WORKER_URL = 'https://health-score-proxy.vlasdobry.workers.dev';
 interface Props {
   lang: Lang;
   primary: 'seo' | 'geo';
-  seoCtaUrl: string;
-  geoCtaUrl: string;
+  ctaUrl: string;
 }
 
 type CheckerState = 'idle' | 'loading' | 'result' | 'error';
@@ -20,12 +19,37 @@ interface ScanStep {
   status: 'pending' | 'active' | 'done';
 }
 
+// Tooltips for technical terms
+const tooltips: Record<string, Record<string, string>> = {
+  ru: {
+    'llms.txt': 'Файл с информацией о сайте для AI-систем (ChatGPT, Claude, Perplexity)',
+    'Schema.org': 'Структурированные данные, помогающие AI понять контент сайта',
+    'robots.txt': 'Файл с правилами для поисковых ботов и AI-краулеров',
+    'sitemap.xml': 'Карта сайта со списком всех страниц',
+    'Title': 'Заголовок страницы, отображаемый в поиске',
+    'Description': 'Описание страницы для поисковой выдачи',
+    'H1': 'Главный заголовок на странице',
+    'Viewport': 'Настройка адаптивности для мобильных устройств',
+  },
+  en: {
+    'llms.txt': 'File with site info for AI systems (ChatGPT, Claude, Perplexity)',
+    'Schema.org': 'Structured data helping AI understand site content',
+    'robots.txt': 'File with rules for search bots and AI crawlers',
+    'sitemap.xml': 'Site map with list of all pages',
+    'Title': 'Page title shown in search results',
+    'Description': 'Page description for search snippets',
+    'H1': 'Main heading on the page',
+    'Viewport': 'Mobile responsiveness setting',
+  },
+};
+
 // Translations hardcoded for widget isolation
 const translations = {
   ru: {
     title: 'Проверьте свой сайт',
-    subtitle: 'Бесплатная проверка SEO и GEO. Узнайте, как вас видят поисковики и AI.',
-    placeholder: 'https://example.com',
+    subtitleSeo: 'Бесплатная проверка SEO. Узнайте, как вас видят поисковики.',
+    subtitleGeo: 'Бесплатная проверка GEO. Узнайте, как вас видит AI.',
+    placeholder: 'https://myhotel.ru',
     button: 'Проверить',
     free: 'Бесплатно · Без регистрации',
     scanning: 'Сканирование',
@@ -38,23 +62,22 @@ const translations = {
     },
     seoScore: 'SEO Score',
     geoScore: 'GEO Score',
-    seoProblems: 'Проблемы SEO',
-    geoProblems: 'Проблемы GEO',
+    seoProblems: 'Что улучшить в SEO',
+    geoProblems: 'Что улучшить в GEO',
     seoBonus: 'Бонус: проверили SEO',
     geoBonus: 'Бонус: проверили GEO',
+    expressLabel: 'Экспресс-диагностика · 8 параметров',
     issues: 'проблем',
-    getSeoAudit: 'Получить SEO-аудит с решениями',
-    getGeoAudit: 'Получить GEO-аудит с решениями',
-    alsoSeoAudit: 'Также заказать SEO-аудит',
-    alsoGeoAudit: 'Также заказать GEO-аудит',
+    getFullAudit: 'Получить полный аудит',
     tryAnother: 'Проверить другой сайт',
     errorTitle: 'Ошибка проверки',
     tryAgain: 'Попробовать снова',
   },
   en: {
     title: 'Check your website',
-    subtitle: 'Free SEO and GEO check. See how search engines and AI see you.',
-    placeholder: 'https://example.com',
+    subtitleSeo: 'Free SEO check. See how search engines see you.',
+    subtitleGeo: 'Free GEO check. See how AI sees you.',
+    placeholder: 'https://myhotel.com',
     button: 'Check',
     free: 'Free · No registration',
     scanning: 'Scanning',
@@ -67,15 +90,13 @@ const translations = {
     },
     seoScore: 'SEO Score',
     geoScore: 'GEO Score',
-    seoProblems: 'SEO Issues',
-    geoProblems: 'GEO Issues',
+    seoProblems: 'How to improve SEO',
+    geoProblems: 'How to improve GEO',
     seoBonus: 'Bonus: checked SEO',
     geoBonus: 'Bonus: checked GEO',
+    expressLabel: 'Express check · 8 parameters',
     issues: 'issues',
-    getSeoAudit: 'Get SEO audit with solutions',
-    getGeoAudit: 'Get GEO audit with solutions',
-    alsoSeoAudit: 'Also order SEO audit',
-    alsoGeoAudit: 'Also order GEO audit',
+    getFullAudit: 'Get full audit',
     tryAnother: 'Check another site',
     errorTitle: 'Check failed',
     tryAgain: 'Try again',
@@ -106,7 +127,7 @@ const CircularScore: React.FC<{
 
   return (
     <div className={`flex flex-col items-center ${size === 'large' ? '' : 'opacity-90'}`}>
-      <div className={`relative ${size === 'large' ? 'w-32 h-32' : 'w-24 h-24'}`}>
+      <div className={`relative ${size === 'large' ? 'w-28 h-28 sm:w-32 sm:h-32' : 'w-20 h-20 sm:w-24 sm:h-24'}`}>
         <svg className="w-full h-full -rotate-90" viewBox={`0 0 ${viewBox} ${viewBox}`}>
           <circle
             cx={center}
@@ -130,8 +151,8 @@ const CircularScore: React.FC<{
           />
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className={`font-black ${size === 'large' ? 'text-4xl' : 'text-2xl'}`}>{score}</span>
-          <span className={`text-zinc-400 ${size === 'large' ? 'text-sm' : 'text-xs'}`}>/100</span>
+          <span className={`font-black ${size === 'large' ? 'text-3xl sm:text-4xl' : 'text-xl sm:text-2xl'}`}>{score}</span>
+          <span className={`text-zinc-400 ${size === 'large' ? 'text-xs sm:text-sm' : 'text-[10px] sm:text-xs'}`}>/100</span>
         </div>
       </div>
       <p className={`mt-2 font-bold ${size === 'large' ? 'text-base' : 'text-sm'}`}>{label}</p>
@@ -144,18 +165,45 @@ const CircularScore: React.FC<{
   );
 };
 
+// Helper to add tooltip to technical terms
+const addTooltips = (text: string, lang: Lang): React.ReactNode => {
+  const langTooltips = tooltips[lang];
+  const terms = Object.keys(langTooltips);
+
+  for (const term of terms) {
+    if (text.includes(term)) {
+      const parts = text.split(term);
+      return (
+        <>
+          {parts[0]}
+          <span
+            className="underline decoration-dotted cursor-help"
+            title={langTooltips[term]}
+          >
+            {term}
+          </span>
+          {parts.slice(1).join(term)}
+        </>
+      );
+    }
+  }
+  return text;
+};
+
 // Collapsible issues list
 const IssuesList: React.FC<{
   title: string;
   issues: { severity: string; title: string; description: string }[];
   defaultExpanded: boolean;
-}> = ({ title, issues, defaultExpanded }) => {
+  lang: Lang;
+}> = ({ title, issues, defaultExpanded, lang }) => {
   const [expanded, setExpanded] = useState(defaultExpanded);
 
   const severityIcons: Record<string, string> = {
     critical: '🔴',
     warning: '🟡',
     info: '💡',
+    success: '✅',
   };
 
   if (issues.length === 0) return null;
@@ -183,7 +231,7 @@ const IssuesList: React.FC<{
               <div className="flex items-start gap-2">
                 <span>{severityIcons[issue.severity] || '💡'}</span>
                 <div>
-                  <p className="font-medium text-sm">{issue.title}</p>
+                  <p className="font-medium text-sm">{addTooltips(issue.title, lang)}</p>
                   <p className="text-xs text-zinc-500 mt-0.5">{issue.description}</p>
                 </div>
               </div>
@@ -196,18 +244,21 @@ const IssuesList: React.FC<{
 };
 
 // Main component
-export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, seoCtaUrl, geoCtaUrl }) => {
+export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) => {
   const [state, setState] = useState<CheckerState>('idle');
   const [url, setUrl] = useState('');
+  const [checkedDomain, setCheckedDomain] = useState('');
   const [result, setResult] = useState<CombinedHealthScore | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [scanSteps, setScanSteps] = useState<ScanStep[]>([]);
   const [progress, setProgress] = useState(0);
+  const [isScanning, setIsScanning] = useState(false);
 
   const t = translations[lang];
 
   const handleScan = async () => {
-    if (!url.trim()) return;
+    if (!url.trim() || isScanning) return;
+    setIsScanning(true);
 
     setState('loading');
     setError(null);
@@ -239,10 +290,10 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, seoCtaUrl, 
         body: JSON.stringify({ domain: url }),
       });
 
-      await stepDelay(400); updateStep(1);
-      await stepDelay(400); updateStep(2);
-      await stepDelay(400); updateStep(3);
-      await stepDelay(400); updateStep(4);
+      await stepDelay(1600); updateStep(1);
+      await stepDelay(1600); updateStep(2);
+      await stepDelay(1600); updateStep(3);
+      await stepDelay(1600); updateStep(4);
 
       const response = await fetchPromise;
       if (!response.ok) throw new Error('Network error');
@@ -251,8 +302,9 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, seoCtaUrl, 
 
       updateStep(5);
       setProgress(100);
-      await stepDelay(300);
+      await stepDelay(1200);
 
+      setCheckedDomain(data.domain);
       const scoreResult = calculateCombinedScore(data);
       setResult(scoreResult);
       setState('result');
@@ -260,6 +312,8 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, seoCtaUrl, 
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unknown error');
       setState('error');
+    } finally {
+      setIsScanning(false);
     }
   };
 
@@ -278,10 +332,6 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, seoCtaUrl, 
   const primaryProblems = primary === 'seo' ? t.seoProblems : t.geoProblems;
   const secondaryProblems = primary === 'seo' ? t.geoProblems : t.seoProblems;
   const secondaryBonus = primary === 'seo' ? t.geoBonus : t.seoBonus;
-  const primaryCta = primary === 'seo' ? t.getSeoAudit : t.getGeoAudit;
-  const secondaryCta = primary === 'seo' ? t.alsoGeoAudit : t.alsoSeoAudit;
-  const primaryCtaUrl = primary === 'seo' ? seoCtaUrl : geoCtaUrl;
-  const secondaryCtaUrl = primary === 'seo' ? geoCtaUrl : seoCtaUrl;
 
   // Render IDLE state
   const renderIdle = () => (
@@ -293,7 +343,7 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, seoCtaUrl, 
         {t.title}
       </h3>
       <p className="text-base md:text-lg text-zinc-500 font-light mb-6">
-        {t.subtitle}
+        {primary === 'seo' ? t.subtitleSeo : t.subtitleGeo}
       </p>
       <div className="flex flex-col sm:flex-row gap-3">
         <input
@@ -306,10 +356,10 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, seoCtaUrl, 
         />
         <button
           onClick={handleScan}
-          disabled={!url.trim()}
+          disabled={!url.trim() || isScanning}
           className="px-6 py-3 border-2 border-black font-bold uppercase tracking-wide hover:bg-black hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          {t.button}
+          {isScanning ? '...' : t.button}
         </button>
       </div>
       <p className="text-sm text-zinc-400 mt-4 text-center sm:text-left">
@@ -359,12 +409,18 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, seoCtaUrl, 
 
     return (
       <div className="bg-zinc-50 border border-zinc-100 rounded-xl p-6 md:p-8">
-        <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-6">
-          Health Score
-        </p>
+        <div className="flex justify-between items-start mb-2">
+          <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300">
+            Health Score
+          </p>
+          <p className="text-sm font-medium text-zinc-600 truncate max-w-[200px]">
+            {checkedDomain}
+          </p>
+        </div>
+        <p className="text-xs text-zinc-400 mb-6">{t.expressLabel}</p>
 
         {/* Two circles */}
-        <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12 mb-8">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-4 sm:gap-6 md:gap-12 mb-6 sm:mb-8">
           <CircularScore
             score={primaryScore.total}
             status={primaryScore.status}
@@ -392,31 +448,25 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, seoCtaUrl, 
             title={primaryProblems}
             issues={primaryScore.issues}
             defaultExpanded={true}
+            lang={lang}
           />
           <IssuesList
             title={secondaryProblems}
             issues={secondaryScore.issues}
             defaultExpanded={false}
+            lang={lang}
           />
         </div>
 
-        {/* CTAs */}
+        {/* CTA */}
         <div className="space-y-3">
           <a
-            href={primaryCtaUrl}
+            href={ctaUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="block w-full text-center py-4 border-2 border-black font-bold uppercase tracking-wide hover:bg-black hover:text-white transition-all text-sm"
+            className="block w-full text-center py-3 sm:py-4 border-2 border-black font-bold uppercase tracking-wide hover:bg-black hover:text-white transition-all text-xs sm:text-sm"
           >
-            {primaryCta} →
-          </a>
-          <a
-            href={secondaryCtaUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block w-full text-center py-3 border border-zinc-200 font-medium text-zinc-600 hover:border-black hover:text-black transition-all text-sm"
-          >
-            {secondaryCta}
+            {t.getFullAudit} →
           </a>
           <button
             onClick={handleReset}

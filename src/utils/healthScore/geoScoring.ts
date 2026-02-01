@@ -21,6 +21,11 @@ function scoreLlmsTxt(data: ResourceResult): { score: number; issues: Issue[] } 
   const length = data.content.length;
 
   if (length >= 800) {
+    issues.push({
+      severity: 'success',
+      title: 'llms.txt отличный',
+      description: `${length} символов — AI получает полную информацию`,
+    });
     return { score: 30, issues };
   }
 
@@ -88,6 +93,11 @@ function scoreRobotsTxtForAI(data: ResourceResult): { score: number; issues: Iss
   const uniqueBlocked = [...new Set(blockedBots)];
 
   if (uniqueBlocked.length === 0) {
+    issues.push({
+      severity: 'success',
+      title: 'AI-боты разрешены',
+      description: 'Все основные AI-системы могут индексировать сайт',
+    });
     return { score: 25, issues };
   }
 
@@ -125,8 +135,22 @@ function scoreSitemap(data: ResourceResult): { score: number; issues: Issue[] } 
     return { score: 5, issues };
   }
 
-  if (urlCount > 20) return { score: 15, issues };
-  if (urlCount >= 5) return { score: 12, issues };
+  if (urlCount > 20) {
+    issues.push({
+      severity: 'success',
+      title: `sitemap.xml: ${urlCount} URL`,
+      description: 'AI видит полную структуру сайта',
+    });
+    return { score: 15, issues };
+  }
+  if (urlCount >= 5) {
+    issues.push({
+      severity: 'success',
+      title: `sitemap.xml: ${urlCount} URL`,
+      description: 'Структура сайта доступна для AI',
+    });
+    return { score: 12, issues };
+  }
 
   issues.push({
     severity: 'info',
@@ -158,6 +182,11 @@ function scoreSchemaOrg(html: string): { score: number; issues: Issue[] } {
   );
 
   if (foundTypes.length >= 3) {
+    issues.push({
+      severity: 'success',
+      title: `Schema.org: ${foundTypes.length} типа`,
+      description: `${foundTypes.join(', ')} — отлично для AI`,
+    });
     return { score: 30, issues };
   }
 
@@ -250,8 +279,8 @@ export function calculateGeoScore(data: {
     statusLabel = 'Хорошо';
   }
 
-  // Sort issues
-  const severityOrder = { critical: 0, warning: 1, info: 2 };
+  // Sort issues (success last)
+  const severityOrder: Record<string, number> = { critical: 0, warning: 1, info: 2, success: 3 };
   issues.sort((a, b) => severityOrder[a.severity] - severityOrder[b.severity]);
 
   return {

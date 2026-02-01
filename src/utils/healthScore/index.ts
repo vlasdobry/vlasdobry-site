@@ -11,6 +11,7 @@ export function calculateCombinedScore(data: FetchedData): CombinedHealthScore {
   const seo = calculateSeoScore({
     homepage: data.homepage,
     robotsTxt: data.robotsTxt,
+    sitemapXml: data.sitemapXml,
   });
 
   const geo = calculateGeoScore({

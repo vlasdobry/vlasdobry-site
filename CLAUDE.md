@@ -48,21 +48,34 @@ npm run preview  # Просмотр сборки
 - `/en/for-spa` — лендинг для СПА-комплексов (EN)
 - `/projects` — страница проектов (RU)
 - `/en/projects` — страница проектов (EN)
+- `/services/seo` — SEO-аудит (RU)
+- `/en/services/seo` — SEO Audit (EN)
+- `/services/geo` — GEO-оптимизация (RU)
+- `/en/services/geo` — GEO Optimization (EN)
 
 **Структура компонентов:**
 - `src/App.tsx` — корневой компонент, управляет навигацией hero↔landing, свайпы, виброотклик
 - `src/components/Hero.tsx` — главный экран с фото и заголовками
 - `src/components/Landing.tsx` — лендинг с услугами, кейсами и контактами
 - `src/components/IndustryLanding.tsx` — универсальный лендинг для отраслей (hotels, labs, spa)
+- `src/components/ServiceLanding.tsx` — универсальный лендинг для услуг (SEO, GEO)
+- `src/components/HealthScoreChecker.tsx` — виджет экспресс-диагностики сайта (8 параметров)
 - `src/components/LanguageSwitcher.tsx` — переключатель языка
 - `src/components/ProjectsLanding.tsx` — лендинг проектов (sticky header, карточки проектов)
+
+**Health Score виджет:**
+- Бесплатная экспресс-диагностика сайта по 8 параметрам
+- Проверяет: Title, Description, H1, Viewport, Indexability, robots.txt, sitemap.xml, Schema.org
+- Использует Cloudflare Worker как CORS-прокси для получения данных
+- Анимированный процесс сканирования с пошаговыми этапами
+- Интегрирован в ServiceLanding для SEO и GEO страниц
 
 **Стилизация:** Tailwind CSS v4 (через Vite plugin), шрифт Inter. Используется glassmorphism-эффект для UI-элементов.
 
 **Мультиязычность (i18n):**
 - URL-based routing: `/` (RU), `/en/` (EN)
 - Самописная i18n-система в `src/i18n/` (KISS: без i18next)
-- HTML файлы: `index.html`, `en.html`, `for-hotels.html`, `for-hotels-en.html`, `for-labs.html`, `for-labs-en.html`, `for-spa.html`, `for-spa-en.html`, `projects.html`, `projects-en.html`
+- HTML файлы: `index.html`, `en.html`, `for-hotels.html`, `for-hotels-en.html`, `for-labs.html`, `for-labs-en.html`, `for-spa.html`, `for-spa-en.html`, `projects.html`, `projects-en.html`, `seo.html`, `seo-en.html`, `geo.html`, `geo-en.html`
 - Переводы: `src/i18n/ru.ts`, `src/i18n/en.ts`
 
 **Мобильные функции:**
@@ -87,7 +100,11 @@ npm run preview  # Просмотр сборки
 - **Гео-теги:** намеренно не используются — проект ориентирован на международный рынок (Россия, СНГ, Европа, США). Привязка к конкретной локации снизит видимость для зарубежных запросов.
 
 **Консистентность данных:**
-При изменении контента страниц-лендингов (проекты, отели, лаборатории, СПА) необходимо синхронизировать 6 источников: i18n (ru.ts, en.ts), Schema.org JSON-LD (HTML), noscript fallback (HTML), meta/OG/Twitter (HTML), `llms.txt`. Для проверки — систематический аудит всех источников.
+При изменении контента страниц-лендингов (проекты, отели, лаборатории, СПА, SEO, GEO) необходимо синхронизировать 6 источников: i18n (ru.ts, en.ts), Schema.org JSON-LD (HTML), noscript fallback (HTML), meta/OG/Twitter (HTML), `llms.txt`. Для проверки — систематический аудит всех источников.
+
+**Терминология услуг:**
+- "8 параметров" — технические проверки в бесплатном Health Score виджете
+- "7 разделов аудита" — направления анализа в платном полном аудите (Technical SEO, On-Page, Content, Schema.org, Local SEO, Yandex-specific, E-E-A-T)
 
 ## Ключевые файлы
 
@@ -103,7 +120,12 @@ npm run preview  # Просмотр сборки
 | `for-spa-en.html` | EN лендинг для СПА-комплексов |
 | `projects.html` | RU лендинг проектов |
 | `projects-en.html` | EN лендинг проектов |
+| `seo.html` | RU страница SEO-аудита |
+| `seo-en.html` | EN страница SEO Audit |
+| `geo.html` | RU страница GEO-оптимизации |
+| `geo-en.html` | EN страница GEO Optimization |
 | `src/i18n/` | Система переводов (types, ru, en, context) |
+| `src/utils/healthScore/` | Логика расчёта Health Score (scoring, types, index) |
 | `public/llms.txt` | Инструкции для AI-систем (ASCII-only) |
 | `public/robots.txt` | Разрешения для поисковых и AI-ботов |
 | `public/sitemap.xml` | Карта сайта с xhtml:link для языков |
@@ -115,3 +137,4 @@ npm run preview  # Просмотр сборки
 - Vite 6
 - Tailwind CSS v4 (@tailwindcss/vite)
 - lucide-react для иконок
+- Cloudflare Worker (CORS-прокси для Health Score)

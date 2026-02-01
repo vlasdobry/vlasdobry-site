@@ -570,7 +570,7 @@ export const ru: Translations = {
       nav: { backToMain: 'Назад' },
       hero: {
         title: 'SEO-аудит сайта',
-        subtitle: 'SEO-аудит по 7 категориям с готовым планом действий. Технический анализ, контент, локальное SEO, репутация — в одном отчёте',
+        subtitle: 'SEO-аудит по 7 разделам с готовым планом действий. Технический анализ, контент, локальное SEO, репутация — в одном отчёте',
         badges: ['Техническое SEO', 'Контент', 'Локальное SEO'],
         miniCta: { text: 'Типичные находки ↓', anchor: '#типичные-находки' },
       },
@@ -617,7 +617,7 @@ export const ru: Translations = {
       deliverables: {
         title: 'Что вы получите',
         items: [
-          'PDF-отчёт 10-15 страниц с оценками по 7 категориям',
+          'PDF-отчёт 10-15 страниц с оценками по 7 разделам аудита',
           'Таблицы проблем с приоритетами и рекомендациями',
           'Готовый код — robots.txt, Schema.org, мета-теги, Alt-теги',
           'Анализ репутации — отзывы на площадках с цитатами',
@@ -628,22 +628,22 @@ export const ru: Translations = {
       pricing: {
         title: 'Стоимость',
         allFeatures: [
-          'Проверка Title, Description, скорость',
-          'Мобильная версия и индексация',
+          'Title, Description, H1',
+          'robots.txt, sitemap.xml, Schema.org',
+          'Viewport и индексация',
           'PDF-отчёт 10-15 страниц',
-          'Оценка по 7 категориям',
+          'Оценка по 7 разделам аудита',
           'Примеры кода для исправлений',
           'План действий по неделям',
-          'Готовые файлы: robots.txt, sitemap, Schema.org',
           'Мета-теги и Alt-теги для всех страниц',
           'Полное внедрение под ключ',
         ],
         packages: [
-          { name: 'Экспресс-анализ', price: 'Бесплатно', features: [true, true, false, false, false, false, false, false, false] },
+          { name: 'Health Score', price: 'Бесплатно', features: [true, true, true, false, false, false, false, false, false] },
           { name: 'Аудит', price: '15 000 ₽', features: [true, true, true, true, true, true, true, true, false], recommended: true },
           { name: 'Аудит + Внедрение', price: '30 000 ₽', features: [true, true, true, true, true, true, true, true, true] },
         ],
-        deliveryTime: 'Экспресс: 24 часа · Аудит: 1-2 дня · Внедрение: 1-2 сессии',
+        deliveryTime: 'Health Score: мгновенно · Аудит: 1-2 дня · Внедрение: 1-2 сессии',
       },
       relatedServices: {
         title: 'Связанные услуги',
@@ -742,7 +742,7 @@ export const ru: Translations = {
       deliverables: {
         title: 'Что вы получите',
         items: [
-          'PDF-отчёт с оценками по 7 категориям',
+          'PDF-отчёт с оценками по 7 разделам аудита',
           'Таблицы: видимость в AI, анализ конкурентов, приоритеты',
           'Готовый код — llms.txt, Schema.org, noscript fallback',
           'Промпты для мониторинга видимости в AI-системах',

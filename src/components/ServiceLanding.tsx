@@ -58,7 +58,7 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
           : 'bg-white border-transparent'
       }`}>
         <div className={`max-w-5xl mx-auto px-6 sm:px-12 flex justify-between items-center transition-all duration-500 ease-out ${
-          isScrolled ? 'py-3' : 'py-16'
+          isScrolled ? 'py-3' : 'py-6'
         }`}>
           <div className="flex items-center gap-6">
             <a href={landingUrl} className="text-2xl font-black tracking-tighter hover:opacity-70 transition-opacity">
@@ -76,9 +76,9 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
         </div>
       </nav>
 
-      <div className="max-w-5xl mx-auto px-6 sm:px-12 py-16 md:py-24">
+      <div className="max-w-5xl mx-auto px-6 sm:px-12 py-8 md:py-12">
         {/* Hero Section */}
-        <header className="pb-16 md:pb-24">
+        <header className="pb-8 md:pb-10">
           <div className="flex flex-wrap gap-3 mb-8">
             {section.hero.badges.map(badge => (
               <span key={badge} className="text-xs tracking-widest uppercase text-zinc-500 font-bold bg-zinc-100 px-3 py-1.5 rounded-full">
@@ -89,26 +89,29 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight mb-8">
             {section.hero.title}
           </h1>
-          <p className="text-xl md:text-2xl text-zinc-500 font-light max-w-3xl mb-8">
+          <p className="text-xl md:text-2xl text-zinc-500 font-light max-w-3xl mb-6">
             {section.hero.subtitle}
           </p>
-          <a
-            href={section.hero.miniCta.anchor}
-            className="inline-flex items-center gap-2 text-sm font-medium text-zinc-600 hover:text-black transition-colors"
-          >
-            {section.hero.miniCta.text}
-          </a>
-        </header>
 
-        {/* Health Score Checker — after Hero, before Education */}
-        {(serviceKey === 'seo' || serviceKey === 'geo') && (
-          <HealthScoreChecker
-            lang={lang}
-            primary={serviceKey}
-            seoCtaUrl="https://t.me/vlasdobry"
-            geoCtaUrl="https://t.me/vlasdobry"
-          />
-        )}
+          {/* Health Score Checker — for SEO/GEO pages */}
+          {(serviceKey === 'seo' || serviceKey === 'geo') && (
+            <HealthScoreChecker
+              lang={lang}
+              primary={serviceKey}
+              ctaUrl="https://t.me/vlasdobry"
+            />
+          )}
+
+          {/* miniCta — only for non-SEO/GEO pages */}
+          {serviceKey !== 'seo' && serviceKey !== 'geo' && (
+            <a
+              href={section.hero.miniCta.anchor}
+              className="inline-flex items-center gap-2 text-sm font-medium text-zinc-600 hover:text-black transition-colors"
+            >
+              {section.hero.miniCta.text}
+            </a>
+          )}
+        </header>
 
         {/* Education Section (GEO only) */}
         {isGeo && geoSection.education && (

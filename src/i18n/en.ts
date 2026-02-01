@@ -570,7 +570,7 @@ export const en: Translations = {
       nav: { backToMain: 'Back' },
       hero: {
         title: 'SEO Audit',
-        subtitle: '7-category SEO audit with action plan. Technical analysis, content, local SEO, reputation — in one report',
+        subtitle: '7-section SEO audit with action plan. Technical analysis, content, local SEO, reputation — in one report',
         badges: ['Technical SEO', 'Content', 'Local SEO'],
         miniCta: { text: 'Typical findings ↓', anchor: '#typical-findings' },
       },
@@ -617,7 +617,7 @@ export const en: Translations = {
       deliverables: {
         title: 'What You Get',
         items: [
-          '10-15 page PDF report with scores across 7 categories',
+          '10-15 page PDF report with scores across 7 audit sections',
           'Issue tables with priorities and recommendations',
           'Ready-to-use code — robots.txt, Schema.org, meta tags, Alt tags',
           'Reputation analysis — platform reviews with quotes',
@@ -628,22 +628,22 @@ export const en: Translations = {
       pricing: {
         title: 'Pricing',
         allFeatures: [
-          'Title, Description, speed check',
-          'Mobile version and indexing',
+          'Title, Description, H1',
+          'robots.txt, sitemap.xml, Schema.org',
+          'Viewport and indexing',
           '10-15 page PDF report',
-          'Scores across 7 categories',
+          'Scores across 7 audit sections',
           'Code examples for fixes',
           'Weekly action plan',
-          'Ready files: robots.txt, sitemap, Schema.org',
           'Meta tags and Alt tags for all pages',
           'Full turnkey implementation',
         ],
         packages: [
-          { name: 'Express Analysis', price: 'Free', features: [true, true, false, false, false, false, false, false, false] },
+          { name: 'Health Score', price: 'Free', features: [true, true, true, false, false, false, false, false, false] },
           { name: 'Audit', price: '$150', features: [true, true, true, true, true, true, true, true, false], recommended: true },
           { name: 'Audit + Implementation', price: '$300', features: [true, true, true, true, true, true, true, true, true] },
         ],
-        deliveryTime: 'Express: 24 hours · Audit: 1-2 days · Implementation: 1-2 sessions',
+        deliveryTime: 'Health Score: instant · Audit: 1-2 days · Implementation: 1-2 sessions',
       },
       relatedServices: {
         title: 'Related Services',
@@ -742,7 +742,7 @@ export const en: Translations = {
       deliverables: {
         title: 'What You Get',
         items: [
-          'PDF report with scores across 7 categories',
+          'PDF report with scores across 7 audit sections',
           'Tables: AI visibility, competitor analysis, priorities',
           'Ready-to-use code — llms.txt, Schema.org, noscript fallback',
           'Prompts for monitoring visibility in AI systems',
