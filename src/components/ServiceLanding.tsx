@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ArrowLeft, ChevronDown, ChevronUp, Check, X } from 'lucide-react';
 import { useI18n, ServiceKey } from '../i18n';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { HealthScoreChecker } from './HealthScoreChecker';
 import type { GeoServiceSection } from '../i18n/types';
 
 interface Props {
@@ -98,6 +99,16 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
             {section.hero.miniCta.text}
           </a>
         </header>
+
+        {/* Health Score Checker — after Hero, before Education */}
+        {(serviceKey === 'seo' || serviceKey === 'geo') && (
+          <HealthScoreChecker
+            lang={lang}
+            primary={serviceKey}
+            seoCtaUrl="https://t.me/vlasdobry"
+            geoCtaUrl="https://t.me/vlasdobry"
+          />
+        )}
 
         {/* Education Section (GEO only) */}
         {isGeo && geoSection.education && (

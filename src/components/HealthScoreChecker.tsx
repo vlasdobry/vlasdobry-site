@@ -1,0 +1,456 @@
+// src/components/HealthScoreChecker.tsx
+import React, { useState } from 'react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
+import type { Lang } from '../i18n';
+import { calculateCombinedScore, type FetchedData, type CombinedHealthScore } from '../utils/healthScore';
+
+const WORKER_URL = 'https://health-score-proxy.vlasdobry.workers.dev';
+
+interface Props {
+  lang: Lang;
+  primary: 'seo' | 'geo';
+  seoCtaUrl: string;
+  geoCtaUrl: string;
+}
+
+type CheckerState = 'idle' | 'loading' | 'result' | 'error';
+
+interface ScanStep {
+  label: string;
+  status: 'pending' | 'active' | 'done';
+}
+
+// Translations hardcoded for widget isolation
+const translations = {
+  ru: {
+    title: 'Проверьте свой сайт',
+    subtitle: 'Бесплатная проверка SEO и GEO. Узнайте, как вас видят поисковики и AI.',
+    placeholder: 'https://example.com',
+    button: 'Проверить',
+    free: 'Бесплатно · Без регистрации',
+    scanning: 'Сканирование',
+    steps: {
+      connect: 'Подключение',
+      llms: 'llms.txt',
+      robots: 'robots.txt',
+      sitemap: 'sitemap.xml',
+      html: 'Анализ страницы',
+    },
+    seoScore: 'SEO Score',
+    geoScore: 'GEO Score',
+    seoProblems: 'Проблемы SEO',
+    geoProblems: 'Проблемы GEO',
+    seoBonus: 'Бонус: проверили SEO',
+    geoBonus: 'Бонус: проверили GEO',
+    issues: 'проблем',
+    getSeoAudit: 'Получить SEO-аудит с решениями',
+    getGeoAudit: 'Получить GEO-аудит с решениями',
+    alsoSeoAudit: 'Также заказать SEO-аудит',
+    alsoGeoAudit: 'Также заказать GEO-аудит',
+    tryAnother: 'Проверить другой сайт',
+    errorTitle: 'Ошибка проверки',
+    tryAgain: 'Попробовать снова',
+  },
+  en: {
+    title: 'Check your website',
+    subtitle: 'Free SEO and GEO check. See how search engines and AI see you.',
+    placeholder: 'https://example.com',
+    button: 'Check',
+    free: 'Free · No registration',
+    scanning: 'Scanning',
+    steps: {
+      connect: 'Connecting',
+      llms: 'llms.txt',
+      robots: 'robots.txt',
+      sitemap: 'sitemap.xml',
+      html: 'Analyzing page',
+    },
+    seoScore: 'SEO Score',
+    geoScore: 'GEO Score',
+    seoProblems: 'SEO Issues',
+    geoProblems: 'GEO Issues',
+    seoBonus: 'Bonus: checked SEO',
+    geoBonus: 'Bonus: checked GEO',
+    issues: 'issues',
+    getSeoAudit: 'Get SEO audit with solutions',
+    getGeoAudit: 'Get GEO audit with solutions',
+    alsoSeoAudit: 'Also order SEO audit',
+    alsoGeoAudit: 'Also order GEO audit',
+    tryAnother: 'Check another site',
+    errorTitle: 'Check failed',
+    tryAgain: 'Try again',
+  },
+};
+
+// Circular score indicator
+const CircularScore: React.FC<{
+  score: number;
+  status: 'critical' | 'warning' | 'good' | 'excellent';
+  size: 'large' | 'small';
+  label: string;
+  statusLabel: string;
+}> = ({ score, status, size, label, statusLabel }) => {
+  const radius = size === 'large' ? 54 : 40;
+  const strokeWidth = size === 'large' ? 6 : 5;
+  const viewBox = size === 'large' ? 120 : 90;
+  const center = viewBox / 2;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference - (score / 100) * circumference;
+
+  const statusColors = {
+    critical: '#dc2626',
+    warning: '#d97706',
+    good: '#16a34a',
+    excellent: '#15803d',
+  };
+
+  return (
+    <div className={`flex flex-col items-center ${size === 'large' ? '' : 'opacity-90'}`}>
+      <div className={`relative ${size === 'large' ? 'w-32 h-32' : 'w-24 h-24'}`}>
+        <svg className="w-full h-full -rotate-90" viewBox={`0 0 ${viewBox} ${viewBox}`}>
+          <circle
+            cx={center}
+            cy={center}
+            r={radius}
+            stroke="#e4e4e7"
+            strokeWidth={strokeWidth}
+            fill="none"
+          />
+          <circle
+            cx={center}
+            cy={center}
+            r={radius}
+            stroke={statusColors[status]}
+            strokeWidth={strokeWidth}
+            fill="none"
+            strokeLinecap="round"
+            strokeDasharray={circumference}
+            strokeDashoffset={offset}
+            className="transition-all duration-1000 ease-out"
+          />
+        </svg>
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <span className={`font-black ${size === 'large' ? 'text-4xl' : 'text-2xl'}`}>{score}</span>
+          <span className={`text-zinc-400 ${size === 'large' ? 'text-sm' : 'text-xs'}`}>/100</span>
+        </div>
+      </div>
+      <p className={`mt-2 font-bold ${size === 'large' ? 'text-base' : 'text-sm'}`}>{label}</p>
+      <p className={`text-sm ${
+        status === 'critical' ? 'text-red-600' :
+        status === 'warning' ? 'text-amber-600' :
+        'text-green-600'
+      }`}>{statusLabel}</p>
+    </div>
+  );
+};
+
+// Collapsible issues list
+const IssuesList: React.FC<{
+  title: string;
+  issues: { severity: string; title: string; description: string }[];
+  defaultExpanded: boolean;
+}> = ({ title, issues, defaultExpanded }) => {
+  const [expanded, setExpanded] = useState(defaultExpanded);
+
+  const severityIcons: Record<string, string> = {
+    critical: '🔴',
+    warning: '🟡',
+    info: '💡',
+  };
+
+  if (issues.length === 0) return null;
+
+  return (
+    <div className="border border-zinc-100 rounded-lg overflow-hidden bg-white">
+      <button
+        onClick={() => setExpanded(!expanded)}
+        className="w-full px-4 py-3 flex justify-between items-center text-left hover:bg-zinc-50 transition-colors"
+      >
+        <span className="font-bold text-sm">{title}</span>
+        <div className="flex items-center gap-2">
+          <span className="text-xs text-zinc-400">{issues.length}</span>
+          {expanded ? (
+            <ChevronUp className="w-4 h-4 text-zinc-400" />
+          ) : (
+            <ChevronDown className="w-4 h-4 text-zinc-400" />
+          )}
+        </div>
+      </button>
+      {expanded && (
+        <div className="border-t border-zinc-100 divide-y divide-zinc-100">
+          {issues.map((issue, i) => (
+            <div key={i} className="px-4 py-3">
+              <div className="flex items-start gap-2">
+                <span>{severityIcons[issue.severity] || '💡'}</span>
+                <div>
+                  <p className="font-medium text-sm">{issue.title}</p>
+                  <p className="text-xs text-zinc-500 mt-0.5">{issue.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
+// Main component
+export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, seoCtaUrl, geoCtaUrl }) => {
+  const [state, setState] = useState<CheckerState>('idle');
+  const [url, setUrl] = useState('');
+  const [result, setResult] = useState<CombinedHealthScore | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [scanSteps, setScanSteps] = useState<ScanStep[]>([]);
+  const [progress, setProgress] = useState(0);
+
+  const t = translations[lang];
+
+  const handleScan = async () => {
+    if (!url.trim()) return;
+
+    setState('loading');
+    setError(null);
+    setProgress(0);
+
+    const steps: ScanStep[] = [
+      { label: t.steps.connect, status: 'active' },
+      { label: t.steps.llms, status: 'pending' },
+      { label: t.steps.robots, status: 'pending' },
+      { label: t.steps.sitemap, status: 'pending' },
+      { label: t.steps.html, status: 'pending' },
+    ];
+    setScanSteps(steps);
+
+    const updateStep = (index: number) => {
+      setScanSteps(prev => prev.map((step, i) => ({
+        ...step,
+        status: i < index ? 'done' : i === index ? 'active' : 'pending',
+      })));
+      setProgress(Math.round((index / steps.length) * 100));
+    };
+
+    try {
+      const stepDelay = (ms: number) => new Promise(r => setTimeout(r, ms));
+
+      const fetchPromise = fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ domain: url }),
+      });
+
+      await stepDelay(400); updateStep(1);
+      await stepDelay(400); updateStep(2);
+      await stepDelay(400); updateStep(3);
+      await stepDelay(400); updateStep(4);
+
+      const response = await fetchPromise;
+      if (!response.ok) throw new Error('Network error');
+
+      const data: FetchedData = await response.json();
+
+      updateStep(5);
+      setProgress(100);
+      await stepDelay(300);
+
+      const scoreResult = calculateCombinedScore(data);
+      setResult(scoreResult);
+      setState('result');
+
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unknown error');
+      setState('error');
+    }
+  };
+
+  const handleReset = () => {
+    setState('idle');
+    setUrl('');
+    setResult(null);
+    setError(null);
+  };
+
+  // Determine which score is primary/secondary
+  const primaryScore = primary === 'seo' ? result?.seo : result?.geo;
+  const secondaryScore = primary === 'seo' ? result?.geo : result?.seo;
+  const primaryLabel = primary === 'seo' ? t.seoScore : t.geoScore;
+  const secondaryLabel = primary === 'seo' ? t.geoScore : t.seoScore;
+  const primaryProblems = primary === 'seo' ? t.seoProblems : t.geoProblems;
+  const secondaryProblems = primary === 'seo' ? t.geoProblems : t.seoProblems;
+  const secondaryBonus = primary === 'seo' ? t.geoBonus : t.seoBonus;
+  const primaryCta = primary === 'seo' ? t.getSeoAudit : t.getGeoAudit;
+  const secondaryCta = primary === 'seo' ? t.alsoGeoAudit : t.alsoSeoAudit;
+  const primaryCtaUrl = primary === 'seo' ? seoCtaUrl : geoCtaUrl;
+  const secondaryCtaUrl = primary === 'seo' ? geoCtaUrl : seoCtaUrl;
+
+  // Render IDLE state
+  const renderIdle = () => (
+    <div className="bg-zinc-50 border border-zinc-100 rounded-xl p-6 md:p-8">
+      <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-4">
+        Health Score
+      </p>
+      <h3 className="text-2xl md:text-3xl font-black tracking-tight mb-3">
+        {t.title}
+      </h3>
+      <p className="text-base md:text-lg text-zinc-500 font-light mb-6">
+        {t.subtitle}
+      </p>
+      <div className="flex flex-col sm:flex-row gap-3">
+        <input
+          type="url"
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+          placeholder={t.placeholder}
+          className="flex-1 px-4 py-3 border border-zinc-200 rounded-lg focus:outline-none focus:border-black transition-colors"
+          onKeyDown={(e) => e.key === 'Enter' && handleScan()}
+        />
+        <button
+          onClick={handleScan}
+          disabled={!url.trim()}
+          className="px-6 py-3 border-2 border-black font-bold uppercase tracking-wide hover:bg-black hover:text-white transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {t.button}
+        </button>
+      </div>
+      <p className="text-sm text-zinc-400 mt-4 text-center sm:text-left">
+        {t.free}
+      </p>
+    </div>
+  );
+
+  // Render LOADING state
+  const renderLoading = () => (
+    <div className="bg-zinc-50 border border-zinc-100 rounded-xl p-6 md:p-8">
+      <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-4">
+        {t.scanning}
+      </p>
+      <h3 className="text-xl font-black tracking-tight mb-6">
+        {url.replace(/^https?:\/\//, '').split('/')[0]}
+      </h3>
+      <div className="space-y-2 mb-6">
+        {scanSteps.map((step, i) => (
+          <div key={i} className="flex items-center gap-3">
+            {step.status === 'done' && <span className="text-green-500 text-sm">✓</span>}
+            {step.status === 'active' && (
+              <span className="w-3 h-3 border-2 border-black border-t-transparent rounded-full animate-spin" />
+            )}
+            {step.status === 'pending' && (
+              <span className="w-3 h-3 rounded-full border border-zinc-200" />
+            )}
+            <span className={`text-sm ${
+              step.status === 'done' ? 'text-zinc-400' :
+              step.status === 'active' ? 'text-black font-medium' :
+              'text-zinc-300'
+            }`}>
+              {step.label}
+            </span>
+          </div>
+        ))}
+      </div>
+      <div className="h-1 bg-zinc-200 rounded-full overflow-hidden">
+        <div className="h-full bg-black transition-all duration-300" style={{ width: `${progress}%` }} />
+      </div>
+    </div>
+  );
+
+  // Render RESULT state
+  const renderResult = () => {
+    if (!result || !primaryScore || !secondaryScore) return null;
+
+    return (
+      <div className="bg-zinc-50 border border-zinc-100 rounded-xl p-6 md:p-8">
+        <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-6">
+          Health Score
+        </p>
+
+        {/* Two circles */}
+        <div className="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12 mb-8">
+          <CircularScore
+            score={primaryScore.total}
+            status={primaryScore.status}
+            size="large"
+            label={primaryLabel}
+            statusLabel={primaryScore.statusLabel}
+          />
+          <div className="hidden md:block w-px h-24 bg-zinc-200" />
+          <div className="md:hidden w-24 h-px bg-zinc-200" />
+          <div className="text-center md:text-left">
+            <p className="text-xs text-zinc-400 mb-2">{secondaryBonus}</p>
+            <CircularScore
+              score={secondaryScore.total}
+              status={secondaryScore.status}
+              size="small"
+              label={secondaryLabel}
+              statusLabel={secondaryScore.statusLabel}
+            />
+          </div>
+        </div>
+
+        {/* Issues lists */}
+        <div className="space-y-3 mb-6">
+          <IssuesList
+            title={primaryProblems}
+            issues={primaryScore.issues}
+            defaultExpanded={true}
+          />
+          <IssuesList
+            title={secondaryProblems}
+            issues={secondaryScore.issues}
+            defaultExpanded={false}
+          />
+        </div>
+
+        {/* CTAs */}
+        <div className="space-y-3">
+          <a
+            href={primaryCtaUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full text-center py-4 border-2 border-black font-bold uppercase tracking-wide hover:bg-black hover:text-white transition-all text-sm"
+          >
+            {primaryCta} →
+          </a>
+          <a
+            href={secondaryCtaUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full text-center py-3 border border-zinc-200 font-medium text-zinc-600 hover:border-black hover:text-black transition-all text-sm"
+          >
+            {secondaryCta}
+          </a>
+          <button
+            onClick={handleReset}
+            className="w-full text-sm text-zinc-400 hover:text-black transition-colors"
+          >
+            {t.tryAnother}
+          </button>
+        </div>
+      </div>
+    );
+  };
+
+  // Render ERROR state
+  const renderError = () => (
+    <div className="bg-zinc-50 border border-zinc-100 rounded-xl p-6 md:p-8 text-center">
+      <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-red-400 mb-4">
+        {t.errorTitle}
+      </p>
+      <p className="text-zinc-500 mb-6">{error}</p>
+      <button
+        onClick={handleReset}
+        className="px-6 py-3 border-2 border-black font-bold uppercase tracking-wide hover:bg-black hover:text-white transition-all"
+      >
+        {t.tryAgain}
+      </button>
+    </div>
+  );
+
+  return (
+    <div id="health-score" className="mb-12 scroll-mt-24">
+      {state === 'idle' && renderIdle()}
+      {state === 'loading' && renderLoading()}
+      {state === 'result' && renderResult()}
+      {state === 'error' && renderError()}
+    </div>
+  );
+};
