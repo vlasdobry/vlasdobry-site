@@ -1,6 +1,7 @@
 import React from 'react';
 import { useI18n } from '../i18n';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { analytics } from '../utils/analytics';
 
 export const Hero: React.FC = () => {
   const { t } = useI18n();
@@ -82,6 +83,7 @@ export const Hero: React.FC = () => {
             href="https://t.me/vlasdobry"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => analytics.clickTelegram('hero')}
             className="text-xs md:text-lg font-light text-white tracking-tight border-b border-white/20 whitespace-nowrap leading-none self-end hover:text-white/70 transition-colors"
           >
             @vlasdobry
