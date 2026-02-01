@@ -53,12 +53,19 @@ const translations = {
     button: 'Проверить',
     free: 'Бесплатно · Без регистрации',
     scanning: 'Сканирование',
-    steps: {
+    seoSteps: {
       connect: 'Подключение',
-      llms: 'llms.txt',
       robots: 'robots.txt',
       sitemap: 'sitemap.xml',
-      html: 'Анализ страницы',
+      schema: 'Schema.org',
+      meta: 'Мета-теги',
+    },
+    geoSteps: {
+      connect: 'Подключение',
+      llms: 'llms.txt',
+      schema: 'Schema.org',
+      noscript: 'Noscript fallback',
+      ai: 'AI-совместимость',
     },
     seoScore: 'SEO Score',
     geoScore: 'GEO Score',
@@ -81,12 +88,19 @@ const translations = {
     button: 'Check',
     free: 'Free · No registration',
     scanning: 'Scanning',
-    steps: {
+    seoSteps: {
       connect: 'Connecting',
-      llms: 'llms.txt',
       robots: 'robots.txt',
       sitemap: 'sitemap.xml',
-      html: 'Analyzing page',
+      schema: 'Schema.org',
+      meta: 'Meta tags',
+    },
+    geoSteps: {
+      connect: 'Connecting',
+      llms: 'llms.txt',
+      schema: 'Schema.org',
+      noscript: 'Noscript fallback',
+      ai: 'AI compatibility',
     },
     seoScore: 'SEO Score',
     geoScore: 'GEO Score',
@@ -264,12 +278,13 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
     setError(null);
     setProgress(0);
 
+    const stepLabels = primary === 'seo' ? t.seoSteps : t.geoSteps;
     const steps: ScanStep[] = [
-      { label: t.steps.connect, status: 'active' },
-      { label: t.steps.llms, status: 'pending' },
-      { label: t.steps.robots, status: 'pending' },
-      { label: t.steps.sitemap, status: 'pending' },
-      { label: t.steps.html, status: 'pending' },
+      { label: stepLabels.connect, status: 'active' },
+      { label: primary === 'seo' ? stepLabels.robots : stepLabels.llms, status: 'pending' },
+      { label: primary === 'seo' ? stepLabels.sitemap : stepLabels.schema, status: 'pending' },
+      { label: primary === 'seo' ? stepLabels.schema : stepLabels.noscript, status: 'pending' },
+      { label: primary === 'seo' ? stepLabels.meta : stepLabels.ai, status: 'pending' },
     ];
     setScanSteps(steps);
 
