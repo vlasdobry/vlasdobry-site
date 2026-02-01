@@ -79,6 +79,9 @@ const translations = {
     getFullAudit: 'Получить полный аудит',
     tryAnother: 'Проверить другой сайт',
     errorTitle: 'Ошибка проверки',
+    errorTimeout: 'Сайт не отвечает. Проверьте URL или попробуйте позже.',
+    errorServer: 'Сервер временно недоступен. Попробуйте позже.',
+    errorNetwork: 'Не удалось подключиться. Проверьте интернет-соединение.',
     tryAgain: 'Попробовать снова',
   },
   en: {
@@ -115,6 +118,9 @@ const translations = {
     getFullAudit: 'Get full audit',
     tryAnother: 'Check another site',
     errorTitle: 'Check failed',
+    errorTimeout: 'Site not responding. Check URL or try later.',
+    errorServer: 'Server temporarily unavailable. Try later.',
+    errorNetwork: 'Connection failed. Check your internet.',
     tryAgain: 'Try again',
   },
 };
@@ -301,10 +307,15 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
     try {
       const stepDelay = (ms: number) => new Promise(r => setTimeout(r, ms));
 
+      // Fetch with 15s timeout
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 15000);
+
       const fetchPromise = fetch(WORKER_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ domain: url }),
+        signal: controller.signal,
       });
 
       await stepDelay(1600); updateStep(1);
@@ -313,7 +324,9 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
       await stepDelay(1600); updateStep(4);
 
       const response = await fetchPromise;
-      if (!response.ok) throw new Error('Network error');
+      clearTimeout(timeoutId);
+
+      if (!response.ok) throw new Error('server_error');
 
       const data: FetchedData = await response.json();
 
@@ -327,7 +340,14 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
       setState('result');
 
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Unknown error');
+      const errorMsg = err instanceof Error ? err.message : 'unknown';
+      if (errorMsg === 'AbortError' || err instanceof DOMException) {
+        setError('timeout');
+      } else if (errorMsg === 'server_error') {
+        setError('server_error');
+      } else {
+        setError('network_error');
+      }
       setState('error');
     } finally {
       setIsScanning(false);
@@ -497,20 +517,26 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
   };
 
   // Render ERROR state
-  const renderError = () => (
-    <div className="bg-zinc-50 border border-zinc-100 rounded-xl p-6 md:p-8 text-center">
-      <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-red-400 mb-4">
-        {t.errorTitle}
-      </p>
-      <p className="text-zinc-500 mb-6">{error}</p>
-      <button
-        onClick={handleReset}
-        className="px-6 py-3 border-2 border-black font-bold uppercase tracking-wide hover:bg-black hover:text-white transition-all"
-      >
-        {t.tryAgain}
-      </button>
-    </div>
-  );
+  const renderError = () => {
+    const errorMessage = error === 'timeout' ? t.errorTimeout
+      : error === 'server_error' ? t.errorServer
+      : t.errorNetwork;
+
+    return (
+      <div className="bg-zinc-50 border border-zinc-100 rounded-xl p-6 md:p-8 text-center">
+        <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-red-400 mb-4">
+          {t.errorTitle}
+        </p>
+        <p className="text-zinc-500 mb-6">{errorMessage}</p>
+        <button
+          onClick={handleReset}
+          className="px-6 py-3 border-2 border-black font-bold uppercase tracking-wide hover:bg-black hover:text-white transition-all"
+        >
+          {t.tryAgain}
+        </button>
+      </div>
+    );
+  };
 
   return (
     <div id="health-score" className="mb-12 scroll-mt-24">
