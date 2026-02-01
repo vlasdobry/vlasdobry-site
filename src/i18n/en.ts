@@ -752,8 +752,8 @@ export const en: Translations = {
       pricing: {
         title: 'Pricing',
         allFeatures: [
-          'Health Score 0-100',
-          'Issues list with priorities',
+          'llms.txt, robots.txt, Schema.org',
+          'sitemap.xml and AI accessibility',
           'Full audit in 6 AI systems',
           'Ready-to-use code — llms.txt, Schema.org, noscript',
           '3-month monitoring',

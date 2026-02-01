@@ -752,8 +752,8 @@ export const ru: Translations = {
       pricing: {
         title: 'Стоимость',
         allFeatures: [
-          'Health Score 0-100',
-          'Список проблем с приоритетами',
+          'llms.txt, robots.txt, Schema.org',
+          'sitemap.xml и AI-доступность',
           'Полный аудит в 6 AI-системах',
           'Готовый код — llms.txt, Schema.org, noscript',
           'Мониторинг 3 месяца',

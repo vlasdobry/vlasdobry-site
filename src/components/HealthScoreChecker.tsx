@@ -73,7 +73,8 @@ const translations = {
     geoProblems: 'Что улучшить в GEO',
     seoBonus: 'Бонус: проверили SEO',
     geoBonus: 'Бонус: проверили GEO',
-    expressLabel: 'Экспресс-диагностика · 8 параметров',
+    seoExpressLabel: 'Экспресс-диагностика · 8 параметров',
+    geoExpressLabel: 'Экспресс-диагностика · 4 параметра',
     issues: 'проблем',
     getFullAudit: 'Получить полный аудит',
     tryAnother: 'Проверить другой сайт',
@@ -108,7 +109,8 @@ const translations = {
     geoProblems: 'How to improve GEO',
     seoBonus: 'Bonus: checked SEO',
     geoBonus: 'Bonus: checked GEO',
-    expressLabel: 'Express check · 8 parameters',
+    seoExpressLabel: 'Express check · 8 parameters',
+    geoExpressLabel: 'Express check · 4 parameters',
     issues: 'issues',
     getFullAudit: 'Get full audit',
     tryAnother: 'Check another site',
@@ -432,7 +434,7 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
             {checkedDomain}
           </p>
         </div>
-        <p className="text-xs text-zinc-400 mb-6">{t.expressLabel}</p>
+        <p className="text-xs text-zinc-400 mb-6">{primary === 'seo' ? t.seoExpressLabel : t.geoExpressLabel}</p>
 
         {/* Two circles */}
         <div className="flex flex-col md:flex-row justify-center items-center gap-4 sm:gap-6 md:gap-12 mb-6 sm:mb-8">
