@@ -19,6 +19,8 @@ const moves = [
   { src: 'seo-en.html', dest: 'en/services/seo/index.html' },
   { src: 'geo.html', dest: 'services/geo/index.html' },
   { src: 'geo-en.html', dest: 'en/services/geo/index.html' },
+  { src: 'blog.html', dest: 'blog/index.html' },
+  { src: 'blog-en.html', dest: 'en/blog/index.html' },
 ];
 
 for (const { src, dest } of moves) {
