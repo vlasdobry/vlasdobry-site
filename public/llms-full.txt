@@ -1,7 +1,7 @@
 # Vlas Fedorov - Full Website Content
 
 > This file contains the complete content of vlasdobry.ru for AI systems.
-> Last updated: 2026-02-02 (3 articles)
+> Last updated: 2026-02-02 (4 articles)
 
 ## Table of Contents
 1. About Vlas Fedorov
@@ -212,6 +212,32 @@ Acoustic voice analysis and training platform.
 ---
 
 ## 6. Blog Articles
+
+### Schema.org for Local Business: Which Markup Types You Need
+**URL:** /blog/schema-org-dlya-biznesa/
+**Category:** SEO
+**Date:** 2026-02-02
+
+Local businesses need at least three markup types for rich snippets and AI visibility.
+
+Essential markup types:
+- LocalBusiness (basic) — for any business with physical address
+- Hotel — extends LocalBusiness with hotel-specific fields (stars, amenities, check-in/out)
+- MedicalBusiness — for clinics and labs
+- FAQPage — shows Q&A in search results
+- BreadcrumbList — shows navigation path
+
+How to add:
+- JSON-LD in <head> (recommended)
+- CMS plugins (Yoast, Rank Math)
+
+Common mistakes:
+- Wrong type (LocalBusiness instead of Hotel)
+- Data mismatch (address in markup ≠ address on page)
+- Missing required fields (name, address)
+- Markup on wrong page
+
+Schema.org is also important for GEO — AI systems read structured data to understand businesses.
 
 ### How to Check Your Website's SEO: 8-Point Checklist
 **URL:** /blog/kak-proverit-seo-sayta/

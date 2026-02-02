@@ -180,6 +180,98 @@
       "tldr": "Проверьте 8 базовых параметров: Title, Description, H1, robots.txt, sitemap.xml, HTTPS, мобильную версию и скорость загрузки. Это займёт 10 минут и покажет критические проблемы. Для глубокого анализа нужен полный аудит."
     },
     {
+      "slug": "schema-org-dlya-biznesa",
+      "title": "Schema.org для локального бизнеса: какие типы разметки нужны",
+      "description": "Практическое руководство по Schema.org для отелей, СПА, клиник. Готовые примеры кода LocalBusiness, Hotel, FAQPage.",
+      "date": "2026-02-02",
+      "dateModified": "2026-02-02",
+      "category": "seo",
+      "tags": [
+        "schema.org",
+        "localseo",
+        "разметка",
+        "техническое seo"
+      ],
+      "relatedService": "/services/seo",
+      "cover": "cover.jpg",
+      "series": null,
+      "readingTime": 4,
+      "toc": [
+        {
+          "id": "что-такое-schemaorg",
+          "text": "Что такое Schema.org",
+          "level": 2
+        },
+        {
+          "id": "какие-типы-нужны-локальному-бизнесу",
+          "text": "Какие типы нужны локальному бизнесу",
+          "level": 2
+        },
+        {
+          "id": "localbusiness-базовый",
+          "text": "LocalBusiness (базовый)",
+          "level": 3
+        },
+        {
+          "id": "hotel-для-гостиниц",
+          "text": "Hotel (для гостиниц)",
+          "level": 3
+        },
+        {
+          "id": "medicalbusiness-для-клиник-и-лабораторий",
+          "text": "MedicalBusiness (для клиник и лабораторий)",
+          "level": 3
+        },
+        {
+          "id": "faqpage-для-всех",
+          "text": "FAQPage (для всех)",
+          "level": 3
+        },
+        {
+          "id": "breadcrumblist-навигация",
+          "text": "BreadcrumbList (навигация)",
+          "level": 3
+        },
+        {
+          "id": "как-добавить-разметку-на-сайт",
+          "text": "Как добавить разметку на сайт",
+          "level": 2
+        },
+        {
+          "id": "как-проверить-разметку",
+          "text": "Как проверить разметку",
+          "level": 2
+        },
+        {
+          "id": "частые-ошибки",
+          "text": "Частые ошибки",
+          "level": 2
+        },
+        {
+          "id": "schemaorg-и-geo",
+          "text": "Schema.org и GEO",
+          "level": 2
+        }
+      ],
+      "hasFaq": true,
+      "content": "<p><strong>TL;DR:</strong> Локальному бизнесу нужны минимум три типа разметки: LocalBusiness (или Hotel/MedicalBusiness), FAQPage и BreadcrumbList. Это даёт расширенные сниппеты в поиске и помогает AI-системам понять ваш бизнес.</p>\n<p>Когда я делаю SEO-аудит для отелей или клиник, в 80% случаев Schema.org либо отсутствует, либо настроена неправильно. При этом правильная разметка — один из самых быстрых способов улучшить видимость в поиске.</p>\n<h2 id=\"что-такое-schemaorg\">Что такое Schema.org</h2>\n<p>Schema.org — это словарь для описания данных на сайте в формате, понятном поисковикам. Вместо того чтобы угадывать, что означает текст на странице, Google и Яндекс читают структурированные данные напрямую.</p>\n<p>Практический результат — расширенные сниппеты в выдаче: звёздочки рейтинга, цены, часы работы, ответы на вопросы.</p>\n<h2 id=\"какие-типы-нужны-локальному-бизнесу\">Какие типы нужны локальному бизнесу</h2>\n<h3 id=\"localbusiness-базовый\">LocalBusiness (базовый)</h3>\n<p>Подходит для любого бизнеса с физическим адресом: магазины, салоны, кафе.</p>\n<pre><code class=\"language-json\">{\n  &quot;@context&quot;: &quot;https://schema.org&quot;,\n  &quot;@type&quot;: &quot;LocalBusiness&quot;,\n  &quot;name&quot;: &quot;Название компании&quot;,\n  &quot;description&quot;: &quot;Краткое описание (150-200 символов)&quot;,\n  &quot;url&quot;: &quot;https://example.com&quot;,\n  &quot;telephone&quot;: &quot;+7 999 123-45-67&quot;,\n  &quot;email&quot;: &quot;info@example.com&quot;,\n  &quot;address&quot;: {\n    &quot;@type&quot;: &quot;PostalAddress&quot;,\n    &quot;streetAddress&quot;: &quot;ул. Примерная, 1&quot;,\n    &quot;addressLocality&quot;: &quot;Москва&quot;,\n    &quot;postalCode&quot;: &quot;123456&quot;,\n    &quot;addressCountry&quot;: &quot;RU&quot;\n  },\n  &quot;geo&quot;: {\n    &quot;@type&quot;: &quot;GeoCoordinates&quot;,\n    &quot;latitude&quot;: &quot;55.7558&quot;,\n    &quot;longitude&quot;: &quot;37.6173&quot;\n  },\n  &quot;openingHours&quot;: &quot;Mo-Fr 09:00-18:00&quot;,\n  &quot;priceRange&quot;: &quot;$$&quot;\n}\n</code></pre>\n<h3 id=\"hotel-для-гостиниц\">Hotel (для гостиниц)</h3>\n<p>Расширяет LocalBusiness специфичными для отелей полями.</p>\n<pre><code class=\"language-json\">{\n  &quot;@context&quot;: &quot;https://schema.org&quot;,\n  &quot;@type&quot;: &quot;Hotel&quot;,\n  &quot;name&quot;: &quot;Отель Примерный&quot;,\n  &quot;description&quot;: &quot;4-звёздочный отель в центре города&quot;,\n  &quot;url&quot;: &quot;https://hotel-example.com&quot;,\n  &quot;telephone&quot;: &quot;+7 999 123-45-67&quot;,\n  &quot;starRating&quot;: {\n    &quot;@type&quot;: &quot;Rating&quot;,\n    &quot;ratingValue&quot;: &quot;4&quot;\n  },\n  &quot;address&quot;: {\n    &quot;@type&quot;: &quot;PostalAddress&quot;,\n    &quot;streetAddress&quot;: &quot;ул. Центральная, 10&quot;,\n    &quot;addressLocality&quot;: &quot;Сочи&quot;,\n    &quot;postalCode&quot;: &quot;354000&quot;,\n    &quot;addressCountry&quot;: &quot;RU&quot;\n  },\n  &quot;amenityFeature&quot;: [\n    { &quot;@type&quot;: &quot;LocationFeatureSpecification&quot;, &quot;name&quot;: &quot;Wi-Fi&quot;, &quot;value&quot;: true },\n    { &quot;@type&quot;: &quot;LocationFeatureSpecification&quot;, &quot;name&quot;: &quot;Парковка&quot;, &quot;value&quot;: true },\n    { &quot;@type&quot;: &quot;LocationFeatureSpecification&quot;, &quot;name&quot;: &quot;Бассейн&quot;, &quot;value&quot;: true }\n  ],\n  &quot;checkinTime&quot;: &quot;14:00&quot;,\n  &quot;checkoutTime&quot;: &quot;12:00&quot;\n}\n</code></pre>\n<h3 id=\"medicalbusiness-для-клиник-и-лабораторий\">MedicalBusiness (для клиник и лабораторий)</h3>\n<pre><code class=\"language-json\">{\n  &quot;@context&quot;: &quot;https://schema.org&quot;,\n  &quot;@type&quot;: &quot;MedicalBusiness&quot;,\n  &quot;name&quot;: &quot;ДНК-Лаборатория&quot;,\n  &quot;description&quot;: &quot;Генетические исследования и ДНК-тесты&quot;,\n  &quot;url&quot;: &quot;https://dna-lab.example.com&quot;,\n  &quot;telephone&quot;: &quot;+7 999 123-45-67&quot;,\n  &quot;medicalSpecialty&quot;: &quot;Genetic&quot;,\n  &quot;address&quot;: {\n    &quot;@type&quot;: &quot;PostalAddress&quot;,\n    &quot;streetAddress&quot;: &quot;ул. Медицинская, 5&quot;,\n    &quot;addressLocality&quot;: &quot;Москва&quot;,\n    &quot;postalCode&quot;: &quot;123456&quot;,\n    &quot;addressCountry&quot;: &quot;RU&quot;\n  }\n}\n</code></pre>\n<h3 id=\"faqpage-для-всех\">FAQPage (для всех)</h3>\n<p>Показывает вопросы и ответы прямо в выдаче. Работает для любого бизнеса.</p>\n<pre><code class=\"language-json\">{\n  &quot;@context&quot;: &quot;https://schema.org&quot;,\n  &quot;@type&quot;: &quot;FAQPage&quot;,\n  &quot;mainEntity&quot;: [\n    {\n      &quot;@type&quot;: &quot;Question&quot;,\n      &quot;name&quot;: &quot;Как забронировать номер?&quot;,\n      &quot;acceptedAnswer&quot;: {\n        &quot;@type&quot;: &quot;Answer&quot;,\n        &quot;text&quot;: &quot;Через форму на сайте, по телефону или в мессенджере.&quot;\n      }\n    },\n    {\n      &quot;@type&quot;: &quot;Question&quot;,\n      &quot;name&quot;: &quot;Есть ли парковка?&quot;,\n      &quot;acceptedAnswer&quot;: {\n        &quot;@type&quot;: &quot;Answer&quot;,\n        &quot;text&quot;: &quot;Да, бесплатная парковка для гостей на 50 мест.&quot;\n      }\n    }\n  ]\n}\n</code></pre>\n<h3 id=\"breadcrumblist-навигация\">BreadcrumbList (навигация)</h3>\n<p>Показывает путь к странице в выдаче: Главная &gt; Номера &gt; Люкс</p>\n<pre><code class=\"language-json\">{\n  &quot;@context&quot;: &quot;https://schema.org&quot;,\n  &quot;@type&quot;: &quot;BreadcrumbList&quot;,\n  &quot;itemListElement&quot;: [\n    {\n      &quot;@type&quot;: &quot;ListItem&quot;,\n      &quot;position&quot;: 1,\n      &quot;name&quot;: &quot;Главная&quot;,\n      &quot;item&quot;: &quot;https://example.com&quot;\n    },\n    {\n      &quot;@type&quot;: &quot;ListItem&quot;,\n      &quot;position&quot;: 2,\n      &quot;name&quot;: &quot;Номера&quot;,\n      &quot;item&quot;: &quot;https://example.com/rooms/&quot;\n    },\n    {\n      &quot;@type&quot;: &quot;ListItem&quot;,\n      &quot;position&quot;: 3,\n      &quot;name&quot;: &quot;Люкс&quot;\n    }\n  ]\n}\n</code></pre>\n<h2 id=\"как-добавить-разметку-на-сайт\">Как добавить разметку на сайт</h2>\n<p><strong>Способ 1: JSON-LD в head (рекомендуется)</strong></p>\n<p>Добавьте код в секцию <code>&lt;head&gt;</code> страницы:</p>\n<pre><code class=\"language-html\">&lt;script type=&quot;application/ld+json&quot;&gt;\n{\n  &quot;@context&quot;: &quot;https://schema.org&quot;,\n  &quot;@type&quot;: &quot;LocalBusiness&quot;,\n  ...\n}\n&lt;/script&gt;\n</code></pre>\n<p><strong>Способ 2: Плагины для CMS</strong></p>\n<ul>\n<li>WordPress: Yoast SEO, Rank Math</li>\n<li>Tilda: встроенный блок Schema.org</li>\n<li>Wix: встроенные настройки SEO</li>\n</ul>\n<h2 id=\"как-проверить-разметку\">Как проверить разметку</h2>\n<ol>\n<li><a href=\"https://search.google.com/test/rich-results\">Google Rich Results Test</a> — показывает, какие расширенные сниппеты доступны</li>\n<li><a href=\"https://validator.schema.org/\">Schema Markup Validator</a> — проверяет синтаксис</li>\n<li>Google Search Console → Улучшения — показывает ошибки на всём сайте</li>\n</ol>\n<h2 id=\"частые-ошибки\">Частые ошибки</h2>\n<p><strong>Неправильный тип</strong>\nИспользуют LocalBusiness для отеля вместо Hotel. Работает, но теряются специфичные поля (звёзды, удобства).</p>\n<p><strong>Несоответствие данных</strong>\nАдрес в разметке не совпадает с адресом на странице. Google это видит и игнорирует разметку.</p>\n<p><strong>Отсутствие обязательных полей</strong>\nМинимум для LocalBusiness: name, address. Без них разметка не валидна.</p>\n<p><strong>Разметка на неправильной странице</strong>\nFAQPage должен быть на странице с FAQ, а не на главной. Hotel — на странице отеля, не на странице номера.</p>\n<h2 id=\"schemaorg-и-geo\">Schema.org и GEO</h2>\n<p>Структурированные данные важны не только для Google. AI-системы (ChatGPT, Perplexity) тоже читают Schema.org, чтобы понять, что представляет собой бизнес.</p>\n<p>Если хотите, чтобы AI рекомендовал вас — разметка обязательна. Подробнее в статье про <a href=\"/blog/chto-takoe-geo-optimizaciya/\">GEO-оптимизацию</a>.</p>\n<h2 id=\"faq\">FAQ</h2>\n<p><strong>Сколько типов разметки можно на одной странице?</strong>\nСколько угодно. На главной странице отеля обычно: Hotel + FAQPage + BreadcrumbList. Главное — каждый тип должен соответствовать контенту страницы.</p>\n<p><strong>Как быстро Google увидит разметку?</strong>\nПосле индексации страницы. Обычно 1-2 недели. Можно ускорить через &quot;Запросить индексирование&quot; в Search Console.</p>\n<p><strong>Обязательно ли нанимать разработчика?</strong>\nДля простых случаев — нет. JSON-LD можно добавить через CMS или вручную в HTML. Для сложных сайтов с сотнями страниц лучше автоматизировать.</p>\n",
+      "faq": [
+        {
+          "question": "Сколько типов разметки можно на одной странице?",
+          "answer": "Сколько угодно. На главной странице отеля обычно: Hotel + FAQPage + BreadcrumbList. Главное — каждый тип должен соответствовать контенту страницы."
+        },
+        {
+          "question": "Как быстро Google увидит разметку?",
+          "answer": "После индексации страницы. Обычно 1-2 недели. Можно ускорить через \"Запросить индексирование\" в Search Console."
+        },
+        {
+          "question": "Обязательно ли нанимать разработчика?",
+          "answer": "Для простых случаев — нет. JSON-LD можно добавить через CMS или вручную в HTML. Для сложных сайтов с сотнями страниц лучше автоматизировать."
+        }
+      ],
+      "tldr": "Локальному бизнесу нужны минимум три типа разметки: LocalBusiness (или Hotel/MedicalBusiness), FAQPage и BreadcrumbList. Это даёт расширенные сниппеты в поиске и помогает AI-системам понять ваш бизнес."
+    },
+    {
       "slug": "seo-dlya-oteley",
       "title": "SEO для отелей: с чего начать в 2026",
       "description": "Пошаговое руководство по продвижению отеля в поисковых системах. Техническое SEO, локальный поиск, работа с отзывами.",
@@ -445,6 +537,98 @@
         }
       ],
       "tldr": "Check 8 basic parameters: Title, Description, H1, robots.txt, sitemap.xml, HTTPS, mobile version, and page speed. Takes 10 minutes and reveals critical issues. For deeper analysis, you need a full audit."
+    },
+    {
+      "slug": "schema-org-dlya-biznesa",
+      "title": "Schema.org for Local Business: Which Markup Types You Need",
+      "description": "Practical guide to Schema.org for hotels, spas, clinics. Ready-to-use code examples for LocalBusiness, Hotel, FAQPage.",
+      "date": "2026-02-02",
+      "dateModified": "2026-02-02",
+      "category": "seo",
+      "tags": [
+        "schema.org",
+        "localseo",
+        "markup",
+        "technical seo"
+      ],
+      "relatedService": "/en/services/seo",
+      "cover": "cover.jpg",
+      "series": null,
+      "readingTime": 4,
+      "toc": [
+        {
+          "id": "what-is-schemaorg",
+          "text": "What is Schema.org",
+          "level": 2
+        },
+        {
+          "id": "which-types-local-businesses-need",
+          "text": "Which Types Local Businesses Need",
+          "level": 2
+        },
+        {
+          "id": "localbusiness-basic",
+          "text": "LocalBusiness (basic)",
+          "level": 3
+        },
+        {
+          "id": "hotel-for-accommodations",
+          "text": "Hotel (for accommodations)",
+          "level": 3
+        },
+        {
+          "id": "medicalbusiness-for-clinics-and-labs",
+          "text": "MedicalBusiness (for clinics and labs)",
+          "level": 3
+        },
+        {
+          "id": "faqpage-for-everyone",
+          "text": "FAQPage (for everyone)",
+          "level": 3
+        },
+        {
+          "id": "breadcrumblist-navigation",
+          "text": "BreadcrumbList (navigation)",
+          "level": 3
+        },
+        {
+          "id": "how-to-add-markup-to-your-site",
+          "text": "How to Add Markup to Your Site",
+          "level": 2
+        },
+        {
+          "id": "how-to-validate-markup",
+          "text": "How to Validate Markup",
+          "level": 2
+        },
+        {
+          "id": "common-mistakes",
+          "text": "Common Mistakes",
+          "level": 2
+        },
+        {
+          "id": "schemaorg-and-geo",
+          "text": "Schema.org and GEO",
+          "level": 2
+        }
+      ],
+      "hasFaq": true,
+      "content": "<p><strong>TL;DR:</strong> Local businesses need at least three markup types: LocalBusiness (or Hotel/MedicalBusiness), FAQPage, and BreadcrumbList. This enables rich snippets in search and helps AI systems understand your business.</p>\n<p>When I do SEO audits for hotels or clinics, 80% of the time Schema.org is either missing or configured incorrectly. Yet proper markup is one of the fastest ways to improve search visibility.</p>\n<h2 id=\"what-is-schemaorg\">What is Schema.org</h2>\n<p>Schema.org is a vocabulary for describing data on your website in a format search engines understand. Instead of guessing what text on a page means, Google and Bing read structured data directly.</p>\n<p>The practical result — rich snippets in search results: star ratings, prices, business hours, FAQ answers.</p>\n<h2 id=\"which-types-local-businesses-need\">Which Types Local Businesses Need</h2>\n<h3 id=\"localbusiness-basic\">LocalBusiness (basic)</h3>\n<p>Works for any business with a physical address: stores, salons, cafes.</p>\n<pre><code class=\"language-json\">{\n  &quot;@context&quot;: &quot;https://schema.org&quot;,\n  &quot;@type&quot;: &quot;LocalBusiness&quot;,\n  &quot;name&quot;: &quot;Company Name&quot;,\n  &quot;description&quot;: &quot;Brief description (150-200 characters)&quot;,\n  &quot;url&quot;: &quot;https://example.com&quot;,\n  &quot;telephone&quot;: &quot;+1 555 123-4567&quot;,\n  &quot;email&quot;: &quot;info@example.com&quot;,\n  &quot;address&quot;: {\n    &quot;@type&quot;: &quot;PostalAddress&quot;,\n    &quot;streetAddress&quot;: &quot;123 Main Street&quot;,\n    &quot;addressLocality&quot;: &quot;New York&quot;,\n    &quot;postalCode&quot;: &quot;10001&quot;,\n    &quot;addressRegion&quot;: &quot;NY&quot;,\n    &quot;addressCountry&quot;: &quot;US&quot;\n  },\n  &quot;geo&quot;: {\n    &quot;@type&quot;: &quot;GeoCoordinates&quot;,\n    &quot;latitude&quot;: &quot;40.7128&quot;,\n    &quot;longitude&quot;: &quot;-74.0060&quot;\n  },\n  &quot;openingHours&quot;: &quot;Mo-Fr 09:00-18:00&quot;,\n  &quot;priceRange&quot;: &quot;$$&quot;\n}\n</code></pre>\n<h3 id=\"hotel-for-accommodations\">Hotel (for accommodations)</h3>\n<p>Extends LocalBusiness with hotel-specific fields.</p>\n<pre><code class=\"language-json\">{\n  &quot;@context&quot;: &quot;https://schema.org&quot;,\n  &quot;@type&quot;: &quot;Hotel&quot;,\n  &quot;name&quot;: &quot;Example Hotel&quot;,\n  &quot;description&quot;: &quot;4-star hotel in the city center&quot;,\n  &quot;url&quot;: &quot;https://hotel-example.com&quot;,\n  &quot;telephone&quot;: &quot;+1 555 123-4567&quot;,\n  &quot;starRating&quot;: {\n    &quot;@type&quot;: &quot;Rating&quot;,\n    &quot;ratingValue&quot;: &quot;4&quot;\n  },\n  &quot;address&quot;: {\n    &quot;@type&quot;: &quot;PostalAddress&quot;,\n    &quot;streetAddress&quot;: &quot;100 Beach Road&quot;,\n    &quot;addressLocality&quot;: &quot;Miami&quot;,\n    &quot;postalCode&quot;: &quot;33101&quot;,\n    &quot;addressRegion&quot;: &quot;FL&quot;,\n    &quot;addressCountry&quot;: &quot;US&quot;\n  },\n  &quot;amenityFeature&quot;: [\n    { &quot;@type&quot;: &quot;LocationFeatureSpecification&quot;, &quot;name&quot;: &quot;Wi-Fi&quot;, &quot;value&quot;: true },\n    { &quot;@type&quot;: &quot;LocationFeatureSpecification&quot;, &quot;name&quot;: &quot;Parking&quot;, &quot;value&quot;: true },\n    { &quot;@type&quot;: &quot;LocationFeatureSpecification&quot;, &quot;name&quot;: &quot;Pool&quot;, &quot;value&quot;: true }\n  ],\n  &quot;checkinTime&quot;: &quot;14:00&quot;,\n  &quot;checkoutTime&quot;: &quot;12:00&quot;\n}\n</code></pre>\n<h3 id=\"medicalbusiness-for-clinics-and-labs\">MedicalBusiness (for clinics and labs)</h3>\n<pre><code class=\"language-json\">{\n  &quot;@context&quot;: &quot;https://schema.org&quot;,\n  &quot;@type&quot;: &quot;MedicalBusiness&quot;,\n  &quot;name&quot;: &quot;DNA Laboratory&quot;,\n  &quot;description&quot;: &quot;Genetic testing and DNA analysis&quot;,\n  &quot;url&quot;: &quot;https://dna-lab.example.com&quot;,\n  &quot;telephone&quot;: &quot;+1 555 123-4567&quot;,\n  &quot;medicalSpecialty&quot;: &quot;Genetic&quot;,\n  &quot;address&quot;: {\n    &quot;@type&quot;: &quot;PostalAddress&quot;,\n    &quot;streetAddress&quot;: &quot;500 Medical Drive&quot;,\n    &quot;addressLocality&quot;: &quot;Boston&quot;,\n    &quot;postalCode&quot;: &quot;02101&quot;,\n    &quot;addressRegion&quot;: &quot;MA&quot;,\n    &quot;addressCountry&quot;: &quot;US&quot;\n  }\n}\n</code></pre>\n<h3 id=\"faqpage-for-everyone\">FAQPage (for everyone)</h3>\n<p>Shows questions and answers directly in search results. Works for any business.</p>\n<pre><code class=\"language-json\">{\n  &quot;@context&quot;: &quot;https://schema.org&quot;,\n  &quot;@type&quot;: &quot;FAQPage&quot;,\n  &quot;mainEntity&quot;: [\n    {\n      &quot;@type&quot;: &quot;Question&quot;,\n      &quot;name&quot;: &quot;How do I book a room?&quot;,\n      &quot;acceptedAnswer&quot;: {\n        &quot;@type&quot;: &quot;Answer&quot;,\n        &quot;text&quot;: &quot;Through the website form, by phone, or via messenger.&quot;\n      }\n    },\n    {\n      &quot;@type&quot;: &quot;Question&quot;,\n      &quot;name&quot;: &quot;Is there parking?&quot;,\n      &quot;acceptedAnswer&quot;: {\n        &quot;@type&quot;: &quot;Answer&quot;,\n        &quot;text&quot;: &quot;Yes, free parking for guests with 50 spaces.&quot;\n      }\n    }\n  ]\n}\n</code></pre>\n<h3 id=\"breadcrumblist-navigation\">BreadcrumbList (navigation)</h3>\n<p>Shows page path in search results: Home &gt; Rooms &gt; Suite</p>\n<pre><code class=\"language-json\">{\n  &quot;@context&quot;: &quot;https://schema.org&quot;,\n  &quot;@type&quot;: &quot;BreadcrumbList&quot;,\n  &quot;itemListElement&quot;: [\n    {\n      &quot;@type&quot;: &quot;ListItem&quot;,\n      &quot;position&quot;: 1,\n      &quot;name&quot;: &quot;Home&quot;,\n      &quot;item&quot;: &quot;https://example.com&quot;\n    },\n    {\n      &quot;@type&quot;: &quot;ListItem&quot;,\n      &quot;position&quot;: 2,\n      &quot;name&quot;: &quot;Rooms&quot;,\n      &quot;item&quot;: &quot;https://example.com/rooms/&quot;\n    },\n    {\n      &quot;@type&quot;: &quot;ListItem&quot;,\n      &quot;position&quot;: 3,\n      &quot;name&quot;: &quot;Suite&quot;\n    }\n  ]\n}\n</code></pre>\n<h2 id=\"how-to-add-markup-to-your-site\">How to Add Markup to Your Site</h2>\n<p><strong>Method 1: JSON-LD in head (recommended)</strong></p>\n<p>Add code to the <code>&lt;head&gt;</code> section:</p>\n<pre><code class=\"language-html\">&lt;script type=&quot;application/ld+json&quot;&gt;\n{\n  &quot;@context&quot;: &quot;https://schema.org&quot;,\n  &quot;@type&quot;: &quot;LocalBusiness&quot;,\n  ...\n}\n&lt;/script&gt;\n</code></pre>\n<p><strong>Method 2: CMS plugins</strong></p>\n<ul>\n<li>WordPress: Yoast SEO, Rank Math</li>\n<li>Squarespace: built-in SEO settings</li>\n<li>Wix: built-in SEO settings</li>\n</ul>\n<h2 id=\"how-to-validate-markup\">How to Validate Markup</h2>\n<ol>\n<li><a href=\"https://search.google.com/test/rich-results\">Google Rich Results Test</a> — shows available rich snippets</li>\n<li><a href=\"https://validator.schema.org/\">Schema Markup Validator</a> — checks syntax</li>\n<li>Google Search Console → Enhancements — shows errors site-wide</li>\n</ol>\n<h2 id=\"common-mistakes\">Common Mistakes</h2>\n<p><strong>Wrong type</strong>\nUsing LocalBusiness for a hotel instead of Hotel. It works, but you lose specific fields (stars, amenities).</p>\n<p><strong>Data mismatch</strong>\nAddress in markup doesn&#39;t match address on page. Google sees this and ignores the markup.</p>\n<p><strong>Missing required fields</strong>\nMinimum for LocalBusiness: name, address. Without them, markup is invalid.</p>\n<p><strong>Markup on wrong page</strong>\nFAQPage should be on the FAQ page, not homepage. Hotel — on hotel page, not room page.</p>\n<h2 id=\"schemaorg-and-geo\">Schema.org and GEO</h2>\n<p>Structured data matters not just for Google. AI systems (ChatGPT, Perplexity) also read Schema.org to understand what a business is.</p>\n<p>If you want AI to recommend you — markup is mandatory. More details in the <a href=\"/en/blog/chto-takoe-geo-optimizaciya/\">GEO optimization article</a>.</p>\n<h2 id=\"faq\">FAQ</h2>\n<p><strong>How many markup types can I have on one page?</strong>\nAs many as needed. A hotel homepage typically has: Hotel + FAQPage + BreadcrumbList. Just make sure each type matches the page content.</p>\n<p><strong>How quickly will Google see the markup?</strong>\nAfter page indexing. Usually 1-2 weeks. You can speed it up via &quot;Request Indexing&quot; in Search Console.</p>\n<p><strong>Do I need to hire a developer?</strong>\nFor simple cases — no. JSON-LD can be added through CMS or manually in HTML. For complex sites with hundreds of pages, automation is better.</p>\n",
+      "faq": [
+        {
+          "question": "How many markup types can I have on one page?",
+          "answer": "As many as needed. A hotel homepage typically has: Hotel + FAQPage + BreadcrumbList. Just make sure each type matches the page content."
+        },
+        {
+          "question": "How quickly will Google see the markup?",
+          "answer": "After page indexing. Usually 1-2 weeks. You can speed it up via \"Request Indexing\" in Search Console."
+        },
+        {
+          "question": "Do I need to hire a developer?",
+          "answer": "For simple cases — no. JSON-LD can be added through CMS or manually in HTML. For complex sites with hundreds of pages, automation is better."
+        }
+      ],
+      "tldr": "Local businesses need at least three markup types: LocalBusiness (or Hotel/MedicalBusiness), FAQPage, and BreadcrumbList. This enables rich snippets in search and helps AI systems understand your business."
     },
     {
       "slug": "seo-dlya-oteley",
