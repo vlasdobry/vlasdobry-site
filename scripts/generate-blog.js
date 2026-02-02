@@ -9,6 +9,30 @@ const contentDir = path.join(__dirname, '..', 'content', 'blog');
 const publicDir = path.join(__dirname, '..', 'public');
 const distDir = path.join(__dirname, '..', 'dist');
 
+// Extract built asset paths from compiled blog-post.html
+function getBuiltAssets() {
+  const blogPostHtmlPath = path.join(distDir, 'blog-post.html');
+  if (!fs.existsSync(blogPostHtmlPath)) {
+    // Pre-build: return dev paths
+    return {
+      css: '<link rel="stylesheet" href="/index.css">',
+      scripts: '<script type="module" src="/src/blog-post-index.tsx"></script>'
+    };
+  }
+
+  const html = fs.readFileSync(blogPostHtmlPath, 'utf-8');
+
+  // Extract CSS link (with crossorigin attribute)
+  const cssMatch = html.match(/<link rel="stylesheet"[^>]*href="[^"]+assets[^"]+\.css"[^>]*>/);
+  const css = cssMatch ? cssMatch[0] : '<link rel="stylesheet" href="/index.css">';
+
+  // Extract all script tags for assets
+  const scriptMatches = html.match(/<script type="module"[^>]*src="\/assets\/[^"]+"><\/script>/g) || [];
+  const scripts = scriptMatches.join('\n  ');
+
+  return { css, scripts };
+}
+
 // Configure marked for GFM
 marked.use({ gfm: true });
 
@@ -219,6 +243,7 @@ function generateNoscriptContent(article, lang) {
 }
 
 function generateArticleHtml(article, lang) {
+  const assets = getBuiltAssets();
   const baseUrl = 'https://vlasdobry.ru';
   const articleUrl = lang === 'ru'
     ? `${baseUrl}/blog/${article.slug}/`
@@ -324,7 +349,8 @@ function generateArticleHtml(article, lang) {
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+  ${assets.scripts}
+  ${assets.css}
 </head>
 <body>
     <noscript>
@@ -332,7 +358,6 @@ function generateArticleHtml(article, lang) {
         ${generateNoscriptContent(article, lang)}
     </noscript>
     <div id="root"></div>
-<script type="module" src="/src/blog-post-index.tsx"></script>
 </body>
 </html>`;
 }

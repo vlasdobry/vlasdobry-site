@@ -69,6 +69,7 @@ export default defineConfig({
           'geo-en': path.resolve(__dirname, 'geo-en.html'),
           'blog': path.resolve(__dirname, 'blog.html'),
           'blog-en': path.resolve(__dirname, 'blog-en.html'),
+          'blog-post': path.resolve(__dirname, 'blog-post.html'),
         },
       },
     },
