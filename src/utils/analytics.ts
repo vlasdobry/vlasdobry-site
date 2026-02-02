@@ -28,4 +28,8 @@ export const analytics = {
     trackGoal('health_score_error', { type, error }),
   healthScoreCta: (type: string, domain: string, seoScore?: number, geoScore?: number) =>
     trackGoal('health_score_cta_click', { type, domain, seo_score: seoScore, geo_score: geoScore }),
+
+  // Blog
+  blogView: (slug: string) => trackGoal('blog_view', { slug }),
+  blogCtaClick: (slug: string) => trackGoal('blog_cta_click', { slug }),
 };
