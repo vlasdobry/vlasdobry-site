@@ -1,4 +1,178 @@
 {
-  "ru": [],
-  "en": []
+  "ru": [
+    {
+      "slug": "seo-dlya-oteley",
+      "title": "SEO для отелей: с чего начать в 2026",
+      "description": "Пошаговое руководство по продвижению отеля в поисковых системах. Техническое SEO, локальный поиск, работа с отзывами.",
+      "date": "2026-02-01",
+      "dateModified": "2026-02-01",
+      "category": "seo",
+      "tags": [
+        "отели",
+        "localseo",
+        "horeca"
+      ],
+      "relatedService": "/for-hotels",
+      "cover": "cover.jpg",
+      "series": null,
+      "readingTime": 3,
+      "toc": [
+        {
+          "id": "с-чего-начать",
+          "text": "С чего начать",
+          "level": 2
+        },
+        {
+          "id": "техническое-seo",
+          "text": "Техническое SEO",
+          "level": 2
+        },
+        {
+          "id": "core-web-vitals",
+          "text": "Core Web Vitals",
+          "level": 3
+        },
+        {
+          "id": "schemaorg-для-отелей",
+          "text": "Schema.org для отелей",
+          "level": 3
+        },
+        {
+          "id": "локальное-seo",
+          "text": "Локальное SEO",
+          "level": 2
+        },
+        {
+          "id": "яндекс-карты-и-google-maps",
+          "text": "Яндекс Карты и Google Maps",
+          "level": 3
+        },
+        {
+          "id": "nap-консистентность",
+          "text": "NAP-консистентность",
+          "level": 3
+        },
+        {
+          "id": "работа-с-отзывами",
+          "text": "Работа с отзывами",
+          "level": 2
+        },
+        {
+          "id": "где-собирать-отзывы",
+          "text": "Где собирать отзывы",
+          "level": 3
+        },
+        {
+          "id": "как-работать-с-негативом",
+          "text": "Как работать с негативом",
+          "level": 3
+        }
+      ],
+      "hasFaq": true,
+      "content": "<p><strong>TL;DR:</strong> SEO для отеля начинается с технической базы (robots.txt, sitemap.xml, Schema.org), продолжается локальным SEO (Яндекс Карты, Google Maps) и работой с отзывами. Первые результаты — через 3-6 месяцев.</p>\n<p>Отельный бизнес живёт прямыми бронированиями. Каждый гость, пришедший напрямую с поиска — это экономия 15-25% комиссии OTA. SEO — один из ключевых каналов для этого.</p>\n<h2 id=\"с-чего-начать\">С чего начать</h2>\n<p>Перед тем как погружаться в оптимизацию, нужно провести аудит текущего состояния сайта. Что проверяем:</p>\n<ul>\n<li><strong>robots.txt</strong> — должен существовать и разрешать индексацию</li>\n<li><strong>sitemap.xml</strong> — карта сайта для поисковиков</li>\n<li><strong>HTTPS</strong> — обязателен для любого сайта с бронированием</li>\n<li><strong>Мобильная версия</strong> — более 60% поиска отелей идёт с телефонов</li>\n</ul>\n<h2 id=\"техническое-seo\">Техническое SEO</h2>\n<p>Техническая база — фундамент всего продвижения. Без неё контент и ссылки не работают.</p>\n<h3 id=\"core-web-vitals\">Core Web Vitals</h3>\n<p>Google оценивает три метрики пользовательского опыта:</p>\n<ul>\n<li><strong>LCP</strong> (Largest Contentful Paint) — главное изображение должно загружаться за 2.5 сек</li>\n<li><strong>FID/INP</strong> — интерактивность страницы</li>\n<li><strong>CLS</strong> — стабильность макета при загрузке</li>\n</ul>\n<p>Для отеля критично: галереи номеров часто ломают CLS из-за ленивой загрузки без заданных размеров.</p>\n<h3 id=\"schemaorg-для-отелей\">Schema.org для отелей</h3>\n<p>Минимальный набор разметки:</p>\n<ul>\n<li><strong>Hotel</strong> — основная информация об отеле</li>\n<li><strong>LocalBusiness</strong> — для локального поиска</li>\n<li><strong>FAQPage</strong> — частые вопросы в расширенных сниппетах</li>\n</ul>\n<h2 id=\"локальное-seo\">Локальное SEO</h2>\n<p>Для отеля локальный поиск — это половина успеха. Гости ищут &quot;отель в [город]&quot;, &quot;гостиница рядом с [достопримечательность]&quot;.</p>\n<h3 id=\"яндекс-карты-и-google-maps\">Яндекс Карты и Google Maps</h3>\n<p>Карточки на картах должны быть:</p>\n<ul>\n<li>Полностью заполнены (фото, описание, услуги)</li>\n<li>С актуальными контактами</li>\n<li>С ответами на все отзывы</li>\n</ul>\n<h3 id=\"nap-консистентность\">NAP-консистентность</h3>\n<p>NAP (Name, Address, Phone) должен быть идентичным везде:</p>\n<ul>\n<li>На сайте</li>\n<li>На картах</li>\n<li>В каталогах</li>\n<li>В соцсетях</li>\n</ul>\n<h2 id=\"работа-с-отзывами\">Работа с отзывами</h2>\n<p>Отзывы влияют на ранжирование в локальном поиске и на конверсию из просмотра в бронирование.</p>\n<h3 id=\"где-собирать-отзывы\">Где собирать отзывы</h3>\n<p>Приоритет площадок для российского отеля:</p>\n<ol>\n<li>Яндекс Карты</li>\n<li>Google Maps</li>\n<li>Островок / Яндекс.Путешествия</li>\n<li>TripAdvisor (для иностранных гостей)</li>\n</ol>\n<h3 id=\"как-работать-с-негативом\">Как работать с негативом</h3>\n<p>Негативные отзывы — возможность показать сервис. Правила ответа:</p>\n<ul>\n<li>Отвечать в течение 24 часов</li>\n<li>Благодарить за обратную связь</li>\n<li>Предлагать решение</li>\n<li>Не спорить публично</li>\n</ul>\n<h2 id=\"faq\">FAQ</h2>\n<p><strong>Сколько стоит SEO для отеля?</strong>\nОт 50 000 ₽/мес за комплексное продвижение. Цена зависит от региона, количества номеров и конкуренции.</p>\n<p><strong>Как быстро появятся результаты?</strong>\nПервые позиции — через 3-6 месяцев. Локальное SEO даёт результат быстрее — от 1-2 месяцев.</p>\n<p><strong>Можно ли обойтись без SEO?</strong>\nМожно, но дорого. OTA возьмут 15-25% с каждого бронирования. SEO — инвестиция в снижение зависимости от посредников.</p>\n",
+      "faq": [
+        {
+          "question": "Сколько стоит SEO для отеля?",
+          "answer": "От 50 000 ₽/мес за комплексное продвижение. Цена зависит от региона, количества номеров и конкуренции."
+        },
+        {
+          "question": "Как быстро появятся результаты?",
+          "answer": "Первые позиции — через 3-6 месяцев. Локальное SEO даёт результат быстрее — от 1-2 месяцев."
+        },
+        {
+          "question": "Можно ли обойтись без SEO?",
+          "answer": "Можно, но дорого. OTA возьмут 15-25% с каждого бронирования. SEO — инвестиция в снижение зависимости от посредников."
+        }
+      ],
+      "tldr": "SEO для отеля начинается с технической базы (robots.txt, sitemap.xml, Schema.org), продолжается локальным SEO (Яндекс Карты, Google Maps) и работой с отзывами. Первые результаты — через 3-6 месяцев."
+    }
+  ],
+  "en": [
+    {
+      "slug": "seo-dlya-oteley",
+      "title": "SEO for Hotels: Where to Start in 2026",
+      "description": "Step-by-step guide to hotel search engine optimization. Technical SEO, local search, reputation management.",
+      "date": "2026-02-01",
+      "dateModified": "2026-02-01",
+      "category": "seo",
+      "tags": [
+        "hotels",
+        "localseo",
+        "horeca"
+      ],
+      "relatedService": "/en/for-hotels",
+      "cover": "cover.jpg",
+      "series": null,
+      "readingTime": 3,
+      "toc": [
+        {
+          "id": "where-to-start",
+          "text": "Where to Start",
+          "level": 2
+        },
+        {
+          "id": "technical-seo",
+          "text": "Technical SEO",
+          "level": 2
+        },
+        {
+          "id": "core-web-vitals",
+          "text": "Core Web Vitals",
+          "level": 3
+        },
+        {
+          "id": "schemaorg-for-hotels",
+          "text": "Schema.org for Hotels",
+          "level": 3
+        },
+        {
+          "id": "local-seo",
+          "text": "Local SEO",
+          "level": 2
+        },
+        {
+          "id": "google-maps-and-bing-places",
+          "text": "Google Maps and Bing Places",
+          "level": 3
+        },
+        {
+          "id": "nap-consistency",
+          "text": "NAP Consistency",
+          "level": 3
+        },
+        {
+          "id": "reputation-management",
+          "text": "Reputation Management",
+          "level": 2
+        },
+        {
+          "id": "where-to-collect-reviews",
+          "text": "Where to Collect Reviews",
+          "level": 3
+        },
+        {
+          "id": "handling-negative-reviews",
+          "text": "Handling Negative Reviews",
+          "level": 3
+        }
+      ],
+      "hasFaq": true,
+      "content": "<p><strong>TL;DR:</strong> Hotel SEO starts with technical foundation (robots.txt, sitemap.xml, Schema.org), continues with local SEO (Google Maps, Bing Places) and reputation management. First results appear in 3-6 months.</p>\n<p>Hotel business thrives on direct bookings. Every guest coming directly from search saves 15-25% in OTA commissions. SEO is one of the key channels for this.</p>\n<h2 id=\"where-to-start\">Where to Start</h2>\n<p>Before diving into optimization, you need to audit your current website state. What to check:</p>\n<ul>\n<li><strong>robots.txt</strong> — must exist and allow indexing</li>\n<li><strong>sitemap.xml</strong> — sitemap for search engines</li>\n<li><strong>HTTPS</strong> — mandatory for any booking website</li>\n<li><strong>Mobile version</strong> — over 60% of hotel searches are from phones</li>\n</ul>\n<h2 id=\"technical-seo\">Technical SEO</h2>\n<p>Technical foundation is the basis of all promotion. Without it, content and links don&#39;t work.</p>\n<h3 id=\"core-web-vitals\">Core Web Vitals</h3>\n<p>Google evaluates three user experience metrics:</p>\n<ul>\n<li><strong>LCP</strong> (Largest Contentful Paint) — main image should load in 2.5 sec</li>\n<li><strong>FID/INP</strong> — page interactivity</li>\n<li><strong>CLS</strong> — layout stability during loading</li>\n</ul>\n<p>Critical for hotels: room galleries often break CLS due to lazy loading without set dimensions.</p>\n<h3 id=\"schemaorg-for-hotels\">Schema.org for Hotels</h3>\n<p>Minimum markup set:</p>\n<ul>\n<li><strong>Hotel</strong> — basic hotel information</li>\n<li><strong>LocalBusiness</strong> — for local search</li>\n<li><strong>FAQPage</strong> — FAQ in rich snippets</li>\n</ul>\n<h2 id=\"local-seo\">Local SEO</h2>\n<p>For hotels, local search is half the success. Guests search for &quot;hotel in [city]&quot;, &quot;accommodation near [landmark]&quot;.</p>\n<h3 id=\"google-maps-and-bing-places\">Google Maps and Bing Places</h3>\n<p>Map listings should be:</p>\n<ul>\n<li>Fully completed (photos, description, amenities)</li>\n<li>With current contacts</li>\n<li>With responses to all reviews</li>\n</ul>\n<h3 id=\"nap-consistency\">NAP Consistency</h3>\n<p>NAP (Name, Address, Phone) must be identical everywhere:</p>\n<ul>\n<li>On website</li>\n<li>On maps</li>\n<li>In directories</li>\n<li>On social media</li>\n</ul>\n<h2 id=\"reputation-management\">Reputation Management</h2>\n<p>Reviews affect local search ranking and conversion from viewing to booking.</p>\n<h3 id=\"where-to-collect-reviews\">Where to Collect Reviews</h3>\n<p>Platform priority for hotels:</p>\n<ol>\n<li>Google Maps</li>\n<li>TripAdvisor</li>\n<li>Booking.com</li>\n<li>Yelp (for US market)</li>\n</ol>\n<h3 id=\"handling-negative-reviews\">Handling Negative Reviews</h3>\n<p>Negative reviews are an opportunity to show service. Response rules:</p>\n<ul>\n<li>Respond within 24 hours</li>\n<li>Thank for feedback</li>\n<li>Offer a solution</li>\n<li>Don&#39;t argue publicly</li>\n</ul>\n<h2 id=\"faq\">FAQ</h2>\n<p><strong>How much does hotel SEO cost?</strong>\nFrom $500/month for comprehensive promotion. Price depends on region, room count, and competition.</p>\n<p><strong>How soon will results appear?</strong>\nFirst rankings in 3-6 months. Local SEO shows results faster — from 1-2 months.</p>\n<p><strong>Can I do without SEO?</strong>\nYes, but it&#39;s expensive. OTAs take 15-25% from each booking. SEO is an investment in reducing dependence on intermediaries.</p>\n",
+      "faq": [
+        {
+          "question": "How much does hotel SEO cost?",
+          "answer": "From $500/month for comprehensive promotion. Price depends on region, room count, and competition."
+        },
+        {
+          "question": "How soon will results appear?",
+          "answer": "First rankings in 3-6 months. Local SEO shows results faster — from 1-2 months."
+        },
+        {
+          "question": "Can I do without SEO?",
+          "answer": "Yes, but it's expensive. OTAs take 15-25% from each booking. SEO is an investment in reducing dependence on intermediaries."
+        }
+      ],
+      "tldr": "Hotel SEO starts with technical foundation (robots.txt, sitemap.xml, Schema.org), continues with local SEO (Google Maps, Bing Places) and reputation management. First results appear in 3-6 months."
+    }
+  ]
 }
