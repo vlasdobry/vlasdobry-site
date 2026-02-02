@@ -88,6 +88,98 @@
       "tldr": "GEO — это оптимизация сайта для AI-поисковиков (ChatGPT, Perplexity, YandexGPT). В отличие от SEO, где важны ссылки и ключевые слова, в GEO важны структура данных, FAQ и файлы llms.txt. Кто начнёт раньше — получит преимущество."
     },
     {
+      "slug": "kak-proverit-seo-sayta",
+      "title": "Как проверить SEO сайта самостоятельно: чеклист из 8 пунктов",
+      "description": "Бесплатные инструменты и простой чеклист для быстрой проверки SEO. Найдите критические ошибки за 10 минут.",
+      "date": "2026-02-02",
+      "dateModified": "2026-02-02",
+      "category": "seo",
+      "tags": [
+        "seo",
+        "аудит",
+        "чеклист",
+        "инструменты"
+      ],
+      "relatedService": "/services/seo",
+      "cover": "cover.jpg",
+      "series": null,
+      "readingTime": 4,
+      "toc": [
+        {
+          "id": "что-проверяем",
+          "text": "Что проверяем",
+          "level": 2
+        },
+        {
+          "id": "1-title-заголовок-страницы",
+          "text": "1. Title (заголовок страницы)",
+          "level": 3
+        },
+        {
+          "id": "2-meta-description",
+          "text": "2. Meta Description",
+          "level": 3
+        },
+        {
+          "id": "3-заголовок-h1",
+          "text": "3. Заголовок H1",
+          "level": 3
+        },
+        {
+          "id": "4-robotstxt",
+          "text": "4. robots.txt",
+          "level": 3
+        },
+        {
+          "id": "5-sitemapxml",
+          "text": "5. sitemap.xml",
+          "level": 3
+        },
+        {
+          "id": "6-https",
+          "text": "6. HTTPS",
+          "level": 3
+        },
+        {
+          "id": "7-мобильная-версия",
+          "text": "7. Мобильная версия",
+          "level": 3
+        },
+        {
+          "id": "8-скорость-загрузки",
+          "text": "8. Скорость загрузки",
+          "level": 3
+        },
+        {
+          "id": "бесплатные-инструменты",
+          "text": "Бесплатные инструменты",
+          "level": 2
+        },
+        {
+          "id": "что-дальше",
+          "text": "Что дальше",
+          "level": 2
+        }
+      ],
+      "hasFaq": true,
+      "content": "<p><strong>TL;DR:</strong> Проверьте 8 базовых параметров: Title, Description, H1, robots.txt, sitemap.xml, HTTPS, мобильную версию и скорость загрузки. Это займёт 10 минут и покажет критические проблемы. Для глубокого анализа нужен полный аудит.</p>\n<p>Клиенты часто спрашивают: &quot;Как понять, всё ли в порядке с SEO на моём сайте?&quot; Ответ простой — проверить базовые вещи можно самому, без специалиста. Покажу как.</p>\n<h2 id=\"что-проверяем\">Что проверяем</h2>\n<p>Восемь параметров, которые влияют на индексацию и ранжирование. Если хотя бы один из них сломан — сайт теряет позиции.</p>\n<h3 id=\"1-title-заголовок-страницы\">1. Title (заголовок страницы)</h3>\n<p><strong>Что это:</strong> текст во вкладке браузера и в результатах поиска.</p>\n<p><strong>Как проверить:</strong> откройте сайт, посмотрите на вкладку. Или в коде страницы найдите <code>&lt;title&gt;</code>.</p>\n<p><strong>Что должно быть:</strong></p>\n<ul>\n<li>50-60 символов</li>\n<li>Ключевое слово в начале</li>\n<li>Уникальный для каждой страницы</li>\n</ul>\n<p><strong>Частые ошибки:</strong></p>\n<ul>\n<li>&quot;Главная&quot; или &quot;Home&quot; вместо описания</li>\n<li>Одинаковый Title на всех страницах</li>\n<li>Слишком длинный (обрезается в выдаче)</li>\n</ul>\n<h3 id=\"2-meta-description\">2. Meta Description</h3>\n<p><strong>Что это:</strong> описание страницы в результатах поиска (серый текст под заголовком).</p>\n<p><strong>Как проверить:</strong> в коде страницы найдите <code>&lt;meta name=&quot;description&quot;&gt;</code>.</p>\n<p><strong>Что должно быть:</strong></p>\n<ul>\n<li>120-160 символов</li>\n<li>Содержит ключевое слово</li>\n<li>Призыв к действию или выгода</li>\n</ul>\n<p><strong>Частые ошибки:</strong></p>\n<ul>\n<li>Отсутствует вообще</li>\n<li>Одинаковый на всех страницах</li>\n<li>Скопирован первый абзац текста</li>\n</ul>\n<h3 id=\"3-заголовок-h1\">3. Заголовок H1</h3>\n<p><strong>Что это:</strong> главный заголовок на странице.</p>\n<p><strong>Как проверить:</strong> в коде страницы найдите <code>&lt;h1&gt;</code>. Должен быть ровно один.</p>\n<p><strong>Что должно быть:</strong></p>\n<ul>\n<li>Один H1 на страницу</li>\n<li>Содержит ключевое слово</li>\n<li>Отличается от Title</li>\n</ul>\n<p><strong>Частые ошибки:</strong></p>\n<ul>\n<li>Несколько H1 на странице</li>\n<li>H1 отсутствует</li>\n<li>Логотип обёрнут в H1</li>\n</ul>\n<h3 id=\"4-robotstxt\">4. robots.txt</h3>\n<p><strong>Что это:</strong> файл с инструкциями для поисковых роботов.</p>\n<p><strong>Как проверить:</strong> откройте <code>вашсайт.ru/robots.txt</code></p>\n<p><strong>Что должно быть:</strong></p>\n<ul>\n<li>Файл существует (не 404)</li>\n<li>Разрешает индексацию нужных страниц</li>\n<li>Указывает на sitemap.xml</li>\n</ul>\n<p><strong>Частые ошибки:</strong></p>\n<ul>\n<li>Файл отсутствует</li>\n<li>Блокирует весь сайт (<code>Disallow: /</code>)</li>\n<li>Блокирует важные разделы</li>\n</ul>\n<h3 id=\"5-sitemapxml\">5. sitemap.xml</h3>\n<p><strong>Что это:</strong> карта сайта для поисковиков — список всех страниц.</p>\n<p><strong>Как проверить:</strong> откройте <code>вашсайт.ru/sitemap.xml</code></p>\n<p><strong>Что должно быть:</strong></p>\n<ul>\n<li>Файл существует</li>\n<li>Содержит все важные страницы</li>\n<li>URL актуальные (не 404)</li>\n</ul>\n<p><strong>Частые ошибки:</strong></p>\n<ul>\n<li>Файл отсутствует</li>\n<li>Содержит устаревшие URL</li>\n<li>Не обновляется при добавлении страниц</li>\n</ul>\n<h3 id=\"6-https\">6. HTTPS</h3>\n<p><strong>Что это:</strong> защищённое соединение (замок в адресной строке).</p>\n<p><strong>Как проверить:</strong> посмотрите на адресную строку — должно быть <code>https://</code>, не <code>http://</code>.</p>\n<p><strong>Что должно быть:</strong></p>\n<ul>\n<li>Весь сайт на HTTPS</li>\n<li>Нет &quot;mixed content&quot; (картинки по HTTP)</li>\n<li>Редирект с HTTP на HTTPS</li>\n</ul>\n<p><strong>Частые ошибки:</strong></p>\n<ul>\n<li>Сайт на HTTP</li>\n<li>Часть ресурсов загружается по HTTP</li>\n<li>Нет редиректа</li>\n</ul>\n<h3 id=\"7-мобильная-версия\">7. Мобильная версия</h3>\n<p><strong>Что это:</strong> как сайт выглядит на телефоне.</p>\n<p><strong>Как проверить:</strong> откройте сайт на телефоне или используйте <a href=\"https://search.google.com/test/mobile-friendly\">Google Mobile-Friendly Test</a>.</p>\n<p><strong>Что должно быть:</strong></p>\n<ul>\n<li>Текст читается без масштабирования</li>\n<li>Кнопки достаточно большие</li>\n<li>Нет горизонтальной прокрутки</li>\n</ul>\n<p><strong>Частые ошибки:</strong></p>\n<ul>\n<li>Десктопная версия на мобильном</li>\n<li>Слишком мелкий текст</li>\n<li>Элементы налезают друг на друга</li>\n</ul>\n<h3 id=\"8-скорость-загрузки\">8. Скорость загрузки</h3>\n<p><strong>Что это:</strong> время до полной загрузки страницы.</p>\n<p><strong>Как проверить:</strong> <a href=\"https://pagespeed.web.dev/\">PageSpeed Insights</a> от Google.</p>\n<p><strong>Что должно быть:</strong></p>\n<ul>\n<li>Оценка 50+ для мобильной версии</li>\n<li>LCP (загрузка главного контента) &lt; 2.5 сек</li>\n<li>Нет критических ошибок</li>\n</ul>\n<p><strong>Частые ошибки:</strong></p>\n<ul>\n<li>Тяжёлые картинки без сжатия</li>\n<li>Много внешних скриптов</li>\n<li>Нет кэширования</li>\n</ul>\n<h2 id=\"бесплатные-инструменты\">Бесплатные инструменты</h2>\n<table>\n<thead>\n<tr>\n<th>Что проверить</th>\n<th>Инструмент</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Title, Description, H1</td>\n<td><a href=\"https://www.screamingfrog.co.uk/\">Screaming Frog</a> (бесплатно до 500 URL)</td>\n</tr>\n<tr>\n<td>robots.txt, sitemap.xml</td>\n<td>Браузер (просто откройте URL)</td>\n</tr>\n<tr>\n<td>HTTPS</td>\n<td>Браузер (замок в адресной строке)</td>\n</tr>\n<tr>\n<td>Мобильная версия</td>\n<td><a href=\"https://search.google.com/test/mobile-friendly\">Mobile-Friendly Test</a></td>\n</tr>\n<tr>\n<td>Скорость</td>\n<td><a href=\"https://pagespeed.web.dev/\">PageSpeed Insights</a></td>\n</tr>\n<tr>\n<td>Всё сразу</td>\n<td><a href=\"https://ahrefs.com/webmaster-tools\">Ahrefs Webmaster Tools</a> (бесплатно)</td>\n</tr>\n</tbody></table>\n<h2 id=\"что-дальше\">Что дальше</h2>\n<p>Этот чеклист покрывает базу. Но SEO — это больше, чем 8 пунктов. Полный аудит включает:</p>\n<ul>\n<li>Schema.org разметку</li>\n<li>Внутреннюю перелинковку</li>\n<li>Анализ конкурентов</li>\n<li>Профиль ссылок</li>\n<li>E-E-A-T сигналы</li>\n<li>Локальное SEO</li>\n</ul>\n<p>На странице <a href=\"/services/seo/\">SEO-аудита</a> есть бесплатный Health Score — автоматическая проверка этих 8 параметров за 30 секунд.</p>\n<h2 id=\"faq\">FAQ</h2>\n<p><strong>Можно ли продвинуть сайт только этим чеклистом?</strong>\nНет. Это минимум для индексации. Для роста позиций нужна работа с контентом, ссылками и поведенческими факторами.</p>\n<p><strong>Как часто проверять?</strong>\nПосле каждого крупного обновления сайта. Или раз в месяц для профилактики.</p>\n<p><strong>Что делать, если нашёл ошибки?</strong>\nИсправлять по приоритету: сначала robots.txt и sitemap.xml (влияют на индексацию), потом Title и Description (влияют на CTR), потом остальное.</p>\n",
+      "faq": [
+        {
+          "question": "Можно ли продвинуть сайт только этим чеклистом?",
+          "answer": "Нет. Это минимум для индексации. Для роста позиций нужна работа с контентом, ссылками и поведенческими факторами."
+        },
+        {
+          "question": "Как часто проверять?",
+          "answer": "После каждого крупного обновления сайта. Или раз в месяц для профилактики."
+        },
+        {
+          "question": "Что делать, если нашёл ошибки?",
+          "answer": "Исправлять по приоритету: сначала robots.txt и sitemap.xml (влияют на индексацию), потом Title и Description (влияют на CTR), потом остальное."
+        }
+      ],
+      "tldr": "Проверьте 8 базовых параметров: Title, Description, H1, robots.txt, sitemap.xml, HTTPS, мобильную версию и скорость загрузки. Это займёт 10 минут и покажет критические проблемы. Для глубокого анализа нужен полный аудит."
+    },
+    {
       "slug": "seo-dlya-oteley",
       "title": "SEO для отелей: с чего начать в 2026",
       "description": "Пошаговое руководство по продвижению отеля в поисковых системах. Техническое SEO, локальный поиск, работа с отзывами.",
@@ -261,6 +353,98 @@
         }
       ],
       "tldr": "GEO is website optimization for AI search engines (ChatGPT, Perplexity, Claude). Unlike SEO where links and keywords matter most, GEO focuses on data structure, FAQ sections, and llms.txt files. Early adopters get the advantage."
+    },
+    {
+      "slug": "kak-proverit-seo-sayta",
+      "title": "How to Check Your Website's SEO: 8-Point Checklist",
+      "description": "Free tools and a simple checklist for quick SEO audit. Find critical errors in 10 minutes.",
+      "date": "2026-02-02",
+      "dateModified": "2026-02-02",
+      "category": "seo",
+      "tags": [
+        "seo",
+        "audit",
+        "checklist",
+        "tools"
+      ],
+      "relatedService": "/en/services/seo",
+      "cover": "cover.jpg",
+      "series": null,
+      "readingTime": 4,
+      "toc": [
+        {
+          "id": "what-to-check",
+          "text": "What to Check",
+          "level": 2
+        },
+        {
+          "id": "1-title-tag",
+          "text": "1. Title Tag",
+          "level": 3
+        },
+        {
+          "id": "2-meta-description",
+          "text": "2. Meta Description",
+          "level": 3
+        },
+        {
+          "id": "3-h1-heading",
+          "text": "3. H1 Heading",
+          "level": 3
+        },
+        {
+          "id": "4-robotstxt",
+          "text": "4. robots.txt",
+          "level": 3
+        },
+        {
+          "id": "5-sitemapxml",
+          "text": "5. sitemap.xml",
+          "level": 3
+        },
+        {
+          "id": "6-https",
+          "text": "6. HTTPS",
+          "level": 3
+        },
+        {
+          "id": "7-mobile-version",
+          "text": "7. Mobile Version",
+          "level": 3
+        },
+        {
+          "id": "8-page-speed",
+          "text": "8. Page Speed",
+          "level": 3
+        },
+        {
+          "id": "free-tools",
+          "text": "Free Tools",
+          "level": 2
+        },
+        {
+          "id": "whats-next",
+          "text": "What's Next",
+          "level": 2
+        }
+      ],
+      "hasFaq": true,
+      "content": "<p><strong>TL;DR:</strong> Check 8 basic parameters: Title, Description, H1, robots.txt, sitemap.xml, HTTPS, mobile version, and page speed. Takes 10 minutes and reveals critical issues. For deeper analysis, you need a full audit.</p>\n<p>Clients often ask: &quot;How do I know if my website&#39;s SEO is okay?&quot; The answer is simple — you can check the basics yourself, no specialist needed. Here&#39;s how.</p>\n<h2 id=\"what-to-check\">What to Check</h2>\n<p>Eight parameters that affect indexing and ranking. If even one is broken, your site loses positions.</p>\n<h3 id=\"1-title-tag\">1. Title Tag</h3>\n<p><strong>What it is:</strong> The text in the browser tab and search results.</p>\n<p><strong>How to check:</strong> Open your site, look at the tab. Or find <code>&lt;title&gt;</code> in the page source.</p>\n<p><strong>What it should be:</strong></p>\n<ul>\n<li>50-60 characters</li>\n<li>Keyword at the beginning</li>\n<li>Unique for each page</li>\n</ul>\n<p><strong>Common mistakes:</strong></p>\n<ul>\n<li>&quot;Home&quot; or &quot;Welcome&quot; instead of description</li>\n<li>Same Title on all pages</li>\n<li>Too long (gets cut off in search results)</li>\n</ul>\n<h3 id=\"2-meta-description\">2. Meta Description</h3>\n<p><strong>What it is:</strong> Page description in search results (gray text under the title).</p>\n<p><strong>How to check:</strong> Find <code>&lt;meta name=&quot;description&quot;&gt;</code> in page source.</p>\n<p><strong>What it should be:</strong></p>\n<ul>\n<li>120-160 characters</li>\n<li>Contains keyword</li>\n<li>Call to action or benefit</li>\n</ul>\n<p><strong>Common mistakes:</strong></p>\n<ul>\n<li>Missing entirely</li>\n<li>Same on all pages</li>\n<li>First paragraph copied verbatim</li>\n</ul>\n<h3 id=\"3-h1-heading\">3. H1 Heading</h3>\n<p><strong>What it is:</strong> The main heading on the page.</p>\n<p><strong>How to check:</strong> Find <code>&lt;h1&gt;</code> in page source. Should be exactly one.</p>\n<p><strong>What it should be:</strong></p>\n<ul>\n<li>One H1 per page</li>\n<li>Contains keyword</li>\n<li>Different from Title</li>\n</ul>\n<p><strong>Common mistakes:</strong></p>\n<ul>\n<li>Multiple H1s on the page</li>\n<li>H1 missing</li>\n<li>Logo wrapped in H1</li>\n</ul>\n<h3 id=\"4-robotstxt\">4. robots.txt</h3>\n<p><strong>What it is:</strong> Instructions file for search engine bots.</p>\n<p><strong>How to check:</strong> Open <code>yoursite.com/robots.txt</code></p>\n<p><strong>What it should be:</strong></p>\n<ul>\n<li>File exists (not 404)</li>\n<li>Allows indexing of important pages</li>\n<li>Points to sitemap.xml</li>\n</ul>\n<p><strong>Common mistakes:</strong></p>\n<ul>\n<li>File missing</li>\n<li>Blocks entire site (<code>Disallow: /</code>)</li>\n<li>Blocks important sections</li>\n</ul>\n<h3 id=\"5-sitemapxml\">5. sitemap.xml</h3>\n<p><strong>What it is:</strong> Site map for search engines — list of all pages.</p>\n<p><strong>How to check:</strong> Open <code>yoursite.com/sitemap.xml</code></p>\n<p><strong>What it should be:</strong></p>\n<ul>\n<li>File exists</li>\n<li>Contains all important pages</li>\n<li>URLs are current (not 404)</li>\n</ul>\n<p><strong>Common mistakes:</strong></p>\n<ul>\n<li>File missing</li>\n<li>Contains outdated URLs</li>\n<li>Doesn&#39;t update when pages are added</li>\n</ul>\n<h3 id=\"6-https\">6. HTTPS</h3>\n<p><strong>What it is:</strong> Secure connection (lock icon in address bar).</p>\n<p><strong>How to check:</strong> Look at the address bar — should be <code>https://</code>, not <code>http://</code>.</p>\n<p><strong>What it should be:</strong></p>\n<ul>\n<li>Entire site on HTTPS</li>\n<li>No &quot;mixed content&quot; (images over HTTP)</li>\n<li>Redirect from HTTP to HTTPS</li>\n</ul>\n<p><strong>Common mistakes:</strong></p>\n<ul>\n<li>Site on HTTP</li>\n<li>Some resources load over HTTP</li>\n<li>No redirect</li>\n</ul>\n<h3 id=\"7-mobile-version\">7. Mobile Version</h3>\n<p><strong>What it is:</strong> How the site looks on a phone.</p>\n<p><strong>How to check:</strong> Open the site on your phone or use <a href=\"https://search.google.com/test/mobile-friendly\">Google Mobile-Friendly Test</a>.</p>\n<p><strong>What it should be:</strong></p>\n<ul>\n<li>Text readable without zooming</li>\n<li>Buttons large enough to tap</li>\n<li>No horizontal scrolling</li>\n</ul>\n<p><strong>Common mistakes:</strong></p>\n<ul>\n<li>Desktop version on mobile</li>\n<li>Text too small</li>\n<li>Elements overlapping</li>\n</ul>\n<h3 id=\"8-page-speed\">8. Page Speed</h3>\n<p><strong>What it is:</strong> Time until page fully loads.</p>\n<p><strong>How to check:</strong> <a href=\"https://pagespeed.web.dev/\">PageSpeed Insights</a> from Google.</p>\n<p><strong>What it should be:</strong></p>\n<ul>\n<li>Score 50+ for mobile</li>\n<li>LCP (main content load) &lt; 2.5 sec</li>\n<li>No critical errors</li>\n</ul>\n<p><strong>Common mistakes:</strong></p>\n<ul>\n<li>Heavy images without compression</li>\n<li>Too many external scripts</li>\n<li>No caching</li>\n</ul>\n<h2 id=\"free-tools\">Free Tools</h2>\n<table>\n<thead>\n<tr>\n<th>What to check</th>\n<th>Tool</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Title, Description, H1</td>\n<td><a href=\"https://www.screamingfrog.co.uk/\">Screaming Frog</a> (free up to 500 URLs)</td>\n</tr>\n<tr>\n<td>robots.txt, sitemap.xml</td>\n<td>Browser (just open the URL)</td>\n</tr>\n<tr>\n<td>HTTPS</td>\n<td>Browser (lock in address bar)</td>\n</tr>\n<tr>\n<td>Mobile version</td>\n<td><a href=\"https://search.google.com/test/mobile-friendly\">Mobile-Friendly Test</a></td>\n</tr>\n<tr>\n<td>Speed</td>\n<td><a href=\"https://pagespeed.web.dev/\">PageSpeed Insights</a></td>\n</tr>\n<tr>\n<td>Everything at once</td>\n<td><a href=\"https://ahrefs.com/webmaster-tools\">Ahrefs Webmaster Tools</a> (free)</td>\n</tr>\n</tbody></table>\n<h2 id=\"what39s-next\">What&#39;s Next</h2>\n<p>This checklist covers the basics. But SEO is more than 8 points. A full audit includes:</p>\n<ul>\n<li>Schema.org markup</li>\n<li>Internal linking</li>\n<li>Competitor analysis</li>\n<li>Backlink profile</li>\n<li>E-E-A-T signals</li>\n<li>Local SEO</li>\n</ul>\n<p>On the <a href=\"/en/services/seo/\">SEO Audit page</a> there&#39;s a free Health Score — automatic check of these 8 parameters in 30 seconds.</p>\n<h2 id=\"faq\">FAQ</h2>\n<p><strong>Can I rank my site with just this checklist?</strong>\nNo. This is the minimum for indexing. To grow rankings, you need content, links, and user engagement work.</p>\n<p><strong>How often should I check?</strong>\nAfter every major site update. Or monthly for maintenance.</p>\n<p><strong>What if I find errors?</strong>\nFix by priority: robots.txt and sitemap.xml first (affect indexing), then Title and Description (affect CTR), then everything else.</p>\n",
+      "faq": [
+        {
+          "question": "Can I rank my site with just this checklist?",
+          "answer": "No. This is the minimum for indexing. To grow rankings, you need content, links, and user engagement work."
+        },
+        {
+          "question": "How often should I check?",
+          "answer": "After every major site update. Or monthly for maintenance."
+        },
+        {
+          "question": "What if I find errors?",
+          "answer": "Fix by priority: robots.txt and sitemap.xml first (affect indexing), then Title and Description (affect CTR), then everything else."
+        }
+      ],
+      "tldr": "Check 8 basic parameters: Title, Description, H1, robots.txt, sitemap.xml, HTTPS, mobile version, and page speed. Takes 10 minutes and reveals critical issues. For deeper analysis, you need a full audit."
     },
     {
       "slug": "seo-dlya-oteley",

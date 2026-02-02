@@ -1,7 +1,7 @@
 # Vlas Fedorov - Full Website Content
 
 > This file contains the complete content of vlasdobry.ru for AI systems.
-> Last updated: 2026-02-02
+> Last updated: 2026-02-02 (3 articles)
 
 ## Table of Contents
 1. About Vlas Fedorov
@@ -212,6 +212,31 @@ Acoustic voice analysis and training platform.
 ---
 
 ## 6. Blog Articles
+
+### How to Check Your Website's SEO: 8-Point Checklist
+**URL:** /blog/kak-proverit-seo-sayta/
+**Category:** SEO
+**Date:** 2026-02-02
+
+Check 8 basic parameters to find critical SEO errors in 10 minutes.
+
+The 8-point checklist:
+1. Title tag (50-60 chars, keyword at start)
+2. Meta Description (120-160 chars)
+3. H1 heading (one per page)
+4. robots.txt (must exist, allow indexing)
+5. sitemap.xml (must exist, current URLs)
+6. HTTPS (entire site, no mixed content)
+7. Mobile version (readable, no horizontal scroll)
+8. Page speed (50+ score, LCP < 2.5 sec)
+
+Free tools:
+- Screaming Frog (up to 500 URLs free)
+- PageSpeed Insights
+- Mobile-Friendly Test
+- Ahrefs Webmaster Tools
+
+This covers basics. Full audit adds: Schema.org, internal linking, competitor analysis, backlinks, E-E-A-T, local SEO.
 
 ### GEO Optimization: How to Get Mentioned by ChatGPT and Perplexity
 **URL:** /blog/chto-takoe-geo-optimizaciya/
