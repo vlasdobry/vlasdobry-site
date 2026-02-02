@@ -109,9 +109,12 @@ function processArticle(slug, lang) {
   const { data, content } = matter(fileContent);
 
   // Remove TL;DR from content (it's displayed separately)
-  const contentWithoutTldr = content.replace(/\*\*TL;DR:\*\*\s*.+?(?=\n\n|\n#)/s, '').trim();
+  let cleanedContent = content.replace(/\*\*TL;DR:\*\*\s*.+?(?=\n\n|\n#)/s, '').trim();
 
-  let html = marked.parse(contentWithoutTldr);
+  // Remove FAQ section from content (it's displayed as interactive accordion)
+  cleanedContent = cleanedContent.replace(/##\s*(?:FAQ|Частые вопросы)\s*\n[\s\S]*?(?=\n##\s|$)/, '').trim();
+
+  let html = marked.parse(cleanedContent);
   html = addHeaderIds(html);
 
   return {
