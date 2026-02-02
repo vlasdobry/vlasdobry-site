@@ -136,9 +136,9 @@ git push origin master  # Деплой на продакшен (автомати
 - `blog_cta_click` — клик по CTA в статье
 
 **GEO (Generative Engine Optimization):**
-- `llms.txt` — структурированная информация для AI-систем
+- `llms.txt` — базовая информация для AI-систем
+- `llms-full.txt` — полный контент сайта в Markdown (главная рекомендация)
 - `robots.txt` — разрешения для AI-ботов (GPTBot, ClaudeBot, PerplexityBot, YandexBot)
-- Расширенный noscript fallback для AI-краулеров
 - Целевые AI: ChatGPT, Perplexity, Gemini, Claude, YandexGPT, GigaChat
 - **Гео-теги:** намеренно не используются — проект ориентирован на международный рынок (Россия, СНГ, Европа, США). Привязка к конкретной локации снизит видимость для зарубежных запросов.
 
@@ -149,7 +149,8 @@ git push origin master  # Деплой на продакшен (автомати
 При добавлении статьи создать `content/blog/[slug]/ru.md` и `en.md`. Frontmatter: title, description, date, slug, category, relatedService, cover. После билда автоматически обновляется sitemap.xml и blog-data.json.
 
 **Терминология услуг:**
-- "8 параметров" — технические проверки в бесплатном Health Score виджете
+- "8 параметров" (SEO) — технические проверки в бесплатном SEO Health Score
+- "5 параметров" (GEO) — проверки в бесплатном GEO Health Score (LLM Files, Schema.org, FAQ/Q&A, E-E-A-T, AI-доступность)
 - "7 разделов аудита" — направления анализа в платном полном аудите (Technical SEO, On-Page, Content, Schema.org, Local SEO, Yandex-specific, E-E-A-T)
 
 ## Ключевые файлы
