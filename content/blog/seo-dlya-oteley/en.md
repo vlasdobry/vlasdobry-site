@@ -94,7 +94,7 @@ Negative reviews are an opportunity to show service. Response rules:
 ## FAQ
 
 **How much does hotel SEO cost?**
-From $500/month for comprehensive promotion. Price depends on region, room count, and competition.
+From $1,500/month for comprehensive promotion. Price depends on property size, market competition, and service scope.
 
 **How soon will results appear?**
 First rankings in 3-6 months. Local SEO shows results faster — from 1-2 months.

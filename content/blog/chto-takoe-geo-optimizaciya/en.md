@@ -107,7 +107,7 @@ On the [GEO Audit page](/en/services/geo/) there's a free Health Score — an au
 ## FAQ
 
 **How much does GEO optimization cost?**
-The free Health Score provides basic diagnostics. A full GEO audit with recommendations and ready-to-use code is $500. This is a one-time service, not a monthly subscription.
+The free Health Score provides basic diagnostics. A full GEO audit with recommendations and ready-to-use code starts at $750. This is a one-time service, not a monthly subscription.
 
 **Will GEO replace SEO?**
 No. These are different channels. SEO brings traffic from Google and Bing, GEO — from AI systems. Ideally, they work together.
