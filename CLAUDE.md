@@ -99,11 +99,19 @@ git push origin master  # Деплой на продакшен (автомати
 **Блог:**
 - Markdown-статьи в `content/blog/[slug]/ru.md` и `en.md`
 - Генерация HTML при сборке через `scripts/generate-blog.js`
+- Entry point: `blog-post.html` (добавлен в vite.config.ts rollupOptions.input)
 - Зависимости: `gray-matter` (frontmatter), `marked` (Markdown → HTML)
-- Данные статей: `dist/blog-data.json` (генерируется при билде)
-- Schema.org Article разметка для каждой статьи
+- Данные статей: `public/blog-data.json` (генерируется при билде)
+- TL;DR и FAQ извлекаются из контента и отображаются отдельными блоками
+- Schema.org Article + FAQPage разметка для каждой статьи
 - Ссылка на блог только в футере всех страниц
 - Авторинг: Claude пишет статьи, владелец утверждает
+
+**Текущие статьи блога (4 шт):**
+- `chto-takoe-geo-optimizaciya` — GEO-оптимизация: как попасть в ответы ChatGPT
+- `kak-proverit-seo-sayta` — Как проверить SEO сайта: чеклист из 8 пунктов
+- `schema-org-dlya-biznesa` — Schema.org для локального бизнеса
+- `seo-dlya-oteley` — SEO для отелей: с чего начать
 
 **Стилизация:** Tailwind CSS v4 (через Vite plugin), шрифт Inter. Используется glassmorphism-эффект для UI-элементов.
 
@@ -146,7 +154,7 @@ git push origin master  # Деплой на продакшен (автомати
 При изменении контента страниц-лендингов (проекты, отели, лаборатории, СПА, SEO, GEO) необходимо синхронизировать 6 источников: i18n (ru.ts, en.ts), Schema.org JSON-LD (HTML), noscript fallback (HTML), meta/OG/Twitter (HTML), `llms.txt`. Для проверки — систематический аудит всех источников.
 
 **Блог — консистентность:**
-При добавлении статьи создать `content/blog/[slug]/ru.md` и `en.md`. Frontmatter: title, description, date, slug, category, relatedService, cover. После билда автоматически обновляется sitemap.xml и blog-data.json.
+При добавлении статьи создать `content/blog/[slug]/ru.md` и `en.md`. Frontmatter: title, description, date, dateModified, slug, category, tags, relatedService, cover. После билда автоматически обновляется blog-data.json. Цены в EN версии должны соответствовать западному рынку (выше чем RU).
 
 **Терминология услуг:**
 - "8 параметров" (SEO) — технические проверки в бесплатном SEO Health Score
@@ -173,6 +181,7 @@ git push origin master  # Деплой на продакшен (автомати
 | `geo-en.html` | EN страница GEO Optimization |
 | `blog.html` | RU список статей блога |
 | `blog-en.html` | EN список статей блога |
+| `blog-post.html` | Entry point для страниц статей (vite build) |
 | `content/blog/` | Markdown-статьи (ru.md, en.md для каждой) |
 | `scripts/generate-blog.js` | Генерация HTML статей и blog-data.json |
 | `src/i18n/` | Система переводов (types, ru, en, context) |
