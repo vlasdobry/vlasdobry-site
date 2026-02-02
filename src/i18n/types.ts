@@ -4,6 +4,35 @@ export type IndustryKey = 'hotels' | 'labs' | 'spa';
 
 export type ServiceKey = 'seo' | 'geo';
 
+export interface BlogSection {
+  title: string;
+  readMore: string;
+  relatedArticles: string;
+  cta: string;
+  publishedOn: string;
+  updatedOn: string;
+  readingTime: string;
+  tableOfContents: string;
+  tldr: string;
+  faq: string;
+  allArticles: string;
+  inSeries: string;
+  prevArticle: string;
+  nextArticle: string;
+  backToBlog: string;
+  categories: {
+    all: string;
+    seo: string;
+    geo: string;
+    marketing: string;
+  };
+  footer: {
+    name: string;
+    role: string;
+    links: { telegram: string; whatsapp: string; email: string };
+  };
+}
+
 export interface ServiceSection {
   meta: { title: string; description: string };
   nav: { backToMain: string };
@@ -178,9 +207,11 @@ export interface Translations {
       nav: {
         offers: { label: string; items: Array<{ name: string; url: string }> };
         services: { label: string; items: Array<{ name: string; url: string }> };
+        blog: { label: string; items: Array<{ name: string; url: string }> };
       };
     };
   };
+  blog: BlogSection;
   projects: {
     nav: {
       backToMain: string;
