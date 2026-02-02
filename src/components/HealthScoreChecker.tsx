@@ -24,7 +24,10 @@ interface ScanStep {
 const tooltips: Record<string, Record<string, string>> = {
   ru: {
     'llms.txt': 'Файл с информацией о сайте для AI-систем (ChatGPT, Claude, Perplexity)',
+    'llms-full.txt': 'Расширенный файл с полным контентом сайта для AI',
     'Schema.org': 'Структурированные данные, помогающие AI понять контент сайта',
+    'FAQPage': 'Разметка вопросов-ответов, которую AI легко цитирует',
+    'E-E-A-T': 'Сигналы доверия: авторство, контакты, соцсети',
     'robots.txt': 'Файл с правилами для поисковых ботов и AI-краулеров',
     'sitemap.xml': 'Карта сайта со списком всех страниц',
     'Title': 'Заголовок страницы, отображаемый в поиске',
@@ -34,7 +37,10 @@ const tooltips: Record<string, Record<string, string>> = {
   },
   en: {
     'llms.txt': 'File with site info for AI systems (ChatGPT, Claude, Perplexity)',
+    'llms-full.txt': 'Extended file with full site content for AI',
     'Schema.org': 'Structured data helping AI understand site content',
+    'FAQPage': 'Q&A markup that AI can easily cite',
+    'E-E-A-T': 'Trust signals: authorship, contacts, social links',
     'robots.txt': 'File with rules for search bots and AI crawlers',
     'sitemap.xml': 'Site map with list of all pages',
     'Title': 'Page title shown in search results',
@@ -63,10 +69,10 @@ const translations = {
     },
     geoSteps: {
       connect: 'Подключение',
-      llms: 'llms.txt',
+      llms: 'LLM Files',
       schema: 'Schema.org',
-      noscript: 'Noscript fallback',
-      ai: 'AI-совместимость',
+      faq: 'FAQ / Q&A',
+      eeat: 'E-E-A-T сигналы',
     },
     seoScore: 'SEO Score',
     geoScore: 'GEO Score',
@@ -75,7 +81,7 @@ const translations = {
     seoBonus: 'Бонус: проверили SEO',
     geoBonus: 'Бонус: проверили GEO',
     seoExpressLabel: 'Экспресс-диагностика · 8 параметров',
-    geoExpressLabel: 'Экспресс-диагностика · 4 параметра',
+    geoExpressLabel: 'Экспресс-диагностика · 5 параметров',
     issues: 'проблем',
     getFullAudit: 'Получить полный аудит',
     tryAnother: 'Проверить другой сайт',
@@ -103,10 +109,10 @@ const translations = {
     },
     geoSteps: {
       connect: 'Connecting',
-      llms: 'llms.txt',
+      llms: 'LLM Files',
       schema: 'Schema.org',
-      noscript: 'Noscript fallback',
-      ai: 'AI compatibility',
+      faq: 'FAQ / Q&A',
+      eeat: 'E-E-A-T signals',
     },
     seoScore: 'SEO Score',
     geoScore: 'GEO Score',
@@ -115,7 +121,7 @@ const translations = {
     seoBonus: 'Bonus: checked SEO',
     geoBonus: 'Bonus: checked GEO',
     seoExpressLabel: 'Express check · 8 parameters',
-    geoExpressLabel: 'Express check · 4 parameters',
+    geoExpressLabel: 'Express check · 5 parameters',
     issues: 'issues',
     getFullAudit: 'Get full audit',
     tryAnother: 'Check another site',
@@ -299,8 +305,8 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
       { label: stepLabels.connect, status: 'active' },
       { label: primary === 'seo' ? stepLabels.robots : stepLabels.llms, status: 'pending' },
       { label: primary === 'seo' ? stepLabels.sitemap : stepLabels.schema, status: 'pending' },
-      { label: primary === 'seo' ? stepLabels.schema : stepLabels.noscript, status: 'pending' },
-      { label: primary === 'seo' ? stepLabels.meta : stepLabels.ai, status: 'pending' },
+      { label: primary === 'seo' ? stepLabels.schema : stepLabels.faq, status: 'pending' },
+      { label: primary === 'seo' ? stepLabels.meta : stepLabels.eeat, status: 'pending' },
     ];
     setScanSteps(steps);
 

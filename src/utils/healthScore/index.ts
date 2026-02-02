@@ -16,8 +16,8 @@ export function calculateCombinedScore(data: FetchedData): CombinedHealthScore {
 
   const geo = calculateGeoScore({
     llmsTxt: data.llmsTxt,
+    llmsFullTxt: data.llmsFullTxt,
     robotsTxt: data.robotsTxt,
-    sitemapXml: data.sitemapXml,
     homepage: data.homepage,
   });
 

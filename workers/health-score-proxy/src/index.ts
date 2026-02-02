@@ -41,6 +41,7 @@ export default {
 
       const results = await Promise.all([
         fetchResource(`https://${cleanDomain}/llms.txt`),
+        fetchResource(`https://${cleanDomain}/llms-full.txt`),
         fetchResource(`https://${cleanDomain}/robots.txt`),
         fetchResource(`https://${cleanDomain}/sitemap.xml`),
         fetchResource(`https://${cleanDomain}/`),
@@ -49,9 +50,10 @@ export default {
       return Response.json({
         domain: cleanDomain,
         llmsTxt: results[0],
-        robotsTxt: results[1],
-        sitemapXml: results[2],
-        homepage: results[3],
+        llmsFullTxt: results[1],
+        robotsTxt: results[2],
+        sitemapXml: results[3],
+        homepage: results[4],
       }, { headers: corsHeaders });
 
     } catch (error) {

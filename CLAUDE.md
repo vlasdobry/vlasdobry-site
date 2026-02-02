@@ -87,9 +87,9 @@ git push origin master  # Деплой на продакшен (автомати
 - `src/components/BlogCard.tsx` — карточка статьи для списка
 
 **Health Score виджет:**
-- Бесплатная экспресс-диагностика сайта (SEO: 8 параметров, GEO: 4 параметра)
+- Бесплатная экспресс-диагностика сайта (SEO: 8 параметров, GEO: 5 параметров)
 - SEO проверяет: Title, Description, H1, Viewport, Indexability, robots.txt, sitemap.xml, Schema.org
-- GEO проверяет: llms.txt, Schema.org, noscript fallback, AI-доступность
+- GEO проверяет: LLM Files (llms.txt + llms-full.txt), Schema.org, FAQ/Q&A, E-E-A-T сигналы, AI-доступность
 - Использует Cloudflare Worker (`health-score-proxy.vlasdobry.workers.dev`) как CORS-прокси
 - Таймаут 15 секунд с понятными сообщениями об ошибках
 - Анимированный процесс сканирования с разными этапами для SEO и GEO

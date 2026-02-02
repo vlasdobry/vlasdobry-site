@@ -11,6 +11,7 @@ export interface ResourceResult {
 export interface FetchedData {
   domain: string;
   llmsTxt: ResourceResult;
+  llmsFullTxt: ResourceResult;
   robotsTxt: ResourceResult;
   sitemapXml: ResourceResult;
   homepage: ResourceResult;
@@ -48,10 +49,11 @@ export interface SeoHealthScore {
 export interface GeoHealthScore {
   total: number;
   breakdown: {
-    llmsTxt: number;
-    robotsTxt: number;
-    sitemap: number;
+    llmFiles: number;
     schemaOrg: number;
+    faqQa: number;
+    eeat: number;
+    aiAccess: number;
   };
   issues: Issue[];
   status: 'critical' | 'warning' | 'good' | 'excellent';
