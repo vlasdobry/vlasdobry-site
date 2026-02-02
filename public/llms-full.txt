@@ -97,7 +97,7 @@ GEO (Generative Engine Optimization) is optimization for AI search engines. Peop
 
 **Pricing:**
 - Health Score: Free (5 auto-checks)
-- Full GEO Audit: $500 (50,000 RUB)
+- Full GEO Audit: from $750 (50,000 RUB)
 
 **Page:** https://vlasdobry.ru/services/geo/
 
@@ -314,7 +314,7 @@ Local SEO priorities:
 - Review management
 
 FAQ:
-- Cost: From $500/month for comprehensive SEO
+- Cost: From $1,500/month for comprehensive SEO
 - Timeline: First results in 3-6 months, local SEO faster (1-2 months)
 
 **Blog page:** https://vlasdobry.ru/blog/
