@@ -28,7 +28,21 @@ npm install      # Установка зависимостей
 npm run dev      # Запуск dev-сервера на порту 3000
 npm run build    # Сборка для продакшена
 npm run preview  # Просмотр сборки
+git push origin master  # Деплой на продакшен (автоматически через GitHub Actions)
 ```
+
+## Деплой
+
+**Автоматический деплой через GitHub Actions:**
+1. Push в `master` → собирается Docker-образ → публикуется в GitHub Container Registry
+2. SSH на сервер → `docker compose pull && up -d`
+
+**Конфигурация:** `.github/workflows/deploy.yml`
+
+**Секреты GitHub:**
+- `SERVER_HOST` — IP сервера
+- `SERVER_USER` — пользователь SSH
+- `SERVER_SSH_KEY` — приватный SSH-ключ
 
 ## Архитектура
 
@@ -52,6 +66,10 @@ npm run preview  # Просмотр сборки
 - `/en/services/seo` — SEO Audit (EN)
 - `/services/geo` — GEO-оптимизация (RU)
 - `/en/services/geo` — GEO Optimization (EN)
+- `/blog` — блог со статьями (RU)
+- `/en/blog` — блог со статьями (EN)
+- `/blog/[slug]` — отдельная статья (RU)
+- `/en/blog/[slug]` — отдельная статья (EN)
 
 **Структура компонентов:**
 - `src/App.tsx` — корневой компонент, управляет навигацией hero↔landing, свайпы, виброотклик
@@ -62,20 +80,35 @@ npm run preview  # Просмотр сборки
 - `src/components/HealthScoreChecker.tsx` — виджет экспресс-диагностики сайта (8 параметров)
 - `src/components/LanguageSwitcher.tsx` — переключатель языка
 - `src/components/ProjectsLanding.tsx` — лендинг проектов (sticky header, карточки проектов)
+- `src/components/BlogList.tsx` — список статей блога с карточками
+- `src/components/BlogPost.tsx` — страница отдельной статьи
+- `src/components/BlogCard.tsx` — карточка статьи для списка
 
 **Health Score виджет:**
-- Бесплатная экспресс-диагностика сайта по 8 параметрам
-- Проверяет: Title, Description, H1, Viewport, Indexability, robots.txt, sitemap.xml, Schema.org
-- Использует Cloudflare Worker как CORS-прокси для получения данных
-- Анимированный процесс сканирования с пошаговыми этапами
+- Бесплатная экспресс-диагностика сайта (SEO: 8 параметров, GEO: 4 параметра)
+- SEO проверяет: Title, Description, H1, Viewport, Indexability, robots.txt, sitemap.xml, Schema.org
+- GEO проверяет: llms.txt, Schema.org, noscript fallback, AI-доступность
+- Использует Cloudflare Worker (`health-score-proxy.vlasdobry.workers.dev`) как CORS-прокси
+- Таймаут 15 секунд с понятными сообщениями об ошибках
+- Анимированный процесс сканирования с разными этапами для SEO и GEO
 - Интегрирован в ServiceLanding для SEO и GEO страниц
+- Трекинг в Яндекс.Метрику: старт, завершение, ошибки, клик по CTA
+
+**Блог:**
+- Markdown-статьи в `content/blog/[slug]/ru.md` и `en.md`
+- Генерация HTML при сборке через `scripts/generate-blog.js`
+- Зависимости: `gray-matter` (frontmatter), `marked` (Markdown → HTML)
+- Данные статей: `dist/blog-data.json` (генерируется при билде)
+- Schema.org Article разметка для каждой статьи
+- Ссылка на блог только в футере всех страниц
+- Авторинг: Claude пишет статьи, владелец утверждает
 
 **Стилизация:** Tailwind CSS v4 (через Vite plugin), шрифт Inter. Используется glassmorphism-эффект для UI-элементов.
 
 **Мультиязычность (i18n):**
 - URL-based routing: `/` (RU), `/en/` (EN)
 - Самописная i18n-система в `src/i18n/` (KISS: без i18next)
-- HTML файлы: `index.html`, `en.html`, `for-hotels.html`, `for-hotels-en.html`, `for-labs.html`, `for-labs-en.html`, `for-spa.html`, `for-spa-en.html`, `projects.html`, `projects-en.html`, `seo.html`, `seo-en.html`, `geo.html`, `geo-en.html`
+- HTML файлы: `index.html`, `en.html`, `for-hotels.html`, `for-hotels-en.html`, `for-labs.html`, `for-labs-en.html`, `for-spa.html`, `for-spa-en.html`, `projects.html`, `projects-en.html`, `seo.html`, `seo-en.html`, `geo.html`, `geo-en.html`, `blog.html`, `blog-en.html`
 - Переводы: `src/i18n/ru.ts`, `src/i18n/en.ts`
 
 **Мобильные функции:**
@@ -89,8 +122,16 @@ npm run preview  # Просмотр сборки
 
 **SEO и аналитика:**
 - Open Graph и Twitter Cards для превью в соцсетях
-- Яндекс.Метрика (ID: 106407494)
+- Яндекс.Метрика (ID: 106407494) — счётчик в начале `<head>` на всех страницах
 - Schema.org JSON-LD разметка (Person, FAQPage, ProfessionalService, ItemList)
+- Централизованный трекинг целей через `src/utils/analytics.ts`
+
+**Цели Яндекс.Метрики:**
+- `click_telegram`, `click_whatsapp`, `click_email`, `click_phone` — клики по контактам
+- `health_score_start`, `health_score_complete`, `health_score_error` — использование виджета
+- `health_score_cta_click` — переход к заказу после диагностики
+- `blog_view` — просмотр статьи блога
+- `blog_cta_click` — клик по CTA в статье
 
 **GEO (Generative Engine Optimization):**
 - `llms.txt` — структурированная информация для AI-систем
@@ -101,6 +142,9 @@ npm run preview  # Просмотр сборки
 
 **Консистентность данных:**
 При изменении контента страниц-лендингов (проекты, отели, лаборатории, СПА, SEO, GEO) необходимо синхронизировать 6 источников: i18n (ru.ts, en.ts), Schema.org JSON-LD (HTML), noscript fallback (HTML), meta/OG/Twitter (HTML), `llms.txt`. Для проверки — систематический аудит всех источников.
+
+**Блог — консистентность:**
+При добавлении статьи создать `content/blog/[slug]/ru.md` и `en.md`. Frontmatter: title, description, date, slug, category, relatedService, cover. После билда автоматически обновляется sitemap.xml и blog-data.json.
 
 **Терминология услуг:**
 - "8 параметров" — технические проверки в бесплатном Health Score виджете
@@ -124,8 +168,14 @@ npm run preview  # Просмотр сборки
 | `seo-en.html` | EN страница SEO Audit |
 | `geo.html` | RU страница GEO-оптимизации |
 | `geo-en.html` | EN страница GEO Optimization |
+| `blog.html` | RU список статей блога |
+| `blog-en.html` | EN список статей блога |
+| `content/blog/` | Markdown-статьи (ru.md, en.md для каждой) |
+| `scripts/generate-blog.js` | Генерация HTML статей и blog-data.json |
 | `src/i18n/` | Система переводов (types, ru, en, context) |
+| `src/utils/analytics.ts` | Централизованный трекинг Яндекс.Метрики |
 | `src/utils/healthScore/` | Логика расчёта Health Score (scoring, types, index) |
+| `.github/workflows/deploy.yml` | CI/CD: сборка Docker + деплой на сервер |
 | `public/llms.txt` | Инструкции для AI-систем (ASCII-only) |
 | `public/robots.txt` | Разрешения для поисковых и AI-ботов |
 | `public/sitemap.xml` | Карта сайта с xhtml:link для языков |
@@ -137,4 +187,7 @@ npm run preview  # Просмотр сборки
 - Vite 6
 - Tailwind CSS v4 (@tailwindcss/vite)
 - lucide-react для иконок
+- gray-matter + marked (парсинг Markdown для блога)
 - Cloudflare Worker (CORS-прокси для Health Score)
+- Docker + GitHub Actions (CI/CD)
+- Хостинг: VPS (185.65.200.201) через Docker Compose

@@ -9,6 +9,18 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
+  deploy-worker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy Worker to Cloudflare
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          workingDirectory: workers/health-score-proxy
+
   build-and-push:
     runs-on: ubuntu-latest
     permissions:

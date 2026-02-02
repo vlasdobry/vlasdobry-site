@@ -1,0 +1,6 @@
+name = "health-score-proxy"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+
+[vars]
+ALLOWED_ORIGINS = "https://vlasdobry.ru,http://localhost:3000"

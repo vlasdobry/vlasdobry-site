@@ -84,6 +84,7 @@ const translations = {
     errorServer: 'Сервер временно недоступен. Попробуйте позже.',
     errorNetwork: 'Не удалось подключиться. Проверьте интернет-соединение.',
     tryAgain: 'Попробовать снова',
+    slowSite: 'Сайт отвечает медленно, ждём...',
   },
   en: {
     title: 'Check your website',
@@ -123,6 +124,7 @@ const translations = {
     errorServer: 'Server temporarily unavailable. Try later.',
     errorNetwork: 'Connection failed. Check your internet.',
     tryAgain: 'Try again',
+    slowSite: 'Site is responding slowly, please wait...',
   },
 };
 
@@ -276,6 +278,7 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
   const [scanSteps, setScanSteps] = useState<ScanStep[]>([]);
   const [progress, setProgress] = useState(0);
   const [isScanning, setIsScanning] = useState(false);
+  const [isSlow, setIsSlow] = useState(false);
 
   const t = translations[lang];
 
@@ -285,6 +288,7 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
 
     setState('loading');
     setError(null);
+    setIsSlow(false);
 
     // Track scan start
     analytics.healthScoreStart(primary, url);
@@ -308,12 +312,15 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
       setProgress(Math.round((index / steps.length) * 100));
     };
 
+    // Fetch with 25s timeout (increased for slow sites)
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 25000);
+
+    // Show "slow site" message after 10s
+    const slowTimeoutId = setTimeout(() => setIsSlow(true), 10000);
+
     try {
       const stepDelay = (ms: number) => new Promise(r => setTimeout(r, ms));
-
-      // Fetch with 15s timeout
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 15000);
 
       const fetchPromise = fetch(WORKER_URL, {
         method: 'POST',
@@ -328,7 +335,6 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
       await stepDelay(1600); updateStep(4);
 
       const response = await fetchPromise;
-      clearTimeout(timeoutId);
 
       if (!response.ok) throw new Error('server_error');
 
@@ -363,6 +369,8 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
       // Track error
       analytics.healthScoreError(primary, errorType);
     } finally {
+      clearTimeout(timeoutId);
+      clearTimeout(slowTimeoutId);
       setIsScanning(false);
     }
   };
@@ -450,6 +458,11 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
       <div className="h-1 bg-zinc-200 rounded-full overflow-hidden">
         <div className="h-full bg-black transition-all duration-300" style={{ width: `${progress}%` }} />
       </div>
+      {isSlow && (
+        <p className="text-sm text-amber-600 mt-4 text-center animate-pulse">
+          {t.slowSite}
+        </p>
+      )}
     </div>
   );
 
