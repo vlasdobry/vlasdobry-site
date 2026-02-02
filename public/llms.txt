@@ -83,8 +83,9 @@ Projects page (EN): https://vlasdobry.ru/en/projects/
 ## GEO Audit Service (Generative Engine Optimization)
 - Testing in 6 AI systems: ChatGPT, Perplexity, Claude, Gemini, YandexGPT, GigaChat
 - 20+ GEO audits
-- Deliverables: PDF report, AI test screenshots, competitor analysis, llms.txt code
-- Pricing: Health Score FREE (0-100) | Full Audit 50,000 RUB ($500)
+- Free Health Score checks 5 parameters: LLM Files (llms.txt, llms-full.txt), Schema.org, FAQ/Q&A, E-E-A-T signals, AI accessibility
+- Deliverables: PDF report, AI test screenshots, competitor analysis, llms.txt + llms-full.txt code, FAQPage Schema
+- Pricing: Health Score FREE (0-100, 5 auto-checks) | Full Audit 50,000 RUB ($500)
 - Page (RU): https://vlasdobry.ru/services/geo/
 - Page (EN): https://vlasdobry.ru/en/services/geo/
 
