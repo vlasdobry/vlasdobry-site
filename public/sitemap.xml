@@ -127,4 +127,36 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/services/geo/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vlasdobry.ru/services/geo/"/>
   </url>
+  <url>
+    <loc>https://vlasdobry.ru/blog/</loc>
+    <lastmod>2026-02-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vlasdobry.ru/en/blog/</loc>
+    <lastmod>2026-02-02</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vlasdobry.ru/blog/seo-dlya-oteley/</loc>
+    <lastmod>2026-02-01</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/seo-dlya-oteley/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/seo-dlya-oteley/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vlasdobry.ru/en/blog/seo-dlya-oteley/</loc>
+    <lastmod>2026-02-01</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/seo-dlya-oteley/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/seo-dlya-oteley/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>
