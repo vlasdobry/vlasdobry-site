@@ -34,8 +34,9 @@ git push origin master  # Деплой на продакшен (автомати
 ## Деплой
 
 **Автоматический деплой через GitHub Actions:**
-1. Push в `master` → собирается Docker-образ → публикуется в GitHub Container Registry
-2. SSH на сервер → `docker compose pull && up -d`
+1. Push в `master` запускает два параллельных job'а:
+   - **Сайт:** Docker-образ → GitHub Container Registry → SSH на сервер → `docker compose up -d`
+   - **Worker:** Cloudflare Worker деплоится через wrangler
 
 **Конфигурация:** `.github/workflows/deploy.yml`
 
@@ -43,6 +44,7 @@ git push origin master  # Деплой на продакшен (автомати
 - `SERVER_HOST` — IP сервера
 - `SERVER_USER` — пользователь SSH
 - `SERVER_SSH_KEY` — приватный SSH-ключ
+- `CLOUDFLARE_API_TOKEN` — токен для деплоя Worker'а
 
 ## Архитектура
 
