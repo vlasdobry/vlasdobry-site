@@ -102,6 +102,7 @@ SOSTAC + PDCA: audit -> strategy -> launch -> control
 Latest articles on SEO, GEO, and digital marketing for hotels, DNA labs, and SPA.
 
 ### Recent Articles
+- /blog/chto-takoe-geo-optimizaciya/ - GEO optimization: how to get mentioned by ChatGPT and Perplexity
 - /blog/seo-dlya-oteley/ - SEO for hotels: step-by-step guide to search optimization
 
 ### Topics Covered

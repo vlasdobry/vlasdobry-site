@@ -1,6 +1,93 @@
 {
   "ru": [
     {
+      "slug": "chto-takoe-geo-optimizaciya",
+      "title": "GEO-оптимизация: как попасть в ответы ChatGPT и Perplexity",
+      "description": "Что такое GEO (Generative Engine Optimization), чем отличается от SEO и как сделать так, чтобы AI-системы рекомендовали ваш бизнес.",
+      "date": "2026-02-02",
+      "dateModified": "2026-02-02",
+      "category": "geo",
+      "tags": [
+        "geo",
+        "ai",
+        "chatgpt",
+        "perplexity"
+      ],
+      "relatedService": "/services/geo",
+      "cover": "cover.jpg",
+      "series": null,
+      "readingTime": 4,
+      "toc": [
+        {
+          "id": "что-такое-geo",
+          "text": "Что такое GEO",
+          "level": 2
+        },
+        {
+          "id": "почему-это-важно-именно-сейчас",
+          "text": "Почему это важно именно сейчас",
+          "level": 2
+        },
+        {
+          "id": "чем-geo-отличается-от-seo",
+          "text": "Чем GEO отличается от SEO",
+          "level": 2
+        },
+        {
+          "id": "что-проверяют-ai-системы",
+          "text": "Что проверяют AI-системы",
+          "level": 2
+        },
+        {
+          "id": "файл-llmstxt",
+          "text": "Файл llms.txt",
+          "level": 3
+        },
+        {
+          "id": "schemaorg-разметка",
+          "text": "Schema.org разметка",
+          "level": 3
+        },
+        {
+          "id": "e-e-a-t-сигналы",
+          "text": "E-E-A-T сигналы",
+          "level": 3
+        },
+        {
+          "id": "доступность-для-ai-ботов",
+          "text": "Доступность для AI-ботов",
+          "level": 3
+        },
+        {
+          "id": "как-начать-с-geo",
+          "text": "Как начать с GEO",
+          "level": 2
+        },
+        {
+          "id": "бесплатная-проверка",
+          "text": "Бесплатная проверка",
+          "level": 2
+        }
+      ],
+      "hasFaq": true,
+      "content": "<p><strong>TL;DR:</strong> GEO — это оптимизация сайта для AI-поисковиков (ChatGPT, Perplexity, YandexGPT). В отличие от SEO, где важны ссылки и ключевые слова, в GEO важны структура данных, FAQ и файлы llms.txt. Кто начнёт раньше — получит преимущество.</p>\n<p>Вы замечали, как изменился поиск? Всё больше людей вместо Google спрашивают ChatGPT: &quot;Какой отель выбрать в Сочи?&quot; или &quot;Где сделать ДНК-тест в Москве?&quot;. И AI даёт конкретные рекомендации — с названиями компаний.</p>\n<p>Вопрос: ваш бизнес в этих ответах есть?</p>\n<h2 id=\"что-такое-geo\">Что такое GEO</h2>\n<p>GEO (Generative Engine Optimization) — это набор техник, которые помогают вашему сайту попадать в ответы AI-систем. Не в выдачу поисковика, а прямо в текст, который генерирует ChatGPT, Perplexity, Claude или YandexGPT.</p>\n<p>Разница принципиальная. В классическом SEO вы боретесь за позицию в списке из 10 ссылок. В GEO — за упоминание в готовом ответе. Пользователь не листает результаты, он получает рекомендацию сразу.</p>\n<h2 id=\"почему-это-важно-именно-сейчас\">Почему это важно именно сейчас</h2>\n<p>Цифры говорят сами за себя:</p>\n<ul>\n<li>37% пользователей уже используют AI для поиска товаров и услуг</li>\n<li>К концу 2026 года этот показатель вырастет до 50%+</li>\n<li>При этом 90% сайтов никак не оптимизированы под AI-поиск</li>\n</ul>\n<p>Это окно возможностей. Пока конкуренты думают, что SEO достаточно, вы можете занять место в ответах AI-систем. Потом догонять будет сложнее.</p>\n<p>В моей практике был случай: сеть СПА-комплексов внедрила GEO-оптимизацию за месяц до конкурентов. Результат — их рекомендует Perplexity по 80% релевантных запросов в регионе. Конкуренты до сих пор не появились в ответах.</p>\n<h2 id=\"чем-geo-отличается-от-seo\">Чем GEO отличается от SEO</h2>\n<table>\n<thead>\n<tr>\n<th>Параметр</th>\n<th>SEO</th>\n<th>GEO</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Цель</td>\n<td>Позиция в выдаче</td>\n<td>Упоминание в ответе AI</td>\n</tr>\n<tr>\n<td>Ключевой фактор</td>\n<td>Ссылки, ключевые слова</td>\n<td>Структура данных, E-E-A-T</td>\n</tr>\n<tr>\n<td>Формат контента</td>\n<td>Тексты под поисковые запросы</td>\n<td>FAQ, структурированные данные</td>\n</tr>\n<tr>\n<td>Технические файлы</td>\n<td>robots.txt, sitemap.xml</td>\n<td>+ llms.txt, Schema.org</td>\n</tr>\n<tr>\n<td>Скорость результата</td>\n<td>3-6 месяцев</td>\n<td>2-4 недели</td>\n</tr>\n</tbody></table>\n<p>GEO не заменяет SEO — дополняет. Если у вас хорошее SEO, GEO добавится проще. Но можно начать и с нуля.</p>\n<h2 id=\"что-проверяют-ai-системы\">Что проверяют AI-системы</h2>\n<p>Когда ChatGPT или Perplexity решают, кого рекомендовать, они смотрят на:</p>\n<h3 id=\"файл-llmstxt\">Файл llms.txt</h3>\n<p>Это как robots.txt, но для AI. Текстовый файл в корне сайта, который объясняет AI-системам, кто вы и чем занимаетесь. Без него AI приходится угадывать — и часто угадывает неправильно.</p>\n<h3 id=\"schemaorg-разметка\">Schema.org разметка</h3>\n<p>Структурированные данные, которые AI понимает без интерпретации. Особенно важны:</p>\n<ul>\n<li>LocalBusiness — для локальных запросов</li>\n<li>FAQPage — вопросы и ответы в явном виде</li>\n<li>Article — для блога и экспертного контента</li>\n</ul>\n<h3 id=\"e-e-a-t-сигналы\">E-E-A-T сигналы</h3>\n<p>Experience, Expertise, Authoritativeness, Trustworthiness. AI оценивает, можно ли вам доверять:</p>\n<ul>\n<li>Есть ли информация об авторе?</li>\n<li>Указаны ли контакты и адрес?</li>\n<li>Есть ли отзывы и упоминания на других сайтах?</li>\n</ul>\n<h3 id=\"доступность-для-ai-ботов\">Доступность для AI-ботов</h3>\n<p>Некоторые сайты блокируют AI-краулеры в robots.txt. Это защищает контент, но исключает из рекомендаций. Нужен баланс.</p>\n<h2 id=\"как-начать-с-geo\">Как начать с GEO</h2>\n<p>Пять шагов, которые можно сделать самостоятельно:</p>\n<p><strong>1. Создайте llms.txt</strong></p>\n<p>Текстовый файл с базовой информацией: название, услуги, контакты, ключевые факты. Положите в корень сайта.</p>\n<p><strong>2. Добавьте FAQ на ключевые страницы</strong></p>\n<p>Не формальный раздел &quot;Вопросы и ответы&quot;, а реальные вопросы клиентов с конкретными ответами. Разметьте Schema.org FAQPage.</p>\n<p><strong>3. Проверьте robots.txt</strong></p>\n<p>Убедитесь, что AI-боты (GPTBot, ClaudeBot, PerplexityBot) не заблокированы. Или заблокированы осознанно.</p>\n<p><strong>4. Добавьте структурированные данные</strong></p>\n<p>Минимум — LocalBusiness для главной страницы. В идеале — разметка для каждого типа контента.</p>\n<p><strong>5. Проверьте результат</strong></p>\n<p>Спросите ChatGPT и Perplexity о вашей нише в вашем регионе. Вы в ответах? Если нет — анализируйте, кто там и почему.</p>\n<h2 id=\"бесплатная-проверка\">Бесплатная проверка</h2>\n<p>На странице <a href=\"/services/geo/\">GEO-аудита</a> есть бесплатный Health Score — автоматическая проверка 5 параметров GEO-оптимизации. Занимает 30 секунд, показывает что исправить в первую очередь.</p>\n<h2 id=\"faq\">FAQ</h2>\n<p><strong>Сколько стоит GEO-оптимизация?</strong>\nБесплатный Health Score даёт базовую диагностику. Полный GEO-аудит с рекомендациями и готовым кодом — 50 000 ₽. Это разовая работа, не ежемесячная подписка.</p>\n<p><strong>GEO заменит SEO?</strong>\nНет. Это разные каналы. SEO приводит трафик из Google и Яндекса, GEO — из AI-систем. В идеале работают вместе.</p>\n<p><strong>Как быстро появятся результаты?</strong>\nAI-системы обновляют данные быстрее поисковиков. После внедрения изменений результат виден через 2-4 недели. Иногда быстрее.</p>\n",
+      "faq": [
+        {
+          "question": "Сколько стоит GEO-оптимизация?",
+          "answer": "Бесплатный Health Score даёт базовую диагностику. Полный GEO-аудит с рекомендациями и готовым кодом — 50 000 ₽. Это разовая работа, не ежемесячная подписка."
+        },
+        {
+          "question": "GEO заменит SEO?",
+          "answer": "Нет. Это разные каналы. SEO приводит трафик из Google и Яндекса, GEO — из AI-систем. В идеале работают вместе."
+        },
+        {
+          "question": "Как быстро появятся результаты?",
+          "answer": "AI-системы обновляют данные быстрее поисковиков. После внедрения изменений результат виден через 2-4 недели. Иногда быстрее."
+        }
+      ],
+      "tldr": "GEO — это оптимизация сайта для AI-поисковиков (ChatGPT, Perplexity, YandexGPT). В отличие от SEO, где важны ссылки и ключевые слова, в GEO важны структура данных, FAQ и файлы llms.txt. Кто начнёт раньше — получит преимущество."
+    },
+    {
       "slug": "seo-dlya-oteley",
       "title": "SEO для отелей: с чего начать в 2026",
       "description": "Пошаговое руководство по продвижению отеля в поисковых системах. Техническое SEO, локальный поиск, работа с отзывами.",
@@ -88,6 +175,93 @@
     }
   ],
   "en": [
+    {
+      "slug": "chto-takoe-geo-optimizaciya",
+      "title": "GEO Optimization: How to Get Mentioned by ChatGPT and Perplexity",
+      "description": "What is GEO (Generative Engine Optimization), how it differs from SEO, and how to make AI systems recommend your business.",
+      "date": "2026-02-02",
+      "dateModified": "2026-02-02",
+      "category": "geo",
+      "tags": [
+        "geo",
+        "ai",
+        "chatgpt",
+        "perplexity"
+      ],
+      "relatedService": "/en/services/geo",
+      "cover": "cover.jpg",
+      "series": null,
+      "readingTime": 4,
+      "toc": [
+        {
+          "id": "what-is-geo",
+          "text": "What is GEO",
+          "level": 2
+        },
+        {
+          "id": "why-this-matters-right-now",
+          "text": "Why This Matters Right Now",
+          "level": 2
+        },
+        {
+          "id": "how-geo-differs-from-seo",
+          "text": "How GEO Differs from SEO",
+          "level": 2
+        },
+        {
+          "id": "what-ai-systems-check",
+          "text": "What AI Systems Check",
+          "level": 2
+        },
+        {
+          "id": "the-llmstxt-file",
+          "text": "The llms.txt File",
+          "level": 3
+        },
+        {
+          "id": "schemaorg-markup",
+          "text": "Schema.org Markup",
+          "level": 3
+        },
+        {
+          "id": "e-e-a-t-signals",
+          "text": "E-E-A-T Signals",
+          "level": 3
+        },
+        {
+          "id": "ai-bot-accessibility",
+          "text": "AI Bot Accessibility",
+          "level": 3
+        },
+        {
+          "id": "how-to-start-with-geo",
+          "text": "How to Start with GEO",
+          "level": 2
+        },
+        {
+          "id": "free-check",
+          "text": "Free Check",
+          "level": 2
+        }
+      ],
+      "hasFaq": true,
+      "content": "<p><strong>TL;DR:</strong> GEO is website optimization for AI search engines (ChatGPT, Perplexity, Claude). Unlike SEO where links and keywords matter most, GEO focuses on data structure, FAQ sections, and llms.txt files. Early adopters get the advantage.</p>\n<p>Have you noticed how search behavior has changed? More people now ask ChatGPT instead of Google: &quot;Which hotel should I choose in Miami?&quot; or &quot;Where can I get a DNA test in London?&quot;. And AI gives specific recommendations — with company names.</p>\n<p>The question is: is your business in those answers?</p>\n<h2 id=\"what-is-geo\">What is GEO</h2>\n<p>GEO (Generative Engine Optimization) is a set of techniques that help your website appear in AI system responses. Not in search results, but directly in the text that ChatGPT, Perplexity, Claude, or Gemini generates.</p>\n<p>The difference is fundamental. In classic SEO, you compete for a position in a list of 10 links. In GEO, you compete for a mention in a ready-made answer. Users don&#39;t scroll through results — they get a recommendation immediately.</p>\n<h2 id=\"why-this-matters-right-now\">Why This Matters Right Now</h2>\n<p>The numbers speak for themselves:</p>\n<ul>\n<li>37% of users already use AI for searching products and services</li>\n<li>By the end of 2026, this figure will grow to 50%+</li>\n<li>Meanwhile, 90% of websites aren&#39;t optimized for AI search at all</li>\n</ul>\n<p>This is a window of opportunity. While competitors think SEO is enough, you can claim your spot in AI responses. Catching up later will be harder.</p>\n<p>I&#39;ve seen this firsthand: a wellness resort chain implemented GEO optimization a month before their competitors. The result — Perplexity recommends them for 80% of relevant queries in their region. Competitors still don&#39;t appear in responses.</p>\n<h2 id=\"how-geo-differs-from-seo\">How GEO Differs from SEO</h2>\n<table>\n<thead>\n<tr>\n<th>Parameter</th>\n<th>SEO</th>\n<th>GEO</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Goal</td>\n<td>Position in results</td>\n<td>Mention in AI answer</td>\n</tr>\n<tr>\n<td>Key factor</td>\n<td>Links, keywords</td>\n<td>Data structure, E-E-A-T</td>\n</tr>\n<tr>\n<td>Content format</td>\n<td>Texts for search queries</td>\n<td>FAQ, structured data</td>\n</tr>\n<tr>\n<td>Technical files</td>\n<td>robots.txt, sitemap.xml</td>\n<td>+ llms.txt, Schema.org</td>\n</tr>\n<tr>\n<td>Time to results</td>\n<td>3-6 months</td>\n<td>2-4 weeks</td>\n</tr>\n</tbody></table>\n<p>GEO doesn&#39;t replace SEO — it complements it. If you have good SEO, adding GEO is easier. But you can also start from scratch.</p>\n<h2 id=\"what-ai-systems-check\">What AI Systems Check</h2>\n<p>When ChatGPT or Perplexity decides who to recommend, they look at:</p>\n<h3 id=\"the-llmstxt-file\">The llms.txt File</h3>\n<p>Think of it as robots.txt, but for AI. A text file in your site root that explains to AI systems who you are and what you do. Without it, AI has to guess — and often guesses wrong.</p>\n<h3 id=\"schemaorg-markup\">Schema.org Markup</h3>\n<p>Structured data that AI understands without interpretation. Especially important:</p>\n<ul>\n<li>LocalBusiness — for local queries</li>\n<li>FAQPage — questions and answers in explicit form</li>\n<li>Article — for blog and expert content</li>\n</ul>\n<h3 id=\"e-e-a-t-signals\">E-E-A-T Signals</h3>\n<p>Experience, Expertise, Authoritativeness, Trustworthiness. AI evaluates whether you can be trusted:</p>\n<ul>\n<li>Is there information about the author?</li>\n<li>Are contacts and address listed?</li>\n<li>Are there reviews and mentions on other sites?</li>\n</ul>\n<h3 id=\"ai-bot-accessibility\">AI Bot Accessibility</h3>\n<p>Some websites block AI crawlers in robots.txt. This protects content but excludes you from recommendations. You need balance.</p>\n<h2 id=\"how-to-start-with-geo\">How to Start with GEO</h2>\n<p>Five steps you can do yourself:</p>\n<p><strong>1. Create llms.txt</strong></p>\n<p>A text file with basic information: name, services, contacts, key facts. Place it in your site root.</p>\n<p><strong>2. Add FAQ to Key Pages</strong></p>\n<p>Not a formal &quot;Questions and Answers&quot; section, but real customer questions with specific answers. Mark up with Schema.org FAQPage.</p>\n<p><strong>3. Check robots.txt</strong></p>\n<p>Make sure AI bots (GPTBot, ClaudeBot, PerplexityBot) aren&#39;t blocked. Or are blocked intentionally.</p>\n<p><strong>4. Add Structured Data</strong></p>\n<p>Minimum — LocalBusiness for your homepage. Ideally — markup for each content type.</p>\n<p><strong>5. Test the Result</strong></p>\n<p>Ask ChatGPT and Perplexity about your niche in your region. Are you in the answers? If not — analyze who is and why.</p>\n<h2 id=\"free-check\">Free Check</h2>\n<p>On the <a href=\"/en/services/geo/\">GEO Audit page</a> there&#39;s a free Health Score — an automatic check of 5 GEO optimization parameters. Takes 30 seconds, shows what to fix first.</p>\n<h2 id=\"faq\">FAQ</h2>\n<p><strong>How much does GEO optimization cost?</strong>\nThe free Health Score provides basic diagnostics. A full GEO audit with recommendations and ready-to-use code is $500. This is a one-time service, not a monthly subscription.</p>\n<p><strong>Will GEO replace SEO?</strong>\nNo. These are different channels. SEO brings traffic from Google and Bing, GEO — from AI systems. Ideally, they work together.</p>\n<p><strong>How fast will results appear?</strong>\nAI systems update data faster than search engines. After implementing changes, you&#39;ll see results in 2-4 weeks. Sometimes faster.</p>\n",
+      "faq": [
+        {
+          "question": "How much does GEO optimization cost?",
+          "answer": "The free Health Score provides basic diagnostics. A full GEO audit with recommendations and ready-to-use code is $500. This is a one-time service, not a monthly subscription."
+        },
+        {
+          "question": "Will GEO replace SEO?",
+          "answer": "No. These are different channels. SEO brings traffic from Google and Bing, GEO — from AI systems. Ideally, they work together."
+        },
+        {
+          "question": "How fast will results appear?",
+          "answer": "AI systems update data faster than search engines. After implementing changes, you'll see results in 2-4 weeks. Sometimes faster."
+        }
+      ],
+      "tldr": "GEO is website optimization for AI search engines (ChatGPT, Perplexity, Claude). Unlike SEO where links and keywords matter most, GEO focuses on data structure, FAQ sections, and llms.txt files. Early adopters get the advantage."
+    },
     {
       "slug": "seo-dlya-oteley",
       "title": "SEO for Hotels: Where to Start in 2026",
