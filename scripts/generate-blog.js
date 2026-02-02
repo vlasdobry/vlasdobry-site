@@ -108,7 +108,10 @@ function processArticle(slug, lang) {
   const fileContent = fs.readFileSync(mdPath, 'utf-8');
   const { data, content } = matter(fileContent);
 
-  let html = marked.parse(content);
+  // Remove TL;DR from content (it's displayed separately)
+  const contentWithoutTldr = content.replace(/\*\*TL;DR:\*\*\s*.+?(?=\n\n|\n#)/s, '').trim();
+
+  let html = marked.parse(contentWithoutTldr);
   html = addHeaderIds(html);
 
   return {
