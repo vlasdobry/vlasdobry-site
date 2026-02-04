@@ -102,7 +102,8 @@ SOSTAC + PDCA: audit -> strategy -> launch -> control
 Latest articles on SEO, GEO, and digital marketing for hotels, DNA labs, and SPA.
 
 ### Recent Articles
-- /blog/analiz-konkurentov-otelya-keys/ - Hotel competitor analysis: real case study with Grace Luxor 4-star hotel
+- /blog/prioritizaciya-gorodov-seo-otelya/ - How to prioritize cities for hotel SEO using traffic quality metrics (bounce rate, time on site, pages/visit)
+- /blog/analiz-konkurentov-otelya-keys/ - Hotel competitor analysis: real case study with Grace Luxor 4-star hotel (from $500)
 - /blog/schema-org-dlya-biznesa/ - Schema.org for local business: which markup types you need (LocalBusiness, Hotel, FAQPage)
 - /blog/kak-proverit-seo-sayta/ - How to check your website's SEO: 8-point checklist with free tools
 - /blog/chto-takoe-geo-optimizaciya/ - GEO optimization: how to get mentioned by ChatGPT and Perplexity
