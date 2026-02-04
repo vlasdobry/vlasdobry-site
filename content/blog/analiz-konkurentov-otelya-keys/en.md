@@ -108,9 +108,9 @@ Based on the analysis, I provided 5 specific recommendations:
 
 ## What This Cost
 
-I complete this type of analysis in 2-3 hours. All from public sources, no expensive subscriptions. The output: market understanding and a concrete action plan.
+This type of analysis can be done in a day, with no expensive subscriptions — all from public sources. The output: market understanding and a concrete action plan.
 
-For comparison: agencies charge $500-1,000 for "competitive analysis" that's basically a table with prices and star ratings.
+For comparison: agencies charge $1,500-5,000 for "competitive analysis" that's basically a table with prices and star ratings.
 
 ## FAQ
 
