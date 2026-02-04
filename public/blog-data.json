@@ -1,6 +1,88 @@
 {
   "ru": [
     {
+      "slug": "analiz-konkurentov-otelya-keys",
+      "title": "Анализ конкурентов для отеля: кейс 4★ отеля в Тольятти",
+      "description": "Разбираю реальный кейс: как провести анализ конкурентной среды отеля, какие метрики смотреть и что делать с результатами.",
+      "date": "2026-02-04",
+      "dateModified": "2026-02-04",
+      "category": "marketing",
+      "tags": [
+        "отели",
+        "конкуренты",
+        "horeca",
+        "кейс"
+      ],
+      "relatedService": "/for-hotels",
+      "cover": "cover.jpg",
+      "series": null,
+      "readingTime": 5,
+      "toc": [
+        {
+          "id": "задача",
+          "text": "Задача",
+          "level": 2
+        },
+        {
+          "id": "методология",
+          "text": "Методология",
+          "level": 2
+        },
+        {
+          "id": "кого-нашли",
+          "text": "Кого нашли",
+          "level": 2
+        },
+        {
+          "id": "сравнительная-таблица",
+          "text": "Сравнительная таблица",
+          "level": 2
+        },
+        {
+          "id": "что-выяснили",
+          "text": "Что выяснили",
+          "level": 2
+        },
+        {
+          "id": "угрозы",
+          "text": "Угрозы",
+          "level": 3
+        },
+        {
+          "id": "возможности",
+          "text": "Возможности",
+          "level": 3
+        },
+        {
+          "id": "рекомендации",
+          "text": "Рекомендации",
+          "level": 2
+        },
+        {
+          "id": "сколько-это-стоило",
+          "text": "Сколько это стоило",
+          "level": 2
+        }
+      ],
+      "hasFaq": true,
+      "content": "<p>Зачем отелю знать своих конкурентов? Не для того, чтобы копировать. А чтобы найти свою нишу и не тратить бюджет на борьбу в лоб с теми, кто сильнее.</p>\n<h2 id=\"задача\">Задача</h2>\n<p>Ко мне обратился 4-звёздочный отель Grace Luxor Volga Congress &amp; Resort в Тольятти. Термальная зона с бассейном, конференц-зал на 100 человек, банкетный зал на 450 гостей. Цены от 3 400 до 6 500 ₽ за ночь.</p>\n<p>Вопрос: кто наши конкуренты и как от них отстроиться?</p>\n<h2 id=\"методология\">Методология</h2>\n<p>Я не использую дорогие сервисы типа Serpstat или Ahrefs для базового анализа конкурентов. Вот что реально нужно:</p>\n<p><strong>Источники данных:</strong></p>\n<ul>\n<li>2ГИС и Яндекс Карты — рейтинги, отзывы, фото</li>\n<li>Сайты конкурентов — цены, УТП, инфраструктура</li>\n<li>TripAdvisor и Островок — отзывы туристов</li>\n<li>Поисковая выдача — кто показывается по целевым запросам</li>\n</ul>\n<p><strong>Что смотрю по каждому конкуренту:</strong></p>\n<table>\n<thead>\n<tr>\n<th>Параметр</th>\n<th>Зачем</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Звёздность</td>\n<td>Определяет сегмент</td>\n</tr>\n<tr>\n<td>Цены</td>\n<td>Ценовое позиционирование</td>\n</tr>\n<tr>\n<td>Рейтинг и отзывы</td>\n<td>Репутация и слабые места</td>\n</tr>\n<tr>\n<td>Инфраструктура</td>\n<td>СПА, бассейн, конференц-залы</td>\n</tr>\n<tr>\n<td>УТП</td>\n<td>Как себя позиционируют</td>\n</tr>\n<tr>\n<td>Соцсети</td>\n<td>Активность, аудитория</td>\n</tr>\n</tbody></table>\n<h2 id=\"кого-нашли\">Кого нашли</h2>\n<p>По запросам &quot;отели Тольятти 4 звезды&quot;, &quot;отели с бассейном Тольятти&quot;, &quot;конференц-отели Самарская область&quot; выявил 7 конкурентов:</p>\n<p><strong>Прямые конкуренты в Тольятти:</strong></p>\n<ul>\n<li>Парк Отель (4★) — берег Волги, от 2 900 ₽</li>\n<li>Alpen Park (5★) — альпийский стиль, СПА, от 6 000 ₽</li>\n<li>Lada Resort (4★) — лесопарк, пляж, от 6 000 ₽</li>\n</ul>\n<p><strong>Бюджетный сегмент:</strong></p>\n<ul>\n<li>Дон Кихот (2-3★) — от 2 400 ₽</li>\n<li>Атаман (3★) — от 2 600 ₽</li>\n</ul>\n<p><strong>MICE-конкуренты из Самары (80 км):</strong></p>\n<ul>\n<li>Lotte Hotel Samara (5★) — 11 конференц-залов, от 21 000 ₽</li>\n<li>HolidayHall Samara (4★) — 850 м² конференц-площадей, от 10 500 ₽</li>\n</ul>\n<h2 id=\"сравнительная-таблица\">Сравнительная таблица</h2>\n<table>\n<thead>\n<tr>\n<th>Отель</th>\n<th>★</th>\n<th>Цена</th>\n<th>Рейтинг</th>\n<th>Отзывы</th>\n<th>Бассейн</th>\n<th>Конференц</th>\n</tr>\n</thead>\n<tbody><tr>\n<td><strong>Grace Luxor</strong></td>\n<td>4★</td>\n<td>3 400–6 500 ₽</td>\n<td>4.4</td>\n<td>35</td>\n<td>Да</td>\n<td>100 чел</td>\n</tr>\n<tr>\n<td>Парк Отель</td>\n<td>4★</td>\n<td>от 2 900 ₽</td>\n<td>5.0</td>\n<td>349</td>\n<td>Нет</td>\n<td>Есть</td>\n</tr>\n<tr>\n<td>Alpen Park</td>\n<td>5★</td>\n<td>от 6 000 ₽</td>\n<td>3.0</td>\n<td>68</td>\n<td>Да</td>\n<td>—</td>\n</tr>\n<tr>\n<td>Lada Resort</td>\n<td>4★</td>\n<td>от 6 000 ₽</td>\n<td>8.4</td>\n<td>173</td>\n<td>Да</td>\n<td>—</td>\n</tr>\n<tr>\n<td>Lotte Samara</td>\n<td>5★</td>\n<td>от 21 000 ₽</td>\n<td>9.1</td>\n<td>22</td>\n<td>Да</td>\n<td>1500 чел</td>\n</tr>\n</tbody></table>\n<p>Сразу видно: Grace Luxor — единственный отель в Тольятти с полноценными конференц-возможностями и бассейном в среднем ценовом сегменте.</p>\n<h2 id=\"что-выяснили\">Что выяснили</h2>\n<h3 id=\"угрозы\">Угрозы</h3>\n<p><strong>Парк Отель</strong> — главный ценовой конкурент. Рейтинг 5.0 на Яндексе, 349 отзывов. Но у них нет бассейна и сауна платная (2 000 ₽/час). Их козырь — репутация и цена.</p>\n<p><strong>Alpen Park</strong> — премиальная альтернатива для СПА. 5 звёзд, коттеджи, французская косметика в СПА. Но рейтинг на TripAdvisor всего 3.0 — жалуются на цены в ресторане.</p>\n<p><strong>Самарские отели</strong> — конкуренты для крупных мероприятий. Lotte может принять 1500 человек, Grace Luxor — только 100. Но до Самары 80 км, а цена Lotte — от 21 000 ₽.</p>\n<h3 id=\"возможности\">Возможности</h3>\n<p><strong>Уникальная ниша.</strong> В Тольятти нет другого отеля с сочетанием: 4 звезды + бассейн + конференц-зал + адекватная цена. Это нужно коммуницировать.</p>\n<p><strong>Рейтинг 4.4 — есть куда расти.</strong> У Парк Отеля 349 отзывов при рейтинге 5.0. У Grace Luxor — 35 отзывов. Просто нужно системно собирать обратную связь.</p>\n<p><strong>Семейный сегмент.</strong> Детская комната + бассейн + дети до 4 лет бесплатно. Конкуренты это не продвигают.</p>\n<h2 id=\"рекомендации\">Рекомендации</h2>\n<p>По итогам анализа дал отелю 5 конкретных рекомендаций:</p>\n<ol>\n<li><p><strong>Работать с отзывами.</strong> Цель — 100+ отзывов на 2ГИС за полгода. QR-коды в номерах, follow-up письма после выезда.</p>\n</li>\n<li><p><strong>Усилить MICE-позиционирование.</strong> Отдельный лендинг для корпоративных клиентов. Пакеты &quot;конференция + проживание + банкет&quot;.</p>\n</li>\n<li><p><strong>Запустить пакеты выходного дня.</strong> &quot;СПА-уикенд для двоих&quot;, &quot;Семейный отдых&quot;. Конкурировать с Alpen Park по цене.</p>\n</li>\n<li><p><strong>Мониторить Alpen Park.</strong> При очередной волне негативных отзывов — запустить таргет на их аудиторию.</p>\n</li>\n<li><p><strong>Активизировать соцсети.</strong> UGC от гостей, сторис из термальной зоны, backstage с мероприятий.</p>\n</li>\n</ol>\n<h2 id=\"сколько-это-стоило\">Сколько это стоило</h2>\n<p>Такой анализ я делаю за 2-3 часа. Всё из открытых источников, без дорогих подписок. На выходе — понимание рынка и конкретный план действий.</p>\n<p>Для сравнения: агентства берут 30-50 тысяч за &quot;конкурентный анализ&quot;, который по факту — таблица с ценами и звёздами.</p>\n",
+      "faq": [
+        {
+          "question": "Как часто обновлять анализ конкурентов?",
+          "answer": "Базовый мониторинг — раз в квартал. Полный анализ — раз в год или при изменении рынка (новый конкурент, ребрендинг)."
+        },
+        {
+          "question": "Какие метрики самые важные?",
+          "answer": "Рейтинг и количество отзывов. Это то, что видят гости при выборе отеля. Цены меняются, звёзды — нет, а репутация строится годами."
+        },
+        {
+          "question": "Нужны ли платные инструменты?",
+          "answer": "Для маркетингового анализа — нет. Для SEO-анализа (позиции, ссылки, трафик) — да, но это отдельная задача."
+        }
+      ],
+      "tldr": "Провёл анализ конкурентов для 4★ отеля Grace Luxor в Тольятти. Нашёл 7 конкурентов, сравнил по 8 параметрам. Главный вывод: отель занимает уникальную нишу конгресс-отеля, но рейтинг 4.4 ниже конкурентов — нужно работать с отзывами."
+    },
+    {
       "slug": "chto-takoe-geo-optimizaciya",
       "title": "GEO-оптимизация: как попасть в ответы ChatGPT и Perplexity",
       "description": "Что такое GEO (Generative Engine Optimization), чем отличается от SEO и как сделать так, чтобы AI-системы рекомендовали ваш бизнес.",
@@ -359,6 +441,88 @@
     }
   ],
   "en": [
+    {
+      "slug": "analiz-konkurentov-otelya-keys",
+      "title": "Hotel Competitor Analysis: A 4-Star Property Case Study",
+      "description": "Real case study: how to analyze hotel competitors, which metrics matter, and what to do with the findings.",
+      "date": "2026-02-04",
+      "dateModified": "2026-02-04",
+      "category": "marketing",
+      "tags": [
+        "hotels",
+        "competitors",
+        "horeca",
+        "case-study"
+      ],
+      "relatedService": "/for-hotels",
+      "cover": "cover.jpg",
+      "series": null,
+      "readingTime": 4,
+      "toc": [
+        {
+          "id": "the-brief",
+          "text": "The Brief",
+          "level": 2
+        },
+        {
+          "id": "methodology",
+          "text": "Methodology",
+          "level": 2
+        },
+        {
+          "id": "competitors-found",
+          "text": "Competitors Found",
+          "level": 2
+        },
+        {
+          "id": "comparison-table",
+          "text": "Comparison Table",
+          "level": 2
+        },
+        {
+          "id": "key-findings",
+          "text": "Key Findings",
+          "level": 2
+        },
+        {
+          "id": "threats",
+          "text": "Threats",
+          "level": 3
+        },
+        {
+          "id": "opportunities",
+          "text": "Opportunities",
+          "level": 3
+        },
+        {
+          "id": "recommendations",
+          "text": "Recommendations",
+          "level": 2
+        },
+        {
+          "id": "what-this-cost",
+          "text": "What This Cost",
+          "level": 2
+        }
+      ],
+      "hasFaq": true,
+      "content": "<p>Why should a hotel know its competitors? Not to copy them. But to find your niche and stop wasting budget fighting head-on against stronger players.</p>\n<h2 id=\"the-brief\">The Brief</h2>\n<p>A 4-star hotel reached out: thermal spa with pool, conference room for 100 people, banquet hall for 450 guests. Rates from $35 to $70 per night.</p>\n<p>The question: who are our competitors and how do we differentiate?</p>\n<h2 id=\"methodology\">Methodology</h2>\n<p>I don&#39;t use expensive tools like Ahrefs or SEMrush for basic competitor analysis. Here&#39;s what actually matters:</p>\n<p><strong>Data sources:</strong></p>\n<ul>\n<li>Google Maps — ratings, reviews, photos</li>\n<li>Competitor websites — pricing, USP, amenities</li>\n<li>TripAdvisor and Booking.com — tourist reviews</li>\n<li>Search results — who ranks for target queries</li>\n</ul>\n<p><strong>What I check for each competitor:</strong></p>\n<table>\n<thead>\n<tr>\n<th>Parameter</th>\n<th>Why it matters</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Star rating</td>\n<td>Defines the segment</td>\n</tr>\n<tr>\n<td>Pricing</td>\n<td>Price positioning</td>\n</tr>\n<tr>\n<td>Rating &amp; reviews</td>\n<td>Reputation and weak spots</td>\n</tr>\n<tr>\n<td>Amenities</td>\n<td>Spa, pool, conference facilities</td>\n</tr>\n<tr>\n<td>USP</td>\n<td>How they position themselves</td>\n</tr>\n<tr>\n<td>Social media</td>\n<td>Activity, audience size</td>\n</tr>\n</tbody></table>\n<h2 id=\"competitors-found\">Competitors Found</h2>\n<p>Searching for &quot;4-star hotels [city]&quot;, &quot;hotels with pool [city]&quot;, &quot;conference hotels [region]&quot; revealed 7 competitors:</p>\n<p><strong>Direct competitors (same city):</strong></p>\n<ul>\n<li>Park Hotel (4★) — riverfront, from $30/night</li>\n<li>Alpen Park (5★) — alpine style, spa, from $65/night</li>\n<li>Lada Resort (4★) — forest location, beach, from $65/night</li>\n</ul>\n<p><strong>Budget segment:</strong></p>\n<ul>\n<li>Two 2-3 star properties — from $25-28/night</li>\n</ul>\n<p><strong>MICE competitors (50 miles away):</strong></p>\n<ul>\n<li>Lotte Hotel (5★) — 11 conference halls, from $220/night</li>\n<li>HolidayHall (4★) — 9,000 sq ft conference space, from $110/night</li>\n</ul>\n<h2 id=\"comparison-table\">Comparison Table</h2>\n<table>\n<thead>\n<tr>\n<th>Hotel</th>\n<th>★</th>\n<th>Price</th>\n<th>Rating</th>\n<th>Reviews</th>\n<th>Pool</th>\n<th>Conference</th>\n</tr>\n</thead>\n<tbody><tr>\n<td><strong>Client</strong></td>\n<td>4★</td>\n<td>$35-70</td>\n<td>4.4</td>\n<td>35</td>\n<td>Yes</td>\n<td>100 pax</td>\n</tr>\n<tr>\n<td>Park Hotel</td>\n<td>4★</td>\n<td>from $30</td>\n<td>5.0</td>\n<td>349</td>\n<td>No</td>\n<td>Yes</td>\n</tr>\n<tr>\n<td>Alpen Park</td>\n<td>5★</td>\n<td>from $65</td>\n<td>3.0</td>\n<td>68</td>\n<td>Yes</td>\n<td>—</td>\n</tr>\n<tr>\n<td>Lada Resort</td>\n<td>4★</td>\n<td>from $65</td>\n<td>8.4</td>\n<td>173</td>\n<td>Yes</td>\n<td>—</td>\n</tr>\n<tr>\n<td>Lotte</td>\n<td>5★</td>\n<td>from $220</td>\n<td>9.1</td>\n<td>22</td>\n<td>Yes</td>\n<td>1500 pax</td>\n</tr>\n</tbody></table>\n<p>Clear insight: the client is the only hotel in the city combining 4-star quality + pool + conference facilities at mid-range prices.</p>\n<h2 id=\"key-findings\">Key Findings</h2>\n<h3 id=\"threats\">Threats</h3>\n<p><strong>Park Hotel</strong> — main price competitor. 5.0 rating, 349 reviews. But no pool and sauna costs extra ($20/hour). Their advantage is reputation and price.</p>\n<p><strong>Alpen Park</strong> — premium spa alternative. 5 stars, cottages, French cosmetics in spa. But TripAdvisor rating is only 3.0 — complaints about restaurant prices.</p>\n<p><strong>City hotels 50 miles away</strong> — competitors for large events. Lotte can host 1,500 people vs client&#39;s 100. But they&#39;re far and expensive ($220+/night).</p>\n<h3 id=\"opportunities\">Opportunities</h3>\n<p><strong>Unique niche.</strong> No other hotel in the city offers: 4 stars + pool + conference facilities + reasonable prices. This needs to be communicated clearly.</p>\n<p><strong>4.4 rating has room to grow.</strong> Park Hotel has 349 reviews at 5.0 rating. Client has 35 reviews. Just need systematic review collection.</p>\n<p><strong>Family segment.</strong> Kids&#39; playroom + pool + children under 4 stay free. Competitors don&#39;t promote this.</p>\n<h2 id=\"recommendations\">Recommendations</h2>\n<p>Based on the analysis, I provided 5 specific recommendations:</p>\n<ol>\n<li><p><strong>Work on reviews.</strong> Target: 100+ reviews within 6 months. QR codes in rooms, follow-up emails after checkout.</p>\n</li>\n<li><p><strong>Strengthen MICE positioning.</strong> Dedicated landing page for corporate clients. Packages combining conference + accommodation + banquet.</p>\n</li>\n<li><p><strong>Launch weekend packages.</strong> &quot;Spa Weekend for Two&quot;, &quot;Family Getaway&quot;. Compete with Alpen Park on price.</p>\n</li>\n<li><p><strong>Monitor Alpen Park.</strong> When negative reviews spike — run targeted ads to their audience.</p>\n</li>\n<li><p><strong>Activate social media.</strong> UGC from guests, stories from thermal spa, behind-the-scenes from events.</p>\n</li>\n</ol>\n<h2 id=\"what-this-cost\">What This Cost</h2>\n<p>I complete this type of analysis in 2-3 hours. All from public sources, no expensive subscriptions. The output: market understanding and a concrete action plan.</p>\n<p>For comparison: agencies charge $500-1,000 for &quot;competitive analysis&quot; that&#39;s basically a table with prices and star ratings.</p>\n",
+      "faq": [
+        {
+          "question": "How often should you update competitor analysis?",
+          "answer": "Basic monitoring — quarterly. Full analysis — annually or when the market changes (new competitor, rebranding)."
+        },
+        {
+          "question": "Which metrics matter most?",
+          "answer": "Rating and number of reviews. That's what guests see when choosing a hotel. Prices change, stars don't, but reputation takes years to build."
+        },
+        {
+          "question": "Do you need paid tools?",
+          "answer": "For marketing analysis — no. For SEO analysis (rankings, backlinks, traffic) — yes, but that's a separate project."
+        }
+      ],
+      "tldr": "Conducted competitor analysis for a 4-star hotel in Russia. Found 7 competitors, compared across 8 metrics. Key finding: the hotel occupies a unique congress-hotel niche, but its 4.4 rating is below competitors — reputation management is priority #1."
+    },
     {
       "slug": "chto-takoe-geo-optimizaciya",
       "title": "GEO Optimization: How to Get Mentioned by ChatGPT and Perplexity",
