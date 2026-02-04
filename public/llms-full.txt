@@ -213,6 +213,32 @@ Acoustic voice analysis and training platform.
 
 ## 6. Blog Articles
 
+### Hotel Competitor Analysis: A 4-Star Property Case Study
+**URL:** /blog/analiz-konkurentov-otelya-keys/
+**Category:** Marketing
+**Date:** 2026-02-04
+
+Real case study: competitor analysis for Grace Luxor, a 4-star hotel in Tolyatti, Russia.
+
+Methodology:
+- Data sources: Google Maps, 2GIS, TripAdvisor, Booking.com, competitor websites
+- Parameters: star rating, pricing, reviews, amenities, USP, social media
+- No expensive tools needed (Ahrefs, SEMrush) for basic marketing analysis
+
+Key findings for Grace Luxor:
+- Unique niche: only hotel in the city with 4 stars + pool + conference facilities at mid-range prices
+- 7 competitors identified (3 direct, 2 budget, 2 MICE from nearby city)
+- Rating 4.4 is below competitors (Park Hotel 5.0, Lada Resort 8.4) — reputation management priority
+
+Recommendations:
+1. Work on reviews (target: 100+ reviews in 6 months)
+2. Strengthen MICE positioning (dedicated landing page, packages)
+3. Launch weekend packages (compete with premium competitors on price)
+4. Monitor competitor reviews for targeting opportunities
+5. Activate social media with UGC
+
+This type of analysis takes 2-3 hours with public data sources only.
+
 ### Schema.org for Local Business: Which Markup Types You Need
 **URL:** /blog/schema-org-dlya-biznesa/
 **Category:** SEO

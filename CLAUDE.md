@@ -107,7 +107,8 @@ git push origin master  # Деплой на продакшен (автомати
 - Ссылка на блог только в футере всех страниц
 - Авторинг: Claude пишет статьи, владелец утверждает
 
-**Текущие статьи блога (4 шт):**
+**Текущие статьи блога (5 шт):**
+- `analiz-konkurentov-otelya-keys` — Анализ конкурентов для отеля: кейс Grace Luxor
 - `chto-takoe-geo-optimizaciya` — GEO-оптимизация: как попасть в ответы ChatGPT
 - `kak-proverit-seo-sayta` — Как проверить SEO сайта: чеклист из 8 пунктов
 - `schema-org-dlya-biznesa` — Schema.org для локального бизнеса
