@@ -15,9 +15,11 @@ export default defineConfig({
         name: 'rewrite-routes',
         configureServer(server) {
           const routes = [
-            { prefix: '/en/blog/', file: '/blog-en.html' },
+            // Blog posts (must be before blog list)
+            { prefix: '/en/blog/', file: '/blog-post.html', isPost: true },
+            { prefix: '/blog/', file: '/blog-post.html', isPost: true },
+            // Blog list
             { prefix: '/en/blog', file: '/blog-en.html' },
-            { prefix: '/blog/', file: '/blog.html' },
             { prefix: '/blog', file: '/blog.html' },
             { prefix: '/en/services/seo', file: '/seo-en.html' },
             { prefix: '/en/services/geo', file: '/geo-en.html' },
@@ -37,7 +39,14 @@ export default defineConfig({
           server.middlewares.use((req, _res, next) => {
             const url = req.url || '';
             if (!url.includes('.')) {
-              const route = routes.find(r => url.startsWith(r.prefix));
+              const route = routes.find(r => {
+                if (r.isPost) {
+                  // Blog post: /blog/[slug]/ but not /blog/ itself
+                  const match = url.match(new RegExp(`^${r.prefix}[^/]+/?$`));
+                  return match !== null;
+                }
+                return url.startsWith(r.prefix);
+              });
               if (route) req.url = route.file;
             }
             next();

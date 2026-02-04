@@ -10,7 +10,7 @@ tags:
   - competitors
   - horeca
   - case-study
-relatedService: /for-hotels
+relatedService: /en/for-hotels
 cover: cover.jpg
 ---
 
@@ -106,9 +106,9 @@ Based on the analysis, I provided 5 specific recommendations:
 
 5. **Activate social media.** UGC from guests, stories from thermal spa, behind-the-scenes from events.
 
-## What This Cost
+## What This Costs
 
-This type of analysis can be done in a day, with no expensive subscriptions — all from public sources. The output: market understanding and a concrete action plan.
+This type of analysis starts at $500. Done in 1-2 days, no expensive subscriptions — all from public sources. The output: market understanding and a concrete action plan.
 
 For comparison: agencies charge $1,500-5,000 for "competitive analysis" that's basically a table with prices and star ratings.
 

@@ -101,6 +101,12 @@ function addHeaderIds(html) {
   });
 }
 
+function wrapTables(html) {
+  // Wrap tables in scrollable container for mobile
+  return html.replace(/<table>/g, '<div class="table-wrapper"><table>')
+             .replace(/<\/table>/g, '</table></div>');
+}
+
 function processArticle(slug, lang) {
   const mdPath = path.join(contentDir, slug, `${lang}.md`);
   if (!fs.existsSync(mdPath)) return null;
@@ -116,6 +122,7 @@ function processArticle(slug, lang) {
 
   let html = marked.parse(cleanedContent);
   html = addHeaderIds(html);
+  html = wrapTables(html);
 
   return {
     slug: data.slug || slug,

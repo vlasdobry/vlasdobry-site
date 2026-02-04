@@ -1,6 +1,6 @@
 ---
 title: "How to Prioritize Cities for Hotel SEO"
-description: "A methodology for selecting regions for SEO based on analytics data. Which metrics show traffic quality and where to focus your budget."
+description: "How to pick the right cities for hotel SEO using traffic quality metrics. A 4-tier prioritization framework with real data."
 date: 2026-02-04
 dateModified: 2026-02-04
 slug: prioritizaciya-gorodov-seo-otelya
@@ -10,7 +10,7 @@ tags:
   - analytics
   - horeca
   - geo-targeting
-relatedService: /for-hotels
+relatedService: /en/for-hotels
 cover: cover.jpg
 ---
 
@@ -114,7 +114,7 @@ In our example: Chicago, Houston, Phoenix. Bounce 23-25%, time 3-4 minutes.
 
 Cities with bounce over 30% or anomalous patterns (bounce 0.8% = bots). Spending budget here is pointless.
 
-In our example: certain international IPs (bounce 0.8%, clear bots), some with 86% bounce, and low-engagement regions.
+In our example: overseas VPN traffic (bounce 0.8% — clearly bots), certain regions with 86% bounce, and low-engagement international markets.
 
 **Actions:**
 - Exclude from reporting
