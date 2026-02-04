@@ -14,15 +14,15 @@ relatedService: /for-hotels
 cover: cover.jpg
 ---
 
-**TL;DR:** Conducted competitor analysis for a 4-star hotel in Russia. Found 7 competitors, compared across 8 metrics. Key finding: the hotel occupies a unique congress-hotel niche, but its 4.4 rating is below competitors — reputation management is priority #1.
+**TL;DR:** Conducted competitor analysis for Grace Luxor, a 4-star hotel in Tolyatti, Russia. Found 7 competitors, compared across 8 metrics. Key finding: the hotel occupies a unique congress-hotel niche, but its 4.4 rating is below competitors — reputation management is priority #1.
 
 Why should a hotel know its competitors? Not to copy them. But to find your niche and stop wasting budget fighting head-on against stronger players.
 
-## The Brief
+## The Subject
 
-A 4-star hotel reached out: thermal spa with pool, conference room for 100 people, banquet hall for 450 guests. Rates from $35 to $70 per night.
+Let me walk you through a real example: Grace Luxor Volga Congress & Resort, a 4-star hotel in Tolyatti, Russia. Thermal spa with pool, conference room for 100 people, banquet hall for 450 guests. Rates from $35 to $70 per night.
 
-The question: who are our competitors and how do we differentiate?
+The goal: identify competitors and find differentiation opportunities.
 
 ## Methodology
 
@@ -55,7 +55,8 @@ Searching for "4-star hotels [city]", "hotels with pool [city]", "conference hot
 - Lada Resort (4★) — forest location, beach, from $65/night
 
 **Budget segment:**
-- Two 2-3 star properties — from $25-28/night
+- Don Quixote (2-3★) — from $25/night
+- Ataman (3★) — from $28/night
 
 **MICE competitors (50 miles away):**
 - Lotte Hotel (5★) — 11 conference halls, from $220/night
@@ -65,13 +66,13 @@ Searching for "4-star hotels [city]", "hotels with pool [city]", "conference hot
 
 | Hotel | ★ | Price | Rating | Reviews | Pool | Conference |
 |-------|---|-------|--------|---------|------|------------|
-| **Client** | 4★ | $35-70 | 4.4 | 35 | Yes | 100 pax |
+| **Grace Luxor** | 4★ | $35-70 | 4.4 | 35 | Yes | 100 pax |
 | Park Hotel | 4★ | from $30 | 5.0 | 349 | No | Yes |
 | Alpen Park | 5★ | from $65 | 3.0 | 68 | Yes | — |
 | Lada Resort | 4★ | from $65 | 8.4 | 173 | Yes | — |
 | Lotte | 5★ | from $220 | 9.1 | 22 | Yes | 1500 pax |
 
-Clear insight: the client is the only hotel in the city combining 4-star quality + pool + conference facilities at mid-range prices.
+Clear insight: Grace Luxor is the only hotel in the city combining 4-star quality + pool + conference facilities at mid-range prices.
 
 ## Key Findings
 
@@ -81,13 +82,13 @@ Clear insight: the client is the only hotel in the city combining 4-star quality
 
 **Alpen Park** — premium spa alternative. 5 stars, cottages, French cosmetics in spa. But TripAdvisor rating is only 3.0 — complaints about restaurant prices.
 
-**City hotels 50 miles away** — competitors for large events. Lotte can host 1,500 people vs client's 100. But they're far and expensive ($220+/night).
+**Samara hotels (50 miles away)** — competitors for large events. Lotte can host 1,500 people vs Grace Luxor's 100. But they're far and expensive ($220+/night).
 
 ### Opportunities
 
 **Unique niche.** No other hotel in the city offers: 4 stars + pool + conference facilities + reasonable prices. This needs to be communicated clearly.
 
-**4.4 rating has room to grow.** Park Hotel has 349 reviews at 5.0 rating. Client has 35 reviews. Just need systematic review collection.
+**4.4 rating has room to grow.** Park Hotel has 349 reviews at 5.0 rating. Grace Luxor has only 35. Just need systematic review collection.
 
 **Family segment.** Kids' playroom + pool + children under 4 stay free. Competitors don't promote this.
 
