@@ -102,12 +102,12 @@ SOSTAC + PDCA: audit -> strategy -> launch -> control
 Latest articles on SEO, GEO, and digital marketing for hotels, DNA labs, and SPA.
 
 ### Recent Articles
-- /blog/prioritizaciya-gorodov-seo-otelya/ - How to prioritize cities for hotel SEO using traffic quality metrics (bounce rate, time on site, pages/visit)
-- /blog/analiz-konkurentov-otelya-keys/ - Hotel competitor analysis: real case study with Grace Luxor 4-star hotel (from $500)
-- /blog/schema-org-dlya-biznesa/ - Schema.org for local business: which markup types you need (LocalBusiness, Hotel, FAQPage)
-- /blog/kak-proverit-seo-sayta/ - How to check your website's SEO: 8-point checklist with free tools
-- /blog/chto-takoe-geo-optimizaciya/ - GEO optimization: how to get mentioned by ChatGPT and Perplexity
-- /blog/seo-dlya-oteley/ - SEO for hotels: step-by-step guide to search optimization
+- /blog/analiz-konkurentov-otelya-keys/ - Real case study: how to analyze hotel competitors, which metrics matter, and what to do with the findings.
+- /blog/prioritizaciya-gorodov-seo-otelya/ - How to pick the right cities for hotel SEO using traffic quality metrics. A 4-tier prioritization framework with real data.
+- /blog/chto-takoe-geo-optimizaciya/ - What is GEO (Generative Engine Optimization), how it differs from SEO, and how to make AI systems recommend your business.
+- /blog/kak-proverit-seo-sayta/ - Free tools and a simple checklist for quick SEO audit. Find critical errors in 10 minutes.
+- /blog/schema-org-dlya-biznesa/ - Practical guide to Schema.org for hotels, spas, clinics. Ready-to-use code examples for LocalBusiness, Hotel, FAQPage.
+- /blog/seo-dlya-oteley/ - Step-by-step guide to hotel search engine optimization. Technical SEO, local search, reputation management.
 
 ### Topics Covered
 - Technical SEO and on-page optimization

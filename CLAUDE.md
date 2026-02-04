@@ -155,8 +155,14 @@ git push origin master  # Деплой на продакшен (автомати
 **Консистентность данных:**
 При изменении контента страниц-лендингов (проекты, отели, лаборатории, СПА, SEO, GEO) необходимо синхронизировать 6 источников: i18n (ru.ts, en.ts), Schema.org JSON-LD (HTML), noscript fallback (HTML), meta/OG/Twitter (HTML), `llms.txt`. Для проверки — систематический аудит всех источников.
 
-**Блог — консистентность:**
-При добавлении статьи создать `content/blog/[slug]/ru.md` и `en.md`. Frontmatter: title, description, date, dateModified, slug, category, tags, relatedService, cover. После билда автоматически обновляется blog-data.json. Цены в EN версии должны соответствовать западному рынку (выше чем RU).
+**Блог — добавление статьи:**
+1. Создать `content/blog/[slug]/ru.md` и `en.md`
+2. Frontmatter: title, description, date, dateModified, slug, category, tags, relatedService, cover
+3. Опционально: `llmsSummary` — кастомное описание для AI (если не указано, генерируется из description + TL;DR + FAQ)
+4. Запустить `node scripts/generate-blog.js` или `npm run build`
+5. Автоматически обновляются: `blog-data.json`, `sitemap.xml`, `llms.txt`, `llms-full.txt`
+
+Цены в EN версии должны соответствовать западному рынку (выше чем RU).
 
 **Терминология услуг:**
 - "8 параметров" (SEO) — технические проверки в бесплатном SEO Health Score

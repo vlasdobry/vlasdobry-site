@@ -143,6 +143,7 @@ function processArticle(slug, lang) {
     content: html,
     faq: extractFaq(content),
     tldr: extractTldr(content),
+    llmsSummary: data.llmsSummary || null,
   };
 }
 
@@ -375,6 +376,175 @@ function generateArticleHtml(article, lang) {
 </html>`;
 }
 
+// ============================================
+// AUTO-UPDATE: sitemap.xml, llms.txt, llms-full.txt
+// ============================================
+
+function generateSitemapBlogSection(articles) {
+  const baseUrl = 'https://vlasdobry.ru';
+  const today = new Date().toISOString().split('T')[0];
+
+  let xml = '';
+
+  // Blog index pages
+  xml += `  <!-- BLOG_START -->
+  <url>
+    <loc>${baseUrl}/blog/</loc>
+    <lastmod>${today}</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="${baseUrl}/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/blog/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>${baseUrl}/en/blog/</loc>
+    <lastmod>${today}</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="${baseUrl}/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/blog/"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>\n`;
+
+  // Individual articles
+  for (const article of articles) {
+    xml += `  <url>
+    <loc>${baseUrl}/blog/${article.slug}/</loc>
+    <lastmod>${article.dateModified}</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="${baseUrl}/blog/${article.slug}/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/blog/${article.slug}/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>${baseUrl}/en/blog/${article.slug}/</loc>
+    <lastmod>${article.dateModified}</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="${baseUrl}/blog/${article.slug}/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/blog/${article.slug}/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>\n`;
+  }
+
+  xml += '  <!-- BLOG_END -->';
+  return xml;
+}
+
+function updateSitemap(articles) {
+  const sitemapPath = path.join(publicDir, 'sitemap.xml');
+  let sitemap = fs.readFileSync(sitemapPath, 'utf-8');
+
+  const blogSection = generateSitemapBlogSection(articles);
+
+  // Check if markers exist
+  if (sitemap.includes('<!-- BLOG_START -->')) {
+    // Replace existing blog section
+    sitemap = sitemap.replace(
+      /\s*<!-- BLOG_START -->[\s\S]*<!-- BLOG_END -->/,
+      '\n' + blogSection
+    );
+  } else {
+    // Add before </urlset>
+    sitemap = sitemap.replace('</urlset>', blogSection + '\n</urlset>');
+  }
+
+  fs.writeFileSync(sitemapPath, sitemap);
+  console.log(`Updated sitemap.xml with ${articles.length} blog articles`);
+}
+
+function generateLlmsTxtBlogSection(articles) {
+  let section = '### Recent Articles\n';
+
+  for (const article of articles) {
+    // Use EN title/description for llms.txt
+    section += `- /blog/${article.slug}/ - ${article.description}\n`;
+  }
+
+  section += `
+### Topics Covered
+- Technical SEO and on-page optimization
+- GEO (Generative Engine Optimization) for AI search
+- Industry-specific marketing (hotels, labs, SPA)
+- Local SEO for Russian and international markets
+
+Browse all: /blog/
+Browse all (EN): /en/blog/`;
+
+  return section;
+}
+
+function updateLlmsTxt(enArticles) {
+  const llmsPath = path.join(publicDir, 'llms.txt');
+  let llms = fs.readFileSync(llmsPath, 'utf-8');
+
+  const blogSection = generateLlmsTxtBlogSection(enArticles);
+
+  // Replace section from "### Recent Articles" to next "##" or "Browse all (EN)"
+  llms = llms.replace(
+    /### Recent Articles[\s\S]*?Browse all \(EN\): \/en\/blog\//,
+    blogSection
+  );
+
+  fs.writeFileSync(llmsPath, llms);
+  console.log(`Updated llms.txt with ${enArticles.length} blog articles`);
+}
+
+function generateLlmsFullArticleEntry(article) {
+  let entry = `### ${article.title}
+**URL:** /blog/${article.slug}/
+**Category:** ${article.category.toUpperCase()}
+**Date:** ${article.date}
+
+`;
+
+  // Use llmsSummary if available, otherwise generate from description + TL;DR + FAQ
+  if (article.llmsSummary) {
+    entry += article.llmsSummary;
+  } else {
+    entry += article.description + '\n';
+
+    if (article.tldr) {
+      entry += `\nKey insight: ${article.tldr}\n`;
+    }
+
+    if (article.faq && article.faq.length > 0) {
+      entry += '\nFAQ:\n';
+      for (const item of article.faq) {
+        entry += `- ${item.question} ${item.answer}\n`;
+      }
+    }
+  }
+
+  return entry;
+}
+
+function updateLlmsFullTxt(enArticles) {
+  const llmsFullPath = path.join(publicDir, 'llms-full.txt');
+  let llmsFull = fs.readFileSync(llmsFullPath, 'utf-8');
+
+  // Update header with current date and article count
+  const today = new Date().toISOString().split('T')[0];
+  llmsFull = llmsFull.replace(
+    /> Last updated: .+/,
+    `> Last updated: ${today} (${enArticles.length} articles)`
+  );
+
+  // Generate blog articles section
+  let blogSection = '## 6. Blog Articles\n\n';
+  for (const article of enArticles) {
+    blogSection += generateLlmsFullArticleEntry(article) + '\n';
+  }
+  blogSection += `**Blog page:** https://vlasdobry.ru/blog/`;
+
+  // Replace section from "## 6. Blog Articles" to "## 7." or "---" followed by "## 7"
+  llmsFull = llmsFull.replace(
+    /## 6\. Blog Articles[\s\S]*?\*\*Blog page:\*\* https:\/\/vlasdobry\.ru\/blog\//,
+    blogSection
+  );
+
+  fs.writeFileSync(llmsFullPath, llmsFull);
+  console.log(`Updated llms-full.txt with ${enArticles.length} blog articles`);
+}
+
 function generateBlogData() {
   if (!fs.existsSync(contentDir)) {
     console.log('No blog content directory found, skipping blog generation');
@@ -433,6 +603,11 @@ function generateBlogData() {
       path.join(distDir, 'blog-data.json')
     );
   }
+
+  // Update sitemap.xml, llms.txt, llms-full.txt
+  updateSitemap(ruArticles);
+  updateLlmsTxt(enArticles);
+  updateLlmsFullTxt(enArticles);
 }
 
 generateBlogData();

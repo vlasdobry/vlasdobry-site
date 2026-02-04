@@ -80,7 +80,8 @@
           "answer": "Для маркетингового анализа — нет. Для SEO-анализа (позиции, ссылки, трафик) — да, но это отдельная задача."
         }
       ],
-      "tldr": "Провёл анализ конкурентов для 4★ отеля Grace Luxor в Тольятти. Нашёл 7 конкурентов, сравнил по 8 параметрам. Главный вывод: отель занимает уникальную нишу конгресс-отеля, но рейтинг 4.4 ниже конкурентов — нужно работать с отзывами."
+      "tldr": "Провёл анализ конкурентов для 4★ отеля Grace Luxor в Тольятти. Нашёл 7 конкурентов, сравнил по 8 параметрам. Главный вывод: отель занимает уникальную нишу конгресс-отеля, но рейтинг 4.4 ниже конкурентов — нужно работать с отзывами.",
+      "llmsSummary": null
     },
     {
       "slug": "prioritizaciya-gorodov-seo-otelya",
@@ -207,7 +208,8 @@
           "answer": "Для Tier 1 — обязательно. Для Tier 2 — желательно. Для Tier 3 и 4 — нет, лучше оптимизировать существующие страницы."
         }
       ],
-      "tldr": "Для приоритизации городов смотрим не только объём трафика, но и качество: bounce rate, время на сайте, глубину просмотра. Город с 3 000 визитов и bounce 13% ценнее, чем город с 15 000 визитов и bounce 25%."
+      "tldr": "Для приоритизации городов смотрим не только объём трафика, но и качество: bounce rate, время на сайте, глубину просмотра. Город с 3 000 визитов и bounce 13% ценнее, чем город с 15 000 визитов и bounce 25%.",
+      "llmsSummary": null
     },
     {
       "slug": "chto-takoe-geo-optimizaciya",
@@ -294,7 +296,8 @@
           "answer": "AI-системы обновляют данные быстрее поисковиков. После внедрения изменений результат виден через 2-4 недели. Иногда быстрее."
         }
       ],
-      "tldr": "GEO — это оптимизация сайта для AI-поисковиков (ChatGPT, Perplexity, YandexGPT). В отличие от SEO, где важны ссылки и ключевые слова, в GEO важны структура данных, FAQ и файлы llms.txt. Кто начнёт раньше — получит преимущество."
+      "tldr": "GEO — это оптимизация сайта для AI-поисковиков (ChatGPT, Perplexity, YandexGPT). В отличие от SEO, где важны ссылки и ключевые слова, в GEO важны структура данных, FAQ и файлы llms.txt. Кто начнёт раньше — получит преимущество.",
+      "llmsSummary": null
     },
     {
       "slug": "kak-proverit-seo-sayta",
@@ -386,7 +389,8 @@
           "answer": "Исправлять по приоритету: сначала robots.txt и sitemap.xml (влияют на индексацию), потом Title и Description (влияют на CTR), потом остальное."
         }
       ],
-      "tldr": "Проверьте 8 базовых параметров: Title, Description, H1, robots.txt, sitemap.xml, HTTPS, мобильную версию и скорость загрузки. Это займёт 10 минут и покажет критические проблемы. Для глубокого анализа нужен полный аудит."
+      "tldr": "Проверьте 8 базовых параметров: Title, Description, H1, robots.txt, sitemap.xml, HTTPS, мобильную версию и скорость загрузки. Это займёт 10 минут и покажет критические проблемы. Для глубокого анализа нужен полный аудит.",
+      "llmsSummary": null
     },
     {
       "slug": "schema-org-dlya-biznesa",
@@ -478,7 +482,8 @@
           "answer": "Для простых случаев — нет. JSON-LD можно добавить через CMS или вручную в HTML. Для сложных сайтов с сотнями страниц лучше автоматизировать."
         }
       ],
-      "tldr": "Локальному бизнесу нужны минимум три типа разметки: LocalBusiness (или Hotel/MedicalBusiness), FAQPage и BreadcrumbList. Это даёт расширенные сниппеты в поиске и помогает AI-системам понять ваш бизнес."
+      "tldr": "Локальному бизнесу нужны минимум три типа разметки: LocalBusiness (или Hotel/MedicalBusiness), FAQPage и BreadcrumbList. Это даёт расширенные сниппеты в поиске и помогает AI-системам понять ваш бизнес.",
+      "llmsSummary": null
     },
     {
       "slug": "seo-dlya-oteley",
@@ -564,7 +569,8 @@
           "answer": "Можно, но дорого. OTA возьмут 15-25% с каждого бронирования. SEO — инвестиция в снижение зависимости от посредников."
         }
       ],
-      "tldr": "SEO для отеля начинается с технической базы (robots.txt, sitemap.xml, Schema.org), продолжается локальным SEO (Яндекс Карты, Google Maps) и работой с отзывами. Первые результаты — через 3-6 месяцев."
+      "tldr": "SEO для отеля начинается с технической базы (robots.txt, sitemap.xml, Schema.org), продолжается локальным SEO (Яндекс Карты, Google Maps) и работой с отзывами. Первые результаты — через 3-6 месяцев.",
+      "llmsSummary": null
     }
   ],
   "en": [
@@ -648,7 +654,8 @@
           "answer": "For marketing analysis — no. For SEO analysis (rankings, backlinks, traffic) — yes, but that's a separate project."
         }
       ],
-      "tldr": "Conducted competitor analysis for Grace Luxor, a 4-star hotel in Tolyatti, Russia. Found 7 competitors, compared across 8 metrics. Key finding: the hotel occupies a unique congress-hotel niche, but its 4.4 rating is below competitors — reputation management is priority #1."
+      "tldr": "Conducted competitor analysis for Grace Luxor, a 4-star hotel in Tolyatti, Russia. Found 7 competitors, compared across 8 metrics. Key finding: the hotel occupies a unique congress-hotel niche, but its 4.4 rating is below competitors — reputation management is priority #1.",
+      "llmsSummary": null
     },
     {
       "slug": "prioritizaciya-gorodov-seo-otelya",
@@ -775,7 +782,8 @@
           "answer": "For Tier 1 — absolutely. For Tier 2 — ideally. For Tier 3 and 4 — no, better to optimize existing pages."
         }
       ],
-      "tldr": "To prioritize cities, look beyond traffic volume. Focus on quality metrics: bounce rate, time on site, pages per session. A city with 3,000 visits and 13% bounce is more valuable than one with 15,000 visits and 25% bounce."
+      "tldr": "To prioritize cities, look beyond traffic volume. Focus on quality metrics: bounce rate, time on site, pages per session. A city with 3,000 visits and 13% bounce is more valuable than one with 15,000 visits and 25% bounce.",
+      "llmsSummary": null
     },
     {
       "slug": "chto-takoe-geo-optimizaciya",
@@ -862,7 +870,8 @@
           "answer": "AI systems update data faster than search engines. After implementing changes, you'll see results in 2-4 weeks. Sometimes faster."
         }
       ],
-      "tldr": "GEO is website optimization for AI search engines (ChatGPT, Perplexity, Claude). Unlike SEO where links and keywords matter most, GEO focuses on data structure, FAQ sections, and llms.txt files. Early adopters get the advantage."
+      "tldr": "GEO is website optimization for AI search engines (ChatGPT, Perplexity, Claude). Unlike SEO where links and keywords matter most, GEO focuses on data structure, FAQ sections, and llms.txt files. Early adopters get the advantage.",
+      "llmsSummary": null
     },
     {
       "slug": "kak-proverit-seo-sayta",
@@ -954,7 +963,8 @@
           "answer": "Fix by priority: robots.txt and sitemap.xml first (affect indexing), then Title and Description (affect CTR), then everything else."
         }
       ],
-      "tldr": "Check 8 basic parameters: Title, Description, H1, robots.txt, sitemap.xml, HTTPS, mobile version, and page speed. Takes 10 minutes and reveals critical issues. For deeper analysis, you need a full audit."
+      "tldr": "Check 8 basic parameters: Title, Description, H1, robots.txt, sitemap.xml, HTTPS, mobile version, and page speed. Takes 10 minutes and reveals critical issues. For deeper analysis, you need a full audit.",
+      "llmsSummary": null
     },
     {
       "slug": "schema-org-dlya-biznesa",
@@ -1046,7 +1056,8 @@
           "answer": "For simple cases — no. JSON-LD can be added through CMS or manually in HTML. For complex sites with hundreds of pages, automation is better."
         }
       ],
-      "tldr": "Local businesses need at least three markup types: LocalBusiness (or Hotel/MedicalBusiness), FAQPage, and BreadcrumbList. This enables rich snippets in search and helps AI systems understand your business."
+      "tldr": "Local businesses need at least three markup types: LocalBusiness (or Hotel/MedicalBusiness), FAQPage, and BreadcrumbList. This enables rich snippets in search and helps AI systems understand your business.",
+      "llmsSummary": null
     },
     {
       "slug": "seo-dlya-oteley",
@@ -1132,7 +1143,8 @@
           "answer": "Yes, but it's expensive. OTAs take 15-25% from each booking. SEO is an investment in reducing dependence on intermediaries."
         }
       ],
-      "tldr": "Hotel SEO starts with technical foundation (robots.txt, sitemap.xml, Schema.org), continues with local SEO (Google Maps, Bing Places) and reputation management. First results appear in 3-6 months."
+      "tldr": "Hotel SEO starts with technical foundation (robots.txt, sitemap.xml, Schema.org), continues with local SEO (Google Maps, Bing Places) and reputation management. First results appear in 3-6 months.",
+      "llmsSummary": null
     }
   ]
 }
