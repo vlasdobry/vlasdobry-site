@@ -106,7 +106,7 @@ GEO (Generative Engine Optimization) is optimization for AI search engines. Peop
 ## 3. Industry Expertise
 
 ### Hotels (HoReCa)
-**Focus:** More direct bookings, less OTA dependency. In-house experience at an international 20-property chain.
+**Focus:** More direct bookings, less OTA dependency. In-house at Grace Group — international hotel chain, 20 properties.
 
 **Services for Hotels:**
 - Paid traffic for direct bookings: Google Ads, Google Hotel Ads, metasearch — channel management focused on cost per booking and ROI
@@ -152,7 +152,7 @@ GEO (Generative Engine Optimization) is optimization for AI search engines. Peop
 
 ## 4. Case Studies
 
-### International Hotel Chain
+### Grace Group — International Hotel Chain
 20 properties, in-house performance marketing.
 - Challenge: Systematic guest acquisition through direct channels, reducing OTA dependency
 - Results: +60% revenue in low season, 2x conversion, 8% ad cost ratio
