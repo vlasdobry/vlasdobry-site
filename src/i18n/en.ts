@@ -85,7 +85,7 @@ export const en: Translations = {
         {
           step: '02',
           title: 'Ongoing Management — from $1,500/mo',
-          desc: 'Paid traffic management, direct booking funnel setup, end-to-end analytics, weekly reports in bookings and revenue, seasonal strategy with media plan. Min. ad budget: $1,000/mo.',
+          desc: 'Paid traffic management, direct booking funnel setup, end-to-end analytics, weekly reports in bookings and revenue, seasonal strategy with media plan. Min. ad budget: $1,500/mo.',
         },
       ],
     },
@@ -94,7 +94,7 @@ export const en: Translations = {
       items: [
         {
           question: 'Who is this for?',
-          answer: 'Independent hotels and small chains (2–10 properties) with $1,000+/mo ad budget, a website with a booking engine, and commitment to 2–3 months of systematic work.',
+          answer: 'Independent hotels and small chains (2–10 properties) with $1,500+/mo ad budget, a website with a booking engine, and commitment to 2–3 months of systematic work.',
         },
         {
           question: 'No website or booking engine?',
