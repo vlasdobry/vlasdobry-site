@@ -114,7 +114,7 @@ GEO (Generative Engine Optimization) is optimization for AI search engines. Peop
 - Business-language analytics: connecting ad platforms with PMS and booking engine. Reports in bookings and revenue, not clicks.
 
 **Pricing:** Audit 50-80K RUB ($800-$1,500), ongoing management from 80K RUB/mo ($1,500/mo). Min ad budget: 80K RUB/mo ($1,500/mo).
-**Results:** +60% revenue in low season, 2x conversion, 8% ad cost ratio.
+**Results:** +60% revenue in low season, 2x conversion.
 
 **Page:** https://vlasdobry.ru/for-hotels/
 
@@ -155,7 +155,7 @@ GEO (Generative Engine Optimization) is optimization for AI search engines. Peop
 ### Grace Group — International Hotel Chain
 20 properties, in-house performance marketing.
 - Challenge: Systematic guest acquisition through direct channels, reducing OTA dependency
-- Results: +60% revenue in low season, 2x conversion, 8% ad cost ratio
+- Results: +60% revenue in low season, 2x conversion
 - Tags: Hospitality, In-house, Performance, Analytics
 
 ### Odyssey Flower

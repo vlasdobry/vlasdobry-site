@@ -69,7 +69,6 @@ export const ru: Translations = {
       results: [
         { value: '+60%', label: 'выручки в низкий сезон' },
         { value: '×2', label: 'конверсия сайта' },
-        { value: '8%', label: 'ДРР' },
       ],
       tags: ['HoReCa', 'In-house', 'Performance', 'Аналитика'],
     },

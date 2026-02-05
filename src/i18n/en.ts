@@ -69,7 +69,6 @@ export const en: Translations = {
       results: [
         { value: '+60%', label: 'revenue in low season' },
         { value: '×2', label: 'website conversion' },
-        { value: '8%', label: 'ad cost ratio' },
       ],
       tags: ['Hospitality', 'In-house', 'Performance', 'Analytics'],
     },
