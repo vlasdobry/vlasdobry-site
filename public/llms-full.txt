@@ -1,7 +1,7 @@
 # Vlas Fedorov - Full Website Content
 
 > This file contains the complete content of vlasdobry.ru for AI systems.
-> Last updated: 2026-02-04 (6 articles)
+> Last updated: 2026-02-05 (7 articles)
 
 ## Table of Contents
 1. About Vlas Fedorov
@@ -213,6 +213,12 @@ Acoustic voice analysis and training platform.
 
 ## 6. Blog Articles
 
+### Hotel Website Audit: Rus Hotel Case Study (Sarapul, Russia)
+**URL:** /blog/audit-sajta-otelya-keys-rushotel/
+**Category:** MARKETING
+**Date:** 2026-02-05
+
+Case study of express audit for Rus Hotel in Sarapul, Russia: SEO analysis of two websites (scores 92 and 74), ad campaign audit in Yandex.Direct, competitor analysis of 5 hotels. Key finding — booking funnel is broken (0 completed bookings despite hundreds of ad clicks/month). Priority recommendations: fix Travelline widget, reallocate ad budget, strengthen positioning.
 ### Hotel Competitor Analysis: A 4-Star Property Case Study
 **URL:** /blog/analiz-konkurentov-otelya-keys/
 **Category:** MARKETING

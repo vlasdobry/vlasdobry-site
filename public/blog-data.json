@@ -1,6 +1,115 @@
 {
   "ru": [
     {
+      "slug": "audit-sajta-otelya-keys-rushotel",
+      "title": "Экспресс-аудит сайта отеля: кейс Русь Отель (Сарапул)",
+      "description": "Разбираю реальный кейс: SEO-аудит двух сайтов, анализ рекламы в Директе и конкурентов для 3★ отеля в малом городе.",
+      "date": "2026-02-05",
+      "dateModified": "2026-02-05",
+      "category": "marketing",
+      "tags": [
+        "отели",
+        "seo",
+        "кейс",
+        "horeca",
+        "аудит"
+      ],
+      "relatedService": "/for-hotels",
+      "cover": "cover.jpg",
+      "series": null,
+      "readingTime": 8,
+      "toc": [
+        {
+          "id": "что-анализировали",
+          "text": "Что анализировали",
+          "level": 2
+        },
+        {
+          "id": "seo-два-сайта-два-мира",
+          "text": "SEO: два сайта, два мира",
+          "level": 2
+        },
+        {
+          "id": "основной-сайт-rushotel18ru-92100",
+          "text": "Основной сайт (rushotel18.ru) — 92/100",
+          "level": 3
+        },
+        {
+          "id": "промо-сайт-гостиница-русь-отельрф-74100",
+          "text": "Промо-сайт (гостиница-русь-отель.рф) — 74/100",
+          "level": 3
+        },
+        {
+          "id": "реклама-звонки-есть-бронирований-нет",
+          "text": "Реклама: звонки есть, бронирований — нет",
+          "level": 2
+        },
+        {
+          "id": "зависимость-от-платного-трафика",
+          "text": "Зависимость от платного трафика",
+          "level": 3
+        },
+        {
+          "id": "главная-проблема-сломанная-воронка",
+          "text": "Главная проблема: сломанная воронка",
+          "level": 2
+        },
+        {
+          "id": "конкуренты-кто-на-рынке-сарапула",
+          "text": "Конкуренты: кто на рынке Сарапула",
+          "level": 2
+        },
+        {
+          "id": "geo-видимость-в-ai-поисковиках",
+          "text": "GEO: видимость в AI-поисковиках",
+          "level": 2
+        },
+        {
+          "id": "рекомендации-по-приоритетам",
+          "text": "Рекомендации по приоритетам",
+          "level": 2
+        },
+        {
+          "id": "срочно-починить-то-что-теряет-деньги-прямо-сейчас",
+          "text": "Срочно: починить то, что теряет деньги прямо сейчас",
+          "level": 3
+        },
+        {
+          "id": "важно-фундаментальные-улучшения",
+          "text": "Важно: фундаментальные улучшения",
+          "level": 3
+        },
+        {
+          "id": "на-перспективу-рост-без-рекламы",
+          "text": "На перспективу: рост без рекламы",
+          "level": 3
+        },
+        {
+          "id": "цифры-для-принятия-решений",
+          "text": "Цифры для принятия решений",
+          "level": 2
+        }
+      ],
+      "hasFaq": true,
+      "content": "<p>У Русь Отель рейтинг 5.0 на Яндексе при 225 отзывах. Русская баня, пруд, тишина, парковая зона — за 2 900 ₽ в сутки. Казалось бы, идеальная картина. Но когда я начал копать глубже, обнаружил разрыв между репутацией и тем, что происходит на сайте.</p>\n<h2 id=\"что-анализировали\">Что анализировали</h2>\n<p>Заказчик пришёл с вопросом: «Почему реклама не приносит бронирований?» Я провёл экспресс-анализ по трём направлениям:</p>\n<ol>\n<li><strong>SEO-аудит двух сайтов</strong> — rushotel18.ru (основной) и гостиница-русь-отель.рф (промо)</li>\n<li><strong>Аудит рекламы</strong> — четыре кампании в Яндекс.Директе</li>\n<li><strong>Конкурентный анализ</strong> — все гостиницы Сарапула + Курорт Нечкино</li>\n</ol>\n<h2 id=\"seo-два-сайта-два-мира\">SEO: два сайта, два мира</h2>\n<h3 id=\"основной-сайт-rushotel18ru-92100\">Основной сайт (rushotel18.ru) — 92/100</h3>\n<p>Сделан на Tilda, что накладывает ограничения, но базовое SEO в порядке:</p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Параметр</th>\n<th>Статус</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Title (52 симв.)</td>\n<td>OK</td>\n</tr>\n<tr>\n<td>Description (137 симв.)</td>\n<td>OK</td>\n</tr>\n<tr>\n<td>H1</td>\n<td>OK</td>\n</tr>\n<tr>\n<td>Alt у изображений</td>\n<td>8/8</td>\n</tr>\n<tr>\n<td>robots.txt</td>\n<td>OK</td>\n</tr>\n<tr>\n<td>sitemap.xml</td>\n<td>OK</td>\n</tr>\n</tbody></table></div>\n<p>Но есть пробелы. Schema.org — только ImageObject. Нет разметки Hotel, LocalBusiness, FAQPage. Нет llms.txt для AI-поисковиков. Глубина просмотра 1,1 страницы — люди приходят и уходят.</p>\n<h3 id=\"промо-сайт-гостиница-русь-отельрф-74100\">Промо-сайт (гостиница-русь-отель.рф) — 74/100</h3>\n<p>А вот здесь всё хуже. Сайт на Adobe Muse — платформе, которую Adobe закрыла несколько лет назад.</p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Параметр</th>\n<th>Статус</th>\n<th>Проблема</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>H1</td>\n<td>Нет</td>\n<td>Поисковики не понимают тему страницы</td>\n</tr>\n<tr>\n<td>robots.txt</td>\n<td>Нет</td>\n<td>Нет контроля индексации</td>\n</tr>\n<tr>\n<td>Schema.org</td>\n<td>Нет</td>\n<td>Ноль структурированных данных</td>\n</tr>\n<tr>\n<td>Canonical</td>\n<td>Нет</td>\n<td>Дубли в индексе</td>\n</tr>\n<tr>\n<td>Open Graph</td>\n<td>Нет</td>\n<td>Битые превью в мессенджерах</td>\n</tr>\n<tr>\n<td>Sitemap</td>\n<td>Устарел</td>\n<td>Не обновлялся с 2018 года</td>\n</tr>\n</tbody></table></div>\n<p>Результат: ноль органического трафика на промо-сайт. Весь трафик — из рекламы.</p>\n<h2 id=\"реклама-звонки-есть-бронирований-нет\">Реклама: звонки есть, бронирований — нет</h2>\n<p>Четыре кампании в Яндекс.Директе. На бумаге одна из них выглядит лидером:</p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Кампания</th>\n<th>Тип</th>\n<th>CTR</th>\n<th>Доля конверсий</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Нечкино (поиск)</td>\n<td>Поиск</td>\n<td>4,62%</td>\n<td><strong>90% всех конверсий</strong></td>\n</tr>\n<tr>\n<td>Русь Отель (РСЯ)</td>\n<td>Сеть</td>\n<td>0,70%</td>\n<td>5%</td>\n</tr>\n<tr>\n<td>Русь Отель бренд</td>\n<td>Поиск</td>\n<td>30,29%</td>\n<td>2,5%</td>\n</tr>\n<tr>\n<td>Русь Отель (поиск)</td>\n<td>Поиск</td>\n<td>14,48%</td>\n<td>2,5%</td>\n</tr>\n</tbody></table></div>\n<p>Кампания на Нечкино генерирует 90% конверсий. Казалось бы, масштабируй и радуйся. Но обратная связь от отеля показала другое: <strong>звонки есть, но люди хотят жить на курорте Нечкино, а не рядом с ним.</strong> Реклама приводит нецелевую аудиторию — тех, кто ищет размещение на самом курорте, а попадает на страницу Русь Отель.</p>\n<p>Это типичная ловушка «красивых метрик»: CTR хороший, конверсии в звонок есть, но до бронирования дело не доходит. Люди звонят, узнают что это не курорт, и кладут трубку.</p>\n<p>Остальные кампании тоже с проблемами. РСЯ сжигает четверть бюджета с минимальной отдачей. Брендовые запросы обходятся дорого — агрегаторы (Островок, Яндекс Путешествия) активно перекупают трафик по запросу «русь отель сарапул». CPC по бренду — в 4-5 раз выше, чем по гео-запросам.</p>\n<h3 id=\"зависимость-от-платного-трафика\">Зависимость от платного трафика</h3>\n<p>Это тревожная картина:</p>\n<ul>\n<li>Основной сайт: <strong>72% трафика из рекламы</strong>, только 14% из органики</li>\n<li>Промо-сайт: <strong>89% из рекламы</strong>, органики — ноль</li>\n</ul>\n<p>При остановке рекламы трафик падает на 70-90%. Классическая ловушка: бизнес платит за трафик, а не строит органическую базу.</p>\n<h2 id=\"главная-проблема-сломанная-воронка\">Главная проблема: сломанная воронка</h2>\n<p>Но главное не в рекламе. Сотни людей кликают по объявлениям каждый месяц. Часть из них доходит до виджета бронирования Travelline. И вот тут начинается воронка потерь:</p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Этап воронки (Travelline)</th>\n<th>Потеря на этапе</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Выбор номера</td>\n<td>—</td>\n</tr>\n<tr>\n<td>Заказ услуг</td>\n<td>90%</td>\n</tr>\n<tr>\n<td>Данные и оплата</td>\n<td>50%</td>\n</tr>\n<tr>\n<td>Бронь завершена</td>\n<td><strong>100%</strong></td>\n</tr>\n</tbody></table></div>\n<p>Ни одного завершённого бронирования. Ноль. Десятки людей начинают выбирать номер и ни один не доходит до конца. Вероятные причины:</p>\n<ul>\n<li>Плохие или отсутствующие фотографии номеров в виджете Travelline</li>\n<li>Виджет плохо работает на мобильных (64% аудитории — смартфоны)</li>\n<li>Нет доступных дат</li>\n<li>Цена не совпадает с ожиданиями после просмотра фото</li>\n</ul>\n<p>Единственные «конверсии» — несколько кликов по телефону. Стоимость одного звонка получается космической.</p>\n<h2 id=\"конкуренты-кто-на-рынке-сарапула\">Конкуренты: кто на рынке Сарапула</h2>\n<p>Рынок маленький — около 9 гостиниц. Два реальных конкурента:</p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Отель</th>\n<th>★</th>\n<th>Цена/ночь</th>\n<th>Рейтинг</th>\n<th>Отзывы</th>\n<th>УТП</th>\n</tr>\n</thead>\n<tbody><tr>\n<td><strong>Русь Отель</strong></td>\n<td>3★</td>\n<td>от 2 900 ₽</td>\n<td>5.0 (Яндекс)</td>\n<td>225+</td>\n<td>Баня, пруд, тишина</td>\n</tr>\n<tr>\n<td>Отель «Сарапулъ»</td>\n<td>4★</td>\n<td>от 4 400 ₽</td>\n<td>4.8 (Ozon)</td>\n<td>56+</td>\n<td>4★, центр, SPA</td>\n</tr>\n<tr>\n<td>Старая Башня</td>\n<td>2-4★</td>\n<td>от 3 000 ₽</td>\n<td>9.3 (Hotels.ru)</td>\n<td>786+</td>\n<td>Вид на Каму</td>\n</tr>\n<tr>\n<td>Курорт Нечкино</td>\n<td>2★</td>\n<td>от 3 200 ₽</td>\n<td>8.9 (101H)</td>\n<td>27+</td>\n<td>Ski-in/ski-out</td>\n</tr>\n<tr>\n<td>Каскад</td>\n<td>3★</td>\n<td>от 1 700 ₽</td>\n<td>4.8 (2ГИС)</td>\n<td>14+</td>\n<td>Набережная, цена</td>\n</tr>\n</tbody></table></div>\n<p><strong>Курорт Нечкино</strong> — ключевой конкурент за горнолыжников. 78 номеров прямо на склоне, люди хотят жить на курорте. Но цена в сезон — от 7 200 ₽, и отзывы жалуются на завышенные цены.</p>\n<p><strong>Отель «Сарапулъ»</strong> — единственный 4★ в городе. Центр, купель, сауна. Дороже на 50%, но формальный сервис — нет «душевности».</p>\n<p>Уникальное сочетание Русь Отель — русская баня с дровами, декоративный пруд, парковая зона — не повторяет ни один конкурент. Плюс цена: 2 900 ₽ vs 7 200 ₽ на курорте Нечкино.</p>\n<h2 id=\"geo-видимость-в-ai-поисковиках\">GEO: видимость в AI-поисковиках</h2>\n<p>Проверил запросы «гостиница в Сарапуле» и «отель рядом с Нечкино» в ChatGPT, YandexGPT, Perplexity. Русь Отель упоминается, но не на первых позициях.</p>\n<p>Конкуренция в нише низкая — в Сарапуле мало гостиниц. Но и усилий по GEO не предпринималось:</p>\n<ul>\n<li>Нет llms.txt / llms-full.txt</li>\n<li>Нет Schema.org Hotel</li>\n<li>Нет FAQ-раздела</li>\n<li>Контент не структурирован для AI</li>\n</ul>\n<p>Позиции держатся за счёт отзывов и низкой конкуренции. Но стоит кому-то из конкурентов заняться оптимизацией — ситуация изменится.</p>\n<h2 id=\"рекомендации-по-приоритетам\">Рекомендации по приоритетам</h2>\n<h3 id=\"срочно-починить-то-что-теряет-деньги-прямо-сейчас\">Срочно: починить то, что теряет деньги прямо сейчас</h3>\n<ol>\n<li><p><strong>Починить воронку Travelline.</strong> Загрузить качественные фото номеров, протестировать виджет на мобильном, проверить доступность дат. Конверсия из «выбор номера» в бронь должна быть 5-15%, сейчас — 0%.</p>\n</li>\n<li><p><strong>Переработать кампанию на Нечкино.</strong> Она приводит звонки, но люди хотят жить на курорте, а не рядом. Нужно менять посыл: не «отель рядом с Нечкино», а «комфортный отель с баней + 16 минут до склона за 2 900 ₽ вместо 7 200 ₽». Фильтровать аудиторию ценовым аргументом на этапе объявления. РСЯ приостановить. Автотаргетинг — проверить запросы, добавить минус-слова.</p>\n</li>\n<li><p><strong>Профессиональная фотосъёмка номеров.</strong> Не на телефон — нанять фотографа с опытом интерьерной съёмки. Широкоугольный объектив, дневной свет, подготовленные номера. Фото на телефон выдают бюджетность и снижают доверие. Загрузить на сайт, в Travelline и на все агрегаторы — это главная точка потери конверсии.</p>\n</li>\n</ol>\n<h3 id=\"важно-фундаментальные-улучшения\">Важно: фундаментальные улучшения</h3>\n<ol start=\"4\">\n<li><p><strong>Добавить Schema.org Hotel</strong> на оба сайта — адрес, телефон, чекин/чекаут, ценовой диапазон.</p>\n</li>\n<li><p><strong>Промо-сайт: базовое SEO.</strong> Добавить H1, robots.txt, canonical, обновить sitemap. Или рассмотреть замену — Adobe Muse мёртв.</p>\n</li>\n<li><p><strong>Пакет «Нечкино из Русь Отель»</strong> — проживание + трансфер (16 минут до курорта). Это решает проблему нецелевых звонков: вместо «мы не курорт» отвечать «у нас пакет: баня вечером + склон днём, втрое дешевле курорта».</p>\n</li>\n</ol>\n<h3 id=\"на-перспективу-рост-без-рекламы\">На перспективу: рост без рекламы</h3>\n<ol start=\"7\">\n<li><p><strong>Создать llms.txt</strong> для видимости в AI-поисковиках.</p>\n</li>\n<li><p><strong>FAQ-раздел</strong> на сайте — расстояние до Нечкино, трансфер, парковка, питание, баня.</p>\n</li>\n<li><p><strong>Наращивать отзывы</strong> на 2ГИС, Ozon Travel, TripAdvisor. На Яндексе уже 225 — нужно расширять охват.</p>\n</li>\n</ol>\n<h2 id=\"цифры-для-принятия-решений\">Цифры для принятия решений</h2>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Показатель</th>\n<th>Значение</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>SEO Score основного сайта</td>\n<td>92/100</td>\n</tr>\n<tr>\n<td>SEO Score промо-сайта</td>\n<td>74/100</td>\n</tr>\n<tr>\n<td>Завершённых бронирований через сайт</td>\n<td>0</td>\n</tr>\n<tr>\n<td>Рейтинг на Яндексе</td>\n<td>5.0 (225 отзывов)</td>\n</tr>\n<tr>\n<td>Зависимость от платного трафика</td>\n<td>72-89%</td>\n</tr>\n<tr>\n<td>Ценовое преимущество vs Курорт Нечкино</td>\n<td>в 2,5 раза</td>\n</tr>\n</tbody></table></div>\n<p><strong>Первый шаг:</strong> протестировать бронирование с мобильного. <strong>Второй:</strong> заказать профессиональную фотосъёмку номеров и загрузить в Travelline. Это превратит существующий трафик в бронирования.</p>\n",
+      "faq": [
+        {
+          "question": "Сколько стоит такой экспресс-аудит?",
+          "answer": "Экспресс-анализ сайта + рекламы + конкурентов — от 25 000 ₽. Делается за 2-3 дня. На выходе — конкретные проблемы и план действий с приоритетами."
+        },
+        {
+          "question": "Почему реклама не приносит бронирований?",
+          "answer": "Чаще всего проблема не в рекламе, а в сайте. Реклама приводит людей, но если воронка сломана (плохие фото, неработающий виджет, нет мобильной версии) — деньги уходят впустую. Сначала чиним сайт, потом масштабируем рекламу."
+        },
+        {
+          "question": "Нужно ли отелю в малом городе заниматься SEO?",
+          "answer": "Да, особенно если 70-90% трафика из рекламы. Это зависимость: останавливаешь рекламу — трафик падает. SEO и GEO дают стабильный поток без ежемесячных расходов."
+        }
+      ],
+      "tldr": "Провёл экспресс-аудит Русь Отель в Сарапуле — два сайта, четыре рекламные кампании, пять конкурентов. Главная находка: реклама приводит сотни посетителей в месяц, но ни один не завершает бронирование. Проблема не в рекламе, а в сломанной воронке на сайте.",
+      "llmsSummary": "Кейс экспресс-аудита Русь Отель в Сарапуле: SEO-анализ двух сайтов (92 и 74 балла), аудит рекламных кампаний в Яндекс.Директе, конкурентный анализ 5 гостиниц. Главная находка — воронка бронирования сломана (0 завершённых броней при сотнях кликов из рекламы). Рекомендации по приоритетам: починить Travelline, перераспределить бюджет, усилить позиционирование."
+    },
+    {
       "slug": "analiz-konkurentov-otelya-keys",
       "title": "Анализ конкурентов для отеля: кейс 4★ отеля в Тольятти",
       "description": "Разбираю реальный кейс: как провести анализ конкурентной среды отеля, какие метрики смотреть и что делать с результатами.",
@@ -574,6 +683,115 @@
     }
   ],
   "en": [
+    {
+      "slug": "audit-sajta-otelya-keys-rushotel",
+      "title": "Hotel Website Audit: Rus Hotel Case Study (Sarapul, Russia)",
+      "description": "Real case study: SEO audit of two hotel websites, ad campaign analysis, and competitor research for a 3-star property in a small city.",
+      "date": "2026-02-05",
+      "dateModified": "2026-02-05",
+      "category": "marketing",
+      "tags": [
+        "hotels",
+        "seo",
+        "case-study",
+        "horeca",
+        "audit"
+      ],
+      "relatedService": "/en/for-hotels",
+      "cover": "cover.jpg",
+      "series": null,
+      "readingTime": 8,
+      "toc": [
+        {
+          "id": "what-we-analyzed",
+          "text": "What We Analyzed",
+          "level": 2
+        },
+        {
+          "id": "seo-two-sites-two-realities",
+          "text": "SEO: Two Sites, Two Realities",
+          "level": 2
+        },
+        {
+          "id": "main-website-92100",
+          "text": "Main website — 92/100",
+          "level": 3
+        },
+        {
+          "id": "promo-site-74100",
+          "text": "Promo site — 74/100",
+          "level": 3
+        },
+        {
+          "id": "ads-calls-come-in-bookings-dont",
+          "text": "Ads: Calls Come In, Bookings Don't",
+          "level": 2
+        },
+        {
+          "id": "paid-traffic-dependency",
+          "text": "Paid Traffic Dependency",
+          "level": 3
+        },
+        {
+          "id": "the-real-problem-broken-booking-funnel",
+          "text": "The Real Problem: Broken Booking Funnel",
+          "level": 2
+        },
+        {
+          "id": "competitors-sarapuls-hotel-market",
+          "text": "Competitors: Sarapul's Hotel Market",
+          "level": 2
+        },
+        {
+          "id": "geo-ai-search-visibility",
+          "text": "GEO: AI Search Visibility",
+          "level": 2
+        },
+        {
+          "id": "recommendations-by-priority",
+          "text": "Recommendations by Priority",
+          "level": 2
+        },
+        {
+          "id": "urgent-stop-losing-money-now",
+          "text": "Urgent: Stop Losing Money Now",
+          "level": 3
+        },
+        {
+          "id": "important-foundational-improvements",
+          "text": "Important: Foundational Improvements",
+          "level": 3
+        },
+        {
+          "id": "long-term-growth-without-ads",
+          "text": "Long-term: Growth Without Ads",
+          "level": 3
+        },
+        {
+          "id": "key-numbers",
+          "text": "Key Numbers",
+          "level": 2
+        }
+      ],
+      "hasFaq": true,
+      "content": "<p>Rus Hotel has a 5.0 rating on Yandex Maps with 225 reviews. Russian banya, a pond, quiet parkland — at $30 per night. Looks like a dream. But when I dug deeper, I found a gap between the reputation and what happens on the website.</p>\n<h2 id=\"what-we-analyzed\">What We Analyzed</h2>\n<p>The client came with a simple question: &quot;Why aren&#39;t our ads generating bookings?&quot; I ran an express analysis across three areas:</p>\n<ol>\n<li><strong>SEO audit of two websites</strong> — the main site and a promotional microsite</li>\n<li><strong>Ad campaign audit</strong> — four campaigns in Yandex.Direct (Russia&#39;s primary PPC platform)</li>\n<li><strong>Competitor analysis</strong> — all hotels in Sarapul + Nechkino ski resort</li>\n</ol>\n<h2 id=\"seo-two-sites-two-realities\">SEO: Two Sites, Two Realities</h2>\n<h3 id=\"main-website-92100\">Main website — 92/100</h3>\n<p>Built on Tilda (a popular Russian website builder), which limits technical SEO, but the basics are covered:</p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Parameter</th>\n<th>Status</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Title (52 chars)</td>\n<td>OK</td>\n</tr>\n<tr>\n<td>Description (137 chars)</td>\n<td>OK</td>\n</tr>\n<tr>\n<td>H1</td>\n<td>OK</td>\n</tr>\n<tr>\n<td>Image alt tags</td>\n<td>8/8</td>\n</tr>\n<tr>\n<td>robots.txt</td>\n<td>OK</td>\n</tr>\n<tr>\n<td>sitemap.xml</td>\n<td>OK</td>\n</tr>\n</tbody></table></div>\n<p>But there are gaps. Schema.org only has ImageObject — no Hotel, LocalBusiness, or FAQPage markup. No llms.txt for AI search engines. Pages per session: 1.1 — people land and leave.</p>\n<h3 id=\"promo-site-74100\">Promo site — 74/100</h3>\n<p>This one is worse. Built on Adobe Muse — a platform Adobe discontinued years ago.</p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Parameter</th>\n<th>Status</th>\n<th>Issue</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>H1</td>\n<td>Missing</td>\n<td>Search engines can&#39;t determine the page topic</td>\n</tr>\n<tr>\n<td>robots.txt</td>\n<td>Missing</td>\n<td>No crawl control</td>\n</tr>\n<tr>\n<td>Schema.org</td>\n<td>Missing</td>\n<td>Zero structured data</td>\n</tr>\n<tr>\n<td>Canonical</td>\n<td>Missing</td>\n<td>Potential index duplicates</td>\n</tr>\n<tr>\n<td>Open Graph</td>\n<td>Missing</td>\n<td>Broken previews in messengers</td>\n</tr>\n<tr>\n<td>Sitemap</td>\n<td>Outdated</td>\n<td>Last updated in 2018</td>\n</tr>\n</tbody></table></div>\n<p>Result: zero organic traffic to the promo site. All traffic comes from paid ads.</p>\n<h2 id=\"ads-calls-come-in-bookings-don39t\">Ads: Calls Come In, Bookings Don&#39;t</h2>\n<p>Four campaigns in Yandex.Direct. On paper, one looks like a clear winner:</p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Campaign</th>\n<th>Type</th>\n<th>CTR</th>\n<th>Share of conversions</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Nechkino (search)</td>\n<td>Search</td>\n<td>4.62%</td>\n<td><strong>90% of all conversions</strong></td>\n</tr>\n<tr>\n<td>Rus Hotel (display)</td>\n<td>Display</td>\n<td>0.70%</td>\n<td>5%</td>\n</tr>\n<tr>\n<td>Rus Hotel brand</td>\n<td>Search</td>\n<td>30.29%</td>\n<td>2.5%</td>\n</tr>\n<tr>\n<td>Rus Hotel (search)</td>\n<td>Search</td>\n<td>14.48%</td>\n<td>2.5%</td>\n</tr>\n</tbody></table></div>\n<p>The Nechkino campaign generates 90% of conversions. Looks great — scale it up, right? But feedback from the hotel told a different story: <strong>calls come in, but people want to stay at Nechkino Resort itself, not near it.</strong> The ads attract the wrong audience — people searching for on-site resort accommodation who land on Rus Hotel&#39;s page instead.</p>\n<p>This is a classic &quot;vanity metrics&quot; trap: CTR looks good, phone calls happen, but no bookings follow. People call, learn it&#39;s not the resort, and hang up.</p>\n<p>The other campaigns have issues too. Display ads burn a quarter of the budget with minimal return. Brand keywords are expensive — Russian OTAs (Ostrovok, Yandex Travel — think Booking.com and Expedia equivalents) actively bid on &quot;Rus Hotel Sarapul.&quot; Brand CPC runs 4-5x higher than geo-targeted queries.</p>\n<h3 id=\"paid-traffic-dependency\">Paid Traffic Dependency</h3>\n<p>This is concerning:</p>\n<ul>\n<li>Main site: <strong>72% of traffic from ads</strong>, only 14% organic</li>\n<li>Promo site: <strong>89% from ads</strong>, zero organic</li>\n</ul>\n<p>Stop the ads, lose 70-90% of traffic. Classic trap: the business pays for traffic instead of building an organic base.</p>\n<h2 id=\"the-real-problem-broken-booking-funnel\">The Real Problem: Broken Booking Funnel</h2>\n<p>But the ads aren&#39;t the main issue. Hundreds of people click through every month. Some reach the Travelline booking widget (Travelline is a Russian hotel booking SaaS, similar to SiteMinder or Cloudbeds). And that&#39;s where the funnel collapses:</p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Funnel Stage (Travelline)</th>\n<th>Drop-off</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Room selection</td>\n<td>—</td>\n</tr>\n<tr>\n<td>Service add-ons</td>\n<td>90%</td>\n</tr>\n<tr>\n<td>Guest details &amp; payment</td>\n<td>50%</td>\n</tr>\n<tr>\n<td>Booking completed</td>\n<td><strong>100%</strong></td>\n</tr>\n</tbody></table></div>\n<p>Zero completed bookings. None. Dozens of people start selecting rooms and not a single one finishes. Likely causes:</p>\n<ul>\n<li>Poor or missing room photos in the Travelline booking widget</li>\n<li>Widget doesn&#39;t work well on mobile (64% of visitors use smartphones)</li>\n<li>No available dates</li>\n<li>Price doesn&#39;t match expectations after seeing the photos</li>\n</ul>\n<p>The only &quot;conversions&quot; are a handful of phone number clicks. The cost per actual contact is astronomical.</p>\n<h2 id=\"competitors-sarapul39s-hotel-market\">Competitors: Sarapul&#39;s Hotel Market</h2>\n<p>Small market — about 9 hotels total. Two real competitors. Ratings below are from Russian review platforms (Yandex Maps, Ozon Travel, 2GIS — local equivalents of Google Maps, Expedia, Yelp):</p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Hotel</th>\n<th>★</th>\n<th>Price/night</th>\n<th>Rating</th>\n<th>Reviews</th>\n<th>USP</th>\n</tr>\n</thead>\n<tbody><tr>\n<td><strong>Rus Hotel</strong></td>\n<td>3★</td>\n<td>from $30</td>\n<td>5.0 (Yandex)</td>\n<td>225+</td>\n<td>Banya, pond, quiet</td>\n</tr>\n<tr>\n<td>Sarapul Hotel</td>\n<td>4★</td>\n<td>from $45</td>\n<td>4.8 (Ozon)</td>\n<td>56+</td>\n<td>4★, city center, spa</td>\n</tr>\n<tr>\n<td>Staraya Bashnya</td>\n<td>2-4★</td>\n<td>from $32</td>\n<td>9.3 (Hotels.ru)</td>\n<td>786+</td>\n<td>River view</td>\n</tr>\n<tr>\n<td>Nechkino Resort</td>\n<td>2★</td>\n<td>from $35</td>\n<td>8.9 (101Hotels)</td>\n<td>27+</td>\n<td>Ski-in/ski-out</td>\n</tr>\n<tr>\n<td>Kaskad</td>\n<td>3★</td>\n<td>from $18</td>\n<td>4.8 (2GIS)</td>\n<td>14+</td>\n<td>Budget, riverfront</td>\n</tr>\n</tbody></table></div>\n<p><strong>Nechkino Resort</strong> — the key competitor for ski tourists. 78 rooms right on the slopes, people want to stay at the resort. But peak season rates hit $75+, and reviews complain about inflated prices.</p>\n<p><strong>Sarapul Hotel</strong> — the only 4-star in town. City center, plunge pool, sauna. 50% more expensive, but the service feels more corporate — less &quot;warmth.&quot;</p>\n<p>Rus Hotel&#39;s unique combination — traditional Russian banya, decorative pond, parkland — isn&#39;t replicated by any competitor. Plus the price: $30 vs $75 at the resort.</p>\n<h2 id=\"geo-ai-search-visibility\">GEO: AI Search Visibility</h2>\n<p>I checked queries like &quot;hotel in Sarapul&quot; and &quot;hotel near Nechkino&quot; across ChatGPT, YandexGPT, and Perplexity. Rus Hotel gets mentioned, but not in top positions.</p>\n<p>Competition in this niche is low — Sarapul has few hotels. But zero GEO effort has been made:</p>\n<ul>\n<li>No llms.txt / llms-full.txt</li>\n<li>No Schema.org Hotel markup</li>\n<li>No FAQ section</li>\n<li>Content isn&#39;t structured for AI</li>\n</ul>\n<p>Rankings hold because of reviews and low competition. But if any competitor starts optimizing — that changes fast.</p>\n<h2 id=\"recommendations-by-priority\">Recommendations by Priority</h2>\n<h3 id=\"urgent-stop-losing-money-now\">Urgent: Stop Losing Money Now</h3>\n<ol>\n<li><p><strong>Fix the Travelline funnel.</strong> Upload quality room photos, test the widget on mobile, verify date availability. Booking conversion should be 5-15%, currently it&#39;s 0%.</p>\n</li>\n<li><p><strong>Rework the Nechkino campaign.</strong> It generates calls, but people want to stay at the resort, not nearby. Change the messaging: not &quot;hotel near Nechkino&quot; but &quot;comfortable hotel with banya + 16 min to slopes at $30 instead of $75.&quot; Filter the audience with the price argument in the ad copy itself. Pause display ads. Check auto-targeting queries, add negative keywords.</p>\n</li>\n<li><p><strong>Professional room photography.</strong> Not phone snapshots — hire a photographer with interior shooting experience. Wide-angle lens, natural daylight, staged rooms. Phone photos signal &quot;budget&quot; and kill trust. Upload to the website, Travelline, and all OTAs — this is the #1 conversion killer.</p>\n</li>\n</ol>\n<h3 id=\"important-foundational-improvements\">Important: Foundational Improvements</h3>\n<ol start=\"4\">\n<li><p><strong>Add Schema.org Hotel markup</strong> to both sites — address, phone, check-in/check-out, price range.</p>\n</li>\n<li><p><strong>Promo site: basic SEO fixes.</strong> Add H1, robots.txt, canonical tag, update sitemap. Or consider replacing it entirely — Adobe Muse is dead.</p>\n</li>\n<li><p><strong>&quot;Nechkino from Rus Hotel&quot; package</strong> — accommodation + transfer (16 minutes to the resort). This solves the bad-lead problem: instead of &quot;we&#39;re not the resort,&quot; the answer becomes &quot;we offer a package: banya in the evening + slopes by day, three times cheaper than the resort.&quot;</p>\n</li>\n</ol>\n<h3 id=\"long-term-growth-without-ads\">Long-term: Growth Without Ads</h3>\n<ol start=\"7\">\n<li><p><strong>Create llms.txt</strong> for AI search visibility.</p>\n</li>\n<li><p><strong>FAQ section</strong> on the website — distance to Nechkino, transfers, parking, meals, banya.</p>\n</li>\n<li><p><strong>Expand review presence</strong> on Google Maps, TripAdvisor, Booking.com. Yandex already has 225 — time to diversify.</p>\n</li>\n</ol>\n<h2 id=\"key-numbers\">Key Numbers</h2>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Metric</th>\n<th>Value</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Main site SEO Score</td>\n<td>92/100</td>\n</tr>\n<tr>\n<td>Promo site SEO Score</td>\n<td>74/100</td>\n</tr>\n<tr>\n<td>Completed bookings via website</td>\n<td>0</td>\n</tr>\n<tr>\n<td>Yandex rating</td>\n<td>5.0 (225 reviews)</td>\n</tr>\n<tr>\n<td>Paid traffic dependency</td>\n<td>72-89%</td>\n</tr>\n<tr>\n<td>Price advantage vs Nechkino Resort</td>\n<td>2.5x cheaper</td>\n</tr>\n</tbody></table></div>\n<p><strong>First step:</strong> test the booking flow on your phone. <strong>Second:</strong> invest in professional room photography and upload to Travelline. This alone turns existing traffic into bookings.</p>\n",
+      "faq": [
+        {
+          "question": "How much does an express audit like this cost?",
+          "answer": "An express analysis of website + ads + competitors starts at $500. Done in 2-3 days. The deliverable: specific problems identified and a prioritized action plan."
+        },
+        {
+          "question": "Why aren't our ads generating bookings?",
+          "answer": "Usually the problem isn't the ads — it's the website. Ads bring people in, but if the funnel is broken (bad photos, buggy booking widget, no mobile optimization), money goes down the drain. Fix the site first, then scale the ads."
+        },
+        {
+          "question": "Does a small-town hotel need SEO?",
+          "answer": "Absolutely — especially when 70-90% of traffic is paid. That's a dependency: stop the ads, lose your traffic. SEO and GEO optimization deliver a steady stream without monthly ad spend."
+        }
+      ],
+      "tldr": "Ran an express audit for Rus Hotel in Sarapul, Russia — two websites, four ad campaigns, five competitors. The key finding: ads bring hundreds of visitors monthly, but zero complete a booking. The problem isn't the ads — it's a broken booking funnel on the website.",
+      "llmsSummary": "Case study of express audit for Rus Hotel in Sarapul, Russia: SEO analysis of two websites (scores 92 and 74), ad campaign audit in Yandex.Direct, competitor analysis of 5 hotels. Key finding — booking funnel is broken (0 completed bookings despite hundreds of ad clicks/month). Priority recommendations: fix Travelline widget, reallocate ad budget, strengthen positioning."
+    },
     {
       "slug": "analiz-konkurentov-otelya-keys",
       "title": "Hotel Competitor Analysis: A 4-Star Property Case Study",

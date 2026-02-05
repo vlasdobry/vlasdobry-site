@@ -130,7 +130,7 @@
   <!-- BLOG_START -->
   <url>
     <loc>https://vlasdobry.ru/blog/</loc>
-    <lastmod>2026-02-04</lastmod>
+    <lastmod>2026-02-05</lastmod>
     <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/"/>
     <changefreq>weekly</changefreq>
@@ -138,11 +138,27 @@
   </url>
   <url>
     <loc>https://vlasdobry.ru/en/blog/</loc>
-    <lastmod>2026-02-04</lastmod>
+    <lastmod>2026-02-05</lastmod>
     <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/"/>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vlasdobry.ru/blog/audit-sajta-otelya-keys-rushotel/</loc>
+    <lastmod>2026-02-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/audit-sajta-otelya-keys-rushotel/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/audit-sajta-otelya-keys-rushotel/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vlasdobry.ru/en/blog/audit-sajta-otelya-keys-rushotel/</loc>
+    <lastmod>2026-02-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/audit-sajta-otelya-keys-rushotel/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/audit-sajta-otelya-keys-rushotel/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://vlasdobry.ru/blog/analiz-konkurentov-otelya-keys/</loc>

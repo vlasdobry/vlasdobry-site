@@ -107,7 +107,8 @@ git push origin master  # Деплой на продакшен (автомати
 - Ссылка на блог только в футере всех страниц
 - Авторинг: Claude пишет статьи, владелец утверждает
 
-**Текущие статьи блога (6 шт):**
+**Текущие статьи блога (7 шт):**
+- `audit-sajta-otelya-keys-rushotel` — Экспресс-аудит сайта отеля: кейс Русь Отель (Сарапул)
 - `prioritizaciya-gorodov-seo-otelya` — Как приоритизировать города для SEO-продвижения отеля
 - `analiz-konkurentov-otelya-keys` — Анализ конкурентов для отеля: кейс Grace Luxor
 - `chto-takoe-geo-optimizaciya` — GEO-оптимизация: как попасть в ответы ChatGPT
