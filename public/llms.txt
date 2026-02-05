@@ -35,11 +35,11 @@ whatsapp: +7 906 897-20-37
 - MedTech (medical services)
 
 ## Selected Clients
-- International hotel chain (20 properties, in-house): +60% revenue in low season, 2x conversion
-- Odyssey Flower (SPA resort chain): sales x10, ad cost 48%->13%
+- International hotel chain (20 properties, in-house): +60% revenue in low season, 2x conversion, 8% ad cost ratio. Audit 50-80K RUB ($800-$1,500), ongoing from 80K RUB/mo ($1,500/mo)
+- Odyssey Flower (SPA resort chain): sales x10, ad cost 48%->13%, brand queries x5. Free 20-minute marketing review
 - All Right (EdTech, USA): +167% sales, $110K budget
 - Kiwitaxi (Travel, 102 countries): ROMI x2.39
-- International DNA diagnostics network: 8,762 conversions
+- International DNA diagnostics network: 8,762 conversions, CPA $1.05 (target $5). Min ad budget: 50K RUB/mo ($1,000/mo)
 
 ## Development Projects
 Beyond marketing, Vlas designs and develops web products that solve real business problems — from automating sales funnels to building analytics tools. This combination of marketing strategy and hands-on development allows him to create end-to-end solutions: from traffic acquisition to product delivery.

@@ -106,13 +106,15 @@ GEO (Generative Engine Optimization) is optimization for AI search engines. Peop
 ## 3. Industry Expertise
 
 ### Hotels (HoReCa)
-**Focus:** More direct bookings, less OTA commissions.
+**Focus:** More direct bookings, less OTA dependency. In-house experience at an international 20-property chain.
 
 **Services for Hotels:**
-- Paid traffic: Google Ads, Google Hotel Ads, metasearch campaigns
-- Direct booking funnels: landing pages, retargeting, email sequences
-- End-to-end analytics: connecting ads with PMS and booking engine
-- Scaling: from single property to hotel group
+- Paid traffic for direct bookings: Google Ads, Google Hotel Ads, metasearch — channel management focused on cost per booking and ROI
+- Direct booking funnels: retargeting, abandoned booking recovery, email sequences for guest retention
+- Business-language analytics: connecting ad platforms with PMS and booking engine. Reports in bookings and revenue, not clicks.
+
+**Pricing:** Audit 50-80K RUB ($800-$1,500), ongoing management from 80K RUB/mo ($1,500/mo). Min ad budget: 50K RUB/mo ($1,000/mo).
+**Results:** +60% revenue in low season, 2x conversion, 8% ad cost ratio.
 
 **Page:** https://vlasdobry.ru/for-hotels/
 
@@ -127,6 +129,7 @@ GEO (Generative Engine Optimization) is optimization for AI search engines. Peop
 - Team management
 
 **Case Result:** Sales x10, ad cost ratio 48% -> 13%, brand queries x5
+**Entry point:** Free 20-minute marketing review
 
 **Page:** https://vlasdobry.ru/for-spa/
 
@@ -141,6 +144,7 @@ GEO (Generative Engine Optimization) is optimization for AI search engines. Peop
 - Scaling to new markets
 
 **Case Result:** CPA $1.05 (target $5), 8,700+ conversions, #1 Google Ads auction share
+**Min ad budget:** 50K RUB/mo ($1,000/mo)
 
 **Page:** https://vlasdobry.ru/for-labs/
 
@@ -148,11 +152,11 @@ GEO (Generative Engine Optimization) is optimization for AI search engines. Peop
 
 ## 4. Case Studies
 
-### Grace Hotels
-International chain of 20 properties.
-- Challenge: Build guest acquisition system for individual properties and brand
-- Results: +60% revenue, 2x conversion rate
-- Tags: Hospitality, Hotel chain, Performance, Analytics
+### International Hotel Chain
+20 properties, in-house performance marketing.
+- Challenge: Systematic guest acquisition through direct channels, reducing OTA dependency
+- Results: +60% revenue in low season, 2x conversion, 8% ad cost ratio
+- Tags: Hospitality, In-house, Performance, Analytics
 
 ### Odyssey Flower
 SPA resort chain on Black Sea coast.

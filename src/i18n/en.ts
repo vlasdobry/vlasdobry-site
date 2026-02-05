@@ -392,7 +392,7 @@ export const en: Translations = {
       items: [
         {
           question: 'How much does it cost?',
-          answer: 'Depends on location count and geography. Let\'s discuss on a call — I\'ll explain what\'s possible within your budget.',
+          answer: 'Depends on location count and geography. Minimum ad budget starts at $1,000/month. Let\'s discuss on a call — I\'ll explain what\'s possible within your budget.',
         },
         {
           question: 'How fast will I see results?',
