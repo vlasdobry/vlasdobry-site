@@ -14,28 +14,28 @@ export const en: Translations = {
       backToMain: 'Back',
     },
     hero: {
-      title: 'More Direct Bookings — Less OTA Commissions',
-      subtitle: 'Full-funnel performance marketing for hotels: paid traffic, analytics, booking funnels',
-      stats: '10+ years experience · 20 hotels managed · +60% revenue growth',
+      title: 'Hotel Marketing — More Direct Bookings, Less OTA Dependency',
+      subtitle: 'Performance marketer working in-house at an international hotel chain (20 properties). I know hotel marketing from the inside. I help independent hotels build systematic guest acquisition through direct channels.',
+      stats: '10+ years in performance marketing · In-house at a 20-property chain · +60% revenue in low season',
     },
     problems: {
       label: 'Sound familiar?',
       items: [
         {
           title: 'OTA commissions eating your margins',
-          desc: 'Booking.com, Expedia, Hotels.com — 15-25% per booking adds up fast',
+          desc: 'Booking.com, Expedia, Hotels.com take 15–25% per booking. At 70% occupancy and $100 ADR, that\'s $15,000–25,000/month in commissions for a 50-room hotel.',
         },
         {
           title: 'Paid ads not delivering ROI',
-          desc: 'Metasearch costs rise, attribution is broken, direct bookings stay flat',
+          desc: 'OTAs and metasearch engines overheat the auction, CPC keeps rising, and bookings go back to OTAs anyway — because there\'s no proper funnel on your website.',
         },
         {
-          title: 'No visibility into what\'s working',
-          desc: 'Cross-device journeys, cookie restrictions, booking engine silos — analytics blind spots everywhere',
+          title: 'No transparency',
+          desc: 'Booking engine isn\'t connected to analytics. You don\'t know which channel brings guests and which burns budget.',
         },
         {
-          title: 'Competing with brands that outspend you',
-          desc: 'Big chains dominate search results while independents struggle for visibility',
+          title: 'Seasonality kills',
+          desc: 'Summer — full house without ads. Winter — empty rooms even with ads. No system to smooth out the dips.',
         },
       ],
     },
@@ -43,62 +43,49 @@ export const en: Translations = {
       label: 'What I do',
       items: [
         {
-          title: 'Paid traffic for hotels',
-          desc: 'Google Ads, Google Hotel Ads, metasearch campaigns — driving guests directly to your website, bypassing OTA commissions',
+          title: 'Paid traffic for direct bookings',
+          desc: 'Google Ads, Google Hotel Ads, metasearch, local platforms. Not just "ad setup" — channel management focused on cost per booking and ROI.',
         },
         {
           title: 'Direct booking funnels',
-          desc: 'Full guest journey from discovery to payment: landing pages, retargeting, email sequences, abandoned booking recovery',
+          desc: 'Retargeting, abandoned booking recovery, email sequences for guest retention. Goal: increase direct booking share and reduce OTA dependency.',
         },
         {
-          title: 'End-to-end analytics',
-          desc: 'Connecting ad platforms with your PMS and booking engine — see true ROI by channel and campaign, not vanity metrics',
-        },
-        {
-          title: 'Scaling without losing efficiency',
-          desc: 'Growing budgets while maintaining unit economics: from single property to hotel group with unified strategy',
+          title: 'Business-language analytics',
+          desc: 'Connecting ad platforms with PMS and booking engine. Reports in bookings, revenue, and cost per guest — not clicks and CTR.',
         },
       ],
     },
     caseStudy: {
-      label: 'Case study',
-      title: 'Grace Hotels',
-      subtitle: 'International chain of 20 properties',
-      challenge: 'Challenge: build a guest acquisition system that works for individual properties and the brand as a whole',
+      label: 'Experience',
+      title: 'International hotel chain',
+      subtitle: '20 properties, in-house performance marketing',
+      challenge: 'Working in-house at an international hotel chain of 20 properties. Responsible for performance marketing: managing Google Ads as the primary paid channel, working with analytics and optimization across acquisition channels.',
       done: [
-        'Individual ad campaigns tailored to each property',
-        'Unified performance marketing strategy across the chain',
-        'End-to-end analytics with per-property attribution',
+        'Grew paid traffic revenue by 60% in low season (November–December)',
+        'Website conversion ×2 compared to the period before my work',
+        '10+ years in performance marketing: EdTech, Travel, MedTech — budgets up to $110K/mo, 15+ languages, 100+ countries',
       ],
       results: [
-        { value: '+60%', label: 'revenue' },
-        { value: '×2', label: 'conversion' },
+        { value: '+60%', label: 'revenue in low season' },
+        { value: '×2', label: 'website conversion' },
+        { value: '8%', label: 'ad cost ratio' },
       ],
-      tags: ['Hospitality', 'Hotel chain', 'Performance', 'Analytics'],
+      tags: ['Hospitality', 'In-house', 'Performance', 'Analytics'],
     },
     process: {
-      label: 'How it works',
-      methodology: 'Methodology: SOSTAC + PDCA',
+      label: 'How we work together',
+      methodology: 'Two formats: one-time audit or ongoing management',
       steps: [
         {
           step: '01',
-          title: 'Audit (1-2 days)',
-          desc: 'Current channel analysis, OTA share, cost per booking, seasonality patterns',
+          title: 'Marketing Audit — $800–$1,500',
+          desc: 'Analysis of ad channels, OTA vs direct booking share, website and funnel, competitors in your region. Deliverable: action plan with priorities and forecast. Timeline: 5–7 business days.',
         },
         {
           step: '02',
-          title: 'Strategy (3-5 days)',
-          desc: 'Media plan with forecast: direct bookings volume, target cost, channel mix',
-        },
-        {
-          step: '03',
-          title: 'Launch (1-2 weeks)',
-          desc: 'Campaign setup, PMS analytics integration, initial tests and optimization',
-        },
-        {
-          step: '04',
-          title: 'Control (ongoing)',
-          desc: 'Weekly reports: occupancy, cost per guest, real-time ROI by channel',
+          title: 'Ongoing Management — from $1,500/mo',
+          desc: 'Paid traffic management, direct booking funnel setup, end-to-end analytics, weekly reports in bookings and revenue, seasonal strategy with media plan. Min. ad budget: $1,000/mo.',
         },
       ],
     },
@@ -106,16 +93,16 @@ export const en: Translations = {
       label: 'FAQ',
       items: [
         {
-          question: 'How much does it cost?',
-          answer: 'Depends on property count and scope. Let\'s discuss on a call — I\'ll explain what\'s possible within your budget.',
+          question: 'Who is this for?',
+          answer: 'Independent hotels and small chains (2–10 properties) with $1,000+/mo ad budget, a website with a booking engine, and commitment to 2–3 months of systematic work.',
+        },
+        {
+          question: 'No website or booking engine?',
+          answer: 'That\'s solvable. I can help launch a website with an online booking module as a separate project before starting ads.',
         },
         {
           question: 'How fast will I see results?',
-          answer: 'First data in 2-3 weeks after launch. Sustainable direct booking growth in 2-3 months of systematic work.',
-        },
-        {
-          question: 'Do you work with small hotels?',
-          answer: 'Yes, if ad budget is $1,000+/month. Boutique hotels and vacation rentals have working strategies too.',
+          answer: 'First data in 2–3 weeks after launch. Sustainable direct booking growth in 2–3 months of systematic work.',
         },
       ],
     },
@@ -123,18 +110,17 @@ export const en: Translations = {
       label: 'Not a fit if',
       items: [
         'Ad budget under $1,000/month',
-        'No ability to integrate analytics with PMS',
-        'Need "quick results in a week"',
+        'Need "results in a week"',
       ],
     },
     cta: {
-      heading: 'Let\'s discuss your hotel\'s occupancy',
+      heading: 'Free 20-minute review',
       button: 'Message on Telegram',
       alternative: 'or email',
       email: 'vlasdobry@gmail.com',
     },
     socialProof: {
-      freeAudit: 'Free booking channel audit',
+      freeAudit: 'Free 20-min review — find where you\'re losing bookings',
     },
     footer: {
       name: 'Vlas Fedorov',
@@ -271,7 +257,7 @@ export const en: Translations = {
         },
         {
           question: 'Can I start with an audit, no strings attached?',
-          answer: 'Yes, the first audit is free. I\'ll show you growth opportunities and what can be done.',
+          answer: 'Yes, we start with a free 20-minute review. I\'ll show you growth opportunities and what can be done.',
         },
       ],
     },
@@ -290,7 +276,7 @@ export const en: Translations = {
       email: 'vlasdobry@gmail.com',
     },
     socialProof: {
-      freeAudit: 'Free marketing audit',
+      freeAudit: 'Free 20-minute marketing review',
     },
     footer: {
       name: 'Vlas Fedorov',
