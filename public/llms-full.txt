@@ -93,7 +93,7 @@ GEO (Generative Engine Optimization) is optimization for AI search engines. Peop
 - Competitor analysis
 - Ready-to-use code (llms.txt, llms-full.txt, Schema.org, FAQPage)
 - Weekly action plan
-- 3-month monitoring
+- Monitoring toolkit for 3 months
 
 **Pricing:**
 - Health Score: Free (5 auto-checks)

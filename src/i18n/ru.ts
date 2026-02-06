@@ -787,7 +787,7 @@ export const ru: Translations = {
           'Полный аудит в 6 AI-системах',
           'Готовый код — llms.txt, llms-full.txt, Schema.org, FAQPage',
           'План действий по неделям',
-          'Мониторинг 3 месяца',
+          'Инструменты мониторинга на 3 месяца',
         ],
         packages: [
           { name: 'Health Score', price: 'Бесплатно', features: [true, false, false, false, false] },

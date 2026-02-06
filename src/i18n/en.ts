@@ -787,7 +787,7 @@ export const en: Translations = {
           'Full audit in 6 AI systems',
           'Ready-to-use code — llms.txt, llms-full.txt, Schema.org, FAQPage',
           'Weekly action plan',
-          '3-month monitoring',
+          'Monitoring toolkit for 3 months',
         ],
         packages: [
           { name: 'Health Score', price: 'Free', features: [true, false, false, false, false] },
