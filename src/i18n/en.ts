@@ -610,10 +610,10 @@ export const en: Translations = {
         categories: [
           { name: 'Technical SEO', description: 'robots.txt, sitemap.xml, HTTPS, canonical, indexing, Core Web Vitals (LCP, CLS, INP)' },
           { name: 'On-Page SEO', description: 'Title, Description, H1-H6 headers, URL structure, internal linking, Open Graph' },
-          { name: 'Content', description: 'Image alt tags, content uniqueness, topic coverage depth' },
+          { name: 'Content', description: 'Image alt tags, content quality and depth, factual density' },
           { name: 'Schema.org', description: 'Structured markup for rich snippets: Hotel, LocalBusiness, FAQ, Product' },
           { name: 'Local SEO', description: 'Google Maps, Yelp, TripAdvisor, NAP consistency, reviews' },
-          { name: 'Reputation', description: 'Review analysis across platforms, backlink profile, brand mentions' },
+          { name: 'Reputation', description: 'Review analysis across platforms, brand mentions, presence in directories and aggregators' },
           { name: 'E-E-A-T', description: 'Expertise, authoritativeness, and trust signals for search engines' },
         ],
       },

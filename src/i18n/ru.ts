@@ -610,10 +610,10 @@ export const ru: Translations = {
         categories: [
           { name: 'Техническое SEO', description: 'robots.txt, sitemap.xml, HTTPS, canonical, индексация, Core Web Vitals (LCP, CLS, INP)' },
           { name: 'On-Page SEO', description: 'Title, Description, заголовки H1-H6, структура URL, внутренняя перелинковка, Open Graph' },
-          { name: 'Контент', description: 'Alt-теги изображений, уникальность текста, полнота раскрытия темы' },
+          { name: 'Контент', description: 'Alt-теги изображений, качество и полнота текста, фактическая плотность' },
           { name: 'Schema.org', description: 'Разметка для расширенных сниппетов: Hotel, LocalBusiness, FAQ, Product' },
           { name: 'Локальное SEO', description: 'Яндекс.Карты, Google Maps, 2ГИС, NAP-консистентность, отзывы' },
-          { name: 'Репутация', description: 'Анализ отзывов на площадках, ссылочный профиль, упоминания бренда' },
+          { name: 'Репутация', description: 'Анализ отзывов на площадках, упоминания бренда, присутствие в каталогах и агрегаторах' },
           { name: 'E-E-A-T', description: 'Сигналы экспертности, авторитетности и доверия для поисковиков' },
         ],
       },

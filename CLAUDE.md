@@ -168,7 +168,7 @@ git push origin master  # Деплой на продакшен (автомати
 **Терминология услуг:**
 - "8 параметров" (SEO) — технические проверки в бесплатном SEO Health Score
 - "5 параметров" (GEO) — проверки в бесплатном GEO Health Score (LLM Files, Schema.org, FAQ/Q&A, E-E-A-T, AI-доступность)
-- "7 разделов аудита" — направления анализа в платном полном аудите (Technical SEO, On-Page, Content, Schema.org, Local SEO, Yandex-specific, E-E-A-T)
+- "7 разделов аудита" — направления анализа в платном полном аудите (Technical SEO, On-Page, Content, Schema.org, Local SEO, Reputation, E-E-A-T)
 
 ## Ключевые файлы
 
