@@ -23,25 +23,24 @@ export const BlogList: React.FC<Props> = ({ basePath }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      if (!isScrolled && scrollY > 80) {
-        setIsScrolled(true);
-      } else if (isScrolled && scrollY < 20) {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 80);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isScrolled]);
+  }, []);
 
   useEffect(() => {
-    fetch('/blog-data.json')
+    const controller = new AbortController();
+
+    fetch('/blog-data.json', { signal: controller.signal })
       .then(res => res.json())
       .then(data => {
         setArticles(data[lang] || []);
         setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch(e => { if (e.name !== 'AbortError') setLoading(false); });
+
+    return () => controller.abort();
   }, [lang]);
 
   const filteredArticles = activeCategory === 'all'
@@ -72,7 +71,7 @@ export const BlogList: React.FC<Props> = ({ basePath }) => {
             className="flex items-center gap-2 text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-400 hover:text-black transition-colors"
           >
             <ArrowLeft className="w-3 h-3" />
-            {lang === 'ru' ? 'Назад' : 'Back'}
+            {t.blog.back}
           </a>
         </div>
       </nav>
@@ -106,11 +105,11 @@ export const BlogList: React.FC<Props> = ({ basePath }) => {
         <section>
           {loading ? (
             <div className="py-20 text-center text-zinc-400">
-              {lang === 'ru' ? 'Загрузка...' : 'Loading...'}
+              {t.blog.loading}
             </div>
           ) : filteredArticles.length === 0 ? (
             <div className="py-20 text-center text-zinc-400">
-              {lang === 'ru' ? 'Статей пока нет' : 'No articles yet'}
+              {t.blog.noArticles}
             </div>
           ) : (
             filteredArticles.map(article => (

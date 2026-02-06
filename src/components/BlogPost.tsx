@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, ChevronDown, ChevronUp } from 'lucide-react';
+import DOMPurify from 'dompurify';
 import { useI18n } from '../i18n';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { analytics } from '../utils/analytics';
@@ -29,16 +30,11 @@ export const BlogPost: React.FC<Props> = ({ basePath }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      if (!isScrolled && scrollY > 80) {
-        setIsScrolled(true);
-      } else if (isScrolled && scrollY < 20) {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 80);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isScrolled]);
+  }, []);
 
   useEffect(() => {
     if (!slug) {
@@ -46,27 +42,28 @@ export const BlogPost: React.FC<Props> = ({ basePath }) => {
       return;
     }
 
-    fetch('/blog-data.json')
+    const controller = new AbortController();
+
+    fetch('/blog-data.json', { signal: controller.signal })
       .then(res => res.json())
       .then(data => {
         const articles = data[lang] || [];
         const found = articles.find((a: BlogArticle) => a.slug === slug);
         setArticle(found || null);
 
-        // Get related articles (same category, excluding current)
         if (found) {
           const related = articles
             .filter((a: BlogArticle) => a.slug !== slug && a.category === found.category)
             .slice(0, 3);
           setRelatedArticles(related);
-
-          // Track view
           analytics.blogView(found.slug);
         }
 
         setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch(e => { if (e.name !== 'AbortError') setLoading(false); });
+
+    return () => controller.abort();
   }, [lang, slug]);
 
   const formatDate = (dateStr: string) => {
@@ -81,7 +78,7 @@ export const BlogPost: React.FC<Props> = ({ basePath }) => {
   if (loading) {
     return (
       <main className="min-h-screen bg-white flex items-center justify-center">
-        <p className="text-zinc-400">{lang === 'ru' ? 'Загрузка...' : 'Loading...'}</p>
+        <p className="text-zinc-400">{t.blog.loading}</p>
       </main>
     );
   }
@@ -89,7 +86,7 @@ export const BlogPost: React.FC<Props> = ({ basePath }) => {
   if (!article) {
     return (
       <main className="min-h-screen bg-white flex flex-col items-center justify-center gap-4">
-        <p className="text-zinc-600 text-xl">{lang === 'ru' ? 'Статья не найдена' : 'Article not found'}</p>
+        <p className="text-zinc-600 text-xl">{t.blog.notFound}</p>
         <a href={blogUrl} className="text-sm font-bold uppercase tracking-[0.2em] text-zinc-400 hover:text-black">
           ← {t.blog.backToBlog}
         </a>
@@ -127,7 +124,7 @@ export const BlogPost: React.FC<Props> = ({ basePath }) => {
       <article className="max-w-5xl mx-auto px-6 sm:px-12 py-8 md:py-12">
         {/* Breadcrumbs */}
         <nav className="text-sm text-zinc-400 mb-8">
-          <a href={lang === 'ru' ? '/' : '/en/'} className="hover:text-black">{lang === 'ru' ? 'Главная' : 'Home'}</a>
+          <a href={lang === 'ru' ? '/' : '/en/'} className="hover:text-black">{t.blog.home}</a>
           <span className="mx-2">→</span>
           <a href={blogUrl} className="hover:text-black">{t.blog.title}</a>
           <span className="mx-2">→</span>
@@ -200,7 +197,7 @@ export const BlogPost: React.FC<Props> = ({ basePath }) => {
         {/* Content */}
         <div
           className="blog-content max-w-[720px] mx-auto my-8 md:my-12"
-          dangerouslySetInnerHTML={{ __html: article.content || '' }}
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(article.content || '') }}
         />
 
         {/* FAQ */}
@@ -242,10 +239,10 @@ export const BlogPost: React.FC<Props> = ({ basePath }) => {
               className="block p-6 border border-zinc-100 rounded-lg hover:border-zinc-300 transition-colors"
             >
               <span className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-400 mb-2 block">
-                {lang === 'ru' ? 'Связанная услуга' : 'Related Service'}
+                {t.blog.relatedService}
               </span>
               <span className="text-lg font-bold">
-                {lang === 'ru' ? 'Подробнее об услуге →' : 'Learn more about this service →'}
+                {t.blog.relatedServiceLink}
               </span>
             </a>
           </section>
@@ -272,7 +269,7 @@ export const BlogPost: React.FC<Props> = ({ basePath }) => {
             onClick={() => analytics.blogCtaClick(article.slug)}
             className="inline-block text-lg md:text-xl font-bold uppercase tracking-[0.2em] border-2 border-black px-10 py-5 hover:bg-black hover:text-white transition-all"
           >
-            {lang === 'ru' ? 'Написать в Telegram' : 'Message on Telegram'}
+            {t.blog.ctaButton}
           </a>
         </section>
 

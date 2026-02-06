@@ -12,16 +12,11 @@ export const ProjectsLanding: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      if (!isScrolled && scrollY > 80) {
-        setIsScrolled(true);
-      } else if (isScrolled && scrollY < 20) {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 80);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isScrolled]);
+  }, []);
 
   return (
     <main className="min-h-screen bg-white text-[#121212]">

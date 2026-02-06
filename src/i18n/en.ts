@@ -557,6 +557,7 @@ export const en: Translations = {
     readMore: 'Read',
     relatedArticles: 'Related articles',
     cta: 'Want the same? Contact me',
+    ctaButton: 'Message on Telegram',
     publishedOn: 'Published',
     updatedOn: 'Updated',
     readingTime: 'min',
@@ -568,6 +569,13 @@ export const en: Translations = {
     prevArticle: 'Previous',
     nextArticle: 'Next',
     backToBlog: 'All articles',
+    back: 'Back',
+    home: 'Home',
+    loading: 'Loading...',
+    notFound: 'Article not found',
+    noArticles: 'No articles yet',
+    relatedService: 'Related Service',
+    relatedServiceLink: 'Learn more about this service →',
     categories: {
       all: 'All',
       seo: 'SEO',
@@ -700,7 +708,7 @@ export const en: Translations = {
     geo: {
       meta: {
         title: 'GEO Audit: Optimization for ChatGPT, Perplexity, AI Search | Vlas Fedorov',
-        description: 'Make your business visible to AI search engines. Testing in 6 systems, ready-to-use llms.txt and Schema.org code. $500.',
+        description: 'Make your business visible to AI search engines. Testing in 6 systems, ready-to-use llms.txt and Schema.org code. $750.',
       },
       nav: { backToMain: 'Back' },
       hero: {
@@ -783,7 +791,7 @@ export const en: Translations = {
         ],
         packages: [
           { name: 'Health Score', price: 'Free', features: [true, false, false, false, false] },
-          { name: 'GEO Audit', price: '$500', features: [true, true, true, true, true], recommended: true },
+          { name: 'GEO Audit', price: '$750', features: [true, true, true, true, true], recommended: true },
         ],
         deliveryTime: '',
       },

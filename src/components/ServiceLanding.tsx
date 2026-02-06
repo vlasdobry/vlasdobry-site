@@ -25,16 +25,11 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY;
-      if (!isScrolled && scrollY > 80) {
-        setIsScrolled(true);
-      } else if (isScrolled && scrollY < 20) {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 80);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isScrolled]);
+  }, []);
 
   const getStatusColor = (status: string) => {
     const statusLower = status.toLowerCase();

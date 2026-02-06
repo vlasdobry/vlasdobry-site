@@ -9,6 +9,7 @@ export interface BlogSection {
   readMore: string;
   relatedArticles: string;
   cta: string;
+  ctaButton: string;
   publishedOn: string;
   updatedOn: string;
   readingTime: string;
@@ -20,6 +21,13 @@ export interface BlogSection {
   prevArticle: string;
   nextArticle: string;
   backToBlog: string;
+  back: string;
+  home: string;
+  loading: string;
+  notFound: string;
+  noArticles: string;
+  relatedService: string;
+  relatedServiceLink: string;
   categories: {
     all: string;
     seo: string;
