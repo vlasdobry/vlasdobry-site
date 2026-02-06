@@ -54,7 +54,7 @@ Complete website analysis with ready-to-use code.
 - Technical SEO: robots.txt, sitemap.xml, HTTPS, canonical, indexing, Core Web Vitals
 - On-Page SEO: Title, Description, H1-H6 headers, URL structure, internal linking
 - Content: Image alt tags, content quality and depth, factual density
-- Schema.org: Structured markup for rich snippets (Hotel, LocalBusiness, FAQ)
+- Schema.org: Structured markup for rich snippets (LocalBusiness, Hotel, MedicalBusiness, Product, FAQ)
 - Local SEO: Google Maps, Yandex Maps, NAP consistency, reviews
 - Reputation: Review analysis, brand mentions, presence in directories and aggregators
 - E-E-A-T: Expertise, authoritativeness, trust signals
