@@ -72,7 +72,7 @@ Projects page (EN): https://vlasdobry.ru/en/projects/
 6. GEO Audit: optimization for AI search engines (ChatGPT, Perplexity, YandexGPT)
 
 ## SEO Audit Service
-- Technical SEO, On-Page SEO, Content, Schema.org, Local SEO, E-E-A-T
+- Technical SEO, On-Page SEO, Content, Schema.org, Local SEO, Reputation, E-E-A-T
 - 50+ audits since 2020
 - Industries: hotels, SPA, medical facilities
 - Deliverables: PDF report, prioritized issues, ready code (robots.txt, sitemap, Schema.org)
