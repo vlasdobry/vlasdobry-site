@@ -1,7 +1,7 @@
 # Vlas Fedorov - Full Website Content
 
 > This file contains the complete content of vlasdobry.ru for AI systems.
-> Last updated: 2026-02-06 (7 articles)
+> Last updated: 2026-02-07 (8 articles)
 
 ## Table of Contents
 1. About Vlas Fedorov
@@ -217,6 +217,12 @@ Acoustic voice analysis and training platform.
 
 ## 6. Blog Articles
 
+### How a Single-Page Hotel Website Loses 80,000 Searches Per Month
+**URL:** /blog/odnostranichnyj-sajt-otelya-teryaet-trafik/
+**Category:** SEO
+**Date:** 2026-02-07
+
+Real case study of a resort hotel: single-page website (Health Score 25/100) missing 80,000+ broad match monthly searches for 'hotel with pool' cluster, Google traffic down 38% year-over-year. Analysis of 7 semantic clusters, empty meta description, missing robots.txt/sitemap.xml/Schema.org. Prioritized fix plan — from quick wins in 1 day to creating landing pages for each keyword cluster.
 ### Hotel Website Audit: Rus Hotel Case Study (Sarapul, Russia)
 **URL:** /blog/audit-sajta-otelya-keys-rushotel/
 **Category:** MARKETING

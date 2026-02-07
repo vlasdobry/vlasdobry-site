@@ -581,12 +581,27 @@ function generateBlogData() {
 
   console.log(`Generated blog data: ${ruArticles.length} RU, ${enArticles.length} EN articles`);
 
+  // Copy cover images from content/ to public/ (for dev server)
+  for (const article of ruArticles) {
+    const coverSrc = path.join(contentDir, article.slug, article.cover);
+    if (fs.existsSync(coverSrc)) {
+      const publicArticleDir = path.join(publicDir, 'blog', article.slug);
+      fs.mkdirSync(publicArticleDir, { recursive: true });
+      fs.copyFileSync(coverSrc, path.join(publicArticleDir, article.cover));
+    }
+  }
+
   // Generate individual HTML files for each article (only during build)
   if (fs.existsSync(distDir)) {
     for (const article of ruArticles) {
       const articleDir = path.join(distDir, 'blog', article.slug);
       fs.mkdirSync(articleDir, { recursive: true });
       fs.writeFileSync(path.join(articleDir, 'index.html'), generateArticleHtml(article, 'ru'));
+      // Copy cover image from content/ to dist/
+      const coverSrc = path.join(contentDir, article.slug, article.cover);
+      if (fs.existsSync(coverSrc)) {
+        fs.copyFileSync(coverSrc, path.join(articleDir, article.cover));
+      }
       console.log(`Generated: /blog/${article.slug}/index.html`);
     }
 
@@ -594,6 +609,11 @@ function generateBlogData() {
       const articleDir = path.join(distDir, 'en', 'blog', article.slug);
       fs.mkdirSync(articleDir, { recursive: true });
       fs.writeFileSync(path.join(articleDir, 'index.html'), generateArticleHtml(article, 'en'));
+      // Copy cover image (same source, EN shares cover with RU)
+      const coverSrc = path.join(contentDir, article.slug, article.cover);
+      if (fs.existsSync(coverSrc)) {
+        fs.copyFileSync(coverSrc, path.join(articleDir, article.cover));
+      }
       console.log(`Generated: /en/blog/${article.slug}/index.html`);
     }
 

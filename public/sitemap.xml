@@ -130,7 +130,7 @@
   <!-- BLOG_START -->
   <url>
     <loc>https://vlasdobry.ru/blog/</loc>
-    <lastmod>2026-02-06</lastmod>
+    <lastmod>2026-02-07</lastmod>
     <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/"/>
     <changefreq>weekly</changefreq>
@@ -138,11 +138,27 @@
   </url>
   <url>
     <loc>https://vlasdobry.ru/en/blog/</loc>
-    <lastmod>2026-02-06</lastmod>
+    <lastmod>2026-02-07</lastmod>
     <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/"/>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vlasdobry.ru/blog/odnostranichnyj-sajt-otelya-teryaet-trafik/</loc>
+    <lastmod>2026-02-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/odnostranichnyj-sajt-otelya-teryaet-trafik/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/odnostranichnyj-sajt-otelya-teryaet-trafik/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vlasdobry.ru/en/blog/odnostranichnyj-sajt-otelya-teryaet-trafik/</loc>
+    <lastmod>2026-02-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/odnostranichnyj-sajt-otelya-teryaet-trafik/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/odnostranichnyj-sajt-otelya-teryaet-trafik/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://vlasdobry.ru/blog/audit-sajta-otelya-keys-rushotel/</loc>

@@ -1,6 +1,145 @@
 {
   "ru": [
     {
+      "slug": "odnostranichnyj-sajt-otelya-teryaet-trafik",
+      "title": "Как одностраничный сайт отеля теряет 80 000 запросов в месяц",
+      "description": "Разбор реального кейса: курортный отель с 1 000 ключей на одной странице, падение трафика −38% и нереализованный потенциал.",
+      "date": "2026-02-07",
+      "dateModified": "2026-02-07",
+      "category": "seo",
+      "tags": [
+        "отели",
+        "seo",
+        "аудит",
+        "horeca",
+        "кластеры"
+      ],
+      "relatedService": "/for-hotels",
+      "cover": "cover.jpg",
+      "series": null,
+      "readingTime": 7,
+      "toc": [
+        {
+          "id": "health-score-25-из-100",
+          "text": "Health Score: 25 из 100",
+          "level": 2
+        },
+        {
+          "id": "техническая-часть-базовая-гигиена-отсутствует",
+          "text": "Техническая часть: базовая гигиена отсутствует",
+          "level": 2
+        },
+        {
+          "id": "пустой-meta-description",
+          "text": "Пустой meta description",
+          "level": 3
+        },
+        {
+          "id": "нет-robotstxt-и-sitemapxml",
+          "text": "Нет robots.txt и sitemap.xml",
+          "level": 3
+        },
+        {
+          "id": "http-не-редиректит-на-https",
+          "text": "HTTP не редиректит на HTTPS",
+          "level": 3
+        },
+        {
+          "id": "schemaorg-ноль",
+          "text": "Schema.org — ноль",
+          "level": 3
+        },
+        {
+          "id": "h1-с-опечаткой",
+          "text": "H1 с опечаткой",
+          "level": 3
+        },
+        {
+          "id": "ещё-мелочи-которые-складываются-в-картину",
+          "text": "Ещё мелочи, которые складываются в картину",
+          "level": 3
+        },
+        {
+          "id": "семантический-анализ-огромный-потенциал-застрявший-на-3050-позициях",
+          "text": "Семантический анализ: огромный потенциал, застрявший на 30–50 позициях",
+          "level": 2
+        },
+        {
+          "id": "все-1-000-ключей-ведут-на-главную",
+          "text": "Все 1 000+ ключей ведут на главную",
+          "level": 3
+        },
+        {
+          "id": "семь-кластеров-ни-одной-посадочной-страницы",
+          "text": "Семь кластеров, ни одной посадочной страницы",
+          "level": 3
+        },
+        {
+          "id": "кластер-бассейн-самый-болезненный-пример",
+          "text": "Кластер «бассейн» — самый болезненный пример",
+          "level": 3
+        },
+        {
+          "id": "тренд-деградация-а-не-рост",
+          "text": "Тренд: деградация, а не рост",
+          "level": 2
+        },
+        {
+          "id": "google-38-за-год",
+          "text": "Google: −38% за год",
+          "level": 3
+        },
+        {
+          "id": "краснодар-домашний-регион-в-3-раза",
+          "text": "Краснодар (домашний регион): в 3 раза",
+          "level": 3
+        },
+        {
+          "id": "что-делать-план-по-фазам",
+          "text": "Что делать: план по фазам",
+          "level": 2
+        },
+        {
+          "id": "за-один-день",
+          "text": "За один день",
+          "level": 3
+        },
+        {
+          "id": "за-первый-месяц",
+          "text": "За первый месяц",
+          "level": 3
+        },
+        {
+          "id": "за-23-месяца",
+          "text": "За 2–3 месяца",
+          "level": 3
+        },
+        {
+          "id": "главный-урок",
+          "text": "Главный урок",
+          "level": 2
+        }
+      ],
+      "hasFaq": true,
+      "content": "<p>Передо мной — сайт курортного отеля на черноморском побережье. 60+ номеров, несколько корпусов, более 20 категорий размещения. Бассейн с подогревом +28°C круглый год, пляж в 15 метрах, популярные достопримечательности в пешей доступности. Продукт сильный. А сайт — одна страница на все случаи жизни.</p>\n<p>Я провёл два параллельных аудита: технический (WebFetch, curl, проверка всех мета-тегов и файлов) и семантический (Keys.so — позиции, кластеры, динамика). Результаты дополняют друг друга — и рисуют неприятную картину.</p>\n<h2 id=\"health-score-25-из-100\">Health Score: 25 из 100</h2>\n<p>Начну с цифры, которая говорит сама за себя. Для сравнения: типичный сайт на Tilda для отелей набирает 40–50 баллов. Здесь — 25.</p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Категория</th>\n<th>Оценка</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>SEO</td>\n<td>13/50</td>\n</tr>\n<tr>\n<td>GEO (AI-видимость)</td>\n<td>12/50</td>\n</tr>\n<tr>\n<td><strong>Итого</strong></td>\n<td><strong>25/100</strong></td>\n</tr>\n</tbody></table></div>\n<p>Что пошло не так? Практически всё. Вот список того, что я нашёл — отсортирован по критичности.</p>\n<h2 id=\"техническая-часть-базовая-гигиена-отсутствует\">Техническая часть: базовая гигиена отсутствует</h2>\n<h3 id=\"пустой-meta-description\">Пустой meta description</h3>\n<p>Буквально пустой. <code>&lt;meta name=&quot;description&quot; content=&quot;&quot;&gt;</code>. Яндекс и Google вынуждены сами выбирать, что показать в сниппете. Обычно хватают случайный кусок текста со страницы — часто нерелевантный.</p>\n<p>При этом у отеля есть что сказать: бассейн +28°C круглый год, 15 метров до пляжа, 60+ номеров. Ни одно из этих преимуществ не попадает в поисковую выдачу. Потеря CTR — 30–50%.</p>\n<h3 id=\"нет-robotstxt-и-sitemapxml\">Нет robots.txt и sitemap.xml</h3>\n<p>Оба файла возвращают 301-редирект на главную. Поисковые боты запрашивают <code>/robots.txt</code>, а получают HTML главной страницы. Карты сайта нет — поисковики должны сами разбираться, какие страницы индексировать.</p>\n<p>Хуже того — в индексе Google оказались служебные файлы: <code>rules.doc</code> и два PDF-договора. Они ранжируются по десяткам запросов и размывают SEO-вес основных страниц.</p>\n<h3 id=\"http-не-редиректит-на-https\">HTTP не редиректит на HTTPS</h3>\n<p>Сайт доступен по двум протоколам. Это значит: две версии одного контента, разделённый ссылочный вес, потенциальные проблемы с безопасностью при бронировании.</p>\n<h3 id=\"schemaorg-ноль\">Schema.org — ноль</h3>\n<p>Ни Hotel, ни Organization, ни FAQPage, ни AggregateRating. Конкуренты в выдаче показывают звёзды рейтинга, цены, фото номеров. Этот отель — голый текст.</p>\n<h3 id=\"h1-с-опечаткой\">H1 с опечаткой</h3>\n<p>Главный заголовок страницы: «+28 температура бассеина круглый год». «Бассеина» вместо «бассейна» — «и» вместо «й». Это первое, что видят поисковые роботы. И это не описание отеля — это рекламный слоган, случайно ставший H1.</p>\n<h3 id=\"ещё-мелочи-которые-складываются-в-картину\">Ещё мелочи, которые складываются в картину</h3>\n<ul>\n<li><code>lang=&quot;en&quot;</code> вместо <code>lang=&quot;ru&quot;</code> — поисковики думают, что сайт на английском</li>\n<li>Нет canonical URL</li>\n<li>Нет OG-тегов — при шаринге в мессенджерах нет превью</li>\n<li>TTFB 1 484 мс — почти вдвое выше нормы (800 мс)</li>\n<li>Кэширование отключено: каждый визит грузит страницу с нуля</li>\n<li>PHP 5.6 — версия, снятая с поддержки в 2018 году</li>\n</ul>\n<h2 id=\"семантический-анализ-огромный-потенциал-застрявший-на-3050-позициях\">Семантический анализ: огромный потенциал, застрявший на 30–50 позициях</h2>\n<p>Теперь самое интересное. Keys.so показал, что сайт ранжируется по 774 запросам в Яндексе и 1 239 в Google. Неплохой охват для одной страницы. Но именно «одна страница» — корень проблемы.</p>\n<h3 id=\"все-1-000-ключей-ведут-на-главную\">Все 1 000+ ключей ведут на главную</h3>\n<p>Поисковик пытается ранжировать одну страницу одновременно по запросам «отель с бассейном», «рядом с аэропортом», «цены», «с детьми», «всё включено». Он вынужден выбирать — и часто проигрывает конкурентам, у которых под каждый кластер есть своя страница.</p>\n<h3 id=\"семь-кластеров-ни-одной-посадочной-страницы\">Семь кластеров, ни одной посадочной страницы</h3>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Кластер</th>\n<th>Частотность</th>\n<th>Позиции</th>\n<th>Нужна страница</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Бассейн</td>\n<td>80 000+</td>\n<td>16–46</td>\n<td><code>/pool</code></td>\n</tr>\n<tr>\n<td>У моря / первая линия</td>\n<td>20 000+</td>\n<td>11–46</td>\n<td><code>/beach</code></td>\n</tr>\n<tr>\n<td>Рядом с аэропортом</td>\n<td>15 000+</td>\n<td>28–46</td>\n<td><code>/location</code></td>\n</tr>\n<tr>\n<td>Веб-камеры</td>\n<td>15 000+</td>\n<td>ТОП-3 по названию отеля, 37–48 по общим</td>\n<td><code>/webcam</code></td>\n</tr>\n<tr>\n<td>Цены и бронирование</td>\n<td>10 000+</td>\n<td>12–44</td>\n<td><code>/prices</code></td>\n</tr>\n<tr>\n<td>Все включено / питание</td>\n<td>5 000+</td>\n<td>21–47</td>\n<td><code>/food</code></td>\n</tr>\n<tr>\n<td>С детьми</td>\n<td>2 000+</td>\n<td>38–46</td>\n<td><code>/family</code></td>\n</tr>\n</tbody></table></div>\n<p>Суммарный потенциал — <strong>150 000+ запросов в месяц</strong> (базовая частотность, включающая все словоформы и вариации). И ни один кластер не в ТОП-10.</p>\n<h3 id=\"кластер-бассейн-самый-болезненный-пример\">Кластер «бассейн» — самый болезненный пример</h3>\n<p>«Отель с бассейном Адлер» — 16 476 запросов. «Отель адлер с бассейном» — ещё 16 476. «Теплый бассейн адлер» — 1 428. И десятки вариаций.</p>\n<p>У отеля есть бассейн с подогревом +28°C, работающий круглый год. Это УТП, которое ищут тысячи людей. Но вместо отдельной страницы с фото, описанием и температурой воды — один абзац на главной, затерянный среди двух десятков категорий номеров.</p>\n<h2 id=\"тренд-деградация-а-не-рост\">Тренд: деградация, а не рост</h2>\n<p>Если бы позиции просто стояли на месте — было бы полбеды. Но сайт теряет трафик.</p>\n<h3 id=\"google-38-за-год\">Google: −38% за год</h3>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Период</th>\n<th>ТОП-50</th>\n<th>Трафик</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Февраль 2025</td>\n<td>3 878</td>\n<td>608</td>\n</tr>\n<tr>\n<td>Февраль 2026</td>\n<td>1 239</td>\n<td>377</td>\n</tr>\n</tbody></table></div>\n<p>Три тысячи ключей выпали из ТОП-50 за 12 месяцев.</p>\n<h3 id=\"краснодар-домашний-регион-в-3-раза\">Краснодар (домашний регион): в 3 раза</h3>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Период</th>\n<th>Трафик</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Сентябрь 2024</td>\n<td>257</td>\n</tr>\n<tr>\n<td>Июль 2025</td>\n<td>90</td>\n</tr>\n</tbody></table></div>\n<p>Это город, из которого чаще всего едут в Адлер. И трафик оттуда упал с 257 до 90.</p>\n<h2 id=\"что-делать-план-по-фазам\">Что делать: план по фазам</h2>\n<p>Хорошая новость: большинство проблем решаемы. Плохая: их много. Вот приоритизация по соотношению затрат и эффекта.</p>\n<h3 id=\"за-один-день\">За один день</h3>\n<ol>\n<li><strong>Написать meta description</strong> — 150 символов с УТП (бассейн, пляж, номера). Эффект: +20–40% CTR</li>\n<li><strong>Создать robots.txt</strong> — закрыть DOC/PDF от индексации. Эффект: перенаправление веса на целевые страницы</li>\n<li><strong>Настроить 301 HTTP → HTTPS</strong> — одна строка в nginx</li>\n<li><strong>Исправить lang=&quot;en&quot; → lang=&quot;ru&quot;</strong></li>\n<li><strong>Добавить Schema.org Hotel JSON-LD</strong> — структурированные данные об отеле</li>\n</ol>\n<h3 id=\"за-первый-месяц\">За первый месяц</h3>\n<ol start=\"6\">\n<li><strong>Создать страницу «Бассейн»</strong> — фото, температура, расписание. Целевой кластер: 80 000+ запросов</li>\n<li><strong>Создать страницу «Как добраться»</strong> — карта, расстояние до аэропорта. Кластер: 15 000+</li>\n<li><strong>Создать страницу «Цены»</strong> — прайс по сезонам, форма бронирования. Кластер: 10 000+</li>\n<li><strong>Оптимизировать <code>/rooms</code></strong> — Google уже ранжирует эту страницу по 27 запросам в ТОП-10</li>\n</ol>\n<h3 id=\"за-23-месяца\">За 2–3 месяца</h3>\n<ol start=\"10\">\n<li>Страница «Пляж» (кластер 20 000+)</li>\n<li>FAQ с Schema.org FAQPage</li>\n<li>llms.txt и llms-full.txt для AI-поисковиков</li>\n<li>Размещение на агрегаторах (krito.ru, 101hotels)</li>\n<li>Обновление PHP и оптимизация скорости</li>\n</ol>\n<h2 id=\"главный-урок\">Главный урок</h2>\n<p>Одностраничный сайт — не приговор для бизнеса. Но для SEO — это потолок. Когда 1 000 запросов ведут на одну страницу, поисковик вынужден угадывать, какой кластер релевантнее. Обычно угадывает плохо — и отель застревает на 20–50 позициях по самым жирным запросам.</p>\n<p>Создание 5–7 посадочных страниц под ключевые кластеры — это не «переделка сайта». Это добавление страниц, которые уже ищут тысячи людей. Страница «Бассейн» для отеля с бассейном. Страница «Как добраться» для отеля рядом с аэропортом. Логично? Логично. Но на практике я вижу это у каждого второго курортного отеля.</p>\n",
+      "faq": [
+        {
+          "question": "Может ли одностраничный сайт ранжироваться в ТОП-10?",
+          "answer": "Да, но только по брендовым запросам и 1–2 основным ключам. По кластерам вроде «отель с бассейном» одна страница проигрывает конкурентам с отдельными посадочными. В нашем кейсе 80 000+ запросов по кластеру «бассейн» (базовая частотность) — и ни один не в ТОП-10."
+        },
+        {
+          "question": "Сколько времени нужно на исправление критических ошибок?",
+          "answer": "Техническая гигиена (meta description, robots.txt, HTTPS-редирект, Schema.org) — один рабочий день. Создание посадочных страниц под кластеры — 2–4 недели. Первые результаты в выдаче — через 2–4 недели после индексации."
+        },
+        {
+          "question": "Как понять, какие кластеры есть у моего отеля?",
+          "answer": "Нужен семантический анализ через Keys.so или Serpstat. Собираете все запросы, по которым ранжируется сайт, группируете по темам — и видите, где потенциал. Для курортных отелей типичные кластеры: бассейн, пляж, как добраться, цены, питание, с детьми."
+        }
+      ],
+      "tldr": "Курортный отель с бассейном и пляжем в 15 метрах. 1 000+ ключевых слов в поиске — и все ведут на одну страницу. Кластер «бассейн» (80 000+ запросов/мес по базовой частотности) сидит на 16–46 позициях, потому что нет отдельной посадочной. Трафик из Google упал на 38% за год. Показываю, что именно ломается и как это чинить.",
+      "llmsSummary": "Разбор реального кейса курортного отеля: одностраничный сайт (Health Score 25/100) теряет 80 000+ запросов по кластеру «бассейн» (базовая частотность), трафик из Google упал на 38% за год. Анализ 7 семантических кластеров, пустой meta description, отсутствие robots.txt/sitemap.xml/Schema.org. План исправлений с приоритизацией по ROI — от quick wins за 1 день до создания посадочных страниц под каждый кластер."
+    },
+    {
       "slug": "audit-sajta-otelya-keys-rushotel",
       "title": "Экспресс-аудит сайта отеля: кейс Русь Отель (Сарапул)",
       "description": "Разбираю реальный кейс: SEO-аудит двух сайтов, анализ рекламы в Директе и конкурентов для 3★ отеля в малом городе.",
@@ -683,6 +822,145 @@
     }
   ],
   "en": [
+    {
+      "slug": "odnostranichnyj-sajt-otelya-teryaet-trafik",
+      "title": "How a Single-Page Hotel Website Loses 80,000 Searches Per Month",
+      "description": "Real case study: a resort hotel with 1,000+ keywords on one page, -38% traffic decline, and untapped potential worth 150K+ monthly searches.",
+      "date": "2026-02-07",
+      "dateModified": "2026-02-07",
+      "category": "seo",
+      "tags": [
+        "hotels",
+        "seo",
+        "audit",
+        "horeca",
+        "keyword-clusters"
+      ],
+      "relatedService": "/en/for-hotels",
+      "cover": "cover.jpg",
+      "series": null,
+      "readingTime": 7,
+      "toc": [
+        {
+          "id": "health-score-25-out-of-100",
+          "text": "Health Score: 25 out of 100",
+          "level": 2
+        },
+        {
+          "id": "technical-audit-basic-hygiene-missing",
+          "text": "Technical Audit: Basic Hygiene Missing",
+          "level": 2
+        },
+        {
+          "id": "empty-meta-description",
+          "text": "Empty meta description",
+          "level": 3
+        },
+        {
+          "id": "no-robotstxt-or-sitemapxml",
+          "text": "No robots.txt or sitemap.xml",
+          "level": 3
+        },
+        {
+          "id": "no-http-to-https-redirect",
+          "text": "No HTTP to HTTPS redirect",
+          "level": 3
+        },
+        {
+          "id": "zero-schemaorg-markup",
+          "text": "Zero Schema.org markup",
+          "level": 3
+        },
+        {
+          "id": "h1-tag-with-a-typo",
+          "text": "H1 tag with a typo",
+          "level": 3
+        },
+        {
+          "id": "other-issues-that-add-up",
+          "text": "Other issues that add up",
+          "level": 3
+        },
+        {
+          "id": "semantic-analysis-massive-potential-stuck-at-positions-3050",
+          "text": "Semantic Analysis: Massive Potential Stuck at Positions 30–50",
+          "level": 2
+        },
+        {
+          "id": "all-1000-keywords-point-to-the-homepage",
+          "text": "All 1,000+ keywords point to the homepage",
+          "level": 3
+        },
+        {
+          "id": "seven-clusters-zero-landing-pages",
+          "text": "Seven clusters, zero landing pages",
+          "level": 3
+        },
+        {
+          "id": "the-pool-cluster-the-most-painful-example",
+          "text": "The \"pool\" cluster — the most painful example",
+          "level": 3
+        },
+        {
+          "id": "the-trend-decline-not-growth",
+          "text": "The Trend: Decline, Not Growth",
+          "level": 2
+        },
+        {
+          "id": "google--38-in-one-year",
+          "text": "Google: -38% in one year",
+          "level": 3
+        },
+        {
+          "id": "home-region-traffic-down-3x",
+          "text": "Home region: traffic down 3x",
+          "level": 3
+        },
+        {
+          "id": "what-to-do-phased-plan",
+          "text": "What to Do: Phased Plan",
+          "level": 2
+        },
+        {
+          "id": "day-one-fixes",
+          "text": "Day one fixes",
+          "level": 3
+        },
+        {
+          "id": "first-month",
+          "text": "First month",
+          "level": 3
+        },
+        {
+          "id": "months-23",
+          "text": "Months 2–3",
+          "level": 3
+        },
+        {
+          "id": "the-takeaway",
+          "text": "The Takeaway",
+          "level": 2
+        }
+      ],
+      "hasFaq": true,
+      "content": "<p>I&#39;m looking at a resort hotel website on the Black Sea coast. 60+ rooms, multiple buildings, over 20 room categories. Heated pool at +28°C year-round, beach 15 meters away, major attractions within walking distance. Strong product. Weak website — everything crammed into one page.</p>\n<p>I ran two parallel audits: technical (checking all meta tags, files, and server responses) and semantic (keyword positions, clusters, trends via analytics tools). The results paint a clear picture.</p>\n<h2 id=\"health-score-25-out-of-100\">Health Score: 25 out of 100</h2>\n<p>For context: a typical template-built hotel website (Wix, Squarespace, or similar) scores 40–50. This one scored 25.</p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Category</th>\n<th>Score</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>SEO</td>\n<td>13/50</td>\n</tr>\n<tr>\n<td>GEO (AI visibility)</td>\n<td>12/50</td>\n</tr>\n<tr>\n<td><strong>Total</strong></td>\n<td><strong>25/100</strong></td>\n</tr>\n</tbody></table></div>\n<p>What went wrong? Almost everything. Here&#39;s what I found, sorted by severity.</p>\n<h2 id=\"technical-audit-basic-hygiene-missing\">Technical Audit: Basic Hygiene Missing</h2>\n<h3 id=\"empty-meta-description\">Empty meta description</h3>\n<p>Literally empty. <code>&lt;meta name=&quot;description&quot; content=&quot;&quot;&gt;</code>. Google and Yandex have to guess what to show in the snippet. They usually grab random text from the page — often irrelevant.</p>\n<p>The hotel has plenty to say: heated pool +28°C year-round, 15 meters to the beach, 60+ rooms. None of this appears in search results. Estimated CTR loss: 30–50%.</p>\n<h3 id=\"no-robotstxt-or-sitemapxml\">No robots.txt or sitemap.xml</h3>\n<p>Both files return a 301 redirect to the homepage. Search bots request <code>/robots.txt</code> and get the full HTML page instead. No sitemap means search engines must discover pages on their own.</p>\n<p>Worse — Google indexed internal documents: <code>rules.doc</code> and two PDF contracts. These rank for dozens of queries and dilute the SEO weight of actual pages.</p>\n<h3 id=\"no-http-to-https-redirect\">No HTTP to HTTPS redirect</h3>\n<p>The site serves content on both protocols. Two versions of the same content, split link equity, potential security issues during booking.</p>\n<h3 id=\"zero-schemaorg-markup\">Zero Schema.org markup</h3>\n<p>No Hotel, Organization, FAQPage, or AggregateRating. Competitors show star ratings, prices, and photos in search results. This hotel shows plain text.</p>\n<h3 id=\"h1-tag-with-a-typo\">H1 tag with a typo</h3>\n<p>The main heading reads as a promotional slogan about pool temperature — with a spelling error. Not a hotel description. Not keyword-optimized. Just a slogan that accidentally became the H1.</p>\n<h3 id=\"other-issues-that-add-up\">Other issues that add up</h3>\n<ul>\n<li><code>lang=&quot;en&quot;</code> on a Russian-language page</li>\n<li>No canonical URL</li>\n<li>No Open Graph tags — no preview when shared in messengers</li>\n<li>TTFB of 1,484ms — nearly double the recommended 800ms</li>\n<li>Caching disabled: every visit loads the full page from scratch</li>\n<li>PHP 5.6 — end-of-life since December 2018</li>\n</ul>\n<h2 id=\"semantic-analysis-massive-potential-stuck-at-positions-3050\">Semantic Analysis: Massive Potential Stuck at Positions 30–50</h2>\n<p>Here&#39;s where it gets interesting. The site ranks for 1,239 keywords in Google and 774 in Yandex (Russia&#39;s primary search engine). Decent reach for a single page. But &quot;single page&quot; is exactly the problem.</p>\n<h3 id=\"all-1000-keywords-point-to-the-homepage\">All 1,000+ keywords point to the homepage</h3>\n<p>The search engine tries to rank one page for &quot;hotel with pool,&quot; &quot;near airport,&quot; &quot;prices,&quot; &quot;family-friendly,&quot; and &quot;all-inclusive&quot; simultaneously. It has to choose — and usually loses to competitors who have dedicated pages for each topic.</p>\n<h3 id=\"seven-clusters-zero-landing-pages\">Seven clusters, zero landing pages</h3>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Cluster</th>\n<th>Monthly searches</th>\n<th>Current positions</th>\n<th>Needs page</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Swimming pool</td>\n<td>80,000+</td>\n<td>16–46</td>\n<td><code>/pool</code></td>\n</tr>\n<tr>\n<td>Beachfront</td>\n<td>20,000+</td>\n<td>11–46</td>\n<td><code>/beach</code></td>\n</tr>\n<tr>\n<td>Near airport</td>\n<td>15,000+</td>\n<td>28–46</td>\n<td><code>/location</code></td>\n</tr>\n<tr>\n<td>Webcams</td>\n<td>15,000+</td>\n<td>Top 3 for hotel name, 37–48 for generic</td>\n<td><code>/webcam</code></td>\n</tr>\n<tr>\n<td>Prices &amp; booking</td>\n<td>10,000+</td>\n<td>12–44</td>\n<td><code>/prices</code></td>\n</tr>\n<tr>\n<td>All-inclusive / dining</td>\n<td>5,000+</td>\n<td>21–47</td>\n<td><code>/dining</code></td>\n</tr>\n<tr>\n<td>Family / kids</td>\n<td>2,000+</td>\n<td>38–46</td>\n<td><code>/family</code></td>\n</tr>\n</tbody></table></div>\n<p>Total potential: <strong>150,000+ searches per month</strong> (broad match frequency, including all word forms and variations). Not a single cluster in the top 10.</p>\n<h3 id=\"the-quotpoolquot-cluster-the-most-painful-example\">The &quot;pool&quot; cluster — the most painful example</h3>\n<p>&quot;Hotel with pool [city]&quot; — 16,476 searches. &quot;[City] hotels with pool&quot; — another 16,476. &quot;Heated pool [city]&quot; — 1,428. Plus dozens of variations.</p>\n<p>The hotel has a heated pool at +28°C that operates year-round. This is a USP that thousands of people search for. But instead of a dedicated page with photos, description, and water temperature — there&#39;s one paragraph on the homepage, buried among two dozen room categories.</p>\n<h2 id=\"the-trend-decline-not-growth\">The Trend: Decline, Not Growth</h2>\n<p>If rankings were simply flat, that would be manageable. But the site is losing traffic.</p>\n<h3 id=\"google--38-in-one-year\">Google: -38% in one year</h3>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Period</th>\n<th>TOP 50 keywords</th>\n<th>Traffic</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>February 2025</td>\n<td>3,878</td>\n<td>608</td>\n</tr>\n<tr>\n<td>February 2026</td>\n<td>1,239</td>\n<td>377</td>\n</tr>\n</tbody></table></div>\n<p>Three thousand keywords dropped out of the top 50 in 12 months.</p>\n<h3 id=\"home-region-traffic-down-3x\">Home region: traffic down 3x</h3>\n<p>The nearest major city — where most guests come from — saw traffic drop from 257 to 90 monthly visits. The hotel&#39;s home turf, and they&#39;re losing it.</p>\n<h2 id=\"what-to-do-phased-plan\">What to Do: Phased Plan</h2>\n<p>Good news: most issues are fixable. Bad news: there are many. Here&#39;s the prioritization by effort vs. impact.</p>\n<h3 id=\"day-one-fixes\">Day one fixes</h3>\n<ol>\n<li><strong>Write a meta description</strong> — 150 characters featuring key USPs (pool, beach, rooms). Impact: +20–40% CTR</li>\n<li><strong>Create robots.txt</strong> — block DOC/PDF from indexing. Impact: redirect weight to target pages</li>\n<li><strong>Set up 301 HTTP → HTTPS</strong> — one line in nginx config</li>\n<li><strong>Fix lang=&quot;en&quot; → lang=&quot;ru&quot;</strong></li>\n<li><strong>Add Schema.org Hotel JSON-LD</strong> — structured data about the property</li>\n</ol>\n<h3 id=\"first-month\">First month</h3>\n<ol start=\"6\">\n<li><strong>Create a &quot;Pool&quot; page</strong> — photos, temperature, schedule. Target cluster: 80,000+ searches</li>\n<li><strong>Create a &quot;Getting Here&quot; page</strong> — map, distance to airport. Cluster: 15,000+</li>\n<li><strong>Create a &quot;Rates&quot; page</strong> — seasonal pricing, booking form. Cluster: 10,000+</li>\n<li><strong>Optimize the rooms page</strong> — Google already ranks it for 27 queries in the top 10</li>\n</ol>\n<h3 id=\"months-23\">Months 2–3</h3>\n<ol start=\"10\">\n<li>&quot;Beach&quot; page (20,000+ cluster)</li>\n<li>FAQ section with Schema.org FAQPage markup</li>\n<li>llms.txt and llms-full.txt for AI search engines</li>\n<li>Listings on hotel aggregators</li>\n<li>PHP upgrade and performance optimization</li>\n</ol>\n<h2 id=\"the-takeaway\">The Takeaway</h2>\n<p>A single-page website isn&#39;t a death sentence for a business. But for SEO, it&#39;s a ceiling. When 1,000 queries point to one page, the search engine has to guess which cluster is most relevant. It usually guesses wrong — and the hotel gets stuck at positions 20–50 for the most valuable keywords.</p>\n<p>Creating 5–7 landing pages for key clusters isn&#39;t a &quot;website redesign.&quot; It&#39;s adding pages that thousands of people are already searching for. A &quot;Pool&quot; page for a hotel with a pool. A &quot;Getting Here&quot; page for a hotel near the airport. Obvious? Yes. But in practice, I see this gap at every other resort hotel I audit.</p>\n",
+      "faq": [
+        {
+          "question": "Can a single-page website rank in the top 10?",
+          "answer": "Yes, but only for branded queries and 1–2 primary keywords. For clusters like \"hotel with pool,\" a single page loses to competitors with dedicated landing pages. In this case, 80,000+ broad match monthly searches for the pool cluster — and none in the top 10."
+        },
+        {
+          "question": "How long does it take to fix the critical issues?",
+          "answer": "Technical hygiene (meta description, robots.txt, HTTPS redirect, Schema.org) takes one working day. Creating landing pages for clusters takes 2–4 weeks. First ranking improvements appear 2–4 weeks after indexing."
+        },
+        {
+          "question": "How do I find keyword clusters for my hotel?",
+          "answer": "Run a semantic analysis through tools like Ahrefs, SEMrush, or Serpstat. Collect all queries your site ranks for, group them by topic — and you'll see where the potential lies. For resort hotels, typical clusters include: pool, beach, getting there, rates, dining, and family-friendly."
+        }
+      ],
+      "tldr": "A resort hotel with a heated pool and beach 15 meters away. Over 1,000 keywords in search — all pointing to a single page. The \"pool\" cluster (80,000+ broad match searches/month) sits at positions 16–46 because there's no dedicated landing page. Google traffic dropped 38% in one year. Here's what breaks and how to fix it.",
+      "llmsSummary": "Real case study of a resort hotel: single-page website (Health Score 25/100) missing 80,000+ broad match monthly searches for 'hotel with pool' cluster, Google traffic down 38% year-over-year. Analysis of 7 semantic clusters, empty meta description, missing robots.txt/sitemap.xml/Schema.org. Prioritized fix plan — from quick wins in 1 day to creating landing pages for each keyword cluster."
+    },
     {
       "slug": "audit-sajta-otelya-keys-rushotel",
       "title": "Hotel Website Audit: Rus Hotel Case Study (Sarapul, Russia)",

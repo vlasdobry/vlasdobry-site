@@ -102,6 +102,7 @@ SOSTAC + PDCA: audit -> strategy -> launch -> control
 Latest articles on SEO, GEO, and digital marketing for hotels, DNA labs, and SPA.
 
 ### Recent Articles
+- /blog/odnostranichnyj-sajt-otelya-teryaet-trafik/ - Real case study: a resort hotel with 1,000+ keywords on one page, -38% traffic decline, and untapped potential worth 150K+ monthly searches.
 - /blog/audit-sajta-otelya-keys-rushotel/ - Real case study: SEO audit of two hotel websites, ad campaign analysis, and competitor research for a 3-star property in a small city.
 - /blog/analiz-konkurentov-otelya-keys/ - Real case study: how to analyze hotel competitors, which metrics matter, and what to do with the findings.
 - /blog/prioritizaciya-gorodov-seo-otelya/ - How to pick the right cities for hotel SEO using traffic quality metrics. A 4-tier prioritization framework with real data.
