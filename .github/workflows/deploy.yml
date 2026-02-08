@@ -83,31 +83,37 @@ jobs:
           script: |
             cd /opt/vlasdobry-site
 
-            echo "=== FILES IN /opt/vlasdobry-site ==="
-            ls -la /opt/vlasdobry-site/
-
-            echo "=== DOCKER-COMPOSE CONTENT ==="
-            cat /opt/vlasdobry-site/docker-compose.prod.yml
-
             echo "=== PULLING ==="
             sudo docker compose -f docker-compose.prod.yml pull
 
             echo "=== STARTING ==="
             sudo docker compose -f docker-compose.prod.yml up -d
 
-            echo "=== CONTAINER STATUS ==="
+            echo "=== WAITING 15s FOR NGINX ==="
+            sleep 15
+
+            echo "=== CONTAINER STATUS (after 15s) ==="
             sudo docker ps -a --filter name=vlasdobry
 
             echo "=== CONTAINER LOGS ==="
             sudo docker logs vlasdobry-site --tail 30 2>&1
 
-            echo "=== INTERNAL CURL ==="
+            echo "=== NGINX CONFIG INSIDE CONTAINER ==="
+            sudo docker exec vlasdobry-site cat /etc/nginx/conf.d/default.conf 2>&1 | head -5
+
+            echo "=== LISTENING PORTS INSIDE CONTAINER ==="
+            sudo docker exec vlasdobry-site sh -c "netstat -tlnp 2>/dev/null || ss -tlnp 2>/dev/null || echo NO-NETSTAT-OR-SS"
+
+            echo "=== WGET INSIDE CONTAINER ==="
             sudo docker exec vlasdobry-site wget -qO- http://localhost:80/ 2>&1 | head -5 || echo "WGET FAILED"
 
-            echo "=== TRAEFIK CONTAINERS ==="
-            sudo docker ps --filter name=traefik
+            echo "=== TRAEFIK ROUTERS (api) ==="
+            sudo docker exec traefik wget -qO- http://localhost:8080/api/http/routers 2>&1 | grep -o '"vlasdobry[^"]*"' || echo "NO TRAEFIK API OR NO VLASDOBRY ROUTER"
 
-            echo "=== NETWORK ==="
-            sudo docker network inspect web 2>&1 | grep -A 3 vlasdobry || echo "NOT IN WEB NETWORK"
+            echo "=== TRAEFIK LOGS (last 20) ==="
+            sudo docker logs traefik --tail 20 2>&1
+
+            echo "=== EXTERNAL CURL ==="
+            curl -sI https://vlasdobry.ru 2>&1 | head -10
 
             sudo docker image prune -f
