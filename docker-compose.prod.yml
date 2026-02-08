@@ -10,7 +10,7 @@ services:
       - "traefik.http.routers.vlasdobry.rule=Host(`vlasdobry.ru`) || Host(`www.vlasdobry.ru`)"
       - "traefik.http.routers.vlasdobry.entrypoints=websecure"
       - "traefik.http.routers.vlasdobry.tls.certresolver=letsencrypt"
-      - "traefik.http.services.vlasdobry.loadbalancer.server.port=8080"
+      - "traefik.http.services.vlasdobry.loadbalancer.server.port=80"
       # HSTS
       - "traefik.http.middlewares.vlasdobry-hsts.headers.stsSeconds=31536000"
       - "traefik.http.middlewares.vlasdobry-hsts.headers.stsIncludeSubdomains=true"
