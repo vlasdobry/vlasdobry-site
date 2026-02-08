@@ -14,7 +14,7 @@ export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const allowedOrigins = env.ALLOWED_ORIGINS.split(',');
     const origin = request.headers.get('Origin') || '';
-    const isAllowed = allowedOrigins.some(o => origin.startsWith(o.trim()));
+    const isAllowed = allowedOrigins.some(o => origin === o.trim());
 
     const corsHeaders = {
       'Access-Control-Allow-Origin': isAllowed ? origin : allowedOrigins[0],
@@ -39,6 +39,27 @@ export default {
 
       const cleanDomain = domain.replace(/^https?:\/\//, '').replace(/\/$/, '').split('/')[0];
 
+      // Block private/local domains
+      const blockedPatterns = [
+        /^localhost$/i,
+        /^127\./,
+        /^10\./,
+        /^172\.(1[6-9]|2\d|3[01])\./,
+        /^192\.168\./,
+        /^0\./,
+        /^169\.254\./,
+        /^\[/,           // IPv6
+        /\.local$/i,
+        /\.internal$/i,
+      ];
+
+      if (blockedPatterns.some(p => p.test(cleanDomain))) {
+        return Response.json(
+          { error: 'Domain not allowed' },
+          { status: 400, headers: corsHeaders }
+        );
+      }
+
       const results = await Promise.all([
         fetchResource(`https://${cleanDomain}/llms.txt`),
         fetchResource(`https://${cleanDomain}/llms-full.txt`),
@@ -56,10 +77,11 @@ export default {
         homepage: results[4],
       }, { headers: corsHeaders });
 
-    } catch (error) {
-      return Response.json({
-        error: error instanceof Error ? error.message : 'Unknown error'
-      }, { status: 500, headers: corsHeaders });
+    } catch {
+      return Response.json(
+        { error: 'Internal error' },
+        { status: 500, headers: corsHeaders }
+      );
     }
   },
 };

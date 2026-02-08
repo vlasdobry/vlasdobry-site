@@ -91,6 +91,7 @@ const translations = {
     errorNetwork: 'Не удалось подключиться. Проверьте интернет-соединение.',
     tryAgain: 'Попробовать снова',
     slowSite: 'Сайт отвечает медленно, ждём...',
+    invalidUrl: 'Введите корректный адрес сайта (например, https://myhotel.ru)',
   },
   en: {
     title: 'Check your website',
@@ -131,8 +132,23 @@ const translations = {
     errorNetwork: 'Connection failed. Check your internet.',
     tryAgain: 'Try again',
     slowSite: 'Site is responding slowly, please wait...',
+    invalidUrl: 'Enter a valid website address (e.g., https://myhotel.com)',
   },
 };
+
+function isValidDomain(input: string): boolean {
+  try {
+    const normalized = input.includes('://') ? input : `https://${input}`;
+    const parsed = new URL(normalized);
+    if (!['http:', 'https:'].includes(parsed.protocol)) return false;
+    if (['localhost', '127.0.0.1', '0.0.0.0'].includes(parsed.hostname)) return false;
+    if (/^(10\.|172\.(1[6-9]|2\d|3[01])\.|192\.168\.)/.test(parsed.hostname)) return false;
+    if (!/\./.test(parsed.hostname)) return false;
+    return true;
+  } catch {
+    return false;
+  }
+}
 
 // Circular score indicator
 const CircularScore: React.FC<{
@@ -290,6 +306,11 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
 
   const handleScan = async () => {
     if (!url.trim() || isScanning) return;
+    if (!isValidDomain(url)) {
+      setState('error');
+      setError('invalid_url');
+      return;
+    }
     setIsScanning(true);
 
     setState('loading');
@@ -551,7 +572,8 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
 
   // Render ERROR state
   const renderError = () => {
-    const errorMessage = error === 'timeout' ? t.errorTimeout
+    const errorMessage = error === 'invalid_url' ? t.invalidUrl
+      : error === 'timeout' ? t.errorTimeout
       : error === 'server_error' ? t.errorServer
       : t.errorNetwork;
 

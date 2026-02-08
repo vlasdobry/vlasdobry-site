@@ -130,7 +130,7 @@
   <!-- BLOG_START -->
   <url>
     <loc>https://vlasdobry.ru/blog/</loc>
-    <lastmod>2026-02-07</lastmod>
+    <lastmod>2026-02-08</lastmod>
     <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/"/>
     <changefreq>weekly</changefreq>
@@ -138,7 +138,7 @@
   </url>
   <url>
     <loc>https://vlasdobry.ru/en/blog/</loc>
-    <lastmod>2026-02-07</lastmod>
+    <lastmod>2026-02-08</lastmod>
     <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/"/>
     <changefreq>weekly</changefreq>

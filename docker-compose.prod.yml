@@ -10,12 +10,16 @@ services:
       - "traefik.http.routers.vlasdobry.rule=Host(`vlasdobry.ru`) || Host(`www.vlasdobry.ru`)"
       - "traefik.http.routers.vlasdobry.entrypoints=websecure"
       - "traefik.http.routers.vlasdobry.tls.certresolver=letsencrypt"
-      - "traefik.http.services.vlasdobry.loadbalancer.server.port=80"
+      - "traefik.http.services.vlasdobry.loadbalancer.server.port=8080"
+      # HSTS
+      - "traefik.http.middlewares.vlasdobry-hsts.headers.stsSeconds=31536000"
+      - "traefik.http.middlewares.vlasdobry-hsts.headers.stsIncludeSubdomains=true"
+      - "traefik.http.middlewares.vlasdobry-hsts.headers.stsPreload=true"
       # Редирект www -> без www
       - "traefik.http.middlewares.vlasdobry-redirect-www.redirectregex.regex=^https://www\\.vlasdobry\\.ru/(.*)"
       - "traefik.http.middlewares.vlasdobry-redirect-www.redirectregex.replacement=https://vlasdobry.ru/$${1}"
       - "traefik.http.middlewares.vlasdobry-redirect-www.redirectregex.permanent=true"
-      - "traefik.http.routers.vlasdobry.middlewares=vlasdobry-redirect-www"
+      - "traefik.http.routers.vlasdobry.middlewares=vlasdobry-hsts,vlasdobry-redirect-www"
     networks:
       - web
     logging:
