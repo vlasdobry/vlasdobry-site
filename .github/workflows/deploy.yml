@@ -82,6 +82,32 @@ jobs:
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
             cd /opt/vlasdobry-site
+
+            echo "=== FILES IN /opt/vlasdobry-site ==="
+            ls -la /opt/vlasdobry-site/
+
+            echo "=== DOCKER-COMPOSE CONTENT ==="
+            cat /opt/vlasdobry-site/docker-compose.prod.yml
+
+            echo "=== PULLING ==="
             sudo docker compose -f docker-compose.prod.yml pull
+
+            echo "=== STARTING ==="
             sudo docker compose -f docker-compose.prod.yml up -d
+
+            echo "=== CONTAINER STATUS ==="
+            sudo docker ps -a --filter name=vlasdobry
+
+            echo "=== CONTAINER LOGS ==="
+            sudo docker logs vlasdobry-site --tail 30 2>&1
+
+            echo "=== INTERNAL CURL ==="
+            sudo docker exec vlasdobry-site wget -qO- http://localhost:80/ 2>&1 | head -5 || echo "WGET FAILED"
+
+            echo "=== TRAEFIK CONTAINERS ==="
+            sudo docker ps --filter name=traefik
+
+            echo "=== NETWORK ==="
+            sudo docker network inspect web 2>&1 | grep -A 3 vlasdobry || echo "NOT IN WEB NETWORK"
+
             sudo docker image prune -f
