@@ -91,6 +91,7 @@ git push origin master  # Деплой на продакшен (автомати
 - SEO проверяет: Title, Description, H1, Viewport, Indexability, robots.txt, sitemap.xml, Schema.org
 - GEO проверяет: LLM Files (llms.txt + llms-full.txt), Schema.org, FAQ/Q&A, E-E-A-T сигналы, AI-доступность
 - Использует Cloudflare Worker (`health-score-proxy.vlasdobry.workers.dev`) как CORS-прокси
+- Клиентская валидация URL: блокирует localhost, приватные IP, домены без TLD
 - Таймаут 15 секунд с понятными сообщениями об ошибках
 - Анимированный процесс сканирования с разными этапами для SEO и GEO
 - Интегрирован в ServiceLanding для SEO и GEO страниц
@@ -107,7 +108,8 @@ git push origin master  # Деплой на продакшен (автомати
 - Ссылка на блог только в футере всех страниц
 - Авторинг: Claude пишет статьи, владелец утверждает
 
-**Текущие статьи блога (7 шт):**
+**Текущие статьи блога (8 шт):**
+- `odnostranichnyj-sajt-otelya-teryaet-trafik` — Как одностраничный сайт отеля теряет 80 000 запросов
 - `audit-sajta-otelya-keys-rushotel` — Экспресс-аудит сайта отеля: кейс Русь Отель (Сарапул)
 - `prioritizaciya-gorodov-seo-otelya` — Как приоритизировать города для SEO-продвижения отеля
 - `analiz-konkurentov-otelya-keys` — Анализ конкурентов для отеля: кейс Grace Luxor
@@ -196,6 +198,8 @@ git push origin master  # Деплой на продакшен (автомати
 | `src/i18n/` | Система переводов (types, ru, en, context) |
 | `src/utils/analytics.ts` | Централизованный трекинг Яндекс.Метрики |
 | `src/utils/healthScore/` | Логика расчёта Health Score (scoring, types, index) |
+| `nginx.conf` | Конфиг nginx: security headers, CSP, кэширование |
+| `workers/health-score-proxy/` | Cloudflare Worker: CORS-прокси с SSRF-защитой |
 | `.github/workflows/deploy.yml` | CI/CD: сборка Docker + деплой на сервер |
 | `public/llms.txt` | Инструкции для AI-систем (ASCII-only) |
 | `public/robots.txt` | Разрешения для поисковых и AI-ботов |
@@ -211,4 +215,11 @@ git push origin master  # Деплой на продакшен (автомати
 - gray-matter + marked (парсинг Markdown для блога)
 - Cloudflare Worker (CORS-прокси для Health Score)
 - Docker + GitHub Actions (CI/CD)
-- Хостинг: VPS (185.65.200.201) через Docker Compose
+- Хостинг: VPS (185.65.200.201) через Docker Compose + Traefik v2 (reverse proxy, TLS)
+
+**Безопасность:**
+- nginx: security headers (X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy, CSP) дублированы в каждом `location` блоке (nginx inheritance fix)
+- CSP разрешает: `esm.sh` (import map), `fonts.googleapis.com`, `fonts.gstatic.com`, `mc.yandex.ru`, `yastatic.net`, `avatars.githubusercontent.com`, `health-score-proxy.vlasdobry.workers.dev`
+- Cloudflare Worker: CORS strict match (`===`), SSRF-защита (блокировка приватных IP, localhost, .local, .internal)
+- Health Score: клиентская валидация URL перед отправкой на Worker
+- **НЕ добавлять HEALTHCHECK в Dockerfile** — Traefik v2 фильтрует unhealthy/starting контейнеры и убирает роутеры → 404
