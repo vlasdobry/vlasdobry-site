@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light only">
+    <meta name="robots" content="noindex, nofollow">
+    <title>404 — Страница не найдена | vlasdobry.ru</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* =================== BASE =================== */
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100svh;
+            background: #121212;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 40px 24px;
+            overflow: hidden;
+            position: relative;
+        }
+        @media (min-width: 640px) { body { padding: 48px; } }
+        @media (min-width: 1024px) { body { padding: 96px; } }
+
+        .logo {
+            position: absolute;
+            top: 40px;
+            left: 24px;
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            color: #fff;
+            text-decoration: none;
+            z-index: 10;
+        }
+        @media (min-width: 1024px) { .logo { top: 48px; left: 96px; } }
+
+        .label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.3);
+            margin-bottom: 40px;
+            z-index: 2;
+        }
+        .code {
+            display: flex;
+            font-size: clamp(5rem, 18vw, 12rem);
+            font-weight: 900;
+            line-height: 0.85;
+            letter-spacing: -0.05em;
+            color: #fff;
+            margin-bottom: 24px;
+            position: relative;
+            z-index: 2;
+        }
+        .digit, .zero { display: inline-block; }
+        .description {
+            font-size: clamp(16px, 2.5vw, 20px);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.5;
+            max-width: 420px;
+            margin-bottom: 48px;
+            z-index: 2;
+        }
+        .back {
+            display: block;
+            font-size: 14px;
+            font-weight: 300;
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 2px;
+            transition: border-color 0.2s;
+            z-index: 2;
+        }
+        .back:hover { border-color: rgba(255, 255, 255, 0.6); }
+
+        /* Seasonal elements — hidden by default */
+        .seasonal { display: none; }
+
+        /* =================== DEFAULT: spin + glitch =================== */
+        body.default .zero { animation: spin 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+        body.default .code { animation: glitch-skew 8s infinite; }
+        body.default .code::before,
+        body.default .code::after {
+            content: '404';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            font-size: inherit; font-weight: inherit;
+            line-height: inherit; letter-spacing: inherit;
+            display: flex;
+        }
+        body.default .code::before {
+            color: rgba(255,255,255,0.06);
+            animation: glitch-1 6s infinite linear;
+            clip-path: inset(0 0 80% 0);
+        }
+        body.default .code::after {
+            color: rgba(255,255,255,0.04);
+            animation: glitch-2 6s infinite linear;
+            clip-path: inset(80% 0 0 0);
+        }
+        @keyframes spin {
+            0%, 70% { transform: rotate(0deg); }
+            85% { transform: rotate(360deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes glitch-1 {
+            0%, 87% { transform: translate(0); }
+            88% { transform: translate(-4px, -2px); }
+            89% { transform: translate(4px, 1px); }
+            90% { transform: translate(-2px, 3px); }
+            91%, 100% { transform: translate(0); }
+        }
+        @keyframes glitch-2 {
+            0%, 92% { transform: translate(0); }
+            93% { transform: translate(3px, 2px); }
+            94% { transform: translate(-3px, -1px); }
+            95% { transform: translate(2px, -2px); }
+            96%, 100% { transform: translate(0); }
+        }
+        @keyframes glitch-skew {
+            0%, 93% { transform: skew(0deg); }
+            94% { transform: skew(-1deg); }
+            95% { transform: skew(0.5deg); }
+            96%, 100% { transform: skew(0deg); }
+        }
+
+        /* =================== HALLOWEEN (Oct 25-31) =================== */
+        body.halloween .seasonal.halloween { display: block; }
+        .ghost {
+            position: fixed;
+            font-size: clamp(28px, 5vw, 48px);
+            opacity: 0;
+            z-index: 1;
+            pointer-events: none;
+            animation: ghost-float linear infinite;
+        }
+        .ghost:nth-child(1) { left: 10%; animation-duration: 12s; animation-delay: 0s; }
+        .ghost:nth-child(2) { left: 30%; animation-duration: 15s; animation-delay: 3s; }
+        .ghost:nth-child(3) { left: 55%; animation-duration: 10s; animation-delay: 6s; }
+        .ghost:nth-child(4) { left: 75%; animation-duration: 14s; animation-delay: 1s; }
+        .ghost:nth-child(5) { left: 90%; animation-duration: 11s; animation-delay: 8s; }
+        @keyframes ghost-float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.15; }
+            50% { opacity: 0.08; }
+            90% { opacity: 0.12; }
+            100% { transform: translateY(-100vh) rotate(15deg); opacity: 0; }
+        }
+        body.halloween .zero { animation: spin 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+
+        /* =================== NEW YEAR (Dec 25 - Jan 7) =================== */
+        body.newyear .seasonal.newyear { display: block; }
+        body.newyear .code { animation: none; }
+        body.newyear .digit,
+        body.newyear .zero {
+            transform-origin: top center;
+            position: relative;
+        }
+        body.newyear .digit:first-child { animation: swing 3s ease-in-out infinite; }
+        body.newyear .zero { animation: swing 3.5s ease-in-out 0.3s infinite; }
+        body.newyear .digit:last-child { animation: swing 2.8s ease-in-out 0.6s infinite; }
+        body.newyear .digit::before,
+        body.newyear .zero::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            width: 1px;
+            height: 20px;
+            background: rgba(255,255,255,0.2);
+        }
+        @keyframes swing {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+        .snowflake {
+            position: fixed;
+            color: #fff;
+            font-size: clamp(10px, 2vw, 18px);
+            opacity: 0;
+            z-index: 1;
+            pointer-events: none;
+            animation: snowfall linear infinite;
+        }
+        .snowflake:nth-child(1) { left: 5%; animation-duration: 8s; animation-delay: 0s; }
+        .snowflake:nth-child(2) { left: 15%; animation-duration: 12s; animation-delay: 2s; }
+        .snowflake:nth-child(3) { left: 28%; animation-duration: 9s; animation-delay: 4s; }
+        .snowflake:nth-child(4) { left: 42%; animation-duration: 11s; animation-delay: 1s; }
+        .snowflake:nth-child(5) { left: 58%; animation-duration: 10s; animation-delay: 5s; }
+        .snowflake:nth-child(6) { left: 72%; animation-duration: 13s; animation-delay: 3s; }
+        .snowflake:nth-child(7) { left: 85%; animation-duration: 9s; animation-delay: 7s; }
+        .snowflake:nth-child(8) { left: 95%; animation-duration: 11s; animation-delay: 2s; }
+        @keyframes snowfall {
+            0% { transform: translateY(-20px) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.3; }
+            90% { opacity: 0.15; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* =================== VALENTINE (Feb 14) =================== */
+        body.valentine .zero {
+            color: #e8384f;
+            animation: heartbeat 1.2s ease-in-out infinite;
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            14% { transform: scale(1.1); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.08); }
+            56% { transform: scale(1); }
+        }
+        body.valentine .code { animation: none; }
+
+        /* =================== APRIL FOOLS (Apr 1) =================== */
+        body.aprilfools .main-content { display: none; }
+        body.aprilfools .seasonal.aprilfools { display: flex; }
+        .aprilfools-loader {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            background: #121212;
+        }
+        .loader-text {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-weight: 700;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 24px;
+        }
+        .loader-bar {
+            width: min(280px, 70vw);
+            height: 2px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 1px;
+            overflow: hidden;
+        }
+        .loader-fill {
+            height: 100%;
+            width: 0%;
+            background: #fff;
+            transition: width 0.3s linear;
+        }
+        .loader-percent {
+            margin-top: 12px;
+            font-size: 11px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.3);
+            font-variant-numeric: tabular-nums;
+        }
+        body.aprilfools.revealed .aprilfools-loader { display: none; }
+        body.aprilfools.revealed .main-content { display: contents; }
+
+        /* =================== FRIDAY 13TH =================== */
+        body.friday13 .zero { animation: spin 3s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+        body.friday13 .code {
+            animation: glitch-skew-heavy 2s infinite;
+        }
+        body.friday13 .code::before,
+        body.friday13 .code::after {
+            content: '404';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            font-size: inherit; font-weight: inherit;
+            line-height: inherit; letter-spacing: inherit;
+            display: flex;
+        }
+        body.friday13 .code::before {
+            color: rgba(255,50,50,0.12);
+            animation: glitch-heavy-1 1.5s infinite linear;
+            clip-path: inset(0 0 60% 0);
+        }
+        body.friday13 .code::after {
+            color: rgba(255,50,50,0.08);
+            animation: glitch-heavy-2 1.5s infinite linear;
+            clip-path: inset(60% 0 0 0);
+        }
+        @keyframes glitch-heavy-1 {
+            0%, 40% { transform: translate(0); }
+            41% { transform: translate(-8px, -4px); }
+            43% { transform: translate(6px, 2px); }
+            45% { transform: translate(-4px, 5px); }
+            47% { transform: translate(8px, -3px); }
+            49%, 70% { transform: translate(0); }
+            71% { transform: translate(5px, -6px); }
+            73% { transform: translate(-7px, 3px); }
+            75%, 100% { transform: translate(0); }
+        }
+        @keyframes glitch-heavy-2 {
+            0%, 50% { transform: translate(0); }
+            51% { transform: translate(6px, 3px); }
+            53% { transform: translate(-5px, -4px); }
+            55% { transform: translate(7px, -2px); }
+            57%, 80% { transform: translate(0); }
+            81% { transform: translate(-6px, 4px); }
+            83% { transform: translate(4px, -5px); }
+            85%, 100% { transform: translate(0); }
+        }
+        @keyframes glitch-skew-heavy {
+            0%, 30% { transform: skew(0deg); }
+            31% { transform: skew(-2deg); }
+            33% { transform: skew(1.5deg); }
+            35%, 60% { transform: skew(0deg); }
+            61% { transform: skew(2deg); }
+            63% { transform: skew(-1deg); }
+            65%, 100% { transform: skew(0deg); }
+        }
+        body.friday13 { animation: flicker 4s infinite; }
+        @keyframes flicker {
+            0%, 49% { opacity: 1; }
+            50% { opacity: 0.85; }
+            51% { opacity: 1; }
+            52% { opacity: 0.9; }
+            53%, 100% { opacity: 1; }
+        }
+        /* Red flash overlay */
+        body.friday13 .seasonal.friday13 { display: block; }
+        .red-flash {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at center, rgba(120,0,0,0.25) 0%, transparent 70%);
+            opacity: 0;
+            z-index: 0;
+            pointer-events: none;
+            transition: opacity 0.1s;
+        }
+        .red-flash.active { opacity: 1; transition: opacity 0.05s; }
+        /* Slow zoom — creeping unease */
+        body.friday13 .main-content {
+            animation: creep-zoom 30s ease-in forwards;
+        }
+        @keyframes creep-zoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.06); }
+        }
+        /* Eyes in the dark */
+        .eyes {
+            position: fixed;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.6s;
+            display: flex;
+            gap: 12px;
+        }
+        .eyes.visible { opacity: 1; }
+        .eye {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.1);
+        }
+        .eyes.blink .eye { transform: scaleY(0.1); transition: transform 0.1s; }
+        .eye { transition: transform 0.1s; }
+        /* Hockey mask */
+        .mask { display: none; }
+        body.friday13 .zero { display: none; }
+        body.friday13 .mask {
+            display: inline-block;
+            height: 0.9em;
+            width: auto;
+            vertical-align: baseline;
+            margin: 0 -0.02em;
+            filter: drop-shadow(0 0 20px rgba(255,50,50,0.15));
+        }
+
+        /* =================== MARCH 8 =================== */
+        body.march8 .seasonal.march8 { display: block; }
+        body.march8 .code {
+            animation: none;
+            font-style: italic;
+            background: linear-gradient(135deg, #e8a0bf, #d4a574, #e8a0bf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        body.march8 .zero {
+            animation: none;
+            -webkit-text-fill-color: transparent;
+        }
+        .petal {
+            position: fixed;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            animation: petal-fall linear infinite;
+        }
+        .petal::before {
+            content: '';
+            display: block;
+            width: clamp(8px, 1.5vw, 14px);
+            height: clamp(12px, 2vw, 20px);
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+        }
+        .petal:nth-child(1) { left: 6%; animation-duration: 9s; animation-delay: 0s; }
+        .petal:nth-child(1)::before { background: rgba(232, 160, 191, 0.5); }
+        .petal:nth-child(2) { left: 18%; animation-duration: 11s; animation-delay: 2s; }
+        .petal:nth-child(2)::before { background: rgba(212, 165, 116, 0.4); }
+        .petal:nth-child(3) { left: 32%; animation-duration: 8s; animation-delay: 4s; }
+        .petal:nth-child(3)::before { background: rgba(232, 180, 200, 0.45); }
+        .petal:nth-child(4) { left: 45%; animation-duration: 10s; animation-delay: 1s; }
+        .petal:nth-child(4)::before { background: rgba(200, 160, 140, 0.35); }
+        .petal:nth-child(5) { left: 58%; animation-duration: 12s; animation-delay: 5s; }
+        .petal:nth-child(5)::before { background: rgba(232, 160, 191, 0.4); }
+        .petal:nth-child(6) { left: 72%; animation-duration: 9s; animation-delay: 3s; }
+        .petal:nth-child(6)::before { background: rgba(220, 175, 155, 0.45); }
+        .petal:nth-child(7) { left: 85%; animation-duration: 11s; animation-delay: 6s; }
+        .petal:nth-child(7)::before { background: rgba(232, 170, 195, 0.35); }
+        .petal:nth-child(8) { left: 94%; animation-duration: 10s; animation-delay: 1.5s; }
+        .petal:nth-child(8)::before { background: rgba(212, 165, 116, 0.4); }
+        @keyframes petal-fall {
+            0% { transform: translateY(105vh) rotate(0deg); opacity: 0; }
+            8% { opacity: 0.7; }
+            50% { opacity: 0.4; transform: translateY(50vh) rotate(120deg) translateX(20px); }
+            75% { opacity: 0.5; }
+            100% { transform: translateY(-10vh) rotate(280deg) translateX(-15px); opacity: 0; }
+        }
+
+        /* =================== FEB 23 =================== */
+        body.feb23 .code {
+            animation: none;
+            letter-spacing: 0.1em;
+            -webkit-text-stroke: 2px #fff;
+            color: transparent;
+        }
+        body.feb23 .zero {
+            animation: none;
+            -webkit-text-stroke: 2px #fff;
+            color: transparent;
+        }
+        @media (min-width: 640px) {
+            body.feb23 .code,
+            body.feb23 .zero { -webkit-text-stroke: 3px #fff; }
+        }
+    </style>
+</head>
+<body>
+    <!-- April Fools loader (hidden by default) -->
+    <div class="seasonal aprilfools">
+        <div class="aprilfools-loader">
+            <div class="loader-text">Loading page</div>
+            <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+            <div class="loader-percent" id="loaderPercent">0%</div>
+        </div>
+    </div>
+
+    <!-- Halloween ghosts -->
+    <div class="seasonal halloween">
+        <div class="ghost">&#128123;</div>
+        <div class="ghost">&#128123;</div>
+        <div class="ghost">&#128123;</div>
+        <div class="ghost">&#128123;</div>
+        <div class="ghost">&#128123;</div>
+    </div>
+
+    <!-- New Year snowflakes -->
+    <div class="seasonal newyear">
+        <div class="snowflake">&#10052;</div>
+        <div class="snowflake">&#10053;</div>
+        <div class="snowflake">&#10052;</div>
+        <div class="snowflake">&#10053;</div>
+        <div class="snowflake">&#10052;</div>
+        <div class="snowflake">&#10053;</div>
+        <div class="snowflake">&#10052;</div>
+        <div class="snowflake">&#10053;</div>
+    </div>
+
+    <!-- Friday 13th effects -->
+    <div class="seasonal friday13">
+        <div class="red-flash" id="redFlash"></div>
+        <div class="eyes" id="eyes"><div class="eye"></div><div class="eye"></div></div>
+    </div>
+
+    <!-- March 8 petals -->
+    <div class="seasonal march8">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+    </div>
+
+    <!-- Logo (outside main-content to avoid transform context) -->
+    <a href="/" class="logo">VD.</a>
+
+    <!-- Main content -->
+    <div class="main-content">
+        <div class="label" id="label">Page not found</div>
+        <div class="code"><span class="digit">4</span><span class="zero">0</span><svg class="mask" viewBox="0 0 100 130" fill="none" xmlns="http://www.w3.org/2000/svg"><!-- Mask shape --><path d="M50 3C28 3 10 25 10 55c0 22 8 40 16 50 6 7 14 14 24 17 10-3 18-10 24-17 8-10 16-28 16-50C90 25 72 3 50 3z" fill="#e8e4e0" stroke="#c8c4c0" stroke-width="1"/><!-- Forehead holes row 1 --><circle cx="38" cy="20" r="2" fill="#121212"/><circle cx="50" cy="18" r="2" fill="#121212"/><circle cx="62" cy="20" r="2" fill="#121212"/><!-- Forehead holes row 2 --><circle cx="32" cy="28" r="2" fill="#121212"/><circle cx="44" cy="27" r="2" fill="#121212"/><circle cx="56" cy="27" r="2" fill="#121212"/><circle cx="68" cy="28" r="2" fill="#121212"/><!-- Forehead holes row 3 --><circle cx="36" cy="36" r="1.8" fill="#121212"/><circle cx="50" cy="35" r="1.8" fill="#121212"/><circle cx="64" cy="36" r="1.8" fill="#121212"/><!-- Red chevron above eyes --><path d="M36 42l14-10 14 10" stroke="#c0392b" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><!-- Eye holes --><path d="M22 50c0-4 5-10 12-10s12 6 12 10-5 8-12 8-12-4-12-8z" fill="#121212"/><path d="M54 50c0-4 5-10 12-10s12 6 12 10-5 8-12 8-12-4-12-8z" fill="#121212"/><!-- Nose holes --><circle cx="46" cy="68" r="2.5" fill="#121212"/><circle cx="54" cy="68" r="2.5" fill="#121212"/><!-- Red marks below eyes --><path d="M26 62l5 10" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/><path d="M29 62l5 10" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/><path d="M74 62l-5 10" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/><path d="M71 62l-5 10" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/><!-- Chin holes --><circle cx="40" cy="85" r="1.5" fill="#121212"/><circle cx="50" cy="84" r="1.5" fill="#121212"/><circle cx="60" cy="85" r="1.5" fill="#121212"/><circle cx="44" cy="92" r="1.5" fill="#121212"/><circle cx="56" cy="92" r="1.5" fill="#121212"/><circle cx="50" cy="99" r="1.5" fill="#121212"/><!-- Side rivets --><circle cx="14" cy="52" r="3" fill="#888" stroke="#666" stroke-width="1"/><circle cx="86" cy="52" r="3" fill="#888" stroke="#666" stroke-width="1"/><circle cx="16" cy="70" r="2.5" fill="#888" stroke="#666" stroke-width="1"/><circle cx="84" cy="70" r="2.5" fill="#888" stroke="#666" stroke-width="1"/></svg><span class="digit">4</span></div>
+        <p class="description" id="desc">Страница не найдена. Возможно, она была перемещена или удалена.</p>
+        <a href="/" class="back">На главную</a>
+    </div>
+
+    <script>
+        (function() {
+            var d = new Date();
+            var month = d.getMonth() + 1;
+            var day = d.getDate();
+            var dow = d.getDay();
+            var theme = 'default';
+            var label = 'Page not found';
+            var desc = 'Страница не найдена. Возможно, она была перемещена или удалена.';
+
+            // Check URL param for testing: ?theme=halloween
+            var params = new URLSearchParams(window.location.search);
+            var forced = params.get('theme');
+
+            if (forced) {
+                theme = forced;
+            } else if (month === 10 && day >= 25 && day <= 31) {
+                theme = 'halloween';
+            } else if ((month === 12 && day >= 25) || (month === 1 && day <= 7)) {
+                theme = 'newyear';
+            } else if (month === 2 && day === 14) {
+                theme = 'valentine';
+            } else if (month === 4 && day === 1) {
+                theme = 'aprilfools';
+            } else if (dow === 5 && day === 13) {
+                theme = 'friday13';
+            } else if (month === 3 && day === 8) {
+                theme = 'march8';
+            } else if (month === 2 && day === 23) {
+                theme = 'feb23';
+            }
+
+            // Theme-specific text
+            switch (theme) {
+                case 'halloween':
+                    label = 'Boo!';
+                    desc = 'Даже призраки не нашли эту страницу.';
+                    break;
+                case 'newyear':
+                    label = 'Happy 404!';
+                    desc = 'Эта страница ушла праздновать. Вернётся... может быть.';
+                    break;
+                case 'valentine':
+                    label = 'Heartbroken';
+                    desc = 'Эта страница ушла к другому сайту.';
+                    break;
+                case 'aprilfools':
+                    label = 'Almost...';
+                    desc = 'Почти получилось. Но нет.';
+                    break;
+                case 'friday13':
+                    label = 'Friday the 13th';
+                    desc = 'Мы предупреждали.';
+                    break;
+                case 'march8':
+                    label = 'Day off';
+                    desc = 'Эта страница взяла выходной. Имеет право.';
+                    break;
+                case 'feb23':
+                    label = 'Stand at ease';
+                    desc = 'Страница на службе. Вольно.';
+                    break;
+            }
+
+            document.body.classList.add(theme);
+            document.getElementById('label').textContent = label;
+            document.getElementById('desc').textContent = desc;
+
+            // Friday 13th: red flash + eyes
+            if (theme === 'friday13') {
+                var flash = document.getElementById('redFlash');
+                var eyes = document.getElementById('eyes');
+
+                // Random red flash every 5-12 seconds
+                function redFlash() {
+                    flash.classList.add('active');
+                    setTimeout(function() { flash.classList.remove('active'); }, 150);
+                    setTimeout(redFlash, 5000 + Math.random() * 7000);
+                }
+                setTimeout(redFlash, 3000 + Math.random() * 4000);
+
+                // Eyes appear at random position, blink, disappear
+                function spawnEyes() {
+                    var x = 15 + Math.random() * 70;
+                    var y = 10 + Math.random() * 60;
+                    eyes.style.left = x + '%';
+                    eyes.style.top = y + '%';
+                    eyes.classList.remove('blink');
+                    eyes.classList.add('visible');
+
+                    // Blink after 1.5-3s
+                    var blinkDelay = 1500 + Math.random() * 1500;
+                    setTimeout(function() {
+                        eyes.classList.add('blink');
+                        setTimeout(function() {
+                            eyes.classList.remove('blink');
+                            // Second blink
+                            setTimeout(function() {
+                                eyes.classList.add('blink');
+                                setTimeout(function() {
+                                    eyes.classList.remove('blink');
+                                    // Fade out
+                                    setTimeout(function() {
+                                        eyes.classList.remove('visible');
+                                    }, 800);
+                                }, 150);
+                            }, 400);
+                        }, 150);
+                    }, blinkDelay);
+
+                    // Next eyes in 8-18 seconds
+                    setTimeout(spawnEyes, 8000 + Math.random() * 10000);
+                }
+                setTimeout(spawnEyes, 5000 + Math.random() * 3000);
+            }
+
+            // April Fools: fake loading
+            if (theme === 'aprilfools') {
+                var fill = document.getElementById('loaderFill');
+                var pct = document.getElementById('loaderPercent');
+                var progress = 0;
+                var steps = [
+                    [30, 800], [55, 600], [72, 900],
+                    [88, 500], [94, 700], [97, 1000],
+                    [98, 800], [99, 1200]
+                ];
+                var i = 0;
+                function step() {
+                    if (i < steps.length) {
+                        progress = steps[i][0];
+                        fill.style.width = progress + '%';
+                        pct.textContent = progress + '%';
+                        setTimeout(step, steps[i][1]);
+                        i++;
+                    } else {
+                        // "Fail" at 99%
+                        setTimeout(function() {
+                            document.body.classList.add('revealed');
+                        }, 600);
+                    }
+                }
+                step();
+            }
+        })();
+    </script>
+</body>
+</html>
