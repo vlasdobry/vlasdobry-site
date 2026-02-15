@@ -54,7 +54,7 @@
         }
         .code {
             display: flex;
-            font-size: clamp(5rem, 18vw, 12rem);
+            font-size: clamp(7rem, 25vw, 12rem);
             font-weight: 900;
             line-height: 0.85;
             letter-spacing: -0.05em;
@@ -142,6 +142,7 @@
         body.halloween .seasonal.halloween { display: block; }
         .ghost {
             position: fixed;
+            top: 0;
             font-size: clamp(28px, 5vw, 48px);
             opacity: 0;
             z-index: 1;
@@ -189,6 +190,7 @@
         }
         .snowflake {
             position: fixed;
+            top: 0;
             color: #fff;
             font-size: clamp(10px, 2vw, 18px);
             opacity: 0;
@@ -400,6 +402,7 @@
         }
         .petal {
             position: fixed;
+            top: 0;
             z-index: 1;
             pointer-events: none;
             opacity: 0;
@@ -437,6 +440,58 @@
             100% { transform: translateY(-10vh) rotate(280deg) translateX(-15px); opacity: 0; }
         }
 
+        /* =================== DIA DE LOS MUERTOS (Nov 1-2) =================== */
+        body.muertos .seasonal.muertos { display: block; }
+        body.muertos .code { animation: none; }
+        body.muertos .zero { display: none; }
+        body.muertos .skull { display: inline-block; }
+        .skull {
+            display: none;
+            height: 0.95em;
+            width: auto;
+            vertical-align: baseline;
+            margin: 0 -0.02em;
+        }
+        .marigold {
+            position: fixed;
+            top: 0;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            animation: marigold-fall linear infinite;
+        }
+        .marigold::before {
+            content: '';
+            display: block;
+            width: clamp(6px, 1.2vw, 10px);
+            height: clamp(10px, 1.8vw, 16px);
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+        }
+        .marigold:nth-child(1) { left: 5%; animation-duration: 10s; animation-delay: 0s; }
+        .marigold:nth-child(1)::before { background: rgba(232, 130, 12, 0.5); }
+        .marigold:nth-child(2) { left: 16%; animation-duration: 13s; animation-delay: 2s; }
+        .marigold:nth-child(2)::before { background: rgba(245, 158, 11, 0.4); }
+        .marigold:nth-child(3) { left: 30%; animation-duration: 9s; animation-delay: 5s; }
+        .marigold:nth-child(3)::before { background: rgba(234, 88, 12, 0.45); }
+        .marigold:nth-child(4) { left: 44%; animation-duration: 11s; animation-delay: 1s; }
+        .marigold:nth-child(4)::before { background: rgba(251, 191, 36, 0.35); }
+        .marigold:nth-child(5) { left: 57%; animation-duration: 12s; animation-delay: 4s; }
+        .marigold:nth-child(5)::before { background: rgba(232, 130, 12, 0.4); }
+        .marigold:nth-child(6) { left: 70%; animation-duration: 10s; animation-delay: 7s; }
+        .marigold:nth-child(6)::before { background: rgba(245, 158, 11, 0.45); }
+        .marigold:nth-child(7) { left: 83%; animation-duration: 14s; animation-delay: 3s; }
+        .marigold:nth-child(7)::before { background: rgba(234, 88, 12, 0.35); }
+        .marigold:nth-child(8) { left: 93%; animation-duration: 11s; animation-delay: 6s; }
+        .marigold:nth-child(8)::before { background: rgba(251, 191, 36, 0.5); }
+        @keyframes marigold-fall {
+            0% { transform: translateY(-20px) rotate(0deg); opacity: 0; }
+            8% { opacity: 0.6; }
+            50% { opacity: 0.35; transform: translateY(50vh) rotate(150deg) translateX(15px); }
+            75% { opacity: 0.5; }
+            100% { transform: translateY(105vh) rotate(300deg) translateX(-10px); opacity: 0; }
+        }
+
         /* =================== FEB 23 =================== */
         body.feb23 .code {
             animation: none;
@@ -452,6 +507,164 @@
         @media (min-width: 640px) {
             body.feb23 .code,
             body.feb23 .zero { -webkit-text-stroke: 3px #fff; }
+        }
+
+        /* =================== PI DAY (Mar 14) =================== */
+        body.piday .code { animation: none; }
+        body.piday .zero { display: none; }
+        body.piday .pi-symbol { display: inline-block; font-style: italic; }
+        .pi-symbol { display: none; }
+        body.piday .seasonal.piday { display: block; }
+        .pi-digit {
+            position: fixed;
+            top: 0;
+            font-family: 'Inter', sans-serif;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.05);
+            font-size: clamp(16px, 3vw, 28px);
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            animation: pi-rise linear infinite;
+        }
+        @keyframes pi-rise {
+            0% { transform: translateY(100vh); opacity: 0; }
+            5% { opacity: 1; }
+            95% { opacity: 1; }
+            100% { transform: translateY(-10vh); opacity: 0; }
+        }
+
+        /* =================== PROGRAMMER'S DAY (day 256) =================== */
+        body.programmer .seasonal.programmer { display: block; }
+        body.programmer .code {
+            animation: none;
+            color: #00ff41;
+            text-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+        }
+        body.programmer .zero { animation: none; color: #00ff41; }
+        body.programmer .label { color: rgba(0, 255, 65, 0.4); }
+        body.programmer .description { color: rgba(0, 255, 65, 0.3); }
+        body.programmer .back { color: #00ff41; border-color: rgba(0, 255, 65, 0.2); }
+        body.programmer .back:hover { border-color: rgba(0, 255, 65, 0.6); }
+        .binary-col {
+            position: fixed;
+            top: 0;
+            font-family: 'Courier New', monospace;
+            font-size: clamp(10px, 1.2vw, 14px);
+            line-height: 1.6;
+            color: rgba(0, 255, 65, 0.07);
+            z-index: 1;
+            pointer-events: none;
+            white-space: pre;
+            animation: bin-fall linear infinite;
+        }
+        @keyframes bin-fall {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+
+        /* =================== STAR WARS DAY (May 4) =================== */
+        body.starwars .seasonal.starwars { display: block; }
+        body.starwars .code { animation: none; color: #ffe81f; }
+        body.starwars .zero { display: none; }
+        body.starwars .label { color: rgba(255, 232, 31, 0.4); }
+        .vader { display: none; }
+        body.starwars .vader {
+            display: inline-block;
+            height: 0.85em;
+            width: auto;
+            vertical-align: baseline;
+            margin: 0 0.02em;
+            filter: drop-shadow(0 0 20px rgba(255, 232, 31, 0.3));
+        }
+        .sw-star {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            z-index: 1;
+            pointer-events: none;
+            animation: hyperstar var(--dur, 1.5s) linear forwards;
+        }
+        @keyframes hyperstar {
+            0% {
+                transform: rotate(var(--a, 0deg)) translateY(0) scaleY(1);
+                opacity: 0;
+            }
+            5% { opacity: 0.7; }
+            100% {
+                transform: rotate(var(--a, 0deg)) translateY(-85vh) scaleY(6);
+                opacity: 0;
+            }
+        }
+
+        /* =================== COSMONAUTICS DAY (Apr 12) =================== */
+        body.cosmo .seasonal.cosmo { display: block; }
+        body.cosmo .code { animation: none; }
+        body.cosmo .zero {
+            display: inline-block;
+            animation: float-away 8s ease-in forwards;
+        }
+        @keyframes float-away {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            60% { opacity: 0.6; }
+            100% { transform: translateY(-60vh) rotate(180deg); opacity: 0; }
+        }
+        .twinkle-star {
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            z-index: 1;
+            pointer-events: none;
+            animation: twinkle ease-in-out infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.05; }
+            50% { opacity: 0.4; }
+        }
+
+        /* =================== SUMMER SOLSTICE (Jun 21) =================== */
+        body.solstice {
+            background: #fafaf8;
+            color: #121212;
+        }
+        body.solstice .logo { color: #121212; }
+        body.solstice .code { animation: none; color: #121212; }
+        body.solstice .zero { animation: none; color: #c8940a; }
+        body.solstice .label { color: rgba(18, 18, 18, 0.3); }
+        body.solstice .description { color: rgba(18, 18, 18, 0.5); }
+        body.solstice .back { color: #121212; border-color: rgba(18, 18, 18, 0.2); }
+        body.solstice .back:hover { border-color: rgba(18, 18, 18, 0.6); }
+        body.solstice::after {
+            content: '';
+            position: fixed;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 200, 50, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* =================== RUSSIA DAY (Jun 12) =================== */
+        body.russia .code {
+            animation: none;
+            background: linear-gradient(180deg, #fff 0%, #fff 33%, #0039a6 33%, #0039a6 66%, #d52b1e 66%, #d52b1e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        body.russia .zero {
+            animation: none;
+            -webkit-text-fill-color: transparent;
         }
     </style>
 </head>
@@ -492,6 +705,18 @@
         <div class="eyes" id="eyes"><div class="eye"></div><div class="eye"></div></div>
     </div>
 
+    <!-- Dia de los Muertos marigold petals -->
+    <div class="seasonal muertos">
+        <div class="marigold"></div>
+        <div class="marigold"></div>
+        <div class="marigold"></div>
+        <div class="marigold"></div>
+        <div class="marigold"></div>
+        <div class="marigold"></div>
+        <div class="marigold"></div>
+        <div class="marigold"></div>
+    </div>
+
     <!-- March 8 petals -->
     <div class="seasonal march8">
         <div class="petal"></div>
@@ -504,13 +729,25 @@
         <div class="petal"></div>
     </div>
 
+    <!-- Pi Day digits (JS-generated) -->
+    <div class="seasonal piday" id="piContainer"></div>
+
+    <!-- Programmer's Day binary rain (JS-generated) -->
+    <div class="seasonal programmer" id="progContainer"></div>
+
+    <!-- Star Wars hyperspace (JS-generated) -->
+    <div class="seasonal starwars" id="swContainer"></div>
+
+    <!-- Cosmonautics Day stars (JS-generated) -->
+    <div class="seasonal cosmo" id="cosmoContainer"></div>
+
     <!-- Logo (outside main-content to avoid transform context) -->
     <a href="/" class="logo">VD.</a>
 
     <!-- Main content -->
     <div class="main-content">
         <div class="label" id="label">Page not found</div>
-        <div class="code"><span class="digit">4</span><span class="zero">0</span><svg class="mask" viewBox="0 0 100 130" fill="none" xmlns="http://www.w3.org/2000/svg"><!-- Mask shape --><path d="M50 3C28 3 10 25 10 55c0 22 8 40 16 50 6 7 14 14 24 17 10-3 18-10 24-17 8-10 16-28 16-50C90 25 72 3 50 3z" fill="#e8e4e0" stroke="#c8c4c0" stroke-width="1"/><!-- Forehead holes row 1 --><circle cx="38" cy="20" r="2" fill="#121212"/><circle cx="50" cy="18" r="2" fill="#121212"/><circle cx="62" cy="20" r="2" fill="#121212"/><!-- Forehead holes row 2 --><circle cx="32" cy="28" r="2" fill="#121212"/><circle cx="44" cy="27" r="2" fill="#121212"/><circle cx="56" cy="27" r="2" fill="#121212"/><circle cx="68" cy="28" r="2" fill="#121212"/><!-- Forehead holes row 3 --><circle cx="36" cy="36" r="1.8" fill="#121212"/><circle cx="50" cy="35" r="1.8" fill="#121212"/><circle cx="64" cy="36" r="1.8" fill="#121212"/><!-- Red chevron above eyes --><path d="M36 42l14-10 14 10" stroke="#c0392b" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><!-- Eye holes --><path d="M22 50c0-4 5-10 12-10s12 6 12 10-5 8-12 8-12-4-12-8z" fill="#121212"/><path d="M54 50c0-4 5-10 12-10s12 6 12 10-5 8-12 8-12-4-12-8z" fill="#121212"/><!-- Nose holes --><circle cx="46" cy="68" r="2.5" fill="#121212"/><circle cx="54" cy="68" r="2.5" fill="#121212"/><!-- Red marks below eyes --><path d="M26 62l5 10" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/><path d="M29 62l5 10" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/><path d="M74 62l-5 10" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/><path d="M71 62l-5 10" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/><!-- Chin holes --><circle cx="40" cy="85" r="1.5" fill="#121212"/><circle cx="50" cy="84" r="1.5" fill="#121212"/><circle cx="60" cy="85" r="1.5" fill="#121212"/><circle cx="44" cy="92" r="1.5" fill="#121212"/><circle cx="56" cy="92" r="1.5" fill="#121212"/><circle cx="50" cy="99" r="1.5" fill="#121212"/><!-- Side rivets --><circle cx="14" cy="52" r="3" fill="#888" stroke="#666" stroke-width="1"/><circle cx="86" cy="52" r="3" fill="#888" stroke="#666" stroke-width="1"/><circle cx="16" cy="70" r="2.5" fill="#888" stroke="#666" stroke-width="1"/><circle cx="84" cy="70" r="2.5" fill="#888" stroke="#666" stroke-width="1"/></svg><span class="digit">4</span></div>
+        <div class="code"><span class="digit">4</span><span class="zero">0</span><span class="pi-symbol">&pi;</span><svg class="vader" viewBox="0 0 216 195" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M204,177C205.944,175.494 210.702,174.024 212.496,172.428L180,95.25C180,95.25 151.146,9 115.548,9L100.452,9C64.854,9 36,95.25 36,95.25L3.504,172.428C5.298,174.024 10.056,175.494 12,177L204,177Z" fill="#444"/><path d="M48,117L72,159L102,117L48,117Z" fill="#606060"/><path d="M144,159L168,117L114,117L144,159Z" fill="#606060"/><path d="M54,103.5C54,99.378 56.22,93.342 58.932,90.096C58.932,90.096 66.534,81 82.002,81C89.844,81 95.316,84.378 95.316,84.378C98.994,86.646 102,91.878 102,96L102,107.25C102,109.314 98.4,111 94.002,111L61.998,111C57.6,111 54,107.622 54,103.5" fill="#0a0a0a"/><path d="M154,111L122,111C117.598,111 114,109.314 114,107.25L114,96C114,91.872 117.01,86.646 120.682,84.378C120.682,84.378 126.154,81 134,81C149.464,81 157.066,90.096 157.066,90.096C159.778,93.342 162,99.378 162,103.5C162,107.628 158.398,111 154,111" fill="#0a0a0a"/><path d="M180,81L180,67.452C180,32.598 152.322,4.284 117.756,3.114C116.106,1.218 113.706,0 111,0L105,0C102.294,0 99.894,1.218 98.244,3.114C63.678,4.284 36,32.598 36,67.452L36,81L0,177L12,177L43.668,99.906C51.798,79.59 63.06,70.926 81.342,70.926C93.84,70.926 101.574,80.688 102,81L114,81C114.426,80.688 122.16,70.926 134.658,70.926C152.94,70.926 164.202,79.59 172.32,99.876L204,177L216,177L180,81Z" fill="#1a1a1a"/><path d="M53.919,63C52.371,63 51.111,61.746 51.111,60.192C51.111,36.99 69.987,18.114 93.195,18.114C94.743,18.114 95.997,19.368 95.997,20.922C95.997,22.47 94.743,23.724 93.195,23.724C73.083,23.724 56.727,40.086 56.727,60.192C56.727,61.746 55.467,63 53.919,63" fill="#2a2a2a"/><path d="M108,117C104.688,117 102,119.682 102,123L102,129L114,129L114,123C114,119.682 111.312,117 108,117M153,177C149.688,177 147,179.688 147,183C147,186.312 149.688,189 153,189C156.312,189 159,186.312 159,183C159,179.688 156.312,177 153,177M63,177C59.688,177 57,179.688 57,183C57,186.312 59.688,189 63,189C66.312,189 69,186.312 69,183C69,179.688 66.312,177 63,177" fill="#555"/><path d="M158.745,172.531L168,117L144,159L120,125.4L120,123C120,116.383 114.621,111 108,111C101.379,111 96,116.383 96,123L96,125.4L72,159L48,117L57.255,172.531C53.547,174.577 51,178.477 51,183C51,189.619 56.379,195 63,195C67.425,195 71.247,192.571 73.329,189L142.671,189C144.747,192.571 148.575,195 153,195C159.621,195 165,189.619 165,183C165,178.477 162.453,174.577 158.745,172.531" fill="#1a1a1a"/><path d="M84,177L96,177L96,145.458L84,161.916L84,177Z" fill="#444"/><path d="M120,145.457L120,177L132,177L132,161.916L120,145.457Z" fill="#444"/><path d="M102,177L114,177L114,141L102,141L102,177Z" fill="#444"/><path d="M108,117C104.688,117 102,119.682 102,123L102,129L114,129L114,123C114,119.682 111.312,117 108,117M153,177C149.688,177 147,179.688 147,183C147,186.312 149.688,189 153,189C156.312,189 159,186.312 159,183C159,179.688 156.312,177 153,177M63,177C59.688,177 57,179.688 57,183C57,186.312 59.688,189 63,189C66.312,189 69,186.312 69,183C69,179.688 66.312,177 63,177" fill="#555"/></g></svg><img class="skull" src="/calavera.png" alt="Calavera"><svg class="mask" viewBox="0 0 100 130" fill="none" xmlns="http://www.w3.org/2000/svg"><!-- Mask shape --><path d="M50 3C28 3 10 25 10 55c0 22 8 40 16 50 6 7 14 14 24 17 10-3 18-10 24-17 8-10 16-28 16-50C90 25 72 3 50 3z" fill="#e8e4e0" stroke="#c8c4c0" stroke-width="1"/><!-- Forehead holes row 1 --><circle cx="38" cy="20" r="2" fill="#121212"/><circle cx="50" cy="18" r="2" fill="#121212"/><circle cx="62" cy="20" r="2" fill="#121212"/><!-- Forehead holes row 2 --><circle cx="32" cy="28" r="2" fill="#121212"/><circle cx="44" cy="27" r="2" fill="#121212"/><circle cx="56" cy="27" r="2" fill="#121212"/><circle cx="68" cy="28" r="2" fill="#121212"/><!-- Forehead holes row 3 --><circle cx="36" cy="36" r="1.8" fill="#121212"/><circle cx="50" cy="35" r="1.8" fill="#121212"/><circle cx="64" cy="36" r="1.8" fill="#121212"/><!-- Red chevron above eyes --><path d="M36 42l14-10 14 10" stroke="#c0392b" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><!-- Eye holes --><path d="M22 50c0-4 5-10 12-10s12 6 12 10-5 8-12 8-12-4-12-8z" fill="#121212"/><path d="M54 50c0-4 5-10 12-10s12 6 12 10-5 8-12 8-12-4-12-8z" fill="#121212"/><!-- Nose holes --><circle cx="46" cy="68" r="2.5" fill="#121212"/><circle cx="54" cy="68" r="2.5" fill="#121212"/><!-- Red marks below eyes --><path d="M26 62l5 10" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/><path d="M29 62l5 10" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/><path d="M74 62l-5 10" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/><path d="M71 62l-5 10" stroke="#c0392b" stroke-width="2" stroke-linecap="round"/><!-- Chin holes --><circle cx="40" cy="85" r="1.5" fill="#121212"/><circle cx="50" cy="84" r="1.5" fill="#121212"/><circle cx="60" cy="85" r="1.5" fill="#121212"/><circle cx="44" cy="92" r="1.5" fill="#121212"/><circle cx="56" cy="92" r="1.5" fill="#121212"/><circle cx="50" cy="99" r="1.5" fill="#121212"/><!-- Side rivets --><circle cx="14" cy="52" r="3" fill="#888" stroke="#666" stroke-width="1"/><circle cx="86" cy="52" r="3" fill="#888" stroke="#666" stroke-width="1"/><circle cx="16" cy="70" r="2.5" fill="#888" stroke="#666" stroke-width="1"/><circle cx="84" cy="70" r="2.5" fill="#888" stroke="#666" stroke-width="1"/></svg><span class="digit">4</span></div>
         <p class="description" id="desc">Страница не найдена. Возможно, она была перемещена или удалена.</p>
         <a href="/" class="back">На главную</a>
     </div>
@@ -521,6 +758,8 @@
             var month = d.getMonth() + 1;
             var day = d.getDate();
             var dow = d.getDay();
+            var startOfYear = new Date(d.getFullYear(), 0, 0);
+            var dayOfYear = Math.floor((d - startOfYear) / 86400000);
             var theme = 'default';
             var label = 'Page not found';
             var desc = 'Страница не найдена. Возможно, она была перемещена или удалена.';
@@ -531,6 +770,8 @@
 
             if (forced) {
                 theme = forced;
+            } else if (month === 11 && (day === 1 || day === 2)) {
+                theme = 'muertos';
             } else if (month === 10 && day >= 25 && day <= 31) {
                 theme = 'halloween';
             } else if ((month === 12 && day >= 25) || (month === 1 && day <= 7)) {
@@ -545,6 +786,18 @@
                 theme = 'march8';
             } else if (month === 2 && day === 23) {
                 theme = 'feb23';
+            } else if (month === 3 && day === 14) {
+                theme = 'piday';
+            } else if (month === 4 && day === 12) {
+                theme = 'cosmo';
+            } else if (month === 5 && day === 4) {
+                theme = 'starwars';
+            } else if (month === 6 && day === 12) {
+                theme = 'russia';
+            } else if (month === 6 && day === 21) {
+                theme = 'solstice';
+            } else if (dayOfYear === 256) {
+                theme = 'programmer';
             }
 
             // Theme-specific text
@@ -573,9 +826,37 @@
                     label = 'Day off';
                     desc = 'Эта страница взяла выходной. Имеет право.';
                     break;
+                case 'muertos':
+                    label = 'D\u00eda de los Muertos';
+                    desc = 'Эта страница на том свете. Но мы её помним.';
+                    break;
                 case 'feb23':
                     label = 'Stand at ease';
                     desc = 'Страница на службе. Вольно.';
+                    break;
+                case 'piday':
+                    label = '3.14159...';
+                    desc = 'Страница не найдена. Как и конец числа \u03C0.';
+                    break;
+                case 'programmer':
+                    label = '110010100';
+                    desc = '404 в десятичной. 110010100 в двоичной. Не найдено в любой.';
+                    break;
+                case 'starwars':
+                    label = 'May the 4th';
+                    desc = 'Эта страница в далёкой-далёкой галактике.';
+                    break;
+                case 'cosmo':
+                    label = 'Поехали!';
+                    desc = 'Страница вышла на орбиту. Ожидайте приземления.';
+                    break;
+                case 'solstice':
+                    label = 'Solstice';
+                    desc = 'Самый длинный день. Но даже его не хватило найти эту страницу.';
+                    break;
+                case 'russia':
+                    label = 'С Днём России';
+                    desc = 'Страница в отпуске. Отмечает.';
                     break;
             }
 
@@ -629,6 +910,68 @@
                     setTimeout(spawnEyes, 8000 + Math.random() * 10000);
                 }
                 setTimeout(spawnEyes, 5000 + Math.random() * 3000);
+            }
+
+            // Pi Day: floating pi digits
+            if (theme === 'piday') {
+                var pi = '1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679';
+                var piC = document.getElementById('piContainer');
+                for (var j = 0; j < 30; j++) {
+                    var el = document.createElement('div');
+                    el.className = 'pi-digit';
+                    el.textContent = pi[j % pi.length];
+                    el.style.left = (Math.random() * 95) + '%';
+                    el.style.animationDuration = (8 + Math.random() * 8) + 's';
+                    el.style.animationDelay = (Math.random() * 10) + 's';
+                    piC.appendChild(el);
+                }
+            }
+
+            // Programmer's Day: binary rain
+            if (theme === 'programmer') {
+                var progC = document.getElementById('progContainer');
+                for (var j = 0; j < 12; j++) {
+                    var col = document.createElement('div');
+                    col.className = 'binary-col';
+                    col.style.left = (j * 8 + Math.random() * 4) + '%';
+                    col.style.animationDuration = (6 + Math.random() * 8) + 's';
+                    col.style.animationDelay = (Math.random() * 5) + 's';
+                    var txt = '';
+                    for (var k = 0; k < 50; k++) txt += Math.round(Math.random()) + '\n';
+                    col.textContent = txt;
+                    progC.appendChild(col);
+                }
+            }
+
+            // Star Wars: hyperspace starfield
+            if (theme === 'starwars') {
+                var swC = document.getElementById('swContainer');
+                function createStar() {
+                    var s = document.createElement('div');
+                    s.className = 'sw-star';
+                    var angle = Math.random() * 360;
+                    var dur = 1 + Math.random() * 1.5;
+                    s.style.setProperty('--a', angle + 'deg');
+                    s.style.setProperty('--dur', dur + 's');
+                    swC.appendChild(s);
+                    setTimeout(function() { s.remove(); }, dur * 1000 + 100);
+                }
+                setInterval(createStar, 80);
+                for (var j = 0; j < 20; j++) setTimeout(createStar, j * 40);
+            }
+
+            // Cosmonautics Day: twinkling starfield
+            if (theme === 'cosmo') {
+                var cosmoC = document.getElementById('cosmoContainer');
+                for (var j = 0; j < 40; j++) {
+                    var star = document.createElement('div');
+                    star.className = 'twinkle-star';
+                    star.style.left = (Math.random() * 100) + '%';
+                    star.style.top = (Math.random() * 100) + '%';
+                    star.style.animationDuration = (2 + Math.random() * 3) + 's';
+                    star.style.animationDelay = (Math.random() * 3) + 's';
+                    cosmoC.appendChild(star);
+                }
             }
 
             // April Fools: fake loading
