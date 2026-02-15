@@ -860,6 +860,10 @@
                     break;
             }
 
+            // Fallback: unknown theme → default
+            var validThemes = ['default','halloween','newyear','valentine','aprilfools','friday13','march8','muertos','feb23','piday','programmer','starwars','cosmo','solstice','russia'];
+            if (validThemes.indexOf(theme) === -1) theme = 'default';
+
             document.body.classList.add(theme);
             document.getElementById('label').textContent = label;
             document.getElementById('desc').textContent = desc;
@@ -943,10 +947,13 @@
                 }
             }
 
-            // Star Wars: hyperspace starfield
+            // Star Wars: hyperspace starfield (max 60 stars to prevent DOM bloat)
             if (theme === 'starwars') {
                 var swC = document.getElementById('swContainer');
+                var starCount = 0;
                 function createStar() {
+                    if (starCount >= 60) return;
+                    starCount++;
                     var s = document.createElement('div');
                     s.className = 'sw-star';
                     var angle = Math.random() * 360;
@@ -954,7 +961,7 @@
                     s.style.setProperty('--a', angle + 'deg');
                     s.style.setProperty('--dur', dur + 's');
                     swC.appendChild(s);
-                    setTimeout(function() { s.remove(); }, dur * 1000 + 100);
+                    setTimeout(function() { s.remove(); starCount--; }, dur * 1000 + 100);
                 }
                 setInterval(createStar, 80);
                 for (var j = 0; j < 20; j++) setTimeout(createStar, j * 40);
