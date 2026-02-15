@@ -31,3 +31,6 @@ public/blog/*/cover.jpg
 *.njsproj
 *.sln
 *.sw?
+
+# Claude Code
+telemetry-id

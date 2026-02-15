@@ -131,6 +131,14 @@ git push origin master  # Деплой на продакшен (автомати
 - Viewport height: `100svh` для корректного отображения в мобильных браузерах
 - Адаптивные стили для portrait/landscape ориентаций
 
+**404 страница (Easter eggs):**
+- Кастомная HTML-страница `public/404.html` с 15 сезонными темами
+- Темы: default, halloween, newyear, valentine, aprilfools, friday13, march8, muertos, feb23, piday, programmer, starwars, cosmo, solstice, russia
+- Автоматический выбор темы по дате, тестирование: `?theme=название`
+- Замена "0" в "404": Дарт Вейдер (starwars), калавера PNG (muertos), хоккейная маска (friday13), π (piday)
+- JS-эффекты: гиперпространство, бинарный дождь, мерцающие звёзды, летающие цифры π
+- `public/calavera.png` — PNG калаверы для Día de los Muertos (174 KB)
+
 **Кросс-браузерная совместимость:**
 - `<meta name="color-scheme" content="light only">` — предотвращает авто-затемнение в Яндекс Браузере
 - Тонкие декоративные элементы (1-3px) могут плохо рендериться в некоторых браузерах
@@ -204,6 +212,8 @@ git push origin master  # Деплой на продакшен (автомати
 | `public/llms.txt` | Инструкции для AI-систем (ASCII-only) |
 | `public/robots.txt` | Разрешения для поисковых и AI-ботов |
 | `public/sitemap.xml` | Карта сайта с xhtml:link для языков |
+| `public/404.html` | Кастомная 404-страница с 15 сезонными темами |
+| `public/calavera.png` | PNG калаверы для Día de los Muertos темы |
 | `scripts/postbuild.js` | Постобработка: en.html → en/index.html и т.д. |
 
 ## Технологии
