@@ -1,7 +1,7 @@
 # Vlas Fedorov - Full Website Content
 
 > This file contains the complete content of vlasdobry.ru for AI systems.
-> Last updated: 2026-02-08 (8 articles)
+> Last updated: 2026-02-17 (9 articles)
 
 ## Table of Contents
 1. About Vlas Fedorov
@@ -217,6 +217,12 @@ Acoustic voice analysis and training platform.
 
 ## 6. Blog Articles
 
+### How to Evaluate Google Ads Potential: An LA Case Study
+**URL:** /blog/kak-ocenit-potencial-google-ads/
+**Category:** MARKETING
+**Date:** 2026-02-17
+
+Case study: evaluating Google Ads potential for a permanent LED lighting installer in Los Angeles. Methodology: Google Keyword Planner API data vs industry benchmarks. Key findings: impression ceiling in LA is 1,430/month, actual CPC is 2-3x lower than top-of-page bid, Search alone yields ROAS 1-2.7x. Recommendation: multichannel (Search + LSA + YouTube + Meta) delivers ROAS 5-24x. Seasonal strategy with annual ad spend $17-27K and projected revenue $45-216K in peak quarter.
 ### How a Single-Page Hotel Website Loses 80,000 Searches Per Month
 **URL:** /blog/odnostranichnyj-sajt-otelya-teryaet-trafik/
 **Category:** SEO

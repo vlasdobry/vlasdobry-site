@@ -1,6 +1,84 @@
 {
   "ru": [
     {
+      "slug": "kak-ocenit-potencial-google-ads",
+      "title": "Как оценить потенциал Google Ads: кейс из Лос-Анджелеса",
+      "description": "Реальный кейс: оценка Google Ads для локального бизнеса в LA. Данные Keyword Planner, кривая CPC, multichannel-стратегия.",
+      "date": "2026-02-17",
+      "dateModified": "2026-02-17",
+      "category": "marketing",
+      "tags": [
+        "google ads",
+        "ppc",
+        "кейс",
+        "local services"
+      ],
+      "relatedService": "/services/seo",
+      "cover": "cover.jpg",
+      "series": null,
+      "readingTime": 6,
+      "toc": [
+        {
+          "id": "о-проекте",
+          "text": "О проекте",
+          "level": 2
+        },
+        {
+          "id": "методология-два-типа-данных",
+          "text": "Методология: два типа данных",
+          "level": 2
+        },
+        {
+          "id": "какие-запросы-брать",
+          "text": "Какие запросы брать",
+          "level": 2
+        },
+        {
+          "id": "кривая-cpc-что-скрывает-keyword-planner",
+          "text": "Кривая CPC: что скрывает Keyword Planner",
+          "level": 2
+        },
+        {
+          "id": "почему-search-один-не-масштабируется",
+          "text": "Почему Search один не масштабируется",
+          "level": 2
+        },
+        {
+          "id": "медиасплит-и-сезонная-стратегия",
+          "text": "Медиасплит и сезонная стратегия",
+          "level": 2
+        },
+        {
+          "id": "roadmap-по-этапам",
+          "text": "Roadmap по этапам",
+          "level": 3
+        },
+        {
+          "id": "главные-выводы",
+          "text": "Главные выводы",
+          "level": 2
+        }
+      ],
+      "hasFaq": true,
+      "content": "<p>Клиент спросил: «Стоит ли запускать Google Ads?» Вопрос простой, но правильный ответ требует данных, а не догадок. Я прогнал Keyword Planner API с 11 уровнями ставок, собрал отраслевые бенчмарки и построил кривую реального CPC. Результат оказался неочевидным.</p>\n<h2 id=\"о-проекте\">О проекте</h2>\n<p>Компания устанавливает перманентное LED-освещение фасадов жилых домов в Лос-Анджелесе. Умные светодиодные системы, управляемые через приложение — для праздников, подсветки и безопасности.</p>\n<ul>\n<li><strong>Средний чек:</strong> $3 000–$8 000 за проект (отраслевой бенчмарк HomeGuide, HomeAdvisor)</li>\n<li><strong>ЦА:</strong> домовладельцы с достатком выше среднего, дома $800K–$3M</li>\n<li><strong>Ниша:</strong> permanent outdoor lighting, рост 9.8% в год</li>\n<li><strong>Текущее присутствие:</strong> Instagram 1 000+ подписчиков, сайта нет</li>\n</ul>\n<p>Критический блокер: технически Google Ads можно запустить на Instagram-профиль, но без своего лендинга не поставить пиксель конверсий, не настроить click-to-call и не контролировать воронку. А LSA и вовсе требует Google Business Profile.</p>\n<h2 id=\"методология-два-типа-данных\">Методология: два типа данных</h2>\n<p>В отчёте я чётко разделяю источники — и рекомендую вам делать так же:</p>\n<ul>\n<li><strong>KP</strong> — реальные данные Google Keyword Planner API: объём поиска, ставки, прогноз кликов и CPC</li>\n<li><strong>bench</strong> — отраслевые бенчмарки (LocaliQ, WordStream, Grand View Research): конверсии, close rate, стоимость лидов</li>\n</ul>\n<p>Зачем разделять? Чтобы клиент понимал, где твёрдые данные, а где — обоснованные оценки. KP показывает спрос и стоимость клика. Но конверсию в лида и продажу KP не знает — здесь нужны бенчмарки.</p>\n<h2 id=\"какие-запросы-брать\">Какие запросы брать</h2>\n<p>Собрал данные по LA metro area. Разбил на 4 приоритета:</p>\n<p><strong>Приоритет 1 — горячие installation-запросы:</strong></p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Запрос</th>\n<th>Объём/мес</th>\n<th>Bid range</th>\n<th>Конкуренция</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>christmas light installation</td>\n<td>320</td>\n<td>$181–$577</td>\n<td>HIGH</td>\n</tr>\n<tr>\n<td>permanent outdoor lighting</td>\n<td>210</td>\n<td>$63–$189</td>\n<td>HIGH</td>\n</tr>\n<tr>\n<td>christmas lights installation near me</td>\n<td>140</td>\n<td>$206–$655</td>\n<td>HIGH</td>\n</tr>\n</tbody></table></div>\n<p><strong>Приоритет 2 — consideration (люди сравнивают):</strong></p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Запрос</th>\n<th>Объём/мес</th>\n<th>Bid range</th>\n<th>Конкуренция</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>christmas light installation cost</td>\n<td>70</td>\n<td>$136–$492</td>\n<td>LOW</td>\n</tr>\n<tr>\n<td>best permanent outdoor lights</td>\n<td>50</td>\n<td>$75–$200</td>\n<td>HIGH</td>\n</tr>\n<tr>\n<td>permanent christmas lights cost</td>\n<td>10</td>\n<td>$42–$145</td>\n<td>HIGH</td>\n</tr>\n</tbody></table></div>\n<p>Запрос «christmas light installation cost» — лучшая возможность: 70 поисков/мес при LOW competition.</p>\n<p><strong>Приоритет 3 — брендовые запросы Govee</strong> (доминирующий бренд в нише): 720 поисков/мес. Но нюанс: это DIY-покупатели. Для сервиса установки — стратегия перехвата с конверсией ниже.</p>\n<p><strong>Суммарный объём:</strong> ~2 900 поисков/мес, до 6 000–8 000 в пиковый ноябрь. Потолок показов в LA: ~1 430/мес.</p>\n<h2 id=\"кривая-cpc-что-скрывает-keyword-planner\">Кривая CPC: что скрывает Keyword Planner</h2>\n<p>Keyword Planner скрывает реальную стоимость клика. Top-of-page bid и фактический CPC — два разных числа:</p>\n<ul>\n<li><strong>Top-of-page bid</strong> — $110–$655. Ставка за позицию #1. Это НЕ средний CPC</li>\n<li><strong>Реальный avg CPC</strong> — всегда ниже благодаря аукциону второй цены</li>\n</ul>\n<p>Я прогнал Forecast с 11 уровнями ставок ($1–$500). Результат для ноября (пик сезона):</p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Ставка (bid)</th>\n<th>Клики</th>\n<th>Avg CPC</th>\n<th>Расход</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>$10</td>\n<td>11</td>\n<td>$9</td>\n<td>$99</td>\n</tr>\n<tr>\n<td>$15</td>\n<td>13</td>\n<td>$14</td>\n<td>$171</td>\n</tr>\n<tr>\n<td>$50</td>\n<td>89</td>\n<td>$40</td>\n<td>$3 567</td>\n</tr>\n<tr>\n<td>$100</td>\n<td>143</td>\n<td>$78</td>\n<td>$11 248</td>\n</tr>\n<tr>\n<td>$200</td>\n<td>176</td>\n<td>$134</td>\n<td>$23 533</td>\n</tr>\n</tbody></table></div>\n<p>Три вывода:</p>\n<ol>\n<li><strong>Потолок есть.</strong> Больше 1 430 показов в LA не купить при любой ставке</li>\n<li><strong>Рост нелинейный.</strong> Удвоение ставки с $50 до $100 даёт +60% кликов, но +215% расхода</li>\n<li><strong>Оптимальная точка для $3K/мес:</strong> bid $40–$50, avg CPC $35–$40, 75–89 кликов</li>\n</ol>\n<p>В off-season (июнь) трафика в 5–10 раз меньше. Потолок показов: ~200/мес. CPC тоже ниже — $28 при bid $50.</p>\n<h2 id=\"почему-search-один-не-масштабируется\">Почему Search один не масштабируется</h2>\n<p>Вот воронка только через Google Search в пиковый ноябрь:</p>\n<ul>\n<li>Бюджет: $3 000</li>\n<li>Клики: 75–89 (KP)</li>\n<li>Лиды (CVR 3–5%): 3–4 (bench)</li>\n<li>Клиенты (close rate 30%): 1 (bench)</li>\n<li>Выручка: $3 000–$8 000</li>\n<li><strong>ROAS: 1x–2.7x</strong></li>\n</ul>\n<p>Один-два клиента в месяц. Бизнес не построишь. А теперь multichannel:</p>\n<ul>\n<li>Google Search: 1–2 лида</li>\n<li>Google LSA (Local Services Ads): 10–20 лидов, CPL $30–$50</li>\n<li>YouTube + Meta retargeting: 5–10 лидов</li>\n<li><strong>Итого:</strong> 16–32 лида/мес → 5–9 клиентов → <strong>ROAS 5–24x</strong></li>\n</ul>\n<p>Разница — на порядок. Тот же бюджет $3 000/мес, но распределённый по каналам.</p>\n<h2 id=\"медиасплит-и-сезонная-стратегия\">Медиасплит и сезонная стратегия</h2>\n<p>Рекомендуемый сплит на $3 000/мес:</p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Канал</th>\n<th>Бюджет</th>\n<th>Роль</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Google Search</td>\n<td>$800</td>\n<td>Горячий спрос, installation-запросы</td>\n</tr>\n<tr>\n<td>Local Services Ads</td>\n<td>$800</td>\n<td>Лучший ROI для local services</td>\n</tr>\n<tr>\n<td>YouTube</td>\n<td>$600</td>\n<td>Видео «до/после», узнаваемость</td>\n</tr>\n<tr>\n<td>Meta (Instagram)</td>\n<td>$500</td>\n<td>Визуал + ретаргетинг</td>\n</tr>\n<tr>\n<td>Nextdoor/Yelp</td>\n<td>$300</td>\n<td>Локальное присутствие</td>\n</tr>\n</tbody></table></div>\n<p>В пик (Oct–Dec) — 70% бюджета на Search + LSA. В off-season — на YouTube + Meta для накопления аудитории ремаркетинга к сезону.</p>\n<h3 id=\"roadmap-по-этапам\">Roadmap по этапам</h3>\n<p><strong>Этап 1 (март–апрель)</strong> — фундамент. Ad spend $500–$1 000/мес. Создать лендинг, настроить GBP, запустить LSA. Цель: первые данные и 1–2 клиента.</p>\n<p><strong>Этап 2 (май–июль)</strong> — SEO + awareness. Ad spend $1 000–$1 500/мес. SEO по low-competition запросам, YouTube и Meta для накопления аудитории. Цель: сайт в топ-3, база ремаркетинга 1 000+.</p>\n<p><strong>Этап 3 (август–сентябрь)</strong> — разгон. Ad spend $2 000–$3 000/мес. Все каналы на максимум, геотаргетинг по premium zip-кодам. Цель: 10–15 лидов/мес.</p>\n<p><strong>Этап 4 (октябрь–декабрь)</strong> — пик. Ad spend $3 000–$5 000/мес. Выручка $15 000–$72 000/мес. ROAS 5–24x.</p>\n<p>Годовой ad spend: $17 000–$27 500. Срок окупаемости: 1–2 клиента покрывают месячный бюджет.</p>\n<h2 id=\"главные-выводы\">Главные выводы</h2>\n<ol>\n<li><strong>Не верьте top-of-page bid.</strong> Реальный CPC в 2–3 раза ниже. Прогоняйте Forecast с разными ставками</li>\n<li><strong>Search имеет потолок.</strong> В узкой нише локального бизнеса — это десятки кликов, не тысячи</li>\n<li><strong>Multichannel — не модное слово, а необходимость.</strong> LSA дают в 5–10 раз больше лидов при том же бюджете</li>\n<li><strong>Сезонность — это преимущество.</strong> 6 месяцев до пика = время на SEO, отзывы и тесты каналов</li>\n<li><strong>При чеке $3K+ один клиент окупает месяц рекламы.</strong> Порог входа низкий</li>\n</ol>\n",
+      "faq": [
+        {
+          "question": "Как получить данные из Google Keyword Planner API?",
+          "answer": "Нужен аккаунт Google Ads с активными кампаниями (или тестовым бюджетом). API v23 даёт Historical Metrics (объём, ставки) и Forecast (прогноз кликов при разных бюджетах). Бесплатные аккаунты показывают округлённые диапазоны вместо точных цифр."
+        },
+        {
+          "question": "Чем Local Services Ads отличаются от обычного Search?",
+          "answer": "LSA — pay-per-lead, а не pay-per-click. Вы платите за звонок или сообщение, а не за показ. Для home services CPL в LSA ($30–$50) обычно в разы ниже CPA через Search ($400–$600). Но нужен Google Business Profile с отзывами."
+        },
+        {
+          "question": "Стоит ли запускать рекламу без сайта?",
+          "answer": "Технически можно — хоть на Instagram-профиль. Но без своего лендинга нет пикселя конверсий, нет click-to-call, нет контроля воронки. Начните хотя бы с одностраничника: галерея работ, цены, CTA. А LSA работает вообще без сайта — только через GBP."
+        }
+      ],
+      "tldr": "Оценил потенциал Google Ads для компании по установке LED-освещения в Лос-Анджелесе. Google Search один не масштабируется — максимум 75–89 кликов/мес при бюджете $3K, ROAS 1-2.7x. Multichannel-стратегия (Search + LSA + YouTube + Meta) даёт 5-24x. Показываю методологию с реальными данными Keyword Planner API.",
+      "llmsSummary": "Кейс оценки потенциала Google Ads для компании по установке перманентного LED-освещения в Лос-Анджелесе. Методология: данные Google Keyword Planner API vs отраслевые бенчмарки. Ключевые находки: потолок показов в LA — 1 430/мес, реальный CPC в 2-3 раза ниже top-of-page bid, Search один даёт ROAS 1-2.7x. Рекомендация: multichannel (Search + LSA + YouTube + Meta) даёт ROAS 5-24x. Сезонная стратегия с годовым ad spend $17-27K и прогнозом выручки $45-216K в пиковый квартал."
+    },
+    {
       "slug": "odnostranichnyj-sajt-otelya-teryaet-trafik",
       "title": "Как одностраничный сайт отеля теряет 80 000 запросов в месяц",
       "description": "Разбор реального кейса: курортный отель с 1 000 ключей на одной странице, падение трафика −38% и нереализованный потенциал.",
@@ -822,6 +900,84 @@
     }
   ],
   "en": [
+    {
+      "slug": "kak-ocenit-potencial-google-ads",
+      "title": "How to Evaluate Google Ads Potential: An LA Case Study",
+      "description": "Real case study: evaluating Google Ads for a local service business in Los Angeles. Keyword Planner data, CPC curves, multichannel strategy.",
+      "date": "2026-02-17",
+      "dateModified": "2026-02-17",
+      "category": "marketing",
+      "tags": [
+        "google ads",
+        "ppc",
+        "case-study",
+        "local services"
+      ],
+      "relatedService": "/en/services/seo",
+      "cover": "cover.jpg",
+      "series": null,
+      "readingTime": 6,
+      "toc": [
+        {
+          "id": "the-business",
+          "text": "The Business",
+          "level": 2
+        },
+        {
+          "id": "methodology-two-data-types",
+          "text": "Methodology: Two Data Types",
+          "level": 2
+        },
+        {
+          "id": "keyword-analysis",
+          "text": "Keyword Analysis",
+          "level": 2
+        },
+        {
+          "id": "the-cpc-curve-what-keyword-planner-hides",
+          "text": "The CPC Curve: What Keyword Planner Hides",
+          "level": 2
+        },
+        {
+          "id": "why-search-alone-wont-scale",
+          "text": "Why Search Alone Won't Scale",
+          "level": 2
+        },
+        {
+          "id": "media-split-and-seasonal-strategy",
+          "text": "Media Split and Seasonal Strategy",
+          "level": 2
+        },
+        {
+          "id": "phased-roadmap",
+          "text": "Phased Roadmap",
+          "level": 3
+        },
+        {
+          "id": "key-takeaways",
+          "text": "Key Takeaways",
+          "level": 2
+        }
+      ],
+      "hasFaq": true,
+      "content": "<p>A client asked me: &quot;Should I invest in Google Ads?&quot; Simple question, but the right answer requires data, not guesswork. I ran Keyword Planner API forecasts at 11 bid levels, pulled industry benchmarks, and built actual CPC curves. Here&#39;s what I found.</p>\n<h2 id=\"the-business\">The Business</h2>\n<p>A company installing permanent LED facade lighting for residential homes in Los Angeles. Smart systems controlled via app — for holidays, everyday ambiance, and security.</p>\n<ul>\n<li><strong>Average ticket:</strong> $3,000–$8,000 per project (HomeGuide, HomeAdvisor benchmarks)</li>\n<li><strong>Target:</strong> upper-middle class homeowners, homes $800K–$3M</li>\n<li><strong>Niche:</strong> permanent outdoor lighting, growing 9.8% annually</li>\n<li><strong>Current presence:</strong> Instagram with 1,000+ followers. No website</li>\n</ul>\n<p>Key blocker: you can technically run Google Ads to an Instagram profile, but without your own landing page there&#39;s no conversion tracking, no click-to-call CTA, and no funnel control. And LSA requires a Google Business Profile regardless.</p>\n<h2 id=\"methodology-two-data-types\">Methodology: Two Data Types</h2>\n<p>I explicitly separate data sources in every analysis — and you should too:</p>\n<ul>\n<li><strong>KP</strong> — actual Google Keyword Planner API data: search volume, bid estimates, click/impression forecasts</li>\n<li><strong>bench</strong> — industry benchmarks (LocaliQ, WordStream, Grand View Research): conversion rates, close rates, cost per lead</li>\n</ul>\n<p>Why separate them? So the client knows where you have hard data versus informed estimates. KP shows demand and click costs. But conversion to lead and sale — that&#39;s where benchmarks come in.</p>\n<h2 id=\"keyword-analysis\">Keyword Analysis</h2>\n<p>Data pulled for the LA metro area, grouped by priority:</p>\n<p><strong>Priority 1 — hot installation queries:</strong></p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Query</th>\n<th>Vol/month</th>\n<th>Bid range</th>\n<th>Competition</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>christmas light installation</td>\n<td>320</td>\n<td>$181–$577</td>\n<td>HIGH</td>\n</tr>\n<tr>\n<td>permanent outdoor lighting</td>\n<td>210</td>\n<td>$63–$189</td>\n<td>HIGH</td>\n</tr>\n<tr>\n<td>christmas lights installation near me</td>\n<td>140</td>\n<td>$206–$655</td>\n<td>HIGH</td>\n</tr>\n</tbody></table></div>\n<p><strong>Priority 2 — consideration (comparison shoppers):</strong></p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Query</th>\n<th>Vol/month</th>\n<th>Bid range</th>\n<th>Competition</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>christmas light installation cost</td>\n<td>70</td>\n<td>$136–$492</td>\n<td>LOW</td>\n</tr>\n<tr>\n<td>best permanent outdoor lights</td>\n<td>50</td>\n<td>$75–$200</td>\n<td>HIGH</td>\n</tr>\n<tr>\n<td>permanent christmas lights cost</td>\n<td>10</td>\n<td>$42–$145</td>\n<td>HIGH</td>\n</tr>\n</tbody></table></div>\n<p>The &quot;cost&quot; query at LOW competition is the best opportunity here — 70 searches/month with less bidding pressure.</p>\n<p><strong>Priority 3 — branded Govee queries</strong> (dominant brand in the niche): 720 searches/month. But these are mostly DIY buyers. For a professional installation service, it&#39;s a conquest play with lower conversion.</p>\n<p><strong>Total volume:</strong> ~2,900 searches/month, surging to 6,000–8,000 in peak November. Impression ceiling in LA: ~1,430/month.</p>\n<h2 id=\"the-cpc-curve-what-keyword-planner-hides\">The CPC Curve: What Keyword Planner Hides</h2>\n<p>Keyword Planner hides the real cost per click. Top-of-page bid and actual CPC are two very different numbers:</p>\n<ul>\n<li><strong>Top-of-page bid</strong> — $110–$655. That&#39;s the price for position #1. NOT the average CPC</li>\n<li><strong>Actual avg CPC</strong> — always lower thanks to second-price auction mechanics</li>\n</ul>\n<p>I ran Forecast at 11 bid levels ($1–$500). Results for November (peak season):</p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Bid</th>\n<th>Clicks</th>\n<th>Avg CPC</th>\n<th>Spend</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>$10</td>\n<td>11</td>\n<td>$9</td>\n<td>$99</td>\n</tr>\n<tr>\n<td>$15</td>\n<td>13</td>\n<td>$14</td>\n<td>$171</td>\n</tr>\n<tr>\n<td>$50</td>\n<td>89</td>\n<td>$40</td>\n<td>$3,567</td>\n</tr>\n<tr>\n<td>$100</td>\n<td>143</td>\n<td>$78</td>\n<td>$11,248</td>\n</tr>\n<tr>\n<td>$200</td>\n<td>176</td>\n<td>$134</td>\n<td>$23,533</td>\n</tr>\n</tbody></table></div>\n<p>Three takeaways:</p>\n<ol>\n<li><strong>There&#39;s a ceiling.</strong> You can&#39;t buy more than 1,430 impressions in LA at any bid</li>\n<li><strong>Growth is nonlinear.</strong> Doubling the bid from $50 to $100 gets +60% clicks but +215% spend</li>\n<li><strong>Sweet spot at $3K/month:</strong> bid $40–$50, avg CPC $35–$40, 75–89 clicks</li>\n</ol>\n<p>In the off-season (June), traffic drops 5–10x. Impression ceiling: ~200/month. CPC also drops — $28 at a $50 bid.</p>\n<h2 id=\"why-search-alone-won39t-scale\">Why Search Alone Won&#39;t Scale</h2>\n<p>Here&#39;s the Search-only funnel for peak November:</p>\n<ul>\n<li>Budget: $3,000</li>\n<li>Clicks: 75–89 (KP)</li>\n<li>Leads (CVR 3–5%): 3–4 (bench)</li>\n<li>Customers (close rate 30%): 1 (bench)</li>\n<li>Revenue: $3,000–$8,000</li>\n<li><strong>ROAS: 1x–2.7x</strong></li>\n</ul>\n<p>One or two customers a month. You can&#39;t build a business on that. Now compare with multichannel:</p>\n<ul>\n<li>Google Search: 1–2 leads</li>\n<li>Google LSA (Local Services Ads): 10–20 leads at $30–$50 CPL</li>\n<li>YouTube + Meta retargeting: 5–10 leads</li>\n<li><strong>Total:</strong> 16–32 leads/month → 5–9 customers → <strong>ROAS 5–24x</strong></li>\n</ul>\n<p>An order of magnitude difference. Same $3,000/month budget, but distributed across channels.</p>\n<h2 id=\"media-split-and-seasonal-strategy\">Media Split and Seasonal Strategy</h2>\n<p>Recommended split for $3,000/month:</p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Channel</th>\n<th>Budget</th>\n<th>Role</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Google Search</td>\n<td>$800</td>\n<td>Hot demand, installation queries</td>\n</tr>\n<tr>\n<td>Local Services Ads</td>\n<td>$800</td>\n<td>Best ROI for local services</td>\n</tr>\n<tr>\n<td>YouTube</td>\n<td>$600</td>\n<td>Before/after videos, awareness</td>\n</tr>\n<tr>\n<td>Meta (Instagram)</td>\n<td>$500</td>\n<td>Visual content + retargeting</td>\n</tr>\n<tr>\n<td>Nextdoor/Yelp</td>\n<td>$300</td>\n<td>Local presence</td>\n</tr>\n</tbody></table></div>\n<p>During peak season (Oct–Dec) — shift 70% to Search + LSA. Off-season — shift to YouTube + Meta to build remarketing audiences for the next peak.</p>\n<h3 id=\"phased-roadmap\">Phased Roadmap</h3>\n<p><strong>Phase 1 (Mar–Apr)</strong> — foundation. Ad spend $500–$1,000/month. Build landing page, set up Google Business Profile, launch LSA. Goal: first data and 1–2 customers.</p>\n<p><strong>Phase 2 (May–Jul)</strong> — SEO + awareness. Ad spend $1,000–$1,500/month. SEO for low-competition queries, YouTube and Meta for audience building. Goal: top-3 rankings, remarketing pool of 1,000+.</p>\n<p><strong>Phase 3 (Aug–Sep)</strong> — ramp up. Ad spend $2,000–$3,000/month. All channels at full capacity, geo-targeting premium zip codes (Beverly Hills, Bel Air, Calabasas). Goal: 10–15 leads/month.</p>\n<p><strong>Phase 4 (Oct–Dec)</strong> — peak season. Ad spend $3,000–$5,000/month. Revenue $15,000–$72,000/month. ROAS 5–24x.</p>\n<p>Annual ad spend: $17,000–$27,500. Payback: 1–2 customers cover a month&#39;s budget.</p>\n<h2 id=\"key-takeaways\">Key Takeaways</h2>\n<ol>\n<li><strong>Don&#39;t trust top-of-page bids.</strong> Actual CPC is 2–3x lower. Run Forecast at multiple bid levels</li>\n<li><strong>Search has a ceiling.</strong> In a niche local market, you&#39;re looking at dozens of clicks, not thousands</li>\n<li><strong>Multichannel isn&#39;t a buzzword — it&#39;s a necessity.</strong> LSA delivers 5–10x more leads at the same budget</li>\n<li><strong>Seasonality is an advantage.</strong> 6 months before peak = time for SEO, reviews, and channel testing</li>\n<li><strong>At $3K+ average ticket, one customer pays for a month of ads.</strong> The barrier to entry is low</li>\n</ol>\n",
+      "faq": [
+        {
+          "question": "How do you access Google Keyword Planner API data?",
+          "answer": "You need a Google Ads account with active campaigns (or a test budget). API v23 provides Historical Metrics (volume, bids) and Forecast (projected clicks at different budgets). Free accounts show rounded ranges instead of exact figures."
+        },
+        {
+          "question": "What's the difference between Local Services Ads and regular Search?",
+          "answer": "LSA is pay-per-lead, not pay-per-click. You pay for calls or messages, not impressions. For home services, LSA CPL ($30–$50) is typically several times lower than Search CPA ($400–$600). But you need a Google Business Profile with reviews."
+        },
+        {
+          "question": "Should you run ads without a website?",
+          "answer": "Technically yes — you can even link to an Instagram profile. But without your own landing page there's no conversion tracking, no click-to-call, and no funnel control. Start with at least a single-page site: project gallery, pricing, CTA. LSA works without a website — it only needs your Google Business Profile."
+        }
+      ],
+      "tldr": "Evaluated Google Ads potential for a permanent LED lighting installer in LA. Google Search alone doesn't scale — tops out at 75–89 clicks/month on a $3K budget, ROAS 1-2.7x. Multichannel (Search + LSA + YouTube + Meta) delivers 5-24x. Here's the methodology with real Keyword Planner API data.",
+      "llmsSummary": "Case study: evaluating Google Ads potential for a permanent LED lighting installer in Los Angeles. Methodology: Google Keyword Planner API data vs industry benchmarks. Key findings: impression ceiling in LA is 1,430/month, actual CPC is 2-3x lower than top-of-page bid, Search alone yields ROAS 1-2.7x. Recommendation: multichannel (Search + LSA + YouTube + Meta) delivers ROAS 5-24x. Seasonal strategy with annual ad spend $17-27K and projected revenue $45-216K in peak quarter."
+    },
     {
       "slug": "odnostranichnyj-sajt-otelya-teryaet-trafik",
       "title": "How a Single-Page Hotel Website Loses 80,000 Searches Per Month",
