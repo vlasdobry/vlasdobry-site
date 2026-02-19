@@ -1,6 +1,8 @@
 // src/utils/healthScore/seoScoring.ts
 import type { ResourceResult, Issue, SeoHealthScore } from './types';
 
+type Lang = 'ru' | 'en';
+
 // Weights for SEO scoring (total = 100)
 const WEIGHTS = {
   title: 12,
@@ -13,7 +15,11 @@ const WEIGHTS = {
   schemaOrg: 19,
 };
 
-function scoreTitle(html: string): { score: number; issues: Issue[] } {
+function tr(lang: Lang, ru: string, en: string): string {
+  return lang === 'ru' ? ru : en;
+}
+
+function scoreTitle(html: string, lang: Lang): { score: number; issues: Issue[] } {
   const issues: Issue[] = [];
   const maxScore = WEIGHTS.title;
 
@@ -23,8 +29,8 @@ function scoreTitle(html: string): { score: number; issues: Issue[] } {
   if (!title) {
     issues.push({
       severity: 'critical',
-      title: 'Title отсутствует',
-      description: 'Добавьте заголовок страницы в тег <title>',
+      title: tr(lang, 'Title отсутствует', 'Title is missing'),
+      description: tr(lang, 'Добавьте заголовок страницы в тег <title>', 'Add a page title in the <title> tag'),
     });
     return { score: 0, issues };
   }
@@ -32,8 +38,8 @@ function scoreTitle(html: string): { score: number; issues: Issue[] } {
   if (title.length < 20) {
     issues.push({
       severity: 'warning',
-      title: 'Title слишком короткий',
-      description: `${title.length} символов. Рекомендуется 50-60`,
+      title: tr(lang, 'Title слишком короткий', 'Title is too short'),
+      description: tr(lang, `${title.length} символов. Рекомендуется 50-60`, `${title.length} chars. Recommended: 50-60`),
     });
     return { score: Math.round(maxScore * 0.4), issues };
   }
@@ -41,8 +47,8 @@ function scoreTitle(html: string): { score: number; issues: Issue[] } {
   if (title.length > 70) {
     issues.push({
       severity: 'info',
-      title: 'Title слишком длинный',
-      description: `${title.length} символов. Будет обрезан в поиске`,
+      title: tr(lang, 'Title слишком длинный', 'Title is too long'),
+      description: tr(lang, `${title.length} символов. Будет обрезан в поиске`, `${title.length} chars. Likely truncated in search`),
     });
     return { score: Math.round(maxScore * 0.75), issues };
   }
@@ -50,8 +56,8 @@ function scoreTitle(html: string): { score: number; issues: Issue[] } {
   if (title.length >= 40 && title.length <= 60) {
     issues.push({
       severity: 'success',
-      title: 'Title оптимальный',
-      description: `${title.length} символов — идеально для поисковиков`,
+      title: tr(lang, 'Title оптимальный', 'Title is optimal'),
+      description: tr(lang, `${title.length} символов — идеально для поисковиков`, `${title.length} chars - ideal for search engines`),
     });
     return { score: maxScore, issues };
   }
@@ -59,7 +65,7 @@ function scoreTitle(html: string): { score: number; issues: Issue[] } {
   return { score: Math.round(maxScore * 0.8), issues };
 }
 
-function scoreDescription(html: string): { score: number; issues: Issue[] } {
+function scoreDescription(html: string, lang: Lang): { score: number; issues: Issue[] } {
   const issues: Issue[] = [];
   const maxScore = WEIGHTS.description;
 
@@ -70,8 +76,8 @@ function scoreDescription(html: string): { score: number; issues: Issue[] } {
   if (!description) {
     issues.push({
       severity: 'critical',
-      title: 'Description отсутствует',
-      description: 'Добавьте мета-описание страницы',
+      title: tr(lang, 'Description отсутствует', 'Description is missing'),
+      description: tr(lang, 'Добавьте мета-описание страницы', 'Add a meta description'),
     });
     return { score: 0, issues };
   }
@@ -79,8 +85,8 @@ function scoreDescription(html: string): { score: number; issues: Issue[] } {
   if (description.length < 50) {
     issues.push({
       severity: 'warning',
-      title: 'Description слишком короткий',
-      description: `${description.length} символов. Рекомендуется 150-160`,
+      title: tr(lang, 'Description слишком короткий', 'Description is too short'),
+      description: tr(lang, `${description.length} символов. Рекомендуется 150-160`, `${description.length} chars. Recommended: 150-160`),
     });
     return { score: Math.round(maxScore * 0.4), issues };
   }
@@ -88,8 +94,8 @@ function scoreDescription(html: string): { score: number; issues: Issue[] } {
   if (description.length > 170) {
     issues.push({
       severity: 'info',
-      title: 'Description слишком длинный',
-      description: `${description.length} символов. Будет обрезан`,
+      title: tr(lang, 'Description слишком длинный', 'Description is too long'),
+      description: tr(lang, `${description.length} символов. Будет обрезан`, `${description.length} chars. Likely truncated`),
     });
     return { score: Math.round(maxScore * 0.75), issues };
   }
@@ -97,8 +103,8 @@ function scoreDescription(html: string): { score: number; issues: Issue[] } {
   if (description.length >= 120 && description.length <= 160) {
     issues.push({
       severity: 'success',
-      title: 'Description оптимальный',
-      description: `${description.length} символов — идеально`,
+      title: tr(lang, 'Description оптимальный', 'Description is optimal'),
+      description: tr(lang, `${description.length} символов — идеально`, `${description.length} chars - ideal`),
     });
     return { score: maxScore, issues };
   }
@@ -106,7 +112,7 @@ function scoreDescription(html: string): { score: number; issues: Issue[] } {
   return { score: Math.round(maxScore * 0.8), issues };
 }
 
-function scoreViewport(html: string): { score: number; issues: Issue[] } {
+function scoreViewport(html: string, lang: Lang): { score: number; issues: Issue[] } {
   const issues: Issue[] = [];
   const maxScore = WEIGHTS.viewport;
 
@@ -115,8 +121,8 @@ function scoreViewport(html: string): { score: number; issues: Issue[] } {
   if (!hasViewport) {
     issues.push({
       severity: 'critical',
-      title: 'Viewport не настроен',
-      description: 'Сайт не адаптирован для мобильных устройств',
+      title: tr(lang, 'Viewport не настроен', 'Viewport is missing'),
+      description: tr(lang, 'Сайт не адаптирован для мобильных устройств', 'Site is not optimized for mobile devices'),
     });
     return { score: 0, issues };
   }
@@ -127,21 +133,21 @@ function scoreViewport(html: string): { score: number; issues: Issue[] } {
   if (viewport.includes('width=device-width')) {
     issues.push({
       severity: 'success',
-      title: 'Viewport настроен',
-      description: 'Сайт адаптирован для мобильных устройств',
+      title: tr(lang, 'Viewport настроен', 'Viewport is configured'),
+      description: tr(lang, 'Сайт адаптирован для мобильных устройств', 'Site is mobile-friendly'),
     });
     return { score: maxScore, issues };
   }
 
   issues.push({
     severity: 'warning',
-    title: 'Viewport неоптимальный',
-    description: 'Рекомендуется width=device-width, initial-scale=1',
+    title: tr(lang, 'Viewport неоптимальный', 'Viewport is suboptimal'),
+    description: tr(lang, 'Рекомендуется width=device-width, initial-scale=1', 'Recommended: width=device-width, initial-scale=1'),
   });
   return { score: Math.round(maxScore * 0.5), issues };
 }
 
-function scoreH1(html: string): { score: number; issues: Issue[] } {
+function scoreH1(html: string, lang: Lang): { score: number; issues: Issue[] } {
   const issues: Issue[] = [];
   const maxScore = WEIGHTS.h1;
 
@@ -150,8 +156,8 @@ function scoreH1(html: string): { score: number; issues: Issue[] } {
   if (h1Matches.length === 0) {
     issues.push({
       severity: 'critical',
-      title: 'H1 отсутствует',
-      description: 'Добавьте главный заголовок страницы',
+      title: tr(lang, 'H1 отсутствует', 'H1 is missing'),
+      description: tr(lang, 'Добавьте главный заголовок страницы', 'Add a main page heading'),
     });
     return { score: 0, issues };
   }
@@ -159,87 +165,83 @@ function scoreH1(html: string): { score: number; issues: Issue[] } {
   if (h1Matches.length > 1) {
     issues.push({
       severity: 'warning',
-      title: `Несколько H1 (${h1Matches.length})`,
-      description: 'Рекомендуется один H1 на страницу',
+      title: tr(lang, `Несколько H1 (${h1Matches.length})`, `Multiple H1 tags (${h1Matches.length})`),
+      description: tr(lang, 'Рекомендуется один H1 на страницу', 'One H1 per page is recommended'),
     });
     return { score: Math.round(maxScore * 0.5), issues };
   }
 
-  // Extract text from H1
   const h1Text = h1Matches[0].replace(/<[^>]*>/g, '').trim();
 
   if (h1Text.length < 10) {
     issues.push({
       severity: 'warning',
-      title: 'H1 слишком короткий',
-      description: `${h1Text.length} символов. Добавьте описательный заголовок`,
+      title: tr(lang, 'H1 слишком короткий', 'H1 is too short'),
+      description: tr(lang, `${h1Text.length} символов. Добавьте описательный заголовок`, `${h1Text.length} chars. Add a more descriptive heading`),
     });
     return { score: Math.round(maxScore * 0.6), issues };
   }
 
   issues.push({
     severity: 'success',
-    title: 'H1 в порядке',
-    description: 'Главный заголовок страницы настроен правильно',
+    title: tr(lang, 'H1 в порядке', 'H1 is valid'),
+    description: tr(lang, 'Главный заголовок страницы настроен правильно', 'Main page heading is configured correctly'),
   });
   return { score: maxScore, issues };
 }
 
-function scoreIndexability(html: string): { score: number; issues: Issue[] } {
+function scoreIndexability(html: string, lang: Lang): { score: number; issues: Issue[] } {
   const issues: Issue[] = [];
   const maxScore = WEIGHTS.indexability;
 
-  // Check robots meta tag
   const noindexMatch = html.match(/<meta[^>]*name=["']robots["'][^>]*content=["']([^"']*)["']/i);
   const robotsContent = noindexMatch?.[1]?.toLowerCase() || '';
 
   if (robotsContent.includes('noindex')) {
     issues.push({
       severity: 'critical',
-      title: 'Страница закрыта от индексации',
-      description: 'Мета-тег robots содержит noindex',
+      title: tr(lang, 'Страница закрыта от индексации', 'Page is blocked from indexing'),
+      description: tr(lang, 'Мета-тег robots содержит noindex', 'robots meta tag contains noindex'),
     });
     return { score: 0, issues };
   }
 
   issues.push({
     severity: 'success',
-    title: 'Индексация разрешена',
-    description: 'Страница открыта для поисковиков',
+    title: tr(lang, 'Индексация разрешена', 'Indexing is allowed'),
+    description: tr(lang, 'Страница открыта для поисковиков', 'The page is open for search engines'),
   });
 
   return { score: maxScore, issues };
 }
 
-function scoreRobotsTxt(robotsTxt: ResourceResult): { score: number; issues: Issue[] } {
+function scoreRobotsTxt(robotsTxt: ResourceResult, lang: Lang): { score: number; issues: Issue[] } {
   const issues: Issue[] = [];
   const maxScore = WEIGHTS.robotsTxt;
 
   if (robotsTxt.status !== 200 || !robotsTxt.content) {
     issues.push({
       severity: 'critical',
-      title: 'robots.txt отсутствует',
-      description: 'Поисковые боты не получают инструкций по индексации',
+      title: tr(lang, 'robots.txt отсутствует', 'robots.txt is missing'),
+      description: tr(lang, 'Поисковые боты не получают инструкций по индексации', 'Search bots do not receive crawl/indexing instructions'),
     });
     return { score: 0, issues };
   }
 
   const content = robotsTxt.content.toLowerCase();
 
-  // Check for blocking all
   if (content.includes('disallow: /') && content.includes('user-agent: *')) {
     const wildcardSection = content.split('user-agent: *')[1]?.split('user-agent:')[0] || '';
     if (wildcardSection.includes('disallow: /') && !wildcardSection.includes('allow:')) {
       issues.push({
         severity: 'critical',
-        title: 'robots.txt блокирует индексацию',
-        description: 'Disallow: / запрещает доступ ко всему сайту',
+        title: tr(lang, 'robots.txt блокирует индексацию', 'robots.txt blocks indexing'),
+        description: tr(lang, 'Disallow: / запрещает доступ ко всему сайту', 'Disallow: / blocks access to the whole site'),
       });
       return { score: Math.round(maxScore * 0.2), issues };
     }
   }
 
-  // Check for Yandex/Google blocks
   const searchBots = ['yandexbot', 'googlebot'];
   let penalty = 0;
   for (const bot of searchBots) {
@@ -249,8 +251,8 @@ function scoreRobotsTxt(robotsTxt: ResourceResult): { score: number; issues: Iss
         if (section.trim().startsWith(bot) && section.includes('disallow: /')) {
           issues.push({
             severity: 'warning',
-            title: `${bot} ограничен в robots.txt`,
-            description: 'Поисковый бот имеет ограничения',
+            title: tr(lang, `${bot} ограничен в robots.txt`, `${bot} is restricted in robots.txt`),
+            description: tr(lang, 'Поисковый бот имеет ограничения', 'Search bot has restrictive rules'),
           });
           penalty += maxScore * 0.2;
         }
@@ -261,23 +263,23 @@ function scoreRobotsTxt(robotsTxt: ResourceResult): { score: number; issues: Iss
   if (penalty === 0) {
     issues.push({
       severity: 'success',
-      title: 'robots.txt настроен',
-      description: 'Поисковые боты получают корректные инструкции',
+      title: tr(lang, 'robots.txt настроен', 'robots.txt is configured'),
+      description: tr(lang, 'Поисковые боты получают корректные инструкции', 'Search bots receive correct instructions'),
     });
   }
 
   return { score: Math.max(0, Math.round(maxScore - penalty)), issues };
 }
 
-function scoreSitemap(sitemapXml: ResourceResult): { score: number; issues: Issue[] } {
+function scoreSitemap(sitemapXml: ResourceResult, lang: Lang): { score: number; issues: Issue[] } {
   const issues: Issue[] = [];
   const maxScore = WEIGHTS.sitemap;
 
   if (sitemapXml.status !== 200 || !sitemapXml.content) {
     issues.push({
       severity: 'critical',
-      title: 'sitemap.xml отсутствует',
-      description: 'Поисковики не видят структуру сайта',
+      title: tr(lang, 'sitemap.xml отсутствует', 'sitemap.xml is missing'),
+      description: tr(lang, 'Поисковики не видят структуру сайта', 'Search engines cannot discover the site structure'),
     });
     return { score: 0, issues };
   }
@@ -287,21 +289,21 @@ function scoreSitemap(sitemapXml: ResourceResult): { score: number; issues: Issu
   if (urlCount === 0) {
     issues.push({
       severity: 'warning',
-      title: 'sitemap.xml пустой',
-      description: 'Файл есть, но URL не найдены',
+      title: tr(lang, 'sitemap.xml пустой', 'sitemap.xml is empty'),
+      description: tr(lang, 'Файл есть, но URL не найдены', 'File exists but URLs were not found'),
     });
     return { score: Math.round(maxScore * 0.3), issues };
   }
 
   issues.push({
     severity: 'success',
-    title: `sitemap.xml: ${urlCount} URL`,
-    description: 'Карта сайта настроена',
+    title: tr(lang, `sitemap.xml: ${urlCount} URL`, `sitemap.xml: ${urlCount} URLs`),
+    description: tr(lang, 'Карта сайта настроена', 'Sitemap is configured'),
   });
   return { score: maxScore, issues };
 }
 
-function scoreSchemaOrg(html: string): { score: number; issues: Issue[] } {
+function scoreSchemaOrg(html: string, lang: Lang): { score: number; issues: Issue[] } {
   const issues: Issue[] = [];
   const maxScore = WEIGHTS.schemaOrg;
 
@@ -310,8 +312,8 @@ function scoreSchemaOrg(html: string): { score: number; issues: Issue[] } {
   if (!hasJsonLd) {
     issues.push({
       severity: 'critical',
-      title: 'Schema.org отсутствует',
-      description: 'Нет структурированных данных для поисковиков',
+      title: tr(lang, 'Schema.org отсутствует', 'Schema.org is missing'),
+      description: tr(lang, 'Нет структурированных данных для поисковиков', 'No structured data for search engines'),
     });
     return { score: 0, issues };
   }
@@ -326,8 +328,8 @@ function scoreSchemaOrg(html: string): { score: number; issues: Issue[] } {
   if (foundTypes.length >= 3) {
     issues.push({
       severity: 'success',
-      title: `Schema.org: ${foundTypes.length} типа`,
-      description: `${foundTypes.join(', ')} — отлично`,
+      title: tr(lang, `Schema.org: ${foundTypes.length} типа`, `Schema.org: ${foundTypes.length} types`),
+      description: tr(lang, `${foundTypes.join(', ')} — отлично`, `${foundTypes.join(', ')} - great`),
     });
     return { score: maxScore, issues };
   }
@@ -335,8 +337,8 @@ function scoreSchemaOrg(html: string): { score: number; issues: Issue[] } {
   if (foundTypes.length === 2) {
     issues.push({
       severity: 'info',
-      title: `Schema.org: ${foundTypes.length} типа`,
-      description: `${foundTypes.join(', ')}. Добавьте FAQPage`,
+      title: tr(lang, `Schema.org: ${foundTypes.length} типа`, `Schema.org: ${foundTypes.length} types`),
+      description: tr(lang, `${foundTypes.join(', ')}. Добавьте FAQPage`, `${foundTypes.join(', ')}. Add FAQPage`),
     });
     return { score: Math.round(maxScore * 0.7), issues };
   }
@@ -344,16 +346,16 @@ function scoreSchemaOrg(html: string): { score: number; issues: Issue[] } {
   if (foundTypes.length === 1) {
     issues.push({
       severity: 'warning',
-      title: 'Schema.org: 1 тип',
-      description: `${foundTypes[0]}. Рекомендуется 3+ типа`,
+      title: tr(lang, 'Schema.org: 1 тип', 'Schema.org: 1 type'),
+      description: tr(lang, `${foundTypes[0]}. Рекомендуется 3+ типа`, `${foundTypes[0]}. Recommended: 3+ types`),
     });
     return { score: Math.round(maxScore * 0.5), issues };
   }
 
   issues.push({
     severity: 'warning',
-    title: 'Schema.org неполный',
-    description: 'JSON-LD есть, но типы не распознаны',
+    title: tr(lang, 'Schema.org неполный', 'Schema.org is incomplete'),
+    description: tr(lang, 'JSON-LD есть, но типы не распознаны', 'JSON-LD exists, but types were not recognized'),
   });
   return { score: Math.round(maxScore * 0.3), issues };
 }
@@ -362,7 +364,7 @@ export function calculateSeoScore(data: {
   homepage: ResourceResult;
   robotsTxt: ResourceResult;
   sitemapXml: ResourceResult;
-}): SeoHealthScore {
+}, lang: Lang = 'ru'): SeoHealthScore {
   const issues: Issue[] = [];
   const breakdown = {
     title: 0,
@@ -379,69 +381,69 @@ export function calculateSeoScore(data: {
     return {
       total: 0,
       breakdown,
-      issues: [{ severity: 'critical', title: 'Сайт недоступен', description: 'Не удалось загрузить страницу' }],
+      issues: [{
+        severity: 'critical',
+        title: tr(lang, 'Сайт недоступен', 'Site is unavailable'),
+        description: tr(lang, 'Не удалось загрузить страницу', 'Could not load the page')
+      }],
       status: 'critical',
-      statusLabel: 'Недоступен',
+      statusLabel: tr(lang, 'Недоступен', 'Unavailable'),
     };
   }
 
   const html = data.homepage.content;
 
-  // Calculate each component
-  const titleResult = scoreTitle(html);
+  const titleResult = scoreTitle(html, lang);
   breakdown.title = titleResult.score;
   issues.push(...titleResult.issues);
 
-  const descResult = scoreDescription(html);
+  const descResult = scoreDescription(html, lang);
   breakdown.description = descResult.score;
   issues.push(...descResult.issues);
 
-  const h1Result = scoreH1(html);
+  const h1Result = scoreH1(html, lang);
   breakdown.h1 = h1Result.score;
   issues.push(...h1Result.issues);
 
-  const viewportResult = scoreViewport(html);
+  const viewportResult = scoreViewport(html, lang);
   breakdown.viewport = viewportResult.score;
   issues.push(...viewportResult.issues);
 
-  const indexResult = scoreIndexability(html);
+  const indexResult = scoreIndexability(html, lang);
   breakdown.indexability = indexResult.score;
   issues.push(...indexResult.issues);
 
-  const robotsResult = scoreRobotsTxt(data.robotsTxt);
+  const robotsResult = scoreRobotsTxt(data.robotsTxt, lang);
   breakdown.robotsTxt = robotsResult.score;
   issues.push(...robotsResult.issues);
 
-  const sitemapResult = scoreSitemap(data.sitemapXml);
+  const sitemapResult = scoreSitemap(data.sitemapXml, lang);
   breakdown.sitemap = sitemapResult.score;
   issues.push(...sitemapResult.issues);
 
-  const schemaResult = scoreSchemaOrg(html);
+  const schemaResult = scoreSchemaOrg(html, lang);
   breakdown.schemaOrg = schemaResult.score;
   issues.push(...schemaResult.issues);
 
-  // Total (max 100)
   const total = Object.values(breakdown).reduce((sum, val) => sum + val, 0);
 
-  // Status
   let status: SeoHealthScore['status'];
   let statusLabel: string;
 
   if (total <= 30) {
     status = 'critical';
-    statusLabel = 'Критично';
+    statusLabel = tr(lang, 'Критично', 'Critical');
   } else if (total <= 50) {
     status = 'warning';
-    statusLabel = 'Требует внимания';
+    statusLabel = tr(lang, 'Требует внимания', 'Needs attention');
   } else if (total <= 70) {
     status = 'good';
-    statusLabel = 'Есть потенциал';
+    statusLabel = tr(lang, 'Есть потенциал', 'Has potential');
   } else {
     status = 'excellent';
-    statusLabel = 'Хорошо';
+    statusLabel = tr(lang, 'Хорошо', 'Good');
   }
 
-  // Sort issues by severity (success last)
   const severityOrder: Record<string, number> = { critical: 0, warning: 1, info: 2, success: 3 };
   issues.sort((a, b) => severityOrder[a.severity] - severityOrder[b.severity]);
 

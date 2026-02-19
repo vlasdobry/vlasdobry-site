@@ -29,10 +29,12 @@ export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ variant = 'l
     e.preventDefault();
     // Get current hash at click time (not render time)
     const hash = window.location.hash;
+    const search = window.location.search;
     const targetPath = basePath
       ? (targetLang === 'ru' ? `${basePath}/` : `/en${basePath}/`)
-      : (targetLang === 'ru' ? `/${hash}` : `/en/${hash}`);
-    window.location.href = targetPath;
+      : (targetLang === 'ru' ? '/' : '/en/');
+    const targetUrl = `${targetPath}${search}${hash}`;
+    window.location.href = targetUrl;
   };
 
   return (

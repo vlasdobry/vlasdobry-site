@@ -22,7 +22,8 @@ const App: React.FC = () => {
   useEffect(() => {
     const newHash = view === 'landing' ? '#landing' : '';
     if (window.location.hash !== newHash) {
-      window.history.replaceState(null, '', newHash || window.location.pathname);
+      const baseUrl = `${window.location.pathname}${window.location.search}`;
+      window.history.replaceState(null, '', newHash ? `${baseUrl}${newHash}` : baseUrl);
     }
   }, [view]);
 

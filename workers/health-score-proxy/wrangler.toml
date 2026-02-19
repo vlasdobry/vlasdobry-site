@@ -4,6 +4,10 @@ compatibility_date = "2024-01-01"
 
 [vars]
 ALLOWED_ORIGINS = "https://vlasdobry.ru"
+RATE_LIMIT_REQUESTS = "20"
+RATE_LIMIT_WINDOW_SEC = "60"
 
 [env.dev.vars]
 ALLOWED_ORIGINS = "https://vlasdobry.ru,http://localhost:3000"
+RATE_LIMIT_REQUESTS = "50"
+RATE_LIMIT_WINDOW_SEC = "60"

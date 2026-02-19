@@ -33,6 +33,27 @@ function getBuiltAssets() {
   return { css, scripts };
 }
 
+function escapeHtmlAttr(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+function getLatestDate(articles) {
+  if (!articles || articles.length === 0) {
+    return '1970-01-01';
+  }
+
+  const sortedDates = articles
+    .map(article => article.dateModified || article.date)
+    .filter(Boolean)
+    .sort();
+
+  return sortedDates[sortedDates.length - 1] || '1970-01-01';
+}
+
 // Configure marked for GFM
 marked.use({ gfm: true });
 
@@ -267,6 +288,15 @@ function generateArticleHtml(article, lang) {
     : `${baseUrl}/blog/${article.slug}/`;
 
   const faqSchema = generateFaqSchema(article);
+  const safeTitle = escapeHtmlAttr(article.title);
+  const safeDescription = escapeHtmlAttr(article.description);
+  const safeAuthor = escapeHtmlAttr(lang === 'ru' ? 'Влас Фёдоров' : 'Vlas Fedorov');
+  const safeSection = escapeHtmlAttr(article.category.toUpperCase());
+  const safeOgLocale = escapeHtmlAttr(lang === 'ru' ? 'ru_RU' : 'en_US');
+  const safeKeywords = escapeHtmlAttr(article.tags.join(', '));
+  const safeTagMeta = article.tags
+    .map(tag => `<meta property="article:tag" content="${escapeHtmlAttr(tag)}">`)
+    .join('\n    ');
 
   return `<!DOCTYPE html>
 <html lang="${lang === 'ru' ? 'ru' : 'en'}">
@@ -274,25 +304,17 @@ function generateArticleHtml(article, lang) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="color-scheme" content="light only">
-    <title>${article.title} | ${lang === 'ru' ? 'Влас Фёдоров' : 'Vlas Fedorov'}</title>
+    <title>${safeTitle} | ${safeAuthor}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
     <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-        (function(m,e,t,r,i,k,a){
-            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=106407494', 'ym');
-        ym(106407494, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-    </script>
+    <script defer src="/yandex-metrika.js"></script>
     <!-- /Yandex.Metrika counter -->
 
     <!-- SEO -->
-    <meta name="description" content="${article.description}">
-    <meta name="author" content="${lang === 'ru' ? 'Влас Фёдоров' : 'Vlas Fedorov'}">
-    <meta name="keywords" content="${article.tags.join(', ')}">
+    <meta name="description" content="${safeDescription}">
+    <meta name="author" content="${safeAuthor}">
+    <meta name="keywords" content="${safeKeywords}">
 
     <!-- Canonical & Hreflang -->
     <link rel="canonical" href="${articleUrl}">
@@ -306,22 +328,22 @@ function generateArticleHtml(article, lang) {
     <!-- Open Graph -->
     <meta property="og:type" content="article">
     <meta property="og:url" content="${articleUrl}">
-    <meta property="og:title" content="${article.title}">
-    <meta property="og:description" content="${article.description}">
+    <meta property="og:title" content="${safeTitle}">
+    <meta property="og:description" content="${safeDescription}">
     <meta property="og:image" content="${baseUrl}/blog/${article.slug}/${article.cover}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:locale" content="${lang === 'ru' ? 'ru_RU' : 'en_US'}">
+    <meta property="og:locale" content="${safeOgLocale}">
     <meta property="article:published_time" content="${article.date}">
     <meta property="article:modified_time" content="${article.dateModified}">
-    <meta property="article:author" content="${lang === 'ru' ? 'Влас Фёдоров' : 'Vlas Fedorov'}">
-    <meta property="article:section" content="${article.category.toUpperCase()}">
-    ${article.tags.map(tag => `<meta property="article:tag" content="${tag}">`).join('\n    ')}
+    <meta property="article:author" content="${safeAuthor}">
+    <meta property="article:section" content="${safeSection}">
+    ${safeTagMeta}
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="${article.title}">
-    <meta name="twitter:description" content="${article.description}">
+    <meta name="twitter:title" content="${safeTitle}">
+    <meta name="twitter:description" content="${safeDescription}">
     <meta name="twitter:image" content="${baseUrl}/blog/${article.slug}/${article.cover}">
 
     <!-- Schema.org JSON-LD: Article -->
@@ -353,16 +375,6 @@ function generateArticleHtml(article, lang) {
             color: #121212;
         }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
-  }
-}
-</script>
   ${assets.scripts}
   ${assets.css}
 </head>
@@ -382,7 +394,7 @@ function generateArticleHtml(article, lang) {
 
 function generateSitemapBlogSection(articles) {
   const baseUrl = 'https://vlasdobry.ru';
-  const today = new Date().toISOString().split('T')[0];
+  const latestDate = getLatestDate(articles);
 
   let xml = '';
 
@@ -390,7 +402,7 @@ function generateSitemapBlogSection(articles) {
   xml += `  <!-- BLOG_START -->
   <url>
     <loc>${baseUrl}/blog/</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${latestDate}</lastmod>
     <xhtml:link rel="alternate" hreflang="ru" href="${baseUrl}/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/blog/"/>
     <changefreq>weekly</changefreq>
@@ -398,7 +410,7 @@ function generateSitemapBlogSection(articles) {
   </url>
   <url>
     <loc>${baseUrl}/en/blog/</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${latestDate}</lastmod>
     <xhtml:link rel="alternate" hreflang="ru" href="${baseUrl}/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/blog/"/>
     <changefreq>weekly</changefreq>
@@ -522,10 +534,10 @@ function updateLlmsFullTxt(enArticles) {
   let llmsFull = fs.readFileSync(llmsFullPath, 'utf-8');
 
   // Update header with current date and article count
-  const today = new Date().toISOString().split('T')[0];
+  const latestDate = getLatestDate(enArticles);
   llmsFull = llmsFull.replace(
     /> Last updated: .+/,
-    `> Last updated: ${today} (${enArticles.length} articles)`
+    `> Last updated: ${latestDate} (${enArticles.length} articles)`
   );
 
   // Generate blog articles section

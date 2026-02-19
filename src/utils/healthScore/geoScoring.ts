@@ -1,83 +1,87 @@
 // src/utils/healthScore/geoScoring.ts
 import type { ResourceResult, Issue, GeoHealthScore } from './types';
 
+type Lang = 'ru' | 'en';
+
 const AI_BOTS = [
   'GPTBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-Web',
   'PerplexityBot', 'YandexGPT', 'GigaChatBot', 'Google-Extended',
 ];
 
+function tr(lang: Lang, ru: string, en: string): string {
+  return lang === 'ru' ? ru : en;
+}
+
 // LLM Files: llms.txt (10) + llms-full.txt (20) = 30 points
 function scoreLlmFiles(
   llmsTxt: ResourceResult,
-  llmsFullTxt: ResourceResult
+  llmsFullTxt: ResourceResult,
+  lang: Lang
 ): { score: number; issues: Issue[] } {
   const issues: Issue[] = [];
   let score = 0;
 
-  // llms-full.txt (20 points) - main recommendation
   if (llmsFullTxt.status === 200 && llmsFullTxt.content) {
     const length = llmsFullTxt.content.length;
     if (length >= 2000) {
       score += 20;
       issues.push({
         severity: 'success',
-        title: 'llms-full.txt отличный',
-        description: `${length} символов — AI получает полный контент`,
+        title: tr(lang, 'llms-full.txt отличный', 'llms-full.txt is excellent'),
+        description: tr(lang, `${length} символов — AI получает полный контент`, `${length} chars - AI gets full context`),
       });
     } else if (length >= 500) {
       score += 12;
       issues.push({
         severity: 'info',
-        title: 'llms-full.txt можно расширить',
-        description: `${length} символов. Рекомендуется 2000+`,
+        title: tr(lang, 'llms-full.txt можно расширить', 'llms-full.txt can be expanded'),
+        description: tr(lang, `${length} символов. Рекомендуется 2000+`, `${length} chars. Recommended: 2000+`),
       });
     } else {
       score += 5;
       issues.push({
         severity: 'warning',
-        title: 'llms-full.txt слишком короткий',
-        description: `${length} символов. Добавьте больше контента`,
+        title: tr(lang, 'llms-full.txt слишком короткий', 'llms-full.txt is too short'),
+        description: tr(lang, `${length} символов. Добавьте больше контента`, `${length} chars. Add more content`),
       });
     }
   } else {
     issues.push({
       severity: 'critical',
-      title: 'llms-full.txt отсутствует',
-      description: 'Главная рекомендация! AI не получает полный контент сайта',
+      title: tr(lang, 'llms-full.txt отсутствует', 'llms-full.txt is missing'),
+      description: tr(lang, 'Главная рекомендация! AI не получает полный контент сайта', 'Main recommendation: AI cannot access the full site content'),
     });
   }
 
-  // llms.txt (10 points) - basic version
   if (llmsTxt.status === 200 && llmsTxt.content) {
     const length = llmsTxt.content.length;
     if (length >= 500) {
       score += 10;
       issues.push({
         severity: 'success',
-        title: 'llms.txt присутствует',
-        description: `${length} символов — базовая информация доступна`,
+        title: tr(lang, 'llms.txt присутствует', 'llms.txt is present'),
+        description: tr(lang, `${length} символов — базовая информация доступна`, `${length} chars - base information is available`),
       });
     } else if (length >= 200) {
       score += 6;
       issues.push({
         severity: 'info',
-        title: 'llms.txt короткий',
-        description: `${length} символов. Рекомендуется 500+`,
+        title: tr(lang, 'llms.txt короткий', 'llms.txt is short'),
+        description: tr(lang, `${length} символов. Рекомендуется 500+`, `${length} chars. Recommended: 500+`),
       });
     } else {
       score += 3;
       issues.push({
         severity: 'warning',
-        title: 'llms.txt минимальный',
-        description: `Только ${length} символов`,
+        title: tr(lang, 'llms.txt минимальный', 'llms.txt is minimal'),
+        description: tr(lang, `Только ${length} символов`, `Only ${length} chars`),
       });
     }
   } else if (llmsFullTxt.status !== 200) {
-    // Only show error if llms-full.txt also missing
     issues.push({
       severity: 'warning',
-      title: 'llms.txt отсутствует',
-      description: 'Базовый файл для AI-систем не найден',
+      title: tr(lang, 'llms.txt отсутствует', 'llms.txt is missing'),
+      description: tr(lang, 'Базовый файл для AI-систем не найден', 'Base AI discovery file was not found'),
     });
   }
 
@@ -85,7 +89,7 @@ function scoreLlmFiles(
 }
 
 // Schema.org (25 points)
-function scoreSchemaOrg(html: string): { score: number; issues: Issue[] } {
+function scoreSchemaOrg(html: string, lang: Lang): { score: number; issues: Issue[] } {
   const issues: Issue[] = [];
 
   const hasJsonLd = html.includes('application/ld+json');
@@ -93,8 +97,8 @@ function scoreSchemaOrg(html: string): { score: number; issues: Issue[] } {
   if (!hasJsonLd) {
     issues.push({
       severity: 'critical',
-      title: 'Schema.org отсутствует',
-      description: 'Добавьте JSON-LD разметку для AI',
+      title: tr(lang, 'Schema.org отсутствует', 'Schema.org is missing'),
+      description: tr(lang, 'Добавьте JSON-LD разметку для AI', 'Add JSON-LD structured data for AI systems'),
     });
     return { score: 0, issues };
   }
@@ -114,8 +118,8 @@ function scoreSchemaOrg(html: string): { score: number; issues: Issue[] } {
   if (foundTypes.length >= 3) {
     issues.push({
       severity: 'success',
-      title: `Schema.org: ${foundTypes.length} типа`,
-      description: `${foundTypes.slice(0, 3).join(', ')} — отлично для AI`,
+      title: tr(lang, `Schema.org: ${foundTypes.length} типа`, `Schema.org: ${foundTypes.length} types`),
+      description: tr(lang, `${foundTypes.slice(0, 3).join(', ')} — отлично для AI`, `${foundTypes.slice(0, 3).join(', ')} - great for AI`),
     });
     return { score: 25, issues };
   }
@@ -123,8 +127,8 @@ function scoreSchemaOrg(html: string): { score: number; issues: Issue[] } {
   if (foundTypes.length === 2) {
     issues.push({
       severity: 'info',
-      title: `Schema.org: ${foundTypes.length} типа`,
-      description: `${foundTypes.join(', ')}. Добавьте ещё типы`,
+      title: tr(lang, `Schema.org: ${foundTypes.length} типа`, `Schema.org: ${foundTypes.length} types`),
+      description: tr(lang, `${foundTypes.join(', ')}. Добавьте ещё типы`, `${foundTypes.join(', ')}. Add more types`),
     });
     return { score: 18, issues };
   }
@@ -132,26 +136,25 @@ function scoreSchemaOrg(html: string): { score: number; issues: Issue[] } {
   if (foundTypes.length === 1) {
     issues.push({
       severity: 'warning',
-      title: 'Schema.org: 1 тип',
-      description: `${foundTypes[0]}. Рекомендуется 3+ типа`,
+      title: tr(lang, 'Schema.org: 1 тип', 'Schema.org: 1 type'),
+      description: tr(lang, `${foundTypes[0]}. Рекомендуется 3+ типа`, `${foundTypes[0]}. Recommended: 3+ types`),
     });
     return { score: 12, issues };
   }
 
   issues.push({
     severity: 'warning',
-    title: 'Schema.org неполный',
-    description: 'JSON-LD есть, но типы не распознаны',
+    title: tr(lang, 'Schema.org неполный', 'Schema.org is incomplete'),
+    description: tr(lang, 'JSON-LD есть, но типы не распознаны', 'JSON-LD exists, but types were not recognized'),
   });
   return { score: 6, issues };
 }
 
 // FAQ / Q&A (20 points)
-function scoreFaqQa(html: string): { score: number; issues: Issue[] } {
+function scoreFaqQa(html: string, lang: Lang): { score: number; issues: Issue[] } {
   const issues: Issue[] = [];
   let score = 0;
 
-  // Check FAQPage in Schema.org (15 points)
   const hasFaqSchema =
     html.includes('"@type":"FAQPage"') ||
     html.includes('"@type": "FAQPage"') ||
@@ -162,12 +165,11 @@ function scoreFaqQa(html: string): { score: number; issues: Issue[] } {
     score += 15;
     issues.push({
       severity: 'success',
-      title: 'FAQPage Schema найден',
-      description: 'AI легко извлекает вопросы и ответы',
+      title: tr(lang, 'FAQPage Schema найден', 'FAQPage schema found'),
+      description: tr(lang, 'AI легко извлекает вопросы и ответы', 'AI can easily extract Q&A content'),
     });
   }
 
-  // Check HowTo schema (5 points)
   const hasHowTo =
     html.includes('"@type":"HowTo"') ||
     html.includes('"@type": "HowTo"');
@@ -176,12 +178,11 @@ function scoreFaqQa(html: string): { score: number; issues: Issue[] } {
     score += 5;
     issues.push({
       severity: 'success',
-      title: 'HowTo Schema найден',
-      description: 'Пошаговые инструкции структурированы',
+      title: tr(lang, 'HowTo Schema найден', 'HowTo schema found'),
+      description: tr(lang, 'Пошаговые инструкции структурированы', 'Step-by-step instructions are structured'),
     });
   }
 
-  // Check Q&A patterns in content (5 points if no schema)
   if (!hasFaqSchema) {
     const qaPatterns = [
       /вопрос[:\s]/gi,
@@ -203,14 +204,14 @@ function scoreFaqQa(html: string): { score: number; issues: Issue[] } {
       score += 5;
       issues.push({
         severity: 'info',
-        title: 'Q&A контент обнаружен',
-        description: 'Добавьте FAQPage Schema для лучшей видимости',
+        title: tr(lang, 'Q&A контент обнаружен', 'Q&A content detected'),
+        description: tr(lang, 'Добавьте FAQPage Schema для лучшей видимости', 'Add FAQPage schema for better visibility'),
       });
     } else {
       issues.push({
         severity: 'warning',
-        title: 'FAQ/Q&A не найден',
-        description: 'Добавьте раздел вопросов-ответов с FAQPage Schema',
+        title: tr(lang, 'FAQ/Q&A не найден', 'FAQ/Q&A not found'),
+        description: tr(lang, 'Добавьте раздел вопросов-ответов с FAQPage Schema', 'Add a FAQ section with FAQPage schema'),
       });
     }
   }
@@ -219,12 +220,11 @@ function scoreFaqQa(html: string): { score: number; issues: Issue[] } {
 }
 
 // E-E-A-T signals (15 points)
-function scoreEeat(html: string): { score: number; issues: Issue[] } {
+function scoreEeat(html: string, lang: Lang): { score: number; issues: Issue[] } {
   const issues: Issue[] = [];
   let score = 0;
   const signals: string[] = [];
 
-  // Author (4 points)
   const hasAuthor =
     html.includes('"author"') ||
     html.includes('name="author"') ||
@@ -233,10 +233,9 @@ function scoreEeat(html: string): { score: number; issues: Issue[] } {
 
   if (hasAuthor) {
     score += 4;
-    signals.push('автор');
+    signals.push(tr(lang, 'автор', 'author'));
   }
 
-  // Contact info (4 points)
   const emailPattern = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
   const phonePattern = /(\+7|8)[\s-]?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}|\+1[\s-]?\d{3}[\s-]?\d{3}[\s-]?\d{4}/;
 
@@ -245,10 +244,9 @@ function scoreEeat(html: string): { score: number; issues: Issue[] } {
 
   if (hasEmail || hasPhone) {
     score += 4;
-    signals.push('контакты');
+    signals.push(tr(lang, 'контакты', 'contacts'));
   }
 
-  // Social links (4 points)
   const socialPatterns = [
     /linkedin\.com/i,
     /facebook\.com/i,
@@ -260,10 +258,9 @@ function scoreEeat(html: string): { score: number; issues: Issue[] } {
   const hasSocial = socialPatterns.some(pattern => pattern.test(html));
   if (hasSocial) {
     score += 4;
-    signals.push('соцсети');
+    signals.push(tr(lang, 'соцсети', 'social links'));
   }
 
-  // About page link (3 points)
   const aboutPatterns = [
     /href="[^"]*\/about/i,
     /href="[^"]*\/o-nas/i,
@@ -275,35 +272,34 @@ function scoreEeat(html: string): { score: number; issues: Issue[] } {
   const hasAboutLink = aboutPatterns.some(pattern => pattern.test(html));
   if (hasAboutLink) {
     score += 3;
-    signals.push('о нас');
+    signals.push(tr(lang, 'о нас', 'about page'));
   }
 
-  // Generate issue based on score
   if (score >= 12) {
     issues.push({
       severity: 'success',
-      title: 'E-E-A-T сигналы сильные',
-      description: `Найдено: ${signals.join(', ')}`,
+      title: tr(lang, 'E-E-A-T сигналы сильные', 'E-E-A-T signals are strong'),
+      description: tr(lang, `Найдено: ${signals.join(', ')}`, `Found: ${signals.join(', ')}`),
     });
   } else if (score >= 8) {
     issues.push({
       severity: 'info',
-      title: 'E-E-A-T сигналы есть',
-      description: `Найдено: ${signals.join(', ')}. Добавьте больше`,
+      title: tr(lang, 'E-E-A-T сигналы есть', 'E-E-A-T signals are present'),
+      description: tr(lang, `Найдено: ${signals.join(', ')}. Добавьте больше`, `Found: ${signals.join(', ')}. Add more signals`),
     });
   } else if (score >= 4) {
     issues.push({
       severity: 'warning',
-      title: 'E-E-A-T сигналы слабые',
+      title: tr(lang, 'E-E-A-T сигналы слабые', 'E-E-A-T signals are weak'),
       description: signals.length > 0
-        ? `Только: ${signals.join(', ')}`
-        : 'Добавьте автора, контакты, соцсети',
+        ? tr(lang, `Только: ${signals.join(', ')}`, `Only: ${signals.join(', ')}`)
+        : tr(lang, 'Добавьте автора, контакты, соцсети', 'Add author data, contacts, and social links'),
     });
   } else {
     issues.push({
       severity: 'critical',
-      title: 'E-E-A-T сигналы отсутствуют',
-      description: 'Нет автора, контактов, соцсетей — AI не доверяет',
+      title: tr(lang, 'E-E-A-T сигналы отсутствуют', 'E-E-A-T signals are missing'),
+      description: tr(lang, 'Нет автора, контактов, соцсетей — AI не доверяет', 'No author, contacts, or social links - AI trust will be low'),
     });
   }
 
@@ -311,14 +307,14 @@ function scoreEeat(html: string): { score: number; issues: Issue[] } {
 }
 
 // AI accessibility via robots.txt (10 points)
-function scoreAiAccess(data: ResourceResult): { score: number; issues: Issue[] } {
+function scoreAiAccess(data: ResourceResult, lang: Lang): { score: number; issues: Issue[] } {
   const issues: Issue[] = [];
 
   if (data.status !== 200 || !data.content) {
     issues.push({
       severity: 'success',
-      title: 'AI-боты разрешены',
-      description: 'Нет robots.txt — все боты могут индексировать',
+      title: tr(lang, 'AI-боты разрешены', 'AI bots are allowed'),
+      description: tr(lang, 'Нет robots.txt — все боты могут индексировать', 'No robots.txt - all bots can index'),
     });
     return { score: 10, issues };
   }
@@ -337,7 +333,6 @@ function scoreAiAccess(data: ResourceResult): { score: number; issues: Issue[] }
     }
   }
 
-  // Check wildcard block
   if (content.includes('user-agent: *')) {
     const wildcardSection = content.split('user-agent: *')[1]?.split('user-agent:')[0] || '';
     if (wildcardSection.includes('disallow: /') && !wildcardSection.includes('allow:')) {
@@ -354,8 +349,8 @@ function scoreAiAccess(data: ResourceResult): { score: number; issues: Issue[] }
   if (uniqueBlocked.length === 0) {
     issues.push({
       severity: 'success',
-      title: 'AI-боты разрешены',
-      description: 'Все основные AI-системы могут индексировать',
+      title: tr(lang, 'AI-боты разрешены', 'AI bots are allowed'),
+      description: tr(lang, 'Все основные AI-системы могут индексировать', 'All major AI systems can index this site'),
     });
     return { score: 10, issues };
   }
@@ -364,7 +359,7 @@ function scoreAiAccess(data: ResourceResult): { score: number; issues: Issue[] }
 
   issues.push({
     severity: uniqueBlocked.length >= 3 ? 'critical' : 'warning',
-    title: `${uniqueBlocked.length} AI-бот(а) заблокированы`,
+    title: tr(lang, `${uniqueBlocked.length} AI-бот(а) заблокированы`, `${uniqueBlocked.length} AI bot(s) are blocked`),
     description: uniqueBlocked.slice(0, 3).join(', ') + (uniqueBlocked.length > 3 ? '...' : ''),
   });
 
@@ -376,7 +371,7 @@ export function calculateGeoScore(data: {
   llmsFullTxt: ResourceResult;
   robotsTxt: ResourceResult;
   homepage: ResourceResult;
-}): GeoHealthScore {
+}, lang: Lang = 'ru'): GeoHealthScore {
   const issues: Issue[] = [];
   const breakdown = {
     llmFiles: 0,
@@ -386,64 +381,55 @@ export function calculateGeoScore(data: {
     aiAccess: 0,
   };
 
-  // LLM Files (30 points)
-  const llmResult = scoreLlmFiles(data.llmsTxt, data.llmsFullTxt);
+  const llmResult = scoreLlmFiles(data.llmsTxt, data.llmsFullTxt, lang);
   breakdown.llmFiles = llmResult.score;
   issues.push(...llmResult.issues);
 
-  // Check homepage content
   if (data.homepage.content) {
     const html = data.homepage.content;
 
-    // Schema.org (25 points)
-    const schemaResult = scoreSchemaOrg(html);
+    const schemaResult = scoreSchemaOrg(html, lang);
     breakdown.schemaOrg = schemaResult.score;
     issues.push(...schemaResult.issues);
 
-    // FAQ/Q&A (20 points)
-    const faqResult = scoreFaqQa(html);
+    const faqResult = scoreFaqQa(html, lang);
     breakdown.faqQa = faqResult.score;
     issues.push(...faqResult.issues);
 
-    // E-E-A-T (15 points)
-    const eeatResult = scoreEeat(html);
+    const eeatResult = scoreEeat(html, lang);
     breakdown.eeat = eeatResult.score;
     issues.push(...eeatResult.issues);
   } else {
     issues.push({
       severity: 'critical',
-      title: 'Сайт недоступен',
-      description: 'Не удалось проверить страницу',
+      title: tr(lang, 'Сайт недоступен', 'Site is unavailable'),
+      description: tr(lang, 'Не удалось проверить страницу', 'Could not validate the page'),
     });
   }
 
-  // AI accessibility (10 points)
-  const aiResult = scoreAiAccess(data.robotsTxt);
+  const aiResult = scoreAiAccess(data.robotsTxt, lang);
   breakdown.aiAccess = aiResult.score;
   issues.push(...aiResult.issues);
 
-  // Total (max 100)
   const total = breakdown.llmFiles + breakdown.schemaOrg + breakdown.faqQa + breakdown.eeat + breakdown.aiAccess;
 
-  // Status
   let status: GeoHealthScore['status'];
   let statusLabel: string;
 
   if (total <= 30) {
     status = 'critical';
-    statusLabel = 'Критично';
+    statusLabel = tr(lang, 'Критично', 'Critical');
   } else if (total <= 50) {
     status = 'warning';
-    statusLabel = 'Требует внимания';
+    statusLabel = tr(lang, 'Требует внимания', 'Needs attention');
   } else if (total <= 70) {
     status = 'good';
-    statusLabel = 'Есть потенциал';
+    statusLabel = tr(lang, 'Есть потенциал', 'Has potential');
   } else {
     status = 'excellent';
-    statusLabel = 'Хорошо';
+    statusLabel = tr(lang, 'Хорошо', 'Good');
   }
 
-  // Sort issues (critical first, success last)
   const severityOrder: Record<string, number> = { critical: 0, warning: 1, info: 2, success: 3 };
   issues.sort((a, b) => severityOrder[a.severity] - severityOrder[b.severity]);
 

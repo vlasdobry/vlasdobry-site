@@ -2,14 +2,33 @@ name: Build and Deploy
 
 on:
   push:
-    branches: [main, master]
+    branches: [main]
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
+  quality-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck, build, smoke
+        run: npm run check
+
   deploy-worker:
+    needs: quality-gate
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -22,6 +41,7 @@ jobs:
           workingDirectory: workers/health-score-proxy
 
   build-and-push:
+    needs: quality-gate
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -73,7 +93,7 @@ jobs:
 
             # Скачать docker-compose если нет
             if [ ! -f docker-compose.prod.yml ]; then
-              curl -sL https://raw.githubusercontent.com/vlasdobry/vlasdobry-site/master/docker-compose.prod.yml -o docker-compose.prod.yml
+              curl -sL https://raw.githubusercontent.com/vlasdobry/vlasdobry-site/main/docker-compose.prod.yml -o docker-compose.prod.yml
             fi
 
             sudo docker compose -f docker-compose.prod.yml pull

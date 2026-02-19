@@ -97,16 +97,6 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
               ctaUrl="https://t.me/vlasdobry"
             />
           )}
-
-          {/* miniCta — only for non-SEO/GEO pages */}
-          {serviceKey !== 'seo' && serviceKey !== 'geo' && (
-            <a
-              href={section.hero.miniCta.anchor}
-              className="inline-flex items-center gap-2 text-sm font-medium text-zinc-600 hover:text-black transition-colors"
-            >
-              {section.hero.miniCta.text}
-            </a>
-          )}
         </header>
 
         {/* Education Section (GEO only) */}

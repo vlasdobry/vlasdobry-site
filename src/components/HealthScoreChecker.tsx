@@ -372,7 +372,7 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
       await stepDelay(1200);
 
       setCheckedDomain(data.domain);
-      const scoreResult = calculateCombinedScore(data);
+      const scoreResult = calculateCombinedScore(data, lang);
       setResult(scoreResult);
       setState('result');
 
