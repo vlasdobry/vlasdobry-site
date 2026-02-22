@@ -299,6 +299,33 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
           )}
         </section>
 
+        {/* Checklist Section (optional, e.g. PPC) */}
+        {section.checklist && (
+          <section className="py-16 border-b border-zinc-100" aria-labelledby="checklist-heading">
+            <h2 id="checklist-heading" className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-12">
+              {section.checklist.title}
+            </h2>
+
+            <ul className="space-y-3 md:space-y-4">
+              {section.checklist.items.map((item, i) => (
+                <li key={i} className="flex items-start gap-3 md:gap-4 text-base md:text-lg">
+                  <Check className="w-4 h-4 md:w-5 md:h-5 text-green-500 mt-1 flex-shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            {section.checklist.cta && (
+              <a
+                href={section.checklist.cta.url}
+                className="inline-block mt-8 text-sm font-bold text-black border-b-2 border-black hover:text-zinc-600 hover:border-zinc-600 transition-colors pb-0.5"
+              >
+                {section.checklist.cta.text}
+              </a>
+            )}
+          </section>
+        )}
+
         {/* Related Services Section */}
         <section className="py-16 border-b border-zinc-100" aria-labelledby="related-heading">
           <h2 id="related-heading" className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-8">

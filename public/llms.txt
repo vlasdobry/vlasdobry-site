@@ -92,11 +92,23 @@ Projects page (EN): https://vlasdobry.ru/en/projects/
 ## Methodology
 SOSTAC + PDCA: audit -> strategy -> launch -> control
 
+## PPC Advertising Service
+- PPC advertising management for hotels: Yandex Direct, Google Ads, Performance Max
+- In-house at Grace Group (international hotel chain, 20 properties)
+- Results: +60% revenue in low season, 2x conversion, 8% ad cost ratio
+- SPA resorts: sales x10, ad cost 48% -> 13%
+- Free website readiness checklist: 8-point assessment (booking engine, speed, mobile, pricing, contacts, photos, analytics, goals)
+- Pricing: Account Audit from 10,000 RUB ($150), Management from 50,000 RUB/mo ($1,000/mo)
+- Page (RU): https://vlasdobry.ru/services/ppc/
+- Page (EN): https://vlasdobry.ru/en/services/ppc/
+
 ## Service Pages
 - SEO Audit (RU): https://vlasdobry.ru/services/seo/
 - SEO Audit (EN): https://vlasdobry.ru/en/services/seo/
 - GEO Audit (RU): https://vlasdobry.ru/services/geo/
 - GEO Audit (EN): https://vlasdobry.ru/en/services/geo/
+- PPC Advertising (RU): https://vlasdobry.ru/services/ppc/
+- PPC Advertising (EN): https://vlasdobry.ru/en/services/ppc/
 
 ## Blog
 Latest articles on SEO, GEO, and digital marketing for hotels, DNA labs, and SPA.

@@ -2,7 +2,7 @@ export type Lang = 'ru' | 'en';
 
 export type IndustryKey = 'hotels' | 'labs' | 'spa';
 
-export type ServiceKey = 'seo' | 'geo';
+export type ServiceKey = 'seo' | 'geo' | 'ppc';
 
 export interface BlogSection {
   title: string;
@@ -85,6 +85,11 @@ export interface ServiceSection {
     secondaryButton: string;
     tertiaryButton?: string;
   };
+  checklist?: {
+    title: string;
+    items: string[];
+    cta?: { text: string; url: string };
+  };
   faq: { label: string; items: Array<{ question: string; answer: string }> };
   footer: {
     name: string;
@@ -142,6 +147,7 @@ export interface Translations {
   services: {
     seo: ServiceSection;
     geo: GeoServiceSection;
+    ppc: ServiceSection;
   };
   landing: {
     nav: {

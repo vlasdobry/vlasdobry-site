@@ -127,6 +127,24 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/services/geo/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vlasdobry.ru/services/geo/"/>
   </url>
+  <url>
+    <loc>https://vlasdobry.ru/services/ppc/</loc>
+    <lastmod>2026-02-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/services/ppc/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/services/ppc/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vlasdobry.ru/services/ppc/"/>
+  </url>
+  <url>
+    <loc>https://vlasdobry.ru/en/services/ppc/</loc>
+    <lastmod>2026-02-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/services/ppc/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/services/ppc/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vlasdobry.ru/services/ppc/"/>
+  </url>
   <!-- BLOG_START -->
   <url>
     <loc>https://vlasdobry.ru/blog/</loc>

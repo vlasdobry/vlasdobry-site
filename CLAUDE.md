@@ -68,6 +68,8 @@ git push origin master  # Деплой на продакшен (автомати
 - `/en/services/seo` — SEO Audit (EN)
 - `/services/geo` — GEO-оптимизация (RU)
 - `/en/services/geo` — GEO Optimization (EN)
+- `/services/ppc` — Контекстная реклама (RU)
+- `/en/services/ppc` — PPC Advertising (EN)
 - `/blog` — блог со статьями (RU)
 - `/en/blog` — блог со статьями (EN)
 - `/blog/[slug]` — отдельная статья (RU)
@@ -78,7 +80,7 @@ git push origin master  # Деплой на продакшен (автомати
 - `src/components/Hero.tsx` — главный экран с фото и заголовками
 - `src/components/Landing.tsx` — лендинг с услугами, кейсами и контактами
 - `src/components/IndustryLanding.tsx` — универсальный лендинг для отраслей (hotels, labs, spa)
-- `src/components/ServiceLanding.tsx` — универсальный лендинг для услуг (SEO, GEO)
+- `src/components/ServiceLanding.tsx` — универсальный лендинг для услуг (SEO, GEO, PPC). Поддерживает опциональную секцию `checklist` (между Pricing и Related Services)
 - `src/components/HealthScoreChecker.tsx` — виджет экспресс-диагностики сайта (8 параметров)
 - `src/components/LanguageSwitcher.tsx` — переключатель языка
 - `src/components/ProjectsLanding.tsx` — лендинг проектов (sticky header, карточки проектов)
@@ -92,7 +94,7 @@ git push origin master  # Деплой на продакшен (автомати
 - GEO проверяет: LLM Files (llms.txt + llms-full.txt), Schema.org, FAQ/Q&A, E-E-A-T сигналы, AI-доступность
 - Использует Cloudflare Worker (`health-score-proxy.vlasdobry.workers.dev`) как CORS-прокси
 - Клиентская валидация URL: блокирует localhost, приватные IP, домены без TLD
-- Таймаут 15 секунд с понятными сообщениями об ошибках
+- Таймаут 25 секунд с понятными сообщениями об ошибках (+ «сайт отвечает медленно» после 10 сек)
 - Анимированный процесс сканирования с разными этапами для SEO и GEO
 - Интегрирован в ServiceLanding для SEO и GEO страниц
 - Трекинг в Яндекс.Метрику: старт, завершение, ошибки, клик по CTA
@@ -108,7 +110,7 @@ git push origin master  # Деплой на продакшен (автомати
 - Ссылка на блог только в футере всех страниц
 - Авторинг: Claude пишет статьи, владелец утверждает
 
-**Текущие статьи блога (9 шт):**
+**Текущие статьи блога (13 шт):**
 - `kak-ocenit-potencial-google-ads` — Как оценить потенциал Google Ads: кейс из Лос-Анджелеса
 - `odnostranichnyj-sajt-otelya-teryaet-trafik` — Как одностраничный сайт отеля теряет 80 000 запросов
 - `audit-sajta-otelya-keys-rushotel` — Экспресс-аудит сайта отеля: кейс Русь Отель (Сарапул)
@@ -118,13 +120,17 @@ git push origin master  # Деплой на продакшен (автомати
 - `kak-proverit-seo-sayta` — Как проверить SEO сайта: чеклист из 8 пунктов
 - `schema-org-dlya-biznesa` — Schema.org для локального бизнеса
 - `seo-dlya-oteley` — SEO для отелей: с чего начать
+- `geo-optimizaciya-sajta-gajd` — GEO-оптимизация сайта: пошаговый гайд с примерами кода
+- `prodvizhenie-v-nejrosetyah` — Продвижение в нейросетях: как AI-поиск меняет правила
+- `llms-txt-chto-eto` — llms.txt: что это и зачем нужен файл для AI
+- `geo-prodvizhenie-sajta` — GEO-продвижение сайта: зачем бизнесу новый канал трафика
 
 **Стилизация:** Tailwind CSS v4 (через Vite plugin), шрифт Inter. Используется glassmorphism-эффект для UI-элементов.
 
 **Мультиязычность (i18n):**
 - URL-based routing: `/` (RU), `/en/` (EN)
 - Самописная i18n-система в `src/i18n/` (KISS: без i18next)
-- HTML файлы: `index.html`, `en.html`, `for-hotels.html`, `for-hotels-en.html`, `for-labs.html`, `for-labs-en.html`, `for-spa.html`, `for-spa-en.html`, `projects.html`, `projects-en.html`, `seo.html`, `seo-en.html`, `geo.html`, `geo-en.html`, `blog.html`, `blog-en.html`
+- HTML файлы: `index.html`, `en.html`, `for-hotels.html`, `for-hotels-en.html`, `for-labs.html`, `for-labs-en.html`, `for-spa.html`, `for-spa-en.html`, `projects.html`, `projects-en.html`, `seo.html`, `seo-en.html`, `geo.html`, `geo-en.html`, `ppc.html`, `ppc-en.html`, `blog.html`, `blog-en.html`
 - Переводы: `src/i18n/ru.ts`, `src/i18n/en.ts`
 
 **Мобильные функции:**
@@ -199,6 +205,8 @@ git push origin master  # Деплой на продакшен (автомати
 | `seo-en.html` | EN страница SEO Audit |
 | `geo.html` | RU страница GEO-оптимизации |
 | `geo-en.html` | EN страница GEO Optimization |
+| `ppc.html` | RU страница контекстной рекламы |
+| `ppc-en.html` | EN страница PPC Advertising |
 | `blog.html` | RU список статей блога |
 | `blog-en.html` | EN список статей блога |
 | `blog-post.html` | Entry point для страниц статей (vite build) |
@@ -234,3 +242,24 @@ git push origin master  # Деплой на продакшен (автомати
 - Cloudflare Worker: CORS strict match (`===`), SSRF-защита (блокировка приватных IP, localhost, .local, .internal)
 - Health Score: клиентская валидация URL перед отправкой на Worker
 - **НЕ добавлять HEALTHCHECK в Dockerfile** — Traefik v2 фильтрует unhealthy/starting контейнеры и убирает роутеры → 404
+
+## Метрики роста (baseline 22.02.2026)
+
+**North Star Metric:** Health Score completions / неделю (текущее: ~5, цель: 15)
+
+**Трафик:** 158 визитов/мес, 48 уников, 13.92% отказов, 8:14 среднее время
+**Источники:** Direct 62%, Search 5% (8 визитов), Link 6%, Internal 24%
+**Индексация:** 21 URL в Яндексе (+4 за квартал)
+
+**Воронка Health Score:**
+- 32 запуска → 21 завершение (66%) → 10 ошибок (31%) → **0 CTA кликов**
+- Bottleneck: CTA «Получить полный аудит» не конвертирует (запланирован фикс)
+
+**Вовлечённость по страницам:**
+- `/services/geo/` — 15.5 мин среднее время, 0% отказов (лидер)
+- `/services/seo/` — 1.4 мин, 8% отказов
+- `/blog/` — 6 мин, 9% отказов
+
+**Стратегическое направление:** отельная ниша + PPC (Яндекс.Директ, Google Ads)
+- `/services/ppc` — лендинг PPC с отельными кейсами, чеклистом готовности сайта к рекламе (8 пунктов) и CTA на Health Score
+- Content loop: статья → Health Score → CTA → лид

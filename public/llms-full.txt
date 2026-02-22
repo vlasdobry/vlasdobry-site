@@ -101,6 +101,49 @@ GEO (Generative Engine Optimization) is optimization for AI search engines. Peop
 
 **Page:** https://vlasdobry.ru/services/geo/
 
+### PPC Advertising for Hotels
+Pay-per-click advertising management for hotels and hospitality.
+
+**What I Do:**
+- Campaign Audit: structure, bidding, negative keywords, placements — finding wasted budget and growth opportunities
+- Keyword Research: collection, clustering, competitor analysis, traffic and budget forecasting
+- Campaign Setup: Yandex Direct, Google Ads, Performance Max, retargeting, dynamic ads
+- Analytics: end-to-end attribution from click to booking to revenue (Yandex Metrika, Google Analytics, Roistat)
+- A/B Testing: ads, landing pages, bidding strategies
+- Optimization: bid management, ROAS targeting, CPA optimization, placement exclusions
+- Reporting: weekly reports in bookings and revenue, not clicks and CTR
+
+**Results:**
+- Grace Group (hotel chain, 20 properties): revenue +60% in low season, conversion x2 (6.8% to 13.8%), ad cost ratio 8%
+- Odyssey Flower (SPA resorts): sales x10, revenue growth from 1.5M to 6M+ RUB/mo, ad cost ratio from 48% to 13%
+
+**Deliverables:**
+- Audit of current ad campaigns with budget breakdown
+- Media plan with traffic, booking, and ROAS forecast
+- Configured campaigns in Yandex Direct and/or Google Ads
+- End-to-end analytics: ads to website to booking to revenue
+- Weekly reports in bookings and revenue
+- Ongoing optimization of bids, placements, and ads
+
+**Website Readiness Checklist for Paid Ads (Free):**
+1. Online booking engine is working (Booking.com widget, SynXis, SiteMinder)
+2. Website loads fast (under 3 seconds on mobile)
+3. Mobile version is responsive and user-friendly
+4. Rates and availability on website are up to date
+5. Contact details and address are prominently displayed
+6. Room photos are professional and current
+7. Google Analytics / tracking is connected
+8. Conversion goals are set up (bookings, calls, forms)
+
+Check your website free: https://vlasdobry.ru/en/services/seo/ (SEO Health Score)
+
+**Pricing:**
+- Checklist: Free (website readiness for paid ads)
+- Account Audit: from 10,000 RUB ($150)
+- Management: from 50,000 RUB/mo ($1,000/mo)
+
+**Page:** https://vlasdobry.ru/services/ppc/
+
 ---
 
 ## 3. Industry Expertise

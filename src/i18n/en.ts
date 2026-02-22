@@ -541,6 +541,7 @@ export const en: Translations = {
           items: [
             { name: 'SEO Audit', url: '/en/services/seo' },
             { name: 'GEO Audit', url: '/en/services/geo' },
+            { name: 'PPC Advertising', url: '/en/services/ppc' },
           ],
         },
         blog: {
@@ -820,6 +821,127 @@ export const en: Translations = {
       footer: {
         name: 'Vlas Fedorov',
         role: 'GEO Audit for Business',
+        links: { telegram: 'Telegram', whatsapp: 'WhatsApp', email: 'Email' },
+      },
+    },
+    ppc: {
+      meta: {
+        title: 'PPC Advertising for Hotels | Vlas Fedorov',
+        description: 'PPC advertising for hotels. Google Ads, Yandex Direct. Account audit from $150, management from $1,000/mo.',
+      },
+      nav: { backToMain: 'Back' },
+      hero: {
+        title: 'PPC Advertising for Hotels',
+        subtitle: 'More direct bookings, less OTA commissions. Google Ads and Yandex Direct focused on revenue, not clicks',
+        badges: ['Google Ads', 'Yandex Direct', 'End-to-End Analytics'],
+        miniCta: { text: 'Results ↓', anchor: '#results' },
+      },
+      methodology: {
+        title: 'What I Do',
+        categories: [
+          { name: 'Campaign Audit', description: 'Structure, bidding, negative keywords, placements. Finding wasted budget and growth opportunities' },
+          { name: 'Keyword Research', description: 'Collection, clustering, competitor analysis, traffic and budget forecasting' },
+          { name: 'Campaign Setup', description: 'Google Ads, Microsoft Ads, Performance Max, retargeting, dynamic ads' },
+          { name: 'Analytics', description: 'Google Analytics, end-to-end attribution from click to booking to revenue' },
+          { name: 'A/B Testing', description: 'Testing ads, landing pages, and bidding strategies' },
+          { name: 'Optimization', description: 'Bid management, ROAS targeting, CPA optimization, placement exclusions' },
+          { name: 'Reporting', description: 'Weekly reports in bookings and revenue, not clicks and CTR' },
+        ],
+      },
+      example: {
+        title: 'Results',
+        subtitle: 'Grace Group — 20-property hotel chain',
+        scores: [
+          { category: 'Revenue', score: '+60%', status: 'In low season' },
+          { category: 'Conversion', score: '×2', status: '6.8% → 13.8%' },
+          { category: 'Ad cost ratio', score: '8%', status: 'Target achieved' },
+        ],
+        findings: [
+          'Paid traffic revenue +60% in low season (November–December)',
+          'Website conversion ×2 compared to pre-optimization period',
+          'SPA resorts: sales ×10, revenue $20K → $80K+/mo',
+          'SPA resorts: ad cost ratio reduced from 48% to 13%',
+        ],
+        recommendations: [
+          'Campaign restructuring by room types and seasons',
+          'End-to-end analytics setup from click to booking',
+          'Budget reallocation between channels by ROAS',
+          'Blocking non-converting placements in display network',
+        ],
+        caseLink: '',
+      },
+      deliverables: {
+        title: 'What You Get',
+        items: [
+          'Audit of current ad campaigns with budget breakdown',
+          'Media plan with traffic, booking, and ROAS forecast',
+          'Configured campaigns in Google Ads and/or Microsoft Ads',
+          'End-to-end analytics: ads → website → booking → revenue',
+          'Weekly reports in bookings and revenue',
+          'Ongoing optimization of bids, placements, and ads',
+        ],
+      },
+      pricing: {
+        title: 'Pricing',
+        allFeatures: [
+          'Website readiness checklist for paid ads',
+          'Campaign review and wasted spend analysis',
+          'Recommendations on structure and settings',
+          'Media plan with forecast',
+          'Turnkey campaign setup',
+          'End-to-end analytics',
+          'Weekly optimization',
+          'Reports in bookings and revenue',
+        ],
+        packages: [
+          { name: 'Checklist', price: 'Free', features: [true, false, false, false, false, false, false, false] },
+          { name: 'Account Audit', price: 'from $150', features: [true, true, true, true, false, false, false, false], recommended: true },
+          { name: 'Management', price: 'from $1,000/mo', features: [true, true, true, true, true, true, true, true] },
+        ],
+        deliveryTime: 'Checklist: instant · Audit: 3-5 days · Management: ongoing',
+      },
+      checklist: {
+        title: 'Website Readiness Checklist for Paid Ads',
+        items: [
+          'Online booking engine is working (Booking.com widget, SynXis, SiteMinder)',
+          'Website loads fast (under 3 seconds on mobile)',
+          'Mobile version is responsive and user-friendly',
+          'Rates and availability on website are up to date',
+          'Contact details and address are prominently displayed',
+          'Room photos are professional and current',
+          'Google Analytics / tracking is connected',
+          'Conversion goals are set up (bookings, calls, forms)',
+        ],
+        cta: { text: 'Check your website free → SEO Health Score', url: '/en/services/seo/' },
+      },
+      relatedServices: {
+        title: 'Related Services',
+        links: [
+          { text: 'SEO Audit', url: '/en/services/seo/' },
+          { text: 'GEO Audit', url: '/en/services/geo/' },
+          { text: 'Check your landing page → Health Score', url: '/en/services/seo/' },
+        ],
+      },
+      cta: {
+        title: 'Free ad account review',
+        subtitle: 'I\'ll show you where budget is being wasted and how to increase bookings. 20-minute review, no strings attached.',
+        primaryButton: 'Get a free review',
+        secondaryButton: '',
+        tertiaryButton: '',
+      },
+      faq: {
+        label: 'FAQ',
+        items: [
+          { question: 'How much does PPC management cost?', answer: 'Account audit — from $150. Ongoing management — from $1,000/mo. Minimum ad budget: $1,500/mo.' },
+          { question: 'What is the minimum ad budget?', answer: 'From $1,500/month. With a smaller budget, it\'s difficult to gather enough data for optimization and achieve meaningful results.' },
+          { question: 'How fast will I see results?', answer: 'First data in 2-3 weeks. Target ROAS and CPA in 4-6 weeks of systematic optimization.' },
+          { question: 'Can PPC reduce OTA dependency?', answer: 'Yes, that\'s one of the main goals. Direct bookings through your website mean no 15–25% commission. I set up campaigns so guests book directly instead of through aggregators.' },
+          { question: 'How is this different from an agency?', answer: 'I work personally — no account managers in between. You communicate directly with the specialist managing your campaigns. 10+ years experience, in-house at a hotel chain.' },
+        ],
+      },
+      footer: {
+        name: 'Vlas Fedorov',
+        role: 'PPC Advertising for Hotels',
         links: { telegram: 'Telegram', whatsapp: 'WhatsApp', email: 'Email' },
       },
     },
