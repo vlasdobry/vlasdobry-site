@@ -1,7 +1,7 @@
 # Vlas Fedorov - Full Website Content
 
 > This file contains the complete content of vlasdobry.ru for AI systems.
-> Last updated: 2026-02-17 (9 articles)
+> Last updated: 2026-02-22 (13 articles)
 
 ## Table of Contents
 1. About Vlas Fedorov
@@ -216,6 +216,62 @@ Acoustic voice analysis and training platform.
 ---
 
 ## 6. Blog Articles
+
+### GEO Optimization for Your Website: A Step-by-Step Guide (2026)
+**URL:** /blog/geo-optimizaciya-sajta-gajd/
+**Category:** GEO
+**Date:** 2026-02-22
+
+Practical guide to GEO optimization: llms.txt, Schema.org, FAQ, E-E-A-T signals. A 5-step checklist with code examples.
+
+Key insight: GEO optimization comes down to 5 concrete steps: create llms.txt, add Schema.org markup, write AI-friendly FAQ, strengthen E-E-A-T signals, and ensure AI bot access. Below is a step-by-step checklist with code examples.
+
+FAQ:
+- Can I do GEO optimization myself? Yes, the basic steps (llms.txt, robots.txt, FAQ) can be done in 1-2 days. Schema.org and deep optimization may require a developer.
+- Does GEO optimization work for all industries? It works best for local businesses (hotels, clinics, restaurants) and professional services (lawyers, marketers, developers). For e-commerce with thousands of products, the approach differs.
+- How do I check if my site appears in ChatGPT responses? Ask ChatGPT a question about your niche in your area. For example: "Best hotel in downtown LA?" or "Where to get an SEO audit?" If you're not in the answer, it's time to start GEO optimization.
+
+### GEO Promotion: Why Your Business Needs an AI Traffic Channel
+**URL:** /blog/geo-prodvizhenie-sajta/
+**Category:** GEO
+**Date:** 2026-02-22
+
+What GEO promotion delivers for businesses. ROI, comparison with paid ads, and the funnel from AI query to customer.
+
+Key insight: GEO promotion is a strategy for attracting customers through AI search engines (ChatGPT, Perplexity, Claude). Unlike paid ads, there's no cost per click. Optimize once — get recommended for free.
+
+FAQ:
+- How is GEO promotion different from SEO? SEO targets rankings in Google and Bing. GEO targets mentions in ChatGPT, Perplexity, and other AI systems. [Detailed comparison](/en/blog/chto-takoe-geo-optimizaciya/) is in a separate article. Using both channels together is optimal.
+- Can I hire someone for GEO promotion? Yes. A free diagnostic shows your current state. Full audit with recommendations and implementation is available on the [service page](/en/services/geo/). Basic steps can be done independently using the [guide](/en/blog/geo-optimizaciya-sajta-gajd/).
+- How long until I see results? Technical changes (llms.txt, Schema.org) get indexed in 1-2 weeks. First mentions in AI answers appear within 2-4 weeks. Consistent flow takes 1-2 months with full optimization.
+
+### llms.txt: What It Is and Why Your Website Needs One
+**URL:** /blog/llms-txt-chto-eto/
+**Category:** GEO
+**Date:** 2026-02-22
+
+What is llms.txt, how to create it, and where to place it. Examples for different industries, specification, common mistakes.
+
+Key insight: llms.txt is a text file at your site root that tells AI systems about your business. It works like robots.txt, but instead of restricting access, it helps neural networks understand what you do. Takes about 15 minutes to create.
+
+FAQ:
+- Is llms.txt mandatory? No, it's a voluntary standard. But without it, AI systems gather information on their own and can get things wrong. The file improves accuracy and citation chances.
+- How often should I update llms.txt? With every significant change: new service, updated contacts, new case studies. At minimum, review it quarterly.
+- Does llms.txt replace Schema.org? No. These are different [GEO optimization](/en/blog/geo-optimizaciya-sajta-gajd/) tools. Schema.org is markup inside HTML pages. llms.txt is a separate file for AI. Best results come from using both.
+
+### AI Search Optimization: How Neural Networks Pick Sources
+**URL:** /blog/prodvizhenie-v-nejrosetyah/
+**Category:** GEO
+**Date:** 2026-02-22
+
+How AI search engines like ChatGPT and Perplexity pick sources. Practical steps to get your business recommended by neural networks.
+
+Key insight: AI search optimization (GEO) is a set of techniques that make AI engines like ChatGPT, Perplexity, and Claude recommend your business. It works through structured data on your website, not through advertising.
+
+FAQ:
+- Is AI search optimization the same as advertising? No. It's website optimization so AI systems find and quote your information organically. Like SEO, but for neural networks.
+- How long does AI search optimization take? Basic steps (llms.txt, robots.txt, FAQ) take 1-2 days. Full optimization with Schema.org and case studies takes 1-2 weeks. First results appear within 2-4 weeks.
+- Can I do both SEO and AI search optimization? Not only can you — you should. Many GEO elements (structure, Schema.org, E-E-A-T) also improve SEO rankings. It's not competition, it's synergy.
 
 ### How to Evaluate Google Ads Potential: An LA Case Study
 **URL:** /blog/kak-ocenit-potencial-google-ads/

@@ -102,6 +102,10 @@ SOSTAC + PDCA: audit -> strategy -> launch -> control
 Latest articles on SEO, GEO, and digital marketing for hotels, DNA labs, and SPA.
 
 ### Recent Articles
+- /blog/geo-optimizaciya-sajta-gajd/ - Practical guide to GEO optimization: llms.txt, Schema.org, FAQ, E-E-A-T signals. A 5-step checklist with code examples.
+- /blog/geo-prodvizhenie-sajta/ - What GEO promotion delivers for businesses. ROI, comparison with paid ads, and the funnel from AI query to customer.
+- /blog/llms-txt-chto-eto/ - What is llms.txt, how to create it, and where to place it. Examples for different industries, specification, common mistakes.
+- /blog/prodvizhenie-v-nejrosetyah/ - How AI search engines like ChatGPT and Perplexity pick sources. Practical steps to get your business recommended by neural networks.
 - /blog/kak-ocenit-potencial-google-ads/ - Real case study: evaluating Google Ads for a local service business in Los Angeles. Keyword Planner data, CPC curves, multichannel strategy.
 - /blog/odnostranichnyj-sajt-otelya-teryaet-trafik/ - Real case study: a resort hotel with 1,000+ keywords on one page, -38% traffic decline, and untapped potential worth 150K+ monthly searches.
 - /blog/audit-sajta-otelya-keys-rushotel/ - Real case study: SEO audit of two hotel websites, ad campaign analysis, and competitor research for a 3-star property in a small city.

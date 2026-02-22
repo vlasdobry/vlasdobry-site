@@ -72,10 +72,12 @@ function generateSlug(text) {
 
 function generateToc(content) {
   const toc = [];
+  // Strip code blocks before extracting headings to avoid false matches
+  const contentWithoutCode = content.replace(/```[\s\S]*?```/g, '');
   const headingRegex = /^(#{2,3})\s+(.+)$/gm;
   let match;
 
-  while ((match = headingRegex.exec(content)) !== null) {
+  while ((match = headingRegex.exec(contentWithoutCode)) !== null) {
     const level = match[1].length;
     const text = match[2].trim();
     // Skip FAQ heading

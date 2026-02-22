@@ -7,6 +7,16 @@ export default defineConfig({
     server: {
       port: 3000,
       host: '0.0.0.0',
+      proxy: {
+        '/api/health-score': {
+          target: 'https://health-score-proxy.vlasdobry.workers.dev',
+          changeOrigin: true,
+          headers: {
+            Origin: 'https://vlasdobry.ru',
+          },
+          rewrite: () => '/',
+        },
+      },
     },
     plugins: [
       react(),

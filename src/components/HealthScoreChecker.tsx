@@ -5,7 +5,9 @@ import type { Lang } from '../i18n';
 import { calculateCombinedScore, type FetchedData, type CombinedHealthScore } from '../utils/healthScore';
 import { analytics } from '../utils/analytics';
 
-const WORKER_URL = 'https://health-score-proxy.vlasdobry.workers.dev';
+const WORKER_URL = import.meta.env.DEV
+  ? '/api/health-score'
+  : 'https://health-score-proxy.vlasdobry.workers.dev';
 
 interface Props {
   lang: Lang;
