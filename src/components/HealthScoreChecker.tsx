@@ -95,7 +95,11 @@ const translations = {
       `Привет! Мой сайт ${domain} получил ${score}/100 в ${type} Health Score. Хочу обсудить улучшения.`,
     tryAnother: 'Проверить другой сайт',
     errorTitle: 'Ошибка проверки',
-    errorTimeout: 'Сайт не отвечает. Проверьте URL или попробуйте позже.',
+    errorTimeoutTitle: 'Проблема с производительностью',
+    errorTimeout: 'Сайт отвечает дольше 25 секунд. Google рекомендует TTFB менее 800 мс — это серьёзная проблема, влияющая на SEO и конверсию.',
+    errorTimeoutCta: 'Обсудить в Telegram',
+    errorTimeoutMessage: (domain: string) =>
+      `Привет! Проверял ${domain} через Health Score — сайт не отвечает дольше 25 секунд. Хочу обсудить аудит производительности.`,
     errorServer: 'Сервер временно недоступен. Попробуйте позже.',
     errorNetwork: 'Не удалось подключиться. Проверьте интернет-соединение.',
     tryAgain: 'Попробовать снова',
@@ -143,7 +147,11 @@ const translations = {
       `Hi! My site ${domain} scored ${score}/100 on ${type} Health Score. I'd like to discuss improvements.`,
     tryAnother: 'Check another site',
     errorTitle: 'Check failed',
-    errorTimeout: 'Site not responding. Check URL or try later.',
+    errorTimeoutTitle: 'Performance issue detected',
+    errorTimeout: 'Site takes over 25 seconds to respond. Google recommends TTFB under 800ms — this is a critical issue affecting SEO and conversions.',
+    errorTimeoutCta: 'Discuss on Telegram',
+    errorTimeoutMessage: (domain: string) =>
+      `Hi! I checked ${domain} via Health Score — it takes over 25 seconds to respond. I'd like to discuss a performance audit.`,
     errorServer: 'Server temporarily unavailable. Try later.',
     errorNetwork: 'Connection failed. Check your internet.',
     tryAgain: 'Try again',
@@ -331,7 +339,7 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
   const [progress, setProgress] = useState(0);
   const [isScanning, setIsScanning] = useState(false);
   const [isSlow, setIsSlow] = useState(false);
-  const [history] = useState(getHistory);
+  const [history, setHistory] = useState(getHistory);
 
   const t = translations[lang];
 
@@ -403,7 +411,9 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
       await stepDelay(1200);
 
       setCheckedDomain(data.domain);
-      saveToHistory(data.domain);
+      const fullUrl = url.trim().match(/^https?:\/\//) ? url.trim() : `https://${url.trim()}`;
+      saveToHistory(fullUrl);
+      setHistory(getHistory());
       const scoreResult = calculateCombinedScore(data, lang);
       setResult(scoreResult);
       setState('result');
@@ -472,11 +482,9 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
           className="flex-1 px-4 py-3 border border-zinc-200 rounded-lg focus:outline-none focus:border-black transition-colors"
           onKeyDown={(e) => e.key === 'Enter' && handleScan()}
         />
-        {history.length > 0 && (
-          <datalist id="hs-history">
-            {history.map(d => <option key={d} value={d} />)}
-          </datalist>
-        )}
+        <datalist id="hs-history">
+          {history.map(d => <option key={d} value={d} />)}
+        </datalist>
         <button
           onClick={handleScan}
           disabled={!url.trim() || isScanning}
@@ -613,23 +621,39 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
 
   // Render ERROR state
   const renderError = () => {
+    const isTimeout = error === 'timeout';
     const errorMessage = error === 'invalid_url' ? t.invalidUrl
-      : error === 'timeout' ? t.errorTimeout
+      : isTimeout ? t.errorTimeout
       : error === 'server_error' ? t.errorServer
       : t.errorNetwork;
 
+    const domain = url.trim().replace(/^https?:\/\//, '').replace(/\/.*$/, '');
+    const tgMessage = isTimeout ? encodeURIComponent(t.errorTimeoutMessage(domain)) : '';
+
     return (
       <div className="bg-zinc-50 border border-zinc-100 rounded-xl p-6 md:p-8 text-center">
-        <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-red-400 mb-4">
-          {t.errorTitle}
+        <p className={`text-[10px] uppercase tracking-[0.3em] font-bold mb-4 ${isTimeout ? 'text-amber-500' : 'text-red-400'}`}>
+          {isTimeout ? t.errorTimeoutTitle : t.errorTitle}
         </p>
         <p className="text-zinc-500 mb-6">{errorMessage}</p>
-        <button
-          onClick={handleReset}
-          className="px-6 py-3 border-2 border-black font-bold uppercase tracking-wide hover:bg-black hover:text-white transition-all"
-        >
-          {t.tryAgain}
-        </button>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <button
+            onClick={handleReset}
+            className="px-6 py-3 border-2 border-black font-bold uppercase tracking-wide hover:bg-black hover:text-white transition-all"
+          >
+            {t.tryAgain}
+          </button>
+          {isTimeout && (
+            <a
+              href={`https://t.me/vlasdobry?text=${tgMessage}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-black text-white font-bold uppercase tracking-wide hover:bg-zinc-800 transition-all inline-block"
+            >
+              {t.errorTimeoutCta}
+            </a>
+          )}
+        </div>
       </div>
     );
   };
