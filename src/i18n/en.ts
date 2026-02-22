@@ -63,12 +63,12 @@ export const en: Translations = {
       challenge: 'Working in-house at Grace Group — an international hotel chain, 20 properties. Responsible for performance marketing: managing Google Ads as the primary paid channel, working with analytics and optimization across acquisition channels.',
       done: [
         'Grew paid traffic revenue by 60% in low season (November–December)',
-        'Website conversion ×2 compared to the period before my work',
+        'Paid traffic conversion ×2 vs. pre-engagement baseline',
         '10+ years in performance marketing: EdTech, Travel, MedTech — budgets up to $110K/mo, 15+ languages, 100+ countries',
       ],
       results: [
         { value: '+60%', label: 'revenue in low season' },
-        { value: '×2', label: 'website conversion' },
+        { value: '×2', label: 'ad conversion rate' },
       ],
       tags: ['Hospitality', 'In-house', 'Performance', 'Analytics'],
     },
@@ -138,7 +138,7 @@ export const en: Translations = {
     hero: {
       title: 'SPA & Wellness Marketing That Fills Your Capacity',
       subtitle: 'Building guest acquisition systems: from strategy and analytics to paid ads, media campaigns, and influencer partnerships',
-      stats: 'Sales ×10 · Ad cost ratio 48%→13% · Brand queries ×5',
+      stats: 'Conversions ×10 · Ad cost ratio 48%→13% · Brand queries ×5',
     },
     problems: {
       label: 'Sound familiar?',
@@ -199,7 +199,7 @@ export const en: Translations = {
         'Traffic team and social media management',
       ],
       results: [
-        { value: '×10', label: 'sales' },
+        { value: '×10', label: 'conversions' },
         { value: '13%', label: 'ad cost ratio (was 48%)' },
         { value: '×5', label: 'brand queries' },
       ],
@@ -476,7 +476,7 @@ export const en: Translations = {
         details: [
           { name: 'Grace Hotels', result: 'International hotel chain. +60% revenue, 2× conversion rate' },
           { name: 'Lucky Town', result: 'Premium long-term rentals on the Black Sea coast. Ad cost ratio 60%+ → 7% in 4 months' },
-          { name: 'Odyssey Flower', result: 'Spa resort chain on Black Sea coast. Sales ×10, ad cost 48%→13%' },
+          { name: 'Odyssey Flower', result: 'Spa resort chain on Black Sea coast. Conversions ×10, ad cost 48%→13%' },
         ],
       },
       other: [
@@ -853,13 +853,13 @@ export const en: Translations = {
         subtitle: 'Grace Group — 20-property hotel chain',
         scores: [
           { category: 'Revenue', score: '+60%', status: 'In low season' },
-          { category: 'Conversion', score: '×2', status: '6.8% → 13.8%' },
-          { category: 'Ad cost ratio', score: '8%', status: 'Target achieved' },
+          { category: 'Traffic conversion', score: '×2', status: '6.8% → 13.8%' },
+          { category: 'Ad cost ratio', score: 'On target', status: '' },
         ],
         findings: [
           'Paid traffic revenue +60% in low season (November–December)',
-          'Website conversion ×2 compared to pre-optimization period',
-          'SPA resorts: sales ×10, revenue $20K → $80K+/mo',
+          'Paid traffic conversion ×2 compared to pre-optimization period',
+          'SPA resorts: conversions ×10, revenue ×4',
           'SPA resorts: ad cost ratio reduced from 48% to 13%',
         ],
         recommendations: [

@@ -114,8 +114,8 @@ Pay-per-click advertising management for hotels and hospitality.
 - Reporting: weekly reports in bookings and revenue, not clicks and CTR
 
 **Results:**
-- Grace Group (hotel chain, 20 properties): revenue +60% in low season, conversion x2 (6.8% to 13.8%), ad cost ratio 8%
-- Odyssey Flower (SPA resorts): sales x10, revenue growth from 1.5M to 6M+ RUB/mo, ad cost ratio from 48% to 13%
+- Grace Group (hotel chain, 20 properties): revenue +60% in low season, conversion x2 (6.8% to 13.8%), ad cost ratio on target
+- Odyssey Flower (SPA resorts): conversions x10, revenue x4, ad cost ratio from 48% to 13%
 
 **Deliverables:**
 - Audit of current ad campaigns with budget breakdown
@@ -157,7 +157,7 @@ Check your website free: https://vlasdobry.ru/en/services/seo/ (SEO Health Score
 - Business-language analytics: connecting ad platforms with PMS and booking engine. Reports in bookings and revenue, not clicks.
 
 **Pricing:** Audit 50-80K RUB ($800-$1,500), ongoing management from 80K RUB/mo ($1,500/mo). Min ad budget: 80K RUB/mo ($1,500/mo).
-**Results:** +60% revenue in low season, 2x conversion.
+**Results:** +60% revenue in low season, 2x paid traffic conversion.
 
 **Page:** https://vlasdobry.ru/for-hotels/
 
@@ -171,7 +171,7 @@ Check your website free: https://vlasdobry.ru/en/services/seo/ (SEO Health Score
 - Lead generation funnels
 - Team management
 
-**Case Result:** Sales x10, ad cost ratio 48% -> 13%, brand queries x5
+**Case Result:** Conversions x10, ad cost ratio 48% -> 13%, brand queries x5
 **Entry point:** Free 20-minute marketing review
 
 **Page:** https://vlasdobry.ru/for-spa/
@@ -198,13 +198,13 @@ Check your website free: https://vlasdobry.ru/en/services/seo/ (SEO Health Score
 ### Grace Group — International Hotel Chain
 20 properties, in-house performance marketing.
 - Challenge: Systematic guest acquisition through direct channels, reducing OTA dependency
-- Results: +60% revenue in low season, 2x conversion
+- Results: +60% revenue in low season, 2x paid traffic conversion
 - Tags: Hospitality, In-house, Performance, Analytics
 
 ### Odyssey Flower
 SPA resort chain on Black Sea coast.
 - Challenge: High acquisition cost (48% ad ratio), low occupancy
-- Results: Sales x10, ad cost 48% -> 13%, brand queries x5
+- Results: Conversions x10, ad cost 48% -> 13%, brand queries x5
 - Tags: Wellness, Performance, Geo-targeting, Analytics
 
 ### DNA Lab Network

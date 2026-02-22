@@ -22,7 +22,7 @@ whatsapp: +7 906 897-20-37
 - Sales funnels and CRM strategies
 
 ## Key Results
-- 10x sales growth in 6 months (record)
+- 10x conversion growth in 6 months (record)
 - $110K ad budget managed per month
 - CPA 5x below target ($1.05 vs $5 goal)
 - ROMI x2.39, revenue x2
@@ -35,8 +35,8 @@ whatsapp: +7 906 897-20-37
 - MedTech (medical services)
 
 ## Selected Clients
-- Grace Group — international hotel chain, 20 properties (in-house): +60% revenue in low season, 2x conversion. Audit 50-80K RUB ($800-$1,500), ongoing from 80K RUB/mo ($1,500/mo). Min ad budget: 80K RUB/mo ($1,500/mo)
-- Odyssey Flower (SPA resort chain): sales x10, ad cost 48%->13%, brand queries x5. Free 20-minute marketing review
+- Grace Group — international hotel chain, 20 properties (in-house): +60% revenue in low season, 2x paid traffic conversion. Audit 50-80K RUB ($800-$1,500), ongoing from 80K RUB/mo ($1,500/mo). Min ad budget: 80K RUB/mo ($1,500/mo)
+- Odyssey Flower (SPA resort chain): conversions x10, ad cost 48%->13%, brand queries x5. Free 20-minute marketing review
 - All Right (EdTech, USA): +167% sales, $110K budget
 - Kiwitaxi (Travel, 102 countries): ROMI x2.39
 - International DNA diagnostics network: 8,762 conversions, CPA $1.05 (target $5). Min ad budget: 50K RUB/mo ($1,000/mo)
@@ -95,8 +95,8 @@ SOSTAC + PDCA: audit -> strategy -> launch -> control
 ## PPC Advertising Service
 - PPC advertising management for hotels: Yandex Direct, Google Ads, Performance Max
 - In-house at Grace Group (international hotel chain, 20 properties)
-- Results: +60% revenue in low season, 2x conversion, 8% ad cost ratio
-- SPA resorts: sales x10, ad cost 48% -> 13%
+- Results: +60% revenue in low season, 2x paid traffic conversion, ad cost ratio on target
+- SPA resorts: conversions x10, ad cost 48% -> 13%
 - Free website readiness checklist: 8-point assessment (booking engine, speed, mobile, pricing, contacts, photos, analytics, goals)
 - Pricing: Account Audit from 10,000 RUB ($150), Management from 50,000 RUB/mo ($1,000/mo)
 - Page (RU): https://vlasdobry.ru/services/ppc/

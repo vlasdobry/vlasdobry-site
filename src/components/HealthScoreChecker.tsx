@@ -89,8 +89,8 @@ const translations = {
     ctaCritical: 'Нашлись критические проблемы. Разберём?',
     ctaWarning: 'Есть точки роста. Обсудить план?',
     ctaGood: 'Хорошая база! Выжать максимум?',
-    ctaGapSeo: 'Health Score — 8 экспресс-проверок. Полный аудит — 50+ проверок по 7 направлениям.',
-    ctaGapGeo: 'Health Score — 5 экспресс-проверок. Полный аудит — тесты в 6 AI-системах.',
+    ctaGapSeo: 'Health Score — 8 экспресс-проверок. Полный аудит — 7 направлений, 50+ проверок, готовый код.',
+    ctaGapGeo: 'Health Score — 5 экспресс-проверок. Полный аудит — 7 направлений, тесты в 6 AI-системах, готовый код.',
     ctaMessage: (domain: string, score: number, type: string) =>
       `Привет! Мой сайт ${domain} получил ${score}/100 в ${type} Health Score. Хочу обсудить улучшения.`,
     tryAnother: 'Проверить другой сайт',
@@ -137,8 +137,8 @@ const translations = {
     ctaCritical: 'Critical issues found. Let\'s fix them?',
     ctaWarning: 'Room for growth. Discuss a plan?',
     ctaGood: 'Solid foundation! Want to maximize it?',
-    ctaGapSeo: 'Health Score — 8 express checks. Full audit — 50+ checks across 7 areas.',
-    ctaGapGeo: 'Health Score — 5 express checks. Full audit — tests in 6 AI systems.',
+    ctaGapSeo: 'Health Score — 8 express checks. Full audit — 7 areas, 50+ checks, ready-to-use code.',
+    ctaGapGeo: 'Health Score — 5 express checks. Full audit — 7 areas, tests in 6 AI systems, ready-to-use code.',
     ctaMessage: (domain: string, score: number, type: string) =>
       `Hi! My site ${domain} scored ${score}/100 on ${type} Health Score. I'd like to discuss improvements.`,
     tryAnother: 'Check another site',
@@ -307,6 +307,20 @@ const IssuesList: React.FC<{
 };
 
 // Main component
+const HS_HISTORY_KEY = 'hs_checked_domains';
+const HS_HISTORY_MAX = 5;
+
+function getHistory(): string[] {
+  try { return JSON.parse(localStorage.getItem(HS_HISTORY_KEY) || '[]'); }
+  catch { return []; }
+}
+
+function saveToHistory(domain: string) {
+  const history = getHistory().filter(d => d !== domain);
+  history.unshift(domain);
+  localStorage.setItem(HS_HISTORY_KEY, JSON.stringify(history.slice(0, HS_HISTORY_MAX)));
+}
+
 export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) => {
   const [state, setState] = useState<CheckerState>('idle');
   const [url, setUrl] = useState('');
@@ -317,6 +331,7 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
   const [progress, setProgress] = useState(0);
   const [isScanning, setIsScanning] = useState(false);
   const [isSlow, setIsSlow] = useState(false);
+  const [history] = useState(getHistory);
 
   const t = translations[lang];
 
@@ -388,6 +403,7 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
       await stepDelay(1200);
 
       setCheckedDomain(data.domain);
+      saveToHistory(data.domain);
       const scoreResult = calculateCombinedScore(data, lang);
       setResult(scoreResult);
       setState('result');
@@ -449,12 +465,18 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
       <div className="flex flex-col sm:flex-row gap-3">
         <input
           type="url"
+          list="hs-history"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           placeholder={t.placeholder}
           className="flex-1 px-4 py-3 border border-zinc-200 rounded-lg focus:outline-none focus:border-black transition-colors"
           onKeyDown={(e) => e.key === 'Enter' && handleScan()}
         />
+        {history.length > 0 && (
+          <datalist id="hs-history">
+            {history.map(d => <option key={d} value={d} />)}
+          </datalist>
+        )}
         <button
           onClick={handleScan}
           disabled={!url.trim() || isScanning}
