@@ -435,6 +435,11 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
       }
       setState('error');
 
+      // Save URL to history even on error (user will want to retry)
+      const fullUrl = url.trim().match(/^https?:\/\//) ? url.trim() : `https://${url.trim()}`;
+      saveToHistory(fullUrl);
+      setHistory(getHistory());
+
       // Track error
       analytics.healthScoreError(primary, errorType);
     } finally {
