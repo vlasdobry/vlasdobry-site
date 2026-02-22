@@ -479,8 +479,10 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
       </p>
       <div className="flex flex-col sm:flex-row gap-3">
         <input
-          type="url"
+          type="text"
+          name="health-score-url"
           list="hs-history"
+          autoComplete="on"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           placeholder={t.placeholder}
