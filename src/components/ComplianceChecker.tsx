@@ -251,6 +251,11 @@ export const ComplianceChecker: React.FC<Props> = ({ basePath }) => {
 
       const data = await response.json();
 
+      // Worker returned an error from the target site (HTTP 403, redirect loop, etc.)
+      if (data.error) {
+        throw new Error(data.error.includes('403') ? 'blocked' : 'server_error');
+      }
+
       updateStep(5);
       setProgress(100);
       await stepDelay(1200);
@@ -275,6 +280,9 @@ export const ComplianceChecker: React.FC<Props> = ({ basePath }) => {
       if (err instanceof DOMException && err.name === 'AbortError') {
         errorType = 'timeout';
         setError('timeout');
+      } else if (errorMsg === 'blocked') {
+        errorType = 'blocked';
+        setError('blocked');
       } else if (errorMsg === 'server_error') {
         errorType = 'server_error';
         setError('server_error');
@@ -610,10 +618,11 @@ export const ComplianceChecker: React.FC<Props> = ({ basePath }) => {
   const renderError = () => {
     const errorMessage = error === 'invalid_url' ? ct.errors.invalidUrl
       : error === 'timeout' ? ct.errors.timeout
+      : error === 'blocked' ? ct.errors.blocked
       : error === 'server_error' ? ct.errors.serverError
       : ct.errors.networkError;
 
-    const isTimeout = error === 'timeout' || error === 'server_error' || error === 'network_error';
+    const showTgCta = error !== 'invalid_url';
     const domain = normalizeUrl(url);
     const tgErrorMessage = lang === 'ru'
       ? `Привет! Хочу проверить сайт ${domain} на 168-ФЗ, но автоматическая проверка не сработала. Можете проверить вручную?`
@@ -632,7 +641,7 @@ export const ComplianceChecker: React.FC<Props> = ({ basePath }) => {
           >
             {ct.errors.tryAgain}
           </button>
-          {isTimeout && (
+          {showTgCta && (
             <a
               href={`https://t.me/vlasdobry?text=${encodeURIComponent(tgErrorMessage)}`}
               target="_blank"

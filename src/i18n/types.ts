@@ -184,6 +184,7 @@ export interface ComplianceSection {
     title: string;
     invalidUrl: string;
     timeout: string;
+    blocked: string;
     serverError: string;
     networkError: string;
     tryAgain: string;

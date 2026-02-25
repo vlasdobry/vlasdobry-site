@@ -663,6 +663,7 @@ export const en: Translations = {
       title: 'Check failed',
       invalidUrl: 'Enter a valid website URL',
       timeout: 'Website didn\'t respond within 25 seconds. Try later.',
+      blocked: 'This website blocks automated checks. Contact me for a manual review.',
       serverError: 'Server temporarily unavailable. Try later.',
       networkError: 'Connection failed. Check your internet.',
       tryAgain: 'Try again',
