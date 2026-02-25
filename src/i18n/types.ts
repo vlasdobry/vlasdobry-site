@@ -170,6 +170,8 @@ export interface ComplianceSection {
       info: string;
     };
     spa: string;
+    spaTitle: string;
+    spaAction: string;
     noIssues: string;
     recommendation: string;
   };

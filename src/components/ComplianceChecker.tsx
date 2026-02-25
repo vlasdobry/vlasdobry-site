@@ -398,6 +398,74 @@ export const ComplianceChecker: React.FC<Props> = ({ basePath }) => {
   const renderResult = () => {
     if (!result) return null;
 
+    // SPA: limited analysis — show different UI
+    if (result.isSPA) {
+      const tgSpaMessage = lang === 'ru'
+        ? `Привет! Проверил ${checkedDomain} на 168-ФЗ, но сайт использует JS-рендеринг. Нужна ручная проверка.`
+        : `Hi! Checked ${checkedDomain} for 168-FZ, but the site uses JS rendering. Need a manual review.`;
+      const tgSpaHref = `https://t.me/vlasdobry?text=${encodeURIComponent(tgSpaMessage)}`;
+
+      return (
+        <div className="bg-zinc-50 border border-zinc-100 rounded-xl p-6 md:p-8">
+          <div className="flex justify-between items-start mb-2">
+            <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300">
+              168-FZ
+            </p>
+            <p className="text-sm font-medium text-zinc-600 truncate max-w-[200px]">
+              {checkedDomain}
+            </p>
+          </div>
+
+          {/* Amber status instead of score circle */}
+          <div className="flex justify-center my-6 sm:my-8">
+            <div className="flex flex-col items-center">
+              <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-[6px] border-amber-300 flex items-center justify-center">
+                <AlertTriangle className="w-12 h-12 text-amber-500" />
+              </div>
+              <p className="mt-2 font-bold text-base">{ct.results.spaTitle}</p>
+              <p className="text-sm text-amber-600">JavaScript-rendered</p>
+            </div>
+          </div>
+
+          {/* Explanation */}
+          <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
+            <p className="text-sm text-amber-700 mb-2">{ct.results.spa}</p>
+            <p className="text-sm text-amber-800 font-medium">{ct.results.spaAction}</p>
+          </div>
+
+          {/* Show any findings that were found (even partial) */}
+          {totalFindings > 0 && (
+            <p className="text-center text-sm text-zinc-500 mb-4">
+              {ct.results.found} {totalFindings} {ct.results.elements}
+            </p>
+          )}
+
+          {/* CTA — always lead to Telegram for SPA */}
+          <div className="space-y-3">
+            <a
+              href={tgSpaHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => analytics.complianceCta(checkedDomain, -1)}
+              className="block w-full text-center py-3 sm:py-4 border-2 border-black font-bold uppercase tracking-wide hover:bg-black hover:text-white transition-all text-xs sm:text-sm"
+            >
+              {ct.cta.warnings.action} &rarr;
+            </a>
+            <button
+              onClick={handleReset}
+              className="w-full text-sm text-zinc-400 hover:text-black transition-colors"
+            >
+              {ct.errors.checkAnother}
+            </button>
+          </div>
+
+          <p className="text-xs text-zinc-400 mt-6 leading-relaxed">
+            {ct.results.disclaimer}
+          </p>
+        </div>
+      );
+    }
+
     const findingsByCategory = CATEGORY_ORDER
       .filter(cat => result.categoryCounts[cat] > 0)
       .map(cat => ({
@@ -447,13 +515,6 @@ export const ComplianceChecker: React.FC<Props> = ({ basePath }) => {
           <p className="text-center text-sm text-green-600 mb-4">
             {ct.results.noIssues}
           </p>
-        )}
-
-        {/* SPA warning */}
-        {result.isSPA && (
-          <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
-            <p className="text-sm text-amber-700">{ct.results.spa}</p>
-          </div>
         )}
 
         {/* Categories */}
@@ -552,18 +613,37 @@ export const ComplianceChecker: React.FC<Props> = ({ basePath }) => {
       : error === 'server_error' ? ct.errors.serverError
       : ct.errors.networkError;
 
+    const isTimeout = error === 'timeout' || error === 'server_error' || error === 'network_error';
+    const domain = normalizeUrl(url);
+    const tgErrorMessage = lang === 'ru'
+      ? `Привет! Хочу проверить сайт ${domain} на 168-ФЗ, но автоматическая проверка не сработала. Можете проверить вручную?`
+      : `Hi! Want to check ${domain} for 168-FZ compliance, but the automated check failed. Can you do a manual review?`;
+
     return (
       <div className="bg-zinc-50 border border-zinc-100 rounded-xl p-6 md:p-8 text-center">
         <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-red-400 mb-4">
           {ct.errors.title}
         </p>
         <p className="text-zinc-500 mb-6">{errorMessage}</p>
-        <button
-          onClick={handleReset}
-          className="px-6 py-3 border-2 border-black font-bold uppercase tracking-wide hover:bg-black hover:text-white transition-all"
-        >
-          {ct.errors.tryAgain}
-        </button>
+        <div className="space-y-3">
+          <button
+            onClick={handleReset}
+            className="w-full px-6 py-3 border-2 border-black font-bold uppercase tracking-wide hover:bg-black hover:text-white transition-all"
+          >
+            {ct.errors.tryAgain}
+          </button>
+          {isTimeout && (
+            <a
+              href={`https://t.me/vlasdobry?text=${encodeURIComponent(tgErrorMessage)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => analytics.complianceCta(domain, -1)}
+              className="block w-full text-center py-2 text-sm font-bold text-zinc-500 hover:text-black transition-colors"
+            >
+              {ct.cta.warnings.action} &rarr;
+            </a>
+          )}
+        </div>
       </div>
     );
   };

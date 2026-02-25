@@ -336,7 +336,40 @@ async function analyzeCompliance(domain: string): Promise<ComplianceResult> {
     }
   }
 
+  // SPA framework detection
+  let hasFrameworkMarker = false;
+  let scriptCount = 0;
+
+  class SpaDetector {
+    element(el: Element): void {
+      const tag = el.tagName.toLowerCase();
+      if (tag === 'script') {
+        scriptCount++;
+        const src = el.getAttribute('src') || '';
+        if (/react|vue|angular|next|nuxt|svelte|gatsby/i.test(src)) {
+          hasFrameworkMarker = true;
+        }
+      }
+      if (tag === 'div' || tag === 'main') {
+        const id = el.getAttribute('id') || '';
+        if (['root', 'app', '__next', '__nuxt', '__svelte'].includes(id)) {
+          hasFrameworkMarker = true;
+        }
+      }
+      if (tag === 'app-root') {
+        hasFrameworkMarker = true;
+      }
+    }
+  }
+
+  const spaDetector = new SpaDetector();
+
   const rewriter = new HTMLRewriter()
+    // SPA detection
+    .on('script', spaDetector)
+    .on('div', spaDetector)
+    .on('main', spaDetector)
+    .on('app-root', spaDetector)
     // Buttons — critical
     .on('button', new TextBufferHandler('critical', 'buttons'))
     .on('input[type="submit"]', new AttrHandler('value', 'input', 'critical', 'buttons'))
@@ -370,8 +403,12 @@ async function analyzeCompliance(domain: string): Promise<ComplianceResult> {
   // Consume the body to trigger HTMLRewriter processing
   await transformed.text();
 
-  // SPA detection: fewer than 3 findings AND fewer than 5 text elements
-  const isSPA = findings.length < 3 && textElementCount < 5;
+  // SPA detection:
+  // 1. Framework marker + few visible elements → definitely SPA
+  // 2. Very few text elements overall → likely SPA
+  const isSPA = (hasFrameworkMarker && textElementCount < 10)
+    || (textElementCount < 5 && findings.length < 3)
+    || (scriptCount > 5 && textElementCount < 8);
 
   return {
     url: domain,
