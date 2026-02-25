@@ -593,6 +593,82 @@ export const en: Translations = {
       },
     },
   },
+  compliance: {
+    meta: {
+      title: '168-FZ Compliance Check: Is Your Russian Website Ready?',
+      description: 'Free compliance checker for Russia\'s Federal Law 168-FZ. Finds buttons, headings, and navigation in foreign languages that may need Russian translation.',
+    },
+    nav: { backToMain: 'Home' },
+    hero: {
+      title: '168-FZ Website Compliance Check',
+      subtitle: 'Russia\'s Language Protection Law',
+      description: 'Federal Law 168-FZ requires businesses to provide consumer information in Russian. Check if your website has elements that may need translation.',
+    },
+    input: {
+      placeholder: 'Enter website URL',
+      button: 'Check',
+      checking: 'Checking...',
+    },
+    scanning: {
+      steps: [
+        'Loading page...',
+        'Analyzing buttons and headings...',
+        'Checking navigation...',
+        'Analyzing forms...',
+        'Generating report...',
+      ],
+      slow: 'Website is responding slowly...',
+    },
+    results: {
+      score: 'Your website',
+      found: 'Found',
+      elements: 'elements that may need translation',
+      disclaimer: 'This is an automated scan for foreign-language text. It is not a legal assessment. The tool does not check normative dictionaries or trademark registrations — these exceptions may be permissible under Law 168-FZ. Consult a lawyer for a complete review.',
+      categories: {
+        buttons: 'Buttons',
+        headings: 'Headings',
+        navigation: 'Navigation',
+        forms: 'Forms',
+        subheadings: 'Subheadings',
+        policies: 'Policies & Terms',
+        meta: 'Meta Information',
+      },
+      severities: {
+        critical: 'critical',
+        important: 'important',
+        medium: 'minor',
+        info: 'recommendation',
+      },
+      spa: 'This website uses JavaScript rendering. Automated checking is limited. Try checking specific pages or contact me for a manual review.',
+      noIssues: 'Great! No foreign-language text found in key elements.',
+      recommendation: 'Consider translating',
+    },
+    cta: {
+      compliant: {
+        text: 'Your website looks good! Check your technical SEO',
+        action: 'Check SEO',
+      },
+      warnings: {
+        text: 'There are things to fix. Need help?',
+        action: 'Message on Telegram',
+      },
+      nonCompliant: {
+        text: 'Website doesn\'t comply with 168-FZ. Let\'s fix it?',
+        action: 'Message on Telegram',
+      },
+    },
+    about: {
+      title: 'About Law 168-FZ',
+      text: 'Federal Law No. 168-FZ takes effect March 1, 2026. It requires businesses to provide consumer information in Russian: websites, signs, menus, booking forms.',
+      blogLink: 'Learn more about Law 168-FZ →',
+      seoLink: 'Full SEO Audit →',
+    },
+    footer: {
+      name: 'Vlas Fedorov',
+      role: 'Performance Marketer',
+      links: { telegram: 'Telegram', whatsapp: 'WhatsApp', email: 'Email' },
+    },
+  },
   services: {
     seo: {
       meta: {

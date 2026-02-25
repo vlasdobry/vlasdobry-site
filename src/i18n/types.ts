@@ -132,6 +132,65 @@ export interface IndustrySection {
   };
 }
 
+export interface ComplianceSection {
+  meta: { title: string; description: string };
+  nav: { backToMain: string };
+  hero: {
+    title: string;
+    subtitle: string;
+    description: string;
+  };
+  input: {
+    placeholder: string;
+    button: string;
+    checking: string;
+  };
+  scanning: {
+    steps: string[];
+    slow: string;
+  };
+  results: {
+    score: string;
+    found: string;
+    elements: string;
+    disclaimer: string;
+    categories: {
+      buttons: string;
+      headings: string;
+      navigation: string;
+      forms: string;
+      subheadings: string;
+      policies: string;
+      meta: string;
+    };
+    severities: {
+      critical: string;
+      important: string;
+      medium: string;
+      info: string;
+    };
+    spa: string;
+    noIssues: string;
+    recommendation: string;
+  };
+  cta: {
+    compliant: { text: string; action: string };
+    warnings: { text: string; action: string };
+    nonCompliant: { text: string; action: string };
+  };
+  about: {
+    title: string;
+    text: string;
+    blogLink: string;
+    seoLink: string;
+  };
+  footer: {
+    name: string;
+    role: string;
+    links: { telegram: string; whatsapp: string; email: string };
+  };
+}
+
 export interface Translations {
   hero: {
     name: string;
@@ -226,6 +285,7 @@ export interface Translations {
     };
   };
   blog: BlogSection;
+  compliance: ComplianceSection;
   projects: {
     nav: {
       backToMain: string;
