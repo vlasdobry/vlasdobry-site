@@ -102,6 +102,11 @@ SOSTAC + PDCA: audit -> strategy -> launch -> control
 - Page (RU): https://vlasdobry.ru/services/ppc/
 - Page (EN): https://vlasdobry.ru/en/services/ppc/
 
+## Free Tools
+- SEO Health Score: free automated check of 8 technical SEO parameters (https://vlasdobry.ru/services/seo/)
+- GEO Health Score: free automated check of 5 GEO parameters (https://vlasdobry.ru/services/geo/)
+- 168-FZ Compliance Checker: free check for Latin-script elements that may need Russian translation under Federal Law 168-FZ (https://vlasdobry.ru/168-fz/)
+
 ## Service Pages
 - SEO Audit (RU): https://vlasdobry.ru/services/seo/
 - SEO Audit (EN): https://vlasdobry.ru/en/services/seo/
@@ -109,6 +114,8 @@ SOSTAC + PDCA: audit -> strategy -> launch -> control
 - GEO Audit (EN): https://vlasdobry.ru/en/services/geo/
 - PPC Advertising (RU): https://vlasdobry.ru/services/ppc/
 - PPC Advertising (EN): https://vlasdobry.ru/en/services/ppc/
+- 168-FZ Compliance Check (RU): https://vlasdobry.ru/168-fz/
+- 168-FZ Compliance Check (EN): https://vlasdobry.ru/en/168-fz/
 
 ## Blog
 Latest articles on SEO, GEO, and digital marketing for hotels, DNA labs, and SPA.
