@@ -115,7 +115,7 @@ git push origin master  # Деплой на продакшен (автомати
 - Ссылка на блог только в футере всех страниц
 - Авторинг: Claude пишет статьи, владелец утверждает
 
-**Текущие статьи блога (13 шт):**
+**Текущие статьи блога (14 шт):**
 - `kak-ocenit-potencial-google-ads` — Как оценить потенциал Google Ads: кейс из Лос-Анджелеса
 - `odnostranichnyj-sajt-otelya-teryaet-trafik` — Как одностраничный сайт отеля теряет 80 000 запросов
 - `audit-sajta-otelya-keys-rushotel` — Экспресс-аудит сайта отеля: кейс Русь Отель (Сарапул)
@@ -129,6 +129,7 @@ git push origin master  # Деплой на продакшен (автомати
 - `prodvizhenie-v-nejrosetyah` — Продвижение в нейросетях: как AI-поиск меняет правила
 - `llms-txt-chto-eto` — llms.txt: что это и зачем нужен файл для AI
 - `geo-prodvizhenie-sajta` — GEO-продвижение сайта: зачем бизнесу новый канал трафика
+- `168-fz-zakon-o-russkom-yazyke-sayt` — 168-ФЗ и сайт бизнеса: что менять до 1 марта 2026
 
 **Стилизация:** Tailwind CSS v4 (через Vite plugin), шрифт Inter. Используется glassmorphism-эффект для UI-элементов.
 
