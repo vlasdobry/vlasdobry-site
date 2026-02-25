@@ -1,3 +1,5 @@
+import { isWhitelisted } from './compliance-whitelist';
+
 export interface Env {
   ALLOWED_ORIGINS: string;
   RATE_LIMIT_REQUESTS?: string;
@@ -17,6 +19,24 @@ interface RateLimitEntry {
   resetAt: number;
 }
 
+// --- Compliance types ---
+
+type ComplianceSeverity = 'critical' | 'important' | 'medium' | 'info';
+
+interface ComplianceFinding {
+  text: string;
+  element: string;
+  severity: ComplianceSeverity;
+  context: string;
+}
+
+interface ComplianceResult {
+  url: string;
+  findings: ComplianceFinding[];
+  isSPA: boolean;
+  error: string | null;
+}
+
 const RATE_LIMIT_STORE = new Map<string, RateLimitEntry>();
 
 const DEFAULT_RATE_LIMIT_REQUESTS = 20;
@@ -24,6 +44,12 @@ const DEFAULT_RATE_LIMIT_WINDOW_SEC = 60;
 const MAX_CONTENT_SIZE = 50_000;
 const REQUEST_TIMEOUT_MS = 20_000;
 const MAX_REDIRECTS = 3;
+
+// Latin detection: 2+ consecutive Latin characters
+const LATIN_RE = /[a-zA-Z]{2,}/;
+
+// Policy-related keywords for footer link classification
+const POLICY_KEYWORDS = /policy|terms|privacy|conditions|cookie/i;
 
 export default {
   async fetch(request: Request, env: Env): Promise<Response> {
@@ -63,60 +89,357 @@ export default {
       );
     }
 
-    try {
-      let body: unknown;
-      try {
-        body = await request.json();
-      } catch {
-        return Response.json(
-          { error: 'Invalid JSON' },
-          { status: 400, headers: corsHeaders }
-        );
-      }
+    // --- URL-based routing ---
+    const requestUrl = new URL(request.url);
 
-      const domain = typeof (body as { domain?: unknown }).domain === 'string'
-        ? (body as { domain: string }).domain
-        : '';
-
-      if (!domain.trim()) {
-        return Response.json(
-          { error: 'Domain required' },
-          { status: 400, headers: corsHeaders }
-        );
-      }
-
-      const cleanDomain = normalizeDomain(domain);
-      if (!cleanDomain) {
-        return Response.json(
-          { error: 'Domain not allowed' },
-          { status: 400, headers: corsHeaders }
-        );
-      }
-
-      const results = await Promise.all([
-        fetchResource(`https://${cleanDomain}/llms.txt`, cleanDomain),
-        fetchResource(`https://${cleanDomain}/llms-full.txt`, cleanDomain),
-        fetchResource(`https://${cleanDomain}/robots.txt`, cleanDomain),
-        fetchResource(`https://${cleanDomain}/sitemap.xml`, cleanDomain),
-        fetchResource(`https://${cleanDomain}/`, cleanDomain),
-      ]);
-
-      return Response.json({
-        domain: cleanDomain,
-        llmsTxt: results[0],
-        llmsFullTxt: results[1],
-        robotsTxt: results[2],
-        sitemapXml: results[3],
-        homepage: results[4],
-      }, { headers: corsHeaders });
-    } catch {
-      return Response.json(
-        { error: 'Internal error' },
-        { status: 500, headers: corsHeaders }
-      );
+    if (requestUrl.pathname === '/api/compliance') {
+      return handleCompliance(request, corsHeaders);
     }
+
+    // Default: existing health-score logic
+    return handleHealthScore(request, corsHeaders);
   },
 };
+
+// --- Compliance endpoint ---
+
+async function handleCompliance(
+  request: Request,
+  corsHeaders: Record<string, string>,
+): Promise<Response> {
+  try {
+    let body: unknown;
+    try {
+      body = await request.json();
+    } catch {
+      return Response.json(
+        { error: 'Invalid JSON' },
+        { status: 400, headers: corsHeaders }
+      );
+    }
+
+    const rawUrl = typeof (body as { url?: unknown }).url === 'string'
+      ? (body as { url: string }).url
+      : '';
+
+    if (!rawUrl.trim()) {
+      return Response.json(
+        { error: 'URL required' },
+        { status: 400, headers: corsHeaders }
+      );
+    }
+
+    const cleanDomain = normalizeDomain(rawUrl);
+    if (!cleanDomain) {
+      return Response.json(
+        { error: 'Domain not allowed' },
+        { status: 400, headers: corsHeaders }
+      );
+    }
+
+    const result = await analyzeCompliance(cleanDomain);
+
+    return Response.json(result, { headers: corsHeaders });
+  } catch {
+    return Response.json(
+      { error: 'Internal error' },
+      { status: 500, headers: corsHeaders }
+    );
+  }
+}
+
+async function analyzeCompliance(domain: string): Promise<ComplianceResult> {
+  const targetUrl = `https://${domain}/`;
+
+  let response: Response;
+  try {
+    response = await fetchWithSafeRedirects(targetUrl, domain);
+  } catch (error) {
+    return {
+      url: domain,
+      findings: [],
+      isSPA: false,
+      error: error instanceof Error ? error.message : 'Fetch failed',
+    };
+  }
+
+  if (!response.ok) {
+    return {
+      url: domain,
+      findings: [],
+      isSPA: false,
+      error: `HTTP ${response.status}`,
+    };
+  }
+
+  const findings: ComplianceFinding[] = [];
+  const seenTexts = new Set<string>();
+  let textElementCount = 0;
+
+  function addFinding(text: string, element: string, severity: ComplianceSeverity, context: string): void {
+    const trimmed = text.trim();
+    if (!trimmed) return;
+    if (!LATIN_RE.test(trimmed)) return;
+    if (isWhitelisted(trimmed)) return;
+
+    const key = `${trimmed}|${element}`;
+    if (seenTexts.has(key)) return;
+    seenTexts.add(key);
+
+    findings.push({ text: trimmed, element, severity, context });
+  }
+
+  function countTextElement(): void {
+    textElementCount += 1;
+  }
+
+  // --- HTMLRewriter text buffer handler ---
+  // Text comes in chunks; we accumulate and process on last chunk.
+
+  class TextBufferHandler {
+    private buffer = '';
+    private elementTag = '';
+    private severity: ComplianceSeverity;
+    private context: string;
+
+    constructor(severity: ComplianceSeverity, context: string) {
+      this.severity = severity;
+      this.context = context;
+    }
+
+    element(el: Element): void {
+      this.buffer = '';
+      this.elementTag = el.tagName;
+    }
+
+    text(chunk: Text): void {
+      this.buffer += chunk.text;
+      if (chunk.lastInTextNode) {
+        const content = this.buffer.trim();
+        if (content) {
+          countTextElement();
+          addFinding(content, this.elementTag, this.severity, this.context);
+        }
+        this.buffer = '';
+      }
+    }
+  }
+
+  // Handler for attribute-based findings (no text accumulation needed)
+  class AttrHandler {
+    private attr: string;
+    private elementTag: string;
+    private severity: ComplianceSeverity;
+    private context: string;
+
+    constructor(attr: string, elementTag: string, severity: ComplianceSeverity, context: string) {
+      this.attr = attr;
+      this.elementTag = elementTag;
+      this.severity = severity;
+      this.context = context;
+    }
+
+    element(el: Element): void {
+      const value = el.getAttribute(this.attr);
+      if (value) {
+        countTextElement();
+        addFinding(value, this.elementTag, this.severity, this.context);
+      }
+    }
+  }
+
+  // Handler for footer links: classify as policies/medium or navigation/important
+  class FooterLinkHandler {
+    private buffer = '';
+
+    element(): void {
+      this.buffer = '';
+    }
+
+    text(chunk: Text): void {
+      this.buffer += chunk.text;
+      if (chunk.lastInTextNode) {
+        const content = this.buffer.trim();
+        if (content) {
+          countTextElement();
+          if (POLICY_KEYWORDS.test(content)) {
+            addFinding(content, 'a', 'medium', 'policies');
+          } else {
+            addFinding(content, 'a', 'important', 'navigation');
+          }
+        }
+        this.buffer = '';
+      }
+    }
+  }
+
+  // Handler for <title> — text accumulation across chunks
+  class TitleHandler {
+    private buffer = '';
+
+    element(): void {
+      this.buffer = '';
+    }
+
+    text(chunk: Text): void {
+      this.buffer += chunk.text;
+      if (chunk.lastInTextNode) {
+        const content = this.buffer.trim();
+        if (content) {
+          countTextElement();
+          addFinding(content, 'title', 'info', 'meta');
+        }
+        this.buffer = '';
+      }
+    }
+  }
+
+  // Handler for button-like links (a.btn, a[class*="btn"], a[class*="button"])
+  class ButtonLinkHandler {
+    private buffer = '';
+
+    element(): void {
+      this.buffer = '';
+    }
+
+    text(chunk: Text): void {
+      this.buffer += chunk.text;
+      if (chunk.lastInTextNode) {
+        const content = this.buffer.trim();
+        if (content) {
+          countTextElement();
+          addFinding(content, 'a', 'critical', 'buttons');
+        }
+        this.buffer = '';
+      }
+    }
+  }
+
+  // Handler for <select> <option> elements
+  class OptionHandler {
+    private buffer = '';
+
+    element(): void {
+      this.buffer = '';
+    }
+
+    text(chunk: Text): void {
+      this.buffer += chunk.text;
+      if (chunk.lastInTextNode) {
+        const content = this.buffer.trim();
+        if (content) {
+          countTextElement();
+          addFinding(content, 'option', 'important', 'forms');
+        }
+        this.buffer = '';
+      }
+    }
+  }
+
+  const rewriter = new HTMLRewriter()
+    // Buttons — critical
+    .on('button', new TextBufferHandler('critical', 'buttons'))
+    .on('input[type="submit"]', new AttrHandler('value', 'input', 'critical', 'buttons'))
+    .on('input[type="button"]', new AttrHandler('value', 'input', 'critical', 'buttons'))
+    .on('a.btn', new ButtonLinkHandler())
+    .on('a[class*="btn"]', new ButtonLinkHandler())
+    .on('a[class*="button"]', new ButtonLinkHandler())
+    // Headings — critical
+    .on('h1', new TextBufferHandler('critical', 'headings'))
+    .on('h2', new TextBufferHandler('critical', 'headings'))
+    .on('h3', new TextBufferHandler('critical', 'headings'))
+    // Subheadings — medium
+    .on('h4', new TextBufferHandler('medium', 'subheadings'))
+    .on('h5', new TextBufferHandler('medium', 'subheadings'))
+    .on('h6', new TextBufferHandler('medium', 'subheadings'))
+    // Navigation — important
+    .on('nav a', new TextBufferHandler('important', 'navigation'))
+    .on('header a', new TextBufferHandler('important', 'navigation'))
+    // Forms — important
+    .on('label', new TextBufferHandler('important', 'forms'))
+    .on('input[placeholder]', new AttrHandler('placeholder', 'input', 'important', 'forms'))
+    .on('select option', new OptionHandler())
+    // Footer — mixed
+    .on('footer a', new FooterLinkHandler())
+    // Meta — info
+    .on('title', new TitleHandler())
+    .on('meta[name="description"]', new AttrHandler('content', 'meta', 'info', 'meta'));
+
+  // Transform the response to extract text (we don't need the output body)
+  const transformed = rewriter.transform(response);
+  // Consume the body to trigger HTMLRewriter processing
+  await transformed.text();
+
+  // SPA detection: fewer than 3 findings AND fewer than 5 text elements
+  const isSPA = findings.length < 3 && textElementCount < 5;
+
+  return {
+    url: domain,
+    findings,
+    isSPA,
+    error: null,
+  };
+}
+
+// --- Health Score endpoint (existing logic) ---
+
+async function handleHealthScore(
+  request: Request,
+  corsHeaders: Record<string, string>,
+): Promise<Response> {
+  try {
+    let body: unknown;
+    try {
+      body = await request.json();
+    } catch {
+      return Response.json(
+        { error: 'Invalid JSON' },
+        { status: 400, headers: corsHeaders }
+      );
+    }
+
+    const domain = typeof (body as { domain?: unknown }).domain === 'string'
+      ? (body as { domain: string }).domain
+      : '';
+
+    if (!domain.trim()) {
+      return Response.json(
+        { error: 'Domain required' },
+        { status: 400, headers: corsHeaders }
+      );
+    }
+
+    const cleanDomain = normalizeDomain(domain);
+    if (!cleanDomain) {
+      return Response.json(
+        { error: 'Domain not allowed' },
+        { status: 400, headers: corsHeaders }
+      );
+    }
+
+    const results = await Promise.all([
+      fetchResource(`https://${cleanDomain}/llms.txt`, cleanDomain),
+      fetchResource(`https://${cleanDomain}/llms-full.txt`, cleanDomain),
+      fetchResource(`https://${cleanDomain}/robots.txt`, cleanDomain),
+      fetchResource(`https://${cleanDomain}/sitemap.xml`, cleanDomain),
+      fetchResource(`https://${cleanDomain}/`, cleanDomain),
+    ]);
+
+    return Response.json({
+      domain: cleanDomain,
+      llmsTxt: results[0],
+      llmsFullTxt: results[1],
+      robotsTxt: results[2],
+      sitemapXml: results[3],
+      homepage: results[4],
+    }, { headers: corsHeaders });
+  } catch {
+    return Response.json(
+      { error: 'Internal error' },
+      { status: 500, headers: corsHeaders }
+    );
+  }
+}
 
 function parseAllowedOrigins(raw: string): string[] {
   return raw
