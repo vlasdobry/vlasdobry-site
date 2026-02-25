@@ -27,7 +27,7 @@ interface ComplianceFinding {
   text: string;
   element: string;
   severity: ComplianceSeverity;
-  context: string;
+  category: string;
 }
 
 interface ComplianceResult {
@@ -176,7 +176,7 @@ async function analyzeCompliance(domain: string): Promise<ComplianceResult> {
   const seenTexts = new Set<string>();
   let textElementCount = 0;
 
-  function addFinding(text: string, element: string, severity: ComplianceSeverity, context: string): void {
+  function addFinding(text: string, element: string, severity: ComplianceSeverity, category: string): void {
     const trimmed = text.trim();
     if (!trimmed) return;
     if (!LATIN_RE.test(trimmed)) return;
@@ -186,7 +186,7 @@ async function analyzeCompliance(domain: string): Promise<ComplianceResult> {
     if (seenTexts.has(key)) return;
     seenTexts.add(key);
 
-    findings.push({ text: trimmed, element, severity, context });
+    findings.push({ text: trimmed, element, severity, category });
   }
 
   function countTextElement(): void {
@@ -200,11 +200,11 @@ async function analyzeCompliance(domain: string): Promise<ComplianceResult> {
     private buffer = '';
     private elementTag = '';
     private severity: ComplianceSeverity;
-    private context: string;
+    private category: string;
 
-    constructor(severity: ComplianceSeverity, context: string) {
+    constructor(severity: ComplianceSeverity, category: string) {
       this.severity = severity;
-      this.context = context;
+      this.category = category;
     }
 
     element(el: Element): void {
@@ -218,7 +218,7 @@ async function analyzeCompliance(domain: string): Promise<ComplianceResult> {
         const content = this.buffer.trim();
         if (content) {
           countTextElement();
-          addFinding(content, this.elementTag, this.severity, this.context);
+          addFinding(content, this.elementTag, this.severity, this.category);
         }
         this.buffer = '';
       }
@@ -230,20 +230,20 @@ async function analyzeCompliance(domain: string): Promise<ComplianceResult> {
     private attr: string;
     private elementTag: string;
     private severity: ComplianceSeverity;
-    private context: string;
+    private category: string;
 
-    constructor(attr: string, elementTag: string, severity: ComplianceSeverity, context: string) {
+    constructor(attr: string, elementTag: string, severity: ComplianceSeverity, category: string) {
       this.attr = attr;
       this.elementTag = elementTag;
       this.severity = severity;
-      this.context = context;
+      this.category = category;
     }
 
     element(el: Element): void {
       const value = el.getAttribute(this.attr);
       if (value) {
         countTextElement();
-        addFinding(value, this.elementTag, this.severity, this.context);
+        addFinding(value, this.elementTag, this.severity, this.category);
       }
     }
   }
