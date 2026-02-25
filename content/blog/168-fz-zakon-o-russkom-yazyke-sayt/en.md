@@ -13,6 +13,7 @@ tags:
   - compliance
 relatedService: /en/services/seo
 cover: cover.jpg
+cta: "Need help with your website? Get in touch"
 llmsSummary: "Practical compliance guide for Russia's Federal Law 168-FZ on state language protection, effective March 1, 2026. The law requires all consumer-facing business information to be in Russian — including websites. Contains a checklist of website elements to localize (buttons, room categories, booking forms), fine amounts (up to 500,000 RUB / ~$5,000 for advertising violations), exceptions (registered trademarks, words in normative dictionaries), and SEO benefits of Russian-language content for Yandex rankings."
 ---
 

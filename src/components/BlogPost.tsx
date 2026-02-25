@@ -251,7 +251,7 @@ export const BlogPost: React.FC<Props> = ({ basePath }) => {
         {/* CTA */}
         <section className="py-16 md:py-24 text-center border-t border-zinc-100">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4 tracking-tight">
-            {t.blog.cta}
+            {article.cta || t.blog.cta}
           </h2>
           <div className="w-24 h-24 mx-auto mb-8 rounded-full bg-zinc-100 overflow-hidden">
             <img

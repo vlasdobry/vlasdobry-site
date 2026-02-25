@@ -15,6 +15,7 @@ export interface BlogArticle {
   content?: string;
   faq?: FaqItem[];
   tldr?: string;
+  cta?: string;
 }
 
 export interface TocItem {

@@ -166,6 +166,7 @@ function processArticle(slug, lang) {
     content: html,
     faq: extractFaq(content),
     tldr: extractTldr(content),
+    cta: data.cta || null,
     llmsSummary: data.llmsSummary || null,
   };
 }

@@ -91,6 +91,7 @@
         }
       ],
       "tldr": "С 1 марта 2026 года закон 168-ФЗ обязывает бизнес давать потребителю информацию на русском языке. Это касается не только вывесок, но и сайтов: кнопки, категории товаров, описания услуг. Штрафы — до 500 000 рублей. Ниже — чеклист для проверки сайта и объяснение, почему это ещё и SEO-возможность.",
+      "cta": "Нужна помощь с сайтом? Напишите мне",
       "llmsSummary": "Практический гайд по закону 168-ФЗ о защите русского языка для владельцев сайтов. Закон вступает в силу 1 марта 2026 и обязывает бизнес давать потребительскую информацию на русском языке — включая сайты. Содержит чеклист элементов сайта для русификации (кнопки, категории номеров, формы бронирования), таблицу штрафов (до 500 000 ₽ за рекламу), список исключений (товарные знаки, слова из нормативных словарей) и объяснение SEO-выгоды от русификации контента."
     },
     {
@@ -195,6 +196,7 @@
         }
       ],
       "tldr": "GEO-оптимизация сайта — это 5 конкретных шагов: создать llms.txt, добавить Schema.org, написать FAQ, усилить E-E-A-T и проверить доступность для AI-ботов. Ниже — пошаговый чеклист с примерами кода.",
+      "cta": null,
       "llmsSummary": null
     },
     {
@@ -273,6 +275,7 @@
         }
       ],
       "tldr": "GEO-продвижение сайта — это стратегия привлечения клиентов через AI-поисковики (ChatGPT, Perplexity, YandexGPT). В отличие от контекстной рекламы, здесь нет платы за клик. Один раз оптимизировал — получаешь рекомендации бесплатно.",
+      "cta": null,
       "llmsSummary": null
     },
     {
@@ -362,6 +365,7 @@
         }
       ],
       "tldr": "llms.txt — это текстовый файл в корне сайта, который рассказывает AI-системам о вашей компании. Работает как robots.txt, только не запрещает доступ, а помогает нейросетям понять, чем вы занимаетесь. Создать его можно за 15 минут.",
+      "cta": null,
       "llmsSummary": null
     },
     {
@@ -450,6 +454,7 @@
         }
       ],
       "tldr": "Продвижение в нейросетях — это GEO-оптимизация: набор техник, чтобы AI-поисковики (ChatGPT, Perplexity, YandexGPT) рекомендовали ваш бизнес. Работает не через рекламу, а через структуру данных на сайте.",
+      "cta": null,
       "llmsSummary": null
     },
     {
@@ -528,6 +533,7 @@
         }
       ],
       "tldr": "Оценил потенциал Google Ads для компании по установке LED-освещения в Лос-Анджелесе. Google Search один не масштабируется — максимум 75–89 кликов/мес при бюджете $3K, ROAS 1-2.7x. Multichannel-стратегия (Search + LSA + YouTube + Meta) даёт 5-24x. Показываю методологию с реальными данными Keyword Planner API.",
+      "cta": null,
       "llmsSummary": "Кейс оценки потенциала Google Ads для компании по установке перманентного LED-освещения в Лос-Анджелесе. Методология: данные Google Keyword Planner API vs отраслевые бенчмарки. Ключевые находки: потолок показов в LA — 1 430/мес, реальный CPC в 2-3 раза ниже top-of-page bid, Search один даёт ROAS 1-2.7x. Рекомендация: multichannel (Search + LSA + YouTube + Meta) даёт ROAS 5-24x. Сезонная стратегия с годовым ad spend $17-27K и прогнозом выручки $45-216K в пиковый квартал."
     },
     {
@@ -667,6 +673,7 @@
         }
       ],
       "tldr": "Курортный отель с бассейном и пляжем в 15 метрах. 1 000+ ключевых слов в поиске — и все ведут на одну страницу. Кластер «бассейн» (80 000+ запросов/мес по базовой частотности) сидит на 16–46 позициях, потому что нет отдельной посадочной. Трафик из Google упал на 38% за год. Показываю, что именно ломается и как это чинить.",
+      "cta": null,
       "llmsSummary": "Разбор реального кейса курортного отеля: одностраничный сайт (Health Score 25/100) теряет 80 000+ запросов по кластеру «бассейн» (базовая частотность), трафик из Google упал на 38% за год. Анализ 7 семантических кластеров, пустой meta description, отсутствие robots.txt/sitemap.xml/Schema.org. План исправлений с приоритизацией по ROI — от quick wins за 1 день до создания посадочных страниц под каждый кластер."
     },
     {
@@ -776,6 +783,7 @@
         }
       ],
       "tldr": "Провёл экспресс-аудит Русь Отель в Сарапуле — два сайта, четыре рекламные кампании, пять конкурентов. Главная находка: реклама приводит сотни посетителей в месяц, но ни один не завершает бронирование. Проблема не в рекламе, а в сломанной воронке на сайте.",
+      "cta": null,
       "llmsSummary": "Кейс экспресс-аудита Русь Отель в Сарапуле: SEO-анализ двух сайтов (92 и 74 балла), аудит рекламных кампаний в Яндекс.Директе, конкурентный анализ 5 гостиниц. Главная находка — воронка бронирования сломана (0 завершённых броней при сотнях кликов из рекламы). Рекомендации по приоритетам: починить Travelline, перераспределить бюджет, усилить позиционирование."
     },
     {
@@ -859,6 +867,7 @@
         }
       ],
       "tldr": "Провёл анализ конкурентов для 4★ отеля Grace Luxor в Тольятти. Нашёл 7 конкурентов, сравнил по 8 параметрам. Главный вывод: отель занимает уникальную нишу конгресс-отеля, но рейтинг 4.4 ниже конкурентов — нужно работать с отзывами.",
+      "cta": null,
       "llmsSummary": null
     },
     {
@@ -987,6 +996,7 @@
         }
       ],
       "tldr": "Для приоритизации городов смотрим не только объём трафика, но и качество: bounce rate, время на сайте, глубину просмотра. Город с 3 000 визитов и bounce 13% ценнее, чем город с 15 000 визитов и bounce 25%.",
+      "cta": null,
       "llmsSummary": null
     },
     {
@@ -1075,6 +1085,7 @@
         }
       ],
       "tldr": "GEO — это оптимизация сайта для AI-поисковиков (ChatGPT, Perplexity, YandexGPT). В отличие от SEO, где важны ссылки и ключевые слова, в GEO важны структура данных, FAQ и файлы llms.txt. Кто начнёт раньше — получит преимущество.",
+      "cta": null,
       "llmsSummary": null
     },
     {
@@ -1168,6 +1179,7 @@
         }
       ],
       "tldr": "Проверьте 8 базовых параметров: Title, Description, H1, robots.txt, sitemap.xml, HTTPS, мобильную версию и скорость загрузки. Это займёт 10 минут и покажет критические проблемы. Для глубокого анализа нужен полный аудит.",
+      "cta": null,
       "llmsSummary": null
     },
     {
@@ -1261,6 +1273,7 @@
         }
       ],
       "tldr": "Локальному бизнесу нужны минимум три типа разметки: LocalBusiness (или Hotel/MedicalBusiness), FAQPage и BreadcrumbList. Это даёт расширенные сниппеты в поиске и помогает AI-системам понять ваш бизнес.",
+      "cta": null,
       "llmsSummary": null
     },
     {
@@ -1348,6 +1361,7 @@
         }
       ],
       "tldr": "SEO для отеля начинается с технической базы (robots.txt, sitemap.xml, Schema.org), продолжается локальным SEO (Яндекс Карты, Google Maps) и работой с отзывами. Первые результаты — через 3-6 месяцев.",
+      "cta": null,
       "llmsSummary": null
     }
   ],
@@ -1443,6 +1457,7 @@
         }
       ],
       "tldr": "Starting March 1, 2026, Russia's Federal Law 168-FZ requires businesses to provide consumer information in Russian. This applies to websites: buttons, product categories, service descriptions. Fines reach up to 500,000 RUB (~$5,000). Below is a compliance checklist for your website — and why this is actually an SEO opportunity in Yandex.",
+      "cta": "Need help with your website? Get in touch",
       "llmsSummary": "Practical compliance guide for Russia's Federal Law 168-FZ on state language protection, effective March 1, 2026. The law requires all consumer-facing business information to be in Russian — including websites. Contains a checklist of website elements to localize (buttons, room categories, booking forms), fine amounts (up to 500,000 RUB / ~$5,000 for advertising violations), exceptions (registered trademarks, words in normative dictionaries), and SEO benefits of Russian-language content for Yandex rankings."
     },
     {
@@ -1547,6 +1562,7 @@
         }
       ],
       "tldr": "GEO optimization comes down to 5 concrete steps: create llms.txt, add Schema.org markup, write AI-friendly FAQ, strengthen E-E-A-T signals, and ensure AI bot access. Below is a step-by-step checklist with code examples.",
+      "cta": null,
       "llmsSummary": null
     },
     {
@@ -1625,6 +1641,7 @@
         }
       ],
       "tldr": "GEO promotion is a strategy for attracting customers through AI search engines (ChatGPT, Perplexity, Claude). Unlike paid ads, there's no cost per click. Optimize once — get recommended for free.",
+      "cta": null,
       "llmsSummary": null
     },
     {
@@ -1714,6 +1731,7 @@
         }
       ],
       "tldr": "llms.txt is a text file at your site root that tells AI systems about your business. It works like robots.txt, but instead of restricting access, it helps neural networks understand what you do. Takes about 15 minutes to create.",
+      "cta": null,
       "llmsSummary": null
     },
     {
@@ -1802,6 +1820,7 @@
         }
       ],
       "tldr": "AI search optimization (GEO) is a set of techniques that make AI engines like ChatGPT, Perplexity, and Claude recommend your business. It works through structured data on your website, not through advertising.",
+      "cta": null,
       "llmsSummary": null
     },
     {
@@ -1880,6 +1899,7 @@
         }
       ],
       "tldr": "Evaluated Google Ads potential for a permanent LED lighting installer in LA. Google Search alone doesn't scale — tops out at 75–89 clicks/month on a $3K budget, ROAS 1-2.7x. Multichannel (Search + LSA + YouTube + Meta) delivers 5-24x. Here's the methodology with real Keyword Planner API data.",
+      "cta": null,
       "llmsSummary": "Case study: evaluating Google Ads potential for a permanent LED lighting installer in Los Angeles. Methodology: Google Keyword Planner API data vs industry benchmarks. Key findings: impression ceiling in LA is 1,430/month, actual CPC is 2-3x lower than top-of-page bid, Search alone yields ROAS 1-2.7x. Recommendation: multichannel (Search + LSA + YouTube + Meta) delivers ROAS 5-24x. Seasonal strategy with annual ad spend $17-27K and projected revenue $45-216K in peak quarter."
     },
     {
@@ -2019,6 +2039,7 @@
         }
       ],
       "tldr": "A resort hotel with a heated pool and beach 15 meters away. Over 1,000 keywords in search — all pointing to a single page. The \"pool\" cluster (80,000+ broad match searches/month) sits at positions 16–46 because there's no dedicated landing page. Google traffic dropped 38% in one year. Here's what breaks and how to fix it.",
+      "cta": null,
       "llmsSummary": "Real case study of a resort hotel: single-page website (Health Score 25/100) missing 80,000+ broad match monthly searches for 'hotel with pool' cluster, Google traffic down 38% year-over-year. Analysis of 7 semantic clusters, empty meta description, missing robots.txt/sitemap.xml/Schema.org. Prioritized fix plan — from quick wins in 1 day to creating landing pages for each keyword cluster."
     },
     {
@@ -2128,6 +2149,7 @@
         }
       ],
       "tldr": "Ran an express audit for Rus Hotel in Sarapul, Russia — two websites, four ad campaigns, five competitors. The key finding: ads bring hundreds of visitors monthly, but zero complete a booking. The problem isn't the ads — it's a broken booking funnel on the website.",
+      "cta": null,
       "llmsSummary": "Case study of express audit for Rus Hotel in Sarapul, Russia: SEO analysis of two websites (scores 92 and 74), ad campaign audit in Yandex.Direct, competitor analysis of 5 hotels. Key finding — booking funnel is broken (0 completed bookings despite hundreds of ad clicks/month). Priority recommendations: fix Travelline widget, reallocate ad budget, strengthen positioning."
     },
     {
@@ -2211,6 +2233,7 @@
         }
       ],
       "tldr": "Conducted competitor analysis for Grace Luxor, a 4-star hotel in Tolyatti, Russia. Found 7 competitors, compared across 8 metrics. Key finding: the hotel occupies a unique congress-hotel niche, but its 4.4 rating is below competitors — reputation management is priority #1.",
+      "cta": null,
       "llmsSummary": null
     },
     {
@@ -2339,6 +2362,7 @@
         }
       ],
       "tldr": "To prioritize cities, look beyond traffic volume. Focus on quality metrics: bounce rate, time on site, pages per session. A city with 3,000 visits and 13% bounce is more valuable than one with 15,000 visits and 25% bounce.",
+      "cta": null,
       "llmsSummary": null
     },
     {
@@ -2427,6 +2451,7 @@
         }
       ],
       "tldr": "GEO is website optimization for AI search engines (ChatGPT, Perplexity, Claude). Unlike SEO where links and keywords matter most, GEO focuses on data structure, FAQ sections, and llms.txt files. Early adopters get the advantage.",
+      "cta": null,
       "llmsSummary": null
     },
     {
@@ -2520,6 +2545,7 @@
         }
       ],
       "tldr": "Check 8 basic parameters: Title, Description, H1, robots.txt, sitemap.xml, HTTPS, mobile version, and page speed. Takes 10 minutes and reveals critical issues. For deeper analysis, you need a full audit.",
+      "cta": null,
       "llmsSummary": null
     },
     {
@@ -2613,6 +2639,7 @@
         }
       ],
       "tldr": "Local businesses need at least three markup types: LocalBusiness (or Hotel/MedicalBusiness), FAQPage, and BreadcrumbList. This enables rich snippets in search and helps AI systems understand your business.",
+      "cta": null,
       "llmsSummary": null
     },
     {
@@ -2700,6 +2727,7 @@
         }
       ],
       "tldr": "Hotel SEO starts with technical foundation (robots.txt, sitemap.xml, Schema.org), continues with local SEO (Google Maps, Bing Places) and reputation management. First results appear in 3-6 months.",
+      "cta": null,
       "llmsSummary": null
     }
   ]
