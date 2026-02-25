@@ -657,6 +657,15 @@ export const en: Translations = {
         action: 'Message on Telegram',
       },
     },
+    errors: {
+      title: 'Check failed',
+      invalidUrl: 'Enter a valid website URL',
+      timeout: 'Website didn\'t respond within 25 seconds. Try later.',
+      serverError: 'Server temporarily unavailable. Try later.',
+      networkError: 'Connection failed. Check your internet.',
+      tryAgain: 'Try again',
+      checkAnother: 'Check another site',
+    },
     about: {
       title: 'About Law 168-FZ',
       text: 'Federal Law No. 168-FZ takes effect March 1, 2026. It requires businesses to provide consumer information in Russian: websites, signs, menus, booking forms.',

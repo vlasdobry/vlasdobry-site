@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowLeft, ChevronDown, ChevronUp } from 'lucide-react';
+import { ArrowLeft, ChevronDown, ChevronUp, AlertTriangle, Info } from 'lucide-react';
 import { useI18n } from '../i18n';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { analytics } from '../utils/analytics';
@@ -34,6 +34,26 @@ const CATEGORY_SEVERITY: Record<ComplianceCategory, string> = {
   policies: 'medium',
   meta: 'info',
 };
+
+const ELEMENT_LABELS: Record<string, Record<string, string>> = {
+  button: { ru: 'Кнопка', en: 'Button' },
+  input: { ru: 'Поле ввода', en: 'Input field' },
+  a: { ru: 'Ссылка', en: 'Link' },
+  h1: { ru: 'Заголовок H1', en: 'H1 heading' },
+  h2: { ru: 'Заголовок H2', en: 'H2 heading' },
+  h3: { ru: 'Заголовок H3', en: 'H3 heading' },
+  h4: { ru: 'Подзаголовок', en: 'Subheading' },
+  h5: { ru: 'Подзаголовок', en: 'Subheading' },
+  h6: { ru: 'Подзаголовок', en: 'Subheading' },
+  label: { ru: 'Подпись формы', en: 'Form label' },
+  option: { ru: 'Вариант выбора', en: 'Select option' },
+  title: { ru: 'Заголовок страницы', en: 'Page title' },
+  meta: { ru: 'Мета-описание', en: 'Meta description' },
+};
+
+function getElementLabel(element: string, lang: 'ru' | 'en'): string {
+  return ELEMENT_LABELS[element]?.[lang] || element;
+}
 
 const HISTORY_KEY = 'compliance_checked_urls';
 const HISTORY_MAX = 5;
@@ -252,7 +272,7 @@ export const ComplianceChecker: React.FC<Props> = ({ basePath }) => {
     } catch (err) {
       const errorMsg = err instanceof Error ? err.message : 'unknown';
       let errorType = 'network_error';
-      if (errorMsg === 'AbortError' || err instanceof DOMException) {
+      if (err instanceof DOMException && err.name === 'AbortError') {
         errorType = 'timeout';
         setError('timeout');
       } else if (errorMsg === 'server_error') {
@@ -468,11 +488,14 @@ export const ComplianceChecker: React.FC<Props> = ({ basePath }) => {
                       {findings.map((finding, i) => (
                         <div key={i} className="px-4 py-3">
                           <div className="flex items-start gap-2">
-                            <span>{category === 'meta' ? '\u2139\uFE0F' : '\u26A0\uFE0F'}</span>
+                            {category === 'meta'
+                              ? <Info className="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5" />
+                              : <AlertTriangle className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
+                            }
                             <div>
                               <p className="font-medium text-sm">{finding.text}</p>
                               <p className="text-xs text-zinc-500 mt-0.5">
-                                {category === 'meta' ? ct.results.recommendation : finding.element}
+                                {category === 'meta' ? ct.results.recommendation : getElementLabel(finding.element, lang)}
                               </p>
                             </div>
                           </div>
@@ -510,7 +533,7 @@ export const ComplianceChecker: React.FC<Props> = ({ basePath }) => {
             onClick={handleReset}
             className="w-full text-sm text-zinc-400 hover:text-black transition-colors"
           >
-            {lang === 'ru' ? 'Проверить другой сайт' : 'Check another site'}
+            {ct.errors.checkAnother}
           </button>
         </div>
 
@@ -524,25 +547,22 @@ export const ComplianceChecker: React.FC<Props> = ({ basePath }) => {
 
   // ==================== ERROR ====================
   const renderError = () => {
-    const errorMessage = error === 'invalid_url'
-      ? (lang === 'ru' ? 'Введите корректный адрес сайта' : 'Enter a valid website URL')
-      : error === 'timeout'
-      ? (lang === 'ru' ? 'Сайт не отвечает дольше 25 секунд. Попробуйте позже.' : 'Website didn\'t respond within 25 seconds. Try later.')
-      : error === 'server_error'
-      ? (lang === 'ru' ? 'Сервер временно недоступен. Попробуйте позже.' : 'Server temporarily unavailable. Try later.')
-      : (lang === 'ru' ? 'Не удалось подключиться. Проверьте интернет-соединение.' : 'Connection failed. Check your internet.');
+    const errorMessage = error === 'invalid_url' ? ct.errors.invalidUrl
+      : error === 'timeout' ? ct.errors.timeout
+      : error === 'server_error' ? ct.errors.serverError
+      : ct.errors.networkError;
 
     return (
       <div className="bg-zinc-50 border border-zinc-100 rounded-xl p-6 md:p-8 text-center">
         <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-red-400 mb-4">
-          {lang === 'ru' ? 'Ошибка проверки' : 'Check failed'}
+          {ct.errors.title}
         </p>
         <p className="text-zinc-500 mb-6">{errorMessage}</p>
         <button
           onClick={handleReset}
           className="px-6 py-3 border-2 border-black font-bold uppercase tracking-wide hover:bg-black hover:text-white transition-all"
         >
-          {lang === 'ru' ? 'Попробовать снова' : 'Try again'}
+          {ct.errors.tryAgain}
         </button>
       </div>
     );

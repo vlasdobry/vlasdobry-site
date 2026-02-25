@@ -178,6 +178,15 @@ export interface ComplianceSection {
     warnings: { text: string; action: string };
     nonCompliant: { text: string; action: string };
   };
+  errors: {
+    title: string;
+    invalidUrl: string;
+    timeout: string;
+    serverError: string;
+    networkError: string;
+    tryAgain: string;
+    checkAnother: string;
+  };
   about: {
     title: string;
     text: string;

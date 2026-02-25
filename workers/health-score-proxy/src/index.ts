@@ -182,7 +182,7 @@ async function analyzeCompliance(domain: string): Promise<ComplianceResult> {
     if (!LATIN_RE.test(trimmed)) return;
     if (isWhitelisted(trimmed)) return;
 
-    const key = `${trimmed}|${element}`;
+    const key = `${trimmed}|${element}|${category}`;
     if (seenTexts.has(key)) return;
     seenTexts.add(key);
 
