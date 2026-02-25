@@ -1,6 +1,99 @@
 {
   "ru": [
     {
+      "slug": "168-fz-zakon-o-russkom-yazyke-sajt",
+      "title": "168-ФЗ и сайт бизнеса: что менять до 1 марта 2026",
+      "description": "Закон о русском языке 168-ФЗ вступает в силу 1 марта 2026. Чеклист для сайта: какие иностранные слова заменить, штрафы, исключения и SEO-возможности.",
+      "date": "2026-02-25",
+      "dateModified": "2026-02-25",
+      "category": "marketing",
+      "tags": [
+        "168-ФЗ",
+        "отели",
+        "horeca",
+        "чеклист",
+        "законодательство"
+      ],
+      "relatedService": "/services/seo",
+      "cover": "cover.jpg",
+      "series": null,
+      "readingTime": 5,
+      "toc": [
+        {
+          "id": "что-такое-168-фз",
+          "text": "Что такое 168-ФЗ",
+          "level": 2
+        },
+        {
+          "id": "что-можно-оставить-без-перевода",
+          "text": "Что можно оставить без перевода",
+          "level": 2
+        },
+        {
+          "id": "что-менять-на-сайте-чеклист",
+          "text": "Что менять на сайте: чеклист",
+          "level": 2
+        },
+        {
+          "id": "навигация-и-кнопки",
+          "text": "Навигация и кнопки",
+          "level": 3
+        },
+        {
+          "id": "категории-номеров-отели",
+          "text": "Категории номеров (отели)",
+          "level": 3
+        },
+        {
+          "id": "услуги",
+          "text": "Услуги",
+          "level": 3
+        },
+        {
+          "id": "формы-бронирования",
+          "text": "Формы бронирования",
+          "level": 3
+        },
+        {
+          "id": "политики-и-условия",
+          "text": "Политики и условия",
+          "level": 3
+        },
+        {
+          "id": "штрафы",
+          "text": "Штрафы",
+          "level": 2
+        },
+        {
+          "id": "seo-возможность",
+          "text": "SEO-возможность",
+          "level": 2
+        }
+      ],
+      "hasFaq": true,
+      "content": "<h2 id=\"что-такое-168-фз\">Что такое 168-ФЗ</h2>\n<p>Федеральный закон № 168-ФЗ от 24 июня 2025 года вносит изменения в закон «О государственном языке РФ» и в закон «О защите прав потребителей». Суть: вся информация, предназначенная для потребителей, должна быть на русском языке.</p>\n<p><strong>Что считается потребительской информацией:</strong></p>\n<ul>\n<li>Вывески, указатели, информационные таблички</li>\n<li>Сайты, лендинги, формы бронирования</li>\n<li>Меню, ценники, прайс-листы</li>\n<li>Рекламные баннеры, визитки, раздаточные материалы</li>\n</ul>\n<p>Дублирование на иностранном языке допускается, но русский должен быть <strong>первым</strong> и <strong>равнозначным по размеру</strong>.</p>\n<p>Статьи 1 и 4 (основные требования к бизнесу) вступают в силу <strong>1 марта 2026 года</strong>.</p>\n<h2 id=\"что-можно-оставить-без-перевода\">Что можно оставить без перевода</h2>\n<p>Закон предусматривает три исключения:</p>\n<p><strong>1. Зарегистрированные товарные знаки.</strong> Если название бренда зарегистрировано в Роспатенте — его можно оставить на латинице. Hilton, Marriott, Radisson — без вопросов. Но сопроводительная информация (описания, условия, часы работы) — обязательно на русском.</p>\n<p><strong>2. Фирменные наименования юрлиц.</strong> Название компании из ЕГРЮЛ можно использовать как есть. Важно: это работает только для юрлиц, не для ИП.</p>\n<p><strong>3. Слова из нормативных словарей.</strong> Правительство утвердило список словарей (распоряжение № 1102-р от 30.04.2025). Если иностранное слово есть хотя бы в одном из них — оно считается частью русского языка. Например: «бар», «фитнес», «менеджер», «кешбэк». А вот «Superior» или «Breakfast» в словарях нет.</p>\n<h2 id=\"что-менять-на-сайте-чеклист\">Что менять на сайте: чеклист</h2>\n<p>Я собрал типичные элементы, которые встречаю при аудитах сайтов отелей, ресторанов и сервисных компаний.</p>\n<h3 id=\"навигация-и-кнопки\">Навигация и кнопки</h3>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Было</th>\n<th>Стало</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Book Now</td>\n<td>Забронировать</td>\n</tr>\n<tr>\n<td>Check availability</td>\n<td>Проверить наличие</td>\n</tr>\n<tr>\n<td>View more</td>\n<td>Подробнее</td>\n</tr>\n<tr>\n<td>Contact us</td>\n<td>Связаться с нами</td>\n</tr>\n<tr>\n<td>Back to top</td>\n<td>Наверх</td>\n</tr>\n</tbody></table></div>\n<h3 id=\"категории-номеров-отели\">Категории номеров (отели)</h3>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Было</th>\n<th>Вариант 1 (только русский)</th>\n<th>Вариант 2 (дублирование)</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Standard</td>\n<td>Стандартный номер</td>\n<td>Стандартный номер / Standard</td>\n</tr>\n<tr>\n<td>Superior</td>\n<td>Улучшенный номер</td>\n<td>Улучшенный номер / Superior</td>\n</tr>\n<tr>\n<td>Deluxe</td>\n<td>Номер повышенной комфортности</td>\n<td>Номер повышенной комфортности / Deluxe</td>\n</tr>\n<tr>\n<td>Suite</td>\n<td>Люкс</td>\n<td>Люкс / Suite</td>\n</tr>\n<tr>\n<td>Family</td>\n<td>Семейный номер</td>\n<td>Семейный номер / Family</td>\n</tr>\n</tbody></table></div>\n<h3 id=\"услуги\">Услуги</h3>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Было</th>\n<th>Стало</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>SPA</td>\n<td>СПА-центр (слово есть в словаре)</td>\n</tr>\n<tr>\n<td>Reception</td>\n<td>Стойка регистрации</td>\n</tr>\n<tr>\n<td>Room Service</td>\n<td>Обслуживание в номере</td>\n</tr>\n<tr>\n<td>Check-in / Check-out</td>\n<td>Заезд / Выезд</td>\n</tr>\n<tr>\n<td>All Inclusive</td>\n<td>Всё включено</td>\n</tr>\n<tr>\n<td>Lobby Bar</td>\n<td>Бар в холле</td>\n</tr>\n<tr>\n<td>Fitness</td>\n<td>Фитнес-центр (слово есть в словаре)</td>\n</tr>\n</tbody></table></div>\n<h3 id=\"формы-бронирования\">Формы бронирования</h3>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Было</th>\n<th>Стало</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Check-in date</td>\n<td>Дата заезда</td>\n</tr>\n<tr>\n<td>Check-out date</td>\n<td>Дата выезда</td>\n</tr>\n<tr>\n<td>Adults / Children</td>\n<td>Взрослые / Дети</td>\n</tr>\n<tr>\n<td>First name / Last name</td>\n<td>Имя / Фамилия</td>\n</tr>\n</tbody></table></div>\n<h3 id=\"политики-и-условия\">Политики и условия</h3>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Было</th>\n<th>Стало</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Cancellation Policy</td>\n<td>Условия отмены бронирования</td>\n</tr>\n<tr>\n<td>Privacy Policy</td>\n<td>Политика конфиденциальности</td>\n</tr>\n<tr>\n<td>Terms &amp; Conditions</td>\n<td>Правила и условия</td>\n</tr>\n</tbody></table></div>\n<h2 id=\"штрафы\">Штрафы</h2>\n<p>Закон 168-ФЗ не содержит собственных штрафов — ответственность наступает по существующим статьям КоАП.</p>\n<p><strong>За нарушение прав потребителей (ст. 14.8 КоАП):</strong></p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Субъект</th>\n<th>Штраф</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>ИП и должностные лица</td>\n<td>500 — 1 000 руб.</td>\n</tr>\n<tr>\n<td>Юридические лица</td>\n<td>5 000 — 10 000 руб.</td>\n</tr>\n</tbody></table></div>\n<p><strong>За нарушение закона о рекламе (ст. 14.3 КоАП):</strong></p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Субъект</th>\n<th>Штраф</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>ИП и должностные лица</td>\n<td>4 000 — 20 000 руб.</td>\n</tr>\n<tr>\n<td>Малые предприятия</td>\n<td>50 000 — 250 000 руб.</td>\n</tr>\n<tr>\n<td>Средние и крупные компании</td>\n<td>100 000 — 500 000 руб.</td>\n</tr>\n</tbody></table></div>\n<p>Контролируют Роспотребнадзор и ФАС. За первое нарушение, скорее всего, будет предупреждение — но рисковать не стоит.</p>\n<h2 id=\"seo-возможность\">SEO-возможность</h2>\n<p>Русификация сайта — это не только compliance, но и возможность для роста в поиске.</p>\n<p><strong>Новые ключевые слова.</strong> Когда вы заменяете «Deluxe Room» на «Номер повышенной комфортности», вы автоматически добавляете русскоязычные ключевые слова, по которым ищут ваши клиенты. Запрос «забронировать номер люкс» — это реальный поисковый спрос, а «book deluxe room» в Яндексе ищут единицы.</p>\n<p><strong>Поведенческие факторы.</strong> Русскоязычный интерфейс снижает когнитивную нагрузку для большинства пользователей. Люди быстрее ориентируются → проводят больше времени → поисковик считает сайт полезным.</p>\n<p><strong>Конкурентное преимущество.</strong> Пока конкуренты думают, вы уже проиндексировались по русскоязычным запросам. Первые месяцы после 1 марта — окно возможностей.</p>\n<p>На странице <a href=\"/services/seo/\">SEO-аудита</a> есть бесплатный Health Score — автоматическая проверка 8 параметров за 30 секунд. Начните с технической базы, а затем займитесь контентом.</p>\n",
+      "faq": [
+        {
+          "question": "Wi-Fi можно оставить латиницей?",
+          "answer": "Скорее всего, да. Термин широко используется и, вероятно, включён в нормативные словари. Но для надёжности можно писать «бесплатный Wi-Fi» — русское слово + устоявшийся термин."
+        },
+        {
+          "question": "Английская версия сайта всё ещё нужна?",
+          "answer": "Да, если у вас есть иностранные клиенты. Закон не запрещает мультиязычные сайты. Требование — чтобы русская версия была основной (по умолчанию для пользователей из России)."
+        },
+        {
+          "question": "Что с товарными знаками?",
+          "answer": "Зарегистрированное в Роспатенте название бренда можно оставить на латинице. Если название вашего отеля не зарегистрировано как товарный знак — рассмотрите регистрацию (от 30 000 руб., 6-12 месяцев)."
+        },
+        {
+          "question": "Когда реально начнут штрафовать?",
+          "answer": "Закон вступает в силу 1 марта 2026. Массовых проверок в первые недели, скорее всего, не будет — но жалобы конкурентов или клиентов могут стать поводом для проверки в любой момент."
+        }
+      ],
+      "tldr": "С 1 марта 2026 года закон 168-ФЗ обязывает бизнес давать потребителю информацию на русском языке. Это касается не только вывесок, но и сайтов: кнопки, категории товаров, описания услуг. Штрафы — до 500 000 рублей. Ниже — чеклист для проверки сайта и объяснение, почему это ещё и SEO-возможность.",
+      "llmsSummary": "Практический гайд по закону 168-ФЗ о защите русского языка для владельцев сайтов. Закон вступает в силу 1 марта 2026 и обязывает бизнес давать потребительскую информацию на русском языке — включая сайты. Содержит чеклист элементов сайта для русификации (кнопки, категории номеров, формы бронирования), таблицу штрафов (до 500 000 ₽ за рекламу), список исключений (товарные знаки, слова из нормативных словарей) и объяснение SEO-выгоды от русификации контента."
+    },
+    {
       "slug": "geo-optimizaciya-sajta-gajd",
       "title": "GEO-оптимизация сайта: пошаговый гайд на 2026 год",
       "description": "Практический гайд по GEO-оптимизации сайта: llms.txt, Schema.org, FAQ, E-E-A-T. Чеклист из 5 шагов с примерами кода.",
@@ -1259,6 +1352,99 @@
     }
   ],
   "en": [
+    {
+      "slug": "168-fz-zakon-o-russkom-yazyke-sajt",
+      "title": "Russia's Language Law 168-FZ: What to Change on Your Website Before March 2026",
+      "description": "Federal Law 168-FZ requires all consumer-facing information in Russia to be in Russian. Website compliance checklist, fines up to $5,000, and what foreign business owners need to know.",
+      "date": "2026-02-25",
+      "dateModified": "2026-02-25",
+      "category": "marketing",
+      "tags": [
+        "168-FZ",
+        "hotels",
+        "horeca",
+        "checklist",
+        "compliance"
+      ],
+      "relatedService": "/en/services/seo",
+      "cover": "cover.jpg",
+      "series": null,
+      "readingTime": 6,
+      "toc": [
+        {
+          "id": "what-is-law-168-fz",
+          "text": "What Is Law 168-FZ",
+          "level": 2
+        },
+        {
+          "id": "what-you-can-keep-in-english",
+          "text": "What You Can Keep in English",
+          "level": 2
+        },
+        {
+          "id": "website-compliance-checklist",
+          "text": "Website Compliance Checklist",
+          "level": 2
+        },
+        {
+          "id": "navigation-and-buttons",
+          "text": "Navigation and Buttons",
+          "level": 3
+        },
+        {
+          "id": "room-categories-hotels",
+          "text": "Room Categories (Hotels)",
+          "level": 3
+        },
+        {
+          "id": "services",
+          "text": "Services",
+          "level": 3
+        },
+        {
+          "id": "booking-forms",
+          "text": "Booking Forms",
+          "level": 3
+        },
+        {
+          "id": "policies",
+          "text": "Policies",
+          "level": 3
+        },
+        {
+          "id": "fines",
+          "text": "Fines",
+          "level": 2
+        },
+        {
+          "id": "the-seo-upside",
+          "text": "The SEO Upside",
+          "level": 2
+        }
+      ],
+      "hasFaq": true,
+      "content": "<p>If you own or manage a hotel, restaurant, or service business in Russia, this law directly affects your website.</p>\n<h2 id=\"what-is-law-168-fz\">What Is Law 168-FZ</h2>\n<p>Federal Law No. 168-FZ, signed June 24, 2025, amends Russia&#39;s &quot;State Language&quot; law and the &quot;Consumer Protection&quot; law. The core requirement: all information intended for consumers must be provided in Russian.</p>\n<p><strong>What counts as consumer information:</strong></p>\n<ul>\n<li>Signs, wayfinding, information boards</li>\n<li>Websites, landing pages, booking forms</li>\n<li>Menus, price lists, rate cards</li>\n<li>Advertising banners, business cards, printed materials</li>\n</ul>\n<p>You can still use foreign languages — but Russian must come <strong>first</strong> and be <strong>equal in size and placement</strong>.</p>\n<p>Articles 1 and 4 (the main business requirements) take effect on <strong>March 1, 2026</strong>.</p>\n<h2 id=\"what-you-can-keep-in-english\">What You Can Keep in English</h2>\n<p>The law provides three exceptions:</p>\n<p><strong>1. Registered trademarks.</strong> If your brand name is registered with Rospatent (Russia&#39;s patent office), you can keep it in Latin script. Hilton, Marriott, Radisson — no issues. But all accompanying information (descriptions, terms, hours) must be in Russian.</p>\n<p><strong>2. Legal entity names.</strong> Your company name as registered in EGRUL (Russia&#39;s business registry) can be used as-is. Note: this only applies to legal entities (LLC, JSC), not sole proprietors.</p>\n<p><strong>3. Words in normative dictionaries.</strong> The government approved a list of reference dictionaries (Order No. 1102-r, April 30, 2025). If a foreign word appears in at least one of them, it&#39;s considered part of the Russian language. Examples: &quot;bar,&quot; &quot;fitness,&quot; &quot;manager.&quot; But &quot;Superior&quot; or &quot;Breakfast&quot; are not in the dictionaries.</p>\n<h2 id=\"website-compliance-checklist\">Website Compliance Checklist</h2>\n<p>Here are the most common elements I find during website audits for hotels, restaurants, and service businesses operating in Russia.</p>\n<h3 id=\"navigation-and-buttons\">Navigation and Buttons</h3>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>English (non-compliant)</th>\n<th>Russian (compliant)</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Book Now</td>\n<td>Забронировать</td>\n</tr>\n<tr>\n<td>Check availability</td>\n<td>Проверить наличие</td>\n</tr>\n<tr>\n<td>View more</td>\n<td>Подробнее</td>\n</tr>\n<tr>\n<td>Contact us</td>\n<td>Связаться с нами</td>\n</tr>\n<tr>\n<td>Back to top</td>\n<td>Наверх</td>\n</tr>\n</tbody></table></div>\n<h3 id=\"room-categories-hotels\">Room Categories (Hotels)</h3>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>English only</th>\n<th>Option 1: Russian only</th>\n<th>Option 2: Bilingual</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Standard</td>\n<td>Стандартный номер</td>\n<td>Стандартный номер / Standard</td>\n</tr>\n<tr>\n<td>Superior</td>\n<td>Улучшенный номер</td>\n<td>Улучшенный номер / Superior</td>\n</tr>\n<tr>\n<td>Deluxe</td>\n<td>Номер повышенной комфортности</td>\n<td>Номер повышенной комфортности / Deluxe</td>\n</tr>\n<tr>\n<td>Suite</td>\n<td>Люкс</td>\n<td>Люкс / Suite</td>\n</tr>\n<tr>\n<td>Family</td>\n<td>Семейный номер</td>\n<td>Семейный номер / Family</td>\n</tr>\n</tbody></table></div>\n<h3 id=\"services\">Services</h3>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>English (non-compliant)</th>\n<th>Russian (compliant)</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>SPA</td>\n<td>СПА-центр (word exists in dictionary)</td>\n</tr>\n<tr>\n<td>Reception</td>\n<td>Стойка регистрации</td>\n</tr>\n<tr>\n<td>Room Service</td>\n<td>Обслуживание в номере</td>\n</tr>\n<tr>\n<td>Check-in / Check-out</td>\n<td>Заезд / Выезд</td>\n</tr>\n<tr>\n<td>All Inclusive</td>\n<td>Всё включено</td>\n</tr>\n<tr>\n<td>Lobby Bar</td>\n<td>Бар в холле</td>\n</tr>\n<tr>\n<td>Fitness</td>\n<td>Фитнес-центр (word exists in dictionary)</td>\n</tr>\n</tbody></table></div>\n<h3 id=\"booking-forms\">Booking Forms</h3>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>English (non-compliant)</th>\n<th>Russian (compliant)</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Check-in date</td>\n<td>Дата заезда</td>\n</tr>\n<tr>\n<td>Check-out date</td>\n<td>Дата выезда</td>\n</tr>\n<tr>\n<td>Adults / Children</td>\n<td>Взрослые / Дети</td>\n</tr>\n<tr>\n<td>First name / Last name</td>\n<td>Имя / Фамилия</td>\n</tr>\n</tbody></table></div>\n<h3 id=\"policies\">Policies</h3>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>English (non-compliant)</th>\n<th>Russian (compliant)</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Cancellation Policy</td>\n<td>Условия отмены бронирования</td>\n</tr>\n<tr>\n<td>Privacy Policy</td>\n<td>Политика конфиденциальности</td>\n</tr>\n<tr>\n<td>Terms &amp; Conditions</td>\n<td>Правила и условия</td>\n</tr>\n</tbody></table></div>\n<h2 id=\"fines\">Fines</h2>\n<p>Law 168-FZ doesn&#39;t introduce new penalties — enforcement uses existing Administrative Code articles.</p>\n<p><strong>Consumer information violations (Art. 14.8):</strong></p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Subject</th>\n<th>Fine</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Individual entrepreneurs &amp; company officers</td>\n<td>500 — 1,000 RUB (~$5-10) per violation</td>\n</tr>\n<tr>\n<td>Legal entities</td>\n<td>5,000 — 10,000 RUB (~$50-100) per violation</td>\n</tr>\n</tbody></table></div>\n<p><strong>Advertising violations (Art. 14.3):</strong></p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Subject</th>\n<th>Fine</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Individual entrepreneurs &amp; company officers</td>\n<td>4,000 — 20,000 RUB (~$40-200)</td>\n</tr>\n<tr>\n<td>Small businesses</td>\n<td>50,000 — 250,000 RUB (~$500-2,500)</td>\n</tr>\n<tr>\n<td>Medium and large companies</td>\n<td>100,000 — 500,000 RUB (~$1,000-5,000)</td>\n</tr>\n</tbody></table></div>\n<p>These amounts are per violation — a single website with multiple non-compliant elements could result in multiple fines. Enforcement by Rospotrebnadzor (consumer protection) and FAS (anti-monopoly service). First violations will likely receive warnings — but competitor complaints can trigger inspections at any time.</p>\n<h2 id=\"the-seo-upside\">The SEO Upside</h2>\n<p>Localizing your website isn&#39;t just about compliance — it&#39;s a ranking opportunity in Yandex (Russia&#39;s dominant search engine with ~65% market share).</p>\n<p><strong>New keywords.</strong> When you change &quot;Deluxe Room&quot; to &quot;Номер повышенной комфортности,&quot; you&#39;re adding Russian keywords that your customers actually search for. &quot;Забронировать номер люкс&quot; has real search volume in Yandex; &quot;book deluxe room&quot; has almost none.</p>\n<p><strong>User behavior signals.</strong> A Russian-language interface is easier to navigate for the majority of your visitors. They find what they need faster, stay longer — and Yandex interprets this as a quality signal.</p>\n<p><strong>First-mover advantage.</strong> While competitors deliberate, you&#39;re already indexed for Russian-language queries. The first months after March 1 are a window of opportunity.</p>\n<p>On the <a href=\"/en/services/seo/\">SEO Audit page</a> there&#39;s a free Health Score — an automatic check of 8 technical parameters in 30 seconds. Start with the technical foundation, then work on content.</p>\n",
+      "faq": [
+        {
+          "question": "Can I keep my English-language website version?",
+          "answer": "Yes. The law doesn't prohibit multilingual websites. The requirement is that Russian must be the default version for users in Russia. Keep your English version for international guests — just make sure Russian is primary."
+        },
+        {
+          "question": "What about \"Wi-Fi\" — do I need to translate it?",
+          "answer": "Probably not. The term is widely established and likely included in normative dictionaries. For safety, write \"бесплатный Wi-Fi\" — a Russian word plus the established term."
+        },
+        {
+          "question": "My hotel brand is in English — do I need to change it?",
+          "answer": "Only if it's not registered as a trademark with Rospatent. If it is — you're fine. If not, consider registering (costs from 30,000 RUB / ~$300, takes 6-12 months). Meanwhile, add a Russian translation alongside your brand name."
+        },
+        {
+          "question": "When will enforcement actually start?",
+          "answer": "The law takes effect March 1, 2026. Mass inspections are unlikely in the first weeks — but a competitor's complaint or a customer's report can trigger a check at any time. Don't wait for enforcement to start."
+        }
+      ],
+      "tldr": "Starting March 1, 2026, Russia's Federal Law 168-FZ requires businesses to provide consumer information in Russian. This applies to websites: buttons, product categories, service descriptions. Fines reach up to 500,000 RUB (~$5,000). Below is a compliance checklist for your website — and why this is actually an SEO opportunity in Yandex.",
+      "llmsSummary": "Practical compliance guide for Russia's Federal Law 168-FZ on state language protection, effective March 1, 2026. The law requires all consumer-facing business information to be in Russian — including websites. Contains a checklist of website elements to localize (buttons, room categories, booking forms), fine amounts (up to 500,000 RUB / ~$5,000 for advertising violations), exceptions (registered trademarks, words in normative dictionaries), and SEO benefits of Russian-language content for Yandex rankings."
+    },
     {
       "slug": "geo-optimizaciya-sajta-gajd",
       "title": "GEO Optimization for Your Website: A Step-by-Step Guide (2026)",
