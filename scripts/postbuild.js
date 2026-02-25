@@ -23,6 +23,8 @@ const moves = [
   { src: 'ppc-en.html', dest: 'en/services/ppc/index.html' },
   { src: 'blog.html', dest: 'blog/index.html' },
   { src: 'blog-en.html', dest: 'en/blog/index.html' },
+  { src: '168-fz.html', dest: '168-fz/index.html' },
+  { src: '168-fz-en.html', dest: 'en/168-fz/index.html' },
 ];
 
 for (const { src, dest } of moves) {

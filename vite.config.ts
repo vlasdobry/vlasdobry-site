@@ -16,6 +16,13 @@ export default defineConfig({
           },
           rewrite: () => '/',
         },
+        '/api/compliance': {
+          target: 'https://health-score-proxy.vlasdobry.workers.dev',
+          changeOrigin: true,
+          headers: {
+            Origin: 'https://vlasdobry.ru',
+          },
+        },
       },
     },
     plugins: [
@@ -37,6 +44,8 @@ export default defineConfig({
             { prefix: '/services/ppc', file: '/ppc.html' },
             { prefix: '/services/seo', file: '/seo.html' },
             { prefix: '/services/geo', file: '/geo.html' },
+            { prefix: '/en/168-fz', file: '/168-fz-en.html' },
+            { prefix: '/168-fz', file: '/168-fz.html' },
             { prefix: '/en/for-hotels', file: '/for-hotels-en.html' },
             { prefix: '/en/for-labs', file: '/for-labs-en.html' },
             { prefix: '/en/for-spa', file: '/for-spa-en.html' },
@@ -93,6 +102,8 @@ export default defineConfig({
           'blog': path.resolve(__dirname, 'blog.html'),
           'blog-en': path.resolve(__dirname, 'blog-en.html'),
           'blog-post': path.resolve(__dirname, 'blog-post.html'),
+          '168-fz': path.resolve(__dirname, '168-fz.html'),
+          '168-fz-en': path.resolve(__dirname, '168-fz-en.html'),
         },
       },
     },
