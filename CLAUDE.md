@@ -72,6 +72,8 @@ git push origin master  # Деплой на продакшен (автомати
 - `/en/services/geo` — GEO Optimization (EN)
 - `/services/ppc` — Контекстная реклама (RU)
 - `/en/services/ppc` — PPC Advertising (EN)
+- `/168-fz` — проверка на 168-ФЗ (RU)
+- `/en/168-fz` — 168-FZ Compliance Check (EN)
 - `/blog` — блог со статьями (RU)
 - `/en/blog` — блог со статьями (EN)
 - `/blog/[slug]` — отдельная статья (RU)
@@ -89,6 +91,7 @@ git push origin master  # Деплой на продакшен (автомати
 - `src/components/BlogList.tsx` — список статей блога с карточками
 - `src/components/BlogPost.tsx` — страница отдельной статьи
 - `src/components/BlogCard.tsx` — карточка статьи для списка
+- `src/components/ComplianceChecker.tsx` — виджет проверки на 168-ФЗ (латиница в UI-элементах)
 
 **Health Score виджет:**
 - Бесплатная экспресс-диагностика сайта (SEO: 8 параметров, GEO: 5 параметров)
@@ -103,6 +106,18 @@ git push origin master  # Деплой на продакшен (автомати
 - Анимированный процесс сканирования с разными этапами для SEO и GEO
 - Интегрирован в ServiceLanding для SEO и GEO страниц
 - Трекинг в Яндекс.Метрику: старт, завершение, ошибки, клик по CTA
+
+**168-ФЗ Compliance Checker:**
+- Бесплатная проверка сайта на соответствие закону 168-ФЗ о защите русского языка
+- Использует HTMLRewriter (Cloudflare Worker) для потокового парсинга целевых элементов
+- Endpoint: `POST /api/compliance` в существующем `health-score-proxy` Worker
+- Категории: кнопки, заголовки (h1-h3), навигация, формы, подзаголовки (h4-h6), политики, мета
+- Скоринг: critical (-10), important (-7), medium (-5), info (0)
+- Whitelist: Wi-Fi, SPA, IT, URL, email, числа с единицами и др.
+- SPA-детекция: если <3 находок и <5 текстовых элементов
+- CTA: при ≥80 → SEO-аудит, при <80 → pre-filled Telegram с доменом и скором
+- Перелинковка: статья 168-ФЗ ↔ инструмент
+- Трекинг: compliance_start, compliance_complete, compliance_error, compliance_cta_click
 
 **Блог:**
 - Markdown-статьи в `content/blog/[slug]/ru.md` и `en.md`
