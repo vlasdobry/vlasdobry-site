@@ -3,7 +3,7 @@ title: "Russia's Language Law 168-FZ: What to Change on Your Website Before Marc
 description: "Federal Law 168-FZ requires all consumer-facing information in Russia to be in Russian. Website compliance checklist, fines up to $5,000, and what foreign business owners need to know."
 date: 2026-02-25
 dateModified: 2026-02-25
-slug: 168-fz-zakon-o-russkom-yazyke-sajt
+slug: 168-fz-zakon-o-russkom-yazyke-sayt
 category: marketing
 tags:
   - 168-FZ

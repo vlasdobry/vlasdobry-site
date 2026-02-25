@@ -261,7 +261,7 @@ Acoustic voice analysis and training platform.
 ## 6. Blog Articles
 
 ### Russia's Language Law 168-FZ: What to Change on Your Website Before March 2026
-**URL:** /blog/168-fz-zakon-o-russkom-yazyke-sajt/
+**URL:** /blog/168-fz-zakon-o-russkom-yazyke-sayt/
 **Category:** MARKETING
 **Date:** 2026-02-25
 

@@ -3,7 +3,7 @@ title: "168-ФЗ и сайт бизнеса: что менять до 1 март
 description: "Закон о русском языке 168-ФЗ вступает в силу 1 марта 2026. Чеклист для сайта: какие иностранные слова заменить, штрафы, исключения и SEO-возможности."
 date: 2026-02-25
 dateModified: 2026-02-25
-slug: 168-fz-zakon-o-russkom-yazyke-sajt
+slug: 168-fz-zakon-o-russkom-yazyke-sayt
 category: marketing
 tags:
   - 168-ФЗ
