@@ -114,7 +114,8 @@ git push origin master  # Деплой на продакшен (автомати
 - Категории: кнопки, заголовки (h1-h3), навигация, формы, подзаголовки (h4-h6), политики, мета
 - Скоринг: critical (-10), important (-7), medium (-5), info (0)
 - Whitelist: Wi-Fi, SPA, IT, URL, email, числа с единицами и др.
-- SPA-детекция: если <3 находок и <5 текстовых элементов
+- SPA-детекция: маркеры фреймворков (React/Vue/Angular/Next) + количество скриптов + мало текстовых элементов. SPA показывает "Анализ ограничен" (amber) вместо скора
+- Обработка ошибок: таймаут (25с), blocked (HTTP 403/WAF), server error — все с CTA в Telegram
 - CTA: при ≥80 → SEO-аудит, при <80 → pre-filled Telegram с доменом и скором
 - Перелинковка: статья 168-ФЗ ↔ инструмент
 - Трекинг: compliance_start, compliance_complete, compliance_error, compliance_cta_click
