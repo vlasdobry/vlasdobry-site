@@ -542,6 +542,7 @@ export const en: Translations = {
             { name: 'SEO Audit', url: '/en/services/seo' },
             { name: 'GEO Audit', url: '/en/services/geo' },
             { name: 'PPC Advertising', url: '/en/services/ppc' },
+            { name: '168-FZ Check', url: '/en/168-fz' },
           ],
         },
         blog: {

@@ -542,6 +542,7 @@ export const ru: Translations = {
             { name: 'SEO-аудит', url: '/services/seo' },
             { name: 'GEO-аудит', url: '/services/geo' },
             { name: 'Контекстная реклама', url: '/services/ppc' },
+            { name: 'Проверка на 168-ФЗ', url: '/168-fz' },
           ],
         },
         blog: {
