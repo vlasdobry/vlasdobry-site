@@ -258,7 +258,7 @@ export const IndustryLanding: React.FC<Props> = ({ sectionKey, basePath }) => {
               </div>
             </div>
             {/* Right: Offers & Services */}
-            <div className="flex gap-12">
+            <div className="flex flex-col sm:flex-row gap-8 md:gap-12">
               {sectionKey !== 'hotels' && (
               <div>
                 <h5 className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-3">{t.landing.footer.nav.offers.label}</h5>
