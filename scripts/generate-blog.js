@@ -266,7 +266,7 @@ function generateNoscriptContent(article, lang) {
             <article>
                 <h1>${article.title}</h1>
                 <p>${lang === 'ru' ? 'Опубликовано' : 'Published'}: ${formatDate(article.date)} · ${article.readingTime} ${lang === 'ru' ? 'мин' : 'min'}</p>
-                ${article.tldr ? `<p><strong>${lang === 'ru' ? 'Кратко' : 'TL;DR'}:</strong> ${article.tldr}</p>` : ''}
+                ${article.tldr ? `<p><strong>${lang === 'ru' ? 'Кратко' : 'TL;DR'}:</strong> ${marked.parseInline(article.tldr)}</p>` : ''}
 
                 ${article.content}
 
