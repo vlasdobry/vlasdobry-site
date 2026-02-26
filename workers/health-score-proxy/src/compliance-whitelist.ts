@@ -1,11 +1,12 @@
-// Common abbreviations accepted in Russian (per normative dictionaries / widely adopted)
+// Only technical abbreviations with NO Cyrillic equivalent.
+// Per 168-FZ: borrowed words with Russian form (СПА, фитнес, бар, лобби) are violations in Latin.
+// Registered trademarks are exempt but cannot be auto-detected.
 export const WHITELIST_WORDS = new Set([
-  // Technology
-  'wifi', 'wi-fi', 'sms', 'gps', 'qr', 'pdf', 'usb', 'id', 'tv', 'vip',
-  'dj', 'pr', 'it', 'hr', 'kpi', 'ceo', 'spa', 'ok', 'vs', 'faq',
-  'url', 'http', 'https', 'www', 'html', 'css', 'api',
-  // Common borrowed words in normative dictionaries
-  'bar', 'fitness', 'lobby', 'junior', 'senior',
+  // Technical abbreviations (no Russian equivalent)
+  'wifi', 'wi-fi', 'sms', 'gps', 'qr', 'pdf', 'usb', 'id',
+  'url', 'http', 'https', 'www', 'html', 'css', 'api', 'ip',
+  // Industry abbreviations
+  'it', 'hr', 'kpi', 'pr', 'ok', 'vs', 'faq',
 ]);
 
 // Regex patterns for things to skip entirely
