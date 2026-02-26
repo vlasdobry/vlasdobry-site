@@ -144,6 +144,32 @@ Check your website free: https://vlasdobry.ru/en/services/seo/ (SEO Health Score
 
 **Page:** https://vlasdobry.ru/services/ppc/
 
+### 168-FZ Compliance Checker
+Free tool to check if a Russian website complies with Federal Law 168-FZ on state language protection (effective March 1, 2026).
+
+**What It Checks:**
+- Buttons and CTAs in foreign languages (e.g. "Book Now", "Check In", "Submit")
+- Headings (h1-h6) with Latin text
+- Navigation menus in foreign languages
+- Form labels and placeholders
+- Meta elements (title, description)
+
+**How It Works:**
+- Parses visible UI elements using Cloudflare HTMLRewriter (streaming, no full page download)
+- Detects Latin script (2+ consecutive letters) in consumer-facing elements
+- Whitelist for technical terms (URL, HTTP, PDF, Wi-Fi) and patterns (emails, domains)
+- Severity scoring: critical (-10), important (-7), medium (-5), info (0)
+- SPA detection: shows "Limited analysis" for JavaScript-rendered sites
+
+**Scoring:**
+- 80-100: Compliant (green)
+- 40-79: Warnings (yellow)
+- 0-39: Non-compliant (red)
+
+**Free:** Unlimited checks, no registration.
+
+**Page:** https://vlasdobry.ru/168-fz/
+
 ---
 
 ## 3. Industry Expertise
