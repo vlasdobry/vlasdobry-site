@@ -1,4 +1,4 @@
-import { isWhitelisted } from './compliance-whitelist';
+import { isWhitelisted, stripHtmlEntities } from './compliance-whitelist';
 
 export interface Env {
   ALLOWED_ORIGINS: string;
@@ -177,16 +177,17 @@ async function analyzeCompliance(domain: string): Promise<ComplianceResult> {
   let textElementCount = 0;
 
   function addFinding(text: string, element: string, severity: ComplianceSeverity, category: string): void {
-    const trimmed = text.trim();
-    if (!trimmed) return;
-    if (!LATIN_RE.test(trimmed)) return;
-    if (isWhitelisted(trimmed)) return;
+    // Strip HTML entities (&nbsp; &mdash; etc.) before analysis
+    const cleaned = stripHtmlEntities(text);
+    if (!cleaned) return;
+    if (!LATIN_RE.test(cleaned)) return;
+    if (isWhitelisted(cleaned)) return;
 
-    const key = `${trimmed}|${element}|${category}`;
+    const key = `${cleaned}|${element}|${category}`;
     if (seenTexts.has(key)) return;
     seenTexts.add(key);
 
-    findings.push({ text: trimmed, element, severity, category });
+    findings.push({ text: cleaned, element, severity, category });
   }
 
   function countTextElement(): void {

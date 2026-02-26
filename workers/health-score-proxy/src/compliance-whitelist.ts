@@ -25,6 +25,14 @@ export const WHITELIST_PATTERNS: RegExp[] = [
   /^\d+$/,
 ];
 
+// HTML entities to strip before Latin detection (e.g. &nbsp; &mdash; &amp;)
+const HTML_ENTITY_RE = /&[a-z]+;/gi;
+
+/** Strip HTML entities from text, replacing with spaces */
+export function stripHtmlEntities(text: string): string {
+  return text.replace(HTML_ENTITY_RE, ' ').replace(/\s+/g, ' ').trim();
+}
+
 /**
  * Check if a text string should be excluded from compliance findings.
  * Returns true if the text is whitelisted (acceptable in Latin script).
@@ -38,8 +46,11 @@ export function isWhitelisted(text: string): boolean {
     if (pattern.test(trimmed)) return true;
   }
 
-  // Check if ALL Latin words in text are whitelisted
-  const latinWords = trimmed.match(/[a-zA-Z]{2,}/g);
+  // Strip HTML entities before Latin check (&nbsp; &mdash; &amp; etc.)
+  const cleaned = trimmed.replace(HTML_ENTITY_RE, ' ');
+
+  // Check if ALL Latin words in cleaned text are whitelisted
+  const latinWords = cleaned.match(/[a-zA-Z]{2,}/g);
   if (!latinWords) return true; // No Latin words found
 
   return latinWords.every(word => WHITELIST_WORDS.has(word.toLowerCase()));
