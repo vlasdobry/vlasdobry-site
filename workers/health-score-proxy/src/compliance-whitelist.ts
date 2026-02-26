@@ -2,11 +2,14 @@
 // Per 168-FZ: borrowed words with Russian form (СПА, фитнес, бар, лобби) are violations in Latin.
 // Registered trademarks are exempt but cannot be auto-detected.
 export const WHITELIST_WORDS = new Set([
-  // Technical abbreviations (no Russian equivalent)
-  'wifi', 'wi-fi', 'sms', 'gps', 'qr', 'pdf', 'usb', 'id',
+  // Technical protocol/format terms (no established Cyrillic form)
   'url', 'http', 'https', 'www', 'html', 'css', 'api', 'ip',
-  // Industry abbreviations
-  'it', 'hr', 'kpi', 'pr', 'ok', 'vs', 'faq',
+  'pdf', 'usb', 'gps', 'qr',
+  // Trademarks (exempt per 168-FZ)
+  'wifi', 'wi-fi',
+  // NOTE: Removed words WITH Cyrillic equivalents:
+  // sms→СМС, id→идентификатор, it→ИТ, hr→кадры, kpi→КПЭ,
+  // pr→пиар, ok→ОК, vs→против, faq→ЧаВо
 ]);
 
 // Regex patterns for things to skip entirely
