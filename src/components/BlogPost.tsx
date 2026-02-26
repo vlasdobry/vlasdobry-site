@@ -167,9 +167,10 @@ export const BlogPost: React.FC<Props> = ({ basePath }) => {
             <h2 className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-400 mb-3">
               {t.blog.tldr}
             </h2>
-            <p className="text-lg text-zinc-700 font-light leading-relaxed">
-              {article.tldr}
-            </p>
+            <p
+              className="text-lg text-zinc-700 font-light leading-relaxed [&_a]:text-black [&_a]:font-medium [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-zinc-500"
+              dangerouslySetInnerHTML={{ __html: article.tldrHtml || article.tldr }}
+            />
           </div>
         )}
 
