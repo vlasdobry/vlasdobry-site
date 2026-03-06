@@ -648,16 +648,16 @@ export const en: Translations = {
     },
     cta: {
       compliant: {
-        text: 'Your website looks good! Check your technical SEO',
-        action: 'Check SEO',
+        text: 'Check your technical SEO',
+        action: 'Free check · 8 parameters',
       },
       warnings: {
-        text: 'There are things to fix. Need help?',
-        action: 'Message on Telegram',
+        text: 'Get a fix plan',
+        action: 'Telegram · reply within 2 hours',
       },
       nonCompliant: {
-        text: 'Website doesn\'t comply with 168-FZ. Let\'s fix it?',
-        action: 'Message on Telegram',
+        text: 'Get a fix plan',
+        action: 'Telegram · reply within 2 hours',
       },
     },
     errors: {

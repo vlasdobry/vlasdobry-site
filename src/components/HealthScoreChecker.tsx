@@ -86,11 +86,9 @@ const translations = {
     geoExpressLabel: 'Экспресс-диагностика · 5 параметров',
     issues: 'проблем',
     getFullAudit: 'Получить полный аудит',
-    ctaCritical: 'Нашлись критические проблемы. Разберём?',
-    ctaWarning: 'Есть точки роста. Обсудить план?',
-    ctaGood: 'Хорошая база! Выжать максимум?',
-    ctaGapSeo: 'Health Score — 8 экспресс-проверок. Полный аудит — 7 направлений, 50+ проверок, готовый код.',
-    ctaGapGeo: 'Health Score — 5 экспресс-проверок. Полный аудит — 7 направлений, тесты в 6 AI-системах, готовый код.',
+    ctaButtonFix: 'Получить план исправлений',
+    ctaButtonGrow: 'Получить рекомендации по росту',
+    ctaSubtext: 'Telegram · отвечу за 2 часа',
     ctaMessage: (domain: string, score: number, type: string) =>
       `Привет! Мой сайт ${domain} получил ${score}/100 в ${type} Health Score. Хочу обсудить улучшения.`,
     tryAnother: 'Проверить другой сайт',
@@ -138,11 +136,9 @@ const translations = {
     geoExpressLabel: 'Express check · 5 parameters',
     issues: 'issues',
     getFullAudit: 'Get full audit',
-    ctaCritical: 'Critical issues found. Let\'s fix them?',
-    ctaWarning: 'Room for growth. Discuss a plan?',
-    ctaGood: 'Solid foundation! Want to maximize it?',
-    ctaGapSeo: 'Health Score — 8 express checks. Full audit — 7 areas, 50+ checks, ready-to-use code.',
-    ctaGapGeo: 'Health Score — 5 express checks. Full audit — 7 areas, tests in 6 AI systems, ready-to-use code.',
+    ctaButtonFix: 'Get a fix plan',
+    ctaButtonGrow: 'Get growth recommendations',
+    ctaSubtext: 'Telegram · reply within 2 hours',
     ctaMessage: (domain: string, score: number, type: string) =>
       `Hi! My site ${domain} scored ${score}/100 on ${type} Health Score. I'd like to discuss improvements.`,
     tryAnother: 'Check another site',
@@ -608,12 +604,12 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => analytics.healthScoreCta(primary, checkedDomain, result?.seo.total, result?.geo.total)}
-            className="block w-full text-center py-3 sm:py-4 border-2 border-black font-bold uppercase tracking-wide hover:bg-black hover:text-white transition-all text-xs sm:text-sm"
+            className="block w-full text-center py-3 sm:py-4 bg-black text-white font-bold uppercase tracking-wide hover:bg-zinc-800 transition-all text-xs sm:text-sm"
           >
-            {primaryScore.total < 50 ? t.ctaCritical : primaryScore.total < 80 ? t.ctaWarning : t.ctaGood} →
+            {primaryScore.total >= 80 ? t.ctaButtonGrow : t.ctaButtonFix} →
           </a>
           <p className="text-xs text-zinc-400 text-center">
-            {primary === 'seo' ? t.ctaGapSeo : t.ctaGapGeo}
+            {t.ctaSubtext}
           </p>
           <button
             onClick={handleReset}

@@ -648,16 +648,16 @@ export const ru: Translations = {
     },
     cta: {
       compliant: {
-        text: 'Ваш сайт в порядке! Проверьте техническое SEO',
-        action: 'Проверить SEO',
+        text: 'Проверить техническое SEO',
+        action: 'Бесплатная проверка · 8 параметров',
       },
       warnings: {
-        text: 'Есть что исправить. Нужна помощь?',
-        action: 'Написать в Telegram',
+        text: 'Получить план исправлений',
+        action: 'Telegram · отвечу за 2 часа',
       },
       nonCompliant: {
-        text: 'Сайт не соответствует 168-ФЗ. Исправим?',
-        action: 'Написать в Telegram',
+        text: 'Получить план исправлений',
+        action: 'Telegram · отвечу за 2 часа',
       },
     },
     errors: {

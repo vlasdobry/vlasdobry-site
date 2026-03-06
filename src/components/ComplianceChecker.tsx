@@ -455,9 +455,9 @@ export const ComplianceChecker: React.FC<Props> = ({ basePath }) => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => analytics.complianceCta(checkedDomain, -1)}
-              className="block w-full text-center py-3 sm:py-4 border-2 border-black font-bold uppercase tracking-wide hover:bg-black hover:text-white transition-all text-xs sm:text-sm"
+              className="block w-full text-center py-3 sm:py-4 bg-black text-white font-bold uppercase tracking-wide hover:bg-zinc-800 transition-all text-xs sm:text-sm"
             >
-              {ct.cta.warnings.action} &rarr;
+              {ct.cta.warnings.text} &rarr;
             </a>
             <button
               onClick={handleReset}
@@ -585,19 +585,13 @@ export const ComplianceChecker: React.FC<Props> = ({ basePath }) => {
             target={result.total >= 80 ? undefined : '_blank'}
             rel={result.total >= 80 ? undefined : 'noopener noreferrer'}
             onClick={() => analytics.complianceCta(checkedDomain, result.total)}
-            className="block w-full text-center py-3 sm:py-4 border-2 border-black font-bold uppercase tracking-wide hover:bg-black hover:text-white transition-all text-xs sm:text-sm"
+            className="block w-full text-center py-3 sm:py-4 bg-black text-white font-bold uppercase tracking-wide hover:bg-zinc-800 transition-all text-xs sm:text-sm"
           >
             {ctaConfig.text} &rarr;
           </a>
-          <a
-            href={ctaHref}
-            target={result.total >= 80 ? undefined : '_blank'}
-            rel={result.total >= 80 ? undefined : 'noopener noreferrer'}
-            onClick={() => analytics.complianceCta(checkedDomain, result.total)}
-            className="block w-full text-center py-2 text-sm font-bold text-zinc-500 hover:text-black transition-colors"
-          >
+          <p className="text-xs text-zinc-400 text-center">
             {ctaConfig.action}
-          </a>
+          </p>
           <button
             onClick={handleReset}
             className="w-full text-sm text-zinc-400 hover:text-black transition-colors"
