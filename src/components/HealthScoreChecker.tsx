@@ -374,31 +374,74 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
       setProgress(Math.round((index / steps.length) * 100));
     };
 
-    // Fetch with 25s timeout (increased for slow sites)
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 25000);
-
     // Show "slow site" message after 10s
     const slowTimeoutId = setTimeout(() => setIsSlow(true), 10000);
+
+    // Fetch helper with its own AbortController
+    const doFetch = async (signal?: AbortSignal): Promise<Response> => {
+      const response = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ domain: url }),
+        signal,
+      });
+      if (!response.ok) {
+        const body = await response.json().catch(() => null);
+        const detail = body?.error || '';
+        const err = new Error('server_error');
+        (err as any).detail = detail;
+        throw err;
+      }
+      return response;
+    };
+
+    // Classify error type
+    const classifyError = (err: unknown): { errorType: string; detail: string } => {
+      if (err instanceof DOMException && err.name === 'AbortError') {
+        return { errorType: 'timeout', detail: '' };
+      }
+      const msg = err instanceof Error ? err.message : 'unknown';
+      if (msg === 'server_error') {
+        return { errorType: 'server_error', detail: (err as any).detail || '' };
+      }
+      return { errorType: 'network_error', detail: msg };
+    };
+
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 25000);
 
     try {
       const stepDelay = (ms: number) => new Promise(r => setTimeout(r, ms));
 
-      const fetchPromise = fetch(WORKER_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ domain: url }),
-        signal: controller.signal,
-      });
+      const fetchPromise = doFetch(controller.signal);
 
       await stepDelay(1600); updateStep(1);
       await stepDelay(1600); updateStep(2);
       await stepDelay(1600); updateStep(3);
       await stepDelay(1600); updateStep(4);
 
-      const response = await fetchPromise;
+      let response: Response;
+      try {
+        response = await fetchPromise;
+      } catch (firstErr) {
+        const { errorType } = classifyError(firstErr);
+        // Silent retry only for network errors (quick failures, not timeouts)
+        if (errorType !== 'network_error') throw firstErr;
 
-      if (!response.ok) throw new Error('server_error');
+        // Retry once after 1s with a fresh AbortController
+        await stepDelay(1000);
+        const retryController = new AbortController();
+        const retryTimeoutId = setTimeout(() => retryController.abort(), 25000);
+        try {
+          response = await doFetch(retryController.signal);
+        } catch (retryErr) {
+          clearTimeout(retryTimeoutId);
+          // Tag as retried for analytics
+          (retryErr as any).retried = true;
+          throw retryErr;
+        }
+        clearTimeout(retryTimeoutId);
+      }
 
       const data: FetchedData = await response.json();
 
@@ -418,13 +461,12 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
       analytics.healthScoreComplete(primary, data.domain, scoreResult.seo.total, scoreResult.geo.total);
 
     } catch (err) {
-      const errorMsg = err instanceof Error ? err.message : 'unknown';
-      let errorType = 'network_error';
-      if (errorMsg === 'AbortError' || err instanceof DOMException) {
-        errorType = 'timeout';
+      const { errorType, detail } = classifyError(err);
+      const retried = !!(err as any)?.retried;
+
+      if (errorType === 'timeout') {
         setError('timeout');
-      } else if (errorMsg === 'server_error') {
-        errorType = 'server_error';
+      } else if (errorType === 'server_error') {
         setError('server_error');
       } else {
         setError('network_error');
@@ -436,8 +478,8 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
       saveToHistory(fullUrl);
       setHistory(getHistory());
 
-      // Track error
-      analytics.healthScoreError(primary, errorType);
+      // Track error with detail and retry flag
+      analytics.healthScoreError(primary, errorType, detail || undefined, retried || undefined);
     } finally {
       clearTimeout(timeoutId);
       clearTimeout(slowTimeoutId);

@@ -42,7 +42,7 @@ const RATE_LIMIT_STORE = new Map<string, RateLimitEntry>();
 const DEFAULT_RATE_LIMIT_REQUESTS = 20;
 const DEFAULT_RATE_LIMIT_WINDOW_SEC = 60;
 const MAX_CONTENT_SIZE = 50_000;
-const REQUEST_TIMEOUT_MS = 20_000;
+const REQUEST_TIMEOUT_MS = 10_000;
 const MAX_REDIRECTS = 3;
 
 // Latin detection: 2+ consecutive Latin characters

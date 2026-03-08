@@ -89,7 +89,7 @@ git push origin master  # Деплой на продакшен (автомати
 - `src/components/LanguageSwitcher.tsx` — переключатель языка
 - `src/components/ProjectsLanding.tsx` — лендинг проектов (sticky header, карточки проектов)
 - `src/components/BlogList.tsx` — список статей блога с карточками
-- `src/components/BlogPost.tsx` — страница отдельной статьи
+- `src/components/BlogPost.tsx` — страница отдельной статьи (включает CTA блок Health Score между контентом и FAQ)
 - `src/components/BlogCard.tsx` — карточка статьи для списка
 - `src/components/ComplianceChecker.tsx` — виджет проверки на 168-ФЗ (латиница в UI-элементах)
 
@@ -162,6 +162,7 @@ git push origin master  # Деплой на продакшен (автомати
 
 **404 страница (Easter eggs):**
 - Кастомная HTML-страница `public/404.html` с 15 сезонными темами
+- JS-логика вынесена в `public/404.js` (CSP: `script-src 'self'` запрещает inline-скрипты)
 - Темы: default, halloween, newyear, valentine, aprilfools, friday13, march8, muertos, feb23, piday, programmer, starwars, cosmo, solstice, russia
 - Автоматический выбор темы по дате, тестирование: `?theme=название`
 - Замена "0" в "404": Дарт Вейдер (starwars), калавера PNG (muertos), хоккейная маска (friday13), π (piday)
@@ -186,6 +187,7 @@ git push origin master  # Деплой на продакшен (автомати
 - `compliance_cta_click` — переход к заказу после проверки 168-ФЗ
 - `blog_view` — просмотр статьи блога
 - `blog_cta_click` — клик по CTA в статье
+- `blog_hs_cta_click` — клик по CTA Health Score в статье блога (Эксперимент #2)
 
 **GEO (Generative Engine Optimization):**
 - `llms.txt` — базовая информация для AI-систем
@@ -246,6 +248,7 @@ git push origin master  # Деплой на продакшен (автомати
 | `public/robots.txt` | Разрешения для поисковых и AI-ботов |
 | `public/sitemap.xml` | Карта сайта с xhtml:link для языков |
 | `public/404.html` | Кастомная 404-страница с 15 сезонными темами |
+| `public/404.js` | JS-логика 404-страницы (вынесена из inline для CSP) |
 | `public/calavera.png` | PNG калаверы для Día de los Muertos темы |
 | `scripts/postbuild.js` | Постобработка: en.html → en/index.html и т.д. |
 | `docs/hotel-outreach-summary.md` | Стратегия outreach: скрипты, шаблоны, ценообразование |
@@ -283,6 +286,7 @@ git push origin master  # Деплой на продакшен (автомати
 **Воронка Health Score:**
 - 26 запусков → 19 завершений (73%) → 7 ошибок (27%) → **0 CTA кликов** (6 недель)
 - Эксперимент #1 (редизайн CTA) реализован 06.03: залитая кнопка, текст по скору, убрана gap line, подтекст Telegram. Проверка 13.03
+- Эксперимент #2 (CTA Health Score в блоге) реализован 08.03: CTA-блок между контентом и FAQ, маршрутизация SEO→/services/seo/, GEO→/services/geo/. Цель Метрики: blog_hs_cta_click (ID 518737104). Проверка 15.03
 
 **Воронка 168-ФЗ:**
 - 5 запусков → 3 завершения → 2 ошибки → **1 CTA клик** (первый!)

@@ -24,8 +24,8 @@ export const analytics = {
     trackGoal('health_score_start', { type, domain }),
   healthScoreComplete: (type: string, domain: string, seoScore: number, geoScore: number) =>
     trackGoal('health_score_complete', { type, domain, seo_score: seoScore, geo_score: geoScore }),
-  healthScoreError: (type: string, error: string) =>
-    trackGoal('health_score_error', { type, error }),
+  healthScoreError: (type: string, error: string, detail?: string, retry?: boolean) =>
+    trackGoal('health_score_error', { type, error, detail, retry }),
   healthScoreCta: (type: string, domain: string, seoScore?: number, geoScore?: number) =>
     trackGoal('health_score_cta_click', { type, domain, seo_score: seoScore, geo_score: geoScore }),
 
