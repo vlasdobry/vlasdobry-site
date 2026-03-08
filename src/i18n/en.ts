@@ -578,6 +578,8 @@ export const en: Translations = {
     noArticles: 'No articles yet',
     relatedService: 'Related Service',
     relatedServiceLink: 'Learn more about this service →',
+    healthScoreCta: 'Check your website → free SEO Health Score',
+    healthScoreCtaGeo: 'Check your website → free GEO Health Score',
     categories: {
       all: 'All',
       seo: 'SEO',

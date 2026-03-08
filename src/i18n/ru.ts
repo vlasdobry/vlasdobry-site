@@ -578,6 +578,8 @@ export const ru: Translations = {
     noArticles: 'Статей пока нет',
     relatedService: 'Связанная услуга',
     relatedServiceLink: 'Подробнее об услуге →',
+    healthScoreCta: 'Проверьте свой сайт → бесплатный SEO Health Score',
+    healthScoreCtaGeo: 'Проверьте свой сайт → бесплатный GEO Health Score',
     categories: {
       all: 'Все',
       seo: 'SEO',

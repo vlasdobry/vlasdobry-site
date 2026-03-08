@@ -28,6 +28,8 @@ export interface BlogSection {
   noArticles: string;
   relatedService: string;
   relatedServiceLink: string;
+  healthScoreCta: string;
+  healthScoreCtaGeo: string;
   categories: {
     all: string;
     seo: string;

@@ -32,6 +32,8 @@ export const analytics = {
   // Blog
   blogView: (slug: string) => trackGoal('blog_view', { slug }),
   blogCtaClick: (slug: string) => trackGoal('blog_cta_click', { slug }),
+  blogHsCtaClick: (slug: string, category: string) =>
+    trackGoal('blog_hs_cta_click', { slug, category }),
 
   // Compliance Checker (168-FZ)
   complianceStart: (domain: string) =>

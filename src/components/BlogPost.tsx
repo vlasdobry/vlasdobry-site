@@ -201,6 +201,24 @@ export const BlogPost: React.FC<Props> = ({ basePath }) => {
           dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(article.content || '') }}
         />
 
+        {/* Health Score CTA */}
+        {(() => {
+          const isGeo = article.category === 'geo';
+          const hsUrl = lang === 'ru'
+            ? (isGeo ? '/services/geo/' : '/services/seo/')
+            : (isGeo ? '/en/services/geo/' : '/en/services/seo/');
+          const hsText = isGeo ? t.blog.healthScoreCtaGeo : t.blog.healthScoreCta;
+          return (
+            <a
+              href={hsUrl}
+              onClick={() => analytics.blogHsCtaClick(article.slug, article.category)}
+              className="block my-8 md:my-12 p-5 bg-zinc-50 rounded-lg border border-zinc-100 hover:border-zinc-300 transition-colors text-center"
+            >
+              <span className="text-base md:text-lg font-bold text-black">{hsText}</span>
+            </a>
+          );
+        })()}
+
         {/* FAQ */}
         {article.faq && article.faq.length > 0 && (
           <section className="py-12 md:py-16 border-t border-zinc-100">
