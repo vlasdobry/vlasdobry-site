@@ -1,6 +1,112 @@
 {
   "ru": [
     {
+      "slug": "brendovyj-trafik-otelya-keys",
+      "title": "Брендовый трафик отеля: кейс потерь без рекламы в Директе",
+      "description": "Разбираю реальный кейс: отель в Абхазии теряет 60-80 тысяч в месяц из-за незащищённого бренда. Конкуренты и OTA перехватывают брендовые запросы.",
+      "date": "2026-03-10",
+      "dateModified": "2026-03-10",
+      "category": "marketing",
+      "tags": [
+        "отели",
+        "кейс",
+        "яндекс директ",
+        "horeca",
+        "брендовый трафик"
+      ],
+      "relatedService": "/for-hotels",
+      "cover": "cover.jpg",
+      "series": null,
+      "readingTime": 6,
+      "toc": [
+        {
+          "id": "что-показал-аудит-сайта-отеля",
+          "text": "Что показал аудит сайта отеля",
+          "level": 2
+        },
+        {
+          "id": "кто-перехватывает-брендовый-трафик",
+          "text": "Кто перехватывает брендовый трафик",
+          "level": 2
+        },
+        {
+          "id": "двойной-удар-конкуренты-ota",
+          "text": "Двойной удар: конкуренты + OTA",
+          "level": 2
+        },
+        {
+          "id": "считаем-потери-от-незащищённого-бренда",
+          "text": "Считаем потери от незащищённого бренда",
+          "level": 2
+        },
+        {
+          "id": "сколько-стоит-защита",
+          "text": "Сколько стоит защита",
+          "level": 2
+        },
+        {
+          "id": "почему-продвижение-отеля-без-брендовой-рекламы-тупик",
+          "text": "Почему продвижение отеля без брендовой рекламы — тупик",
+          "level": 2
+        },
+        {
+          "id": "что-делать-отелю",
+          "text": "Что делать отелю",
+          "level": 2
+        },
+        {
+          "id": "1-запустить-защитную-кампанию-в-директе",
+          "text": "1. Запустить защитную кампанию в Директе",
+          "level": 3
+        },
+        {
+          "id": "2-исправить-техническое-seo",
+          "text": "2. Исправить техническое SEO",
+          "level": 3
+        },
+        {
+          "id": "3-открыть-яндекс-краснодар",
+          "text": "3. Открыть Яндекс Краснодар",
+          "level": 3
+        },
+        {
+          "id": "4-экономить-на-ota-комиссиях",
+          "text": "4. Экономить на OTA-комиссиях",
+          "level": 3
+        },
+        {
+          "id": "консервативная-оценка-выгоды-seo-директ",
+          "text": "Консервативная оценка выгоды (SEO + Директ)",
+          "level": 2
+        },
+        {
+          "id": "как-проверить-свой-отель",
+          "text": "Как проверить свой отель",
+          "level": 2
+        }
+      ],
+      "hasFaq": true,
+      "content": "<p>Когда гость набирает название вашего отеля в Яндексе, кто первый в выдаче? Если не вы — значит, вы платите за чужие продажи.</p>\n<h2 id=\"что-показал-аудит-сайта-отеля\">Что показал аудит сайта отеля</h2>\n<p>Ко мне обратились с запросом на <a href=\"/services/seo\">SEO + GEO аудит</a> курортного отеля в Абхазии. 58 номеров, подогреваемый бассейн, рейтинг 5.0 на Яндексе, 158 отзывов. Казалось бы, сильная позиция.</p>\n<p>При анализе в keys.so я увидел интересную картину: отель набирает ~1 300 брендовых запросов в месяц в сезон. Люди ищут его по названию. Значит, бренд работает — сарафанное радио, агрегаторы, повторные гости.</p>\n<p>Но дальше — проблема.</p>\n<h2 id=\"кто-перехватывает-брендовый-трафик\">Кто перехватывает брендовый трафик</h2>\n<p>Я проверил, размещает ли кто-нибудь рекламу по запросам с названием отеля. Вот что показал keys.so:</p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Рекламодатель</th>\n<th>Объявлений</th>\n<th>Запросов в контексте</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Конкурент A (тот же район)</td>\n<td>23</td>\n<td>56</td>\n</tr>\n<tr>\n<td>Конкурент B (сеть парк-отелей)</td>\n<td>13</td>\n<td>66</td>\n</tr>\n<tr>\n<td>Конкурент C (соседний отель)</td>\n<td>4</td>\n<td>5</td>\n</tr>\n<tr>\n<td><strong>Наш отель</strong></td>\n<td><strong>0</strong></td>\n<td><strong>0</strong></td>\n</tr>\n</tbody></table></div>\n<p>23 объявления от прямого конкурента — и ноль от самого отеля.</p>\n<p>Что это означает на практике? Человек вбивает «[название отеля] Абхазия» в Яндексе. Над органической выдачей — рекламный блок. В нём — конкуренты и OTA-агрегаторы. Гость кликает туда, потому что реклама всегда выше органики.</p>\n<h2 id=\"двойной-удар-конкуренты-ota\">Двойной удар: конкуренты + OTA</h2>\n<p>Без защитной кампании в Директе брендовый трафик утекает двумя путями.</p>\n<p><strong>Путь 1: конкурент забирает гостя.</strong> Гость ищет ваш отель, видит рекламу конкурента «отель в Абхазии от 2 500 ₽/ночь», кликает, бронирует там. Вы потеряли бронирование целиком.</p>\n<p><strong>Путь 2: OTA забирает комиссию.</strong> Гость ищет ваш отель, видит рекламу Островка или Яндекс.Путешествий, бронирует через них. Вроде бы бронь ваша — но вы отдаёте 15-20% комиссии. При среднем чеке 20 000 ₽ за бронирование — это 3 000-4 000 ₽ с каждой брони.</p>\n<p>Островок, Яндекс.Путешествия, Суточно.ру <strong>активно рекламируются по брендовым запросам отелей</strong>. Это их бизнес-модель: перехватить гостя на этапе поиска и забрать комиссию.</p>\n<h2 id=\"считаем-потери-от-незащищённого-бренда\">Считаем потери от незащищённого бренда</h2>\n<p>Вот консервативная оценка для этого конкретного отеля:</p>\n<ul>\n<li>~1 300 брендовых поисков/мес в сезон (май-сентябрь)</li>\n<li>Конкуренты и OTA перехватывают ~15-25% (по отраслевым бенчмаркам)</li>\n<li>Это ~200-300 потерянных визитов в месяц</li>\n</ul>\n<p><strong>Прямые потери</strong> (гости ушли к конкурентам): 3-4 брони/мес × 20 000 ₽ = <strong>60 000-80 000 ₽/мес</strong></p>\n<p><strong>Косвенные потери</strong> (гости забронировали через OTA): комиссия 3 000-4 000 ₽ с каждой брони, которая могла быть прямой.</p>\n<p>За сезон (5 месяцев) прямые потери могут составить <strong>300 000-400 000 ₽</strong>.</p>\n<h2 id=\"сколько-стоит-защита\">Сколько стоит защита</h2>\n<p>Я рассчитал стоимость защитной кампании в Директе по брендовым запросам:</p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Параметр</th>\n<th>Значение</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>CPC по брендовым запросам</td>\n<td>5-20 ₽ (keys.so показывает 1-5 ₽ при текущей конкуренции 0-1 объявление, с ростом торгов CPC вырастет)</td>\n</tr>\n<tr>\n<td>Бюджет в месяц</td>\n<td>10 000-20 000 ₽</td>\n</tr>\n<tr>\n<td>Потенциальный возврат</td>\n<td>60 000-80 000 ₽ (прямые потери) + экономия на OTA-комиссиях</td>\n</tr>\n<tr>\n<td><strong>ROI</strong></td>\n<td><strong>3-8× на каждый вложенный рубль</strong></td>\n</tr>\n</tbody></table></div>\n<p>В маркетинге отеля защита бренда — это не статья расходов. Это страховка от потерь. Вы не привлекаете новых гостей — вы просто не отдаёте существующих.</p>\n<h2 id=\"почему-продвижение-отеля-без-брендовой-рекламы-тупик\">Почему продвижение отеля без брендовой рекламы — тупик</h2>\n<p>У этого отеля есть ещё один тревожный тренд. При аудите я обнаружил:</p>\n<p><strong>Google-видимость упала на 61% за 16 месяцев.</strong> С 568 запросов в топ-50 (октябрь 2024) до 223 (февраль 2026). Причина — Performance Score 32/100 на мобильных. Страница весит 7.5 MB, загружается 9 секунд. Google использует скорость как фактор ранжирования, и отель проигрывает.</p>\n<p>При этом конкурент из того же района опережает <strong>в 19 раз</strong> по количеству запросов в топ-1: 173 против 9.</p>\n<p>Яндекс пока растёт (+63%), но Яндекс Краснодар — ближайший крупный город, откуда едут в Абхазию — показывает <strong>0 трафика</strong>. Восемь запросов в топ-50, ноль визитов.</p>\n<p>Без брендовой кампании в Директе отель зависит только от органики. А органика в Google падает.</p>\n<h2 id=\"что-делать-отелю\">Что делать отелю</h2>\n<h3 id=\"1-запустить-защитную-кампанию-в-директе\">1. Запустить защитную кампанию в Директе</h3>\n<p>По своим брендовым запросам — название отеля, варианты написания, «[название] бронирование», «[название] цены». Бюджет 10-20 тыс. ₽/мес в сезон. Это перекроет конкурентов в рекламном блоке и перенаправит гостей на прямое бронирование.</p>\n<h3 id=\"2-исправить-техническое-seo\">2. Исправить техническое SEO</h3>\n<p>Performance Score 32/100 — это приговор для Google. Оптимизация изображений (с 3.5 MB до 500 KB), отказ от тяжёлых плагинов (Revolution Slider), lazy loading. Цель — Performance &gt; 60 за 3 месяца. Это вернёт 300-400 запросов в топ-50 Google.</p>\n<h3 id=\"3-открыть-яндекс-краснодар\">3. Открыть Яндекс Краснодар</h3>\n<p>Добавить meta description с упоминанием Абхазии и Краснодарского края, исправить H1 на внутренних страницах, добавить Schema.org Hotel. Краснодар — ворота в Абхазию, там живёт целевая аудитория.</p>\n<h3 id=\"4-экономить-на-ota-комиссиях\">4. Экономить на OTA-комиссиях</h3>\n<p>Прямые бронирования отеля через сайт вместо Островка или Яндекс.Путешествий экономят 15-20% комиссии. При среднем чеке 20 000 ₽ — это 3 000-4 000 ₽ с каждой брони. Брендовая реклама + быстрый сайт = больше прямых бронирований.</p>\n<h2 id=\"консервативная-оценка-выгоды-seo-директ\">Консервативная оценка выгоды (SEO + Директ)</h2>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Сценарий</th>\n<th>Доп. визитов/мес</th>\n<th>Броней/мес (при 1.5%)</th>\n<th>Доп. выручка/мес</th>\n<th>За сезон</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Минимум (только мета + H1)</td>\n<td>+30</td>\n<td>+0.5</td>\n<td>~10 000 ₽</td>\n<td>~50 000 ₽</td>\n</tr>\n<tr>\n<td>Реалистичный (+ скорость + Schema)</td>\n<td>+100</td>\n<td>+1.5</td>\n<td>~30 000 ₽</td>\n<td>~150 000 ₽</td>\n</tr>\n<tr>\n<td>Оптимистичный (полное внедрение)</td>\n<td>+200</td>\n<td>+3</td>\n<td>~60 000 ₽</td>\n<td>~300 000 ₽</td>\n</tr>\n</tbody></table></div>\n<p><strong>Плюс</strong> защита бренда в Директе: возврат 60-80 тыс. ₽/мес потерь при бюджете 10-20 тыс. ₽/мес.</p>\n<p>Окупаемость — 1-2 месяца сезона.</p>\n<h2 id=\"как-проверить-свой-отель\">Как проверить свой отель</h2>\n<p>Три шага, которые можно сделать за 10 минут:</p>\n<ol>\n<li><strong>Вбейте название отеля в Яндекс.</strong> Посмотрите, есть ли чужая реклама над вашим сайтом. Если да — вас перехватывают.</li>\n<li><strong>Проверьте в keys.so раздел «Контекст».</strong> Кто рекламируется по вашим брендовым запросам и сколько у них объявлений.</li>\n<li><strong><a href=\"/services/seo\">Проверьте SEO Health Score</a></strong> вашего сайта — бесплатно, за 30 секунд. Если ниже 70 — есть что улучшить.</li>\n</ol>\n<blockquote>\n<p><em>Оценки конверсии, среднего чека и рыночных цен — допущения на основе отраслевых бенчмарков. Точные цифры зависят от реальной аналитики отеля.</em></p>\n</blockquote>\n",
+      "faq": [
+        {
+          "question": "Зачем рекламироваться по своему бренду, если и так первый в органике?",
+          "answer": "Потому что реклама показывается выше органики. Если конкурент или OTA ставит объявление по вашему имени — гость может кликнуть туда, не долистав до вашего сайта. На мобильных органический результат вообще уходит за экран."
+        },
+        {
+          "question": "Сколько стоит защита бренда в Директе?",
+          "answer": "Для отеля с 1 000-2 000 брендовых запросов в месяц — 10-20 тыс. ₽/мес в сезон. CPC по своему бренду обычно 5-20 ₽. Это один из самых дешёвых видов рекламы с ROI 3-8×."
+        },
+        {
+          "question": "Можно ли пожаловаться на конкурентов, которые рекламируются по моему бренду?",
+          "answer": "Нет. Яндекс разрешает рекламу по чужим брендам — это их официальная политика. Единственный способ защититься — занять рекламное место самому."
+        }
+      ],
+      "tldr": "Провёл аудит курортного отеля в Абхазии. Нашёл дыру: 1 300 брендовых поисков в месяц, но отель не размещает рекламу по своему имени. Конкуренты — 23 объявления. OTA-агрегаторы перехватывают бронирования. Потенциальные потери — 60-80 тысяч рублей в месяц только в сезон.",
+      "tldrHtml": "Провёл аудит курортного отеля в Абхазии. Нашёл дыру: 1 300 брендовых поисков в месяц, но отель не размещает рекламу по своему имени. Конкуренты — 23 объявления. OTA-агрегаторы перехватывают бронирования. Потенциальные потери — 60-80 тысяч рублей в месяц только в сезон.",
+      "cta": null,
+      "llmsSummary": "Кейс курортного отеля в Абхазии (58 номеров): 1 300 брендовых поисков в месяц, 0 объявлений в Директе, конкуренты размещают 23 объявления. Потенциальные потери 60-80 тыс. ₽/мес в сезон из-за перехвата трафика конкурентами и OTA-агрегаторами. Google-видимость упала на 61% за 16 месяцев. Защита бренда в Директе стоит 10-20 тыс. ₽/мес при ROI 3-8×."
+    },
+    {
       "slug": "168-fz-zakon-o-russkom-yazyke-sayt",
       "title": "168-ФЗ и сайт бизнеса: что менять до 1 марта 2026",
       "description": "Закон о русском языке 168-ФЗ вступает в силу 1 марта 2026. Чеклист для сайта: какие иностранные слова заменить, штрафы, исключения и SEO-возможности.",
@@ -1380,6 +1486,107 @@
     }
   ],
   "en": [
+    {
+      "slug": "brendovyj-trafik-otelya-keys",
+      "title": "Hotel Brand Traffic: The Cost of Missing Brand Ads",
+      "description": "Case study: a resort hotel loses $750-1,000/month because competitors and OTAs bid on its brand name. Zero ads vs 23 competitor ads.",
+      "date": "2026-03-10",
+      "dateModified": "2026-03-10",
+      "category": "marketing",
+      "tags": [
+        "hotels",
+        "case-study",
+        "ppc",
+        "horeca",
+        "brand-protection"
+      ],
+      "relatedService": "/en/for-hotels",
+      "cover": "cover.jpg",
+      "series": null,
+      "readingTime": 6,
+      "toc": [
+        {
+          "id": "what-i-found",
+          "text": "What I Found",
+          "level": 2
+        },
+        {
+          "id": "whos-stealing-brand-traffic",
+          "text": "Who's Stealing Brand Traffic",
+          "level": 2
+        },
+        {
+          "id": "the-double-hit-competitors-otas",
+          "text": "The Double Hit: Competitors + OTAs",
+          "level": 2
+        },
+        {
+          "id": "calculating-the-losses",
+          "text": "Calculating the Losses",
+          "level": 2
+        },
+        {
+          "id": "what-protection-costs",
+          "text": "What Protection Costs",
+          "level": 2
+        },
+        {
+          "id": "why-the-problem-compounds",
+          "text": "Why the Problem Compounds",
+          "level": 2
+        },
+        {
+          "id": "what-hotels-should-do",
+          "text": "What Hotels Should Do",
+          "level": 2
+        },
+        {
+          "id": "1-launch-brand-protection-ads",
+          "text": "1. Launch Brand Protection Ads",
+          "level": 3
+        },
+        {
+          "id": "2-fix-technical-seo",
+          "text": "2. Fix Technical SEO",
+          "level": 3
+        },
+        {
+          "id": "3-save-on-ota-commissions",
+          "text": "3. Save on OTA Commissions",
+          "level": 3
+        },
+        {
+          "id": "conservative-roi-estimate-seo-ppc",
+          "text": "Conservative ROI Estimate (SEO + PPC)",
+          "level": 2
+        },
+        {
+          "id": "how-to-check-your-hotel",
+          "text": "How to Check Your Hotel",
+          "level": 2
+        }
+      ],
+      "hasFaq": true,
+      "content": "<p>When someone types your hotel name into Google, who shows up first? If it&#39;s not you, you&#39;re funding someone else&#39;s sales.</p>\n<h2 id=\"what-i-found\">What I Found</h2>\n<p>A resort hotel asked me to run an <a href=\"/en/services/seo\">SEO + GEO audit</a>. 58 rooms, heated pool, 5.0 rating on review platforms, 150+ reviews. Strong position on paper.</p>\n<p>While analyzing search data, I spotted something: the hotel gets ~1,300 branded searches per month during peak season. People search for it by name — word of mouth, OTA listings, repeat guests.</p>\n<p>But here&#39;s the problem.</p>\n<h2 id=\"who39s-stealing-brand-traffic\">Who&#39;s Stealing Brand Traffic</h2>\n<p>I checked who&#39;s running ads on the hotel&#39;s branded keywords:</p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Advertiser</th>\n<th>Ads</th>\n<th>Keywords in PPC</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Competitor A (same area)</td>\n<td>23</td>\n<td>56</td>\n</tr>\n<tr>\n<td>Competitor B (hotel chain)</td>\n<td>13</td>\n<td>66</td>\n</tr>\n<tr>\n<td>Competitor C (nearby property)</td>\n<td>4</td>\n<td>5</td>\n</tr>\n<tr>\n<td><strong>The hotel</strong></td>\n<td><strong>0</strong></td>\n<td><strong>0</strong></td>\n</tr>\n</tbody></table></div>\n<p>23 ads from a direct competitor. Zero from the hotel itself.</p>\n<p>In practice: a guest searches &quot;[hotel name]&quot; on Google or Yandex. Above the organic results — ad block. Competitors and OTAs fill it. The guest clicks there because ads always appear above organic listings.</p>\n<h2 id=\"the-double-hit-competitors-otas\">The Double Hit: Competitors + OTAs</h2>\n<p>Without brand protection ads, traffic leaks two ways.</p>\n<p><strong>Path 1: Competitor takes the guest.</strong> Guest searches your hotel, sees a competitor&#39;s ad &quot;resort from $30/night,&quot; clicks, books there. You lose the booking entirely.</p>\n<p><strong>Path 2: OTA takes a commission.</strong> Guest searches your hotel, sees a Booking.com or Expedia ad, books through them. The booking is technically yours — but you pay 15-20% commission. On a $250 average booking, that&#39;s $40-50 per reservation.</p>\n<p>Booking.com, Expedia, and Google Hotels <strong>actively bid on hotel brand names</strong>. It&#39;s their business model: intercept the guest at the search stage and collect commission.</p>\n<h2 id=\"calculating-the-losses\">Calculating the Losses</h2>\n<p>Conservative estimate for this specific hotel:</p>\n<ul>\n<li>~1,300 branded searches/month in peak season</li>\n<li>Competitors and OTAs intercept ~15-25% (industry benchmarks)</li>\n<li>That&#39;s ~200-300 lost visits per month</li>\n</ul>\n<p><strong>Direct losses</strong> (guests went to competitors): 3-4 bookings/month × $250 = <strong>$750-1,000/month</strong></p>\n<p><strong>Indirect losses</strong> (guests booked via OTA instead of direct): $40-50 commission on every booking that could have been direct.</p>\n<p>Over a 5-month season, direct losses alone could reach <strong>$3,750-5,000</strong>.</p>\n<h2 id=\"what-protection-costs\">What Protection Costs</h2>\n<p>I calculated the cost of a brand protection campaign:</p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Parameter</th>\n<th>Value</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>CPC on branded terms</td>\n<td>$0.05-0.20 (low competition currently, will increase with bidding)</td>\n</tr>\n<tr>\n<td>Monthly budget</td>\n<td>$100-200</td>\n</tr>\n<tr>\n<td>Potential return</td>\n<td>$750-1,000/month (direct losses) + OTA commission savings</td>\n</tr>\n<tr>\n<td><strong>ROI</strong></td>\n<td><strong>3-8× per dollar spent</strong></td>\n</tr>\n</tbody></table></div>\n<p>Brand protection isn&#39;t a marketing expense. It&#39;s insurance against losses. You&#39;re not acquiring new guests — you&#39;re keeping the ones who already know you.</p>\n<h2 id=\"why-the-problem-compounds\">Why the Problem Compounds</h2>\n<p>This hotel has another alarming trend from the audit:</p>\n<p><strong>Google visibility dropped 61% in 16 months.</strong> From 568 keywords in top-50 (October 2024) to 223 (February 2026). Root cause: Performance Score 32/100 on mobile. The page weighs 7.5 MB, takes 9 seconds to load. Google uses page speed as a ranking factor, and the hotel is losing.</p>\n<p>Meanwhile, a competitor from the same area has <strong>19× more top-1 positions</strong>: 173 vs 9.</p>\n<p>Without brand ads, the hotel depends entirely on organic traffic. And organic in Google is declining.</p>\n<h2 id=\"what-hotels-should-do\">What Hotels Should Do</h2>\n<h3 id=\"1-launch-brand-protection-ads\">1. Launch Brand Protection Ads</h3>\n<p>Bid on your own name, spelling variations, &quot;[hotel] booking,&quot; &quot;[hotel] rates.&quot; Budget $100-200/month in season. This outbids competitors in the ad block and redirects guests to direct booking.</p>\n<h3 id=\"2-fix-technical-seo\">2. Fix Technical SEO</h3>\n<p>Performance Score 32/100 is a death sentence for Google rankings. Image optimization (3.5 MB to 500 KB), removing heavy plugins (Revolution Slider), lazy loading. Target: Performance &gt; 60 within 3 months.</p>\n<h3 id=\"3-save-on-ota-commissions\">3. Save on OTA Commissions</h3>\n<p>Every direct booking instead of Booking.com or Expedia saves 15-20% commission. On a $250 average booking — that&#39;s $40-50 per reservation. Brand ads + a fast website = more direct bookings.</p>\n<h2 id=\"conservative-roi-estimate-seo-ppc\">Conservative ROI Estimate (SEO + PPC)</h2>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Scenario</th>\n<th>Add. visits/mo</th>\n<th>Bookings/mo (at 1.5%)</th>\n<th>Add. revenue/mo</th>\n<th>Per season</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Minimum (meta tags + H1 only)</td>\n<td>+30</td>\n<td>+0.5</td>\n<td>~$120</td>\n<td>~$600</td>\n</tr>\n<tr>\n<td>Realistic (+ speed + Schema)</td>\n<td>+100</td>\n<td>+1.5</td>\n<td>~$360</td>\n<td>~$1,800</td>\n</tr>\n<tr>\n<td>Optimistic (full implementation)</td>\n<td>+200</td>\n<td>+3</td>\n<td>~$720</td>\n<td>~$3,600</td>\n</tr>\n</tbody></table></div>\n<p><strong>Plus</strong> brand protection: recovering $750-1,000/month in losses at $100-200/month cost.</p>\n<p>Payback period: 1-2 months of peak season.</p>\n<h2 id=\"how-to-check-your-hotel\">How to Check Your Hotel</h2>\n<p>Three steps you can do in 10 minutes:</p>\n<ol>\n<li><strong>Search your hotel name on Google.</strong> Are there competitor or OTA ads above your listing? If yes — you&#39;re being intercepted.</li>\n<li><strong>Check keyword tools for branded terms.</strong> Who&#39;s running ads on your name and how many.</li>\n<li><strong><a href=\"/en/services/seo\">Check your SEO Health Score</a></strong> — free, takes 30 seconds. Below 70 means room for improvement.</li>\n</ol>\n<blockquote>\n<p><em>Conversion rates, average booking values, and market prices are estimates based on industry benchmarks. Actual figures depend on the hotel&#39;s real analytics.</em></p>\n</blockquote>\n",
+      "faq": [
+        {
+          "question": "Why bid on my own brand if I'm already #1 in organic results?",
+          "answer": "Because ads show above organic results. If a competitor or OTA bids on your name, guests may click their ad without scrolling to your website. On mobile, the organic result often falls below the fold entirely."
+        },
+        {
+          "question": "How much does brand protection cost?",
+          "answer": "For a hotel with 1,000-2,000 branded searches per month: $100-200/month in season. CPC on your own brand is typically $0.05-0.20. This is one of the cheapest ad types with 3-8× ROI."
+        },
+        {
+          "question": "Can I report competitors who bid on my brand name?",
+          "answer": "In most markets, no. Google and Yandex allow bidding on competitor brand terms — it's their official policy. The only defense is to claim the ad space yourself."
+        }
+      ],
+      "tldr": "Audited a resort hotel and found a critical gap: 1,300 branded searches per month, but the hotel runs zero search ads on its own name. Competitors — 23 ads. OTA aggregators intercepting direct bookings. Estimated losses: $750-1,000/month in peak season alone.",
+      "tldrHtml": "Audited a resort hotel and found a critical gap: 1,300 branded searches per month, but the hotel runs zero search ads on its own name. Competitors — 23 ads. OTA aggregators intercepting direct bookings. Estimated losses: $750-1,000/month in peak season alone.",
+      "cta": null,
+      "llmsSummary": "Case study of a resort hotel (58 rooms): 1,300 branded searches/month, 0 search ads, while competitors run 23 ads on the hotel's brand name. Potential losses of $750-1,000/month from competitor poaching and OTA commissions. Google visibility dropped 61% in 16 months. Brand protection campaign costs $100-200/month with 3-8× ROI."
+    },
     {
       "slug": "168-fz-zakon-o-russkom-yazyke-sayt",
       "title": "Russia's Language Law 168-FZ: What to Change on Your Website Before March 2026",

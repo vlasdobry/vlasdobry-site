@@ -131,7 +131,8 @@ git push origin master  # Деплой на продакшен (автомати
 - Ссылка на блог только в футере всех страниц
 - Авторинг: Claude пишет статьи, владелец утверждает
 
-**Текущие статьи блога (14 шт):**
+**Текущие статьи блога (15 шт):**
+- `brendovyj-trafik-otelya-keys` — Брендовый трафик отеля: кейс потерь без рекламы в Директе
 - `kak-ocenit-potencial-google-ads` — Как оценить потенциал Google Ads: кейс из Лос-Анджелеса
 - `odnostranichnyj-sajt-otelya-teryaet-trafik` — Как одностраничный сайт отеля теряет 80 000 запросов
 - `audit-sajta-otelya-keys-rushotel` — Экспресс-аудит сайта отеля: кейс Русь Отель (Сарапул)
@@ -252,7 +253,7 @@ git push origin master  # Деплой на продакшен (автомати
 | `public/calavera.png` | PNG калаверы для Día de los Muertos темы |
 | `scripts/postbuild.js` | Постобработка: en.html → en/index.html и т.д. |
 | `docs/hotel-outreach-summary.md` | Стратегия outreach: скрипты, шаблоны, ценообразование |
-| `docs/hotel-outreach-leads.md` | Лиды: 8 Черноморье + 10 Крым |
+| `docs/hotel-outreach-leads.md` | Лиды: 8 Черноморье + 10 Крым + 16 Геленджик + 12 Новороссийск |
 | `docs/abhazia-hotel-outreach-leads.md` | Лиды: 14 отелей Абхазии |
 
 ## Технологии

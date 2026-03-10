@@ -1,7 +1,7 @@
 # Vlas Fedorov - Full Website Content
 
 > This file contains the complete content of vlasdobry.ru for AI systems.
-> Last updated: 2026-02-25 (14 articles)
+> Last updated: 2026-03-10 (15 articles)
 
 ## Table of Contents
 1. About Vlas Fedorov
@@ -286,6 +286,12 @@ Acoustic voice analysis and training platform.
 
 ## 6. Blog Articles
 
+### Hotel Brand Traffic: The Cost of Missing Brand Ads
+**URL:** /blog/brendovyj-trafik-otelya-keys/
+**Category:** MARKETING
+**Date:** 2026-03-10
+
+Case study of a resort hotel (58 rooms): 1,300 branded searches/month, 0 search ads, while competitors run 23 ads on the hotel's brand name. Potential losses of $750-1,000/month from competitor poaching and OTA commissions. Google visibility dropped 61% in 16 months. Brand protection campaign costs $100-200/month with 3-8× ROI.
 ### Russia's Language Law 168-FZ: What to Change on Your Website Before March 2026
 **URL:** /blog/168-fz-zakon-o-russkom-yazyke-sayt/
 **Category:** MARKETING

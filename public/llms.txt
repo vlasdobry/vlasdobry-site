@@ -121,6 +121,7 @@ SOSTAC + PDCA: audit -> strategy -> launch -> control
 Latest articles on SEO, GEO, and digital marketing for hotels, DNA labs, and SPA.
 
 ### Recent Articles
+- /blog/brendovyj-trafik-otelya-keys/ - Case study: a resort hotel loses $750-1,000/month because competitors and OTAs bid on its brand name. Zero ads vs 23 competitor ads.
 - /blog/168-fz-zakon-o-russkom-yazyke-sayt/ - Federal Law 168-FZ requires all consumer-facing information in Russia to be in Russian. Website compliance checklist, fines up to $5,000, and what foreign business owners need to know.
 - /blog/geo-optimizaciya-sajta-gajd/ - Practical guide to GEO optimization: llms.txt, Schema.org, FAQ, E-E-A-T signals. A 5-step checklist with code examples.
 - /blog/geo-prodvizhenie-sajta/ - What GEO promotion delivers for businesses. ROI, comparison with paid ads, and the funnel from AI query to customer.
