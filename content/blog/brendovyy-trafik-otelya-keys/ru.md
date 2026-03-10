@@ -3,7 +3,7 @@ title: "Брендовый трафик отеля: кейс потерь без
 description: "Разбираю реальный кейс: отель в Абхазии теряет 60-80 тысяч в месяц из-за незащищённого бренда. Конкуренты и OTA перехватывают брендовые запросы."
 date: 2026-03-10
 dateModified: 2026-03-10
-slug: brendovyj-trafik-otelya-keys
+slug: brendovyy-trafik-otelya-keys
 category: marketing
 tags:
   - отели

@@ -132,7 +132,7 @@ git push origin master  # Деплой на продакшен (автомати
 - Авторинг: Claude пишет статьи, владелец утверждает
 
 **Текущие статьи блога (15 шт):**
-- `brendovyj-trafik-otelya-keys` — Брендовый трафик отеля: кейс потерь без рекламы в Директе
+- `brendovyy-trafik-otelya-keys` — Брендовый трафик отеля: кейс потерь без рекламы в Директе
 - `kak-ocenit-potencial-google-ads` — Как оценить потенциал Google Ads: кейс из Лос-Анджелеса
 - `odnostranichnyj-sajt-otelya-teryaet-trafik` — Как одностраничный сайт отеля теряет 80 000 запросов
 - `audit-sajta-otelya-keys-rushotel` — Экспресс-аудит сайта отеля: кейс Русь Отель (Сарапул)

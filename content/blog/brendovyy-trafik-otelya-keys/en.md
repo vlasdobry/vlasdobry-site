@@ -3,7 +3,7 @@ title: "Hotel Brand Traffic: The Cost of Missing Brand Ads"
 description: "Case study: a resort hotel loses $750-1,000/month because competitors and OTAs bid on its brand name. Zero ads vs 23 competitor ads."
 date: 2026-03-10
 dateModified: 2026-03-10
-slug: brendovyj-trafik-otelya-keys
+slug: brendovyy-trafik-otelya-keys
 category: marketing
 tags:
   - hotels
