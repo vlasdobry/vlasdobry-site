@@ -10,11 +10,17 @@ export const Hero: React.FC = () => {
     <section aria-label="Main screen" className="relative h-full w-full bg-[#121212] overflow-hidden">
 
       {/* Mobile portrait: Full-screen background image */}
-      <div className="absolute inset-0 z-0 portrait:block hidden" role="img" aria-hidden="true">
-        <div
-          className="absolute inset-0 bg-cover bg-center grayscale"
-          style={{ backgroundImage: `url('/vlas-photo.jpg')` }}
-        />
+      <div className="absolute inset-0 z-0 portrait:block hidden" aria-hidden="true">
+        <picture>
+          <source srcSet="/vlas-photo-mobile.webp" type="image/webp" />
+          <img
+            src="/vlas-photo-mobile.jpg"
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover grayscale"
+            loading="eager"
+            fetchPriority="high"
+          />
+        </picture>
         <div className="absolute inset-0 bg-black/25" />
       </div>
 
