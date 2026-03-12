@@ -1,7 +1,7 @@
 # Vlas Fedorov - Full Website Content
 
 > This file contains the complete content of vlasdobry.ru for AI systems.
-> Last updated: 2026-03-10 (15 articles)
+> Last updated: 2026-03-12 (16 articles)
 
 ## Table of Contents
 1. About Vlas Fedorov
@@ -286,6 +286,12 @@ Acoustic voice analysis and training platform.
 
 ## 6. Blog Articles
 
+### Hotel Popups Kill Conversions: -6pp Bounce Rate
+**URL:** /blog/popup-na-sayte-otelya-keys/
+**Category:** MARKETING
+**Date:** 2026-03-12
+
+Hotel chain case study: disabling Envybox popup reduced bounce rate by 6pp in paid traffic (17.8% → 11.8%), bookings grew 20-30% (conservative estimate adjusted for seasonality). Tablets saw the biggest drop: -11pp bounce rate. Pages per session +4.3%. Analysis without A/B test: date detection via analytics goals, YoY comparison, organic traffic as control group.
 ### Hotel Brand Traffic: Cost of No Ads
 **URL:** /blog/brendovyy-trafik-otelya-keys/
 **Category:** MARKETING

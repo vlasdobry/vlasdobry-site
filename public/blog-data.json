@@ -1,6 +1,147 @@
 {
   "ru": [
     {
+      "slug": "popup-na-sayte-otelya-keys",
+      "title": "Попап на сайте отеля: отключили — отказы упали на 6 п.п.",
+      "description": "Кейс: как всплывающее окно Envybox снижало конверсию сайта отеля. Разбор без A/B теста — только Яндекс.Метрика и здравый смысл.",
+      "date": "2026-03-12",
+      "dateModified": "2026-03-12",
+      "category": "marketing",
+      "tags": [
+        "конверсия сайта",
+        "всплывающие окна",
+        "отели",
+        "аналитика",
+        "кейс"
+      ],
+      "relatedService": "/for-hotels",
+      "cover": "cover.jpg",
+      "series": null,
+      "readingTime": 10,
+      "toc": [
+        {
+          "id": "шаг-1-найти-точную-дату-отключения",
+          "text": "Шаг 1. Найти точную дату отключения",
+          "level": 2
+        },
+        {
+          "id": "шаг-2-сравнить-до-и-после-по-отказам",
+          "text": "Шаг 2. Сравнить «до» и «после» по отказам",
+          "level": 2
+        },
+        {
+          "id": "шаг-3-а-может-это-просто-сезонность",
+          "text": "Шаг 3. А может это просто сезонность?",
+          "level": 2
+        },
+        {
+          "id": "шаг-4-рекламный-трафик-главный-пострадавший",
+          "text": "Шаг 4. Рекламный трафик — главный пострадавший",
+          "level": 2
+        },
+        {
+          "id": "шаг-5-а-что-с-бронированиями",
+          "text": "Шаг 5. А что с бронированиями?",
+          "level": 2
+        },
+        {
+          "id": "два-неожиданных-артефакта",
+          "text": "Два неожиданных артефакта",
+          "level": 2
+        },
+        {
+          "id": "что-потеряли",
+          "text": "Что потеряли",
+          "level": 2
+        },
+        {
+          "id": "как-правильно-тестировать-изменения-на-сайте",
+          "text": "Как правильно тестировать изменения на сайте",
+          "level": 2
+        },
+        {
+          "id": "что-такое-ab-тест",
+          "text": "Что такое A/B тест",
+          "level": 3
+        },
+        {
+          "id": "минимальный-чеклист-для-ab-теста",
+          "text": "Минимальный чеклист для A/B теста",
+          "level": 3
+        },
+        {
+          "id": "чем-тестировать",
+          "text": "Чем тестировать",
+          "level": 3
+        },
+        {
+          "id": "когда-ab-тест-не-нужен",
+          "text": "Когда A/B тест не нужен",
+          "level": 3
+        },
+        {
+          "id": "как-проверить-гипотезу-без-ab-теста-пошаговый-алгоритм",
+          "text": "Как проверить гипотезу без A/B теста: пошаговый алгоритм",
+          "level": 2
+        },
+        {
+          "id": "1-определите-точную-дату-изменения",
+          "text": "1. Определите точную дату изменения",
+          "level": 3
+        },
+        {
+          "id": "2-разделите-данные-на-до-и-после",
+          "text": "2. Разделите данные на «до» и «после»",
+          "level": 3
+        },
+        {
+          "id": "3-проверьте-сезонность-через-yoy",
+          "text": "3. Проверьте сезонность через YoY",
+          "level": 3
+        },
+        {
+          "id": "4-найдите-контрольную-группу",
+          "text": "4. Найдите контрольную группу",
+          "level": 3
+        },
+        {
+          "id": "5-учтите-внешние-факторы",
+          "text": "5. Учтите внешние факторы",
+          "level": 3
+        },
+        {
+          "id": "6-дайте-диапазон-а-не-точную-цифру",
+          "text": "6. Дайте диапазон, а не точную цифру",
+          "level": 3
+        },
+        {
+          "id": "выводы-для-отельеров",
+          "text": "Выводы для отельеров",
+          "level": 2
+        }
+      ],
+      "hasFaq": true,
+      "content": "<p>Ко мне обратились с необычной задачей. Не «настрой рекламу» и не «сделай <a href=\"/services/seo\">аудит</a>». А вот что: «Мы в феврале отключили всплывающее окно на сайте. Была гипотеза, что попап отпугивает гостей. Но A/B тест никто не проводил, решение нигде не зафиксировали. Можешь задним числом проверить — сработало или нет?»</p>\n<p>Задача интересная. Данные есть, Яндекс.Метрика стоит, цели настроены. A/B теста нет, но можно сравнить «до» и «после», сделать поправку на сезонность и вытащить ответ из того, что имеем.</p>\n<p>Вот что получилось.</p>\n<h2 id=\"шаг-1-найти-точную-дату-отключения\">Шаг 1. Найти точную дату отключения</h2>\n<p>Первая проблема — никто не помнит, когда именно отключили попап. «Где-то в феврале». Ни тикета, ни записи в чате, ни коммита.</p>\n<p>Но в Метрике была цель «Единая цель с виджетов Envybox». Она фиксировала каждое взаимодействие с попапом. Открываю график:</p>\n<ul>\n<li>До 16 февраля — стабильно ~46 достижений в день</li>\n<li>16 февраля — последний день активности (20 достижений)</li>\n<li>После 17 февраля — тишина</li>\n</ul>\n<p>Дата найдена: <strong>16-17 февраля 2026 года</strong>. Метрика знает всё, даже если люди забывают.</p>\n<h2 id=\"шаг-2-сравнить-до-и-после-по-отказам\">Шаг 2. Сравнить «до» и «после» по отказам</h2>\n<p>Разделил данные на два периода:</p>\n<ul>\n<li><strong>ДО:</strong> 1 января — 16 февраля (47 дней, попап активен)</li>\n<li><strong>ПОСЛЕ:</strong> 17 февраля — 11 марта (23 дня, попап отключён)</li>\n</ul>\n<p>Общий показатель отказов: <strong>16.55% → 13.65%</strong> (минус 2.9 процентных пункта).</p>\n<p>Но средние цифры врут. Разбиваю по устройствам:</p>\n<ul>\n<li><strong>Смартфоны:</strong> 17.4% → 14.7% (−2.7 п.п.)</li>\n<li><strong>ПК:</strong> 13.4% → 10.6% (−2.8 п.п.)</li>\n<li><strong>Планшеты:</strong> 27.9% → 16.8% (−11.1 п.п.)</li>\n</ul>\n<p>Планшеты — чемпион. Отказы рухнули на 11 пунктов. Вероятная причина: на экране планшета попап перекрывал половину контента, и у пользователя два варианта — закрыть окно или закрыть вкладку. Многие выбирали второе.</p>\n<h2 id=\"шаг-3-а-может-это-просто-сезонность\">Шаг 3. А может это просто сезонность?</h2>\n<p>Справедливый вопрос. Февраль-март — начало сезона бронирований. Может, отказы снизились не из-за попапа, а потому что пришли более целевые пользователи?</p>\n<p>Проверяю тот же период за 2025 год (когда Envybox работал весь период):</p>\n<p><strong>Февраль 17 — март 11, сравнение год к году:</strong></p>\n<ul>\n<li><strong>ПК:</strong> 14.9% (2025) → 10.6% (2026) = <strong>−4.3 п.п.</strong> Сезонность в 2025 давала снижение ~2.5 п.п. Чистый эффект отключения попапа — от 0.3 до 1.5 п.п. сверх сезонности. При этом абсолютный уровень отказов стал на 4.3 п.п. лучше, чем год назад.</li>\n<li><strong>Смартфоны:</strong> 15.8% → 14.7% = −1.1 п.п. Эффект скромнее. На мобильных попап либо был менее навязчивым, либо пользователи научились его быстро закрывать.</li>\n</ul>\n<p>Важная оговорка: объёмы рекламного трафика различаются в 4-6 раз между годами (в 2025-м бюджет был значительно больше). Это влияет на сравнимость данных — при другом объёме трафика меняется и его качество. YoY-сравнение даёт ориентир, но не точный ответ.</p>\n<p>Дополнительная проверка — органический (поисковый) трафик. Это контрольная группа: его качество не зависит от рекламного бюджета.</p>\n<p>Bounce rate органики: 4.3% (2025) → 5.6% (2026) в тот же период. Стабильно, без значимых колебаний. Попап на поисковых пользователей влиял минимально — они приходят с конкретным намерением и менее чувствительны к раздражителям.</p>\n<h2 id=\"шаг-4-рекламный-трафик-главный-пострадавший\">Шаг 4. Рекламный трафик — главный пострадавший</h2>\n<p>Отказы в рекламном трафике:</p>\n<ul>\n<li><strong>ДО:</strong> 17.8%</li>\n<li><strong>ПОСЛЕ:</strong> 11.8%</li>\n<li><strong>Разница:</strong> −6 процентных пунктов</li>\n</ul>\n<p>Год к году (тот же период, фев-мар): 16.7% (2025) → 11.8% (2026) = <strong>−4.9 п.п.</strong></p>\n<p>Человек кликает по рекламе, за клик заплачены деньги. Он попадает на сайт отеля и в первые секунды получает попап «Оставьте номер, мы перезвоним!». Вместо того чтобы посмотреть номера и цены, он закрывает вкладку. Каждый такой отказ — выброшенные рекламные деньги.</p>\n<p>Минус 6 п.п. отказов в рекламе — это реальная экономия бюджета.</p>\n<h2 id=\"шаг-5-а-что-с-бронированиями\">Шаг 5. А что с бронированиями?</h2>\n<p>Среднесуточные показатели ключевых целей:</p>\n<ul>\n<li><strong>Бронирование номера (шаг 5 воронки):</strong> ~16/день → ~25/день (<strong>+56%</strong>)</li>\n<li><strong>Оплаченные заказы (CRM):</strong> ~82/день → ~90/день (<strong>+10%</strong>)</li>\n<li><strong>Созданные заказы (CRM):</strong> ~105/день → ~105/день (<strong>≈0%</strong>)</li>\n</ul>\n<p>Последний пункт важен: общее количество заказов не выросло, а вот доля оплаченных — выросла. Пользователи не просто чаще начинают бронировать, они чаще доводят до оплаты. Без попапа воронка становится чище.</p>\n<p>+56% к бронированиям — сырая цифра. Часть роста — сезонность (февраль-март — начало сезона), часть — изменение рекламных бюджетов. Консервативная оценка чистого эффекта отключения попапа: <strong>+20-30% к бронированиям</strong>. Точнее определить без A/B теста невозможно.</p>\n<h2 id=\"два-неожиданных-артефакта\">Два неожиданных артефакта</h2>\n<p><strong>Длительность визита упала на 10%.</strong> Средняя: 287 → 259 секунд. На первый взгляд — плохо.</p>\n<p>Но Envybox фиксировал взаимодействия: открыл попап, закрыл, ввёл текст, кликнул. Метрика считала это активностью и добавляла ко времени сессии. После отключения «надбавка» исчезла. На ПК падение максимальное — минус 19%. На планшетах, наоборот, время выросло на 8%: пользователи, которых раньше попап «выгонял», теперь остаются и листают сайт дольше.</p>\n<p>Снижение длительности — не ухудшение, а дефляция искусственно раздутой метрики.</p>\n<p><strong>Глубина просмотра выросла на 4.3%.</strong> С 4.6 до 4.8 страниц за визит. Без раздражающего окна пользователи спокойно изучают номера, тарифы, фотографии — именно то, ради чего пришли.</p>\n<h2 id=\"что-потеряли\">Что потеряли</h2>\n<p>Будем честны: попап генерировал контакты. Цель «Единая цель с виджетов Envybox» фиксировала ~46 достижений в день. После отключения — 3 в день. Минус 43 ежедневно.</p>\n<p>Но «достижение цели» ≠ «заявка». Часть — случайные клики. Часть — люди, которые и так бы позвонили. А обычная форма обратного звонка на сайте продолжает работать, просто без навязчивости.</p>\n<p>Главное: рост бронирований (+20-30% консервативно) перекрывает потерю попап-контактов с большим запасом.</p>\n<h2 id=\"как-правильно-тестировать-изменения-на-сайте\">Как правильно тестировать изменения на сайте</h2>\n<p>В этом кейсе A/B теста не было — и именно поэтому мы получили оценку «+20-56%» вместо точного числа. Вот как стоило сделать.</p>\n<h3 id=\"что-такое-ab-тест\">Что такое A/B тест</h3>\n<p>Трафик делится случайным образом на две группы. Группа A видит сайт с попапом, группа B — без. Обе группы работают одновременно, в одних и тех же условиях. Через 2-4 недели сравниваете конверсии — и получаете чистый эффект без поправок на сезонность, бюджет или фазу луны.</p>\n<h3 id=\"минимальный-чеклист-для-ab-теста\">Минимальный чеклист для A/B теста</h3>\n<ul>\n<li><strong>Одна переменная.</strong> Меняйте только одну вещь: попап включён или выключен. Не «выключили попап И обновили баннер И поменяли цены». Иначе невозможно понять, что именно сработало.</li>\n<li><strong>Достаточный объём трафика.</strong> Для статистической значимости нужно минимум 1 000 сессий на каждый вариант (при ожидаемой разнице конверсии &gt;1%). Чем меньше разница — тем больше трафика нужно. На сайте с 200 визитами в день тест займёт 10+ дней.</li>\n<li><strong>Случайное разделение.</strong> Трафик делится по ClientID — уникальному идентификатору, который Метрика присваивает каждому браузеру. Пользователь всегда видит один и тот же вариант, что важно для чистоты теста. Нюанс: если гость зашёл с телефона и ноутбука — это два разных ClientID, он может попасть в разные группы. На практике это не критично при достаточном объёме трафика. А вот ручное деление (по дням, устройствам, каналам) — всегда ошибка: группы изначально неравнозначны.</li>\n<li><strong>Одинаковый период.</strong> Обе группы работают одновременно. Нельзя сравнивать «понедельник с попапом» и «вторник без» — день недели влияет на поведение.</li>\n<li><strong>Заранее выбранная метрика.</strong> До запуска теста решите, что измеряете: bounce rate, бронирования, клики по CTA. Нельзя после теста подбирать метрику, которая «красиво выглядит».</li>\n<li><strong>Статистическая значимость ≥95%.</strong> Не останавливайте тест, когда «уже видно разницу». Ранняя остановка — главная причина ложных результатов. Используйте калькулятор (например, встроенный в VWO, Optimizely или любой онлайн AB test calculator).</li>\n</ul>\n<h3 id=\"чем-тестировать\">Чем тестировать</h3>\n<p>Для отельных сайтов подойдут:</p>\n<ul>\n<li><strong>Яндекс.Метрика → Эксперименты</strong> — бесплатно, интеграция с Метрикой из коробки, деление по ClientID</li>\n<li><strong>VWO, Optimizely, AB Tasty</strong> — визуальный редактор, не нужен разработчик</li>\n<li><strong>Самописное решение</strong> — разделение по cookie или user ID на уровне сервера. Подходит, если есть разработчик</li>\n</ul>\n<h3 id=\"когда-ab-тест-не-нужен\">Когда A/B тест не нужен</h3>\n<p>Не всё нужно тестировать:</p>\n<ul>\n<li><strong>Критические баги и ошибки</strong> — сломанная форма бронирования, 404 на главной. Чините сразу, не тестируйте.</li>\n<li><strong>Юридические требования</strong> — добавление согласия на cookies, политики конфиденциальности.</li>\n<li><strong>Микроизменения</strong> — смена оттенка кнопки, перестановка элементов в футере. Эффект будет в пределах статистической погрешности.</li>\n</ul>\n<p>A/B тест оправдан, когда изменение затрагивает ключевой элемент воронки (попап, форму бронирования, посадочную страницу) и вы ожидаете заметную разницу в поведении.</p>\n<h2 id=\"как-проверить-гипотезу-без-ab-теста-пошаговый-алгоритм\">Как проверить гипотезу без A/B теста: пошаговый алгоритм</h2>\n<p>Но в реальности половина изменений на сайте вносится без тестов: кто-то обновил баннер, поменял форму, отключил виджет. Результат никто не замерил. Знакомо?</p>\n<p>Вот алгоритм, который я использовал в этом кейсе. Он работает для любых изменений, влияющих на поведение пользователей.</p>\n<h3 id=\"1-определите-точную-дату-изменения\">1. Определите точную дату изменения</h3>\n<p>Если виджет отправлял события в Метрику — откройте отчёт по соответствующей цели и найдите день, когда срабатывания прекратились. Если событий не было — проверьте:</p>\n<ul>\n<li>Историю коммитов в репозитории</li>\n<li>Логи CMS или конструктора сайта</li>\n<li>Переписку с подрядчиком в чатах</li>\n<li>Историю изменений в Google Tag Manager</li>\n</ul>\n<p>Без точной даты анализ теряет смысл. Это фундамент.</p>\n<h3 id=\"2-разделите-данные-на-до-и-после\">2. Разделите данные на «до» и «после»</h3>\n<p>Берите хотя бы 2 недели в каждом периоде (лучше — 4-6 недель). Короткие периоды дают статистический шум. Смотрите:</p>\n<ul>\n<li><strong>Отказы</strong> (bounce rate) — главный индикатор раздражения</li>\n<li><strong>Глубина просмотра</strong> — вовлечённость</li>\n<li><strong>Конверсии</strong> — целевые действия (бронирования, заявки, покупки)</li>\n</ul>\n<p>Обязательно разбейте по устройствам. В нашем кейсе планшеты дали −11 п.п. по отказам, а смартфоны — только −2.7 п.п. Средняя цифра скрывала бы эту разницу.</p>\n<h3 id=\"3-проверьте-сезонность-через-yoy\">3. Проверьте сезонность через YoY</h3>\n<p>Сравните тот же период за прошлый год. Если в 2025 отказы тоже падали в феврале-марте — значит, часть эффекта сезонная.</p>\n<p>Формула оценки:</p>\n<blockquote>\n<p><strong>Чистый эффект = (изменение 2026) − (сезонное изменение 2025)</strong></p>\n</blockquote>\n<p>Пример из кейса: отказы на ПК упали на 2.8 п.п. (2026), сезонное снижение в 2025 — 2.5 п.п. Чистый эффект ≈ 0.3 п.п. Но абсолютный уровень стал на 4.3 п.п. лучше, чем год назад. Значит, кумулятивный эффект есть, просто он накапливался постепенно.</p>\n<h3 id=\"4-найдите-контрольную-группу\">4. Найдите контрольную группу</h3>\n<p>Идеальная контрольная группа — сегмент трафика, на который изменение не повлияло. Для попапов это обычно:</p>\n<ul>\n<li><strong>Органический трафик</strong> — пользователи с конкретным намерением, менее чувствительны к раздражителям</li>\n<li><strong>Прямой трафик постоянных клиентов</strong> — если можно выделить</li>\n</ul>\n<p>Если контрольная группа стабильна, а экспериментальная (рекламный трафик) улучшилась — дело не в сезоне.</p>\n<h3 id=\"5-учтите-внешние-факторы\">5. Учтите внешние факторы</h3>\n<p>Что ещё менялось в тот же период?</p>\n<ul>\n<li>Рекламный бюджет (в нашем кейсе — сокращение в 4-6 раз)</li>\n<li>Новые рекламные кампании или каналы</li>\n<li>Изменения на сайте помимо попапа</li>\n<li>Акции, распродажи, праздники</li>\n</ul>\n<p>Каждый неучтённый фактор — дыра в выводах. Перечислите их явно, даже если не можете оценить влияние.</p>\n<h3 id=\"6-дайте-диапазон-а-не-точную-цифру\">6. Дайте диапазон, а не точную цифру</h3>\n<p>Без A/B теста вы получаете оценку с погрешностью. Указывайте границы:</p>\n<ul>\n<li>❌ «Бронирования выросли на 56%»</li>\n<li>✅ «Бронирования выросли на 20-56%, консервативная оценка за вычетом сезонности — +20-30%»</li>\n</ul>\n<p>Честный диапазон вызывает больше доверия, чем красивая круглая цифра.</p>\n<h2 id=\"выводы-для-отельеров\">Выводы для отельеров</h2>\n<p>Попапы — не зло само по себе. Но всплывающее окно, которое перехватывает внимание человека, пришедшего бронировать номер, — это палка в колёса собственной воронке.</p>\n<p>Если у вас на <a href=\"/for-hotels\">сайте отеля</a> стоит Envybox, CallbackHunter, Jivo или любой другой виджет с агрессивным попапом — проведите эксперимент. Отключите на две недели, посмотрите на отказы и бронирования. Или хотя бы настройте попап так, чтобы он появлялся не сразу, а через 30-60 секунд — когда человек уже вовлечён.</p>\n<p>И обязательно зафиксируйте дату изменения. Иначе потом придётся звать аналитика, чтобы расковырять Метрику задним числом. Как в этом кейсе.</p>\n",
+      "faq": [
+        {
+          "question": "Как узнать, вредит ли попап моему сайту, если нет A/B теста?",
+          "answer": "Отключите попап на 2-4 недели и сравните метрики в Яндекс.Метрике: отказы, глубину просмотра, конверсии. Разбейте по устройствам и источникам трафика. Сравните с тем же периодом прошлого года для поправки на сезонность. Используйте органический трафик как контрольную группу."
+        },
+        {
+          "question": "Можно ли настроить попап так, чтобы он не вредил?",
+          "answer": "Да. Главное — не показывать его в первые секунды. Задержка 30-60 секунд, показ только при exit-intent (движение мыши к закрытию вкладки) или после просмотра 2-3 страниц. Тогда попап увидят вовлечённые пользователи, а не те, кто ещё не решил — оставаться или уходить."
+        },
+        {
+          "question": "На каких устройствах попап вредит больше всего?",
+          "answer": "В нашем кейсе — на планшетах (отказы снизились на 11 п.п. после отключения) и в рекламном трафике (−6 п.п.). На смартфонах эффект скромнее (~1-3 п.п.), на органическом трафике — минимальный."
+        }
+      ],
+      "tldr": "Сеть отелей отключила виджет Envybox (попап с обратным звонком), не проведя A/B тест. Меня попросили задним числом проверить гипотезу. Вердикт — попап вредил. Отказы в рекламном трафике упали на 6 п.п., бронирования выросли на 20-30% (консервативно, за вычетом сезонности). Рассказываю, как это проверить без A/B теста.",
+      "tldrHtml": "Сеть отелей отключила виджет Envybox (попап с обратным звонком), не проведя A/B тест. Меня попросили задним числом проверить гипотезу. Вердикт — попап вредил. Отказы в рекламном трафике упали на 6 п.п., бронирования выросли на 20-30% (консервативно, за вычетом сезонности). Рассказываю, как это проверить без A/B теста.",
+      "cta": null,
+      "llmsSummary": "Кейс сети отелей: отключение попапа Envybox снизило отказы на 6 п.п. в рекламном трафике (17.8% → 11.8%), бронирования выросли на 20-30% (консервативная оценка за вычетом сезонности). Планшеты — рекордсмен: отказы упали на 11 п.п. Глубина просмотра +4.3%. Анализ без A/B теста: поиск даты через цели Метрики, YoY-сравнение, органика как контрольная группа."
+    },
+    {
       "slug": "brendovyy-trafik-otelya-keys",
       "title": "Брендовый трафик отеля: кейс потерь",
       "description": "Разбираю реальный кейс: отель в Абхазии теряет 60-80 тысяч в месяц из-за незащищённого бренда. Конкуренты и OTA перехватывают брендовые запросы.",
@@ -1491,6 +1632,147 @@
     }
   ],
   "en": [
+    {
+      "slug": "popup-na-sayte-otelya-keys",
+      "title": "Hotel Popups Kill Conversions: -6pp Bounce Rate",
+      "description": "Case study: disabling an Envybox popup reduced bounce rate by 6pp in paid traffic and boosted bookings 20-30%. No A/B test — just analytics.",
+      "date": "2026-03-12",
+      "dateModified": "2026-03-12",
+      "category": "marketing",
+      "tags": [
+        "conversion-rate",
+        "popups",
+        "hotels",
+        "analytics",
+        "case-study"
+      ],
+      "relatedService": "/en/for-hotels",
+      "cover": "cover.jpg",
+      "series": null,
+      "readingTime": 11,
+      "toc": [
+        {
+          "id": "step-1-find-the-exact-shutdown-date",
+          "text": "Step 1. Find the Exact Shutdown Date",
+          "level": 2
+        },
+        {
+          "id": "step-2-compare-before-and-after",
+          "text": "Step 2. Compare Before and After",
+          "level": 2
+        },
+        {
+          "id": "step-3-is-this-just-seasonality",
+          "text": "Step 3. Is This Just Seasonality?",
+          "level": 2
+        },
+        {
+          "id": "step-4-paid-traffic-the-biggest-victim",
+          "text": "Step 4. Paid Traffic — the Biggest Victim",
+          "level": 2
+        },
+        {
+          "id": "step-5-what-about-bookings",
+          "text": "Step 5. What About Bookings?",
+          "level": 2
+        },
+        {
+          "id": "two-unexpected-artifacts",
+          "text": "Two Unexpected Artifacts",
+          "level": 2
+        },
+        {
+          "id": "what-was-lost",
+          "text": "What Was Lost",
+          "level": 2
+        },
+        {
+          "id": "how-to-properly-test-website-changes",
+          "text": "How to Properly Test Website Changes",
+          "level": 2
+        },
+        {
+          "id": "what-is-an-ab-test",
+          "text": "What Is an A/B Test",
+          "level": 3
+        },
+        {
+          "id": "minimum-ab-test-checklist",
+          "text": "Minimum A/B Test Checklist",
+          "level": 3
+        },
+        {
+          "id": "testing-tools",
+          "text": "Testing Tools",
+          "level": 3
+        },
+        {
+          "id": "when-you-dont-need-an-ab-test",
+          "text": "When You Don't Need an A/B Test",
+          "level": 3
+        },
+        {
+          "id": "how-to-validate-a-hypothesis-without-an-ab-test-step-by-step",
+          "text": "How to Validate a Hypothesis Without an A/B Test: Step-by-Step",
+          "level": 2
+        },
+        {
+          "id": "1-pinpoint-the-exact-date-of-change",
+          "text": "1. Pinpoint the Exact Date of Change",
+          "level": 3
+        },
+        {
+          "id": "2-split-data-into-before-and-after",
+          "text": "2. Split Data into Before and After",
+          "level": 3
+        },
+        {
+          "id": "3-check-seasonality-with-yoy-comparison",
+          "text": "3. Check Seasonality with YoY Comparison",
+          "level": 3
+        },
+        {
+          "id": "4-find-a-control-group",
+          "text": "4. Find a Control Group",
+          "level": 3
+        },
+        {
+          "id": "5-account-for-external-factors",
+          "text": "5. Account for External Factors",
+          "level": 3
+        },
+        {
+          "id": "6-report-a-range-not-a-single-number",
+          "text": "6. Report a Range, Not a Single Number",
+          "level": 3
+        },
+        {
+          "id": "takeaways-for-hotel-operators",
+          "text": "Takeaways for Hotel Operators",
+          "level": 2
+        }
+      ],
+      "hasFaq": true,
+      "content": "<p>I got an unusual request. Not &quot;set up our ads&quot; or &quot;run an <a href=\"/en/services/seo\">audit</a>.&quot; Instead: &quot;We disabled our popup in February. We thought it was scaring guests away. But nobody ran a test and nobody documented it. Can you check if it actually worked?&quot;</p>\n<p>Interesting challenge. The data was there — the site ran Yandex Metrica (Russia&#39;s GA4 equivalent), conversion goals were configured. No A/B test, but a before/after comparison with a seasonality adjustment can still give answers.</p>\n<p>Here&#39;s what I found.</p>\n<h2 id=\"step-1-find-the-exact-shutdown-date\">Step 1. Find the Exact Shutdown Date</h2>\n<p>First problem — nobody remembered when the popup was disabled. &quot;Sometime in February.&quot; No ticket, no Slack message, no commit.</p>\n<p>But there was a conversion goal tracking every Envybox interaction. I pulled the timeline:</p>\n<ul>\n<li>Before February 16 — steady ~46 goal completions/day</li>\n<li>February 16 — last day of activity (20 completions)</li>\n<li>After February 17 — silence</li>\n</ul>\n<p>Date found: <strong>February 16-17, 2026</strong>. Analytics knows everything, even when people forget.</p>\n<h2 id=\"step-2-compare-before-and-after\">Step 2. Compare Before and After</h2>\n<p>I split the data into two periods:</p>\n<ul>\n<li><strong>BEFORE:</strong> January 1 — February 16 (47 days, popup active)</li>\n<li><strong>AFTER:</strong> February 17 — March 11 (23 days, popup disabled)</li>\n</ul>\n<p>Overall bounce rate: <strong>16.55% → 13.65%</strong> (minus 2.9 percentage points).</p>\n<p>But averages lie. Breaking down by device:</p>\n<ul>\n<li><strong>Mobile:</strong> 17.4% → 14.7% (−2.7pp)</li>\n<li><strong>Desktop:</strong> 13.4% → 10.6% (−2.8pp)</li>\n<li><strong>Tablet:</strong> 27.9% → 16.8% (−11.1pp)</li>\n</ul>\n<p>Tablets won by a landslide. Bounce rate dropped 11 points. Likely reason: on a tablet screen, the popup covered half the content. Users had two options — close the popup or close the tab. Many chose the latter.</p>\n<h2 id=\"step-3-is-this-just-seasonality\">Step 3. Is This Just Seasonality?</h2>\n<p>Fair question. February-March is the start of booking season. Maybe bounce rates dropped because more motivated travelers showed up, not because the popup disappeared.</p>\n<p>I checked the same period in 2025 (when Envybox was active the entire time):</p>\n<p><strong>February 17 — March 11, year-over-year:</strong></p>\n<ul>\n<li><strong>Desktop:</strong> 14.9% (2025) → 10.6% (2026) = <strong>−4.3pp.</strong> Seasonal improvement in 2025 was ~2.5pp. The clean popup effect is 0.3-1.5pp beyond seasonality. But the absolute bounce level is 4.3pp better than a year ago.</li>\n<li><strong>Mobile:</strong> 15.8% → 14.7% = −1.1pp. Smaller effect. On mobile, the popup was either less intrusive or users learned to dismiss it quickly.</li>\n</ul>\n<p>Important caveat: paid traffic volumes differ 4-6× between 2025 and 2026 (2025 had a significantly larger ad budget). This affects comparability — different traffic volumes bring different quality profiles. The YoY comparison gives a directional signal, not a precise answer.</p>\n<p>Cross-check — organic (search) traffic as a control group. Its quality doesn&#39;t depend on ad budgets.</p>\n<p>Organic bounce rate: 4.3% (2025) → 5.6% (2026) in the same period. Stable, no meaningful swing. The popup barely affected search users — they arrive with specific intent and tolerate more friction.</p>\n<h2 id=\"step-4-paid-traffic-the-biggest-victim\">Step 4. Paid Traffic — the Biggest Victim</h2>\n<p>Bounce rate in paid traffic:</p>\n<ul>\n<li><strong>BEFORE:</strong> 17.8%</li>\n<li><strong>AFTER:</strong> 11.8%</li>\n<li><strong>Difference:</strong> −6 percentage points</li>\n</ul>\n<p>Year-over-year (same period, Feb-Mar): 16.7% (2025) → 11.8% (2026) = <strong>−4.9pp.</strong></p>\n<p>Someone clicks an ad. The hotel paid for that click. They land on the site and within seconds get a popup: &quot;Leave your number, we&#39;ll call you back!&quot; Instead of browsing rooms and rates, they close the tab. Every bounce like this is wasted ad spend.</p>\n<p>Minus 6pp in paid traffic bounce rate is real budget savings.</p>\n<h2 id=\"step-5-what-about-bookings\">Step 5. What About Bookings?</h2>\n<p>Daily averages for key conversion goals:</p>\n<ul>\n<li><strong>Room booking (funnel step 5):</strong> ~16/day → ~25/day (<strong>+56%</strong>)</li>\n<li><strong>Paid orders (CRM):</strong> ~82/day → ~90/day (<strong>+10%</strong>)</li>\n<li><strong>Orders created (CRM):</strong> ~105/day → ~105/day (<strong>≈0%</strong>)</li>\n</ul>\n<p>That last number matters. Total orders didn&#39;t grow, but the share of <em>paid</em> orders did. Users aren&#39;t just starting more bookings — they&#39;re completing payment more often. Without the popup, the funnel is cleaner.</p>\n<p>+56% in bookings is the raw number. Part of the growth is seasonality (February-March ramp), part is changed ad budgets. Conservative estimate of the clean popup effect: <strong>+20-30% in bookings</strong>. Can&#39;t be more precise without an A/B test.</p>\n<h2 id=\"two-unexpected-artifacts\">Two Unexpected Artifacts</h2>\n<p><strong>Session duration dropped 10%.</strong> Average: 287 → 259 seconds. Looks bad at first glance.</p>\n<p>But Envybox logged interactions: opening the popup, closing it, typing, clicking. Analytics counted all of this as user activity, inflating session time. After shutdown, the inflation disappeared. Desktop saw the biggest drop (−19%). Tablets, meanwhile, saw session time <em>increase</em> by 8% — users who previously bounced because of the popup now stayed and browsed.</p>\n<p>The duration drop isn&#39;t a regression. It&#39;s deflation of an artificially inflated metric.</p>\n<p><strong>Pages per session grew 4.3%.</strong> From 4.6 to 4.8. Without an intrusive popup, users calmly browse rooms, rates, photos — exactly what they came for.</p>\n<h2 id=\"what-was-lost\">What Was Lost</h2>\n<p>Let&#39;s be honest: the popup generated contacts. The Envybox goal logged ~46 completions/day. After shutdown — 3/day. That&#39;s 43 fewer daily interactions.</p>\n<p>But &quot;goal completion&quot; ≠ &quot;qualified lead.&quot; Some were accidental clicks. Some were people who would have called anyway. The standard callback form on the site still works — just without the aggression.</p>\n<p>Bottom line: the booking increase (+20-30% conservative) more than compensates for lost popup contacts.</p>\n<h2 id=\"how-to-properly-test-website-changes\">How to Properly Test Website Changes</h2>\n<p>In this case there was no A/B test — which is exactly why we got an estimate of &quot;+20-56%&quot; instead of a precise number. Here&#39;s how it should have been done.</p>\n<h3 id=\"what-is-an-ab-test\">What Is an A/B Test</h3>\n<p>Traffic is randomly split into two groups. Group A sees the site with the popup, Group B — without. Both groups run simultaneously, under identical conditions. After 2-4 weeks you compare conversions and get the clean effect — no adjustments for seasonality, budget changes, or moon phases needed.</p>\n<h3 id=\"minimum-ab-test-checklist\">Minimum A/B Test Checklist</h3>\n<ul>\n<li><strong>One variable.</strong> Change only one thing: popup on or off. Not &quot;disabled popup AND updated the banner AND changed pricing.&quot; Otherwise you can&#39;t tell what actually moved the needle.</li>\n<li><strong>Sufficient traffic volume.</strong> For statistical significance you need at least 1,000 sessions per variant (assuming an expected conversion difference &gt;1%). The smaller the expected difference, the more traffic you need. A site with 200 daily visits will need 10+ days per test.</li>\n<li><strong>Random assignment.</strong> Visitors must be assigned to groups randomly. Most testing tools split by a persistent cookie or client ID — each browser on each device gets its own identifier, so the user always sees the same variant. This is the correct approach. What&#39;s incorrect is manually splitting by day of week, device type, or traffic source — such groups are inherently unequal.</li>\n<li><strong>Same time period.</strong> Both groups must run simultaneously. You can&#39;t compare &quot;Monday with popup&quot; vs. &quot;Tuesday without&quot; — day of week affects behavior.</li>\n<li><strong>Pre-selected metric.</strong> Before launching the test, decide what you&#39;re measuring: bounce rate, bookings, CTA clicks. You can&#39;t pick the metric that &quot;looks best&quot; after the test ends.</li>\n<li><strong>Statistical significance ≥95%.</strong> Don&#39;t stop the test when &quot;you can already see a difference.&quot; Early stopping is the #1 cause of false results. Use a calculator (e.g., any online AB test calculator, or the one built into your testing tool).</li>\n</ul>\n<h3 id=\"testing-tools\">Testing Tools</h3>\n<p>For hotel websites:</p>\n<ul>\n<li><strong>VWO, Optimizely, AB Tasty</strong> — visual editor, no developer needed</li>\n<li><strong>Custom solution</strong> — split by cookie or user ID at the server level. Works if you have a developer</li>\n<li><strong>Statsig, LaunchDarkly</strong> — feature flags with built-in experimentation. Free tiers available</li>\n</ul>\n<h3 id=\"when-you-don39t-need-an-ab-test\">When You Don&#39;t Need an A/B Test</h3>\n<p>Not everything needs testing:</p>\n<ul>\n<li><strong>Critical bugs</strong> — broken booking form, 404 on homepage. Fix immediately, don&#39;t test.</li>\n<li><strong>Legal requirements</strong> — adding cookie consent, privacy policy changes.</li>\n<li><strong>Micro-changes</strong> — button shade tweaks, rearranging footer elements. Effect will be within statistical noise.</li>\n</ul>\n<p>A/B testing pays off when the change touches a key funnel element (popup, booking form, landing page) and you expect a noticeable behavioral difference.</p>\n<h2 id=\"how-to-validate-a-hypothesis-without-an-ab-test-step-by-step\">How to Validate a Hypothesis Without an A/B Test: Step-by-Step</h2>\n<p>But in reality, half of website changes happen without tests: someone updated a banner, changed a form, disabled a widget. Nobody measured the result. Sound familiar?</p>\n<p>Here&#39;s the framework I used in this case. It works for any change that affects user behavior.</p>\n<h3 id=\"1-pinpoint-the-exact-date-of-change\">1. Pinpoint the Exact Date of Change</h3>\n<p>If the widget fired analytics events — open the goal report and find the day completions stopped. If there were no events, check:</p>\n<ul>\n<li>Commit history in your repository</li>\n<li>CMS or site builder change logs</li>\n<li>Chat threads with your developer or agency</li>\n<li>Google Tag Manager version history</li>\n</ul>\n<p>Without an exact date, the analysis falls apart. This is the foundation.</p>\n<h3 id=\"2-split-data-into-before-and-after\">2. Split Data into Before and After</h3>\n<p>Take at least 2 weeks per period (4-6 weeks is better). Short periods produce statistical noise. Track:</p>\n<ul>\n<li><strong>Bounce rate</strong> — the primary friction indicator</li>\n<li><strong>Pages per session</strong> — engagement depth</li>\n<li><strong>Conversions</strong> — target actions (bookings, leads, purchases)</li>\n</ul>\n<p>Always segment by device. In our case, tablets showed −11pp in bounce rate while mobile showed only −2.7pp. The average would have hidden this gap.</p>\n<h3 id=\"3-check-seasonality-with-yoy-comparison\">3. Check Seasonality with YoY Comparison</h3>\n<p>Compare the same calendar period from the prior year. If bounce rates also dropped in February-March 2025, part of your 2026 effect is seasonal.</p>\n<p>Estimation formula:</p>\n<blockquote>\n<p><strong>Clean effect = (2026 change) − (2025 seasonal change)</strong></p>\n</blockquote>\n<p>Example from this case: desktop bounce rate dropped 2.8pp (2026), seasonal decline in 2025 was 2.5pp. Clean effect ≈ 0.3pp. But the absolute level is 4.3pp better than a year ago, meaning the cumulative impact is real — it just built up gradually.</p>\n<h3 id=\"4-find-a-control-group\">4. Find a Control Group</h3>\n<p>The ideal control group is a traffic segment unaffected by the change. For popups, that&#39;s usually:</p>\n<ul>\n<li><strong>Organic search traffic</strong> — users with specific intent, less sensitive to interruptions</li>\n<li><strong>Direct traffic from repeat visitors</strong> — if you can isolate it</li>\n</ul>\n<p>If the control group is stable while the experimental group (paid traffic) improved — it&#39;s not just the season.</p>\n<h3 id=\"5-account-for-external-factors\">5. Account for External Factors</h3>\n<p>What else changed during the same period?</p>\n<ul>\n<li>Ad spend (in our case — cut by 4-6× YoY)</li>\n<li>New campaigns or channels launched</li>\n<li>Other site changes besides the popup</li>\n<li>Promotions, holidays, events</li>\n</ul>\n<p>Every unaccounted factor is a hole in your conclusions. List them explicitly, even if you can&#39;t quantify the impact.</p>\n<h3 id=\"6-report-a-range-not-a-single-number\">6. Report a Range, Not a Single Number</h3>\n<p>Without an A/B test, you get an estimate with uncertainty. State the bounds:</p>\n<ul>\n<li>&quot;Bookings grew 56%&quot; — misleading</li>\n<li>&quot;Bookings grew 20-56%; conservative estimate adjusted for seasonality is +20-30%&quot; — credible</li>\n</ul>\n<p>An honest range builds more trust than a single impressive number.</p>\n<h2 id=\"takeaways-for-hotel-operators\">Takeaways for Hotel Operators</h2>\n<p>Popups aren&#39;t inherently evil. But a popup that hijacks attention from someone who came to book a room is sabotaging your own funnel.</p>\n<p>If your <a href=\"/en/for-hotels\">hotel site</a> runs Envybox, CallbackHunter, Drift, Intercom, or any aggressive callback widget — run an experiment. Disable it for two weeks and watch bounce rates and bookings. Or at minimum, configure a 30-60 second delay so the popup only appears after the user is already engaged.</p>\n<p>And document the date of change. Otherwise you&#39;ll need to hire an analyst to reverse-engineer your analytics retroactively. Like in this case.</p>\n",
+      "faq": [
+        {
+          "question": "How do I know if a popup is hurting my hotel site without an A/B test?",
+          "answer": "Disable the popup for 2-4 weeks and compare metrics: bounce rate, pages per session, conversions. Segment by device and traffic source. Compare with the same period last year to adjust for seasonality. Use organic traffic as your control group."
+        },
+        {
+          "question": "Can I configure a popup so it doesn't hurt conversions?",
+          "answer": "Yes. The key is not showing it in the first few seconds. Use a 30-60 second delay, exit-intent trigger (mouse moving toward the close button), or show it only after 2-3 page views. This way, the popup reaches engaged users, not people still deciding whether to stay."
+        },
+        {
+          "question": "Which devices are most affected by intrusive popups?",
+          "answer": "In our case — tablets (bounce rate dropped 11pp after disabling) and paid traffic (−6pp). Mobile saw a smaller effect (~1-3pp), and organic search traffic was barely affected."
+        }
+      ],
+      "tldr": "A hotel chain disabled their aggressive callback popup (think Drift or Intercom) without running an A/B test. I was asked to validate the hypothesis retroactively. Verdict: the popup was hurting conversions. Bounce rate in paid traffic dropped 6 percentage points, bookings grew 20-30% (conservative, adjusted for seasonality). Here's how to run this analysis without an A/B test.",
+      "tldrHtml": "A hotel chain disabled their aggressive callback popup (think Drift or Intercom) without running an A/B test. I was asked to validate the hypothesis retroactively. Verdict: the popup was hurting conversions. Bounce rate in paid traffic dropped 6 percentage points, bookings grew 20-30% (conservative, adjusted for seasonality). Here&#39;s how to run this analysis without an A/B test.",
+      "cta": null,
+      "llmsSummary": "Hotel chain case study: disabling Envybox popup reduced bounce rate by 6pp in paid traffic (17.8% → 11.8%), bookings grew 20-30% (conservative estimate adjusted for seasonality). Tablets saw the biggest drop: -11pp bounce rate. Pages per session +4.3%. Analysis without A/B test: date detection via analytics goals, YoY comparison, organic traffic as control group."
+    },
     {
       "slug": "brendovyy-trafik-otelya-keys",
       "title": "Hotel Brand Traffic: Cost of No Ads",

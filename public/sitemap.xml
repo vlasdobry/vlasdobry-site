@@ -166,7 +166,7 @@
   <!-- BLOG_START -->
   <url>
     <loc>https://vlasdobry.ru/blog/</loc>
-    <lastmod>2026-03-10</lastmod>
+    <lastmod>2026-03-12</lastmod>
     <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/"/>
     <changefreq>weekly</changefreq>
@@ -174,11 +174,27 @@
   </url>
   <url>
     <loc>https://vlasdobry.ru/en/blog/</loc>
-    <lastmod>2026-03-10</lastmod>
+    <lastmod>2026-03-12</lastmod>
     <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/"/>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vlasdobry.ru/blog/popup-na-sayte-otelya-keys/</loc>
+    <lastmod>2026-03-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/popup-na-sayte-otelya-keys/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/popup-na-sayte-otelya-keys/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vlasdobry.ru/en/blog/popup-na-sayte-otelya-keys/</loc>
+    <lastmod>2026-03-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/popup-na-sayte-otelya-keys/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/popup-na-sayte-otelya-keys/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://vlasdobry.ru/blog/brendovyy-trafik-otelya-keys/</loc>
