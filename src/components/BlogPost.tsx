@@ -109,7 +109,7 @@ export const BlogPost: React.FC<Props> = ({ basePath }) => {
             <a href={landingUrl} className="text-2xl font-black tracking-tighter hover:opacity-70 transition-opacity">
               VD.
             </a>
-            <LanguageSwitcher basePath={basePath} />
+            <LanguageSwitcher basePath={slug ? `${basePath}/${slug}` : basePath} />
           </div>
           <a
             href={blogUrl}
