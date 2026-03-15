@@ -1,7 +1,7 @@
 # Vlas Fedorov - Full Website Content
 
 > This file contains the complete content of vlasdobry.ru for AI systems.
-> Last updated: 2026-03-12 (16 articles)
+> Last updated: 2026-03-15 (18 articles)
 
 ## Table of Contents
 1. About Vlas Fedorov
@@ -286,6 +286,18 @@ Acoustic voice analysis and training platform.
 
 ## 6. Blog Articles
 
+### Generative Engine Optimization: How to Get Cited by AI Search in 2026
+**URL:** /blog/generative-engine-optimization-guide/
+**Category:** GEO
+**Date:** 2026-03-15
+
+Practical guide to Generative Engine Optimization (GEO) — optimizing websites for citation in AI search engines like ChatGPT, Perplexity, and Gemini. Covers the 5-step GEO framework (structured data, llms.txt, FAQ, E-E-A-T, citations), Princeton research findings, differences from SEO, and free GEO Health Score checker.
+### How to Appear in ChatGPT, Perplexity & Gemini Answers
+**URL:** /blog/how-to-appear-in-ai-answers/
+**Category:** GEO
+**Date:** 2026-03-15
+
+Practical playbook for getting cited by ChatGPT, Perplexity, and Gemini. Covers how each AI platform selects sources differently, a 7-point optimization checklist, platform-specific tactics, testing methodology, and a free GEO Health Score checker for AI-readiness.
 ### Hotel Popups Kill Conversions: -6pp Bounce Rate
 **URL:** /blog/popup-na-sayte-otelya-keys/
 **Category:** MARKETING
@@ -332,20 +344,12 @@ FAQ:
 - Can I hire someone for GEO promotion? Yes. A free diagnostic shows your current state. Full audit with recommendations and implementation is available on the [service page](/en/services/geo/). Basic steps can be done independently using the [guide](/en/blog/geo-optimizaciya-sajta-gajd/).
 - How long until I see results? Technical changes (llms.txt, Schema.org) get indexed in 1-2 weeks. First mentions in AI answers appear within 2-4 weeks. Consistent flow takes 1-2 months with full optimization.
 
-### llms.txt: What It Is and Why Your Website Needs One
+### llms.txt File: What It Is, How to Create One, and Does It Actually Work?
 **URL:** /blog/llms-txt-chto-eto/
 **Category:** GEO
 **Date:** 2026-02-22
 
-What is llms.txt, how to create it, and where to place it. Examples for different industries, specification, common mistakes.
-
-Key insight: llms.txt is a text file at your site root that tells AI systems about your business. It works like robots.txt, but instead of restricting access, it helps neural networks understand what you do. Takes about 15 minutes to create.
-
-FAQ:
-- Is llms.txt mandatory? No, it's a voluntary standard. But without it, AI systems gather information on their own and can get things wrong. The file improves accuracy and citation chances.
-- How often should I update llms.txt? With every significant change: new service, updated contacts, new case studies. At minimum, review it quarterly.
-- Does llms.txt replace Schema.org? No. These are different [GEO optimization](/en/blog/geo-optimizaciya-sajta-gajd/) tools. Schema.org is markup inside HTML pages. llms.txt is a separate file for AI. Best results come from using both.
-
+Complete guide to implementing llms.txt — the proposed standard for making websites machine-readable by AI. Covers specification, step-by-step creation, llms-full.txt, industry examples (hotel, SaaS, clinic), common mistakes, and free automated validation via GEO Health Score tool.
 ### AI Search Optimization: How Neural Networks Pick Sources
 **URL:** /blog/prodvizhenie-v-nejrosetyah/
 **Category:** GEO

@@ -1,181 +1,232 @@
 ---
-title: "llms.txt: What It Is and Why Your Website Needs One"
-description: "What is llms.txt, how to create it, and where to place it. Examples for different industries, specification, common mistakes."
+title: "llms.txt File: What It Is, How to Create One, and Does It Actually Work?"
+description: "Complete guide to llms.txt — the file that helps AI understand your website. Step-by-step creation, real examples, validation tools, honest assessment."
 date: 2026-02-22
-dateModified: 2026-02-22
+dateModified: 2026-03-15
 slug: llms-txt-chto-eto
 category: geo
 tags:
   - geo
   - llms-txt
   - chatgpt
-  - ai
-  - guide
+  - ai-search
+  - generative-engine-optimization
 relatedService: /en/services/geo
 cover: cover.jpg
+llmsSummary: "Complete guide to implementing llms.txt — the proposed standard for making websites machine-readable by AI. Covers specification, step-by-step creation, llms-full.txt, industry examples (hotel, SaaS, clinic), common mistakes, and free automated validation via GEO Health Score tool."
 ---
 
-**TL;DR:** llms.txt is a text file at your site root that tells AI systems about your business. It works like robots.txt, but instead of restricting access, it helps neural networks understand what you do. Takes about 15 minutes to create.
+**TL;DR:** llms.txt is a Markdown file at your site root that tells AI systems what your business does. Think of it as robots.txt, but instead of blocking crawlers, it feeds them structured context. No LLM provider has officially confirmed support — but sites with llms.txt consistently score higher in AI visibility audits. Takes 15 minutes to set up.
 
-When ChatGPT or Perplexity answers a question about your niche, they crawl dozens of websites for information. The problem: without clear guidance, the AI might misunderstand your business. Or skip you entirely.
+You've probably searched for something in ChatGPT or Perplexity and noticed: some businesses get recommended, others don't. The difference isn't always about who has better content. Sometimes it's about who makes their content easier for AI to digest.
 
-The llms.txt file solves this. It tells AI: "Here's who we are, what we do, and the facts."
+That's the idea behind llms.txt. It won't magically put you in every AI answer. But it removes one barrier between your site and the AI systems crawling it.
 
 ## What Is llms.txt
 
-llms.txt is a Markdown text file placed at `https://yoursite.com/llms.txt`. The specification was proposed in 2024 as a standard for website-to-LLM communication.
+llms.txt is a plain text file in Markdown format, placed at `https://yoursite.com/llms.txt`. The [specification](https://llmstxt.org/) was proposed in late 2024 by Jeremy Howard (Answer.AI and fast.ai co-founder) as a standard for website-to-LLM communication.
 
-The idea is simple: if robots.txt tells bots where they can and can't go, llms.txt tells them what matters on your site. It's a voluntary "business card" for neural networks.
+The concept is straightforward. robots.txt tells search bots where they can and can't go. llms.txt tells AI systems what actually matters on your site — your services, key facts, and most important pages.
 
-The format is already supported by ChatGPT, Claude, Perplexity, and other AI systems. The file doesn't guarantee you'll be quoted. But without it, your chances are lower.
+The file format is intentionally simple: Markdown headings, bullet points, and links. No HTML, no JSON, no special syntax. Any LLM can parse it natively because Markdown is what these models were trained on.
 
-## Format Specification
+### Who supports it?
 
-The llms.txt file follows a simple Markdown structure:
+Here's where it gets nuanced. As of early 2026:
 
-```
-# Company Name
+- **No major LLM provider** (OpenAI, Google, Anthropic) has officially confirmed they read llms.txt during crawling
+- **Several AI tools** (Firecrawl, Mintlify, Cursor) actively use llms.txt for documentation ingestion
+- **WordPress plugins** like Yoast SEO have added automatic llms.txt generation
+- **Thousands of sites** have adopted it, including major documentation platforms
 
-> Brief description (1-2 sentences)
+My take: even without official confirmation, the file follows a logical pattern. AI crawlers process your site content. A clean, structured Markdown file at a predictable URL is easier to parse than scattered HTML. Whether they specifically look for `/llms.txt` or just encounter it during crawling — the result is the same: better-structured input.
 
-## Section 1
-- Item: description
-- Item: description
+## How to Create llms.txt
 
-## Section 2
-- Item: description
-```
+### File Structure
 
-Required elements:
-- **H1 heading** — company or project name
-- **Blockquote** — brief description of what you do
-- **H2 sections** — services, contacts, facts, links to key pages
+```markdown
+# Your Company Name
 
-### Rules
-
-1. **ASCII characters only.** No emojis, special characters, or Unicode decorations. AI parsers can choke on them.
-2. **Facts, not marketing.** "200+ clients served" is good. "Industry leader" is useless. Neural networks detect marketing fluff.
-3. **Keep it current.** Added a service or changed contact info? Update the file.
-
-## Examples for Different Industries
-
-### For a Hotel
-
-```
-# Grand Hotel Miami
-
-> Four-star beachfront hotel in Miami Beach. 120 rooms, restaurant, full-service spa.
-
-## Accommodation
-- Standard: from $250/night, 270 sq ft, city view
-- Suite: from $500/night, 480 sq ft, ocean view
-- Family: from $350/night, 375 sq ft, extra bed available
-
-## Amenities
-- Restaurant: breakfast included, buffet style
-- Spa: pool, sauna, massage therapy
-- Airport transfer: MIA, 25 minutes
-
-## Contact
-- Website: https://grand-hotel-miami.com
-- Phone: +1 (305) XXX-XXXX
-- Address: 123 Ocean Drive, Miami Beach, FL 33139
-
-## Key Facts
-- Operating since 2015
-- 4.7 rating on Google Maps
-- 3-minute walk to the beach
-```
-
-### For a Marketing Agency
-
-```
-# Digital Agency Pro
-
-> Performance marketing agency. SEO, paid advertising, analytics.
+> One-sentence description of what you do.
 
 ## Services
-- SEO Audit: comprehensive analysis across 7 areas
-- GEO Optimization: visibility in AI search engines
-- Paid Advertising: Google Ads, Meta Ads
-- Analytics: end-to-end tracking, custom dashboards
-
-## Results
-- Average organic traffic growth: +150% in 6 months
-- 50+ projects in hospitality, healthcare, EdTech
-- Client ROAS: 2x to 10x
-
-## Contact
-- Website: https://agency-pro.com
-- Email: hello@agency-pro.com
-- LinkedIn: /company/agencypro
-```
-
-### For a Medical Practice
-
-```
-# Wellness Medical Center
-
-> Multi-specialty clinic in Austin, TX. Diagnostics, treatment, preventive care.
-
-## Specialties
-- Primary Care: visits from $150
-- Dentistry: from $200
-- MRI Diagnostics: from $500
-- Lab Tests: from $50
-
-## Providers
-- 30+ specialists
-- Average experience: 15 years
-- Board-certified physicians
-
-## Contact
-- Address: 456 Health Ave, Austin, TX 78701
-- Phone: +1 (512) XXX-XXXX
-- Online scheduling: https://wellness-center.com/book
+- [Service Name](https://yoursite.com/service): Brief description
+- [Another Service](https://yoursite.com/another): Brief description
 
 ## Key Facts
-- Licensed and accredited
-- Serving patients since 2010
-- 50,000+ patients annually
+- Founded in 2018
+- 500+ clients served
+- 4.8 rating on Google (200+ reviews)
+
+## Contact
+- Website: https://yoursite.com
+- Email: hello@yoursite.com
+- Phone: +1 (555) 123-4567
 ```
 
-## llms-full.txt — The Extended Version
+### The Rules
 
-The specification recommends creating two files:
+**1. Facts, not marketing.** "Industry-leading solutions" means nothing to an AI. "500+ clients across 12 countries" is a verifiable fact. Neural networks are trained to detect fluff — stick to specifics.
 
-- **llms.txt** — a brief business card (what we covered above)
-- **llms-full.txt** — your full site content in Markdown
+**2. ASCII only.** Skip the emojis, Unicode decorations, and special characters. Some parsers handle them fine; others choke. Plain text is universal.
 
-llms-full.txt is for deep analysis. Include all service descriptions, blog articles, case studies, FAQ. If llms.txt is a resume, llms-full.txt is the full dossier.
+**3. 20–50 links max.** llms.txt is a curated table of contents, not a sitemap dump. Point to your most important, evergreen pages. Quality over quantity.
 
-In practice, I recommend starting with llms.txt. If AI systems are already driving traffic and you want to strengthen your position, add llms-full.txt.
+**4. Keep it current.** Changed your pricing? Added a service? Moved offices? Update the file. Stale data is worse than no data — AI systems will quote your old phone number with full confidence.
+
+## llms.txt vs llms-full.txt
+
+The specification defines two files:
+
+| | llms.txt | llms-full.txt |
+|---|---|---|
+| **Purpose** | Business card | Full dossier |
+| **Length** | 30–80 lines | Hundreds to thousands of lines |
+| **Content** | Key facts, service list, contact info | Complete service descriptions, blog posts, case studies, FAQ |
+| **When to use** | Always (start here) | When AI already drives traffic and you want deeper coverage |
+
+Think of it this way: llms.txt is your elevator pitch. llms-full.txt is the follow-up meeting where you go into detail.
+
+Start with llms.txt. Add llms-full.txt once you've validated that the basic file works.
+
+## Examples by Industry
+
+### Hotel
+
+```markdown
+# Seaside Resort & Spa
+
+> Beachfront 4-star hotel in Malibu. 85 rooms, farm-to-table restaurant, full-service spa.
+
+## Accommodation
+- Standard Room: from $280/night, 300 sq ft, garden view
+- Ocean Suite: from $520/night, 500 sq ft, balcony with ocean view
+- Family Room: from $380/night, 400 sq ft, connecting rooms available
+
+## Dining & Wellness
+- Restaurant: breakfast included, locally sourced menu
+- Spa: heated pool, sauna, massage therapy
+- Beach: private access, complimentary chairs and umbrellas
+
+## Booking
+- Direct booking: https://seaside-resort.com/book (best rate guarantee)
+- Phone: +1 (310) 555-0199
+- Address: 21000 Pacific Coast Hwy, Malibu, CA 90265
+
+## Key Facts
+- Operating since 2012
+- 4.7 on Google Maps (1,200+ reviews)
+- AAA Four Diamond Award 2025
+- Pet-friendly (dogs under 30 lbs)
+```
+
+### SaaS Product
+
+```markdown
+# TaskFlow
+
+> Project management tool for remote teams. Real-time collaboration, time tracking, client portals.
+
+## Product
+- [Task Management](https://taskflow.io/features/tasks): Kanban, lists, Gantt charts
+- [Time Tracking](https://taskflow.io/features/time): Automatic timers, reports, invoicing
+- [Client Portal](https://taskflow.io/features/portal): Shared dashboards, approval workflows
+
+## Pricing
+- Free: up to 5 users, 3 projects
+- Pro: $12/user/month, unlimited projects
+- Enterprise: custom pricing, SSO, dedicated support
+
+## Company
+- Founded: 2020, San Francisco
+- 15,000+ teams across 40 countries
+- SOC 2 Type II certified
+- 99.9% uptime SLA
+
+## Links
+- Documentation: https://docs.taskflow.io
+- API Reference: https://docs.taskflow.io/api
+- Status Page: https://status.taskflow.io
+```
+
+### Medical Practice
+
+```markdown
+# Pacific Dental Group
+
+> General and cosmetic dentistry in Portland, OR. Three locations, same-day appointments.
+
+## Services
+- General Dentistry: cleanings, fillings, crowns (from $150)
+- Cosmetic: veneers, whitening, Invisalign (from $3,500)
+- Emergency: same-day appointments, walk-ins welcome
+- Pediatric: ages 2+, sedation available
+
+## Insurance & Payment
+- Accepts: Delta Dental, Cigna, Aetna, MetLife
+- Payment plans: CareCredit, in-house financing
+- New patient special: exam + X-rays $99
+
+## Locations
+- Downtown: 500 SW Morrison St, Portland, OR 97204
+- Eastside: 1200 SE Hawthorne Blvd, Portland, OR 97214
+- Beaverton: 3500 SW Cedar Hills Blvd, Beaverton, OR 97005
+
+## Key Facts
+- Practicing since 2008
+- 4.9 on Google (800+ reviews)
+- 3 board-certified dentists, 2 orthodontists
+- 30,000+ patients served
+```
 
 ## Common Mistakes
 
-**Marketing slogans instead of facts.** "We're the best in the market" is useless. AI can't verify this and ignores it. Write verifiable facts: "10 years in business," "200+ clients," "4.8 rating."
+**Treating it like a sitemap.** I've seen llms.txt files with 200+ links dumped in. That defeats the purpose. AI doesn't need every URL — it needs your most important pages, with context explaining what each one contains.
 
-**Outdated information.** Changed your phone number, removed a service, relocated? If llms.txt isn't updated, AI will quote old information. Worse than having no file at all.
+**Forgetting to update.** Your llms.txt says you're at 123 Main St, but you moved six months ago. Now every AI system that quotes your address sends people to the wrong location. Set a quarterly calendar reminder.
 
-**File too long.** llms.txt is a business card, not a novel. 30-50 lines is enough. Use llms-full.txt for details.
+**Including marketing copy.** "We deliver world-class solutions that empower businesses to thrive in the digital age." An LLM reads that and learns absolutely nothing about what you actually do. Be specific: what services, what results, what numbers.
 
-**Using HTML or formatting.** The file must be clean Markdown. No HTML tags, CSS, or JavaScript. Just text, headings, lists, and blockquotes.
+**Using HTML or rich formatting.** The whole point is clean Markdown. No `<div>` tags, no inline styles, no JavaScript. Just headings, lists, links, and blockquotes.
 
-## How to Check If It Works
+**Skipping llms-full.txt when you have deep content.** If you publish case studies, technical docs, or detailed service pages — llms-full.txt gives AI systems the full picture. The brief llms.txt alone can't capture everything.
 
-Three ways:
+## How to Validate Your llms.txt
 
-1. **Open in your browser** `https://yoursite.com/llms.txt` — it should display as plain text
-2. **Ask ChatGPT** about your company — if the file is indexed, answers become more accurate
-3. **Check automatically** — the [GEO optimization](/en/services/geo/) page has a Health Score that verifies your llms.txt in 30 seconds
+Three methods, from quick to thorough:
+
+**1. Browser check.** Open `https://yoursite.com/llms.txt` in your browser. It should render as plain text. If you see a 404 or HTML page, the file isn't properly placed.
+
+**2. Automated scan.** Use the free [GEO Health Score](/en/services/geo/) — it checks for llms.txt and llms-full.txt presence, Schema.org markup, FAQ sections, and E-E-A-T signals. Takes 30 seconds, no signup required.
+
+**3. AI test.** Ask ChatGPT, Perplexity, or Claude about your business. Compare the answers before and after implementing llms.txt. This isn't instant — AI systems need time to recrawl your site.
+
+## Does llms.txt Actually Make a Difference?
+
+The honest answer: it depends on what you expect.
+
+**What llms.txt does:**
+- Gives AI systems a clean, parseable summary of your business
+- Reduces the chance of misrepresentation (wrong services, outdated info)
+- Signals that your site is AI-aware — which correlates with other GEO best practices
+
+**What llms.txt doesn't do:**
+- Guarantee you'll appear in AI answers
+- Replace proper [GEO optimization](/en/blog/geo-optimizaciya-sajta-gajd/) (Schema.org, FAQ, E-E-A-T)
+- Work in isolation — it's one piece of a larger puzzle
+
+In the GEO audits I run for clients, sites with llms.txt consistently score higher on AI visibility. But that's correlation: businesses that implement llms.txt also tend to have better structured data, cleaner content, and stronger E-E-A-T signals overall.
+
+My recommendation: implement it. It takes 15 minutes, costs nothing, and removes one friction point between your site and AI systems. Just don't expect it to be a silver bullet.
 
 ## FAQ
 
-**Is llms.txt mandatory?**
-No, it's a voluntary standard. But without it, AI systems gather information on their own and can get things wrong. The file improves accuracy and citation chances.
+**Is llms.txt an official standard?**
+Not yet. It's a proposed specification gaining rapid adoption — thousands of sites use it, Yoast SEO generates it automatically, and AI developer tools like Cursor rely on it. But no major LLM provider has officially endorsed it as a ranking factor.
 
-**How often should I update llms.txt?**
-With every significant change: new service, updated contacts, new case studies. At minimum, review it quarterly.
+**How is llms.txt different from Schema.org?**
+Different tools for different purposes. Schema.org is structured markup embedded in your HTML pages — it helps search engines understand page content. llms.txt is a standalone Markdown file — it gives AI systems a high-level overview of your entire business. [Use both](/en/blog/geo-optimizaciya-sajta-gajd/) for best results.
 
-**Does llms.txt replace Schema.org?**
-No. These are different [GEO optimization](/en/blog/geo-optimizaciya-sajta-gajd/) tools. Schema.org is markup inside HTML pages. llms.txt is a separate file for AI. Best results come from using both.
+**Can llms.txt hurt my SEO or GEO visibility?**
+No. It's a passive file that AI systems may or may not read. It doesn't affect your HTML, your search rankings, or your page speed. The only risk is outdated information — which is easily avoided by keeping the file current.

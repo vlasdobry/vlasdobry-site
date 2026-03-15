@@ -166,7 +166,7 @@
   <!-- BLOG_START -->
   <url>
     <loc>https://vlasdobry.ru/blog/</loc>
-    <lastmod>2026-03-12</lastmod>
+    <lastmod>2026-03-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/"/>
     <changefreq>weekly</changefreq>
@@ -174,11 +174,43 @@
   </url>
   <url>
     <loc>https://vlasdobry.ru/en/blog/</loc>
-    <lastmod>2026-03-12</lastmod>
+    <lastmod>2026-03-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/"/>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://vlasdobry.ru/blog/generative-engine-optimization-guide/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/generative-engine-optimization-guide/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/generative-engine-optimization-guide/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vlasdobry.ru/en/blog/generative-engine-optimization-guide/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/generative-engine-optimization-guide/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/generative-engine-optimization-guide/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vlasdobry.ru/blog/how-to-appear-in-ai-answers/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/how-to-appear-in-ai-answers/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/how-to-appear-in-ai-answers/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vlasdobry.ru/en/blog/how-to-appear-in-ai-answers/</loc>
+    <lastmod>2026-03-15</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/how-to-appear-in-ai-answers/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/how-to-appear-in-ai-answers/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://vlasdobry.ru/blog/popup-na-sayte-otelya-keys/</loc>
@@ -262,7 +294,7 @@
   </url>
   <url>
     <loc>https://vlasdobry.ru/blog/llms-txt-chto-eto/</loc>
-    <lastmod>2026-02-22</lastmod>
+    <lastmod>2026-03-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/llms-txt-chto-eto/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/llms-txt-chto-eto/"/>
     <changefreq>monthly</changefreq>
@@ -270,7 +302,7 @@
   </url>
   <url>
     <loc>https://vlasdobry.ru/en/blog/llms-txt-chto-eto/</loc>
-    <lastmod>2026-02-22</lastmod>
+    <lastmod>2026-03-15</lastmod>
     <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/blog/llms-txt-chto-eto/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/blog/llms-txt-chto-eto/"/>
     <changefreq>monthly</changefreq>

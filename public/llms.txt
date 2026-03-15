@@ -121,12 +121,14 @@ SOSTAC + PDCA: audit -> strategy -> launch -> control
 Latest articles on SEO, GEO, and digital marketing for hotels, DNA labs, and SPA.
 
 ### Recent Articles
+- /blog/generative-engine-optimization-guide/ - Practical GEO guide: 5-step framework to get your website cited by ChatGPT, Perplexity and Gemini. Based on Princeton research + real audit data.
+- /blog/how-to-appear-in-ai-answers/ - Practical playbook: how each AI search engine picks sources, what to optimize, and how to test your visibility. With free AI-readiness checker.
 - /blog/popup-na-sayte-otelya-keys/ - Case study: disabling an Envybox popup reduced bounce rate by 6pp in paid traffic and boosted bookings 20-30%. No A/B test — just analytics.
 - /blog/brendovyy-trafik-otelya-keys/ - Case study: a resort hotel loses $750-1,000/month because competitors and OTAs bid on its brand name. Zero ads vs 23 competitor ads.
 - /blog/168-fz-zakon-o-russkom-yazyke-sayt/ - Federal Law 168-FZ requires all consumer-facing information in Russia to be in Russian. Website compliance checklist, fines up to $5,000, and what foreign business owners need to know.
 - /blog/geo-optimizaciya-sajta-gajd/ - Practical guide to GEO optimization: llms.txt, Schema.org, FAQ, E-E-A-T signals. A 5-step checklist with code examples.
 - /blog/geo-prodvizhenie-sajta/ - What GEO promotion delivers for businesses. ROI, comparison with paid ads, and the funnel from AI query to customer.
-- /blog/llms-txt-chto-eto/ - What is llms.txt, how to create it, and where to place it. Examples for different industries, specification, common mistakes.
+- /blog/llms-txt-chto-eto/ - Complete guide to llms.txt — the file that helps AI understand your website. Step-by-step creation, real examples, validation tools, honest assessment.
 - /blog/prodvizhenie-v-nejrosetyah/ - How AI search engines like ChatGPT and Perplexity pick sources. Practical steps to get your business recommended by neural networks.
 - /blog/kak-ocenit-potencial-google-ads/ - Real case study: evaluating Google Ads for a local service business in Los Angeles. Keyword Planner data, CPC curves, multichannel strategy.
 - /blog/odnostranichnyj-sajt-otelya-teryaet-trafik/ - Real case study: a resort hotel with 1,000+ keywords on one page, -38% traffic decline, and untapped potential worth 150K+ monthly searches.
