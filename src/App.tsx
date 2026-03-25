@@ -4,41 +4,6 @@ import { Landing } from './components/Landing';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { useI18n } from './i18n';
 
-type MotionDebugSample = {
-  viewport: string;
-  reducedMotion: boolean;
-  trackLeft: string;
-  trackTransform: string;
-  trackTransition: string;
-  stripeTransform: string;
-  stripeAnimation: string;
-  arrowTransform: string;
-  arrowAnimation: string;
-  backwardArrowTransform: string;
-};
-
-type MotionTraceSummary = {
-  status: 'idle' | 'recording' | 'done';
-  label: string;
-  frameCount: number;
-  distinctTrackLeftCount: number;
-  distinctStripeTransformCount: number;
-  distinctArrowTransformCount: number;
-  maxFrameGapMs: number;
-  firstTrackLeft: string;
-  lastTrackLeft: string;
-  preview: string[];
-};
-
-type MotionDebugState = {
-  ua: string;
-  view: 'hero' | 'landing';
-  lastTouch: string;
-  sample: MotionDebugSample;
-  trace: MotionTraceSummary;
-  logs: string[];
-};
-
 const App: React.FC = () => {
   // Initialize view from URL hash
   const getInitialView = () => {
@@ -49,159 +14,9 @@ const App: React.FC = () => {
   const touchStart = useRef<number | null>(null);
   const touchEnd = useRef<number | null>(null);
   const vibrationActivated = useRef(false);
-  const trackRef = useRef<HTMLDivElement | null>(null);
-  const stripeRef = useRef<HTMLDivElement | null>(null);
-  const forwardArrowRef = useRef<SVGSVGElement | null>(null);
-  const backwardArrowRef = useRef<SVGSVGElement | null>(null);
-  const motionDebugEnabled = useRef(
-    typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('motionDebug')
-  );
-  const motionTraceActive = useRef(false);
   const { t } = useI18n();
 
   const minSwipeDistance = 70;
-  const [motionDebug, setMotionDebug] = useState<MotionDebugState>(() => ({
-    ua: typeof navigator !== 'undefined' ? navigator.userAgent : '',
-    view: getInitialView(),
-    lastTouch: 'none',
-    sample: {
-      viewport: 'n/a',
-      reducedMotion: false,
-      trackLeft: 'n/a',
-      trackTransform: 'n/a',
-      trackTransition: 'n/a',
-      stripeTransform: 'n/a',
-      stripeAnimation: 'n/a',
-      arrowTransform: 'n/a',
-      arrowAnimation: 'n/a',
-      backwardArrowTransform: 'n/a',
-    },
-    trace: {
-      status: 'idle',
-      label: 'none',
-      frameCount: 0,
-      distinctTrackLeftCount: 0,
-      distinctStripeTransformCount: 0,
-      distinctArrowTransformCount: 0,
-      maxFrameGapMs: 0,
-      firstTrackLeft: 'n/a',
-      lastTrackLeft: 'n/a',
-      preview: [],
-    },
-    logs: [],
-  }));
-
-  const appendMotionLog = (message: string) => {
-    if (!motionDebugEnabled.current) return;
-
-    const timestamp = new Date().toISOString().slice(11, 19);
-    setMotionDebug(prev => ({
-      ...prev,
-      logs: [`${timestamp} ${message}`, ...prev.logs].slice(0, 10),
-    }));
-  };
-
-  const collectMotionSample = (): MotionDebugSample => {
-    const trackStyle = trackRef.current ? window.getComputedStyle(trackRef.current) : null;
-    const stripeStyle = stripeRef.current ? window.getComputedStyle(stripeRef.current) : null;
-    const arrowStyle = forwardArrowRef.current ? window.getComputedStyle(forwardArrowRef.current) : null;
-    const backwardArrowStyle = backwardArrowRef.current ? window.getComputedStyle(backwardArrowRef.current) : null;
-    const trackRect = trackRef.current?.getBoundingClientRect();
-
-    return {
-      viewport: `${window.innerWidth}x${window.innerHeight} @${window.devicePixelRatio || 1}`,
-      reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-      trackLeft: trackRect ? `${trackRect.left.toFixed(2)}px` : 'missing',
-      trackTransform: trackStyle?.transform || 'missing',
-      trackTransition: trackStyle
-        ? `${trackStyle.transitionProperty} | ${trackStyle.transitionDuration} | ${trackStyle.transitionTimingFunction}`
-        : 'missing',
-      stripeTransform: stripeStyle?.transform || 'missing',
-      stripeAnimation: stripeStyle
-        ? `${stripeStyle.animationName} | ${stripeStyle.animationDuration} | ${stripeStyle.animationPlayState}`
-        : 'missing',
-      arrowTransform: arrowStyle?.transform || 'missing',
-      arrowAnimation: arrowStyle
-        ? `${arrowStyle.animationName} | ${arrowStyle.animationDuration} | ${arrowStyle.animationPlayState}`
-        : 'missing',
-      backwardArrowTransform: backwardArrowStyle?.transform || 'missing',
-    };
-  };
-
-  const startMotionTrace = (label: string) => {
-    if (!motionDebugEnabled.current || motionTraceActive.current) return;
-
-    motionTraceActive.current = true;
-    setMotionDebug(prev => ({
-      ...prev,
-      trace: {
-        status: 'recording',
-        label,
-        frameCount: 0,
-        distinctTrackLeftCount: 0,
-        distinctStripeTransformCount: 0,
-        distinctArrowTransformCount: 0,
-        maxFrameGapMs: 0,
-        firstTrackLeft: 'n/a',
-        lastTrackLeft: 'n/a',
-        preview: [],
-      },
-    }));
-
-    const startedAt = performance.now();
-    let previousAt = startedAt;
-    const points: Array<{
-      t: number;
-      trackLeft: string;
-      stripeTransform: string;
-      arrowTransform: string;
-    }> = [];
-
-    const tick = (now: number) => {
-      const sample = collectMotionSample();
-      points.push({
-        t: Math.round(now - startedAt),
-        trackLeft: sample.trackLeft,
-        stripeTransform: sample.stripeTransform,
-        arrowTransform: sample.arrowTransform,
-      });
-
-      if (now - startedAt < 900) {
-        previousAt = now;
-        window.requestAnimationFrame(tick);
-        return;
-      }
-
-      const frameGaps: number[] = [];
-      for (let index = 1; index < points.length; index += 1) {
-        frameGaps.push(points[index].t - points[index - 1].t);
-      }
-
-      setMotionDebug(prev => ({
-        ...prev,
-        trace: {
-          status: 'done',
-          label,
-          frameCount: points.length,
-          distinctTrackLeftCount: new Set(points.map(point => point.trackLeft)).size,
-          distinctStripeTransformCount: new Set(points.map(point => point.stripeTransform)).size,
-          distinctArrowTransformCount: new Set(points.map(point => point.arrowTransform)).size,
-          maxFrameGapMs: frameGaps.length ? Math.max(...frameGaps) : 0,
-          firstTrackLeft: points[0]?.trackLeft || 'n/a',
-          lastTrackLeft: points.at(-1)?.trackLeft || 'n/a',
-          preview: points
-            .filter((_, index) => index < 6 || index >= Math.max(points.length - 4, 6))
-            .map(point => `${point.t}ms | track=${point.trackLeft} | stripe=${point.stripeTransform} | arrow=${point.arrowTransform}`),
-        },
-      }));
-
-      appendMotionLog(`trace done ${label} frames=${points.length}`);
-      motionTraceActive.current = false;
-    };
-
-    appendMotionLog(`trace start ${label}`);
-    window.requestAnimationFrame(tick);
-  };
 
   // Sync view state with URL hash
   useEffect(() => {
@@ -234,23 +49,10 @@ const App: React.FC = () => {
     activateVibration();
     touchEnd.current = null;
     touchStart.current = e.targetTouches[0].clientX;
-    if (motionDebugEnabled.current) {
-      setMotionDebug(prev => ({
-        ...prev,
-        lastTouch: `start ${e.targetTouches[0].clientX.toFixed(1)}`,
-      }));
-      appendMotionLog(`touchstart x=${e.targetTouches[0].clientX.toFixed(1)}`);
-    }
   };
 
   const onTouchMove = (e: React.TouchEvent) => {
     touchEnd.current = e.targetTouches[0].clientX;
-    if (motionDebugEnabled.current) {
-      setMotionDebug(prev => ({
-        ...prev,
-        lastTouch: `move ${e.targetTouches[0].clientX.toFixed(1)}`,
-      }));
-    }
   };
 
   const onTouchEnd = () => {
@@ -259,14 +61,6 @@ const App: React.FC = () => {
     const distance = touchStart.current - touchEnd.current;
     const isLeftSwipe = distance > minSwipeDistance;
     const isRightSwipe = distance < -minSwipeDistance;
-
-    if (motionDebugEnabled.current) {
-      setMotionDebug(prev => ({
-        ...prev,
-        lastTouch: `end ${touchEnd.current.toFixed(1)} | distance ${distance.toFixed(1)}`,
-      }));
-      appendMotionLog(`touchend distance=${distance.toFixed(1)} left=${isLeftSwipe} right=${isRightSwipe}`);
-    }
 
     if (isLeftSwipe && view === 'hero') {
       triggerHaptic();
@@ -293,85 +87,6 @@ const App: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [view]);
 
-  useEffect(() => {
-    if (!motionDebugEnabled.current) return;
-
-    setMotionDebug(prev => ({
-      ...prev,
-      view,
-      sample: collectMotionSample(),
-    }));
-  }, [view]);
-
-  useEffect(() => {
-    if (!motionDebugEnabled.current) return;
-
-    const track = trackRef.current;
-    const stripe = stripeRef.current;
-    const forwardArrow = forwardArrowRef.current;
-    const backwardArrow = backwardArrowRef.current;
-
-    const cleanups: Array<() => void> = [];
-    const registerEvent = (
-      node: HTMLElement | SVGElement | null,
-      name: string,
-      label: string
-    ) => {
-      if (!node) return;
-      const handler = () => appendMotionLog(`${label}:${name}`);
-      node.addEventListener(name, handler);
-      cleanups.push(() => node.removeEventListener(name, handler));
-    };
-
-    ['transitionrun', 'transitionstart', 'transitionend', 'transitioncancel'].forEach(eventName => {
-      registerEvent(track, eventName, 'track');
-    });
-
-    if (track) {
-      const traceOnRun = () => startMotionTrace(`view=${view}`);
-      track.addEventListener('transitionrun', traceOnRun);
-      cleanups.push(() => track.removeEventListener('transitionrun', traceOnRun));
-    }
-
-    ['animationstart', 'animationiteration', 'animationcancel'].forEach(eventName => {
-      registerEvent(stripe, eventName, 'stripe');
-      registerEvent(forwardArrow, eventName, 'arrow');
-      registerEvent(backwardArrow, eventName, 'back-arrow');
-    });
-
-    const intervalId = window.setInterval(() => {
-      setMotionDebug(prev => ({
-        ...prev,
-        view,
-        sample: collectMotionSample(),
-      }));
-    }, 250);
-
-    appendMotionLog('motion-debug mounted');
-
-    return () => {
-      cleanups.forEach(cleanup => cleanup());
-      window.clearInterval(intervalId);
-    };
-  }, [view]);
-
-  const copyMotionDebug = async () => {
-    if (!motionDebugEnabled.current || !navigator.clipboard) return;
-
-    const payload = JSON.stringify(
-      {
-        ...motionDebug,
-        view,
-        sample: collectMotionSample(),
-      },
-      null,
-      2
-    );
-
-    await navigator.clipboard.writeText(payload);
-    appendMotionLog('debug copied');
-  };
-
   return (
     <div
       className="relative h-[100svh] w-full overflow-hidden bg-white text-[#121212]"
@@ -381,7 +96,6 @@ const App: React.FC = () => {
       onTouchEnd={onTouchEnd}
     >
       <div
-        ref={trackRef}
         className={`flex w-[200vw] h-full transition-transform duration-700 ease-[cubic-bezier(0.77,0,0.175,1)] ${
           view === 'landing' ? '-translate-x-[100vw]' : 'translate-x-0'
         }`}
@@ -393,10 +107,7 @@ const App: React.FC = () => {
           {/* Mobile Swipe Guidance Indicator */}
           <div className="absolute top-[75px] left-1/2 -translate-x-1/2 z-40 md:hidden pointer-events-none">
             <div className="w-16 h-[3px] bg-white/15 rounded-full overflow-hidden">
-                <div
-                  ref={stripeRef}
-                  className="h-full w-full bg-gradient-to-r from-transparent via-white/50 to-transparent animate-guide-swipe"
-                />
+              <div className="h-full w-full bg-gradient-to-r from-transparent via-white/50 to-transparent animate-guide-swipe" />
             </div>
           </div>
 
@@ -410,10 +121,7 @@ const App: React.FC = () => {
                 {t.hero.navForward}
               </span>
               <div className="relative">
-                <ChevronRight
-                  ref={forwardArrowRef}
-                  className="w-4 h-4 md:w-5 md:h-5 text-white animate-[bounce-x_2s_infinite]"
-                />
+                <ChevronRight className="w-4 h-4 md:w-5 md:h-5 text-white animate-[bounce-x_2s_infinite]" />
               </div>
             </div>
           </button>
@@ -427,10 +135,7 @@ const App: React.FC = () => {
             className="h-full w-10 md:w-16 flex-shrink-0 z-50 flex flex-col items-center justify-center bg-white/30 backdrop-blur-2xl border-r border-zinc-200/30 hover:bg-zinc-100/40 transition-all group"
           >
             <div className="flex flex-col items-center gap-6 md:gap-8 group-hover:scale-110 transition-transform duration-300">
-              <ChevronLeft
-                ref={backwardArrowRef}
-                className="w-4 h-4 md:w-5 md:h-5 text-black animate-[bounce-x-reverse_2s_infinite]"
-              />
+              <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 text-black animate-[bounce-x-reverse_2s_infinite]" />
               <span className="[writing-mode:vertical-lr] rotate-180 font-black tracking-[0.4em] md:tracking-[0.5em] uppercase text-[9px] md:text-xs text-black/60">
                 {t.landing.nav.back}
               </span>
@@ -438,7 +143,7 @@ const App: React.FC = () => {
           </button>
 
           <div className="flex-1 h-full overflow-y-auto overflow-x-hidden">
-             <Landing onBack={toggleView} />
+            <Landing onBack={toggleView} />
           </div>
         </div>
       </div>
@@ -460,55 +165,6 @@ const App: React.FC = () => {
           animation: guide-swipe 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
         }
       `}</style>
-
-      {motionDebugEnabled.current && (
-        <div className="fixed inset-x-2 bottom-2 z-[999] max-h-[45svh] overflow-y-auto rounded-2xl bg-black/88 p-3 text-[10px] leading-relaxed text-white shadow-2xl">
-          <div className="mb-2 flex items-center justify-between gap-3">
-            <strong className="text-[11px] uppercase tracking-[0.18em] text-white/90">Motion Debug</strong>
-            <button
-              type="button"
-              onClick={copyMotionDebug}
-              className="pointer-events-auto rounded-full border border-white/20 px-3 py-1 text-[10px] uppercase tracking-[0.14em] text-white/85"
-            >
-              Copy
-            </button>
-          </div>
-          <div>view: {view}</div>
-          <div>lastTouch: {motionDebug.lastTouch}</div>
-          <div>viewport: {motionDebug.sample.viewport}</div>
-          <div>reducedMotion: {String(motionDebug.sample.reducedMotion)}</div>
-          <div>trackLeft: {motionDebug.sample.trackLeft}</div>
-          <div>trackTransform: {motionDebug.sample.trackTransform}</div>
-          <div>trackTransition: {motionDebug.sample.trackTransition}</div>
-          <div>stripeTransform: {motionDebug.sample.stripeTransform}</div>
-          <div>stripeAnimation: {motionDebug.sample.stripeAnimation}</div>
-          <div>arrowTransform: {motionDebug.sample.arrowTransform}</div>
-          <div>arrowAnimation: {motionDebug.sample.arrowAnimation}</div>
-          <div>backArrowTransform: {motionDebug.sample.backwardArrowTransform}</div>
-          <div className="mt-2 border-t border-white/10 pt-2">
-            <div>traceStatus: {motionDebug.trace.status}</div>
-            <div>traceLabel: {motionDebug.trace.label}</div>
-            <div>traceFrames: {motionDebug.trace.frameCount}</div>
-            <div>distinctTrackLeft: {motionDebug.trace.distinctTrackLeftCount}</div>
-            <div>distinctStripeTransform: {motionDebug.trace.distinctStripeTransformCount}</div>
-            <div>distinctArrowTransform: {motionDebug.trace.distinctArrowTransformCount}</div>
-            <div>maxFrameGapMs: {motionDebug.trace.maxFrameGapMs}</div>
-            <div>traceFirstTrack: {motionDebug.trace.firstTrackLeft}</div>
-            <div>traceLastTrack: {motionDebug.trace.lastTrackLeft}</div>
-          </div>
-          <div className="mt-2 break-all text-white/60">ua: {motionDebug.ua}</div>
-          <div className="mt-2 border-t border-white/10 pt-2 text-white/60">
-            {motionDebug.trace.preview.map(line => (
-              <div key={line}>{line}</div>
-            ))}
-          </div>
-          <div className="mt-2 border-t border-white/10 pt-2 text-white/75">
-            {motionDebug.logs.map(log => (
-              <div key={log}>{log}</div>
-            ))}
-          </div>
-        </div>
-      )}
     </div>
   );
 };
