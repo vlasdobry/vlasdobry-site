@@ -2,8 +2,10 @@ import React, { Suspense, lazy, useState, useEffect, useRef } from 'react';
 import { Hero } from './components/Hero';
 import { useI18n } from './i18n';
 
+const loadLanding = () => import('./components/Landing');
+
 const Landing = lazy(() =>
-  import('./components/Landing').then((module) => ({
+  loadLanding().then((module) => ({
     default: module.Landing,
   }))
 );
@@ -61,6 +63,39 @@ const App: React.FC = () => {
       window.history.replaceState(null, '', newHash ? `${baseUrl}${newHash}` : baseUrl);
     }
   }, [view]);
+
+  useEffect(() => {
+    if (landingReady) {
+      return;
+    }
+
+    const preloadLanding = () => {
+      void loadLanding();
+    };
+
+    const idleWindow = window as Window & {
+      cancelIdleCallback?: (handle: number) => void;
+      requestIdleCallback?: (
+        callback: IdleRequestCallback,
+        options?: IdleRequestOptions
+      ) => number;
+    };
+
+    if (typeof idleWindow.requestIdleCallback === 'function') {
+      const idleId = idleWindow.requestIdleCallback(() => {
+        preloadLanding();
+      }, { timeout: 1200 });
+
+      return () => {
+        idleWindow.cancelIdleCallback?.(idleId);
+      };
+    }
+
+    const timeoutId = window.setTimeout(preloadLanding, 300);
+    return () => {
+      window.clearTimeout(timeoutId);
+    };
+  }, [landingReady]);
 
   const activateVibration = () => {
     if (!vibrationActivated.current && 'vibrate' in navigator) {
@@ -139,9 +174,11 @@ const App: React.FC = () => {
       onTouchEnd={onTouchEnd}
     >
       <div
-        className={`flex w-[200vw] h-full transition-transform duration-700 ease-[cubic-bezier(0.77,0,0.175,1)] ${
+        data-transition-track
+        className={`flex w-[200vw] h-full transform-gpu transition-transform duration-700 ease-[cubic-bezier(0.77,0,0.175,1)] ${
           view === 'landing' ? '-translate-x-[100vw]' : 'translate-x-0'
         }`}
+        style={{ willChange: 'transform' }}
       >
         {/* Main Hero Screen */}
         <div className="w-[100vw] h-full flex-shrink-0 relative">
@@ -150,7 +187,11 @@ const App: React.FC = () => {
           {/* Mobile Swipe Guidance Indicator */}
           <div className="absolute top-[75px] left-1/2 -translate-x-1/2 z-40 md:hidden pointer-events-none">
             <div className="w-16 h-[3px] bg-white/15 rounded-full overflow-hidden">
-                <div className="h-full w-full bg-gradient-to-r from-transparent via-white/50 to-transparent animate-guide-swipe" />
+              <div
+                data-swipe-guide
+                className="h-full w-full transform-gpu bg-gradient-to-r from-transparent via-white/50 to-transparent animate-guide-swipe"
+                style={{ willChange: 'transform' }}
+              />
             </div>
           </div>
 
