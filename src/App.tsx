@@ -17,11 +17,25 @@ type MotionDebugSample = {
   backwardArrowTransform: string;
 };
 
+type MotionTraceSummary = {
+  status: 'idle' | 'recording' | 'done';
+  label: string;
+  frameCount: number;
+  distinctTrackLeftCount: number;
+  distinctStripeTransformCount: number;
+  distinctArrowTransformCount: number;
+  maxFrameGapMs: number;
+  firstTrackLeft: string;
+  lastTrackLeft: string;
+  preview: string[];
+};
+
 type MotionDebugState = {
   ua: string;
   view: 'hero' | 'landing';
   lastTouch: string;
   sample: MotionDebugSample;
+  trace: MotionTraceSummary;
   logs: string[];
 };
 
@@ -42,6 +56,7 @@ const App: React.FC = () => {
   const motionDebugEnabled = useRef(
     typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('motionDebug')
   );
+  const motionTraceActive = useRef(false);
   const { t } = useI18n();
 
   const minSwipeDistance = 70;
@@ -60,6 +75,18 @@ const App: React.FC = () => {
       arrowTransform: 'n/a',
       arrowAnimation: 'n/a',
       backwardArrowTransform: 'n/a',
+    },
+    trace: {
+      status: 'idle',
+      label: 'none',
+      frameCount: 0,
+      distinctTrackLeftCount: 0,
+      distinctStripeTransformCount: 0,
+      distinctArrowTransformCount: 0,
+      maxFrameGapMs: 0,
+      firstTrackLeft: 'n/a',
+      lastTrackLeft: 'n/a',
+      preview: [],
     },
     logs: [],
   }));
@@ -99,6 +126,81 @@ const App: React.FC = () => {
         : 'missing',
       backwardArrowTransform: backwardArrowStyle?.transform || 'missing',
     };
+  };
+
+  const startMotionTrace = (label: string) => {
+    if (!motionDebugEnabled.current || motionTraceActive.current) return;
+
+    motionTraceActive.current = true;
+    setMotionDebug(prev => ({
+      ...prev,
+      trace: {
+        status: 'recording',
+        label,
+        frameCount: 0,
+        distinctTrackLeftCount: 0,
+        distinctStripeTransformCount: 0,
+        distinctArrowTransformCount: 0,
+        maxFrameGapMs: 0,
+        firstTrackLeft: 'n/a',
+        lastTrackLeft: 'n/a',
+        preview: [],
+      },
+    }));
+
+    const startedAt = performance.now();
+    let previousAt = startedAt;
+    const points: Array<{
+      t: number;
+      trackLeft: string;
+      stripeTransform: string;
+      arrowTransform: string;
+    }> = [];
+
+    const tick = (now: number) => {
+      const sample = collectMotionSample();
+      points.push({
+        t: Math.round(now - startedAt),
+        trackLeft: sample.trackLeft,
+        stripeTransform: sample.stripeTransform,
+        arrowTransform: sample.arrowTransform,
+      });
+
+      if (now - startedAt < 900) {
+        previousAt = now;
+        window.requestAnimationFrame(tick);
+        return;
+      }
+
+      const frameGaps: number[] = [];
+      for (let index = 1; index < points.length; index += 1) {
+        frameGaps.push(points[index].t - points[index - 1].t);
+      }
+
+      setMotionDebug(prev => ({
+        ...prev,
+        trace: {
+          status: 'done',
+          label,
+          frameCount: points.length,
+          distinctTrackLeftCount: new Set(points.map(point => point.trackLeft)).size,
+          distinctStripeTransformCount: new Set(points.map(point => point.stripeTransform)).size,
+          distinctArrowTransformCount: new Set(points.map(point => point.arrowTransform)).size,
+          maxFrameGapMs: frameGaps.length ? Math.max(...frameGaps) : 0,
+          firstTrackLeft: points[0]?.trackLeft || 'n/a',
+          lastTrackLeft: points.at(-1)?.trackLeft || 'n/a',
+          preview: points
+            .filter((_, index) => index < 6 || index >= Math.max(points.length - 4, 6))
+            .map(point => `${point.t}ms | track=${point.trackLeft} | stripe=${point.stripeTransform} | arrow=${point.arrowTransform}`),
+        },
+      }));
+
+      appendMotionLog(`trace done ${label} frames=${points.length}`);
+      motionTraceActive.current = false;
+    };
+
+    appendMotionLog(`trace start ${label}`);
+    window.requestAnimationFrame(tick);
   };
 
   // Sync view state with URL hash
@@ -224,6 +326,12 @@ const App: React.FC = () => {
     ['transitionrun', 'transitionstart', 'transitionend', 'transitioncancel'].forEach(eventName => {
       registerEvent(track, eventName, 'track');
     });
+
+    if (track) {
+      const traceOnRun = () => startMotionTrace(`view=${view}`);
+      track.addEventListener('transitionrun', traceOnRun);
+      cleanups.push(() => track.removeEventListener('transitionrun', traceOnRun));
+    }
 
     ['animationstart', 'animationiteration', 'animationcancel'].forEach(eventName => {
       registerEvent(stripe, eventName, 'stripe');
@@ -377,7 +485,23 @@ const App: React.FC = () => {
           <div>arrowTransform: {motionDebug.sample.arrowTransform}</div>
           <div>arrowAnimation: {motionDebug.sample.arrowAnimation}</div>
           <div>backArrowTransform: {motionDebug.sample.backwardArrowTransform}</div>
+          <div className="mt-2 border-t border-white/10 pt-2">
+            <div>traceStatus: {motionDebug.trace.status}</div>
+            <div>traceLabel: {motionDebug.trace.label}</div>
+            <div>traceFrames: {motionDebug.trace.frameCount}</div>
+            <div>distinctTrackLeft: {motionDebug.trace.distinctTrackLeftCount}</div>
+            <div>distinctStripeTransform: {motionDebug.trace.distinctStripeTransformCount}</div>
+            <div>distinctArrowTransform: {motionDebug.trace.distinctArrowTransformCount}</div>
+            <div>maxFrameGapMs: {motionDebug.trace.maxFrameGapMs}</div>
+            <div>traceFirstTrack: {motionDebug.trace.firstTrackLeft}</div>
+            <div>traceLastTrack: {motionDebug.trace.lastTrackLeft}</div>
+          </div>
           <div className="mt-2 break-all text-white/60">ua: {motionDebug.ua}</div>
+          <div className="mt-2 border-t border-white/10 pt-2 text-white/60">
+            {motionDebug.trace.preview.map(line => (
+              <div key={line}>{line}</div>
+            ))}
+          </div>
           <div className="mt-2 border-t border-white/10 pt-2 text-white/75">
             {motionDebug.logs.map(log => (
               <div key={log}>{log}</div>
