@@ -82,6 +82,31 @@ export default defineConfig({
     },
     build: {
       rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (!id.includes('node_modules')) {
+              return undefined;
+            }
+
+            if (id.includes('react') || id.includes('scheduler')) {
+              return 'react-vendor';
+            }
+
+            if (id.includes('lucide-react')) {
+              return 'lucide-vendor';
+            }
+
+            if (
+              id.includes('marked') ||
+              id.includes('dompurify') ||
+              id.includes('gray-matter')
+            ) {
+              return 'content-vendor';
+            }
+
+            return 'vendor';
+          },
+        },
         input: {
           main: path.resolve(__dirname, 'index.html'),
           en: path.resolve(__dirname, 'en.html'),

@@ -1,50 +1,73 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useI18n } from '../i18n';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { analytics } from '../utils/analytics';
 
+function getInitialPortraitMode(): boolean {
+  return (
+    window.matchMedia('(orientation: portrait)').matches &&
+    !window.matchMedia('(min-width: 1024px)').matches
+  );
+}
+
 export const Hero: React.FC = () => {
   const { t } = useI18n();
+  const [showPortraitImage, setShowPortraitImage] = useState(getInitialPortraitMode);
+
+  useEffect(() => {
+    const portraitQuery = window.matchMedia('(orientation: portrait)');
+    const desktopQuery = window.matchMedia('(min-width: 1024px)');
+    const syncMode = () => {
+      setShowPortraitImage(portraitQuery.matches && !desktopQuery.matches);
+    };
+
+    syncMode();
+    portraitQuery.addEventListener('change', syncMode);
+    desktopQuery.addEventListener('change', syncMode);
+
+    return () => {
+      portraitQuery.removeEventListener('change', syncMode);
+      desktopQuery.removeEventListener('change', syncMode);
+    };
+  }, []);
 
   return (
     <section aria-label="Main screen" className="relative h-full w-full bg-[#121212] overflow-hidden">
-
-      {/* Mobile portrait: Full-screen background image */}
-      <div className="absolute inset-0 z-0 portrait:block hidden" aria-hidden="true">
-        <picture>
-          <source srcSet="/vlas-photo-mobile.webp" type="image/webp" />
-          <img
-            src="/vlas-photo-mobile.jpg"
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover grayscale"
-            loading="eager"
-            fetchPriority="high"
-          />
-        </picture>
-        <div className="absolute inset-0 bg-black/25" />
-      </div>
-
-      {/* Desktop & mobile landscape: Photo on right side */}
-      <div className="hidden landscape:flex lg:flex absolute right-0 top-0 w-1/2 h-full z-0 items-center justify-center">
-        <div className="relative w-[68%] h-[85%]">
+      {showPortraitImage ? (
+        <div className="absolute inset-0 z-0 portrait:block hidden" aria-hidden="true">
           <picture>
-            <source srcSet="/vlas-photo.webp" type="image/webp" />
+            <source srcSet="/vlas-photo-mobile.webp" type="image/webp" />
             <img
-              src="/vlas-photo.jpg"
-              alt={t.hero.photoAlt}
-              className="w-full h-full object-contain grayscale"
+              src="/vlas-photo-mobile.jpg"
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover grayscale"
               loading="eager"
               fetchPriority="high"
             />
           </picture>
           <div className="absolute inset-0 bg-black/25" />
-          {/* Gradient edges for smooth blend */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#121212] to-transparent" />
-            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#121212] to-transparent" />
+        </div>
+      ) : (
+        <div className="hidden landscape:flex lg:flex absolute right-0 top-0 w-1/2 h-full z-0 items-center justify-center">
+          <div className="relative w-[68%] h-[85%]">
+            <picture>
+              <source srcSet="/vlas-photo.webp" type="image/webp" />
+              <img
+                src="/vlas-photo.jpg"
+                alt={t.hero.photoAlt}
+                className="w-full h-full object-contain grayscale"
+                loading="eager"
+                fetchPriority="high"
+              />
+            </picture>
+            <div className="absolute inset-0 bg-black/25" />
+            <div className="absolute inset-0 pointer-events-none">
+              <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#121212] to-transparent" />
+              <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#121212] to-transparent" />
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Content Layer - on top */}
       <div className="relative z-20 h-full w-full flex flex-col justify-end pt-4 px-6 pb-4 pr-12 sm:pt-12 sm:px-12 sm:pb-8 sm:pr-24 lg:pt-24 lg:px-24 lg:pb-12 lg:pr-32 overflow-hidden">
