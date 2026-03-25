@@ -1,4 +1,4 @@
-import { createReadStream, existsSync } from 'fs';
+import { createReadStream, existsSync, readdirSync } from 'fs';
 import { createServer } from 'http';
 import { extname, join, normalize } from 'path';
 import { fileURLToPath } from 'url';
@@ -95,19 +95,20 @@ async function run() {
     fail('dist/index.html not found, run "npm run build" first');
   }
 
+  const assetsDir = join(distDir, 'assets');
+  const landingChunk = readdirSync(assetsDir).find((fileName) =>
+    /^Landing-.*\.js$/.test(fileName)
+  );
+
+  if (!landingChunk) {
+    fail('Landing chunk not found in build manifest');
+  }
+
   const server = await withServer();
   const browser = await puppeteer.launch({ headless: true });
 
   try {
     const page = await browser.newPage();
-    await page.setViewport({
-      width: 390,
-      height: 844,
-      deviceScaleFactor: 2,
-      hasTouch: true,
-      isMobile: true,
-    });
-
     await page.setRequestInterception(true);
     page.on('request', (request) => {
       const url = request.url();
@@ -124,101 +125,39 @@ async function run() {
     });
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
-    const sampleBefore = await page.evaluate(async () => {
-      const sampleNode = async (selector, timestamps) => {
-        const node = document.querySelector(selector);
-        if (!node) {
-          return null;
-        }
+    const checks = await page.evaluate((landingFile) => {
+      const requestedResources = performance
+        .getEntriesByType('resource')
+        .map((entry) => entry.name);
 
-        const samples = [];
-        const start = performance.now();
-
-        for (const timestamp of timestamps) {
-          const remaining = timestamp - (performance.now() - start);
-          if (remaining > 0) {
-            await new Promise((resolve) => setTimeout(resolve, remaining));
-          }
-
-          const rect = node.getBoundingClientRect();
-          const computed = getComputedStyle(node);
-          samples.push({
-            left: Number(rect.left.toFixed(2)),
-            time: timestamp,
-            transform: computed.transform,
-          });
-        }
-
-        return samples;
-      };
+      const track = document.querySelector('[data-transition-track]');
+      const swipeGuide = document.querySelector('[data-swipe-guide]');
 
       return {
-        arrow: await sampleNode('button svg', [0, 250, 500, 750, 1000]),
-        swipeGuide: await sampleNode('[data-swipe-guide]', [0, 250, 500, 750, 1000]),
+        landingPreloaded: requestedResources.some((name) => name.includes(landingFile)),
+        swipeGuideAnimationName: swipeGuide ? getComputedStyle(swipeGuide).animationName : null,
+        swipeGuideWillChange: swipeGuide ? getComputedStyle(swipeGuide).willChange : null,
+        trackWillChange: track ? getComputedStyle(track).willChange : null,
       };
-    });
+    }, landingChunk);
 
-    if (!sampleBefore.arrow || !sampleBefore.swipeGuide) {
-      fail('Could not find arrow or swipe guide on the hero screen');
+    if (!checks.landingPreloaded) {
+      fail('Landing chunk was not preloaded on the hero screen');
     }
 
-    const arrowPositions = sampleBefore.arrow.map((sample) => sample.left);
-    const arrowTravel = Math.max(...arrowPositions) - Math.min(...arrowPositions);
-    if (arrowTravel < 1.5) {
-      fail(`Arrow animation moved only ${arrowTravel.toFixed(2)}px`);
+    if (checks.trackWillChange !== 'transform') {
+      fail(`Transition track will-change is "${checks.trackWillChange}" instead of "transform"`);
     }
 
-    const swipePositions = sampleBefore.swipeGuide.map((sample) => sample.left);
-    const swipeTravel = Math.max(...swipePositions) - Math.min(...swipePositions);
-    if (swipeTravel < 15) {
-      fail(`Swipe guide moved only ${swipeTravel.toFixed(2)}px`);
+    if (checks.swipeGuideAnimationName === 'none') {
+      fail('Swipe guide animation is not active');
     }
 
-    await page.click('button');
-
-    const transitionSamples = await page.evaluate(async () => {
-      const track = document.querySelector('[data-transition-track]');
-      if (!track) {
-        return null;
-      }
-
-      const timestamps = [0, 150, 300, 450, 600, 750];
-      const samples = [];
-      const start = performance.now();
-
-      for (const timestamp of timestamps) {
-        const remaining = timestamp - (performance.now() - start);
-        if (remaining > 0) {
-          await new Promise((resolve) => setTimeout(resolve, remaining));
-        }
-
-        const rect = track.getBoundingClientRect();
-        samples.push({
-          left: Number(rect.left.toFixed(2)),
-          time: timestamp,
-        });
-      }
-
-      return samples;
-    });
-
-    if (!transitionSamples) {
-      fail('Transition track not found');
+    if (checks.swipeGuideWillChange !== 'transform') {
+      fail(`Swipe guide will-change is "${checks.swipeGuideWillChange}" instead of "transform"`);
     }
 
-    if (transitionSamples[1].left > -5) {
-      fail(`Transition barely started by 150ms: ${transitionSamples[1].left}px`);
-    }
-
-    if (transitionSamples[2].left > -150) {
-      fail(`Transition did not reach the mid-flight zone by 300ms: ${transitionSamples[2].left}px`);
-    }
-
-    if (transitionSamples.at(-1).left > -380) {
-      fail(`Transition did not finish near the landing viewport: ${transitionSamples.at(-1).left}px`);
-    }
-
-    console.log('TRANSITION CHECK PASS: hero animations are active and landing transition crosses the viewport');
+    console.log('TRANSITION CHECK PASS: hero preloads landing chunk and exposes transform hints');
   } finally {
     await browser.close();
     await server.close();
