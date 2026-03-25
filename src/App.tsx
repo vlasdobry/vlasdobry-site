@@ -1,42 +1,8 @@
-import React, { Suspense, lazy, useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Hero } from './components/Hero';
+import { Landing } from './components/Landing';
+import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { useI18n } from './i18n';
-
-const Landing = lazy(() =>
-  import('./components/Landing').then((module) => ({
-    default: module.Landing,
-  }))
-);
-
-const ForwardChevron = ({ className }: { className?: string }) => (
-  <svg
-    aria-hidden="true"
-    className={className}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="m9 18 6-6-6-6" />
-  </svg>
-);
-
-const BackChevron = ({ className }: { className?: string }) => (
-  <svg
-    aria-hidden="true"
-    className={className}
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="m15 18-6-6 6-6" />
-  </svg>
-);
 
 const App: React.FC = () => {
   // Initialize view from URL hash
@@ -45,7 +11,6 @@ const App: React.FC = () => {
   };
 
   const [view, setView] = useState<'hero' | 'landing'>(getInitialView);
-  const [landingReady, setLandingReady] = useState(view === 'landing');
   const touchStart = useRef<number | null>(null);
   const touchEnd = useRef<number | null>(null);
   const vibrationActivated = useRef(false);
@@ -77,13 +42,7 @@ const App: React.FC = () => {
 
   const toggleView = () => {
     triggerHaptic();
-    setView(prev => {
-      const nextView = prev === 'hero' ? 'landing' : 'hero';
-      if (nextView === 'landing') {
-        setLandingReady(true);
-      }
-      return nextView;
-    });
+    setView(prev => (prev === 'hero' ? 'landing' : 'hero'));
   };
 
   const onTouchStart = (e: React.TouchEvent) => {
@@ -105,7 +64,6 @@ const App: React.FC = () => {
 
     if (isLeftSwipe && view === 'hero') {
       triggerHaptic();
-      setLandingReady(true);
       setView('landing');
     }
     if (isRightSwipe && view === 'landing') {
@@ -118,7 +76,6 @@ const App: React.FC = () => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowRight' && view === 'hero') {
         triggerHaptic();
-        setLandingReady(true);
         setView('landing');
       }
       if (e.key === 'ArrowLeft' && view === 'landing') {
@@ -164,7 +121,7 @@ const App: React.FC = () => {
                 {t.hero.navForward}
               </span>
               <div className="relative">
-                <ForwardChevron className="w-4 h-4 md:w-5 md:h-5 text-white animate-[bounce-x_2s_infinite]" />
+                <ChevronRight className="w-4 h-4 md:w-5 md:h-5 text-white animate-[bounce-x_2s_infinite]" />
               </div>
             </div>
           </button>
@@ -178,7 +135,7 @@ const App: React.FC = () => {
             className="h-full w-10 md:w-16 flex-shrink-0 z-50 flex flex-col items-center justify-center bg-white/30 backdrop-blur-2xl border-r border-zinc-200/30 hover:bg-zinc-100/40 transition-all group"
           >
             <div className="flex flex-col items-center gap-6 md:gap-8 group-hover:scale-110 transition-transform duration-300">
-              <BackChevron className="w-4 h-4 md:w-5 md:h-5 text-black animate-[bounce-x-reverse_2s_infinite]" />
+              <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 text-black animate-[bounce-x-reverse_2s_infinite]" />
               <span className="[writing-mode:vertical-lr] rotate-180 font-black tracking-[0.4em] md:tracking-[0.5em] uppercase text-[9px] md:text-xs text-black/60">
                 {t.landing.nav.back}
               </span>
@@ -186,11 +143,7 @@ const App: React.FC = () => {
           </button>
 
           <div className="flex-1 h-full overflow-y-auto overflow-x-hidden">
-            {landingReady ? (
-              <Suspense fallback={<div className="h-full bg-white" aria-hidden="true" />}>
-                <Landing onBack={toggleView} />
-              </Suspense>
-            ) : null}
+             <Landing onBack={toggleView} />
           </div>
         </div>
       </div>
