@@ -494,14 +494,19 @@ async function handleHealthScore(
 
     const bodyJson = JSON.stringify(payload);
 
-    // Кешируем результат на 5 мин (не зависит от CORS-заголовков вызова).
-    const cacheResponse = new Response(bodyJson, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Cache-Control': 'public, max-age=300',
-      },
-    });
-    await cache.put(cacheKey, cacheResponse);
+    // Кешируем только если все 5 fetch'ей получили HTTP-ответ (status != 0).
+    // Сетевые ошибки (status=0) могут быть транзитными — не кешируем чтобы
+    // следующий запрос попробовал заново.
+    const allSucceeded = results.every(r => r.status !== 0);
+    if (allSucceeded) {
+      const cacheResponse = new Response(bodyJson, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Cache-Control': 'public, max-age=300',
+        },
+      });
+      await cache.put(cacheKey, cacheResponse);
+    }
 
     return new Response(bodyJson, {
       headers: { ...corsHeaders, 'Content-Type': 'application/json', 'X-Cache': 'MISS' },
@@ -723,6 +728,19 @@ async function fetchWithSafeRedirects(url: string, expectedHost: string): Promis
   throw new Error('Too many redirects');
 }
 
+/**
+ * Читает body с таймаутом. Для крупных файлов на медленном соединении между
+ * Cloudflare Worker и origin — стандартное чтение может зависнуть.
+ * Ограничивает размер MAX_CONTENT_SIZE и время REQUEST_TIMEOUT_MS.
+ */
+async function readBodyWithTimeout(response: Response): Promise<string> {
+  const bodyPromise = response.text().then(text => text.slice(0, MAX_CONTENT_SIZE));
+  const timeoutPromise = new Promise<string>((_, reject) => {
+    setTimeout(() => reject(new Error('Body read timeout')), REQUEST_TIMEOUT_MS);
+  });
+  return Promise.race([bodyPromise, timeoutPromise]);
+}
+
 async function fetchResource(url: string, expectedHost: string): Promise<FetchResult> {
   const startTime = Date.now();
 
@@ -741,7 +759,9 @@ async function fetchResource(url: string, expectedHost: string): Promise<FetchRe
       };
     }
 
-    const content = response.ok ? (await response.text()).slice(0, MAX_CONTENT_SIZE) : null;
+    // Body read с отдельным таймаутом — fetch() возвращает headers быстро,
+    // но чтение body на крупных файлах (25KB+) может зависать на 40+ сек.
+    const content = response.ok ? await readBodyWithTimeout(response) : null;
 
     // Сохраняем только нужные заголовки — не засоряем payload и не рискуем утечкой.
     const xRobotsTag = response.headers.get('x-robots-tag');
