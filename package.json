@@ -12,7 +12,7 @@
     "check": "npm run typecheck && npm run build && npm run smoke"
   },
   "dependencies": {
-    "@vlasdobry/geo-checker": "file:../geo-checker-lib",
+    "@vlasdobry/geo-checker": "file:./vendor/vlasdobry-geo-checker-1.0.0.tgz",
     "dompurify": "^3.3.1",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.562.0",

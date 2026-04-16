@@ -94,7 +94,9 @@ git push origin master  # Деплой на продакшен (автомати
 - `src/components/ComplianceChecker.tsx` — виджет проверки на 168-ФЗ (латиница в UI-элементах)
 
 **Health Score виджет:**
-- GEO-скоринг использует общую библиотеку `@vlasdobry/geo-checker` (`D:\Proekty\razrabotka-proektov-vs-code\Vlas\geo-checker-lib\`)
+- GEO-скоринг использует общую библиотеку `@vlasdobry/geo-checker` (исходник: `D:\Proekty\razrabotka-proektov-vs-code\Vlas\geo-checker-lib\`)
+- Библиотека vendored как `vendor/vlasdobry-geo-checker-1.0.0.tgz` — нужно для CI/CD (Docker build не видит файлы вне репо)
+- **При изменении библиотеки:** `cd ../geo-checker-lib && npm run pack:to-widget` → пересоберёт и положит в `vendor/`
 - Та же библиотека используется в Chrome-расширении AI Visibility Checker — виджет и расширение дают ОДИНАКОВЫЙ скор для одного сайта
 - Бесплатная экспресс-диагностика сайта (SEO: 8 параметров, GEO: 7 параметров)
 - SEO проверяет: Title, Description, H1, Viewport, Indexability (включая canonical и X-Robots-Tag), robots.txt, sitemap.xml (с lastmod), Schema.org
