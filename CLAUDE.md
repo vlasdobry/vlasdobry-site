@@ -94,9 +94,11 @@ git push origin master  # Деплой на продакшен (автомати
 - `src/components/ComplianceChecker.tsx` — виджет проверки на 168-ФЗ (латиница в UI-элементах)
 
 **Health Score виджет:**
-- Бесплатная экспресс-диагностика сайта (SEO: 8 параметров, GEO: 6 параметров)
+- GEO-скоринг использует общую библиотеку `@vlasdobry/geo-checker` (`D:\Proekty\razrabotka-proektov-vs-code\Vlas\geo-checker-lib\`)
+- Та же библиотека используется в Chrome-расширении AI Visibility Checker — виджет и расширение дают ОДИНАКОВЫЙ скор для одного сайта
+- Бесплатная экспресс-диагностика сайта (SEO: 8 параметров, GEO: 7 параметров)
 - SEO проверяет: Title, Description, H1, Viewport, Indexability (включая canonical и X-Robots-Tag), robots.txt, sitemap.xml (с lastmod), Schema.org
-- GEO проверяет: LLM Files (llms.txt структура + llms-full.txt), Schema.org (парсинг JSON-LD), FAQ/Q&A, E-E-A-T сигналы, Citability (длина абзацев, question-заголовки, статистическая плотность), AI-доступность (14 ботов по tier'ам)
+- GEO проверяет (7 категорий, 100 баллов): LLM Files (30) — llms.txt структура + llms-full.txt; Schema.org (20) — JSON-LD с рекурсией по вложенным entities; FAQ/Q&A (15) — FAQPage/HowTo schema + HTML patterns; E-E-A-T (10) — автор/контакты/соцсети/about; Citability (10) — длина абзацев/question-заголовки/статистика; AI-access (10) — доступ AI-ботов в robots.txt; Rendered vs Source (5) — детекция SPA и скрытого контента
 - Использует Cloudflare Worker (`health-score-proxy.vlasdobry.workers.dev`) как CORS-прокси
 - Worker с CF Cache API: кеш 5 минут по домену. Первый вызов 3-5с (MISS), последующие 0.4с (HIT)
 - Body read с отдельным таймаутом 10с (fetch() отдаёт headers быстро, но response.text() на крупных файлах может зависать)
