@@ -12,6 +12,9 @@ interface FetchResult {
   content: string | null;
   error: string | null;
   responseTime: number;
+  // Выборочные заголовки ответа — нужны для детекта X-Robots-Tag на стороне фронта.
+  // Поле необязательное, чтобы фронт оставался совместим со старой версией Worker'а.
+  headers?: Record<string, string>;
 }
 
 interface RateLimitEntry {
@@ -455,6 +458,23 @@ async function handleHealthScore(
       );
     }
 
+    // Cloudflare Cache API — кеш на 5 минут по домену.
+    // Решает проблему intermittent slow responses: первый вызов делает все 5 fetch'ей,
+    // последующие в течение 5 мин отдают мгновенно из кеша.
+    const cache = caches.default;
+    const cacheKey = new Request(
+      `https://cache.health-score-proxy/v1/${encodeURIComponent(cleanDomain)}`,
+      { method: 'GET' },
+    );
+
+    const cached = await cache.match(cacheKey);
+    if (cached) {
+      const cachedBody = await cached.text();
+      return new Response(cachedBody, {
+        headers: { ...corsHeaders, 'Content-Type': 'application/json', 'X-Cache': 'HIT' },
+      });
+    }
+
     const results = await Promise.all([
       fetchResource(`https://${cleanDomain}/llms.txt`, cleanDomain),
       fetchResource(`https://${cleanDomain}/llms-full.txt`, cleanDomain),
@@ -463,14 +483,29 @@ async function handleHealthScore(
       fetchResource(`https://${cleanDomain}/`, cleanDomain),
     ]);
 
-    return Response.json({
+    const payload = {
       domain: cleanDomain,
       llmsTxt: results[0],
       llmsFullTxt: results[1],
       robotsTxt: results[2],
       sitemapXml: results[3],
       homepage: results[4],
-    }, { headers: corsHeaders });
+    };
+
+    const bodyJson = JSON.stringify(payload);
+
+    // Кешируем результат на 5 мин (не зависит от CORS-заголовков вызова).
+    const cacheResponse = new Response(bodyJson, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Cache-Control': 'public, max-age=300',
+      },
+    });
+    await cache.put(cacheKey, cacheResponse);
+
+    return new Response(bodyJson, {
+      headers: { ...corsHeaders, 'Content-Type': 'application/json', 'X-Cache': 'MISS' },
+    });
   } catch {
     return Response.json(
       { error: 'Internal error' },
@@ -708,12 +743,18 @@ async function fetchResource(url: string, expectedHost: string): Promise<FetchRe
 
     const content = response.ok ? (await response.text()).slice(0, MAX_CONTENT_SIZE) : null;
 
+    // Сохраняем только нужные заголовки — не засоряем payload и не рискуем утечкой.
+    const xRobotsTag = response.headers.get('x-robots-tag');
+    const headers: Record<string, string> = {};
+    if (xRobotsTag) headers['x-robots-tag'] = xRobotsTag;
+
     return {
       url,
       status: response.status,
       content,
       error: null,
       responseTime,
+      headers,
     };
   } catch (error) {
     return {
