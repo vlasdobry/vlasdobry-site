@@ -2,6 +2,9 @@
 FROM public.ecr.aws/docker/library/node:20-alpine AS build
 WORKDIR /app
 COPY package*.json ./
+# Локальная зависимость @vlasdobry/geo-checker — vendored как tgz.
+# Копируем ДО npm ci, чтобы npm смог её найти.
+COPY vendor/ ./vendor/
 RUN npm ci
 COPY . .
 RUN npm run build
