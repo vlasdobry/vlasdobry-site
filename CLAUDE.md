@@ -74,6 +74,8 @@ git push origin master  # Деплой на продакшен (автомати
 - `/en/services/ppc` — PPC Advertising (EN)
 - `/168-fz` — проверка на 168-ФЗ (RU)
 - `/en/168-fz` — 168-FZ Compliance Check (EN)
+- `/extension/privacy` — Privacy Policy расширения AI Visibility Checker (RU)
+- `/en/extension/privacy` — Privacy Policy for AI Visibility Checker extension (EN)
 - `/blog` — блог со статьями (RU)
 - `/en/blog` — блог со статьями (EN)
 - `/blog/[slug]` — отдельная статья (RU)
@@ -222,7 +224,7 @@ git push origin master  # Деплой на продакшен (автомати
 
 **Терминология услуг:**
 - "8 параметров" (SEO) — технические проверки в бесплатном SEO Health Score
-- "6 параметров" (GEO) — проверки в бесплатном GEO Health Score (LLM Files, Schema.org, FAQ/Q&A, E-E-A-T, Citability, AI-доступность)
+- "7 параметров" (GEO) — проверки в бесплатном GEO Health Score (LLM Files, Schema.org, FAQ/Q&A, E-E-A-T, Citability, AI-доступность, Rendered vs Source)
 - "7 разделов аудита" — направления анализа в платном полном аудите (Technical SEO, On-Page, Content, Schema.org, Local SEO, Reputation, E-E-A-T)
 
 ## Ключевые файлы
