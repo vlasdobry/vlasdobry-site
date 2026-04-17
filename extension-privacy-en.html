@@ -144,7 +144,7 @@
 
         <div class="label">Privacy Policy</div>
         <h1>AI Visibility Checker</h1>
-        <div class="meta">Last updated: April 17, 2026</div>
+        <div class="meta">Last updated: April 17, 2026 (v2 — added per-check numeric scores)</div>
 
         <div class="callout">
             <p><strong>TL;DR:</strong> The extension does not collect personal data. Only anonymous usage statistics (how many times it ran, what score was produced). No page content, URLs, cookies, or browsing history is transmitted.</p>
@@ -160,10 +160,13 @@
             <li><code>event</code> — event type: install, audit start, export report, link click</li>
             <li><code>domain</code> — only the domain of the audited site (e.g. <code>example.com</code>), without path or query parameters</li>
             <li><code>score</code> — the audit score (0–100)</li>
+            <li><code>check_<em>id</em></code> — numeric score for each of the 7 checks (Schema.org, llms.txt, E-E-A-T, FAQ, etc.). Numbers only, no page content</li>
+            <li><code>status_level</code> — category of the final score (1–4)</li>
             <li><code>locale</code> — browser interface language (e.g. <code>en</code> or <code>ru</code>)</li>
             <li><code>version</code> — extension version</li>
             <li><code>ts</code> — event timestamp (Unix time)</li>
         </ul>
+        <p>Aggregated data (e.g. "percentage of sites without llms.txt") may be used for market research and blog publications, without identifying specific domains.</p>
 
         <h2>What we do NOT collect</h2>
         <ul>
