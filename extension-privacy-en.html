@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light only">
+    <title>Privacy Policy — AI Visibility Checker | Vlas Fedorov</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <!-- Yandex.Metrika counter -->
+    <script defer src="/yandex-metrika.js"></script>
+
+    <!-- SEO -->
+    <meta name="description" content="Privacy Policy for AI Visibility Checker Chrome extension. What data is collected, how it's stored, how to delete it.">
+    <meta name="robots" content="noindex, follow">
+    <meta name="author" content="Vlas Fedorov">
+
+    <!-- Canonical & Hreflang -->
+    <link rel="canonical" href="https://vlasdobry.ru/en/extension/privacy/">
+    <link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/extension/privacy/">
+    <link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/extension/privacy/">
+    <link rel="alternate" hreflang="x-default" href="https://vlasdobry.ru/extension/privacy/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100svh;
+            background: #121212;
+            color: #fff;
+            line-height: 1.6;
+            padding: 48px 24px 80px;
+        }
+        @media (min-width: 640px) { body { padding: 64px 48px 120px; } }
+        @media (min-width: 1024px) { body { padding: 80px 96px 160px; } }
+
+        .container { max-width: 720px; margin: 0 auto; }
+
+        .logo {
+            display: inline-block;
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            color: #fff;
+            text-decoration: none;
+            margin-bottom: 48px;
+        }
+
+        .label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+
+        .meta {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 48px;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-top: 48px;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-top: 24px;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        p, li {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 12px;
+        }
+
+        ul { padding-left: 24px; margin-bottom: 16px; }
+        li { margin-bottom: 6px; }
+
+        a {
+            color: #60a5fa;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(96, 165, 250, 0.3);
+            transition: border-color 0.2s;
+        }
+        a:hover { border-color: #60a5fa; }
+
+        code {
+            font-family: 'Menlo', 'Monaco', monospace;
+            font-size: 13px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #93c5fd;
+        }
+
+        .callout {
+            background: rgba(96, 165, 250, 0.08);
+            border-left: 3px solid #60a5fa;
+            padding: 16px 20px;
+            margin: 24px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .callout p:last-child { margin-bottom: 0; }
+
+        footer {
+            margin-top: 80px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        footer a { font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/en/" class="logo">vlasdobry.ru</a>
+
+        <div class="label">Privacy Policy</div>
+        <h1>AI Visibility Checker</h1>
+        <div class="meta">Last updated: April 17, 2026</div>
+
+        <div class="callout">
+            <p><strong>TL;DR:</strong> The extension does not collect personal data. Only anonymous usage statistics (how many times it ran, what score was produced). No page content, URLs, cookies, or browsing history is transmitted.</p>
+        </div>
+
+        <h2>Who we are</h2>
+        <p>AI Visibility Checker is a browser extension that audits website readiness for AI search engines (ChatGPT, Perplexity, Claude, YandexGPT, Gemini). Developer — Vlas Fedorov (<a href="mailto:vlasdobry@gmail.com">vlasdobry@gmail.com</a>).</p>
+
+        <h2>What data we collect</h2>
+        <p>The extension sends the following data to analytics:</p>
+        <ul>
+            <li><code>uid</code> — a random anonymous identifier (UUID v4), generated on your device, not linked to your identity</li>
+            <li><code>event</code> — event type: install, audit start, export report, link click</li>
+            <li><code>domain</code> — only the domain of the audited site (e.g. <code>example.com</code>), without path or query parameters</li>
+            <li><code>score</code> — the audit score (0–100)</li>
+            <li><code>locale</code> — browser interface language (e.g. <code>en</code> or <code>ru</code>)</li>
+            <li><code>version</code> — extension version</li>
+            <li><code>ts</code> — event timestamp (Unix time)</li>
+        </ul>
+
+        <h2>What we do NOT collect</h2>
+        <ul>
+            <li>Name, email, phone — no personal information</li>
+            <li>IP address is not stored in the database</li>
+            <li>Content of audited pages</li>
+            <li>Full URLs — only the domain</li>
+            <li>Cookies, passwords, form data</li>
+            <li>Browsing history</li>
+            <li>Data from tabs you did not audit with the extension</li>
+        </ul>
+
+        <h2>Why we collect data</h2>
+        <p>Statistics are used only to:</p>
+        <ul>
+            <li>Understand how many people use the extension</li>
+            <li>Improve the product based on real usage patterns</li>
+            <li>See average audit scores (without linking to specific users)</li>
+        </ul>
+        <p>Data is not sold to third parties, not used for advertising, not shared with ad networks.</p>
+
+        <h2>Where data is stored</h2>
+        <p>Events are stored in a Cloudflare D1 (SQLite) database in the Eastern Europe region. Only the developer has access to the database.</p>
+        <p>The list of AI bots and scoring settings are stored locally in <code>chrome.storage.local</code> on your device and are not synced to the cloud.</p>
+
+        <h2>Extension permissions</h2>
+        <p>The extension requests the following permissions:</p>
+        <ul>
+            <li><code>activeTab</code> — access to the active tab to read HTML for analysis (only when you click the icon)</li>
+            <li><code>storage</code> — store settings and the anonymous identifier on your device</li>
+            <li><code>scripting</code> — inject the analysis script into the active tab (needed after the extension reloads)</li>
+            <li><code>alarms</code> — periodically refresh the configuration (bot list, scoring weights)</li>
+        </ul>
+        <p>The extension does not run in the background, does not read data from other tabs automatically, and does not track your browsing.</p>
+
+        <h2>Third-party services</h2>
+        <ul>
+            <li><strong>Cloudflare</strong> — hosting for Worker and D1 database (<a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare privacy policy</a>)</li>
+            <li><strong>Google Chrome Web Store</strong> — extension delivery (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google privacy policy</a>)</li>
+        </ul>
+        <p>No other third-party services. Google Analytics, Yandex.Metrika, Facebook Pixel and similar trackers are not used.</p>
+
+        <h2>Data retention</h2>
+        <p>Analytics data is stored for up to 24 months and then automatically deleted. If you want your data deleted sooner — email <a href="mailto:vlasdobry@gmail.com">vlasdobry@gmail.com</a> with your anonymous <code>uid</code> (find it at <code>chrome://extensions</code> → AI Visibility Checker → service worker → Application → Storage → <code>userId</code>). We'll delete within 30 days.</p>
+
+        <h2>Your rights</h2>
+        <ul>
+            <li><strong>Delete everything with one action:</strong> remove the extension via <code>chrome://extensions</code>. Local data (<code>userId</code>) disappears automatically.</li>
+            <li><strong>Delete event history on the server:</strong> email us — we'll delete by your <code>uid</code>.</li>
+            <li><strong>Request a copy of your data:</strong> email us — we'll send everything linked to your <code>uid</code>.</li>
+            <li><strong>Opt out of collection:</strong> block <code>geo-checker-api.vlasdobry.workers.dev</code> in your firewall or uninstall the extension.</li>
+        </ul>
+
+        <h2>Policy changes</h2>
+        <p>For material changes to this policy, we'll display a notice directly in the extension via remote config. The last update date is shown at the top of this page.</p>
+
+        <h2>Contact</h2>
+        <p>For any privacy-related questions, contact <a href="mailto:vlasdobry@gmail.com">vlasdobry@gmail.com</a>.</p>
+
+        <footer>
+            <p><a href="https://vlasdobry.ru/en/">Home</a> &middot; <a href="https://vlasdobry.ru/extension/privacy/">Русская версия</a></p>
+        </footer>
+    </div>
+</body>
+</html>

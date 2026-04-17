@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light only">
+    <title>Политика конфиденциальности AI Visibility Checker | Влас Фёдоров</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+    <!-- Yandex.Metrika counter -->
+    <script defer src="/yandex-metrika.js"></script>
+
+    <!-- SEO -->
+    <meta name="description" content="Политика конфиденциальности расширения AI Visibility Checker для Chrome. Какие данные собираются, как хранятся, как удалить.">
+    <meta name="robots" content="noindex, follow">
+    <meta name="author" content="Влас Фёдоров">
+
+    <!-- Canonical & Hreflang -->
+    <link rel="canonical" href="https://vlasdobry.ru/extension/privacy/">
+    <link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/extension/privacy/">
+    <link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/extension/privacy/">
+    <link rel="alternate" hreflang="x-default" href="https://vlasdobry.ru/extension/privacy/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100svh;
+            background: #121212;
+            color: #fff;
+            line-height: 1.6;
+            padding: 48px 24px 80px;
+        }
+        @media (min-width: 640px) { body { padding: 64px 48px 120px; } }
+        @media (min-width: 1024px) { body { padding: 80px 96px 160px; } }
+
+        .container { max-width: 720px; margin: 0 auto; }
+
+        .logo {
+            display: inline-block;
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            color: #fff;
+            text-decoration: none;
+            margin-bottom: 48px;
+        }
+
+        .label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+
+        .meta {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 48px;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin-top: 48px;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-top: 24px;
+            margin-bottom: 8px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        p, li {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 12px;
+        }
+
+        ul { padding-left: 24px; margin-bottom: 16px; }
+        li { margin-bottom: 6px; }
+
+        a {
+            color: #60a5fa;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(96, 165, 250, 0.3);
+            transition: border-color 0.2s;
+        }
+        a:hover { border-color: #60a5fa; }
+
+        code {
+            font-family: 'Menlo', 'Monaco', monospace;
+            font-size: 13px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #93c5fd;
+        }
+
+        .callout {
+            background: rgba(96, 165, 250, 0.08);
+            border-left: 3px solid #60a5fa;
+            padding: 16px 20px;
+            margin: 24px 0;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .callout p:last-child { margin-bottom: 0; }
+
+        footer {
+            margin-top: 80px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        footer a { font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="logo">vlasdobry.ru</a>
+
+        <div class="label">Политика конфиденциальности</div>
+        <h1>AI Visibility Checker</h1>
+        <div class="meta">Последнее обновление: 17 апреля 2026 г.</div>
+
+        <div class="callout">
+            <p><strong>Коротко:</strong> расширение не собирает персональные данные. Только анонимная статистика использования (сколько раз запустили, какой получили скор). Никакой контент страниц, URL, cookies, истории браузера не передаётся.</p>
+        </div>
+
+        <h2>Кто мы</h2>
+        <p>AI Visibility Checker — браузерное расширение для проверки готовности сайта к поиску в нейросетях (ChatGPT, Perplexity, Claude, YandexGPT, Gemini). Разработчик — Влас Фёдоров (<a href="mailto:vlasdobry@gmail.com">vlasdobry@gmail.com</a>).</p>
+
+        <h2>Какие данные собираются</h2>
+        <p>Расширение отправляет следующие данные в аналитику:</p>
+        <ul>
+            <li><code>uid</code> — случайный анонимный идентификатор (UUID v4), генерируется на устройстве, не связан с вашей личностью</li>
+            <li><code>event</code> — тип события: установка, запуск аудита, экспорт отчёта, клик по ссылке</li>
+            <li><code>domain</code> — только домен проверяемого сайта (например, <code>example.com</code>), без пути и параметров URL</li>
+            <li><code>score</code> — итоговый скор аудита (0–100)</li>
+            <li><code>locale</code> — язык интерфейса браузера (например, <code>ru</code> или <code>en</code>)</li>
+            <li><code>version</code> — версия расширения</li>
+            <li><code>ts</code> — время события (Unix timestamp)</li>
+        </ul>
+
+        <h2>Какие данные НЕ собираются</h2>
+        <ul>
+            <li>Имя, email, телефон — никакая персональная информация</li>
+            <li>IP-адрес не сохраняется в базе данных</li>
+            <li>Содержимое проверяемых страниц</li>
+            <li>Полные URL — только домен</li>
+            <li>Cookies, пароли, данные форм</li>
+            <li>История браузера</li>
+            <li>Данные из других вкладок, которые вы не проверяли через расширение</li>
+        </ul>
+
+        <h2>Зачем собираются данные</h2>
+        <p>Статистика нужна только чтобы:</p>
+        <ul>
+            <li>Понимать, сколько людей пользуются расширением</li>
+            <li>Улучшать продукт на основе реальных паттернов использования</li>
+            <li>Видеть средние скоры по аудитам (без привязки к конкретным пользователям)</li>
+        </ul>
+        <p>Данные не продаются третьим лицам, не используются для рекламы, не передаются рекламным сетям.</p>
+
+        <h2>Где хранятся данные</h2>
+        <p>События сохраняются в базе данных Cloudflare D1 (SQLite) в регионе Восточной Европы. Доступ к базе имеет только разработчик.</p>
+        <p>Список ботов AI-поисковиков и настройки скоринга хранятся локально в <code>chrome.storage.local</code> на вашем устройстве и не синхронизируются с облаком.</p>
+
+        <h2>Разрешения расширения</h2>
+        <p>Расширение запрашивает следующие разрешения:</p>
+        <ul>
+            <li><code>activeTab</code> — доступ к активной вкладке, чтобы прочитать HTML для анализа (только при нажатии на иконку)</li>
+            <li><code>storage</code> — сохранение настроек и анонимного идентификатора на вашем устройстве</li>
+            <li><code>scripting</code> — инъекция скрипта анализа в активную вкладку (нужно после перезагрузки расширения)</li>
+            <li><code>alarms</code> — периодическое обновление конфигурации (карты ботов, веса скоринга)</li>
+        </ul>
+        <p>Расширение не работает в фоне, не читает данные с других вкладок автоматически, не следит за вашим браузингом.</p>
+
+        <h2>Сторонние сервисы</h2>
+        <ul>
+            <li><strong>Cloudflare</strong> — хостинг Worker и D1-базы (<a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">политика Cloudflare</a>)</li>
+            <li><strong>Google Chrome Web Store</strong> — доставка расширения (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener">политика Google</a>)</li>
+        </ul>
+        <p>Других сторонних сервисов нет. Google Analytics, Yandex.Metrika, Facebook Pixel и подобные трекеры не используются.</p>
+
+        <h2>Срок хранения</h2>
+        <p>Данные аналитики хранятся до 24 месяцев, после чего удаляются автоматически. Если вы хотите удалить ваши данные раньше — напишите на <a href="mailto:vlasdobry@gmail.com">vlasdobry@gmail.com</a>, укажите анонимный <code>uid</code> (его можно найти в <code>chrome://extensions</code> → AI Visibility Checker → service worker → Application → Storage → <code>userId</code>). Удалим в течение 30 дней.</p>
+
+        <h2>Ваши права</h2>
+        <ul>
+            <li><strong>Удалить всё одним действием:</strong> удалите расширение через <code>chrome://extensions</code>. Локальные данные (<code>userId</code>) исчезнут автоматически.</li>
+            <li><strong>Удалить историю событий с сервера:</strong> напишите нам — удалим по вашему <code>uid</code>.</li>
+            <li><strong>Запросить копию данных:</strong> напишите — вышлем всё, что связано с вашим <code>uid</code>.</li>
+            <li><strong>Отказаться от сбора:</strong> заблокируйте <code>geo-checker-api.vlasdobry.workers.dev</code> в файрволе или удалите расширение.</li>
+        </ul>
+
+        <h2>Изменения политики</h2>
+        <p>При существенных изменениях этой политики мы покажем уведомление прямо в расширении через remote config. Дата последнего обновления указана в начале страницы.</p>
+
+        <h2>Контакты</h2>
+        <p>По всем вопросам о конфиденциальности пишите на <a href="mailto:vlasdobry@gmail.com">vlasdobry@gmail.com</a>.</p>
+
+        <footer>
+            <p><a href="https://vlasdobry.ru/">На главную</a> &middot; <a href="https://vlasdobry.ru/en/extension/privacy/">English version</a></p>
+        </footer>
+    </div>
+</body>
+</html>

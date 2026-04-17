@@ -83,6 +83,17 @@ function run() {
     if (!mustContain(route, '<div id="root"></div>')) hasErrors = true;
   }
 
+  // Статические страницы (без React) — проверяем существование и ключевое содержимое
+  const staticRoutes = [
+    { route: 'extension/privacy/index.html', marker: 'AI Visibility Checker' },
+    { route: 'en/extension/privacy/index.html', marker: 'AI Visibility Checker' },
+  ];
+
+  for (const { route, marker } of staticRoutes) {
+    if (!mustExist(route)) hasErrors = true;
+    if (!mustContain(route, marker)) hasErrors = true;
+  }
+
   const ruSlugs = loadBlogSlugs('ru');
   const enSlugs = loadBlogSlugs('en');
 

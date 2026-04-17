@@ -25,6 +25,8 @@ const moves = [
   { src: 'blog-en.html', dest: 'en/blog/index.html' },
   { src: '168-fz.html', dest: '168-fz/index.html' },
   { src: '168-fz-en.html', dest: 'en/168-fz/index.html' },
+  { src: 'extension-privacy.html', dest: 'extension/privacy/index.html' },
+  { src: 'extension-privacy-en.html', dest: 'en/extension/privacy/index.html' },
 ];
 
 for (const { src, dest } of moves) {
