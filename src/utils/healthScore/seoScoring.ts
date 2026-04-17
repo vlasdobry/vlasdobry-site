@@ -1,5 +1,6 @@
 // src/utils/healthScore/seoScoring.ts
 import type { ResourceResult, Issue, SeoHealthScore } from './types';
+import { extractJsonLdTypes, hasJsonLd } from './jsonLd';
 
 type Lang = 'ru' | 'en';
 
@@ -190,10 +191,15 @@ function scoreH1(html: string, lang: Lang): { score: number; issues: Issue[] } {
   return { score: maxScore, issues };
 }
 
-function scoreIndexability(html: string, lang: Lang): { score: number; issues: Issue[] } {
+function scoreIndexability(
+  html: string,
+  homepageHeaders: Record<string, string> | undefined,
+  lang: Lang
+): { score: number; issues: Issue[] } {
   const issues: Issue[] = [];
   const maxScore = WEIGHTS.indexability;
 
+  // 1. Meta robots noindex
   const noindexMatch = html.match(/<meta[^>]*name=["']robots["'][^>]*content=["']([^"']*)["']/i);
   const robotsContent = noindexMatch?.[1]?.toLowerCase() || '';
 
@@ -204,6 +210,38 @@ function scoreIndexability(html: string, lang: Lang): { score: number; issues: I
       description: tr(lang, 'Мета-тег robots содержит noindex', 'robots meta tag contains noindex'),
     });
     return { score: 0, issues };
+  }
+
+  // 2. HTTP заголовок X-Robots-Tag (может быть установлен на уровне сервера).
+  // Проверяем только если Worker передал заголовки — иначе деградация тихая.
+  const xRobotsTag = homepageHeaders?.['x-robots-tag']?.toLowerCase() || '';
+  if (xRobotsTag.includes('noindex')) {
+    issues.push({
+      severity: 'critical',
+      title: tr(lang, 'X-Robots-Tag: noindex', 'X-Robots-Tag: noindex'),
+      description: tr(
+        lang,
+        'HTTP-заголовок запрещает индексацию на уровне сервера',
+        'HTTP header blocks indexing at the server level'
+      ),
+    });
+    return { score: 0, issues };
+  }
+
+  // 3. Canonical — отсутствие не критично, но это info-замечание.
+  const hasCanonical = /<link[^>]*rel=["']canonical["']/i.test(html);
+
+  if (!hasCanonical) {
+    issues.push({
+      severity: 'info',
+      title: tr(lang, 'Canonical URL не указан', 'Canonical URL is missing'),
+      description: tr(
+        lang,
+        'Добавьте <link rel="canonical"> для защиты от дублей',
+        'Add <link rel="canonical"> to prevent duplicate content'
+      ),
+    });
+    return { score: Math.round(maxScore * 0.8), issues };
   }
 
   issues.push({
@@ -284,7 +322,22 @@ function scoreSitemap(sitemapXml: ResourceResult, lang: Lang): { score: number; 
     return { score: 0, issues };
   }
 
-  const urlCount = (sitemapXml.content.match(/<loc>/gi) || []).length;
+  const content = sitemapXml.content;
+
+  // Валидность XML (грубо: есть <urlset> или <sitemapindex>).
+  const hasUrlset = /<urlset\b/i.test(content);
+  const hasSitemapIndex = /<sitemapindex\b/i.test(content);
+
+  if (!hasUrlset && !hasSitemapIndex) {
+    issues.push({
+      severity: 'warning',
+      title: tr(lang, 'sitemap.xml невалиден', 'sitemap.xml is invalid'),
+      description: tr(lang, 'Нет корневого элемента urlset/sitemapindex', 'Missing root urlset/sitemapindex element'),
+    });
+    return { score: Math.round(maxScore * 0.3), issues };
+  }
+
+  const urlCount = (content.match(/<loc>/gi) || []).length;
 
   if (urlCount === 0) {
     issues.push({
@@ -293,6 +346,26 @@ function scoreSitemap(sitemapXml: ResourceResult, lang: Lang): { score: number; 
       description: tr(lang, 'Файл есть, но URL не найдены', 'File exists but URLs were not found'),
     });
     return { score: Math.round(maxScore * 0.3), issues };
+  }
+
+  // lastmod — опциональный, но желательный. Без него поисковики не знают о свежести.
+  // Мы проверяем только urlset (у sitemapindex структура другая).
+  if (hasUrlset) {
+    const lastmodCount = (content.match(/<lastmod>/gi) || []).length;
+    const lastmodCoverage = lastmodCount / urlCount;
+
+    if (lastmodCoverage < 0.5) {
+      issues.push({
+        severity: 'info',
+        title: tr(lang, `sitemap.xml: ${urlCount} URL, мало lastmod`, `sitemap.xml: ${urlCount} URLs, few lastmod`),
+        description: tr(
+          lang,
+          'Добавьте <lastmod> для каждой записи — поисковики быстрее переиндексируют обновления',
+          'Add <lastmod> to each entry so search engines reindex updates faster'
+        ),
+      });
+      return { score: Math.round(maxScore * 0.85), issues };
+    }
   }
 
   issues.push({
@@ -307,9 +380,7 @@ function scoreSchemaOrg(html: string, lang: Lang): { score: number; issues: Issu
   const issues: Issue[] = [];
   const maxScore = WEIGHTS.schemaOrg;
 
-  const hasJsonLd = html.includes('application/ld+json');
-
-  if (!hasJsonLd) {
+  if (!hasJsonLd(html)) {
     issues.push({
       severity: 'critical',
       title: tr(lang, 'Schema.org отсутствует', 'Schema.org is missing'),
@@ -318,36 +389,43 @@ function scoreSchemaOrg(html: string, lang: Lang): { score: number; issues: Issu
     return { score: 0, issues };
   }
 
-  const importantTypes = ['Organization', 'LocalBusiness', 'WebSite', 'Product', 'FAQPage', 'Person', 'Hotel', 'Restaurant', 'Service'];
-  const foundTypes = importantTypes.filter(type =>
-    html.includes(`"@type":"${type}"`) ||
-    html.includes(`"@type": "${type}"`) ||
-    html.includes(`'@type':'${type}'`)
-  );
+  const allTypes = extractJsonLdTypes(html);
 
-  if (foundTypes.length >= 3) {
+  if (allTypes.length === 0) {
+    issues.push({
+      severity: 'warning',
+      title: tr(lang, 'Schema.org битый', 'Schema.org is broken'),
+      description: tr(lang, 'JSON-LD блоки найдены, но JSON невалиден', 'JSON-LD blocks found but JSON is invalid'),
+    });
+    return { score: Math.round(maxScore * 0.3), issues };
+  }
+
+  const importantTypes = ['Organization', 'LocalBusiness', 'WebSite', 'Product', 'FAQPage', 'Person', 'Hotel', 'Restaurant', 'Service'];
+  const foundImportant = importantTypes.filter(t => allTypes.includes(t));
+
+  if (foundImportant.length >= 3) {
     issues.push({
       severity: 'success',
-      title: tr(lang, `Schema.org: ${foundTypes.length} типа`, `Schema.org: ${foundTypes.length} types`),
-      description: tr(lang, `${foundTypes.join(', ')} — отлично`, `${foundTypes.join(', ')} - great`),
+      title: tr(lang, `Schema.org: ${foundImportant.length} типа`, `Schema.org: ${foundImportant.length} types`),
+      description: tr(lang, `${foundImportant.join(', ')} — отлично`, `${foundImportant.join(', ')} - great`),
     });
     return { score: maxScore, issues };
   }
 
-  if (foundTypes.length === 2) {
+  if (foundImportant.length === 2) {
     issues.push({
       severity: 'info',
-      title: tr(lang, `Schema.org: ${foundTypes.length} типа`, `Schema.org: ${foundTypes.length} types`),
-      description: tr(lang, `${foundTypes.join(', ')}. Добавьте FAQPage`, `${foundTypes.join(', ')}. Add FAQPage`),
+      title: tr(lang, `Schema.org: ${foundImportant.length} типа`, `Schema.org: ${foundImportant.length} types`),
+      description: tr(lang, `${foundImportant.join(', ')}. Добавьте FAQPage`, `${foundImportant.join(', ')}. Add FAQPage`),
     });
     return { score: Math.round(maxScore * 0.7), issues };
   }
 
-  if (foundTypes.length === 1) {
+  if (foundImportant.length === 1) {
     issues.push({
       severity: 'warning',
       title: tr(lang, 'Schema.org: 1 тип', 'Schema.org: 1 type'),
-      description: tr(lang, `${foundTypes[0]}. Рекомендуется 3+ типа`, `${foundTypes[0]}. Recommended: 3+ types`),
+      description: tr(lang, `${foundImportant[0]}. Рекомендуется 3+ типа`, `${foundImportant[0]}. Recommended: 3+ types`),
     });
     return { score: Math.round(maxScore * 0.5), issues };
   }
@@ -355,7 +433,7 @@ function scoreSchemaOrg(html: string, lang: Lang): { score: number; issues: Issu
   issues.push({
     severity: 'warning',
     title: tr(lang, 'Schema.org неполный', 'Schema.org is incomplete'),
-    description: tr(lang, 'JSON-LD есть, но типы не распознаны', 'JSON-LD exists, but types were not recognized'),
+    description: tr(lang, 'JSON-LD есть, но ключевые типы не распознаны', 'JSON-LD exists, but key types were not recognized'),
   });
   return { score: Math.round(maxScore * 0.3), issues };
 }
@@ -409,7 +487,7 @@ export function calculateSeoScore(data: {
   breakdown.viewport = viewportResult.score;
   issues.push(...viewportResult.issues);
 
-  const indexResult = scoreIndexability(html, lang);
+  const indexResult = scoreIndexability(html, data.homepage.headers, lang);
   breakdown.indexability = indexResult.score;
   issues.push(...indexResult.issues);
 
@@ -450,7 +528,7 @@ export function calculateSeoScore(data: {
   return {
     total,
     breakdown,
-    issues: issues.slice(0, 6),
+    issues: issues.slice(0, 8),
     status,
     statusLabel,
   };

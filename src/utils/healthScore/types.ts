@@ -6,6 +6,10 @@ export interface ResourceResult {
   content: string | null;
   error: string | null;
   responseTime: number;
+  // Необязательное — Worker отдаёт только выбранные заголовки (x-robots-tag).
+  // Старые версии Worker'а могут не возвращать это поле — scoring должен
+  // корректно работать с undefined.
+  headers?: Record<string, string>;
 }
 
 export interface FetchedData {
@@ -53,6 +57,7 @@ export interface GeoHealthScore {
     schemaOrg: number;
     faqQa: number;
     eeat: number;
+    citability: number;
     aiAccess: number;
   };
   issues: Issue[];
