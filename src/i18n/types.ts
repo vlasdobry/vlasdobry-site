@@ -205,6 +205,77 @@ export interface ComplianceSection {
   };
 }
 
+export interface CaseDnaLabsSection {
+  meta: { title: string; description: string };
+  nav: { backToMain: string };
+  hero: {
+    h1: string;
+    subheading: string;
+    lead: string;
+    note: string;
+  };
+  numbers: {
+    label: string;
+    rows: Array<{ metric: string; value: string; highlight?: boolean }>;
+    footnote: string;
+  };
+  byType: {
+    label: string;
+    headers: { type: string; cpc: string; ctr: string; cpa: string };
+    rows: Array<{ type: string; cpc: string; ctr: string; cpa: string }>;
+    note: string;
+  };
+  benchmarks: {
+    label: string;
+    headers: { metric: string; result: string; benchmark: string; gap: string };
+    rows: Array<{ metric: string; result: string; benchmark: string; gap: string }>;
+    captionsLabel: string;
+    captions: string[];
+    honestNote: string;
+  };
+  dynamics: {
+    label: string;
+    headers: { month: string; spend: string; conversions: string; cpa: string };
+    rows: Array<{ month: string; spend: string; conversions: string; cpa: string }>;
+    summary: string;
+  };
+  byCountry: {
+    label: string;
+    headers: { country: string; conversions: string; cpa: string };
+    rows: Array<{ country: string; conversions: string; cpa: string }>;
+    note: string;
+  };
+  auction: {
+    label: string;
+    intro: string;
+    items: Array<{ country: string; share: string }>;
+  };
+  whatIDid: {
+    label: string;
+    intro: string;
+    subIntro: string;
+    items: string[];
+    outro: string;
+  };
+  whatIReworked: { label: string; body: string };
+  faq: {
+    label: string;
+    items: Array<{ question: string; answer: string }>;
+  };
+  offer: {
+    label: string;
+    title: string;
+    items: string[];
+    nda: string;
+    pricing: string;
+  };
+  cta: { heading: string; button: string; alternative: string; email: string };
+  footer: {
+    name: string; role: string; experience?: string;
+    links: { telegram: string; whatsapp: string; email: string };
+  };
+}
+
 export interface Translations {
   hero: {
     name: string;
@@ -217,6 +288,7 @@ export interface Translations {
   hotels: IndustrySection;
   spa: IndustrySection;
   labs: IndustrySection;
+  caseDnaLabs: CaseDnaLabsSection;
   services: {
     seo: ServiceSection;
     geo: GeoServiceSection;

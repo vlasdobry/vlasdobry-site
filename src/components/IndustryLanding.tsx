@@ -133,6 +133,15 @@ export const IndustryLanding: React.FC<Props> = ({ sectionKey, basePath }) => {
                 </div>
               ))}
             </div>
+
+            {sectionKey === 'labs' && (
+              <a
+                href={lang === 'ru' ? '/case-dna-labs/' : '/en/case-dna-labs/'}
+                className="inline-block mt-10 text-sm font-bold uppercase tracking-[0.2em] border-2 border-black px-6 py-3 hover:bg-black hover:text-white transition-all"
+              >
+                {lang === 'ru' ? 'Читать подробный кейс →' : 'Read full case study →'}
+              </a>
+            )}
           </div>
         </section>
 

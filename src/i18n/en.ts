@@ -294,7 +294,7 @@ export const en: Translations = {
     hero: {
       title: 'Scalable Lead Growth Without Sacrificing ROI',
       subtitle: 'Performance marketing for DNA labs: finding channels that work for your business — from search ads to geo-targeted campaigns',
-      stats: '5 countries · 8,700+ conversions · CPA 5× below target · #1 Google Ads auction share',
+      stats: '5 countries · 7,340 conversions · $1.30 CPA vs $66 US healthcare CPL (LocaliQ) · #1 auction share in 4 of 5 countries',
     },
     problems: {
       label: 'Sound familiar?',
@@ -345,18 +345,18 @@ export const en: Translations = {
     caseStudy: {
       label: 'Case study',
       title: 'DNA Lab Network',
-      subtitle: '5 countries: Russia, Georgia, Kazakhstan, Uzbekistan, Azerbaijan',
-      challenge: 'Challenge: build a client acquisition system that works across countries and scales without increasing cost per lead',
+      subtitle: '5 countries: Kazakhstan, Kyrgyzstan, Belarus, Azerbaijan, Georgia',
+      challenge: 'Challenge: build a Google Ads client acquisition system that works across markets and scales without driving up cost per lead',
       done: [
-        'Google Ads and Yandex Direct campaigns across all regions',
-        'Geo-targeted ads for sample collection points',
-        'Analytics dashboards with country and location breakdown',
-        'Automated reputation management',
+        'Google Ads: Search and Performance Max across 5 countries',
+        'Language segmentation: Russian, English, Azerbaijani, Kazakh',
+        '683 targeted campaign changes over 4.5 months',
+        '27 appeals to Google moderation — pulled campaigns out of disapproved without losing budget',
       ],
       results: [
-        { value: '$1.05', label: 'CPA (target $5)' },
-        { value: '8,700+', label: 'conversions' },
-        { value: '#1', label: 'Google Ads auction share' },
+        { value: '$1.30', label: 'CPA (market: $66 CPL)' },
+        { value: '7,340', label: 'conversions' },
+        { value: '#1', label: 'auction share in 4 of 5 countries' },
       ],
       tags: ['MedTech', 'International', 'Performance', 'Analytics'],
     },
@@ -436,6 +436,158 @@ export const en: Translations = {
       },
     },
   },
+  caseDnaLabs: {
+    meta: {
+      title: 'Google Ads for DNA Labs: 5-Country Case Study, $1.30 CPA | Vlas Fedorov',
+      description: 'Real Google Ads case study: 5 markets (Kazakhstan, Kyrgyzstan, Belarus, Azerbaijan, Georgia), 7,340 conversions over 4.5 months, $1.30 blended CPA against $66 US healthcare CPL benchmark (LocaliQ 2025). Zero brand campaigns.',
+    },
+    nav: { backToMain: 'Back' },
+    hero: {
+      h1: 'Google Ads for DNA labs: 4.5 months, 5 countries, $1.30 CPA',
+      subheading: '$1.30 CPA vs $66 US healthcare CPL benchmark',
+      lead: '4.5 months across 5 markets — 7,340 conversions in Google Ads (forms, phone-number clicks, messenger button clicks). The US healthcare cost-per-lead benchmark is $66.02 (LocaliQ, 3,542 campaigns, 2025). CPA came in at $1.30.',
+      note: 'Zero brand campaigns — only category queries. The low CPC is the product of campaign structure and bidding, not brand traffic.',
+    },
+    numbers: {
+      label: 'Numbers — June to October 2025',
+      rows: [
+        { metric: 'Spend', value: '$9,569' },
+        { metric: 'Conversions', value: '7,340' },
+        { metric: 'Blended CPA', value: '$1.30' },
+        { metric: 'Clicks', value: '272,076' },
+        { metric: 'Blended CPC', value: '$0.04' },
+        { metric: 'Blended CTR', value: '5.05%' },
+      ],
+      footnote: 'Conversions counted: submitted lead forms, phone-number clicks, messenger button clicks. Revenue tracked client-side in CRM; NDA prevents sharing sales data.',
+    },
+    byType: {
+      label: 'By campaign type',
+      headers: { type: 'Type', cpc: 'CPC', ctr: 'CTR', cpa: 'CPA' },
+      rows: [
+        { type: 'Search', cpc: '$0.17', ctr: '21.07%', cpa: '$3.03' },
+        { type: 'Performance Max', cpc: '$0.02', ctr: '4.67%', cpa: '$0.86' },
+      ],
+      note: 'PMax CPA by month: July $0.58 (low), September $1.14 (peak while budget nearly tripled).',
+    },
+    benchmarks: {
+      label: 'Global benchmarks',
+      headers: { metric: 'Metric', result: 'Result', benchmark: 'Benchmark', gap: 'Gap' },
+      rows: [
+        { metric: 'Blended CPA', result: '$1.30', benchmark: '$66 US healthcare CPL (LocaliQ, 2025)', gap: 'see caveat below' },
+        { metric: 'Search CTR', result: '21.07%', benchmark: '6.07% US healthcare (LocaliQ)', gap: '3.5× above' },
+        { metric: 'PMax CTR', result: '4.67%', benchmark: '1.19% global PMax (Lebesgue)', gap: '3.9× above' },
+        { metric: 'PMax vs Search CPA', result: '$0.86 (PMax)', benchmark: '$3.03 (Search, same account)', gap: 'PMax 3.5× cheaper than Search' },
+      ],
+      captionsLabel: 'What the benchmarks refer to:',
+      captions: [
+        '$66 CPL — US healthcare, per LocaliQ Healthcare Benchmarks 2025: 3,542 Google Search campaigns, October 2024 — September 2025. LocaliQ counts: form submission and validated phone call via Call Tracking. In this case, conversions are broader: form + phone-number click + messenger button click. Phone and messenger clicks are intent events — they don\'t always turn into an actual call or chat. Not 100% apples-to-apples: counting only validated leads would push the CPL above $1.30, but still well below $66.',
+        'PMax vs Search CPA — internal comparison within the same account (numbers from the "By campaign type" section). Shows PMax is 3.5× more efficient than Search on identical conversion definitions. No public apples-to-apples PMax benchmark exists for healthcare — available numbers (Lebesgue, $17 CAC) measure ecom purchases, not comparable to the CPA in this case.',
+      ],
+      honestNote: 'Honest note on Search CPC. The $0.17 Search CPC is 33× below the US healthcare Search CPC ($5.64, LocaliQ). Part of that is the low-competition effect in these markets (Search CPC in Kazakhstan, Kyrgyzstan, Belarus, Azerbaijan, and Georgia is lower than US/EU). But CTR in Search (21.07%) and PMax (4.67%) — both 3.5–3.9× above global benchmarks (LocaliQ, Lebesgue), which is apples-to-apples: the method isn\'t just a cheap-market artifact.',
+    },
+    dynamics: {
+      label: 'Month-over-month dynamics',
+      headers: { month: 'Month', spend: 'Spend', conversions: 'Conversions', cpa: 'CPA' },
+      rows: [
+        { month: 'June 2025', spend: '$1,689', conversions: '1,416', cpa: '$1.19' },
+        { month: 'July', spend: '$1,765', conversions: '1,524', cpa: '$1.16' },
+        { month: 'August', spend: '$2,196', conversions: '1,612', cpa: '$1.36' },
+        { month: 'September', spend: '$2,498', conversions: '1,727', cpa: '$1.45' },
+        { month: 'October (1–19)', spend: '$1,422', conversions: '1,062', cpa: '$1.34' },
+      ],
+      summary: 'Spend grew 1.48×, conversions 1.22×. CPA held in the $1.16–1.45 band through scaling.',
+    },
+    byCountry: {
+      label: 'By country (full period)',
+      headers: { country: 'Country', conversions: 'Conversions', cpa: 'CPA' },
+      rows: [
+        { country: 'Belarus', conversions: '1,977', cpa: '$1.22' },
+        { country: 'Azerbaijan', conversions: '1,854', cpa: '$0.76' },
+        { country: 'Kyrgyzstan', conversions: '1,845', cpa: '$0.89' },
+        { country: 'Kazakhstan', conversions: '1,291', cpa: '$2.26' },
+        { country: 'Georgia', conversions: '371', cpa: '$2.95' },
+      ],
+      note: 'Georgia\'s first three months ran at $10–17 CPA — a new market ramping up volume. By October — $1.21.',
+    },
+    auction: {
+      label: '#1 auction share in 4 of 5 countries',
+      intro: 'Impression share against 95 competing domains (including international players ancestry.com and myheritage.com):',
+      items: [
+        { country: 'Kazakhstan', share: '45%' },
+        { country: 'Kyrgyzstan', share: '45%' },
+        { country: 'Belarus', share: '41%' },
+        { country: 'Azerbaijan', share: '38%' },
+        { country: 'Georgia (ru) — peak', share: '62% in July 2025' },
+      ],
+    },
+    whatIDid: {
+      label: 'What I did',
+      intro: 'The main lever was daily Quality Score work. Higher QS cuts CPC and raises auction position simultaneously. On a flat budget, that produced more impressions, more conversions, and a larger auction share than competitors with bigger budgets.',
+      subIntro: 'From the account change log over the period:',
+      items: [
+        '258 account reviews — budgets, moderation, metrics',
+        '125 search-term cleanup and negative-keyword sessions',
+        '67 iterations on ads and extensions, tuned for Ad Strength',
+        '27 appeals on disapproved Google ads — got campaigns out of disapproved status without losing budget',
+        '50+ bid adjustments by demographics, devices, and geo',
+        '93 new ad groups and 22 new campaigns, segmented by intent and geo',
+        'Language segmentation — separate campaigns targeting Russian, English, Azerbaijani, and Kazakh audiences, with independent bidding and ad copy',
+      ],
+      outro: 'Five countries in parallel: Kazakhstan, Kyrgyzstan, Belarus, Azerbaijan, Georgia.',
+    },
+    whatIReworked: {
+      label: 'What I reworked',
+      body: 'Performance Max is a black box: what works in one country doesn\'t always work in the next. Finding the right setup meant 28 bidding-strategy restarts (Maximize Conversions, Target CPA). Some restarts reset the learning phase and the strategy spent 7–14 days re-learning. The final configuration came out of these iterations, not a first-try pick.',
+    },
+    faq: {
+      label: 'FAQ',
+      items: [
+        {
+          question: 'Does this method work in Western markets (US, Europe), or only in the CIS?',
+          answer: 'It works on any market. Absolute numbers depend on local competition: US CPC averages 10× higher than in the CIS. But the method\'s levers transfer: Quality Score, account structure, daily search-term work, bid adjustments, moderation discipline. In this case CPA came in well below US healthcare CPL ($66, LocaliQ 2025); CTR in Search (21%) and PMax (4.67%) — 3.5–3.9× above global benchmarks. Those work-quality metrics transfer to any market.',
+        },
+        {
+          question: 'What\'s the minimum Google Ads budget for this method to work?',
+          answer: 'In this case the total spend across 5 countries was around $2,100/month — $200–650 per country. The method works on different budgets, smaller or larger.',
+        },
+        {
+          question: 'Does it work for regulated medical segments — NIPT, prenatal, oncology?',
+          answer: 'Yes, with a caveat. Google Ads requires certification for several healthcare segments — some ads auto-land in "disapproved" status. In this case I went through 27 appeals to Google moderation across several countries and pulled campaigns out of disapproved status without losing budget. For the US market, LegitScript certification is required for several verticals — a 2–4 week process.',
+        },
+        {
+          question: 'Performance Max or Search — which is better for DNA tests?',
+          answer: 'They work together. PMax gives volume and lower CPA via the network (Display, YouTube, Discover). Search has higher CPA but stronger intent. In this case: Search CPA $3.03, PMax CPA $0.86 — a 3.5× gap. You need both: Search captures high-intent users, PMax catches the cold ones.',
+        },
+        {
+          question: 'What happens after the free express audit?',
+          answer: 'Three options, your call: 1) Implement the recommendations yourself — free, no commitment; 2) Order a full audit with a media plan, forecast, and action plan — from $500; 3) Put me on retainer — from $1,500/month. No obligation after the express audit.',
+        },
+      ],
+    },
+    offer: {
+      label: 'What I offer your lab',
+      title: 'A free express audit of your Google Ads.',
+      items: [
+        'You grant me read-only access to the account.',
+        'Within 1–2 days I\'ll send back a breakdown: where the budget is leaking, and 3–5 optimization points that will move the needle in the first month.',
+        'No obligations.',
+      ],
+      nda: 'Client name is under NDA.',
+      pricing: 'Next step — a paid audit with a media plan, forecast, and action plan, starting from $500. Ongoing management starts from $1,500 per month.',
+    },
+    cta: {
+      heading: 'Let\'s talk about Google Ads for your lab',
+      button: 'Message on Telegram',
+      alternative: 'or email me at',
+      email: 'vlasdobry@gmail.com',
+    },
+    footer: {
+      name: 'Vlas Fedorov',
+      role: 'Performance Marketing for DNA Labs',
+      experience: 'In medical marketing since 2016',
+      links: { telegram: 'Telegram', whatsapp: 'WhatsApp', email: 'Email' },
+    },
+  },
   landing: {
     nav: {
       back: 'Back',
@@ -483,8 +635,8 @@ export const en: Translations = {
         {
           title: 'DNA Diagnostics',
           subtitle: 'International DNA testing network',
-          desc: 'CPA 5× below target ($1.05 vs $5 goal)',
-          details: '8,762 conversions across Russia/Europe/CIS',
+          desc: '$1.30 CPA vs $66 US healthcare CPL',
+          details: '7,340 conversions, 5 countries: Kazakhstan, Kyrgyzstan, Belarus, Azerbaijan, Georgia',
           tags: ['MedTech', 'Performance', 'Analytics', 'Geo'],
         },
         {

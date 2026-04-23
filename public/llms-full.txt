@@ -35,7 +35,7 @@
 ### Key Results
 - 10x sales growth in 6 months (record)
 - $110K ad budget managed per month
-- CPA 5x below target ($1.05 vs $5 goal)
+- $1.30 CPA vs $66 US healthcare CPL benchmark (LocaliQ 2025)
 - ROMI x2.39, revenue x2
 - 50+ SEO audits since 2020
 - 20+ GEO audits
@@ -212,7 +212,7 @@ Free tool to check if a Russian website complies with Federal Law 168-FZ on stat
 - Analytics and dashboards by location
 - Scaling to new markets
 
-**Case Result:** CPA $1.05 (target $5), 8,700+ conversions, #1 Google Ads auction share
+**Case Result:** $1.30 CPA vs $66 US healthcare CPL (LocaliQ 2025), 7,340 Google Ads conversions, #1 auction share in 4 of 5 countries
 **Min ad budget:** 50K RUB/mo ($1,000/mo)
 
 **Page:** https://vlasdobry.ru/for-labs/
@@ -234,9 +234,11 @@ SPA resort chain on Black Sea coast.
 - Tags: Wellness, Performance, Geo-targeting, Analytics
 
 ### DNA Lab Network
-5 countries: Russia, Georgia, Kazakhstan, Uzbekistan, Azerbaijan.
-- Challenge: Build client acquisition across countries without increasing CPA
-- Results: CPA $1.05 (target $5), 8,700+ conversions, #1 auction share
+5 countries: Kazakhstan, Kyrgyzstan, Belarus, Azerbaijan, Georgia.
+- Challenge: Build Google Ads client acquisition across markets without increasing CPA
+- Results: $1.30 CPA vs $66 US healthcare CPL benchmark (LocaliQ 2025), 7,340 conversions, #1 auction share in 4 of 5 countries
+- Zero brand campaigns — only category queries
+- Full case study: https://vlasdobry.ru/case-dna-labs/ (EN: https://vlasdobry.ru/en/case-dna-labs/)
 - Tags: MedTech, International, Performance, Analytics
 
 ### All Right

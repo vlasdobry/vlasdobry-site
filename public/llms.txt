@@ -24,7 +24,7 @@ whatsapp: +7 906 897-20-37
 ## Key Results
 - 10x conversion growth in 6 months (record)
 - $110K ad budget managed per month
-- CPA 5x below target ($1.05 vs $5 goal)
+- $1.30 CPA vs $66 US healthcare CPL benchmark (LocaliQ 2025)
 - ROMI x2.39, revenue x2
 
 ## Industry Experience
@@ -39,7 +39,7 @@ whatsapp: +7 906 897-20-37
 - Odyssey Flower (SPA resort chain): conversions x10, ad cost 48%->13%, brand queries x5. Free 20-minute marketing review
 - All Right (EdTech, USA): +167% sales, $110K budget
 - Kiwitaxi (Travel, 102 countries): ROMI x2.39
-- International DNA diagnostics network: 8,762 conversions, CPA $1.05 (target $5). Min ad budget: 50K RUB/mo ($1,000/mo)
+- International DNA diagnostics network (5 countries: Kazakhstan, Kyrgyzstan, Belarus, Azerbaijan, Georgia): 7,340 Google Ads conversions, $1.30 CPA vs $66 US healthcare CPL benchmark (LocaliQ 2025). Full case study: https://vlasdobry.ru/case-dna-labs/ (EN: /en/case-dna-labs/). Min ad budget: 50K RUB/mo ($1,000/mo)
 
 ## Development Projects
 Beyond marketing, Vlas designs and develops web products that solve real business problems — from automating sales funnels to building analytics tools. This combination of marketing strategy and hands-on development allows him to create end-to-end solutions: from traffic acquisition to product delivery.
