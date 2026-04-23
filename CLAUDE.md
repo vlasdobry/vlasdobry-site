@@ -76,6 +76,8 @@ git push origin master  # Деплой на продакшен (автомати
 - `/en/168-fz` — 168-FZ Compliance Check (EN)
 - `/extension/privacy` — Privacy Policy расширения AI Visibility Checker (RU)
 - `/en/extension/privacy` — Privacy Policy for AI Visibility Checker extension (EN)
+- `/case-dna-labs` — подробный кейс Google Ads для ДНК-лабораторий (RU)
+- `/en/case-dna-labs` — Google Ads case study for DNA labs (EN)
 - `/blog` — блог со статьями (RU)
 - `/en/blog` — блог со статьями (EN)
 - `/blog/[slug]` — отдельная статья (RU)
@@ -94,6 +96,7 @@ git push origin master  # Деплой на продакшен (автомати
 - `src/components/BlogPost.tsx` — страница отдельной статьи (включает CTA блок Health Score между контентом и FAQ)
 - `src/components/BlogCard.tsx` — карточка статьи для списка
 - `src/components/ComplianceChecker.tsx` — виджет проверки на 168-ФЗ (латиница в UI-элементах)
+- `src/components/CaseDnaLabs.tsx` — подробный кейс Google Ads для ДНК-лабораторий (7 секций: hero, цифры, бенчмарки, динамика, страны, аукцион, FAQ, оффер)
 
 **Health Score виджет:**
 - GEO-скоринг использует общую библиотеку `@vlasdobry/geo-checker` (исходник: `D:\Proekty\razrabotka-proektov-vs-code\Vlas\geo-checker-lib\`)
@@ -165,7 +168,7 @@ git push origin master  # Деплой на продакшен (автомати
 **Мультиязычность (i18n):**
 - URL-based routing: `/` (RU), `/en/` (EN)
 - Самописная i18n-система в `src/i18n/` (KISS: без i18next)
-- HTML файлы: `index.html`, `en.html`, `for-hotels.html`, `for-hotels-en.html`, `for-labs.html`, `for-labs-en.html`, `for-spa.html`, `for-spa-en.html`, `projects.html`, `projects-en.html`, `seo.html`, `seo-en.html`, `geo.html`, `geo-en.html`, `ppc.html`, `ppc-en.html`, `blog.html`, `blog-en.html`
+- HTML файлы: `index.html`, `en.html`, `for-hotels.html`, `for-hotels-en.html`, `for-labs.html`, `for-labs-en.html`, `for-spa.html`, `for-spa-en.html`, `projects.html`, `projects-en.html`, `seo.html`, `seo-en.html`, `geo.html`, `geo-en.html`, `ppc.html`, `ppc-en.html`, `blog.html`, `blog-en.html`, `case-dna-labs.html`, `case-dna-labs-en.html`
 - Переводы: `src/i18n/ru.ts`, `src/i18n/en.ts`
 
 **Мобильные функции:**
@@ -250,6 +253,8 @@ git push origin master  # Деплой на продакшен (автомати
 | `blog.html` | RU список статей блога |
 | `blog-en.html` | EN список статей блога |
 | `blog-post.html` | Entry point для страниц статей (vite build) |
+| `case-dna-labs.html` | RU страница подробного кейса Google Ads для ДНК-лабораторий |
+| `case-dna-labs-en.html` | EN страница кейса |
 | `content/blog/` | Markdown-статьи (ru.md, en.md для каждой) |
 | `scripts/generate-blog.js` | Генерация HTML статей и blog-data.json |
 | `src/i18n/` | Система переводов (types, ru, en, context) |
