@@ -472,7 +472,7 @@ function generateLlmsTxtBlogSection(articles) {
 
   for (const article of articles) {
     // Use EN title/description for llms.txt
-    section += `- /blog/${article.slug}/ - ${article.description}\n`;
+    section += `- https://vlasdobry.ru/blog/${article.slug}/ - ${article.description.replace(/—/g, '-')}\n`;
   }
 
   section += `
@@ -482,8 +482,8 @@ function generateLlmsTxtBlogSection(articles) {
 - Industry-specific marketing (hotels, labs, SPA)
 - Local SEO for Russian and international markets
 
-Browse all: /blog/
-Browse all (EN): /en/blog/`;
+Browse all: https://vlasdobry.ru/blog/
+Browse all (EN): https://vlasdobry.ru/en/blog/`;
 
   return section;
 }
@@ -496,7 +496,7 @@ function updateLlmsTxt(enArticles) {
 
   // Replace section from "### Recent Articles" to next "##" or "Browse all (EN)"
   llms = llms.replace(
-    /### Recent Articles[\s\S]*?Browse all \(EN\): \/en\/blog\//,
+    /### Recent Articles[\s\S]*?Browse all \(EN\): https:\/\/vlasdobry\.ru\/en\/blog\//,
     blogSection
   );
 
