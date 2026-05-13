@@ -12,7 +12,7 @@ export const Hero: React.FC = () => {
       {/* Mobile portrait: Full-screen background image */}
       <div className="absolute inset-0 z-0 portrait:block hidden" aria-hidden="true">
         <picture>
-          <source srcSet="/vlas-photo-mobile.webp" type="image/webp" />
+          <source srcSet="/vlas-photo-mobile.webp" type="image/webp" media="(orientation: portrait)" />
           <img
             src="/vlas-photo-mobile.jpg"
             alt=""
@@ -28,13 +28,12 @@ export const Hero: React.FC = () => {
       <div className="hidden landscape:flex lg:flex absolute right-0 top-0 w-1/2 h-full z-0 items-center justify-center">
         <div className="relative w-[68%] h-[85%]">
           <picture>
-            <source srcSet="/vlas-photo.webp" type="image/webp" />
+            <source srcSet="/vlas-photo.webp" type="image/webp" media="(orientation: landscape), (min-width: 1024px)" />
             <img
               src="/vlas-photo.jpg"
               alt={t.hero.photoAlt}
               className="w-full h-full object-contain grayscale"
-              loading="eager"
-              fetchPriority="high"
+              loading="lazy"
             />
           </picture>
           <div className="absolute inset-0 bg-black/25" />
