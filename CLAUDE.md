@@ -188,6 +188,9 @@ git push origin master  # Деплой на продакшен (автомати
 **Кросс-браузерная совместимость:**
 - `<meta name="color-scheme" content="light only">` — предотвращает авто-затемнение в Яндекс Браузере
 - Тонкие декоративные элементы (1-3px) могут плохо рендериться в некоторых браузерах
+- Android Яндекс.Браузер может отдавать `prefers-reduced-motion: reduce` и при этом "замораживать" CSS transitions/animations: события `transitionrun/start/end` есть, но промежуточные значения `transform` не меняются. Симптом: свайп hero↔landing, полоска-индикатор и стрелки на боковых кнопках скачут между двумя положениями.
+- Для этого случая в `src/App.tsx` есть manual motion fallback: `YaBrowser + prefers-reduced-motion` переводит слайдер, полоску и стрелки на `requestAnimationFrame`; Chrome и обычные браузеры остаются на CSS-анимациях. Не заменять этот fallback на CSS-only без проверки на реальном Android/Yandex.
+- Диагностика: `/?motionDebug=1` показывает панель Motion Debug, `/?forceMotionFallback=1` принудительно включает fallback для локальной проверки. Регрессия фиксируется скриптами `scripts/check-yandex-motion-fallback.js`, `scripts/check-home-motion.js`, `scripts/check-motion-debug.js`.
 
 **SEO и аналитика:**
 - Open Graph и Twitter Cards для превью в соцсетях
@@ -257,6 +260,9 @@ git push origin master  # Деплой на продакшен (автомати
 | `case-dna-labs-en.html` | EN страница кейса |
 | `content/blog/` | Markdown-статьи (ru.md, en.md для каждой) |
 | `scripts/generate-blog.js` | Генерация HTML статей и blog-data.json |
+| `scripts/check-yandex-motion-fallback.js` | Проверка JS fallback анимаций для Android/Yandex reduced-motion режима |
+| `scripts/check-home-motion.js` | Проверка обычного CSS-свайпа hero↔landing |
+| `scripts/check-motion-debug.js` | Проверка скрытой панели `?motionDebug=1` |
 | `src/i18n/` | Система переводов (types, ru, en, context) |
 | `src/utils/analytics.ts` | Централизованный трекинг Яндекс.Метрики |
 | `src/utils/healthScore/` | Логика расчёта Health Score (scoring, types, index) |
