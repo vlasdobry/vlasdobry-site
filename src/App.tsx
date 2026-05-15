@@ -14,17 +14,29 @@ const App: React.FC = () => {
   const touchStart = useRef<number | null>(null);
   const touchEnd = useRef<number | null>(null);
   const vibrationActivated = useRef(false);
+  const hashSyncTimer = useRef<number | null>(null);
   const { t } = useI18n();
 
   const minSwipeDistance = 70;
 
-  // Sync view state with URL hash
+  // Sync view state with URL hash after the slide transition starts.
   useEffect(() => {
     const newHash = view === 'landing' ? '#landing' : '';
-    if (window.location.hash !== newHash) {
-      const baseUrl = `${window.location.pathname}${window.location.search}`;
-      window.history.replaceState(null, '', newHash ? `${baseUrl}${newHash}` : baseUrl);
-    }
+    if (hashSyncTimer.current !== null) window.clearTimeout(hashSyncTimer.current);
+
+    hashSyncTimer.current = window.setTimeout(() => {
+      if (window.location.hash !== newHash) {
+        const baseUrl = `${window.location.pathname}${window.location.search}`;
+        window.history.replaceState(null, '', newHash ? `${baseUrl}${newHash}` : baseUrl);
+      }
+    }, 720);
+
+    return () => {
+      if (hashSyncTimer.current !== null) {
+        window.clearTimeout(hashSyncTimer.current);
+        hashSyncTimer.current = null;
+      }
+    };
   }, [view]);
 
   const activateVibration = () => {
@@ -96,9 +108,7 @@ const App: React.FC = () => {
       onTouchEnd={onTouchEnd}
     >
       <div
-        className={`flex w-[200vw] h-full transition-transform duration-700 ease-[cubic-bezier(0.77,0,0.175,1)] ${
-          view === 'landing' ? '-translate-x-[100vw]' : 'translate-x-0'
-        }`}
+        className={`slider-track flex w-[200vw] h-full ${view === 'landing' ? 'slider-track--landing' : ''}`}
       >
         {/* Main Hero Screen */}
         <div className="w-[100vw] h-full flex-shrink-0 relative">
@@ -107,7 +117,7 @@ const App: React.FC = () => {
           {/* Mobile Swipe Guidance Indicator */}
           <div className="absolute top-[75px] left-1/2 -translate-x-1/2 z-40 md:hidden pointer-events-none">
             <div className="w-16 h-[3px] bg-white/15 rounded-full overflow-hidden">
-              <div className="h-full w-full bg-gradient-to-r from-transparent via-white/50 to-transparent animate-guide-swipe" />
+              <div className="swipe-guide-glint h-full w-full bg-gradient-to-r from-transparent via-white/50 to-transparent" />
             </div>
           </div>
 
@@ -158,11 +168,26 @@ const App: React.FC = () => {
           50% { transform: translateX(-4px); }
         }
         @keyframes guide-swipe {
-          0% { transform: translateX(100%); }
-          100% { transform: translateX(-100%); }
+          0% { transform: translate3d(100%, 0, 0); }
+          100% { transform: translate3d(-100%, 0, 0); }
         }
-        .animate-guide-swipe {
+
+        .slider-track {
+          transform: translate3d(0, 0, 0);
+          transition: transform 700ms cubic-bezier(0.77, 0, 0.175, 1);
+          will-change: transform;
+          backface-visibility: hidden;
+        }
+
+        .slider-track--landing {
+          transform: translate3d(-100vw, 0, 0);
+        }
+
+        .swipe-guide-glint {
           animation: guide-swipe 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+          backface-visibility: hidden;
+          transform: translate3d(100%, 0, 0);
+          will-change: transform;
         }
       `}</style>
     </div>
