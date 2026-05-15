@@ -231,7 +231,7 @@
                 align-items: flex-start;
             }
             .portrait {
-                min-height: 72svh;
+                min-height: 100svh;
                 border-right: 0;
                 border-bottom: 1px solid var(--line);
             }
@@ -242,7 +242,7 @@
                 object-position: center 20%;
             }
             .identity {
-                bottom: -10svh;
+                bottom: clamp(24px, 4svh, 42px);
                 z-index: 3;
             }
             .name {
