@@ -181,6 +181,60 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/168-fz/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://vlasdobry.ru/168-fz/"/>
   </url>
+  <url>
+    <loc>https://vlasdobry.ru/about/</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/about/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vlasdobry.ru/about/"/>
+  </url>
+  <url>
+    <loc>https://vlasdobry.ru/en/about/</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/about/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vlasdobry.ru/about/"/>
+  </url>
+  <url>
+    <loc>https://vlasdobry.ru/privacy/</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vlasdobry.ru/privacy/"/>
+  </url>
+  <url>
+    <loc>https://vlasdobry.ru/en/privacy/</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vlasdobry.ru/privacy/"/>
+  </url>
+  <url>
+    <loc>https://vlasdobry.ru/terms/</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/terms/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/terms/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vlasdobry.ru/terms/"/>
+  </url>
+  <url>
+    <loc>https://vlasdobry.ru/en/terms/</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/terms/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/terms/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vlasdobry.ru/terms/"/>
+  </url>
   <!-- BLOG_START -->
   <url>
     <loc>https://vlasdobry.ru/blog/</loc>

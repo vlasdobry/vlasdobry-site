@@ -116,7 +116,7 @@ export const en: Translations = {
       heading: 'Free 20-minute review',
       button: 'Message on Telegram',
       alternative: 'or email',
-      email: 'vlasdobry@gmail.com',
+      email: 'vlas@vlasdobry.ru',
     },
     socialProof: {
       freeAudit: 'Free 20-min review — find where you\'re losing bookings',
@@ -272,7 +272,7 @@ export const en: Translations = {
       heading: 'Let\'s discuss your SPA\'s occupancy',
       button: 'Message on Telegram',
       alternative: 'or email',
-      email: 'vlasdobry@gmail.com',
+      email: 'vlas@vlasdobry.ru',
     },
     socialProof: {
       freeAudit: 'Free 20-minute marketing review',
@@ -420,7 +420,7 @@ export const en: Translations = {
       heading: 'Let\'s discuss growing leads for your lab',
       button: 'Message on Telegram',
       alternative: 'or email',
-      email: 'vlasdobry@gmail.com',
+      email: 'vlas@vlasdobry.ru',
     },
     socialProof: {
       freeAudit: 'Free mini-audit of your Google Ads or Yandex Direct',
@@ -579,7 +579,7 @@ export const en: Translations = {
       heading: 'Let\'s talk about Google Ads for your lab',
       button: 'Message on Telegram',
       alternative: 'or email me at',
-      email: 'vlasdobry@gmail.com',
+      email: 'vlas@vlasdobry.ru',
     },
     footer: {
       name: 'Vlas Fedorov',
@@ -669,7 +669,7 @@ export const en: Translations = {
       heading: 'Let\'s Talk',
       cta: 'Message on Telegram',
       alternative: 'or email me at',
-      email: 'vlasdobry@gmail.com',
+      email: 'vlas@vlasdobry.ru',
     },
     footer: {
       name: 'Vlas Fedorov',
@@ -701,6 +701,14 @@ export const en: Translations = {
           label: 'Blog',
           items: [
             { name: 'All articles', url: '/en/blog/' },
+          ],
+        },
+        legal: {
+          label: 'Legal',
+          items: [
+            { name: 'About', url: '/en/about/' },
+            { name: 'Privacy', url: '/en/privacy/' },
+            { name: 'Terms', url: '/en/terms/' },
           ],
         },
       },
@@ -1248,7 +1256,7 @@ export const en: Translations = {
       heading: 'Let\'s discuss a project',
       button: 'Message on Telegram',
       alternative: 'or email',
-      email: 'vlasdobry@gmail.com',
+      email: 'vlas@vlasdobry.ru',
     },
     footer: {
       name: 'Vlas Fedorov',

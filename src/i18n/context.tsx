@@ -2,6 +2,7 @@ import React, { createContext, useContext, ReactNode } from 'react';
 import { Lang, Translations } from './types';
 import { ru } from './ru';
 import { en } from './en';
+import { CookieNotice } from '../components/CookieNotice';
 
 interface I18nContextValue {
   lang: Lang;
@@ -23,7 +24,12 @@ export const I18nProvider: React.FC<I18nProviderProps> = ({ lang, children }) =>
     t: translations[lang],
   };
 
-  return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
+  return (
+    <I18nContext.Provider value={value}>
+      {children}
+      <CookieNotice lang={lang} />
+    </I18nContext.Provider>
+  );
 };
 
 export const useI18n = (): I18nContextValue => {

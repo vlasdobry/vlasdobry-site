@@ -116,7 +116,7 @@ export const ru: Translations = {
       heading: 'Бесплатный 20-минутный разбор',
       button: 'Написать в Telegram',
       alternative: 'или напишите на',
-      email: 'vlasdobry@gmail.com',
+      email: 'vlas@vlasdobry.ru',
     },
     socialProof: {
       freeAudit: 'Посмотрю сайт, рекламу и выдачу — скажу, где основные потери',
@@ -272,7 +272,7 @@ export const ru: Translations = {
       heading: 'Обсудить загрузку вашего СПА-комплекса',
       button: 'Написать в Telegram',
       alternative: 'или напишите на',
-      email: 'vlasdobry@gmail.com',
+      email: 'vlas@vlasdobry.ru',
     },
     socialProof: {
       freeAudit: 'Бесплатный 20-минутный разбор маркетинга',
@@ -420,7 +420,7 @@ export const ru: Translations = {
       heading: 'Обсудить рост заявок для вашей лаборатории',
       button: 'Написать в Telegram',
       alternative: 'или напишите на',
-      email: 'vlasdobry@gmail.com',
+      email: 'vlas@vlasdobry.ru',
     },
     socialProof: {
       freeAudit: 'Бесплатный мини-аудит Google Ads или Яндекс Директ',
@@ -579,7 +579,7 @@ export const ru: Translations = {
       heading: 'Обсудить Google Ads для вашей лаборатории',
       button: 'Написать в Telegram',
       alternative: 'или напишите на',
-      email: 'vlasdobry@gmail.com',
+      email: 'vlas@vlasdobry.ru',
     },
     footer: {
       name: 'Влас Федоров',
@@ -669,7 +669,7 @@ export const ru: Translations = {
       heading: 'Обсудить задачу',
       cta: 'Написать в Telegram',
       alternative: 'или напишите на',
-      email: 'vlasdobry@gmail.com',
+      email: 'vlas@vlasdobry.ru',
     },
     footer: {
       name: 'Влас Федоров',
@@ -701,6 +701,14 @@ export const ru: Translations = {
           label: 'Блог',
           items: [
             { name: 'Все статьи', url: '/blog/' },
+          ],
+        },
+        legal: {
+          label: 'Правовая информация',
+          items: [
+            { name: 'Обо мне', url: '/about/' },
+            { name: 'Конфиденциальность', url: '/privacy/' },
+            { name: 'Условия', url: '/terms/' },
           ],
         },
       },
@@ -1248,7 +1256,7 @@ export const ru: Translations = {
       heading: 'Обсудить проект',
       button: 'Написать в Telegram',
       alternative: 'или напишите на',
-      email: 'vlasdobry@gmail.com',
+      email: 'vlas@vlasdobry.ru',
     },
     footer: {
       name: 'Влас Федоров',

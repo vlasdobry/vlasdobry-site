@@ -367,6 +367,7 @@ export interface Translations {
         offers: { label: string; items: Array<{ name: string; url: string }> };
         services: { label: string; items: Array<{ name: string; url: string }> };
         blog: { label: string; items: Array<{ name: string; url: string }> };
+        legal: { label: string; items: Array<{ name: string; url: string }> };
       };
     };
   };

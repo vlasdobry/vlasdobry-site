@@ -441,7 +441,7 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
               <div className="flex gap-6 mt-4 text-[11px] font-bold tracking-[0.4em] uppercase text-zinc-400">
                 <a href="https://t.me/vlasdobry" target="_blank" rel="noopener noreferrer" onClick={() => analytics.clickTelegram(`${serviceKey}_footer`)} className="hover:text-black">{section.footer.links.telegram}</a>
                 <a href="https://wa.me/79068972037" target="_blank" rel="noopener noreferrer" onClick={() => analytics.clickWhatsapp(`${serviceKey}_footer`)} className="hover:text-black">{section.footer.links.whatsapp}</a>
-                <a href="mailto:vlasdobry@gmail.com" onClick={() => analytics.clickEmail(`${serviceKey}_footer`)} className="hover:text-black">{section.footer.links.email}</a>
+                <a href="mailto:vlas@vlasdobry.ru" onClick={() => analytics.clickEmail(`${serviceKey}_footer`)} className="hover:text-black">{section.footer.links.email}</a>
               </div>
             </div>
             {/* Right: Offers & Services */}
@@ -473,6 +473,17 @@ export const ServiceLanding: React.FC<Props> = ({ serviceKey, basePath }) => {
                 <div className="border-t border-zinc-100 mb-3"></div>
                 <ul className="space-y-2">
                   {t.landing.footer.nav.blog.items.map((item) => (
+                    <li key={item.url}>
+                      <a href={item.url} className="text-sm text-zinc-500 hover:text-black transition-colors">{item.name}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h5 className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-3">{t.landing.footer.nav.legal.label}</h5>
+                <div className="border-t border-zinc-100 mb-3"></div>
+                <ul className="space-y-2">
+                  {t.landing.footer.nav.legal.items.map((item) => (
                     <li key={item.url}>
                       <a href={item.url} className="text-sm text-zinc-500 hover:text-black transition-colors">{item.name}</a>
                     </li>

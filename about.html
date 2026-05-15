@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light only">
+    <title>Обо мне — Влас Фёдоров</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script defer src="/yandex-metrika.js"></script>
+    <script defer src="/cookie-notice.js"></script>
+    <meta name="description" content="Влас Фёдоров — performance-маркетолог. Платный трафик, аналитика, SEO/GEO-аудиты и системное привлечение клиентов.">
+    <meta name="author" content="Влас Федоров">
+    <link rel="canonical" href="https://vlasdobry.ru/about/">
+    <link rel="alternate" hreflang="ru" href="https://vlasdobry.ru/about/">
+    <link rel="alternate" hreflang="en" href="https://vlasdobry.ru/en/about/">
+    <link rel="alternate" hreflang="x-default" href="https://vlasdobry.ru/about/">
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://vlasdobry.ru/about/">
+    <meta property="og:title" content="Обо мне — Влас Фёдоров">
+    <meta property="og:description" content="Performance marketing | Growth & Analytics. Платный трафик, SEO/GEO-аудиты и системное привлечение клиентов.">
+    <meta property="og:locale" content="ru_RU">
+    <style>
+        * { box-sizing: border-box; }
+        :root {
+            --bg: #121212;
+            --line: rgba(255,255,255,0.18);
+            --muted: rgba(255,255,255,0.52);
+            --soft: rgba(255,255,255,0.76);
+            --text: #fff;
+        }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.45;
+        }
+        a { color: inherit; text-underline-offset: 4px; }
+        .page {
+            height: 100svh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+            overflow: hidden;
+            background:
+                linear-gradient(90deg, transparent calc(50vw - 1px), var(--line) calc(50vw - 1px), var(--line) 50vw, transparent 50vw),
+                var(--bg);
+        }
+        .top {
+            position: fixed;
+            z-index: 20;
+            top: 24px;
+            left: clamp(20px, 4vw, 56px);
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            color: var(--soft);
+        }
+        .brand {
+            font-size: 1.55rem;
+            font-weight: 900;
+            letter-spacing: -0.06em;
+            text-decoration: none;
+            color: #fff;
+        }
+        .lang-switcher {
+            gap: 8px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+        .lang-switcher a {
+            color: rgba(255,255,255,0.38);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .lang-switcher a:hover,
+        .lang-switcher a.active { color: #fff; }
+        .lang-switcher span { color: rgba(255,255,255,0.22); }
+        .portrait {
+            position: relative;
+            min-height: 100svh;
+            overflow: hidden;
+            border-right: 1px solid var(--line);
+            background: var(--bg);
+        }
+        .portrait picture {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 60%;
+            height: 100%;
+            display: block;
+            transform: translateX(-50%);
+        }
+        .portrait img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center 20%;
+            filter: grayscale(1) contrast(1.08);
+            opacity: 0.88;
+        }
+        .portrait::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(180deg, rgba(18,18,18,0.1), rgba(18,18,18,0.45) 62%, rgba(18,18,18,0.92)),
+                linear-gradient(90deg, rgba(18,18,18,0.08), transparent 42%, rgba(18,18,18,0.22));
+        }
+        .identity {
+            position: absolute;
+            z-index: 2;
+            left: 0;
+            right: 0;
+            bottom: clamp(24px, 3.5vh, 36px);
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 16px;
+            overflow: hidden;
+        }
+        .name {
+            margin: 0;
+            margin-left: clamp(20px, 4vw, 56px);
+            font-size: clamp(2.5rem, 4.5vw, 4rem);
+            line-height: 0.9;
+            letter-spacing: -0.06em;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+        .positioning {
+            margin: 12px 0 0;
+            margin-left: clamp(20px, 4vw, 56px);
+            color: rgba(255,255,255,0.52);
+            font-size: clamp(0.85rem, 1.2vw, 1.1rem);
+            font-weight: 300;
+        }
+        .compact {
+            max-width: 430px;
+            margin-left: clamp(20px, 4vw, 56px);
+            padding-top: 18px;
+            border-top: 1px solid rgba(255,255,255,0.36);
+        }
+        .contact-info {
+            display: grid;
+            gap: 5px;
+            color: rgba(255,255,255,0.62);
+            font-size: 0.76rem;
+            line-height: 1.25;
+        }
+        .contact-info p {
+            margin: 0;
+            overflow-wrap: anywhere;
+        }
+        .contact-info span {
+            color: rgba(255,255,255,0.42);
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .contact-info a {
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .contact-info a:hover { color: #fff; }
+        .legal-links {
+            display: flex;
+            gap: 14px;
+            margin-top: 12px;
+            font-size: 0.7rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+        .legal-links a {
+            color: rgba(255,255,255,0.38);
+            text-decoration: none;
+        }
+        .legal-links a:hover { color: #fff; }
+        .panel {
+            min-height: 100svh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: clamp(18px, 2.5vh, 30px);
+            padding: clamp(74px, 10vh, 96px) clamp(24px, 5vw, 72px) clamp(24px, 3.5vh, 36px);
+            position: relative;
+            z-index: 1;
+        }
+        .nav-columns {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: clamp(16px, 3vw, 40px);
+            padding-top: 18px;
+            border-top: 1px solid var(--line);
+            margin-top: auto;
+        }
+        .nav-col h4 {
+            margin: 0 0 8px;
+            color: rgba(255,255,255,0.34);
+            font-size: 9px;
+            font-weight: 900;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+        .nav-col a {
+            display: block;
+            padding: 3px 0;
+            color: rgba(255,255,255,0.56);
+            text-decoration: none;
+            font-size: 0.84rem;
+        }
+        .nav-col a:hover { color: #fff; }
+        @media (max-width: 980px) {
+            .page {
+                height: auto;
+                min-height: 100svh;
+                display: block;
+                overflow: visible;
+                background: var(--bg);
+            }
+            .top {
+                position: absolute;
+                align-items: flex-start;
+            }
+            .portrait {
+                min-height: 72svh;
+                border-right: 0;
+                border-bottom: 1px solid var(--line);
+            }
+            .portrait picture {
+                width: 80%;
+            }
+            .portrait img {
+                object-position: center 20%;
+            }
+            .name {
+                font-size: clamp(2.8rem, 12vw, 4.5rem);
+            }
+            .panel {
+                min-height: auto;
+                padding-top: 42px;
+                gap: 64px;
+            }
+            .nav-columns {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+        @media (max-width: 560px) {
+            .top {
+                left: 18px;
+                right: 18px;
+                top: 18px;
+            }
+            .identity {
+                left: 18px;
+                right: 18px;
+            }
+            .name {
+                margin-left: 18px;
+            }
+            .compact {
+                width: calc(100% - 36px);
+                max-width: none;
+                margin-left: 18px;
+                margin-right: 18px;
+            }
+            .contact-info {
+                font-size: 0.72rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <nav class="top" aria-label="Навигация">
+            <a class="brand" href="/#landing">VD.</a>
+            <div class="lang-switcher" aria-label="Выбор языка">
+                <a class="active" href="/about/">RU</a>
+                <span>|</span>
+                <a href="/en/about/">EN</a>
+            </div>
+        </nav>
+
+        <section class="portrait" aria-label="Фото и контакты Власа Фёдорова">
+            <picture>
+                <source srcset="/vlas-photo.webp" type="image/webp">
+                <img src="/vlas-photo.jpg" alt="Влас Фёдоров">
+            </picture>
+            <div class="identity">
+                <h1 class="name">Влас Фёдоров</h1>
+                <p class="positioning">Performance marketing | Growth &amp; Analytics</p>
+                <div class="compact">
+                    <div class="contact-info" aria-label="Контактная информация">
+                        <p><span>ФИО:</span> Фёдоров Влас Павлович</p>
+                        <p><span>Адрес:</span> 354340, г. Сочи, Старонасыпная ул., 22, оф. 111</p>
+                        <p><span>Телефон:</span> <a href="tel:+79068972037">+7 906 897-20-37</a></p>
+                        <p><span>Email:</span> <a href="mailto:vlas@vlasdobry.ru">vlas@vlasdobry.ru</a></p>
+                        <p><span>Telegram:</span> <a href="https://t.me/vlasdobry">@vlasdobry</a></p>
+                    </div>
+                    <nav class="legal-links">
+                        <a href="/privacy/">Политика данных</a>
+                        <a href="/terms/">Условия использования</a>
+                    </nav>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel" aria-label="Навигация по сайту">
+
+            <nav class="nav-columns" aria-label="Навигация">
+                <div class="nav-col">
+                    <h4>Предложения</h4>
+                    <a href="/for-hotels/">Для отелей</a>
+                    <a href="/for-spa/">Для СПА</a>
+                    <a href="/for-labs/">Для лабораторий</a>
+                </div>
+                <div class="nav-col">
+                    <h4>Услуги</h4>
+                    <a href="/services/seo/">SEO-аудит</a>
+                    <a href="/services/geo/">GEO-аудит</a>
+                    <a href="/services/ppc/">Контекстная реклама</a>
+                    <a href="/168-fz/">Проверка на 168-ФЗ</a>
+                </div>
+                <div class="nav-col">
+                    <h4>Блог</h4>
+                    <a href="/blog/">Все статьи</a>
+                </div>
+            </nav>
+
+        </section>
+    </main>
+</body>
+</html>

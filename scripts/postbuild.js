@@ -29,6 +29,12 @@ const moves = [
   { src: 'extension-privacy-en.html', dest: 'en/extension/privacy/index.html' },
   { src: 'case-dna-labs.html', dest: 'case-dna-labs/index.html' },
   { src: 'case-dna-labs-en.html', dest: 'en/case-dna-labs/index.html' },
+  { src: 'about.html', dest: 'about/index.html' },
+  { src: 'privacy.html', dest: 'privacy/index.html' },
+  { src: 'terms.html', dest: 'terms/index.html' },
+  { src: 'about-en.html', dest: 'en/about/index.html' },
+  { src: 'privacy-en.html', dest: 'en/privacy/index.html' },
+  { src: 'terms-en.html', dest: 'en/terms/index.html' },
 ];
 
 for (const { src, dest } of moves) {

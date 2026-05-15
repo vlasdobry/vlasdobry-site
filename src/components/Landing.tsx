@@ -156,7 +156,7 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
             <div className="flex gap-6 mt-4 text-[11px] font-bold tracking-[0.4em] uppercase text-zinc-400">
               <a href="https://t.me/vlasdobry" target="_blank" rel="noopener noreferrer" onClick={() => analytics.clickTelegram('landing_footer')} className="hover:text-black">{t.landing.footer.links.telegram}</a>
               <a href="https://wa.me/79068972037" target="_blank" rel="noopener noreferrer" onClick={() => analytics.clickWhatsapp('landing_footer')} className="hover:text-black">{t.landing.footer.links.whatsapp}</a>
-              <a href="mailto:vlasdobry@gmail.com" target="_blank" rel="noopener noreferrer" onClick={() => analytics.clickEmail('landing_footer')} className="hover:text-black">{t.landing.footer.links.email}</a>
+              <a href="mailto:vlas@vlasdobry.ru" target="_blank" rel="noopener noreferrer" onClick={() => analytics.clickEmail('landing_footer')} className="hover:text-black">{t.landing.footer.links.email}</a>
             </div>
           </div>
           {/* Right: Offers & Services */}
@@ -196,7 +196,14 @@ export const Landing: React.FC<LandingProps> = ({ onBack }) => {
             </div>
           </div>
         </div>
-        <p className="text-zinc-300 text-sm mt-12">&copy; {new Date().getFullYear()} {t.landing.footer.name}</p>
+        <div className="mt-12">
+          <p className="text-zinc-300 text-sm">&copy; {new Date().getFullYear()} {t.landing.footer.name}</p>
+          <div className="flex gap-4 text-xs text-zinc-400 mt-2">
+            {t.landing.footer.nav.legal.items.map((item) => (
+              <a key={item.url} href={item.url} className="hover:text-black transition-colors">{item.name}</a>
+            ))}
+          </div>
+        </div>
       </footer>
     </main>
   );
