@@ -6,6 +6,24 @@ import { useI18n } from './i18n';
 
 const MotionDebug = lazy(() => import('./components/MotionDebug'));
 
+const isManualMotionRequired = () => {
+  if (typeof window === 'undefined') return false;
+
+  const params = new URLSearchParams(window.location.search);
+  if (params.has('forceMotionFallback')) return true;
+
+  const isYandexBrowser = navigator.userAgent.includes('YaBrowser');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  return isYandexBrowser && prefersReducedMotion;
+};
+
+const easeInOutCubic = (progress: number) => {
+  return progress < 0.5
+    ? 4 * progress * progress * progress
+    : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+};
+
 const App: React.FC = () => {
   // Initialize view from URL hash
   const getInitialView = () => {
@@ -20,6 +38,10 @@ const App: React.FC = () => {
   const stripeRef = useRef<HTMLDivElement | null>(null);
   const forwardArrowRef = useRef<SVGSVGElement | null>(null);
   const backwardArrowRef = useRef<SVGSVGElement | null>(null);
+  const manualMotionEnabled = useRef(isManualMotionRequired());
+  const trackPosition = useRef(view === 'landing' ? -window.innerWidth : 0);
+  const trackAnimationFrame = useRef<number | null>(null);
+  const stripeAnimationFrame = useRef<number | null>(null);
   const motionDebugEnabled = useRef(
     typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('motionDebug')
   );
@@ -50,9 +72,55 @@ const App: React.FC = () => {
     }
   };
 
+  const setManualTrackPosition = (position: number) => {
+    trackPosition.current = position;
+    if (trackRef.current) {
+      trackRef.current.style.transform = `translate3d(${position}px, 0, 0)`;
+    }
+  };
+
+  const animateManualTrack = (nextView: 'hero' | 'landing') => {
+    if (!manualMotionEnabled.current) return;
+
+    if (trackAnimationFrame.current !== null) {
+      window.cancelAnimationFrame(trackAnimationFrame.current);
+      trackAnimationFrame.current = null;
+    }
+
+    const target = nextView === 'landing' ? -window.innerWidth : 0;
+    const start = trackPosition.current;
+    const distance = target - start;
+    const durationMs = 700;
+    const startedAt = performance.now();
+
+    const tick = (now: number) => {
+      const progress = Math.min((now - startedAt) / durationMs, 1);
+      const easedProgress = easeInOutCubic(progress);
+
+      setManualTrackPosition(start + distance * easedProgress);
+
+      if (progress < 1) {
+        trackAnimationFrame.current = window.requestAnimationFrame(tick);
+        return;
+      }
+
+      setManualTrackPosition(target);
+      trackAnimationFrame.current = null;
+    };
+
+    trackAnimationFrame.current = window.requestAnimationFrame(tick);
+  };
+
+  const setViewWithMotion = (nextView: 'hero' | 'landing') => {
+    if (nextView === view) return;
+
+    animateManualTrack(nextView);
+    setView(nextView);
+  };
+
   const toggleView = () => {
     triggerHaptic();
-    setView(prev => (prev === 'hero' ? 'landing' : 'hero'));
+    setViewWithMotion(view === 'hero' ? 'landing' : 'hero');
   };
 
   const onTouchStart = (e: React.TouchEvent) => {
@@ -84,11 +152,11 @@ const App: React.FC = () => {
 
     if (isLeftSwipe && view === 'hero') {
       triggerHaptic();
-      setView('landing');
+      setViewWithMotion('landing');
     }
     if (isRightSwipe && view === 'landing') {
       triggerHaptic();
-      setView('hero');
+      setViewWithMotion('hero');
     }
   };
 
@@ -96,16 +164,56 @@ const App: React.FC = () => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowRight' && view === 'hero') {
         triggerHaptic();
-        setView('landing');
+        setViewWithMotion('landing');
       }
       if (e.key === 'ArrowLeft' && view === 'landing') {
         triggerHaptic();
-        setView('hero');
+        setViewWithMotion('hero');
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [view]);
+
+  useEffect(() => {
+    if (!manualMotionEnabled.current) return;
+
+    setManualTrackPosition(view === 'landing' ? -window.innerWidth : 0);
+
+    return () => {
+      if (trackAnimationFrame.current !== null) {
+        window.cancelAnimationFrame(trackAnimationFrame.current);
+        trackAnimationFrame.current = null;
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!manualMotionEnabled.current) return;
+
+    const durationMs = 3000;
+    const startedAt = performance.now();
+
+    const tick = (now: number) => {
+      const progress = ((now - startedAt) % durationMs) / durationMs;
+      const position = 64 - 128 * easeInOutCubic(progress);
+
+      if (stripeRef.current) {
+        stripeRef.current.style.transform = `translate3d(${position}px, 0, 0)`;
+      }
+
+      stripeAnimationFrame.current = window.requestAnimationFrame(tick);
+    };
+
+    stripeAnimationFrame.current = window.requestAnimationFrame(tick);
+
+    return () => {
+      if (stripeAnimationFrame.current !== null) {
+        window.cancelAnimationFrame(stripeAnimationFrame.current);
+        stripeAnimationFrame.current = null;
+      }
+    };
+  }, []);
 
   return (
     <div
@@ -117,9 +225,20 @@ const App: React.FC = () => {
     >
       <div
         ref={trackRef}
-        className={`flex w-[200vw] h-full transition-transform duration-700 ease-[cubic-bezier(0.77,0,0.175,1)] ${
-          view === 'landing' ? '-translate-x-[100vw]' : 'translate-x-0'
-        }`}
+        data-motion-track
+        data-motion-mode={manualMotionEnabled.current ? 'manual' : 'css'}
+        className={
+          manualMotionEnabled.current
+            ? 'motion-manual-track flex w-[200vw] h-full'
+            : `flex w-[200vw] h-full transition-transform duration-700 ease-[cubic-bezier(0.77,0,0.175,1)] ${
+                view === 'landing' ? '-translate-x-[100vw]' : 'translate-x-0'
+              }`
+        }
+        style={
+          manualMotionEnabled.current
+            ? { transform: `translate3d(${trackPosition.current}px, 0, 0)` }
+            : undefined
+        }
       >
         {/* Main Hero Screen */}
         <div className="w-[100vw] h-full flex-shrink-0 relative">
@@ -130,7 +249,9 @@ const App: React.FC = () => {
             <div className="w-16 h-[3px] bg-white/15 rounded-full overflow-hidden">
               <div
                 ref={stripeRef}
-                className="h-full w-full bg-gradient-to-r from-transparent via-white/50 to-transparent animate-guide-swipe"
+                className={`h-full w-full bg-gradient-to-r from-transparent via-white/50 to-transparent ${
+                  manualMotionEnabled.current ? 'swipe-guide-glint-manual' : 'animate-guide-swipe'
+                }`}
               />
             </div>
           </div>
@@ -193,6 +314,16 @@ const App: React.FC = () => {
         }
         .animate-guide-swipe {
           animation: guide-swipe 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+        }
+        .motion-manual-track {
+          transition: none !important;
+          will-change: transform;
+          backface-visibility: hidden;
+        }
+        .swipe-guide-glint-manual {
+          animation: none !important;
+          will-change: transform;
+          backface-visibility: hidden;
         }
       `}</style>
 
