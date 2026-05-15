@@ -1,8 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { Suspense, lazy, useState, useEffect, useRef } from 'react';
 import { Hero } from './components/Hero';
 import { Landing } from './components/Landing';
 import { ChevronRight, ChevronLeft } from 'lucide-react';
 import { useI18n } from './i18n';
+
+const MotionDebug = lazy(() => import('./components/MotionDebug'));
 
 const App: React.FC = () => {
   // Initialize view from URL hash
@@ -14,29 +16,25 @@ const App: React.FC = () => {
   const touchStart = useRef<number | null>(null);
   const touchEnd = useRef<number | null>(null);
   const vibrationActivated = useRef(false);
-  const hashSyncTimer = useRef<number | null>(null);
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const stripeRef = useRef<HTMLDivElement | null>(null);
+  const forwardArrowRef = useRef<SVGSVGElement | null>(null);
+  const backwardArrowRef = useRef<SVGSVGElement | null>(null);
+  const motionDebugEnabled = useRef(
+    typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('motionDebug')
+  );
+  const [debugTouch, setDebugTouch] = useState('none');
   const { t } = useI18n();
 
   const minSwipeDistance = 70;
 
-  // Sync view state with URL hash after the slide transition starts.
+  // Sync view state with URL hash
   useEffect(() => {
     const newHash = view === 'landing' ? '#landing' : '';
-    if (hashSyncTimer.current !== null) window.clearTimeout(hashSyncTimer.current);
-
-    hashSyncTimer.current = window.setTimeout(() => {
-      if (window.location.hash !== newHash) {
-        const baseUrl = `${window.location.pathname}${window.location.search}`;
-        window.history.replaceState(null, '', newHash ? `${baseUrl}${newHash}` : baseUrl);
-      }
-    }, 720);
-
-    return () => {
-      if (hashSyncTimer.current !== null) {
-        window.clearTimeout(hashSyncTimer.current);
-        hashSyncTimer.current = null;
-      }
-    };
+    if (window.location.hash !== newHash) {
+      const baseUrl = `${window.location.pathname}${window.location.search}`;
+      window.history.replaceState(null, '', newHash ? `${baseUrl}${newHash}` : baseUrl);
+    }
   }, [view]);
 
   const activateVibration = () => {
@@ -61,10 +59,16 @@ const App: React.FC = () => {
     activateVibration();
     touchEnd.current = null;
     touchStart.current = e.targetTouches[0].clientX;
+    if (motionDebugEnabled.current) {
+      setDebugTouch(`start x=${e.targetTouches[0].clientX.toFixed(1)}`);
+    }
   };
 
   const onTouchMove = (e: React.TouchEvent) => {
     touchEnd.current = e.targetTouches[0].clientX;
+    if (motionDebugEnabled.current) {
+      setDebugTouch(`move x=${e.targetTouches[0].clientX.toFixed(1)}`);
+    }
   };
 
   const onTouchEnd = () => {
@@ -73,6 +77,10 @@ const App: React.FC = () => {
     const distance = touchStart.current - touchEnd.current;
     const isLeftSwipe = distance > minSwipeDistance;
     const isRightSwipe = distance < -minSwipeDistance;
+
+    if (motionDebugEnabled.current) {
+      setDebugTouch(`end x=${touchEnd.current.toFixed(1)} distance=${distance.toFixed(1)} left=${isLeftSwipe} right=${isRightSwipe}`);
+    }
 
     if (isLeftSwipe && view === 'hero') {
       triggerHaptic();
@@ -108,7 +116,10 @@ const App: React.FC = () => {
       onTouchEnd={onTouchEnd}
     >
       <div
-        className={`slider-track flex w-[200vw] h-full ${view === 'landing' ? 'slider-track--landing' : ''}`}
+        ref={trackRef}
+        className={`flex w-[200vw] h-full transition-transform duration-700 ease-[cubic-bezier(0.77,0,0.175,1)] ${
+          view === 'landing' ? '-translate-x-[100vw]' : 'translate-x-0'
+        }`}
       >
         {/* Main Hero Screen */}
         <div className="w-[100vw] h-full flex-shrink-0 relative">
@@ -117,7 +128,10 @@ const App: React.FC = () => {
           {/* Mobile Swipe Guidance Indicator */}
           <div className="absolute top-[75px] left-1/2 -translate-x-1/2 z-40 md:hidden pointer-events-none">
             <div className="w-16 h-[3px] bg-white/15 rounded-full overflow-hidden">
-              <div className="swipe-guide-glint h-full w-full bg-gradient-to-r from-transparent via-white/50 to-transparent" />
+              <div
+                ref={stripeRef}
+                className="h-full w-full bg-gradient-to-r from-transparent via-white/50 to-transparent animate-guide-swipe"
+              />
             </div>
           </div>
 
@@ -131,7 +145,10 @@ const App: React.FC = () => {
                 {t.hero.navForward}
               </span>
               <div className="relative">
-                <ChevronRight className="w-4 h-4 md:w-5 md:h-5 text-white animate-[bounce-x_2s_infinite]" />
+                <ChevronRight
+                  ref={forwardArrowRef}
+                  className="w-4 h-4 md:w-5 md:h-5 text-white animate-[bounce-x_2s_infinite]"
+                />
               </div>
             </div>
           </button>
@@ -145,7 +162,10 @@ const App: React.FC = () => {
             className="h-full w-10 md:w-16 flex-shrink-0 z-50 flex flex-col items-center justify-center bg-white/30 backdrop-blur-2xl border-r border-zinc-200/30 hover:bg-zinc-100/40 transition-all group"
           >
             <div className="flex flex-col items-center gap-6 md:gap-8 group-hover:scale-110 transition-transform duration-300">
-              <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 text-black animate-[bounce-x-reverse_2s_infinite]" />
+              <ChevronLeft
+                ref={backwardArrowRef}
+                className="w-4 h-4 md:w-5 md:h-5 text-black animate-[bounce-x-reverse_2s_infinite]"
+              />
               <span className="[writing-mode:vertical-lr] rotate-180 font-black tracking-[0.4em] md:tracking-[0.5em] uppercase text-[9px] md:text-xs text-black/60">
                 {t.landing.nav.back}
               </span>
@@ -168,28 +188,26 @@ const App: React.FC = () => {
           50% { transform: translateX(-4px); }
         }
         @keyframes guide-swipe {
-          0% { transform: translate3d(100%, 0, 0); }
-          100% { transform: translate3d(-100%, 0, 0); }
+          0% { transform: translateX(100%); }
+          100% { transform: translateX(-100%); }
         }
-
-        .slider-track {
-          transform: translate3d(0, 0, 0);
-          transition: transform 700ms cubic-bezier(0.77, 0, 0.175, 1);
-          will-change: transform;
-          backface-visibility: hidden;
-        }
-
-        .slider-track--landing {
-          transform: translate3d(-100vw, 0, 0);
-        }
-
-        .swipe-guide-glint {
+        .animate-guide-swipe {
           animation: guide-swipe 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
-          backface-visibility: hidden;
-          transform: translate3d(100%, 0, 0);
-          will-change: transform;
         }
       `}</style>
+
+      {motionDebugEnabled.current && (
+        <Suspense fallback={null}>
+          <MotionDebug
+            view={view}
+            lastTouch={debugTouch}
+            trackRef={trackRef}
+            stripeRef={stripeRef}
+            forwardArrowRef={forwardArrowRef}
+            backwardArrowRef={backwardArrowRef}
+          />
+        </Suspense>
+      )}
     </div>
   );
 };

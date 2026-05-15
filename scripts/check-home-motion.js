@@ -75,14 +75,14 @@ async function run() {
     });
 
     const page = await browser.newPage();
-    await page.goto(`${PREVIEW_URL}?motionDebug=1`, { waitUntil: 'networkidle0', timeout: 60000 });
+    await page.goto(PREVIEW_URL, { waitUntil: 'networkidle0', timeout: 60000 });
 
     const hasMotionDebugPanel = await page.evaluate(() => {
-      return document.body.textContent?.includes('Motion Debug') ?? false;
+      return Boolean(document.querySelector('[data-motion-debug-panel]'));
     });
 
     if (hasMotionDebugPanel) {
-      fail('debug overlay is rendered for ?motionDebug=1');
+      fail('debug overlay is rendered without motionDebug query parameter');
     }
 
     await page.click('#root button');
