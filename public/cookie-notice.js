@@ -39,8 +39,8 @@
   text.style.color = '#52525b';
   text.style.font = '14px/1.5 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
   text.append(isEnglish
-    ? 'This site uses cookies, Yandex Metrica, and localStorage for analytics, service improvement, and website check tools. By continuing to use the site or clicking “I agree”, you confirm that you have read the privacy policy. '
-    : 'Сайт использует cookies, Яндекс.Метрику и localStorage для аналитики, улучшения сервиса и работы инструментов проверки. Продолжая пользоваться сайтом или нажимая «Согласен», вы подтверждаете, что ознакомились с политикой обработки данных. ');
+    ? 'This site uses cookies and analytics services for service improvement and website check tools. By continuing to use the site or clicking “I agree”, you confirm that you have read the privacy policy. '
+    : 'Сайт использует cookies и сервисы аналитики для улучшения сервиса и работы инструментов проверки. Продолжая пользоваться сайтом или нажимая «Согласен», вы подтверждаете, что ознакомились с политикой обработки данных. ');
 
   var link = document.createElement('a');
   link.href = isEnglish ? '/en/privacy/' : '/privacy/';

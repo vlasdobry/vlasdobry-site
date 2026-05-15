@@ -30,8 +30,8 @@ export const CookieNotice: React.FC<CookieNoticeProps> = ({ lang }) => {
   if (!isVisible) return null;
 
   const text = lang === 'ru'
-    ? 'Сайт использует cookies, Яндекс.Метрику и localStorage для аналитики, улучшения сервиса и работы инструментов проверки. Продолжая пользоваться сайтом или нажимая «Согласен», вы подтверждаете, что ознакомились с политикой обработки данных.'
-    : 'This site uses cookies, Yandex Metrica, and localStorage for analytics, service improvement, and website check tools. By continuing to use the site or clicking “I agree”, you confirm that you have read the privacy policy.';
+    ? 'Сайт использует cookies и сервисы аналитики для улучшения сервиса и работы инструментов проверки. Продолжая пользоваться сайтом или нажимая «Согласен», вы подтверждаете, что ознакомились с политикой обработки данных.'
+    : 'This site uses cookies and analytics services for service improvement and website check tools. By continuing to use the site or clicking “I agree”, you confirm that you have read the privacy policy.';
   const linkText = lang === 'ru' ? 'Политика обработки данных' : 'Privacy policy';
   const linkHref = lang === 'ru' ? '/privacy/' : '/en/privacy/';
   const buttonText = lang === 'ru' ? 'Согласен' : 'I agree';
