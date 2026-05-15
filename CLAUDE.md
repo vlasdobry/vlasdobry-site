@@ -82,6 +82,12 @@ git push origin master  # Деплой на продакшен (автомати
 - `/en/blog` — блог со статьями (EN)
 - `/blog/[slug]` — отдельная статья (RU)
 - `/en/blog/[slug]` — отдельная статья (EN)
+- `/about` — информация об исполнителе (RU): ФИО, профиль, контакты
+- `/en/about` — About page (EN)
+- `/privacy` — политика обработки персональных данных (RU)
+- `/en/privacy` — Privacy Policy (EN)
+- `/terms` — условия использования сайта (RU)
+- `/en/terms` — Terms of Service (EN)
 
 **Структура компонентов:**
 - `src/App.tsx` — корневой компонент, управляет навигацией hero↔landing, свайпы, виброотклик
@@ -91,6 +97,8 @@ git push origin master  # Деплой на продакшен (автомати
 - `src/components/ServiceLanding.tsx` — универсальный лендинг для услуг (SEO, GEO, PPC). Поддерживает опциональную секцию `checklist` (между Pricing и Related Services)
 - `src/components/HealthScoreChecker.tsx` — виджет экспресс-диагностики сайта (8 параметров)
 - `src/components/LanguageSwitcher.tsx` — переключатель языка
+- `src/components/CookieNotice.tsx` — cookie-баннер для React-страниц; информирует о cookies/Яндекс.Метрике/localStorage, не блокирует загрузку Метрики
+- `src/components/MotionDebug.tsx` — скрытая debug-панель для проверки motion-проблем через `?motionDebug=1`
 - `src/components/ProjectsLanding.tsx` — лендинг проектов (sticky header, карточки проектов)
 - `src/components/BlogList.tsx` — список статей блога с карточками
 - `src/components/BlogPost.tsx` — страница отдельной статьи (включает CTA блок Health Score между контентом и FAQ)
@@ -165,10 +173,19 @@ git push origin master  # Деплой на продакшен (автомати
 
 **Стилизация:** Tailwind CSS v4 (через Vite plugin), шрифт Inter. Используется glassmorphism-эффект для UI-элементов.
 
+**Legal / privacy pages:**
+- Статические страницы: `about.html`, `about-en.html`, `privacy.html`, `privacy-en.html`, `terms.html`, `terms-en.html`
+- После `npm run build` `scripts/postbuild.js` раскладывает их в `/about/`, `/en/about/`, `/privacy/`, `/en/privacy/`, `/terms/`, `/en/terms/`
+- Навигация сверху должна совпадать с основным лендингом: `VD.  RU | EN` одной группой слева, без отдельного переключателя в правом углу
+- В политике оператор указывается полным ФИО: `Фёдоров Влас Павлович`; EN: `Vlas Pavlovich Fedorov`
+- Не добавлять в legal-страницы Google Ads API, OAuth, Limited Use, Google API Services User Data Policy
+- Не добавлять статус самозанятого, ИНН или адрес без явного запроса Власа
+- `scripts/check-legal-pages.js` проверяет наличие обязательных фраз, cookie-баннера и отсутствие запрещённых упоминаний
+
 **Мультиязычность (i18n):**
 - URL-based routing: `/` (RU), `/en/` (EN)
 - Самописная i18n-система в `src/i18n/` (KISS: без i18next)
-- HTML файлы: `index.html`, `en.html`, `for-hotels.html`, `for-hotels-en.html`, `for-labs.html`, `for-labs-en.html`, `for-spa.html`, `for-spa-en.html`, `projects.html`, `projects-en.html`, `seo.html`, `seo-en.html`, `geo.html`, `geo-en.html`, `ppc.html`, `ppc-en.html`, `blog.html`, `blog-en.html`, `case-dna-labs.html`, `case-dna-labs-en.html`
+- HTML файлы: `index.html`, `en.html`, `for-hotels.html`, `for-hotels-en.html`, `for-labs.html`, `for-labs-en.html`, `for-spa.html`, `for-spa-en.html`, `projects.html`, `projects-en.html`, `seo.html`, `seo-en.html`, `geo.html`, `geo-en.html`, `ppc.html`, `ppc-en.html`, `blog.html`, `blog-en.html`, `case-dna-labs.html`, `case-dna-labs-en.html`, `about.html`, `about-en.html`, `privacy.html`, `privacy-en.html`, `terms.html`, `terms-en.html`
 - Переводы: `src/i18n/ru.ts`, `src/i18n/en.ts`
 
 **Мобильные функции:**
@@ -195,6 +212,8 @@ git push origin master  # Деплой на продакшен (автомати
 **SEO и аналитика:**
 - Open Graph и Twitter Cards для превью в соцсетях
 - Яндекс.Метрика (ID: 106407494) — счётчик в начале `<head>` на всех страницах
+- Метрика загружается сразу при посещении сайта; cookie-баннер не блокирует и не откладывает загрузку Метрики
+- Cookie-баннер информирует о cookies, Яндекс.Метрике и localStorage; подтверждение хранится в `localStorage` как `cookie_notice_accepted=true`
 - Schema.org JSON-LD разметка (Person, FAQPage, ProfessionalService, ItemList)
 - Централизованный трекинг целей через `src/utils/analytics.ts`
 
@@ -258,8 +277,17 @@ git push origin master  # Деплой на продакшен (автомати
 | `blog-post.html` | Entry point для страниц статей (vite build) |
 | `case-dna-labs.html` | RU страница подробного кейса Google Ads для ДНК-лабораторий |
 | `case-dna-labs-en.html` | EN страница кейса |
+| `about.html` | RU страница "Обо мне" |
+| `about-en.html` | EN страница About |
+| `privacy.html` | RU политика обработки персональных данных |
+| `privacy-en.html` | EN Privacy Policy |
+| `terms.html` | RU условия использования |
+| `terms-en.html` | EN Terms of Service |
+| `public/cookie-notice.js` | Cookie-баннер для статических HTML-страниц |
+| `src/components/CookieNotice.tsx` | Cookie-баннер для React-страниц |
 | `content/blog/` | Markdown-статьи (ru.md, en.md для каждой) |
 | `scripts/generate-blog.js` | Генерация HTML статей и blog-data.json |
+| `scripts/check-legal-pages.js` | Проверка legal-страниц, cookie-баннера и запрещённых упоминаний |
 | `scripts/check-yandex-motion-fallback.js` | Проверка JS fallback анимаций для Android/Yandex reduced-motion режима |
 | `scripts/check-home-motion.js` | Проверка обычного CSS-свайпа hero↔landing |
 | `scripts/check-motion-debug.js` | Проверка скрытой панели `?motionDebug=1` |
