@@ -42,6 +42,7 @@ const App: React.FC = () => {
   const trackPosition = useRef(view === 'landing' ? -window.innerWidth : 0);
   const trackAnimationFrame = useRef<number | null>(null);
   const stripeAnimationFrame = useRef<number | null>(null);
+  const arrowAnimationFrame = useRef<number | null>(null);
   const motionDebugEnabled = useRef(
     typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('motionDebug')
   );
@@ -215,6 +216,37 @@ const App: React.FC = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (!manualMotionEnabled.current) return;
+
+    const durationMs = 2000;
+    const startedAt = performance.now();
+
+    const tick = (now: number) => {
+      const progress = ((now - startedAt) % durationMs) / durationMs;
+      const bounceProgress = progress < 0.5 ? progress * 2 : (1 - progress) * 2;
+      const offset = 4 * easeInOutCubic(bounceProgress);
+
+      if (forwardArrowRef.current) {
+        forwardArrowRef.current.style.transform = `translate3d(${offset}px, 0, 0)`;
+      }
+      if (backwardArrowRef.current) {
+        backwardArrowRef.current.style.transform = `translate3d(${-offset}px, 0, 0)`;
+      }
+
+      arrowAnimationFrame.current = window.requestAnimationFrame(tick);
+    };
+
+    arrowAnimationFrame.current = window.requestAnimationFrame(tick);
+
+    return () => {
+      if (arrowAnimationFrame.current !== null) {
+        window.cancelAnimationFrame(arrowAnimationFrame.current);
+        arrowAnimationFrame.current = null;
+      }
+    };
+  }, []);
+
   return (
     <div
       className="relative h-[100svh] w-full overflow-hidden bg-white text-[#121212]"
@@ -268,7 +300,10 @@ const App: React.FC = () => {
               <div className="relative">
                 <ChevronRight
                   ref={forwardArrowRef}
-                  className="w-4 h-4 md:w-5 md:h-5 text-white animate-[bounce-x_2s_infinite]"
+                  data-forward-arrow
+                  className={`w-4 h-4 md:w-5 md:h-5 text-white ${
+                    manualMotionEnabled.current ? 'motion-arrow-manual' : 'animate-[bounce-x_2s_infinite]'
+                  }`}
                 />
               </div>
             </div>
@@ -285,7 +320,10 @@ const App: React.FC = () => {
             <div className="flex flex-col items-center gap-6 md:gap-8 group-hover:scale-110 transition-transform duration-300">
               <ChevronLeft
                 ref={backwardArrowRef}
-                className="w-4 h-4 md:w-5 md:h-5 text-black animate-[bounce-x-reverse_2s_infinite]"
+                data-backward-arrow
+                className={`w-4 h-4 md:w-5 md:h-5 text-black ${
+                  manualMotionEnabled.current ? 'motion-arrow-manual' : 'animate-[bounce-x-reverse_2s_infinite]'
+                }`}
               />
               <span className="[writing-mode:vertical-lr] rotate-180 font-black tracking-[0.4em] md:tracking-[0.5em] uppercase text-[9px] md:text-xs text-black/60">
                 {t.landing.nav.back}
@@ -321,6 +359,11 @@ const App: React.FC = () => {
           backface-visibility: hidden;
         }
         .swipe-guide-glint-manual {
+          animation: none !important;
+          will-change: transform;
+          backface-visibility: hidden;
+        }
+        .motion-arrow-manual {
           animation: none !important;
           will-change: transform;
           backface-visibility: hidden;

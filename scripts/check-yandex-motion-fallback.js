@@ -83,6 +83,33 @@ async function collectTrackPositions(page) {
   return samples;
 }
 
+async function collectForwardArrowSamples(page) {
+  const samples = [];
+  const checkpointMs = [0, 120, 260, 420, 620, 860];
+  let previousMs = 0;
+
+  for (const currentMs of checkpointMs) {
+    await sleep(Math.max(0, currentMs - previousMs));
+    previousMs = currentMs;
+
+    const snapshot = await page.evaluate((elapsedMs) => {
+      const arrow = document.querySelector('[data-forward-arrow]');
+      if (!arrow) return { elapsedMs, missing: true };
+
+      const style = window.getComputedStyle(arrow);
+      return {
+        elapsedMs,
+        transform: style.transform,
+        animationName: style.animationName,
+      };
+    }, currentMs);
+
+    samples.push(snapshot);
+  }
+
+  return samples;
+}
+
 async function run() {
   const preview = spawn(process.execPath, ['-e', STATIC_SERVER], {
     cwd: process.cwd(),
@@ -135,6 +162,20 @@ async function run() {
     const transitionProperties = new Set(samples.map(sample => sample.transitionProperty));
     if (![...transitionProperties].every(value => value === 'none' || value === 'all')) {
       fail(`manual mode still uses CSS transition: ${[...transitionProperties].join(', ')}`);
+    }
+
+    const arrowSamples = await collectForwardArrowSamples(page);
+    const missingArrowSample = arrowSamples.find(sample => 'missing' in sample);
+    if (missingArrowSample) fail('forward arrow is missing during manual motion mode');
+
+    const arrowAnimationNames = new Set(arrowSamples.map(sample => sample.animationName));
+    if (![...arrowAnimationNames].every(value => value === 'none')) {
+      fail(`manual arrow still uses CSS animation: ${[...arrowAnimationNames].join(', ')}`);
+    }
+
+    const distinctArrowTransforms = new Set(arrowSamples.map(sample => sample.transform));
+    if (distinctArrowTransforms.size < 3) {
+      fail(`manual arrow animation looks static, only ${distinctArrowTransforms.size} distinct transforms recorded`);
     }
 
     console.log(`YANDEX MOTION FALLBACK CHECK PASS: ${distinctPositions.size} distinct positions, final left ${finalSample.left}`);
