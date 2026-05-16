@@ -15,8 +15,8 @@ export const en: Translations = {
     },
     hero: {
       title: 'Hotel Marketing — More Direct Bookings, Less OTA Dependency',
-      subtitle: 'Performance marketer working in-house at Grace Group — an international hotel chain, 20 properties. I know hotel marketing from the inside. I help independent hotels build systematic guest acquisition through direct channels.',
-      stats: '10+ years in performance marketing · In-house at Grace Group, 20 properties · +60% revenue in low season',
+      subtitle: 'Performance marketer who worked in-house at Grace Group — an international hotel chain, 20 properties. I know hotel marketing from the inside. I help independent hotels build systematic guest acquisition through direct channels.',
+      stats: '10+ years in performance marketing · In-house experience at Grace Group, 20 properties · +60% revenue in low season',
     },
     problems: {
       label: 'Sound familiar?',
@@ -60,7 +60,7 @@ export const en: Translations = {
       label: 'Experience',
       title: 'Grace Group',
       subtitle: 'International hotel chain, 20 properties — in-house',
-      challenge: 'Working in-house at Grace Group — an international hotel chain, 20 properties. Responsible for performance marketing: managing Google Ads as the primary paid channel, working with analytics and optimization across acquisition channels.',
+      challenge: 'Worked in-house at Grace Group — an international hotel chain, 20 properties. Responsible for performance marketing: managing Google Ads as the primary paid channel, working with analytics and optimization across acquisition channels.',
       done: [
         'Grew paid traffic revenue by 60% in low season (November–December)',
         'Paid traffic conversion ×2 vs. pre-engagement baseline',

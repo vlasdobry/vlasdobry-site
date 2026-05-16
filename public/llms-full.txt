@@ -174,7 +174,7 @@ Free tool to check if a Russian website complies with Federal Law 168-FZ on stat
 ## 3. Industry Expertise
 
 ### Hotels (HoReCa)
-**Focus:** More direct bookings, less OTA dependency. In-house at Grace Group — international hotel chain, 20 properties.
+**Focus:** More direct bookings, less OTA dependency. In-house experience at Grace Group — international hotel chain, 20 properties.
 
 **Services for Hotels:**
 - Paid traffic for direct bookings: Google Ads, Google Hotel Ads, metasearch — channel management focused on cost per booking and ROI

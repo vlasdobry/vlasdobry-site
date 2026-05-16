@@ -95,7 +95,7 @@ SOSTAC + PDCA: audit -> strategy -> launch -> control
 
 ## PPC Advertising Service
 - PPC advertising management for hotels: Yandex Direct, Google Ads, Performance Max
-- In-house at Grace Group (international hotel chain, 20 properties)
+- In-house experience at Grace Group (international hotel chain, 20 properties)
 - Results: +60% revenue in low season, 2x paid traffic conversion, ad cost ratio on target
 - SPA resorts: conversions x10, ad cost 48% -> 13%
 - Free website readiness checklist: 8-point assessment (booking engine, speed, mobile, pricing, contacts, photos, analytics, goals)
