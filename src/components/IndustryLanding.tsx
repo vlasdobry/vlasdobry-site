@@ -303,20 +303,16 @@ export const IndustryLanding: React.FC<Props> = ({ sectionKey, basePath }) => {
                   ))}
                 </ul>
               </div>
-              <div>
-                <h5 className="text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-300 mb-3">{t.landing.footer.nav.legal.label}</h5>
-                <div className="border-t border-zinc-100 mb-3"></div>
-                <ul className="space-y-2">
-                  {t.landing.footer.nav.legal.items.map((item) => (
-                    <li key={item.url}>
-                      <a href={item.url} className="text-sm text-zinc-500 hover:text-black transition-colors">{item.name}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </div>
           </div>
-          <p className="text-zinc-300 text-sm mt-12">&copy; {new Date().getFullYear()} {section.footer.name}</p>
+          <div className="mt-12">
+            <p className="text-zinc-300 text-sm">&copy; {new Date().getFullYear()} {section.footer.name}</p>
+            <div className="flex gap-4 text-xs text-zinc-400 mt-2">
+              {t.landing.footer.nav.legal.items.map((item) => (
+                <a key={item.url} href={item.url} className="hover:text-black transition-colors">{item.name}</a>
+              ))}
+            </div>
+          </div>
         </footer>
       </div>
     </main>
