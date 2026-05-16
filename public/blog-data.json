@@ -1,6 +1,86 @@
 {
   "ru": [
     {
+      "slug": "kak-snizit-cpa-google-ads-v-6-raz-keys",
+      "title": "Как снизить CPA в Google Ads в 8 раз: разбор кейса appliance repair",
+      "description": "Реальный кейс: снижение CPA с $210 до $27 для сервиса ремонта техники в Bay Area. PMax дал CPA $7.30 против $147 в Search. Пошаговая пересборка: трекинг, микроинтенты, Performance Max.",
+      "date": "2026-05-16",
+      "dateModified": "2026-05-16",
+      "category": "marketing",
+      "tags": [
+        "google ads",
+        "ppc",
+        "кейс",
+        "CPA",
+        "performance max"
+      ],
+      "relatedService": "/services/ppc",
+      "cover": "cover.jpg",
+      "series": null,
+      "readingTime": 7,
+      "toc": [
+        {
+          "id": "исходная-точка-210-за-лид-при-бенчмарке-5090",
+          "text": "Исходная точка: $210 за лид при бенчмарке $50–90",
+          "level": 2
+        },
+        {
+          "id": "этап-1-трекинг",
+          "text": "Этап 1: Трекинг",
+          "level": 2
+        },
+        {
+          "id": "этап-2-микроинтенты-группировка-по-смыслу-запроса",
+          "text": "Этап 2: Микроинтенты — группировка по смыслу запроса",
+          "level": 2
+        },
+        {
+          "id": "этап-3-keyword-based-rsa",
+          "text": "Этап 3: Keyword-based RSA",
+          "level": 2
+        },
+        {
+          "id": "этап-4-performance-max",
+          "text": "Этап 4: Performance Max",
+          "level": 2
+        },
+        {
+          "id": "что-в-итоге",
+          "text": "Что в итоге",
+          "level": 2
+        },
+        {
+          "id": "три-вывода-для-тех-кто-запускает-google-ads",
+          "text": "Три вывода для тех, кто запускает Google Ads",
+          "level": 2
+        }
+      ],
+      "hasFaq": true,
+      "content": "<p>Клиент пришёл с аккаунтом, который уже работал. На первый взгляд — всё нормально: кампании крутятся, бюджет тратится. Но когда я открыл цифры, картина оказалась жёсткой.</p>\n<h2 id=\"исходная-точка-210-за-лид-при-бенчмарке-5090\">Исходная точка: $210 за лид при бенчмарке $50–90</h2>\n<p>Сервис ремонта бытовой техники и HVAC в Bay Area. Обслуживает 13 городов: San Jose, Palo Alto, Cupertino, Mountain View и окрестности. Сайт на Lovable — no-code платформа, React SPA.</p>\n<p>Когда я зашёл в аккаунт, там работали кампании, которые собственник настроил самостоятельно — что-то знал про Google Ads, но без глубокого понимания. За 25 дней (20 марта – 13 апреля) они показали:</p>\n<ul>\n<li><strong>$839</strong> потрачено</li>\n<li><strong>4 конверсии</strong></li>\n<li><strong>CPA $210</strong></li>\n</ul>\n<p>Для контекста: рыночный CPA для appliance repair в Bay Area — $50–90. CPA был в 2–4 раза выше рынка.</p>\n<p>Почему так? Я нашёл цепочку:</p>\n<pre><code>Низкий Quality Score (1–3) → CPC $22–98 → 53 клика за 25 дней\n→ нет данных для Smart Bidding → алгоритм не обучается → CPA $210\n</code></pre>\n<p>Главный убийца — <strong>Quality Score 1–3 на 59% ключей</strong>. Landing Page Experience был «Below Average» почти по всем ключам. Сайт на Lovable — CSR-only SPA — отдавал одинаковый HTML на все страницы. Googlebot видел пустую оболочку.</p>\n<p>Плюс <strong>88% ключевых слов не получали показов</strong>. В аккаунте было 275 ключей, и 242 из них просто лежали мёртвым грузом.</p>\n<p>Я разделил пересборку на четыре этапа.</p>\n<h2 id=\"этап-1-трекинг\">Этап 1: Трекинг</h2>\n<p>До моего прихода на сайте стояли хардкод-теги gtag.js. GA4 не был связан с Google Ads. Google Signals выключен. Бронирование через кнопку Book Online уводило на внешний домен book.housecallpro.com и не трекалось вообще.</p>\n<p>Первым делом я поставил Google Tag Manager. Создал контейнер, 11 тегов:</p>\n<ul>\n<li>GA4 Config + Google Tag Ads</li>\n<li>Conversion Linker + Remarketing + GCLID Capture</li>\n<li>3 GA4 Events (form_submit, call_click, book_online)</li>\n<li>3 Ads Conversion Actions с теми же триггерами</li>\n</ul>\n<p>Enhanced Conversions настроил через dataLayer — имя и телефон передаются в зашифрованном виде. GA4 связал с Google Ads, включил Google Signals. Хардкод-теги удалил.</p>\n<p>Результат: 100% coverage в Diagnostics, оценка «Отлично». Но самое главное — <strong>появились данные</strong>. Без этого любой следующий шаг был бы гаданием.</p>\n<h2 id=\"этап-2-микроинтенты-группировка-по-смыслу-запроса\">Этап 2: Микроинтенты — группировка по смыслу запроса</h2>\n<p>В старом аккаунте было 275 ключей в нескольких больших ad group. Например, группа «Washer Repair» включала 30+ ключей: «washer repair near me», «maytag washer repair», «washer not draining», «lg washer repair san jose». Разные интенты, разные бренды — свалены в одну кучу.</p>\n<p>Я перешёл на микроинтенты. Принцип: <strong>все ключи в одной группе — про одно и то же</strong>. Где-то это один ключ, где-то два, где-то шесть — но объявление пишется под их общий смысл, а не под разнородную свалку.</p>\n<ul>\n<li>275 ключей → <strong>125 Exact match</strong></li>\n<li>6 кампаний, <strong>29 ad groups</strong>, по 1–6 ключей в группе</li>\n<li>Каждое RSA написано под микроинтент группы: H1 содержит главный ключ, description адаптирован</li>\n<li>Бюджет: $10–15/день на кампанию, CPC cap $25</li>\n</ul>\n<p>Главное отличие от «широких» групп: когда в ad group лежат «samsung refrigerator repair», «lg refrigerator repair» и «ge refrigerator repair» — это три разных микроинтента, потому что пользователь ищет конкретный бренд. Такие группы я разбиваю. А «samsung refrigerator repair», «samsung fridge repair», «samsung refrigerator repair near me» — один микроинтент, можно держать вместе.</p>\n<p>Минус-слова — 82 на уровне аккаунта плюс кросс-минусовка между группами. Исключил «free», «salary», «training», «manual», «parts only».</p>\n<p>Это дало рост CTR с 4–6% до <strong>11–12%</strong>. Quality Score пошёл вверх: с 2.43 до <strong>3.72</strong>, а лучшие ключи (GE Oven, Bosch Oven, Samsung Refrigerator) поднялись до QS 7.</p>\n<p>Impression Share вырос с <strong>20% до 50%</strong>. Причина потерь сместилась с «Lost by Rank» на «Lost by Budget» — а это хороший знак. Бюджет можно поднять; ранг без качества не поднимешь.</p>\n<h2 id=\"этап-3-keyword-based-rsa\">Этап 3: Keyword-based RSA</h2>\n<p>RSA я собирал сразу под микроинтенты, следуя best practices: связка «запрос → объявление → посадочная страница» должна быть максимально плотной. H1 — главный ключ группы. H2–H9 — повторяющиеся УТП. H10–H15 — остальные ключи группы, каждый своим заголовком. 54 description&#39;а написаны с главным ключом дословно.</p>\n<p>После первой заливки часть объявлений получила статус «Low». Я пересмотрел каждое такое объявление, пересобрал — и поднял до «Good»–«Excellent». CTR после этого вырос ещё на 2–3 пункта.</p>\n<h2 id=\"этап-4-performance-max\">Этап 4: Performance Max</h2>\n<p>Через две недели после запуска Search-кампаний я добавил Performance Max. Запустил одну PMax-кампанию на ремонт холодильников с бюджетом $10/день.</p>\n<p><strong>Первый же день:</strong> 2 625 показов, 27 кликов, 1 конверсия. Для сравнения — все Search-кампании за предыдущие две недели дали 2 конверсии.</p>\n<p>За 19 дней PMax Refrigerator показал:</p>\n<ul>\n<li><strong>37 конверсий</strong>, CPA <strong>$6.17</strong></li>\n<li>11 365 показов, 422 клика</li>\n<li>Лучший день — 13 конверсий, CPA $2.39</li>\n</ul>\n<p>PMax оказался настолько эффективным, что я запустил ещё две кампании:</p>\n<ul>\n<li><strong>Luxury Refrigerator PMax</strong> — отдельная страница <code>/services/luxury-refrigerator-repair</code>, таргетинг на владельцев Sub-Zero, Viking, Thermador. Запущена 12 мая.</li>\n<li><strong>Washer/Dryer PMax</strong> — страница усилена под PMax-трафик: symptom-блоки, brand line, FAQ. Запущена 13 мая.</li>\n</ul>\n<p>Сейчас PMax — основной драйвер конверсий. Из 63 конверсий за период 54 пришли с трёх PMax-кампаний. CPA по PMax — <strong>$7.30</strong>.</p>\n<h2 id=\"что-в-итоге\">Что в итоге</h2>\n<p>Сравнение до и после пересборки. «До» — кампании, которые собственник настроил сам (20 марта – 13 апреля). «После» — мои кампании (13 апреля – 15 мая).</p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Метрика</th>\n<th>Старые кампании</th>\n<th>Новые кампании</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Период</td>\n<td>20 мар – 13 апр (25 дн)</td>\n<td>13 апр – 15 мая (33 дн)</td>\n</tr>\n<tr>\n<td>Потрачено</td>\n<td>$839</td>\n<td>$1 718</td>\n</tr>\n<tr>\n<td>Конверсии</td>\n<td>4</td>\n<td><strong>63</strong></td>\n</tr>\n<tr>\n<td>CPA (общий)</td>\n<td>$210</td>\n<td><strong>$27</strong></td>\n</tr>\n<tr>\n<td>CPA (Search)</td>\n<td>—</td>\n<td>$147</td>\n</tr>\n<tr>\n<td>CPA (PMax)</td>\n<td>—</td>\n<td><strong>$7.30</strong></td>\n</tr>\n<tr>\n<td>Quality Score</td>\n<td>2.43</td>\n<td><strong>3.72</strong></td>\n</tr>\n<tr>\n<td>Impression Share</td>\n<td>20%</td>\n<td><strong>50.6%</strong></td>\n</tr>\n</tbody></table></div>\n<p>Разрыв между Search и PMax оказался огромным: CPA $147 против $7.30 — разница в 20 раз. PMax дал 54 из 63 конверсий при $394 расхода, а Search — 9 конверсий при $1 323.</p>\n<p>Почему Search такой дорогой? Часть Search-кампаний (washer-dryer, dishwasher, appliance) потратили бюджет без конверсий и были позже поставлены на паузу. Это нормально для этапа тестирования — не все микроинтенты выстреливают одинаково.</p>\n<p>Честно: не всё идеально. Главный bottleneck остаётся — <strong>Landing Page Experience</strong>. Сайт на Lovable — CSR-only SPA. Сервер отдаёт одинаковый HTML на все 78 страниц. Googlebot не видит контент, и QS теряет на этом 3–4 балла.</p>\n<p>Решение — Prerender.io (~$15/мес) или статический HTML-фолбэк. Это следующий шаг.</p>\n<h2 id=\"три-вывода-для-тех-кто-запускает-google-ads\">Три вывода для тех, кто запускает Google Ads</h2>\n<p><strong>1. Трекинг — не опция, а фундамент.</strong> Пока Enhanced Conversions не работают, а GA4 не связан с Google Ads — все оптимизации идут вслепую. Установка GTM заняла день; без трекинга следующие этапы были бы бесполезны.</p>\n<p><strong>2. Микроинтенты — это про смысл, а не про количество ключей.</strong> Когда в одной ad group лежат «washer repair», «maytag washer repair» и «washer not draining» — система не понимает, какое объявление показывать. Ключи в группе должны быть про одно и то же. Два ключа или шесть — неважно, если они об одном.</p>\n<p><strong>3. Performance Max может быть на порядок дешевле Search.</strong> В этом кейсе PMax дал CPA $7.30 против $147 в Search — разница в 20 раз. Если у вас локальный бизнес с понятным оффером — попробуйте PMax с небольшим бюджетом. Возможно, он удивит так же, как в этом кейсе.</p>\n<p>Если ваш Google Ads аккаунт показывает CPA в 3–6 раз выше рынка — <a href=\"https://t.me/vlasdobry\">напишите мне</a>. Разберусь.</p>\n",
+      "faq": [
+        {
+          "question": "Почему CPA был таким высоким?",
+          "answer": "Низкий Quality Score (1–3) → высокий CPC ($22–98) → мало кликов → Smart Bidding не обучается → CPA $210. Плюс 88% ключей не получали показов, а трекинг не фиксировал часть конверсий."
+        },
+        {
+          "question": "Сколько времени заняла пересборка?",
+          "answer": "Трекинг — 1 день. Микроинтенты и RSA — 3 дня. Запуск PMax — 1 день на кампанию. Полный цикл от аудита до первых результатов — 2 недели."
+        },
+        {
+          "question": "Почему PMax настолько дешевле Search?",
+          "answer": "PMax использует все форматы (Search, Display, YouTube, Discovery) и автоматически находит аудиторию. Search ограничен только поисковой выдачей. Плюс PMax лучше учится на конверсионных данных — ему нужно меньше конверсий для выхода из фазы обучения."
+        },
+        {
+          "question": "PMax подходит любому локальному бизнесу?",
+          "answer": "Не любому. Нужен хотя бы минимальный конверсионный трекинг и посадочные страницы с уникальным контентом. Если сайт — no-code SPA с одинаковым HTML на всех страницах, сначала решайте проблему Landing Page Experience."
+        }
+      ],
+      "tldr": "Разобрал и пересобрал Google Ads для сервиса ремонта бытовой техники в Bay Area. CPA упал с $210 до $27 — почти в 8 раз. PMax оказался главным драйвером: CPA $7.30 против $147 в Search (разница в 20 раз). Сейчас клиент получает 63 конверсии за 33 дня — на старых кампаниях было 4 за 25 дней.",
+      "tldrHtml": "Разобрал и пересобрал Google Ads для сервиса ремонта бытовой техники в Bay Area. CPA упал с $210 до $27 — почти в 8 раз. PMax оказался главным драйвером: CPA $7.30 против $147 в Search (разница в 20 раз). Сейчас клиент получает 63 конверсии за 33 дня — на старых кампаниях было 4 за 25 дней.",
+      "cta": null,
+      "llmsSummary": null
+    },
+    {
       "slug": "generative-engine-optimization-guide",
       "title": "Generative Engine Optimization: как попасть в ответы AI-поисковиков",
       "description": "Практический гайд по GEO: 5 шагов, чтобы ваш сайт цитировали ChatGPT, Perplexity и Gemini. На основе исследования Princeton + данных аудитов.",
@@ -1864,6 +1944,86 @@
     }
   ],
   "en": [
+    {
+      "slug": "kak-snizit-cpa-google-ads-v-6-raz-keys",
+      "title": "How to Lower Google Ads CPA by 8x: An Appliance Repair Case Study",
+      "description": "How I reduced Google Ads CPA from $210 to $27 for an appliance repair business in the Bay Area. PMax delivered $7.30 CPA vs $147 in Search. Full rebuild: tracking, micro-intents, Performance Max.",
+      "date": "2026-05-16",
+      "dateModified": "2026-05-16",
+      "category": "marketing",
+      "tags": [
+        "google ads",
+        "ppc",
+        "case study",
+        "CPA",
+        "performance max"
+      ],
+      "relatedService": "/en/services/ppc",
+      "cover": "cover.jpg",
+      "series": null,
+      "readingTime": 8,
+      "toc": [
+        {
+          "id": "where-we-started-210-per-lead-vs-a-5090-benchmark",
+          "text": "Where We Started: $210 per Lead vs a $50–90 Benchmark",
+          "level": 2
+        },
+        {
+          "id": "stage-1-tracking",
+          "text": "Stage 1: Tracking",
+          "level": 2
+        },
+        {
+          "id": "stage-2-micro-intents-grouping-by-search-intent",
+          "text": "Stage 2: Micro-Intents — Grouping by Search Intent",
+          "level": 2
+        },
+        {
+          "id": "stage-3-keyword-based-rsas",
+          "text": "Stage 3: Keyword-Based RSAs",
+          "level": 2
+        },
+        {
+          "id": "stage-4-performance-max",
+          "text": "Stage 4: Performance Max",
+          "level": 2
+        },
+        {
+          "id": "the-numbers",
+          "text": "The Numbers",
+          "level": 2
+        },
+        {
+          "id": "three-takeaways-for-anyone-running-google-ads",
+          "text": "Three Takeaways for Anyone Running Google Ads",
+          "level": 2
+        }
+      ],
+      "hasFaq": true,
+      "content": "<p>The client came to me with an account that was already running campaigns — the owner had set them up himself. On the surface, everything looked fine: campaigns were active, budget was spending. But the numbers told a different story.</p>\n<h2 id=\"where-we-started-210-per-lead-vs-a-5090-benchmark\">Where We Started: $210 per Lead vs a $50–90 Benchmark</h2>\n<p>An appliance repair and HVAC service in the Bay Area. They cover 13 cities: San Jose, Palo Alto, Cupertino, Mountain View, and surrounding areas. Their site is built on Lovable — a no-code platform that produces a React SPA.</p>\n<p>When I took over, the account had campaigns the business owner had set up himself — he knew the basics of Google Ads but not the deeper mechanics. They had been running for 25 days (March 20 – April 13). Here&#39;s what they delivered:</p>\n<ul>\n<li><strong>$839</strong> spent</li>\n<li><strong>4 conversions</strong></li>\n<li><strong>CPA: $210</strong></li>\n</ul>\n<p>For context, the industry benchmark for appliance repair in the Bay Area is $50–90 per lead. The client was paying 2–4x more.</p>\n<p>Here&#39;s the chain of problems I found:</p>\n<pre><code>Low Quality Score (1–3) → CPC $22–98 → 53 clicks in 25 days\n→ not enough data for Smart Bidding → algorithm can&#39;t learn → CPA $210\n</code></pre>\n<p>The core issue: <strong>Quality Score of 1–3 on 59% of keywords</strong>. Landing Page Experience was &quot;Below Average&quot; across nearly all keywords. The Lovable site — a CSR-only SPA — served identical HTML for every page. Googlebot saw an empty shell.</p>\n<p>On top of that, <strong>88% of keywords had zero impressions</strong>. The account had 275 keywords, and 242 of them were dead weight.</p>\n<p>I broke the rebuild into four stages.</p>\n<h2 id=\"stage-1-tracking\">Stage 1: Tracking</h2>\n<p>When I started, the site had hardcoded gtag.js snippets. GA4 wasn&#39;t linked to Google Ads. Google Signals was off. The &quot;Book Online&quot; button sent users to an external domain and wasn&#39;t tracked at all.</p>\n<p>First thing: I installed Google Tag Manager. Created a container with 11 tags:</p>\n<ul>\n<li>GA4 Config + Google Tag Ads</li>\n<li>Conversion Linker + Remarketing + GCLID Capture</li>\n<li>3 GA4 Events (form_submit, call_click, book_online)</li>\n<li>3 Ads Conversion Actions with matching triggers</li>\n</ul>\n<p>Set up Enhanced Conversions via dataLayer — name and phone number are passed as hashed user data. Linked GA4 to Google Ads, enabled Google Signals. Removed all hardcoded tags.</p>\n<p>Result: 100% coverage in Diagnostics, &quot;Excellent&quot; rating. But more importantly — <strong>we finally had data</strong>. Without this, every next step would be guesswork.</p>\n<h2 id=\"stage-2-micro-intents-grouping-by-search-intent\">Stage 2: Micro-Intents — Grouping by Search Intent</h2>\n<p>The old account had 275 keywords spread across a handful of large ad groups. The &quot;Washer Repair&quot; group, for example, contained 30+ keywords: &quot;washer repair near me,&quot; &quot;maytag washer repair,&quot; &quot;washer not draining,&quot; &quot;lg washer repair san jose.&quot; Different intents, different brands — all dumped together.</p>\n<p>I switched to micro-intents. The principle: <strong>all keywords in a group share the same intent</strong>. Some groups have 1 keyword, some have 2, some have 6 — but the ad is written around their common meaning, not a random mix.</p>\n<ul>\n<li>275 keywords → <strong>125 Exact match</strong></li>\n<li>6 campaigns, <strong>29 ad groups</strong>, 1–6 keywords per group</li>\n<li>Each RSA written for the group&#39;s micro-intent: H1 contains the main keyword, description is adapted</li>\n<li>Budget: $10–15/day per campaign, $25 CPC cap</li>\n</ul>\n<p>Here&#39;s the difference from &quot;broad&quot; groups: &quot;samsung refrigerator repair,&quot; &quot;lg refrigerator repair,&quot; and &quot;ge refrigerator repair&quot; are three different micro-intents — the user is looking for a specific brand. I split these. But &quot;samsung refrigerator repair,&quot; &quot;samsung fridge repair,&quot; and &quot;samsung refrigerator repair near me&quot; share one micro-intent — they can stay together.</p>\n<p>Negative keywords — 82 account-level plus cross-negatives between ad groups. Excluded &quot;free,&quot; &quot;salary,&quot; &quot;training,&quot; &quot;manual,&quot; &quot;parts only.&quot;</p>\n<p>The result: CTR jumped from 4–6% to <strong>11–12%</strong>. Quality Score climbed from 2.43 to <strong>3.72</strong>, with top keywords (GE Oven, Bosch Oven, Samsung Refrigerator) hitting QS 7.</p>\n<p>Impression Share went from <strong>20% to 50%</strong>. Lost impression share shifted from &quot;Lost by Rank&quot; to &quot;Lost by Budget&quot; — which is a good problem to have. Budget scales; rank without quality doesn&#39;t.</p>\n<h2 id=\"stage-3-keyword-based-rsas\">Stage 3: Keyword-Based RSAs</h2>\n<p>I built the RSAs around micro-intents from the start, following best practices: the query → ad → landing page pipeline needs to be as tight as possible. H1 = the main keyword of the group. H2–H9 = repeating USPs. H10–H15 = the remaining group keywords, each as its own headline. All 54 descriptions include the main keyword verbatim.</p>\n<p>After the initial upload, some ads came back with &quot;Low&quot; Ad Strength. I reviewed each one, rebuilt it, and pushed everything to &quot;Good&quot;–&quot;Excellent.&quot; CTR gained another 2–3 percentage points.</p>\n<h2 id=\"stage-4-performance-max\">Stage 4: Performance Max</h2>\n<p>Two weeks after launching the Search campaigns, I added Performance Max. Started with one PMax campaign for refrigerator repair at $10/day.</p>\n<p><strong>Day one:</strong> 2,625 impressions, 27 clicks, 1 conversion. For comparison — all Search campaigns combined had produced 2 conversions in the previous two weeks.</p>\n<p>Over 19 days, PMax Refrigerator delivered:</p>\n<ul>\n<li><strong>37 conversions</strong>, CPA <strong>$6.17</strong></li>\n<li>11,365 impressions, 422 clicks</li>\n<li>Best day: 13 conversions, CPA $2.39</li>\n</ul>\n<p>PMax was so effective that I launched two more:</p>\n<ul>\n<li><strong>Luxury Refrigerator PMax</strong> — dedicated landing page at <code>/services/luxury-refrigerator-repair</code>, targeting owners of Sub-Zero, Viking, and Thermador. Launched May 12.</li>\n<li><strong>Washer/Dryer PMax</strong> — landing page optimized for PMax traffic: symptom blocks, brand line, expanded FAQ. Launched May 13.</li>\n</ul>\n<p>PMax is now the main conversion driver. Out of 63 total conversions across all new campaigns, 54 came from the three PMax campaigns. Overall PMax CPA: <strong>$7.30</strong>.</p>\n<h2 id=\"the-numbers\">The Numbers</h2>\n<p>Before vs after the rebuild. &quot;Before&quot; = campaigns the owner set up himself (March 20 – April 13). &quot;After&quot; = my campaigns (April 13 – May 15).</p>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Metric</th>\n<th>Old Campaigns</th>\n<th>New Campaigns</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Period</td>\n<td>Mar 20 – Apr 13 (25 days)</td>\n<td>Apr 13 – May 15 (33 days)</td>\n</tr>\n<tr>\n<td>Spend</td>\n<td>$839</td>\n<td>$1,718</td>\n</tr>\n<tr>\n<td>Conversions</td>\n<td>4</td>\n<td><strong>63</strong></td>\n</tr>\n<tr>\n<td>CPA (blended)</td>\n<td>$210</td>\n<td><strong>$27</strong></td>\n</tr>\n<tr>\n<td>CPA (Search)</td>\n<td>—</td>\n<td>$147</td>\n</tr>\n<tr>\n<td>CPA (PMax)</td>\n<td>—</td>\n<td><strong>$7.30</strong></td>\n</tr>\n<tr>\n<td>Quality Score</td>\n<td>2.43</td>\n<td><strong>3.72</strong></td>\n</tr>\n<tr>\n<td>Impression Share</td>\n<td>20%</td>\n<td><strong>50.6%</strong></td>\n</tr>\n</tbody></table></div>\n<p>The gap between Search and PMax is massive: CPA $147 vs $7.30 — a 20x difference. PMax delivered 54 of 63 conversions on $394 spend, while Search produced 9 conversions on $1,323.</p>\n<p>Why is Search CPA so high? Some Search campaigns (washer-dryer, dishwasher, appliance) spent budget with zero conversions and were later paused. This is normal during the testing phase — not every micro-intent performs equally.</p>\n<p>I&#39;ll be straight: not everything is fixed. The main bottleneck remains — <strong>Landing Page Experience</strong>. The Lovable site is a CSR-only SPA. The server returns identical HTML for all 78 pages. Googlebot doesn&#39;t see the content, and QS loses 3–4 points because of it.</p>\n<p>The fix is either Prerender.io (~$15/month) or a static HTML fallback. That&#39;s the next step.</p>\n<h2 id=\"three-takeaways-for-anyone-running-google-ads\">Three Takeaways for Anyone Running Google Ads</h2>\n<p><strong>1. Tracking isn&#39;t optional — it&#39;s the foundation.</strong> Until Enhanced Conversions work and GA4 is linked to Google Ads, every optimization is blind. Setting up GTM took one day; without proper tracking, the next stages would&#39;ve been useless.</p>\n<p><strong>2. Micro-intents are about meaning, not keyword count.</strong> When &quot;washer repair,&quot; &quot;maytag washer repair,&quot; and &quot;washer not draining&quot; sit in the same ad group, the system has no idea which ad to serve. Keywords in a group should be about the same thing. Two keywords or six — doesn&#39;t matter if they share the same intent.</p>\n<p><strong>3. Performance Max can be an order of magnitude cheaper than Search.</strong> In this case, PMax delivered CPA $7.30 vs $147 in Search — a 20x difference. If you run a local service business with a clear offer, try PMax with a small budget. It might surprise you the way it surprised me here.</p>\n",
+      "faq": [
+        {
+          "question": "Why was CPA so high to begin with?",
+          "answer": "Low Quality Score (1–3) → high CPC ($22–98) → few clicks → Smart Bidding can't learn → CPA $210. Plus 88% of keywords had zero impressions, and broken tracking missed some conversions entirely."
+        },
+        {
+          "question": "How long did the rebuild take?",
+          "answer": "Tracking — 1 day. Micro-intents and RSAs — 3 days. PMax launch — 1 day per campaign. Full cycle from audit to first results — 2 weeks."
+        },
+        {
+          "question": "Why is PMax so much cheaper than Search?",
+          "answer": "PMax uses all formats (Search, Display, YouTube, Discovery) and automatically finds the right audience. Search is limited to the search results page only. Plus PMax learns faster from conversion data — it needs fewer conversions to exit the learning phase."
+        },
+        {
+          "question": "Does PMax work for any local business?",
+          "answer": "Not every one. You need at least basic conversion tracking and landing pages with unique content. If your site is a no-code SPA serving identical HTML for every page, fix Landing Page Experience first.\n\nIf your Google Ads account is showing CPA 2–4x above industry benchmarks — [reach out](https://t.me/vlasdobry). I'll take a look."
+        }
+      ],
+      "tldr": "I rebuilt a Google Ads account for an appliance repair business in the Bay Area. CPA dropped from $210 to $27 — nearly 8x lower. PMax turned out to be the main driver: $7.30 CPA vs $147 in Search (20x difference). The client now has 63 conversions in 33 days — the old campaigns had 4 in 25 days.",
+      "tldrHtml": "I rebuilt a Google Ads account for an appliance repair business in the Bay Area. CPA dropped from $210 to $27 — nearly 8x lower. PMax turned out to be the main driver: $7.30 CPA vs $147 in Search (20x difference). The client now has 63 conversions in 33 days — the old campaigns had 4 in 25 days.",
+      "cta": null,
+      "llmsSummary": null
+    },
     {
       "slug": "generative-engine-optimization-guide",
       "title": "Generative Engine Optimization: How to Get Cited by AI Search in 2026",
