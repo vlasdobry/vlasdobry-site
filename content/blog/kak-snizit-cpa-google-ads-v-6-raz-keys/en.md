@@ -134,6 +134,8 @@ The fix is either Prerender.io (~$15/month) or a static HTML fallback. That's th
 
 **3. Performance Max can be an order of magnitude cheaper than Search.** In this case, PMax delivered CPA $7.30 vs $147 in Search — a 20x difference. If you run a local service business with a clear offer, try PMax with a small budget. It might surprise you the way it surprised me here.
 
+*Read also: [Performance Max vs Search: What Works Better for Local Business](/en/blog/pmax-vs-search-local-business/) — PMax vs Search data from the same case study.*
+
 ## FAQ
 
 **Why was CPA so high to begin with?**

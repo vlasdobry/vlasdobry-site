@@ -86,3 +86,5 @@ PMax didn't replace Search entirely. Three scenarios where Search remains essent
 2. **Exact match beats Broad match for local markets.** A tight keyword list with a limited budget — Broad match sprays money. Start with 55 precise keywords, not 275 loose ones.
 3. **Landing page quality directly impacts CPA.** A SPA without SSR, canonical pointing to the homepage — basic technical hygiene matters. Quality Score improved 53% after fixing these issues.
 4. **Don't judge PMax by Day 1.** Google can revoke conversions within 48 hours. Day 1's real ROAS was 6.5x, not 19.6x. Watch the weekly trend, not the daily spike.
+
+*Read also: [How I Cut CPA in Google Ads by 8x](/en/blog/kak-snizit-cpa-google-ads-v-6-raz-keys/) — the step-by-step rebuild: tracking, micro-intents, RSA.*
