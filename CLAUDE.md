@@ -11,6 +11,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Правила
 
 - Dev-сервер запускать только на порту 3000. Если занят — убить процесс и перезапустить.
+- **НЕ использовать `>` или `▎` перед текстом для копирования** — при вставке в LinkedIn/Reddit появляются лишние символы. Писать текст как есть, без маркдаун-префиксов.
 - Чем проще тем лучше — оставлять только нужные фичи, надёжность важнее фишек.
 - UX/UI: интерфейс должен быть интуитивно понятным.
 - При поиске ошибок использовать скилл `superpowers:systematic-debugging`.
@@ -151,7 +152,7 @@ git push origin master  # Деплой на продакшен (автомати
 - Ссылка на блог только в футере всех страниц
 - Авторинг: Claude пишет статьи, владелец утверждает
 
-**Текущие статьи блога (18 шт):**
+**Текущие статьи блога (20 шт):**
 - `brendovyy-trafik-otelya-keys` — Брендовый трафик отеля: кейс потерь без рекламы в Директе
 - `kak-ocenit-potencial-google-ads` — Как оценить потенциал Google Ads: кейс из Лос-Анджелеса
 - `odnostranichnyj-sajt-otelya-teryaet-trafik` — Как одностраничный сайт отеля теряет 80 000 запросов
@@ -170,6 +171,8 @@ git push origin master  # Деплой на продакшен (автомати
 - `popup-na-sayte-otelya-keys` — Попап на сайте отеля: кейс отключения Envybox
 - `generative-engine-optimization-guide` — Generative Engine Optimization: как попасть в ответы AI (EN-first)
 - `how-to-appear-in-ai-answers` — Как попасть в ответы ChatGPT, Perplexity и Gemini (EN-first)
+- `kak-snizit-cpa-google-ads-v-6-raz-keys` — Как снизить CPA в Google Ads в 8 раз: кейс appliance repair (Bay Area)
+- `pmax-vs-search-lokalnyi-biznes` — Performance Max vs Search: что выгоднее для локального бизнеса (EN-first, 19.05)
 
 **Стилизация:** Tailwind CSS v4 (через Vite plugin), шрифт Inter. Используется glassmorphism-эффект для UI-элементов.
 
@@ -240,7 +243,7 @@ git push origin master  # Деплой на продакшен (автомати
 **Блог — добавление статьи:**
 1. Создать `content/blog/[slug]/ru.md` и `en.md`
 2. Frontmatter: title, description, date, dateModified, slug, category, tags, relatedService, cover
-   - **Транслитерация slug:** BGN/PCGN (й→y, не j). Примеры: `sayt`, `oteley`, `brendovyy`. Старые slug'и с `j` не менять.
+   - **Транслитерация slug:** BGN/PCGN (й→y, не j). Примеры: `sayt`, `oteley`, `brendovyy`. Старые slug'и с `j` не менять. Проверить ДО создания папки.
 3. Опционально: `llmsSummary` — кастомное описание для AI (если не указано, генерируется из description + TL;DR + FAQ)
 4. Запустить `node scripts/generate-blog.js` или `npm run build`
 5. Автоматически обновляются: `blog-data.json`, `sitemap.xml`, `llms.txt`, `llms-full.txt`
@@ -307,6 +310,12 @@ git push origin master  # Деплой на продакшен (автомати
 | `docs/hotel-outreach-summary.md` | Стратегия outreach: скрипты, шаблоны, ценообразование |
 | `docs/hotel-outreach-leads.md` | Лиды: 8 Черноморье + 10 Крым + 16 Геленджик + 12 Новороссийск |
 | `docs/abhazia-hotel-outreach-leads.md` | Лиды: 14 отелей Абхазии |
+| `docs/superpowers/specs/2026-05-17-linkedin-social-media-strategy.md` | Стратегия LinkedIn-эксперимента |
+| `docs/content/pipeline-tracker.md` | Трекер пайплайна аудитов |
+| `docs/content/linkedin-audits/audit-checklist.md` | Чеклист для каждого аудита (исключает переделывания) |
+| `docs/content/linkedin-audits/[slug]/carousel.html` | HTML-карусель для LinkedIn (светлая) |
+| `docs/content/linkedin-audits/[slug]/post.md` | Текст поста для LinkedIn |
+| `docs/content/linkedin-profile.md` | Тексты профиля LinkedIn (headline, about) |
 
 ## Технологии
 
@@ -326,7 +335,7 @@ git push origin master  # Деплой на продакшен (автомати
 - Health Score: клиентская валидация URL перед отправкой на Worker
 - **НЕ добавлять HEALTHCHECK в Dockerfile** — Traefik v2 фильтрует unhealthy/starting контейнеры и убирает роутеры → 404
 
-## Метрики роста (обновлено 16.05.2026)
+## Метрики роста (обновлено 19.05.2026)
 
 **North Star Metric:** Health Score completions / неделю (апрель: 2.3, май: **0**). Цель: 15.
 
@@ -355,12 +364,42 @@ git push origin master  # Деплой на продакшен (автомати
 
 **Тренд:** Падение с марта (96 визитов) до 37-38 в апреле-мае (-61%). Поисковый трафик исчез: было 16% в марте, стало 2.7% в апреле, 0% в мае. EN 168-ФЗ статья набирает показы в Google (с 110 до 469), но без кликов. Инструменты (Health Score, 168-ФЗ) не используются.
 
-**Стратегическое направление:** отельная ниша + PPC (Яндекс.Директ, Google Ads)
+**Стратегическое направление:** отельная ниша + международный LinkedIn
 - `/services/ppc` — лендинг PPC с отельными кейсами, чеклистом готовности сайта к рекламе (8 пунктов) и CTA на Health Score
 - Content loop не работает: инструменты не используются, CTA кликов нет
-- Outreach: холодные касания + HH вакансии → экспресс-аудит → звонок → аудит/ведение
+- Outreach: холодные касания заморожены (Черноморье/Крым/Анапа) — заменены на LinkedIn-эксперимент
 
-**Growth Experiments:** [Google Sheets](https://docs.google.com/spreadsheets/d/1aQaJVTt8cOTR5J7kHbs9NLf0tt8ydK7k6RWYsRHzuRA/edit)
+## LinkedIn Experiment (запущен 17.05.2026)
+
+**Гипотеза:** технические публичные разборы сайтов отелей на LinkedIn (PDF-карусели, 3/нед) + полезные ответы на Reddit дадут первые B2B-лиды от независимых отельеров.
+
+**Стратегия:** `docs/superpowers/specs/2026-05-17-linkedin-social-media-strategy.md`
+
+**LinkedIn-профиль:** `linkedin.com/in/vlasfedorov` — оптимизирован 17.05 (headline, about, URL, EN-язык). Формат: Hotel SEO, GEO & PPC Specialist.
+
+**Контент:** 3 поста/нед (50% аудиты, 30% фреймворки, 20% личное). PDF-карусели 6-9 слайдов, светлая тема.
+
+**Pre-launch:** 17.05 (один день) — вступление в группы + первые комментарии. С 18.05 — постоянная активность: 30 мин/день комментариев параллельно с постами.
+
+**Пост #1:** Sanctum Soho — **18.05.2026** ✅. 20 показов, реакций нет. Папка: `docs/content/linkedin-audits/sanctum-soho/`.
+
+**Пост #2:** Фреймворк — **20.05.2026**. Текст готов, без карусели. Тема: «Most hotel owners ask their web agency one question».
+
+**Таймлайн:** Week 1 (18.05–24.05) → Week 2 (25.05–31.05) → Week 3 (01.06–07.06) → Week 4 (08.06–14.06) → Go/No-Go (15.06).
+
+**Комментарии:** 6 комментариев под чужими постами (Lata, Rangga, Sarah, Rose-Brook, Guestcentric, RateGain).
+
+**Pipeline tracker:** `docs/content/pipeline-tracker.md`
+
+**Чеклист аудита:** `docs/content/linkedin-audits/audit-checklist.md`
+
+**Google Tasks:** список «vlasdobry.ru» → 🚀 LinkedIn Experiment (parent task, due 29.06)
+
+**Reddit:** 30 мин/день с 01.06. r/askhotels, r/hotels, r/smallbusiness. 90/10 rule.
+
+**Go/No-Go:** 29.06. Критерии — стратегия, Часть 9.
+
+**Growth Experiments:** [Google Sheets](https://docs.google.com/spreadsheets/d/1aQaJVTt8cOTR5J7kHbs9NLf0tt8ydK7k6RWYsRHzuRA/edit) · Эксперимент #5: LinkedIn organic content
 
 ## Webclaw — инструменты для аудита сайтов отелей
 
