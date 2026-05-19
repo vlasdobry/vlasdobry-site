@@ -1,6 +1,75 @@
 {
   "ru": [
     {
+      "slug": "pmax-vs-search-lokalnyi-biznes",
+      "title": "Performance Max vs Search: что выгоднее для локального бизнеса — кейс appliance repair в Bay Area",
+      "description": "Разбор реального кейса: как CPA снизился с $500 до $13.91 после перехода с Search на Performance Max. Цифры по неделям, структура кампаний, уроки для локального бизнеса.",
+      "date": "2026-05-19",
+      "dateModified": "2026-05-19",
+      "category": "ppc",
+      "tags": [
+        "google-ads",
+        "performance-max",
+        "search-campaign",
+        "cpa",
+        "local-business",
+        "appliance-repair"
+      ],
+      "relatedService": "ppc",
+      "cover": "/img/blog/pmax-vs-search.jpg",
+      "series": null,
+      "readingTime": 4,
+      "toc": [
+        {
+          "id": "исходная-ситуация-search-only-и-три-структурные-ошибки",
+          "text": "Исходная ситуация: Search-only и три структурные ошибки",
+          "level": 2
+        },
+        {
+          "id": "что-изменили-структура-а-не-бюджет",
+          "text": "Что изменили: структура, а не бюджет",
+          "level": 2
+        },
+        {
+          "id": "шаг-1-реструктуризация-search",
+          "text": "Шаг 1. Реструктуризация Search",
+          "level": 3
+        },
+        {
+          "id": "шаг-2-запуск-performance-max",
+          "text": "Шаг 2. Запуск Performance Max",
+          "level": 3
+        },
+        {
+          "id": "шаг-3-расширение-pmax-на-другие-категории",
+          "text": "Шаг 3. Расширение PMax на другие категории",
+          "level": 3
+        },
+        {
+          "id": "что-показали-цифры-pmax-vs-search-по-неделям",
+          "text": "Что показали цифры: PMax vs Search по неделям",
+          "level": 2
+        },
+        {
+          "id": "когда-search-всё-ещё-нужен",
+          "text": "Когда Search всё ещё нужен",
+          "level": 2
+        },
+        {
+          "id": "выводы-для-локального-бизнеса",
+          "text": "Выводы для локального бизнеса",
+          "level": 2
+        }
+      ],
+      "hasFaq": false,
+      "content": "<h1>Performance Max vs Search: что выгоднее для локального бизнеса</h1>\n<p>Когда я взял в работу Google Ads для сервиса по ремонту бытовой техники в Bay Area, картина была такой: $500 потрачено, 1 лид. CPA — $500. Рыночный CPA для appliance repair в Bay Area — $50-90 за лид. Фактический CPA $307 — в 3-6 раз выше. CPA $500 в первую неделю — в 6-10 раз.</p>\n<p>Через месяц CPA снизился до $13.91 за лид. Что произошло — разбираю по цифрам.</p>\n<h2 id=\"исходная-ситуация-search-only-и-три-структурные-ошибки\">Исходная ситуация: Search-only и три структурные ошибки</h2>\n<p>Клиент — KoxFix Solutions, ремонт холодильников, стиральных машин, плит и HVAC в 13 городах Bay Area. До моего прихода кампании были настроены так:</p>\n<ol>\n<li><strong>Broad match без Smart Bidding.</strong> 275 ключевых слов, 88% без единого показа. Система расходовала бюджет на мусорные запросы.</li>\n<li><strong>Нет минус-слов.</strong> Объявления показывались по запросам, не имеющим отношения к услуге.</li>\n<li><strong>Quality Score 1-3</strong> у 59% ключевых слов. Посадочные страницы — SPA без SSR, canonical всех страниц указывал на главную. Google не понимал, на какую страницу вести пользователя.</li>\n</ol>\n<p>Результат: CPA $307 в среднем, 2 конверсии за 30 дней, алгоритм Smart Bidding в статусе «обучение» месяц.</p>\n<h2 id=\"что-изменили-структура-а-не-бюджет\">Что изменили: структура, а не бюджет</h2>\n<h3 id=\"шаг-1-реструктуризация-search\">Шаг 1. Реструктуризация Search</h3>\n<p>Вместо одной кампании с Broad match — шесть тематических кампаний по категориям техники. 55 ключевых слов вместо 275, все Exact match (на старте; позже расширили до 125 по мере добавления брендовых кампаний). Каждое слово ведёт на конкретную посадочную страницу.</p>\n<p>Минус-слова: б/у, бесплатно, своими руками, DIY, инструкция, видео.</p>\n<h3 id=\"шаг-2-запуск-performance-max\">Шаг 2. Запуск Performance Max</h3>\n<p>Для холодильников запустили PMax параллельно с Search. Бюджет: $20/день. Настроили фид, группу объектов, аудиторию.</p>\n<p><strong>Результат первого дня PMax:</strong></p>\n<ul>\n<li>2,625 показов</li>\n<li>28 кликов</li>\n<li>2 конверсии, ценность $225</li>\n<li>Потрачено $11.47</li>\n<li>ROAS 19.6x (реальный после корректировки Google — 6.5x)</li>\n</ul>\n<h3 id=\"шаг-3-расширение-pmax-на-другие-категории\">Шаг 3. Расширение PMax на другие категории</h3>\n<p>После успеха с холодильниками запустили PMax Luxury Refrigerator ($30/день) и PMax Washer/Dryer ($30/день).</p>\n<h2 id=\"что-показали-цифры-pmax-vs-search-по-неделям\">Что показали цифры: PMax vs Search по неделям</h2>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Неделя</th>\n<th>Показы</th>\n<th>Конверсии</th>\n<th>CPA</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>W1 (13-19.04)</td>\n<td>277</td>\n<td>1</td>\n<td>$270</td>\n</tr>\n<tr>\n<td>W2 (20-26.04)</td>\n<td>460</td>\n<td>3</td>\n<td>$186</td>\n</tr>\n<tr>\n<td>W3 (27.04-03.05)</td>\n<td>5,311</td>\n<td>7</td>\n<td>$31</td>\n</tr>\n<tr>\n<td>W4 (11-17.05)</td>\n<td>—</td>\n<td>44</td>\n<td>$13.91</td>\n</tr>\n</tbody></table></div>\n<p>W3 — точка перелома. Именно тогда PMax вышел на рабочий режим. 5,311 показов, 7 конверсий, CPA упал с $186 до $31. На W4 PMax стал основным драйвером: 44 конверсии, CPA $13.91.</p>\n<p><strong>Каналы внутри PMax:</strong> 78% Display, 19% Cross-Network, 2% Search. То есть PMax находил лиды там, где Search-кампания их не видела.</p>\n<p>Параллельно подтянулся Quality Score: с 2.43 до 3.72 (+53% за месяц). Impression Share вырос с 19.8% до 50.6%. Lost Rank упал с 80.2% до 30.1% — теперь основной ограничитель не качество, а бюджет.</p>\n<h2 id=\"когда-search-всё-ещё-нужен\">Когда Search всё ещё нужен</h2>\n<p>PMax не заменил Search полностью. Три сценария, где Search остаётся основным:</p>\n<ol>\n<li><strong>Брендовые запросы.</strong> Exact match на названия брендов техники (Samsung, LG, Whirlpool) дают самый горячий трафик. PMax здесь менее эффективен — он оптимизируется на конверсию, а не на брендовый охват.</li>\n<li><strong>Узкие услуги.</strong> «Ремонт льдогенератора Sub-Zero» — запрос с низкой частотностью, где PMax не соберёт достаточно данных для обучения. Search с Exact match отрабатывает точнее.</li>\n<li><strong>Контроль над географией.</strong> PMax может показываться за пределами заданного радиуса. Для бизнеса, работающего в 13 городах, Search даёт гарантию геотаргетинга.</li>\n</ol>\n<h2 id=\"выводы-для-локального-бизнеса\">Выводы для локального бизнеса</h2>\n<ol>\n<li><strong>PMax + Search работают в паре.</strong> PMax находит лиды через Display и Cross-Network, Search — через поисковый спрос. Одно без другого теряет охват.</li>\n<li><strong>Exact match &gt; Broad match для локального рынка.</strong> Узкая семантика, небольшой бюджет — Broad match распыляет деньги. На старте лучше 55 точных ключей, чем 275 размытых.</li>\n<li><strong>Качество посадочной страницы влияет на CPA напрямую.</strong> SPA без SSR, canonical на главную — базовая техническая гигиена. Quality Score вырос на 53% после исправления.</li>\n<li><strong>Не оценивай PMax по первому дню.</strong> Google может отозвать конверсии в течение 48 часов. Реальный ROAS первого дня был 6.5x, а не 19.6x. Смотри на тренд по неделям.</li>\n</ol>\n",
+      "faq": [],
+      "tldr": null,
+      "tldrHtml": null,
+      "cta": null,
+      "llmsSummary": null
+    },
+    {
       "slug": "kak-snizit-cpa-google-ads-v-6-raz-keys",
       "title": "Как снизить CPA в Google Ads в 8 раз: разбор кейса appliance repair",
       "description": "Реальный кейс: снижение CPA с $210 до $27 для сервиса ремонта техники в Bay Area. PMax дал CPA $7.30 против $147 в Search. Пошаговая пересборка: трекинг, микроинтенты, Performance Max.",
@@ -1944,6 +2013,75 @@
     }
   ],
   "en": [
+    {
+      "slug": "pmax-vs-search-local-business",
+      "title": "Performance Max vs Search: What Works Better for Local Business — An Appliance Repair Case Study from the Bay Area",
+      "description": "A real case study: how CPA dropped from $500 to $13.91 after switching from Search-only to Search + Performance Max. Week-by-week data, campaign structure, and lessons for local service businesses.",
+      "date": "2026-05-19",
+      "dateModified": "2026-05-19",
+      "category": "ppc",
+      "tags": [
+        "google-ads",
+        "performance-max",
+        "search-campaign",
+        "cpa",
+        "local-business",
+        "appliance-repair"
+      ],
+      "relatedService": "ppc",
+      "cover": "/img/blog/pmax-vs-search.jpg",
+      "series": null,
+      "readingTime": 4,
+      "toc": [
+        {
+          "id": "the-starting-point-search-only-with-three-structural-errors",
+          "text": "The Starting Point: Search-Only with Three Structural Errors",
+          "level": 2
+        },
+        {
+          "id": "what-we-changed-structure-not-budget",
+          "text": "What We Changed: Structure, Not Budget",
+          "level": 2
+        },
+        {
+          "id": "step-1-search-campaign-restructure",
+          "text": "Step 1. Search Campaign Restructure",
+          "level": 3
+        },
+        {
+          "id": "step-2-launch-performance-max",
+          "text": "Step 2. Launch Performance Max",
+          "level": 3
+        },
+        {
+          "id": "step-3-expand-pmax-to-other-categories",
+          "text": "Step 3. Expand PMax to Other Categories",
+          "level": 3
+        },
+        {
+          "id": "what-the-numbers-show-pmax-vs-search-week-by-week",
+          "text": "What the Numbers Show: PMax vs Search Week by Week",
+          "level": 2
+        },
+        {
+          "id": "when-search-still-wins",
+          "text": "When Search Still Wins",
+          "level": 2
+        },
+        {
+          "id": "takeaways-for-local-service-businesses",
+          "text": "Takeaways for Local Service Businesses",
+          "level": 2
+        }
+      ],
+      "hasFaq": false,
+      "content": "<h1>Performance Max vs Search: What Works Better for Local Business</h1>\n<p>When I took over Google Ads for an appliance repair service in the Bay Area, the numbers were brutal: $500 spent, 1 lead. CPA: $500.</p>\n<p>The market CPA for appliance repair in the Bay Area is $50–90 per lead. The actual average CPA was $307 — about 3–6x above market. In the first week, the CPA hit $500 — 6–10x the benchmark.</p>\n<p>Six weeks later, CPA dropped to $13.91. Here&#39;s what happened.</p>\n<h2 id=\"the-starting-point-search-only-with-three-structural-errors\">The Starting Point: Search-Only with Three Structural Errors</h2>\n<p>The client is KoxFix Solutions — refrigerator, washer/dryer, oven/stove, and HVAC repair across 13 cities in the Bay Area. Before I got access, the campaigns were set up like this:</p>\n<ol>\n<li><strong>Broad match without Smart Bidding.</strong> 275 keywords, 88% with zero impressions. Budget was being spent on irrelevant queries.</li>\n<li><strong>No negative keywords.</strong> Ads showed for searches unrelated to the service.</li>\n<li><strong>Quality Score of 1–3</strong> on 59% of keywords. The landing pages were a SPA without SSR, and every page&#39;s canonical tag pointed to the homepage. Google had no idea where to send users.</li>\n</ol>\n<p>The result: average CPA of $307, 2 conversions in 30 days, and Smart Bidding stuck in &quot;learning&quot; for an entire month.</p>\n<h2 id=\"what-we-changed-structure-not-budget\">What We Changed: Structure, Not Budget</h2>\n<h3 id=\"step-1-search-campaign-restructure\">Step 1. Search Campaign Restructure</h3>\n<p>One campaign with Broad match became six themed campaigns by appliance category. 55 keywords instead of 275, all Exact match (starting point; later expanded to 125 as we added brand-name campaigns). Every keyword pointed to its specific service page.</p>\n<p>Negative keywords: free, DIY, how to, used, parts, manual, video, repair kit.</p>\n<h3 id=\"step-2-launch-performance-max\">Step 2. Launch Performance Max</h3>\n<p>We launched PMax for refrigerators alongside the Search campaign. Budget: $20/day. Set up the feed, asset group, and audience signals.</p>\n<p><strong>PMax Day 1 results:</strong></p>\n<ul>\n<li>2,625 impressions</li>\n<li>28 clicks</li>\n<li>2 conversions, $225 value</li>\n<li>$11.47 spent</li>\n<li>ROAS 19.6x (Google later revoked one conversion — real ROAS: 6.5x)</li>\n</ul>\n<h3 id=\"step-3-expand-pmax-to-other-categories\">Step 3. Expand PMax to Other Categories</h3>\n<p>After the refrigerator success, we launched PMax Luxury Refrigerator ($30/day) and PMax Washer/Dryer ($30/day).</p>\n<h2 id=\"what-the-numbers-show-pmax-vs-search-week-by-week\">What the Numbers Show: PMax vs Search Week by Week</h2>\n<div class=\"table-wrapper\"><table>\n<thead>\n<tr>\n<th>Week</th>\n<th>Impressions</th>\n<th>Conversions</th>\n<th>CPA</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>W1 (Apr 13–19)</td>\n<td>277</td>\n<td>1</td>\n<td>$270</td>\n</tr>\n<tr>\n<td>W2 (Apr 20–26)</td>\n<td>460</td>\n<td>3</td>\n<td>$186</td>\n</tr>\n<tr>\n<td>W3 (Apr 27–May 3)</td>\n<td>5,311</td>\n<td>7</td>\n<td>$31</td>\n</tr>\n<tr>\n<td>W4 (May 11–17)</td>\n<td>—</td>\n<td>44</td>\n<td>$13.91</td>\n</tr>\n</tbody></table></div>\n<p>W3 was the tipping point. That&#39;s when PMax hit its stride — 5,311 impressions, 7 conversions, CPA dropping from $186 to $31. By W4, PMax was the main driver: 44 conversions at $13.91 CPA.</p>\n<p><strong>PMax channel mix:</strong> 78% Display, 19% Cross-Network, 2% Search. PMax found leads in places the Search campaign couldn&#39;t reach.</p>\n<p>Meanwhile, Search quality improved too: Quality Score climbed from 2.43 to 3.72 (+53% over the month). Impression Share rose from 19.8% to 50.6%. Lost Rank dropped from 80.2% to 30.1% — meaning the main constraint shifted from quality to budget.</p>\n<h2 id=\"when-search-still-wins\">When Search Still Wins</h2>\n<p>PMax didn&#39;t replace Search entirely. Three scenarios where Search remains essential:</p>\n<ol>\n<li><strong>Brand-name queries.</strong> Exact match on appliance brand names (Samsung, LG, Whirlpool) captures the highest-intent traffic. PMax is less effective here — it optimizes for conversions, not brand coverage.</li>\n<li><strong>Niche services.</strong> &quot;Sub-Zero ice maker repair&quot; — low search volume queries where PMax won&#39;t gather enough data to learn. Exact match on Search delivers accuracy.</li>\n<li><strong>Geographic control.</strong> PMax can serve ads outside your target radius. For a business serving 13 specific cities, Search guarantees geo-targeting precision.</li>\n</ol>\n<h2 id=\"takeaways-for-local-service-businesses\">Takeaways for Local Service Businesses</h2>\n<ol>\n<li><strong>PMax + Search as a pair.</strong> PMax finds leads through Display and Cross-Network. Search captures existing demand. One without the other loses coverage.</li>\n<li><strong>Exact match beats Broad match for local markets.</strong> A tight keyword list with a limited budget — Broad match sprays money. Start with 55 precise keywords, not 275 loose ones.</li>\n<li><strong>Landing page quality directly impacts CPA.</strong> A SPA without SSR, canonical pointing to the homepage — basic technical hygiene matters. Quality Score improved 53% after fixing these issues.</li>\n<li><strong>Don&#39;t judge PMax by Day 1.</strong> Google can revoke conversions within 48 hours. Day 1&#39;s real ROAS was 6.5x, not 19.6x. Watch the weekly trend, not the daily spike.</li>\n</ol>\n",
+      "faq": [],
+      "tldr": null,
+      "tldrHtml": null,
+      "cta": null,
+      "llmsSummary": null
+    },
     {
       "slug": "kak-snizit-cpa-google-ads-v-6-raz-keys",
       "title": "How to Lower Google Ads CPA by 8x: An Appliance Repair Case Study",

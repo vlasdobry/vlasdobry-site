@@ -122,6 +122,7 @@ SOSTAC + PDCA: audit -> strategy -> launch -> control
 Latest articles on SEO, GEO, and digital marketing for hotels, DNA labs, and SPA.
 
 ### Recent Articles
+- https://vlasdobry.ru/blog/pmax-vs-search-local-business/ - A real case study: how CPA dropped from $500 to $13.91 after switching from Search-only to Search + Performance Max. Week-by-week data, campaign structure, and lessons for local service businesses.
 - https://vlasdobry.ru/blog/kak-snizit-cpa-google-ads-v-6-raz-keys/ - How I reduced Google Ads CPA from $210 to $27 for an appliance repair business in the Bay Area. PMax delivered $7.30 CPA vs $147 in Search. Full rebuild: tracking, micro-intents, Performance Max.
 - https://vlasdobry.ru/blog/generative-engine-optimization-guide/ - Practical GEO guide: 5-step framework to get your website cited by ChatGPT, Perplexity and Gemini. Based on Princeton research + real audit data.
 - https://vlasdobry.ru/blog/how-to-appear-in-ai-answers/ - Practical playbook: how each AI search engine picks sources, what to optimize, and how to test your visibility. With free AI-readiness checker.

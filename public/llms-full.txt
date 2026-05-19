@@ -1,7 +1,7 @@
 # Vlas Fedorov - Full Website Content
 
 > This file contains the complete content of vlasdobry.ru for AI systems.
-> Last updated: 2026-05-16 (19 articles)
+> Last updated: 2026-05-19 (20 articles)
 
 ## Table of Contents
 1. About Vlas Fedorov
@@ -286,6 +286,13 @@ Acoustic voice analysis and training platform.
 ---
 
 ## 6. Blog Articles
+
+### Performance Max vs Search: What Works Better for Local Business — An Appliance Repair Case Study from the Bay Area
+**URL:** /blog/pmax-vs-search-local-business/
+**Category:** PPC
+**Date:** 2026-05-19
+
+A real case study: how CPA dropped from $500 to $13.91 after switching from Search-only to Search + Performance Max. Week-by-week data, campaign structure, and lessons for local service businesses.
 
 ### How to Lower Google Ads CPA by 8x: An Appliance Repair Case Study
 **URL:** /blog/kak-snizit-cpa-google-ads-v-6-raz-keys/
