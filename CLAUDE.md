@@ -316,6 +316,11 @@ git push origin master  # Деплой на продакшен (автомати
 | `docs/content/linkedin-audits/[slug]/carousel.html` | HTML-карусель для LinkedIn (светлая) |
 | `docs/content/linkedin-audits/[slug]/post.md` | Текст поста для LinkedIn |
 | `docs/content/linkedin-profile.md` | Тексты профиля LinkedIn (headline, about) |
+| `docs/content/linkedin-banner.html` | HTML-баннер для LinkedIn (светлый, текст справа) |
+| `docs/content/vk-audits/vk-checklist.md` | Чеклист VK-поста (plain text, хештеги, форматирование) |
+| `docs/content/vk-audits/verdi-sochi/post.md` | VK-пост: аудит Verdi Hotel (Сочи) |
+| `docs/content/vk-audits/sochi-market-01-peregret/post.md` | VK-пост: рынок Сочи перегрет |
+| `docs/content/vk-audits/sochi-market-01-peregret/charts.html` | HTML-графики для поста про рынок Сочи |
 
 ## Технологии
 
@@ -335,7 +340,7 @@ git push origin master  # Деплой на продакшен (автомати
 - Health Score: клиентская валидация URL перед отправкой на Worker
 - **НЕ добавлять HEALTHCHECK в Dockerfile** — Traefik v2 фильтрует unhealthy/starting контейнеры и убирает роутеры → 404
 
-## Метрики роста (обновлено 19.05.2026)
+## Метрики роста (обновлено 22.05.2026)
 
 **North Star Metric:** Health Score completions / неделю (апрель: 2.3, май: **0**). Цель: 15.
 
@@ -381,13 +386,43 @@ git push origin master  # Деплой на продакшен (автомати
 
 **Pre-launch:** 17.05 (один день) — вступление в группы + первые комментарии. С 18.05 — постоянная активность: 30 мин/день комментариев параллельно с постами.
 
-**Пост #1:** Sanctum Soho — **18.05.2026** ✅. 20 показов, реакций нет. Папка: `docs/content/linkedin-audits/sanctum-soho/`.
+**Week 1 (18.05–24.05) — завершена ✅:**
+- Пост #1: Sanctum Soho (Пн) — 20 показов
+- Пост #2: Фреймворк (Ср) — 1 комментарий (Balve Bains)
+- Пост #3: Личное (Пт) — «I have zero hotel clients»
 
-**Пост #2:** Фреймворк — **20.05.2026**. Текст готов, без карусели. Тема: «Most hotel owners ask their web agency one question».
+**Таймлайн:** Week 1 ✅ → Week 2 (25.05–31.05) → Week 3 (01.06–07.06) → Week 4 (08.06–14.06) → Go/No-Go (15.06).
 
-**Таймлайн:** Week 1 (18.05–24.05) → Week 2 (25.05–31.05) → Week 3 (01.06–07.06) → Week 4 (08.06–14.06) → Go/No-Go (15.06).
+**Комментарии:** 12 шт (Lata, Rangga, Sarah, Rose-Brook, Guestcentric, RateGain, Eric Hoffman, Dimitrios, Brad Brewer, Pedro Colaco ×2, Ben Wolff).
 
-**Комментарии:** 6 комментариев под чужими постами (Lata, Rangga, Sarah, Rose-Brook, Guestcentric, RateGain).
+**Идеи:** Michelin Key — пост на 27.05 (Google Tasks).
+
+## VK — российские отели (запущено 21.05.2026)
+
+**Группа:** https://vk.com/web4hotel — возобновлена после 8 лет простоя.
+
+**Стратегия:** две линии контента:
+1. Аудиты сайтов российских отелей (аналог LinkedIn-аудитов, RU)
+2. Аналитика рынка HoReCa (конференции, цифры, тренды)
+
+**Частота:** 3 поста/нед (пн/ср/пт), синхронизировано с LinkedIn.
+
+**Пост #1:** Sochi Hotel Market: цифры с конференции — **21.05.2026** ✅. Кастомные графики через HTML.
+
+**Пост #2:** Verdi Boutique Hotel (аудит) — **22.05.2026** ✅.
+
+**Чеклист:** `docs/content/vk-audits/vk-checklist.md`
+
+**Справочник хештегов:** #SEOдляОтелей #ПрямыеБронирования #PerformanceМаркетинг #GEOдляОтелей #ОтельнаяАналитика #МаркетингДляОтелей #АудитСайта #HoReCa #ОтельныйБизнес
+
+**Контент-сетка (единая LinkedIn + VK):**
+| День | LinkedIn (EN, 15:00 МСК) | VK (RU, 10:00 МСК) |
+|------|--------------------------|---------------------|
+| Пн | Аудит отеля | Аудит RU-отеля |
+| Вт | Комментарии + Reddit | — |
+| Ср | Фреймворк / инсайт | Аналитика / рынок |
+| Чт | Комментарии + Reddit | — |
+| Пт | Личное | Личное / лёгкое |
 
 **Pipeline tracker:** `docs/content/pipeline-tracker.md`
 
@@ -395,7 +430,7 @@ git push origin master  # Деплой на продакшен (автомати
 
 **Google Tasks:** список «vlasdobry.ru» → 🚀 LinkedIn Experiment (parent task, due 29.06)
 
-**Reddit:** 30 мин/день с 01.06. r/askhotels, r/hotels, r/smallbusiness. 90/10 rule.
+**Reddit:** заморожен (22.05). Фокус на LinkedIn + VK. Вернуться после подтверждения гипотезы.
 
 **Go/No-Go:** 29.06. Критерии — стратегия, Часть 9.
 
