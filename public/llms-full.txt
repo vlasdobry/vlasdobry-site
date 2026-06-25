@@ -95,7 +95,7 @@ GEO (Generative Engine Optimization) is optimization for AI search engines. Peop
 - Monitoring toolkit for 3 months
 
 **Pricing:**
-- Health Score: Free (5 auto-checks)
+- Health Score: Free (7 auto-checks)
 - Full GEO Audit: from $750 (50,000 RUB)
 
 **Page:** https://vlasdobry.ru/services/geo/
@@ -174,7 +174,7 @@ Free tool to check if a Russian website complies with Federal Law 168-FZ on stat
 ## 3. Industry Expertise
 
 ### Hotels (HoReCa)
-**Focus:** More direct bookings, less OTA dependency. In-house experience at Grace Group — international hotel chain, 20 properties.
+**Focus:** More direct bookings, less OTA dependency. Past in-house experience at Grace Group — international hotel chain, 20 properties.
 
 **Services for Hotels:**
 - Paid traffic for direct bookings: Google Ads, Google Hotel Ads, metasearch — channel management focused on cost per booking and ROI
@@ -221,10 +221,10 @@ Free tool to check if a Russian website complies with Federal Law 168-FZ on stat
 ## 4. Case Studies
 
 ### Grace Group — International Hotel Chain
-20 properties, in-house performance marketing.
+20 properties, past in-house performance marketing.
 - Challenge: Systematic guest acquisition through direct channels, reducing OTA dependency
 - Results: +60% revenue in low season, 2x paid traffic conversion
-- Tags: Hospitality, In-house, Performance, Analytics
+- Tags: Hospitality, Past in-house, Performance, Analytics
 
 ### Odyssey Flower
 SPA resort chain on Black Sea coast.

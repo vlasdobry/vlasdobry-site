@@ -133,7 +133,7 @@ In practice, most GEO optimization also improves your SEO. Better Schema.org mar
 This is the hardest part. Unlike SEO, there's no Google Search Console for AI citations. Here's what you can track:
 
 **Automated checks:**
-- [GEO Health Score](/en/services/geo/) — free scan of your site's AI-readiness across 5 parameters (llms.txt, Schema.org, FAQ, E-E-A-T, AI accessibility). Takes 30 seconds.
+- [GEO Health Score](/en/services/geo/) — free scan of your site's AI-readiness across 7 areas (LLM files, Schema.org, FAQ, E-E-A-T, citability, AI accessibility, rendered-vs-source consistency). Takes 30 seconds.
 - Regular manual testing — ask ChatGPT, Perplexity, Claude about your business or niche topics quarterly
 
 **Traffic signals:**

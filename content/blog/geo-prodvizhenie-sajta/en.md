@@ -96,7 +96,7 @@ The main challenge with GEO is metrics. Unlike SEO or paid ads, there's no singl
 - **Manual testing.** Once a week, ask AI systems questions about your niche. Record whether they mention you.
 - **Referral analytics.** Google Analytics and other tools show visits from AI sources (chatgpt.com, perplexity.ai) in referrer reports.
 - **Branded search growth.** People learned about you from ChatGPT? They'll start googling your name.
-- **Health Score.** Automated check of 5 GEO optimization parameters.
+- **Health Score.** Automated check of 7 GEO optimization areas.
 
 ## Free Diagnostic
 

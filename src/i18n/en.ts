@@ -15,8 +15,8 @@ export const en: Translations = {
     },
     hero: {
       title: 'Hotel Marketing — More Direct Bookings, Less OTA Dependency',
-      subtitle: 'Performance marketer who worked in-house at Grace Group — an international hotel chain, 20 properties. I know hotel marketing from the inside. I help independent hotels build systematic guest acquisition through direct channels.',
-      stats: '10+ years in performance marketing · In-house experience at Grace Group, 20 properties · +60% revenue in low season',
+      subtitle: 'Performance marketer who formerly worked in-house at Grace Group — an international hotel chain, 20 properties. I know hotel marketing from the inside. I help independent hotels build systematic guest acquisition through direct channels.',
+      stats: '10+ years in performance marketing · Past in-house experience at Grace Group, 20 properties · +60% revenue in low season',
     },
     problems: {
       label: 'Sound familiar?',
@@ -59,8 +59,8 @@ export const en: Translations = {
     caseStudy: {
       label: 'Experience',
       title: 'Grace Group',
-      subtitle: 'International hotel chain, 20 properties — in-house',
-      challenge: 'Worked in-house at Grace Group — an international hotel chain, 20 properties. Responsible for performance marketing: managing Google Ads as the primary paid channel, working with analytics and optimization across acquisition channels.',
+      subtitle: 'International hotel chain, 20 properties — past in-house',
+      challenge: 'Formerly in-house at Grace Group — an international hotel chain, 20 properties. Responsible for performance marketing: managed Google Ads as the primary paid channel, worked with analytics and optimization across acquisition channels.',
       done: [
         'Grew paid traffic revenue by 60% in low season (November–December)',
         'Paid traffic conversion ×2 vs. pre-engagement baseline',
@@ -70,7 +70,7 @@ export const en: Translations = {
         { value: '+60%', label: 'revenue in low season' },
         { value: '×2', label: 'ad conversion rate' },
       ],
-      tags: ['Hospitality', 'In-house', 'Performance', 'Analytics'],
+      tags: ['Hospitality', 'Past in-house', 'Performance', 'Analytics'],
     },
     process: {
       label: 'How we work together',
@@ -1035,7 +1035,7 @@ export const en: Translations = {
       pricing: {
         title: 'Pricing',
         allFeatures: [
-          '5 auto-checks (LLM Files, Schema, FAQ, E-E-A-T, AI access)',
+          '7 auto-checks (LLM Files, Schema, FAQ, E-E-A-T, citability, AI access, HTML consistency)',
           'Full audit in 6 AI systems',
           'Ready-to-use code — llms.txt, llms-full.txt, Schema.org, FAQPage',
           'Weekly action plan',
@@ -1101,7 +1101,7 @@ export const en: Translations = {
       },
       example: {
         title: 'Results',
-        subtitle: 'Grace Group — 20-property hotel chain',
+        subtitle: 'Grace Group — 20-property hotel chain, past in-house role',
         scores: [
           { category: 'Revenue', score: '+60%', status: 'In low season' },
           { category: 'Traffic conversion', score: '×2', status: '6.8% → 13.8%' },
@@ -1187,7 +1187,7 @@ export const en: Translations = {
           { question: 'What is the minimum ad budget?', answer: 'From $1,500/month. With a smaller budget, it\'s difficult to gather enough data for optimization and achieve meaningful results.' },
           { question: 'How fast will I see results?', answer: 'First data in 2-3 weeks. Target ROAS and CPA in 4-6 weeks of systematic optimization.' },
           { question: 'Can PPC reduce OTA dependency?', answer: 'Yes, that\'s one of the main goals. Direct bookings through your website mean no 15–25% commission. I set up campaigns so guests book directly instead of through aggregators.' },
-          { question: 'How is this different from an agency?', answer: 'I work personally — no account managers in between. You communicate directly with the specialist managing your campaigns. 10+ years experience, in-house at a hotel chain.' },
+          { question: 'How is this different from an agency?', answer: 'I work personally — no account managers in between. You communicate directly with the specialist managing your campaigns. 10+ years experience, formerly in-house at a hotel chain.' },
         ],
       },
       footer: {

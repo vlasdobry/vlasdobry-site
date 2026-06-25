@@ -134,12 +134,14 @@ Repeat quarterly. This is the most reliable way to measure progress — crude, b
 
 ### Automated baseline
 
-Run your site through the [GEO Health Score](/en/services/geo/) — a free check of 5 AI-readiness parameters:
+Run your site through the [GEO Health Score](/en/services/geo/) — a free check of 7 AI-readiness areas:
 1. LLM Files (llms.txt + llms-full.txt)
 2. Schema.org markup
 3. FAQ/Q&A content
 4. E-E-A-T signals
-5. AI accessibility
+5. Content citability
+6. AI accessibility
+7. Rendered-vs-source HTML consistency
 
 It won't tell you if ChatGPT mentions you. But it tells you whether your site has the technical foundation that makes citation possible. Takes 30 seconds, no signup.
 

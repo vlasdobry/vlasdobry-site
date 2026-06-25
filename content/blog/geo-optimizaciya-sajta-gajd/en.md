@@ -202,7 +202,7 @@ The first three steps can be done in a single day. Seriously. The llms.txt file 
 
 ## Free Check
 
-Don't want to verify manually? The [GEO Audit](/en/services/geo/) page has a free Health Score — an automated check of 5 GEO optimization parameters in 30 seconds. It shows what's already good and what to fix first.
+Don't want to verify manually? The [GEO Audit](/en/services/geo/) page has a free Health Score — an automated check of 7 GEO optimization areas in 30 seconds. It shows what's already good and what to fix first.
 
 ## FAQ
 

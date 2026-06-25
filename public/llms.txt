@@ -37,7 +37,7 @@ whatsapp: +7 906 897-20-37
 - MedTech (medical services)
 
 ## Selected Clients
-- Grace Group - international hotel chain, 20 properties (in-house): +60% revenue in low season, 2x paid traffic conversion. Audit 50-80K RUB ($800-$1,500), ongoing from 80K RUB/mo ($1,500/mo). Min ad budget: 80K RUB/mo ($1,500/mo)
+- Grace Group - international hotel chain, 20 properties (past in-house role): +60% revenue in low season, 2x paid traffic conversion. Audit 50-80K RUB ($800-$1,500), ongoing from 80K RUB/mo ($1,500/mo). Min ad budget: 80K RUB/mo ($1,500/mo)
 - Odyssey Flower (SPA resort chain): conversions x10, ad cost 48%->13%, brand queries x5. Free 20-minute marketing review
 - All Right (EdTech, USA): +167% sales, $110K budget
 - Kiwitaxi (Travel, 102 countries): ROMI x2.39
@@ -84,9 +84,9 @@ Current projects:
 ## GEO Audit Service (Generative Engine Optimization)
 - Testing in 6 AI systems: ChatGPT, Perplexity, Claude, Gemini, YandexGPT, GigaChat
 - 20+ GEO audits
-- Free Health Score checks 5 parameters: LLM Files (llms.txt, llms-full.txt), Schema.org, FAQ/Q&A, E-E-A-T signals, AI accessibility
+- Free GEO Health Score checks 7 areas: LLM Files, Schema.org, FAQ/Q&A, E-E-A-T, citability, AI accessibility, rendered-vs-source consistency
 - Deliverables: PDF report, AI test screenshots, competitor analysis, llms.txt + llms-full.txt code, FAQPage Schema
-- Pricing: Health Score FREE (0-100, 5 auto-checks) | Full Audit from $750 (50,000 RUB)
+- Pricing: Health Score FREE (0-100, 7 AI-readiness checks) | Full Audit from $750 (50,000 RUB)
 - [GEO Audit RU](https://vlasdobry.ru/services/geo/)
 - [GEO Audit EN](https://vlasdobry.ru/en/services/geo/)
 
@@ -95,7 +95,7 @@ SOSTAC + PDCA: audit -> strategy -> launch -> control
 
 ## PPC Advertising Service
 - PPC advertising management for hotels: Yandex Direct, Google Ads, Performance Max
-- In-house experience at Grace Group (international hotel chain, 20 properties)
+- Past in-house experience at Grace Group (international hotel chain, 20 properties)
 - Results: +60% revenue in low season, 2x paid traffic conversion, ad cost ratio on target
 - SPA resorts: conversions x10, ad cost 48% -> 13%
 - Free website readiness checklist: 8-point assessment (booking engine, speed, mobile, pricing, contacts, photos, analytics, goals)
@@ -105,7 +105,7 @@ SOSTAC + PDCA: audit -> strategy -> launch -> control
 
 ## Free Tools
 - SEO Health Score: free automated check of 8 technical SEO parameters (https://vlasdobry.ru/services/seo/)
-- GEO Health Score: free automated check of 5 GEO parameters (https://vlasdobry.ru/services/geo/)
+- GEO Health Score: free automated check of 7 GEO areas (https://vlasdobry.ru/services/geo/)
 - 168-FZ Compliance Checker: free check for Latin-script elements that may need Russian translation under Federal Law 168-FZ (https://vlasdobry.ru/168-fz/)
 
 ## Service Pages

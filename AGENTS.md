@@ -1,6 +1,6 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to Codex (Codex.ai/code) when working with code in this repository.
 
 ## Описание проекта
 
@@ -11,7 +11,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Правила
 
 - Dev-сервер запускать только на порту 3000. Если занят — убить процесс и перезапустить.
-- **НЕ использовать `>` или `▎` перед текстом для копирования** — при вставке в LinkedIn/Reddit появляются лишние символы. Писать текст как есть, без маркдаун-префиксов.
 - Чем проще тем лучше — оставлять только нужные фичи, надёжность важнее фишек.
 - UX/UI: интерфейс должен быть интуитивно понятным.
 - При поиске ошибок использовать скилл `superpowers:systematic-debugging`.
@@ -75,10 +74,6 @@ git push origin master  # Деплой на продакшен (автомати
 - `/en/services/ppc` — PPC Advertising (EN)
 - `/168-fz` — проверка на 168-ФЗ (RU)
 - `/en/168-fz` — 168-FZ Compliance Check (EN)
-- `/extension/privacy` — Privacy Policy расширения AI Visibility Checker (RU)
-- `/en/extension/privacy` — Privacy Policy for AI Visibility Checker extension (EN)
-- `/case-dna-labs` — подробный кейс Google Ads для ДНК-лабораторий (RU)
-- `/en/case-dna-labs` — Google Ads case study for DNA labs (EN)
 - `/blog` — блог со статьями (RU)
 - `/en/blog` — блог со статьями (EN)
 - `/blog/[slug]` — отдельная статья (RU)
@@ -96,29 +91,23 @@ git push origin master  # Деплой на продакшен (автомати
 - `src/components/Landing.tsx` — лендинг с услугами, кейсами и контактами
 - `src/components/IndustryLanding.tsx` — универсальный лендинг для отраслей (hotels, labs, spa)
 - `src/components/ServiceLanding.tsx` — универсальный лендинг для услуг (SEO, GEO, PPC). Поддерживает опциональную секцию `checklist` (между Pricing и Related Services)
-- `src/components/HealthScoreChecker.tsx` — виджет экспресс-диагностики сайта (8 параметров)
+- `src/components/HealthScoreChecker.tsx` — виджет экспресс-диагностики сайта (SEO: 8 параметров, GEO: 7 параметров)
 - `src/components/LanguageSwitcher.tsx` — переключатель языка
 - `src/components/CookieNotice.tsx` — cookie-баннер для React-страниц; информирует о cookies/Яндекс.Метрике/localStorage, не блокирует загрузку Метрики
-- `src/components/MotionDebug.tsx` — скрытая debug-панель для проверки motion-проблем через `?motionDebug=1`
 - `src/components/ProjectsLanding.tsx` — лендинг проектов (sticky header, карточки проектов)
 - `src/components/BlogList.tsx` — список статей блога с карточками
 - `src/components/BlogPost.tsx` — страница отдельной статьи (включает CTA блок Health Score между контентом и FAQ)
 - `src/components/BlogCard.tsx` — карточка статьи для списка
 - `src/components/ComplianceChecker.tsx` — виджет проверки на 168-ФЗ (латиница в UI-элементах)
-- `src/components/CaseDnaLabs.tsx` — подробный кейс Google Ads для ДНК-лабораторий (7 секций: hero, цифры, бенчмарки, динамика, страны, аукцион, FAQ, оффер)
+- `src/components/CaseDnaLabs.tsx` — страница кейса ДНК-лаборатории
+- `src/components/MotionDebug.tsx` — диагностика анимаций (Yandex Browser fallback)
 
 **Health Score виджет:**
-- GEO-скоринг использует общую библиотеку `@vlasdobry/geo-checker` (исходник: `D:\razrabotka-proektov-vs-code\Vlas\geo-checker-lib\`)
-- Библиотека vendored как `vendor/vlasdobry-geo-checker-1.0.0.tgz` — нужно для CI/CD (Docker build не видит файлы вне репо)
-- **При изменении библиотеки:** `cd ../geo-checker-lib && npm run pack:to-widget` → пересоберёт и положит в `vendor/`
-- Та же библиотека используется в Chrome-расширении AI Visibility Checker — виджет и расширение дают ОДИНАКОВЫЙ скор для одного сайта
 - Бесплатная экспресс-диагностика сайта (SEO: 8 параметров, GEO: 7 параметров)
-- SEO проверяет: Title, Description, H1, Viewport, Indexability (включая canonical и X-Robots-Tag), robots.txt, sitemap.xml (с lastmod), Schema.org
-- GEO проверяет (7 категорий, 100 баллов): LLM Files (30) — llms.txt структура + llms-full.txt; Schema.org (20) — JSON-LD с рекурсией по вложенным entities; FAQ/Q&A (15) — FAQPage/HowTo schema + HTML patterns; E-E-A-T (10) — автор/контакты/соцсети/about; Citability (10) — длина абзацев/question-заголовки/статистика; AI-access (10) — доступ AI-ботов в robots.txt; Rendered vs Source (5) — детекция SPA и скрытого контента
+- SEO проверяет: Title, Description, H1, Viewport, Indexability, robots.txt, sitemap.xml, Schema.org
+- GEO проверяет: LLM Files, Schema.org, FAQ/Q&A, E-E-A-T, Citability, AI-доступность и Rendered vs Source
+- Скоринг GEO вынесен в общую локальную библиотеку `@vlasdobry/geo-checker`; сайт использует тонкую обёртку `src/utils/healthScore/geoScoring.ts`
 - Использует Cloudflare Worker (`health-score-proxy.vlasdobry.workers.dev`) как CORS-прокси
-- Worker с CF Cache API: кеширует ответы по домену; производительность проверять фактическими замерами, не фиксировать 0.4с как гарантию
-- Body read с отдельным таймаутом 10с (fetch() отдаёт headers быстро, но response.text() на крупных файлах может зависать)
-- Не кешируем если был хотя бы один status=0 (транзитные ошибки)
 - Клиентская валидация URL: блокирует localhost, приватные IP, домены без TLD
 - Таймаут 25 секунд: при превышении показывает «Проблема с производительностью» (amber) с контекстом TTFB и CTA в Telegram (вместо generic ошибки)
 - Предупреждение «сайт отвечает медленно» после 10 сек ожидания
@@ -150,7 +139,7 @@ git push origin master  # Деплой на продакшен (автомати
 - TL;DR и FAQ извлекаются из контента и отображаются отдельными блоками
 - Schema.org Article + FAQPage разметка для каждой статьи
 - Ссылка на блог только в футере всех страниц
-- Авторинг: Claude пишет статьи, владелец утверждает
+- Авторинг: Codex пишет статьи, владелец утверждает
 
 **Текущие статьи блога (20 шт):**
 - `brendovyy-trafik-otelya-keys` — Брендовый трафик отеля: кейс потерь без рекламы в Директе
@@ -171,8 +160,8 @@ git push origin master  # Деплой на продакшен (автомати
 - `popup-na-sayte-otelya-keys` — Попап на сайте отеля: кейс отключения Envybox
 - `generative-engine-optimization-guide` — Generative Engine Optimization: как попасть в ответы AI (EN-first)
 - `how-to-appear-in-ai-answers` — Как попасть в ответы ChatGPT, Perplexity и Gemini (EN-first)
-- `kak-snizit-cpa-google-ads-v-6-raz-keys` — Как снизить CPA в Google Ads в 8 раз: кейс appliance repair (Bay Area)
-- `pmax-vs-search-lokalnyi-biznes` — Performance Max vs Search: что выгоднее для локального бизнеса (EN-first, 19.05)
+- `kak-snizit-cpa-google-ads-v-6-raz-keys` — Как снизить CPA в Google Ads в 6 раз: кейс KoxFix
+- `pmax-vs-search-lokalnyi-biznes` — Performance Max vs Search: что выбрать локальному бизнесу
 
 **Стилизация:** Tailwind CSS v4 (через Vite plugin), шрифт Inter. Используется glassmorphism-эффект для UI-элементов.
 
@@ -188,7 +177,7 @@ git push origin master  # Деплой на продакшен (автомати
 **Мультиязычность (i18n):**
 - URL-based routing: `/` (RU), `/en/` (EN)
 - Самописная i18n-система в `src/i18n/` (KISS: без i18next)
-- HTML файлы: `index.html`, `en.html`, `for-hotels.html`, `for-hotels-en.html`, `for-labs.html`, `for-labs-en.html`, `for-spa.html`, `for-spa-en.html`, `projects.html`, `projects-en.html`, `seo.html`, `seo-en.html`, `geo.html`, `geo-en.html`, `ppc.html`, `ppc-en.html`, `blog.html`, `blog-en.html`, `case-dna-labs.html`, `case-dna-labs-en.html`, `about.html`, `about-en.html`, `privacy.html`, `privacy-en.html`, `terms.html`, `terms-en.html`
+- HTML файлы: `index.html`, `en.html`, `for-hotels.html`, `for-hotels-en.html`, `for-labs.html`, `for-labs-en.html`, `for-spa.html`, `for-spa-en.html`, `projects.html`, `projects-en.html`, `seo.html`, `seo-en.html`, `geo.html`, `geo-en.html`, `ppc.html`, `ppc-en.html`, `blog.html`, `blog-en.html`, `blog-post.html`, `case-dna-labs.html`, `case-dna-labs-en.html`, `168-fz.html`, `168-fz-en.html`, `about.html`, `about-en.html`, `privacy.html`, `privacy-en.html`, `terms.html`, `terms-en.html`, `extension-privacy.html`, `extension-privacy-en.html`
 - Переводы: `src/i18n/ru.ts`, `src/i18n/en.ts`
 
 **Мобильные функции:**
@@ -208,15 +197,13 @@ git push origin master  # Деплой на продакшен (автомати
 **Кросс-браузерная совместимость:**
 - `<meta name="color-scheme" content="light only">` — предотвращает авто-затемнение в Яндекс Браузере
 - Тонкие декоративные элементы (1-3px) могут плохо рендериться в некоторых браузерах
-- Android Яндекс.Браузер может отдавать `prefers-reduced-motion: reduce` и при этом "замораживать" CSS transitions/animations: события `transitionrun/start/end` есть, но промежуточные значения `transform` не меняются. Симптом: свайп hero↔landing, полоска-индикатор и стрелки на боковых кнопках скачут между двумя положениями.
-- Для этого случая в `src/App.tsx` есть manual motion fallback: `YaBrowser + prefers-reduced-motion` переводит слайдер, полоску и стрелки на `requestAnimationFrame`; Chrome и обычные браузеры остаются на CSS-анимациях. Не заменять этот fallback на CSS-only без проверки на реальном Android/Yandex.
-- Диагностика: `/?motionDebug=1` показывает панель Motion Debug, `/?forceMotionFallback=1` принудительно включает fallback для локальной проверки. Регрессия фиксируется скриптами `scripts/check-yandex-motion-fallback.js`, `scripts/check-home-motion.js`, `scripts/check-motion-debug.js`.
 
 **SEO и аналитика:**
 - Open Graph и Twitter Cards для превью в соцсетях
 - Яндекс.Метрика (ID: 106407494) — счётчик в начале `<head>` на всех страницах
 - Метрика загружается сразу при посещении сайта; cookie-баннер не блокирует и не откладывает загрузку Метрики
 - Cookie-баннер информирует о cookies, Яндекс.Метрике и localStorage; подтверждение хранится в `localStorage` как `cookie_notice_accepted=true`
+- Для статических HTML-страниц используется `public/cookie-notice.js`, для React-страниц — `src/components/CookieNotice.tsx`
 - Schema.org JSON-LD разметка (Person, FAQPage, ProfessionalService, ItemList)
 - Централизованный трекинг целей через `src/utils/analytics.ts`
 
@@ -234,7 +221,7 @@ git push origin master  # Деплой на продакшен (автомати
 - `llms.txt` — базовая информация для AI-систем
 - `llms-full.txt` — полный контент сайта в Markdown (главная рекомендация)
 - `robots.txt` — разрешения для AI-ботов (GPTBot, ClaudeBot, PerplexityBot, YandexBot)
-- Целевые AI: ChatGPT, Perplexity, Gemini, Claude, YandexGPT, GigaChat
+- Целевые AI: ChatGPT, Perplexity, Gemini, Codex, YandexGPT, GigaChat
 - **Гео-теги:** намеренно не используются — проект ориентирован на международный рынок (Россия, СНГ, Европа, США). Привязка к конкретной локации снизит видимость для зарубежных запросов.
 
 **Консистентность данных:**
@@ -243,7 +230,7 @@ git push origin master  # Деплой на продакшен (автомати
 **Блог — добавление статьи:**
 1. Создать `content/blog/[slug]/ru.md` и `en.md`
 2. Frontmatter: title, description, date, dateModified, slug, category, tags, relatedService, cover
-   - **Транслитерация slug:** BGN/PCGN (й→y, не j). Примеры: `sayt`, `oteley`, `brendovyy`. Старые slug'и с `j` не менять. Проверить ДО создания папки.
+   - **Транслитерация slug:** BGN/PCGN (й→y, не j). Примеры: `sayt`, `oteley`, `brendovyy`. Старые slug'и с `j` не менять.
 3. Опционально: `llmsSummary` — кастомное описание для AI (если не указано, генерируется из description + TL;DR + FAQ)
 4. Запустить `node scripts/generate-blog.js` или `npm run build`
 5. Автоматически обновляются: `blog-data.json`, `sitemap.xml`, `llms.txt`, `llms-full.txt`
@@ -278,27 +265,29 @@ git push origin master  # Деплой на продакшен (автомати
 | `blog.html` | RU список статей блога |
 | `blog-en.html` | EN список статей блога |
 | `blog-post.html` | Entry point для страниц статей (vite build) |
-| `case-dna-labs.html` | RU страница подробного кейса Google Ads для ДНК-лабораторий |
-| `case-dna-labs-en.html` | EN страница кейса |
 | `about.html` | RU страница "Обо мне" |
 | `about-en.html` | EN страница About |
 | `privacy.html` | RU политика обработки персональных данных |
 | `privacy-en.html` | EN Privacy Policy |
 | `terms.html` | RU условия использования |
 | `terms-en.html` | EN Terms of Service |
+| `168-fz.html` | RU проверка на 168-ФЗ |
+| `168-fz-en.html` | EN 168-FZ Compliance Check |
+| `case-dna-labs.html` | RU кейс ДНК-лаборатории |
+| `case-dna-labs-en.html` | EN DNA Labs Case Study |
+| `extension-privacy.html` | RU политика приватности расширения |
+| `extension-privacy-en.html` | EN Extension Privacy Policy |
 | `public/cookie-notice.js` | Cookie-баннер для статических HTML-страниц |
 | `src/components/CookieNotice.tsx` | Cookie-баннер для React-страниц |
+| `scripts/check-legal-pages.js` | Проверка legal-страниц, cookie-баннера и запрещённых упоминаний |
 | `content/blog/` | Markdown-статьи (ru.md, en.md для каждой) |
 | `scripts/generate-blog.js` | Генерация HTML статей и blog-data.json |
-| `scripts/check-legal-pages.js` | Проверка legal-страниц, cookie-баннера и запрещённых упоминаний |
-| `scripts/check-yandex-motion-fallback.js` | Проверка JS fallback анимаций для Android/Yandex reduced-motion режима |
-| `scripts/check-home-motion.js` | Проверка обычного CSS-свайпа hero↔landing |
-| `scripts/check-motion-debug.js` | Проверка скрытой панели `?motionDebug=1` |
 | `src/i18n/` | Система переводов (types, ru, en, context) |
 | `src/utils/analytics.ts` | Централизованный трекинг Яндекс.Метрики |
 | `src/utils/healthScore/` | Логика расчёта Health Score (scoring, types, index) |
 | `nginx.conf` | Конфиг nginx: security headers, CSP, кэширование |
 | `workers/health-score-proxy/` | Cloudflare Worker: CORS-прокси с SSRF-защитой |
+| `workers/alice-hotel-skill/` | Экспериментальный Cloudflare Worker: MVP навыка Алисы; деплоится отдельно от сайта |
 | `.github/workflows/deploy.yml` | CI/CD: сборка Docker + деплой на сервер |
 | `public/llms.txt` | Инструкции для AI-систем (ASCII-only) |
 | `public/robots.txt` | Разрешения для поисковых и AI-ботов |
@@ -310,18 +299,14 @@ git push origin master  # Деплой на продакшен (автомати
 | `docs/hotel-outreach-summary.md` | Стратегия outreach: скрипты, шаблоны, ценообразование |
 | `docs/hotel-outreach-leads.md` | Лиды: 8 Черноморье + 10 Крым + 16 Геленджик + 12 Новороссийск |
 | `docs/abhazia-hotel-outreach-leads.md` | Лиды: 14 отелей Абхазии |
-| `docs/superpowers/specs/2026-05-17-linkedin-social-media-strategy.md` | Стратегия LinkedIn-эксперимента |
 | `docs/superpowers/specs/2026-05-27-vk-mini-app-strategy.md` | Стратегия VK Mini App: Health Score |
-| `docs/content/pipeline-tracker.md` | Трекер пайплайна аудитов |
-| `docs/content/linkedin-audits/audit-checklist.md` | Чеклист для каждого аудита (исключает переделывания) |
-| `docs/content/linkedin-audits/[slug]/carousel.html` | HTML-карусель для LinkedIn (светлая) |
-| `docs/content/linkedin-audits/[slug]/post.md` | Текст поста для LinkedIn |
-| `docs/content/linkedin-profile.md` | Тексты профиля LinkedIn (headline, about) |
-| `docs/content/linkedin-banner.html` | HTML-баннер для LinkedIn (светлый, текст справа) |
-| `docs/content/vk-audits/vk-checklist.md` | Чеклист VK-поста (plain text, хештеги, форматирование) |
-| `docs/content/vk-audits/verdi-sochi/post.md` | VK-пост: аудит Verdi Hotel (Сочи) |
-| `docs/content/vk-audits/sochi-market-01-peregret/post.md` | VK-пост: рынок Сочи перегрет |
-| `docs/content/vk-audits/sochi-market-01-peregret/charts.html` | HTML-графики для поста про рынок Сочи |
+| `scripts/check-home-motion.js` | Проверка анимаций на главной |
+| `scripts/check-motion-debug.js` | Диагностика motion-анимаций |
+| `scripts/check-yandex-motion-fallback.js` | Проверка Yandex fallback для reduced motion |
+| `scripts/generate-cover.cjs` | Генерация обложек для блога |
+| `scripts/generate-linkedin-carousel.cjs` | Генерация каруселей LinkedIn |
+| `scripts/generate-vk-carousel.cjs` | Генерация каруселей VK |
+| `scripts/smoke-routes.js` | Smoke-тест роутов после деплоя |
 
 ## Технологии
 
@@ -330,7 +315,7 @@ git push origin master  # Деплой на продакшен (автомати
 - Tailwind CSS v4 (@tailwindcss/vite)
 - lucide-react для иконок
 - gray-matter + marked (парсинг Markdown для блога)
-- Cloudflare Worker (CORS-прокси для Health Score)
+- Cloudflare Workers: CORS-прокси для Health Score; MVP навыка Алисы существует как отдельный локальный эксперимент
 - Docker + GitHub Actions (CI/CD)
 - Хостинг: VPS (185.65.200.201) через Docker Compose + Traefik v2 (reverse proxy, TLS)
 
@@ -345,51 +330,30 @@ git push origin master  # Деплой на продакшен (автомати
 
 **North Star Metric:** завершённые Health Score проверки / неделю. За 1-25 июня: 1 завершение, примерно 0.3/нед; цель: 15/нед.
 
-**Яндекс.Метрика, 1-25.06.2026:**
-- 44 визита, 30 посетителей, 72 просмотра.
-- Отказы 38.64%, среднее время 1:27, глубина 1.6.
-- Источники: Direct 34, Link 4, Internal 3, Social 3.
-
+**Трафик Яндекс.Метрики (1-25.06.2026):** 44 визита, 30 посетителей, 72 просмотра, 38.64% отказов, 1:27 среднее время, 1.6 стр/визит.
+**Источники:** Direct 34 (77.3%), Link 4 (9.1%), Internal 3 (6.8%), Social 3 (6.8%).
 **Яндекс.Вебмастер:** ИКС 10, 68 страниц в поиске, 0 исключено.
-**Google:** свежий срез после мая не зафиксирован; старые данные не считать текущими.
+**Google:** свежий срез после мая не зафиксирован; не переносить старые цифры как текущие.
 
-**Health Score, 1-25.06.2026:** 6 стартов, 1 завершение, 4 события ошибки, 0 CTA-кликов. Цели Метрики не образуют строгую пользовательскую воронку, но подтверждают проблему незавершённых проверок и отсутствие лидов.
+**Health Score (1-25.06.2026):**
+- 6 стартов, 1 завершение, 4 события ошибки, 0 CTA-кликов.
+- Значения целей Метрики не являются строгой пользовательской воронкой, но показывают высокий уровень незавершённых проверок.
+- Основной продуктовый риск сохраняется: инструмент почти не приводит к контакту.
 
-**168-ФЗ и контакты:** 0 запусков 168-ФЗ, 0 CTA; Telegram, WhatsApp, email, телефон и автоцель перехода в мессенджер — 0.
+**168-ФЗ и контакты (1-25.06.2026):**
+- 168-ФЗ: 0 стартов, 0 завершений, 0 CTA.
+- Telegram, WhatsApp, email, телефон и автоцель перехода в мессенджер: 0.
 
-**Текущий продуктовый вывод:** трафик и использование инструментов остаются низкими; Content loop «контент → Health Score → CTA → лид» не подтверждён.
+**Контентные эксперименты:**
+- LinkedIn: 7 постов опубликовано к 10.06; framework-посты показали больше вовлечения, чем carousel-аудиты.
+- Последний зафиксированный LinkedIn-аудит: Arlo Williamsburg (34/100 mobile, LCP 21.5s; PageSpeed snapshot).
+- VK: российские отельные аудиты и аналитика рынка; 13.06 опубликован разбор отеля «Гранд» в Судаке (mobile 38/100, LCP 23.8s, CLS 0.519; PageSpeed snapshot).
+- `docs/content/pipeline-tracker.md` хранит детальный локальный трекер; каталог `docs/` исключён из Git и не попадает в репозиторий без явного force-add.
 
-## Контент и эксперименты
+**Стратегическое направление:** отельная ниша + PPC + SEO/GEO-аудиты.
+- `/services/ppc` — лендинг PPC с отельными кейсами и чеклистом готовности сайта к рекламе.
+- `/case-dna-labs` — подробный кейс Google Ads для ДНК-лабораторий.
+- VK Mini App Health Score и навык Алисы остаются экспериментами, не частью основного production-потока.
+- Worker Алисы содержит демонстрационную базу знаний и деплоится отдельно; основной GitHub Actions публикует только `health-score-proxy`.
 
-**LinkedIn (18.05-10.06):** 7 опубликованных постов. Framework-посты дали больше вовлечения, чем публичные carousel-аудиты. Последний зафиксированный аудит — Arlo Williamsburg: mobile 34/100, LCP 21.5s (PageSpeed snapshot).
-
-**VK:** группа `vk.com/web4hotel` используется для российских отельных аудитов и аналитики рынка. 13.06 опубликован аудит отеля «Гранд» в Судаке: mobile 38/100, LCP 23.8s, CLS 0.519 (PageSpeed snapshot).
-
-**Локальные эксперименты:**
-- VK Mini App Health Score — стратегия в `docs/superpowers/specs/2026-05-27-vk-mini-app-strategy.md`, реализация не завершена.
-- `workers/alice-hotel-skill/` — MVP голосового справочника отеля с демонстрационной базой знаний; деплоится отдельно и не включён в основной GitHub Actions.
-- `/case-dna-labs` — публичный двуязычный кейс Google Ads для ДНК-лабораторий.
-
-**Хранение материалов:** `docs/` исключён из Git. Июньские аудиты, карусели и pipeline tracker существуют локально, пока не добавлены через force-add или не перенесены в отслеживаемую директорию.
-
-**Рабочее состояние на 25.06.2026:** последний коммит `2efe579` от 22.05.2026; актуальные изменения по Grace Group, GEO-библиотеке, контенту и Worker Алисы не закоммичены.
-
-**Стратегическое направление:** отельная ниша + PPC + SEO/GEO-аудиты. Reddit заморожен; LinkedIn/VK проверяются как органические каналы.
-
-**Growth Experiments:** [Google Sheets](https://docs.google.com/spreadsheets/d/1aQaJVTt8cOTR5J7kHbs9NLf0tt8ydK7k6RWYsRHzuRA/edit)
-## Webclaw — инструменты для аудита сайтов отелей
-
-MCP-сервер `webclaw` (Docker: `ghcr.io/0xmassi/webclaw:latest`). Требует запущенный Docker Desktop.
-
-**Применение в hotel outreach воронке:**
-
-| Инструмент | Для чего | Квалификация |
-|---|---|---|
-| `map` | Карта URL сайта (всегда работает) | Мало страниц, нет блога → нужна помощь → подходит |
-| `scrape` | Контент страниц | Тексты без SEO, нет мета-тегов → подходит |
-| `brand` | Цвета, шрифты, лого | Шаблонный дизайн → нет маркетолога → подходит |
-| `extract` | Структурированные данные | Сбор email/телефон для рассылки |
-| `batch` | Пакетный парсинг | Проверка нескольких отелей за раз |
-| `crawl` | Полный обход сайта | Оценка глубины контента |
-
-**Ограничения:** сайты с Cloudflare блокируют scrape/brand/extract. `search` и `research` требуют платный API-ключ. `map` работает всегда.
+**Рабочее состояние на 25.06.2026:** последний коммит `2efe579` от 22.05.2026; более свежие изменения, июньские материалы и Worker Алисы локально не закоммичены.

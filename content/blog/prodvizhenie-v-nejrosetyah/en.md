@@ -85,7 +85,7 @@ For e-commerce with thousands of products, the approach differs. Product feeds a
 
 ## Free Check
 
-Want to know if your site is ready for AI search? The [GEO optimization](/en/services/geo/) page has a free Health Score — an automated check of 5 parameters in 30 seconds. Shows what's already working and what to fix first.
+Want to know if your site is ready for AI search? The [GEO optimization](/en/services/geo/) page has a free Health Score — an automated check of 7 AI-readiness areas in 30 seconds. Shows what's already working and what to fix first.
 
 ## FAQ
 

@@ -102,7 +102,7 @@ Ask ChatGPT and Perplexity about your niche in your region. Are you in the answe
 
 ## Free Check
 
-On the [GEO Audit page](/en/services/geo/) there's a free Health Score — an automatic check of 5 GEO optimization parameters. Takes 30 seconds, shows what to fix first.
+On the [GEO Audit page](/en/services/geo/) there's a free Health Score — an automatic check of 7 GEO optimization areas. Takes 30 seconds, shows what to fix first.
 
 ## FAQ
 
