@@ -14,6 +14,7 @@ import { analytics } from '../utils/analytics';
 const WORKER_URL = import.meta.env.DEV
   ? '/api/health-score'
   : 'https://health-score-proxy.vlasdobry.workers.dev';
+const CLIENT_TIMEOUT_MS = 40_000;
 
 interface Props {
   lang: Lang;
@@ -413,7 +414,7 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
     };
 
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 25000);
+    const timeoutId = setTimeout(() => controller.abort(), CLIENT_TIMEOUT_MS);
 
     try {
       const stepDelay = (ms: number) => new Promise(r => setTimeout(r, ms));
@@ -436,7 +437,7 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
         // Retry once after 1s with a fresh AbortController
         await stepDelay(1000);
         const retryController = new AbortController();
-        const retryTimeoutId = setTimeout(() => retryController.abort(), 25000);
+        const retryTimeoutId = setTimeout(() => retryController.abort(), CLIENT_TIMEOUT_MS);
         try {
           response = await doFetch(retryController.signal);
         } catch (retryErr) {
@@ -465,7 +466,7 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
       if (hasUnavailableResources(data)) {
         void (async () => {
           const retryController = new AbortController();
-          const retryTimeoutId = setTimeout(() => retryController.abort(), 25000);
+          const retryTimeoutId = setTimeout(() => retryController.abort(), CLIENT_TIMEOUT_MS);
           try {
             const retryResponse = await doFetch(retryController.signal);
             const retryData: FetchedData = await retryResponse.json();

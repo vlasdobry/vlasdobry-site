@@ -9,8 +9,9 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "test:worker": "node --test workers/health-score-proxy/tests/*.test.mjs",
+    "test:scoring": "node --test src/utils/healthScore/*.test.mjs",
     "smoke": "node scripts/smoke-routes.js",
-    "check": "npm run typecheck && npm run build && npm run smoke"
+    "check": "npm run test:worker && npm run test:scoring && npm run typecheck && npm run build && npm run smoke"
   },
   "dependencies": {
     "@vlasdobry/geo-checker": "file:./vendor/vlasdobry-geo-checker-1.0.0.tgz",
