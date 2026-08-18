@@ -31,6 +31,9 @@ npm install      # Установка зависимостей
 npm run dev      # Запуск dev-сервера на порту 3000
 npm run build    # Сборка для продакшена
 npm run preview  # Просмотр сборки
+npm run test:worker # Тесты таймаутов, повторов и Worker API
+npm run test:scoring # Тесты частичного SEO/GEO-скоринга
+npm run check    # TypeScript + production build + smoke
 git push origin master  # Деплой на продакшен (автоматически через GitHub Actions)
 ```
 
@@ -112,16 +115,18 @@ git push origin master  # Деплой на продакшен (автомати
 - Библиотека vendored как `vendor/vlasdobry-geo-checker-1.0.0.tgz` — нужно для CI/CD (Docker build не видит файлы вне репо)
 - **При изменении библиотеки:** `cd ../geo-checker-lib && npm run pack:to-widget` → пересоберёт и положит в `vendor/`
 - Та же библиотека используется в Chrome-расширении AI Visibility Checker — виджет и расширение дают ОДИНАКОВЫЙ скор для одного сайта
-- Бесплатная экспресс-диагностика сайта (SEO: 8 параметров, GEO: 7 параметров)
+- Бесплатная экспресс-диагностика сайта (SEO: 8 параметров, GEO: 8 атомарных параметров в 7 категориях; llms.txt и llms-full.txt считаются отдельно)
 - SEO проверяет: Title, Description, H1, Viewport, Indexability (включая canonical и X-Robots-Tag), robots.txt, sitemap.xml (с lastmod), Schema.org
 - GEO проверяет (7 категорий, 100 баллов): LLM Files (30) — llms.txt структура + llms-full.txt; Schema.org (20) — JSON-LD с рекурсией по вложенным entities; FAQ/Q&A (15) — FAQPage/HowTo schema + HTML patterns; E-E-A-T (10) — автор/контакты/соцсети/about; Citability (10) — длина абзацев/question-заголовки/статистика; AI-access (10) — доступ AI-ботов в robots.txt; Rendered vs Source (5) — детекция SPA и скрытого контента
 - Использует Cloudflare Worker (`health-score-proxy.vlasdobry.workers.dev`) как CORS-прокси
 - Worker с CF Cache API: кеширует ответы по домену; производительность проверять фактическими замерами, не фиксировать 0.4с как гарантию
-- Body read с отдельным таймаутом 10с (fetch() отдаёт headers быстро, но response.text() на крупных файлах может зависать)
-- Не кешируем если был хотя бы один status=0 (транзитные ошибки)
+- Полный цикл `fetch + redirects + body consume` ограничен единым таймаутом 10с на попытку; timeout/network/408/425/429/5xx повторяются до трёх попыток независимо для каждого ресурса
+- Worker возвращает `availability: found | missing | unavailable` и `attempts`; настоящий 404 — `missing`, временная ошибка — `unavailable`
+- Частичный результат (`X-Partial-Result: true`) не кешируется; успешные ресурсы сохраняются, клиент один раз повторяет запрос в фоне и заменяет только ранее недоступные данные
+- Скоринг нормализуется по доступному весу: `unavailable` не снижает балл, а 404 остаётся штрафом; UI показывает «Проверено N из M параметров»
 - Клиентская валидация URL: блокирует localhost, приватные IP, домены без TLD
-- Таймаут 25 секунд: при превышении показывает «Проблема с производительностью» (amber) с контекстом TTFB и CTA в Telegram (вместо generic ошибки)
-- Предупреждение «сайт отвечает медленно» после 10 сек ожидания
+- Клиентский таймаут 40 секунд даёт Worker завершить три попытки; при его превышении показывается нейтральное «Не удалось проверить сейчас» без вывода о скорости сайта
+- После 10 секунд показывается нейтральное сообщение, что проверка продолжается
 - Персонализированный CTA после результата: динамический текст по баллам (4 уровня) + pre-filled Telegram deep link с доменом и скором
 - URL-история: последние 5 проверенных сайтов (localStorage + `<datalist>`, полный URL с протоколом)
 - Анимированный процесс сканирования с разными этапами для SEO и GEO
@@ -136,7 +141,9 @@ git push origin master  # Деплой на продакшен (автомати
 - Скоринг: critical (-10), important (-7), medium (-5), info (0)
 - Whitelist: Wi-Fi, SPA, IT, URL, email, числа с единицами и др.
 - SPA-детекция: маркеры фреймворков (React/Vue/Angular/Next) + количество скриптов + мало текстовых элементов. SPA показывает "Анализ ограничен" (amber) вместо скора
-- Обработка ошибок: таймаут (25с), blocked (HTTP 403/WAF), server error — все с CTA в Telegram
+- `HTMLRewriter.transform(response).text()` выполняется внутри общего 10-секундного таймаута Worker и повторяется при временных сбоях до трёх попыток
+- Временный сбой возвращает `errorCode: temporarily_unavailable`; клиент ждёт до 40 секунд и показывает «Не удалось проверить сейчас» с повтором без ложного вывода о производительности сайта
+- HTTP 403/WAF остаётся отдельным blocked-сценарием с предложением ручной проверки
 - CTA: при ≥80 → SEO-аудит, при <80 → pre-filled Telegram с доменом и скором
 - Перелинковка: статья 168-ФЗ ↔ инструмент
 - Трекинг: compliance_start, compliance_complete, compliance_error, compliance_cta_click
@@ -252,7 +259,7 @@ git push origin master  # Деплой на продакшен (автомати
 
 **Терминология услуг:**
 - "8 параметров" (SEO) — технические проверки в бесплатном SEO Health Score
-- "7 параметров" (GEO) — проверки в бесплатном GEO Health Score (LLM Files, Schema.org, FAQ/Q&A, E-E-A-T, Citability, AI-доступность, Rendered vs Source)
+- "8 параметров" (GEO) — атомарные проверки в бесплатном GEO Health Score: llms.txt, llms-full.txt, Schema.org, FAQ/Q&A, E-E-A-T, Citability, AI-доступность, Rendered vs Source (в интерфейсе сгруппированы в 7 категорий)
 - "7 разделов аудита" — направления анализа в платном полном аудите (Technical SEO, On-Page, Content, Schema.org, Local SEO, Reputation, E-E-A-T)
 
 ## Ключевые файлы
