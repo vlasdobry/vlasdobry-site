@@ -186,6 +186,8 @@ export interface ComplianceSection {
     title: string;
     invalidUrl: string;
     timeout: string;
+    temporarilyUnavailableTitle: string;
+    temporarilyUnavailable: string;
     blocked: string;
     serverError: string;
     networkError: string;

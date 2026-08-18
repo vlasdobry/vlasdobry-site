@@ -8,6 +8,7 @@ const outputDir = new URL('./.generated/', import.meta.url);
 const outputFile = new URL('resource-fetch.mjs', outputDir);
 const workerOutputFile = new URL('health-worker.mjs', outputDir);
 let fetchTextResource;
+let consumeResponseWithRetry;
 let healthWorker;
 
 before(async () => {
@@ -29,7 +30,7 @@ before(async () => {
     target: 'es2022',
   });
 
-  ({ fetchTextResource } = await import(`${pathToFileURL(fileURLToPath(outputFile)).href}?t=${Date.now()}`));
+  ({ fetchTextResource, consumeResponseWithRetry } = await import(`${pathToFileURL(fileURLToPath(outputFile)).href}?t=${Date.now()}`));
   ({ default: healthWorker } = await import(`${pathToFileURL(fileURLToPath(workerOutputFile)).href}?t=${Date.now()}`));
 });
 
@@ -180,5 +181,62 @@ test('health payload preserves found resources and marks a timeout as unavailabl
   } finally {
     globalThis.fetch = originalFetch;
     globalThis.caches = originalCaches;
+  }
+});
+
+test('keeps the timeout active while a custom response consumer reads the body', async () => {
+  let attempts = 0;
+  const result = await consumeResponseWithRetry(
+    'https://example.com/',
+    'example.com',
+    response => response.text(),
+    {
+      fetchImpl: async (_url, { signal }) => {
+        attempts += 1;
+        if (attempts === 2) return new Response('processed', { status: 200 });
+        return new Response(new ReadableStream({
+          start(controller) {
+            signal.addEventListener('abort', () => controller.error(signal.reason), { once: true });
+          },
+        }), { status: 200 });
+      },
+      timeoutMs: 10,
+      maxAttempts: 3,
+      retryDelayMs: 0,
+    },
+  );
+
+  assert.equal(attempts, 2);
+  assert.equal(result.availability, 'found');
+  assert.equal(result.value, 'processed');
+});
+
+test('compliance returns temporarily_unavailable after retryable fetch failures', async () => {
+  const originalFetch = globalThis.fetch;
+  let attempts = 0;
+  globalThis.fetch = async () => {
+    attempts += 1;
+    throw new Error('network unavailable');
+  };
+
+  try {
+    const response = await healthWorker.fetch(new Request('https://worker.test/api/compliance', {
+      method: 'POST',
+      headers: {
+        Origin: 'https://vlasdobry.ru',
+        'Content-Type': 'application/json',
+        'CF-Connecting-IP': '203.0.113.43',
+      },
+      body: JSON.stringify({ url: 'https://example.com/' }),
+    }), {
+      ALLOWED_ORIGINS: 'https://vlasdobry.ru',
+    });
+    const payload = await response.json();
+
+    assert.equal(attempts, 3);
+    assert.equal(payload.errorCode, 'temporarily_unavailable');
+    assert.equal(payload.error, 'Temporarily unavailable');
+  } finally {
+    globalThis.fetch = originalFetch;
   }
 });

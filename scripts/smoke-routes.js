@@ -113,6 +113,8 @@ function run() {
     'Checked',
     'Некоторые параметры не удалось проверить; они не повлияли на оценку',
     'Some parameters could not be checked; they did not affect the score',
+    'Не удалось проверить сайт сейчас. Повторите попытку — это не означает, что сайт работает медленно.',
+    'Could not check the website right now. Try again — this does not mean the website is slow.',
   ];
   for (const marker of widgetReliabilityMarkers) {
     if (!mustBundleContain(marker)) hasErrors = true;

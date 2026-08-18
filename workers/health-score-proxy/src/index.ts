@@ -1,5 +1,5 @@
 import { isWhitelisted, stripHtmlEntities } from './compliance-whitelist';
-import { fetchTextResource } from './resource-fetch';
+import { consumeResponseWithRetry, fetchTextResource } from './resource-fetch';
 
 export interface Env {
   ALLOWED_ORIGINS: string;
@@ -28,14 +28,13 @@ interface ComplianceResult {
   findings: ComplianceFinding[];
   isSPA: boolean;
   error: string | null;
+  errorCode?: 'temporarily_unavailable';
 }
 
 const RATE_LIMIT_STORE = new Map<string, RateLimitEntry>();
 
 const DEFAULT_RATE_LIMIT_REQUESTS = 20;
 const DEFAULT_RATE_LIMIT_WINDOW_SEC = 60;
-const REQUEST_TIMEOUT_MS = 10_000;
-const MAX_REDIRECTS = 5;
 
 // Latin detection: 2+ consecutive Latin characters
 const LATIN_RE = /[a-zA-Z]{2,}/;
@@ -142,28 +141,31 @@ async function handleCompliance(
 
 async function analyzeCompliance(domain: string): Promise<ComplianceResult> {
   const targetUrl = `https://${domain}/`;
+  const consumed = await consumeResponseWithRetry(targetUrl, domain, analyzeComplianceResponse);
 
-  let response: Response;
-  try {
-    response = await fetchWithSafeRedirects(targetUrl, domain);
-  } catch (error) {
+  if (consumed.availability !== 'found' || !consumed.value) {
+    const isTemporary = consumed.status !== 403 && consumed.status !== 404;
     return {
       url: domain,
       findings: [],
       isSPA: false,
-      error: error instanceof Error ? error.message : 'Fetch failed',
+      error: isTemporary ? 'Temporarily unavailable' : `HTTP ${consumed.status}`,
+      ...(isTemporary ? { errorCode: 'temporarily_unavailable' as const } : {}),
     };
   }
 
-  if (!response.ok) {
-    return {
-      url: domain,
-      findings: [],
-      isSPA: false,
-      error: `HTTP ${response.status}`,
-    };
-  }
+  return {
+    url: domain,
+    findings: consumed.value.findings,
+    isSPA: consumed.value.isSPA,
+    error: null,
+  };
+}
 
+async function analyzeComplianceResponse(response: Response): Promise<{
+  findings: ComplianceFinding[];
+  isSPA: boolean;
+}> {
   const findings: ComplianceFinding[] = [];
   const seenTexts = new Set<string>();
   let textElementCount = 0;
@@ -404,10 +406,8 @@ async function analyzeCompliance(domain: string): Promise<ComplianceResult> {
     || (scriptCount > 5 && textElementCount < 8);
 
   return {
-    url: domain,
     findings,
     isSPA,
-    error: null,
   };
 }
 
@@ -576,7 +576,6 @@ function isRateLimited(ip: string, maxRequests: number, windowMs: number): boole
   RATE_LIMIT_STORE.set(ip, current);
   return false;
 }
-
 function normalizeDomain(input: string): string | null {
   let candidate = input.trim();
   if (!candidate) return null;
@@ -653,7 +652,6 @@ function isBlockedHostname(hostname: string): boolean {
 
   return false;
 }
-
 function isPrivateIpv4(hostname: string): boolean {
   if (!/^\d{1,3}(\.\d{1,3}){3}$/.test(hostname)) {
     return false;
@@ -676,50 +674,4 @@ function isPrivateIpv4(hostname: string): boolean {
 
   return false;
 }
-
-function isAllowedRedirectHost(baseHost: string, nextHost: string): boolean {
-  if (nextHost === baseHost) return true;
-  if (nextHost === `www.${baseHost}`) return true;
-  if (baseHost === `www.${nextHost}`) return true;
-  return false;
-}
-
-async function fetchWithSafeRedirects(url: string, expectedHost: string): Promise<Response> {
-  let currentUrl = url;
-
-  for (let redirectCount = 0; redirectCount <= MAX_REDIRECTS; redirectCount += 1) {
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
-
-    try {
-      const response = await fetch(currentUrl, {
-        signal: controller.signal,
-        headers: { 'User-Agent': 'HealthScoreBot/1.0 (+https://vlasdobry.ru)' },
-        redirect: 'manual',
-      });
-
-      if (response.status >= 300 && response.status < 400) {
-        const location = response.headers.get('Location');
-        if (!location) {
-          return response;
-        }
-
-        const nextUrl = new URL(location, currentUrl);
-        const nextHost = nextUrl.hostname.toLowerCase();
-
-        if (nextUrl.protocol !== 'https:' || isBlockedHostname(nextHost)) {
-          throw new Error('Unsafe redirect blocked');
-        }
-
-        currentUrl = nextUrl.toString();
-        continue;
-      }
-
-      return response;
-    } finally {
-      clearTimeout(timeoutId);
-    }
-  }
-
-  throw new Error('Too many redirects');
-}
+// End of Worker helpers.

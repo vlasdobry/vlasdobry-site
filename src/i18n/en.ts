@@ -780,7 +780,7 @@ export const en: Translations = {
         'Analyzing forms...',
         'Generating report...',
       ],
-      slow: 'Website is responding slowly...',
+      slow: 'The check is taking longer, still working...',
     },
     results: {
       score: 'Your website',
@@ -825,7 +825,9 @@ export const en: Translations = {
     errors: {
       title: 'Check failed',
       invalidUrl: 'Enter a valid website URL',
-      timeout: 'Website didn\'t respond within 25 seconds. Try later.',
+      timeout: 'The check took too long. Please try again.',
+      temporarilyUnavailableTitle: 'Could not check right now',
+      temporarilyUnavailable: 'Could not check the website right now. Try again — this does not mean the website is slow.',
       blocked: 'This website blocks automated checks. Contact me for a manual review.',
       serverError: 'Server temporarily unavailable. Try later.',
       networkError: 'Connection failed. Check your internet.',

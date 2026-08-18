@@ -226,7 +226,7 @@ export const ComplianceChecker: React.FC<Props> = ({ basePath }) => {
 
     const controller = new AbortController();
     controllerRef.current = controller;
-    const timeoutId = setTimeout(() => controller.abort(), 25000);
+    const timeoutId = setTimeout(() => controller.abort(), 40000);
     const slowTimeoutId = setTimeout(() => setIsSlow(true), 10000);
 
     try {
@@ -253,6 +253,9 @@ export const ComplianceChecker: React.FC<Props> = ({ basePath }) => {
 
       // Worker returned an error from the target site (HTTP 403, redirect loop, etc.)
       if (data.error) {
+        if (data.errorCode === 'temporarily_unavailable') {
+          throw new Error('temporarily_unavailable');
+        }
         throw new Error(data.error.includes('403') ? 'blocked' : 'server_error');
       }
 
@@ -278,8 +281,11 @@ export const ComplianceChecker: React.FC<Props> = ({ basePath }) => {
       const errorMsg = err instanceof Error ? err.message : 'unknown';
       let errorType = 'network_error';
       if (err instanceof DOMException && err.name === 'AbortError') {
-        errorType = 'timeout';
-        setError('timeout');
+        errorType = 'temporarily_unavailable';
+        setError('temporarily_unavailable');
+      } else if (errorMsg === 'temporarily_unavailable') {
+        errorType = 'temporarily_unavailable';
+        setError('temporarily_unavailable');
       } else if (errorMsg === 'blocked') {
         errorType = 'blocked';
         setError('blocked');
@@ -610,13 +616,15 @@ export const ComplianceChecker: React.FC<Props> = ({ basePath }) => {
 
   // ==================== ERROR ====================
   const renderError = () => {
+    const isTemporary = error === 'temporarily_unavailable';
     const errorMessage = error === 'invalid_url' ? ct.errors.invalidUrl
       : error === 'timeout' ? ct.errors.timeout
+      : isTemporary ? ct.errors.temporarilyUnavailable
       : error === 'blocked' ? ct.errors.blocked
       : error === 'server_error' ? ct.errors.serverError
       : ct.errors.networkError;
 
-    const showTgCta = error !== 'invalid_url';
+    const showTgCta = error === 'blocked';
     const domain = normalizeUrl(url);
     const tgErrorMessage = lang === 'ru'
       ? `Привет! Хочу проверить сайт ${domain} на 168-ФЗ, но автоматическая проверка не сработала. Можете проверить вручную?`
@@ -624,8 +632,8 @@ export const ComplianceChecker: React.FC<Props> = ({ basePath }) => {
 
     return (
       <div className="bg-zinc-50 border border-zinc-100 rounded-xl p-6 md:p-8 text-center">
-        <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-red-400 mb-4">
-          {ct.errors.title}
+        <p className={`text-[10px] uppercase tracking-[0.3em] font-bold mb-4 ${isTemporary ? 'text-amber-500' : 'text-red-400'}`}>
+          {isTemporary ? ct.errors.temporarilyUnavailableTitle : ct.errors.title}
         </p>
         <p className="text-zinc-500 mb-6">{errorMessage}</p>
         <div className="space-y-3">
