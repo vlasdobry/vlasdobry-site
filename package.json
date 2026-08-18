@@ -8,6 +8,7 @@
     "build": "vite build && node scripts/generate-blog.js && node scripts/postbuild.js",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
+    "test:worker": "node --test workers/health-score-proxy/tests/*.test.mjs",
     "smoke": "node scripts/smoke-routes.js",
     "check": "npm run typecheck && npm run build && npm run smoke"
   },
