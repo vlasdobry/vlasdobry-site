@@ -1,4 +1,4 @@
-import { existsSync, readFileSync } from 'fs';
+import { existsSync, readFileSync, readdirSync } from 'fs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -37,6 +37,20 @@ function mustContain(relativePath, pattern) {
     return false;
   }
   ok(`content check ${relativePath}`);
+  return true;
+}
+
+function mustBundleContain(pattern) {
+  const assetsDir = join(distDir, 'assets');
+  const bundles = existsSync(assetsDir)
+    ? readdirSync(assetsDir).filter(file => file.endsWith('.js'))
+    : [];
+  const found = bundles.some(file => readFileSync(join(assetsDir, file), 'utf-8').includes(pattern));
+  if (!found) {
+    fail(`production bundle does not contain "${pattern}"`);
+    return false;
+  }
+  ok(`bundle content check "${pattern}"`);
   return true;
 }
 
@@ -92,6 +106,16 @@ function run() {
   for (const { route, marker } of staticRoutes) {
     if (!mustExist(route)) hasErrors = true;
     if (!mustContain(route, marker)) hasErrors = true;
+  }
+
+  const widgetReliabilityMarkers = [
+    'Проверено',
+    'Checked',
+    'Некоторые параметры не удалось проверить; они не повлияли на оценку',
+    'Some parameters could not be checked; they did not affect the score',
+  ];
+  for (const marker of widgetReliabilityMarkers) {
+    if (!mustBundleContain(marker)) hasErrors = true;
   }
 
   const ruSlugs = loadBlogSlugs('ru');

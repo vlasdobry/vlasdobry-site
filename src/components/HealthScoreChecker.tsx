@@ -2,7 +2,13 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import type { Lang } from '../i18n';
-import { calculateCombinedScore, type FetchedData, type CombinedHealthScore } from '../utils/healthScore';
+import {
+  calculateCombinedScore,
+  hasUnavailableResources,
+  mergeHealthScoreRetry,
+  type FetchedData,
+  type CombinedHealthScore,
+} from '../utils/healthScore';
 import { analytics } from '../utils/analytics';
 
 const WORKER_URL = import.meta.env.DEV
@@ -83,7 +89,9 @@ const translations = {
     seoBonus: 'Бонус: проверили SEO',
     geoBonus: 'Бонус: проверили GEO',
     seoExpressLabel: 'Экспресс-диагностика · 8 параметров',
-    geoExpressLabel: 'Экспресс-диагностика · 7 параметров',
+    geoExpressLabel: 'Экспресс-диагностика · 8 параметров',
+    coverage: (checked: number, total: number) => `Проверено ${checked} из ${total} параметров`,
+    partialNotice: 'Некоторые параметры не удалось проверить; они не повлияли на оценку',
     issues: 'проблем',
     getFullAudit: 'Получить полный аудит',
     ctaButtonFix: 'Получить план исправлений',
@@ -93,11 +101,8 @@ const translations = {
       `Привет! Мой сайт ${domain} получил ${score}/100 в ${type} Health Score. Хочу обсудить улучшения.`,
     tryAnother: 'Проверить другой сайт',
     errorTitle: 'Ошибка проверки',
-    errorTimeoutTitle: 'Проблема с производительностью',
-    errorTimeout: 'Сайт отвечает дольше 25 секунд. Google рекомендует TTFB менее 800 мс — это серьёзная проблема, влияющая на SEO и конверсию.',
-    errorTimeoutCta: 'Обсудить в Telegram',
-    errorTimeoutMessage: (domain: string) =>
-      `Привет! Проверял ${domain} через Health Score — сайт не отвечает дольше 25 секунд. Хочу обсудить аудит производительности.`,
+    errorTimeoutTitle: 'Не удалось проверить сейчас',
+    errorTimeout: 'Проверка заняла слишком много времени. Попробуйте ещё раз — это не означает, что сайт работает медленно.',
     errorServer: 'Сервер временно недоступен. Попробуйте позже.',
     errorNetwork: 'Не удалось подключиться. Проверьте интернет-соединение.',
     tryAgain: 'Попробовать снова',
@@ -133,7 +138,9 @@ const translations = {
     seoBonus: 'Bonus: checked SEO',
     geoBonus: 'Bonus: checked GEO',
     seoExpressLabel: 'Express check · 8 parameters',
-    geoExpressLabel: 'Express check · 7 parameters',
+    geoExpressLabel: 'Express check · 8 parameters',
+    coverage: (checked: number, total: number) => `Checked ${checked} of ${total} parameters`,
+    partialNotice: 'Some parameters could not be checked; they did not affect the score',
     issues: 'issues',
     getFullAudit: 'Get full audit',
     ctaButtonFix: 'Get a fix plan',
@@ -143,11 +150,8 @@ const translations = {
       `Hi! My site ${domain} scored ${score}/100 on ${type} Health Score. I'd like to discuss improvements.`,
     tryAnother: 'Check another site',
     errorTitle: 'Check failed',
-    errorTimeoutTitle: 'Performance issue detected',
-    errorTimeout: 'Site takes over 25 seconds to respond. Google recommends TTFB under 800ms — this is a critical issue affecting SEO and conversions.',
-    errorTimeoutCta: 'Discuss on Telegram',
-    errorTimeoutMessage: (domain: string) =>
-      `Hi! I checked ${domain} via Health Score — it takes over 25 seconds to respond. I'd like to discuss a performance audit.`,
+    errorTimeoutTitle: 'Could not check right now',
+    errorTimeout: 'The check took too long. Try again — this does not mean the website itself is slow.',
     errorServer: 'Server temporarily unavailable. Try later.',
     errorNetwork: 'Connection failed. Check your internet.',
     tryAgain: 'Try again',
@@ -349,6 +353,7 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
     setIsScanning(true);
 
     setState('loading');
+    setResult(null);
     setError(null);
     setIsSlow(false);
 
@@ -456,6 +461,24 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
       const scoreResult = calculateCombinedScore(data, lang);
       setResult(scoreResult);
       setState('result');
+
+      if (hasUnavailableResources(data)) {
+        void (async () => {
+          const retryController = new AbortController();
+          const retryTimeoutId = setTimeout(() => retryController.abort(), 25000);
+          try {
+            const retryResponse = await doFetch(retryController.signal);
+            const retryData: FetchedData = await retryResponse.json();
+            const mergedData = mergeHealthScoreRetry(data, retryData);
+            const mergedScore = calculateCombinedScore(mergedData, lang);
+            setResult(current => current ? mergedScore : current);
+          } catch {
+            // Частичный результат уже показан; фоновая ошибка не скрывает его.
+          } finally {
+            clearTimeout(retryTimeoutId);
+          }
+        })();
+      }
 
       // Track successful completion
       analytics.healthScoreComplete(primary, data.domain, scoreResult.seo.total, scoreResult.geo.total);
@@ -623,6 +646,17 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
           </div>
         </div>
 
+        <div className="flex flex-col sm:flex-row justify-center gap-1 sm:gap-5 mb-4 text-center text-xs text-zinc-500">
+          <span>{primaryLabel}: {t.coverage(primaryScore.checkedCount, primaryScore.totalChecks)}</span>
+          <span>{secondaryLabel}: {t.coverage(secondaryScore.checkedCount, secondaryScore.totalChecks)}</span>
+        </div>
+
+        {(primaryScore.unavailableChecks > 0 || secondaryScore.unavailableChecks > 0) && (
+          <p className="mb-6 rounded-lg border border-zinc-200 bg-white px-4 py-3 text-center text-sm text-zinc-600">
+            {t.partialNotice}
+          </p>
+        )}
+
         {/* Issues lists */}
         <div className="space-y-3 mb-6">
           <IssuesList
@@ -672,9 +706,6 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
       : error === 'server_error' ? t.errorServer
       : t.errorNetwork;
 
-    const domain = url.trim().replace(/^https?:\/\//, '').replace(/\/.*$/, '');
-    const tgMessage = isTimeout ? encodeURIComponent(t.errorTimeoutMessage(domain)) : '';
-
     return (
       <div className="bg-zinc-50 border border-zinc-100 rounded-xl p-6 md:p-8 text-center">
         <p className={`text-[10px] uppercase tracking-[0.3em] font-bold mb-4 ${isTimeout ? 'text-amber-500' : 'text-red-400'}`}>
@@ -688,16 +719,6 @@ export const HealthScoreChecker: React.FC<Props> = ({ lang, primary, ctaUrl }) =
           >
             {t.tryAgain}
           </button>
-          {isTimeout && (
-            <a
-              href={`https://t.me/vlasdobry?text=${tgMessage}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3 bg-black text-white font-bold uppercase tracking-wide hover:bg-zinc-800 transition-all inline-block"
-            >
-              {t.errorTimeoutCta}
-            </a>
-          )}
         </div>
       </div>
     );

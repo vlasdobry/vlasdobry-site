@@ -7,6 +7,31 @@ import type { FetchedData, CombinedHealthScore } from './types';
 import { calculateSeoScore } from './seoScoring';
 import { calculateGeoScore } from './geoScoring';
 
+const RESOURCE_KEYS = [
+  'llmsTxt',
+  'llmsFullTxt',
+  'robotsTxt',
+  'sitemapXml',
+  'homepage',
+] as const;
+
+function isUnavailableResource(resource: FetchedData[typeof RESOURCE_KEYS[number]]): boolean {
+  return resource.availability === 'unavailable'
+    || (resource.availability === undefined && resource.status === 0);
+}
+
+export function hasUnavailableResources(data: FetchedData): boolean {
+  return RESOURCE_KEYS.some(key => isUnavailableResource(data[key]));
+}
+
+export function mergeHealthScoreRetry(initial: FetchedData, retry: FetchedData): FetchedData {
+  const merged = { ...initial };
+  for (const key of RESOURCE_KEYS) {
+    if (isUnavailableResource(initial[key])) merged[key] = retry[key];
+  }
+  return merged;
+}
+
 export function calculateCombinedScore(data: FetchedData, lang: 'ru' | 'en' = 'ru'): CombinedHealthScore {
   const seo = calculateSeoScore({
     homepage: data.homepage,

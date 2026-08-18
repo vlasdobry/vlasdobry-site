@@ -8,6 +8,7 @@ const outputDir = new URL('./.generated/', import.meta.url);
 const outputFile = new URL('health-scoring.mjs', outputDir);
 let calculateSeoScore;
 let calculateGeoScore;
+let mergeHealthScoreRetry;
 
 const HOME_HTML = `<!doctype html><html><head>
   <title>Проверенный заголовок страницы для поисковых систем</title>
@@ -55,7 +56,7 @@ before(async () => {
     platform: 'node',
     target: 'node20',
   });
-  ({ calculateSeoScore, calculateGeoScore } = await import(`${pathToFileURL(fileURLToPath(outputFile)).href}?t=${Date.now()}`));
+  ({ calculateSeoScore, calculateGeoScore, mergeHealthScoreRetry } = await import(`${pathToFileURL(fileURLToPath(outputFile)).href}?t=${Date.now()}`));
 });
 
 after(async () => {
@@ -147,4 +148,31 @@ test('excludes AI access when robots.txt is unavailable', () => {
   assert.equal(result.unavailableChecks, 1);
   assert.ok(result.issues.some(issue => issue.title === 'robots.txt не удалось проверить'));
   assert.ok(!result.issues.some(issue => issue.title === 'AI-боты разрешены'));
+});
+
+test('background retry replaces only resources that were unavailable', () => {
+  const initial = {
+    domain: 'example.com',
+    homepage: found('first homepage'),
+    robotsTxt: found('first robots'),
+    sitemapXml: unavailable('https://example.com/sitemap.xml'),
+    llmsTxt: unavailable('https://example.com/llms.txt'),
+    llmsFullTxt: found('first full'),
+  };
+  const retry = {
+    domain: 'example.com',
+    homepage: found('second homepage'),
+    robotsTxt: found('second robots'),
+    sitemapXml: found(SITEMAP, 'https://example.com/sitemap.xml'),
+    llmsTxt: unavailable('https://example.com/llms.txt', 'Network error'),
+    llmsFullTxt: found('second full'),
+  };
+
+  const merged = mergeHealthScoreRetry(initial, retry);
+
+  assert.equal(merged.homepage.content, 'first homepage');
+  assert.equal(merged.robotsTxt.content, 'first robots');
+  assert.equal(merged.sitemapXml.availability, 'found');
+  assert.equal(merged.llmsTxt.error, 'Network error');
+  assert.equal(merged.llmsFullTxt.content, 'first full');
 });
