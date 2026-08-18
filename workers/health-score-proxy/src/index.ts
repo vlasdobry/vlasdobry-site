@@ -1,20 +1,10 @@
 import { isWhitelisted, stripHtmlEntities } from './compliance-whitelist';
+import { fetchTextResource } from './resource-fetch';
 
 export interface Env {
   ALLOWED_ORIGINS: string;
   RATE_LIMIT_REQUESTS?: string;
   RATE_LIMIT_WINDOW_SEC?: string;
-}
-
-interface FetchResult {
-  url: string;
-  status: number;
-  content: string | null;
-  error: string | null;
-  responseTime: number;
-  // Выборочные заголовки ответа — нужны для детекта X-Robots-Tag на стороне фронта.
-  // Поле необязательное, чтобы фронт оставался совместим со старой версией Worker'а.
-  headers?: Record<string, string>;
 }
 
 interface RateLimitEntry {
@@ -44,7 +34,6 @@ const RATE_LIMIT_STORE = new Map<string, RateLimitEntry>();
 
 const DEFAULT_RATE_LIMIT_REQUESTS = 20;
 const DEFAULT_RATE_LIMIT_WINDOW_SEC = 60;
-const MAX_CONTENT_SIZE = 50_000;
 const REQUEST_TIMEOUT_MS = 10_000;
 const MAX_REDIRECTS = 5;
 
@@ -471,16 +460,21 @@ async function handleHealthScore(
     if (cached) {
       const cachedBody = await cached.text();
       return new Response(cachedBody, {
-        headers: { ...corsHeaders, 'Content-Type': 'application/json', 'X-Cache': 'HIT' },
+        headers: {
+          ...corsHeaders,
+          'Content-Type': 'application/json',
+          'X-Cache': 'HIT',
+          'X-Partial-Result': 'false',
+        },
       });
     }
 
     const results = await Promise.all([
-      fetchResource(`https://${cleanDomain}/llms.txt`, cleanDomain),
-      fetchResource(`https://${cleanDomain}/llms-full.txt`, cleanDomain),
-      fetchResource(`https://${cleanDomain}/robots.txt`, cleanDomain),
-      fetchResource(`https://${cleanDomain}/sitemap.xml`, cleanDomain),
-      fetchResource(`https://${cleanDomain}/`, cleanDomain),
+      fetchTextResource(`https://${cleanDomain}/llms.txt`, cleanDomain),
+      fetchTextResource(`https://${cleanDomain}/llms-full.txt`, cleanDomain),
+      fetchTextResource(`https://${cleanDomain}/robots.txt`, cleanDomain),
+      fetchTextResource(`https://${cleanDomain}/sitemap.xml`, cleanDomain),
+      fetchTextResource(`https://${cleanDomain}/`, cleanDomain),
     ]);
 
     const payload = {
@@ -494,11 +488,8 @@ async function handleHealthScore(
 
     const bodyJson = JSON.stringify(payload);
 
-    // Кешируем только если все 5 fetch'ей получили HTTP-ответ (status != 0).
-    // Сетевые ошибки (status=0) могут быть транзитными — не кешируем чтобы
-    // следующий запрос попробовал заново.
-    const allSucceeded = results.every(r => r.status !== 0);
-    if (allSucceeded) {
+    const isPartialResult = results.some(result => result.availability === 'unavailable');
+    if (!isPartialResult) {
       const cacheResponse = new Response(bodyJson, {
         headers: {
           'Content-Type': 'application/json',
@@ -509,7 +500,12 @@ async function handleHealthScore(
     }
 
     return new Response(bodyJson, {
-      headers: { ...corsHeaders, 'Content-Type': 'application/json', 'X-Cache': 'MISS' },
+      headers: {
+        ...corsHeaders,
+        'Content-Type': 'application/json',
+        'X-Cache': 'MISS',
+        'X-Partial-Result': String(isPartialResult),
+      },
     });
   } catch {
     return Response.json(
@@ -726,63 +722,4 @@ async function fetchWithSafeRedirects(url: string, expectedHost: string): Promis
   }
 
   throw new Error('Too many redirects');
-}
-
-/**
- * Читает body с таймаутом. Для крупных файлов на медленном соединении между
- * Cloudflare Worker и origin — стандартное чтение может зависнуть.
- * Ограничивает размер MAX_CONTENT_SIZE и время REQUEST_TIMEOUT_MS.
- */
-async function readBodyWithTimeout(response: Response): Promise<string> {
-  const bodyPromise = response.text().then(text => text.slice(0, MAX_CONTENT_SIZE));
-  const timeoutPromise = new Promise<string>((_, reject) => {
-    setTimeout(() => reject(new Error('Body read timeout')), REQUEST_TIMEOUT_MS);
-  });
-  return Promise.race([bodyPromise, timeoutPromise]);
-}
-
-async function fetchResource(url: string, expectedHost: string): Promise<FetchResult> {
-  const startTime = Date.now();
-
-  try {
-    const response = await fetchWithSafeRedirects(url, expectedHost);
-    const responseTime = Date.now() - startTime;
-
-    const finalHost = new URL(response.url).hostname.toLowerCase();
-    if (isBlockedHostname(finalHost)) {
-      return {
-        url,
-        status: 0,
-        content: null,
-        error: 'Unsafe final host',
-        responseTime,
-      };
-    }
-
-    // Body read с отдельным таймаутом — fetch() возвращает headers быстро,
-    // но чтение body на крупных файлах (25KB+) может зависать на 40+ сек.
-    const content = response.ok ? await readBodyWithTimeout(response) : null;
-
-    // Сохраняем только нужные заголовки — не засоряем payload и не рискуем утечкой.
-    const xRobotsTag = response.headers.get('x-robots-tag');
-    const headers: Record<string, string> = {};
-    if (xRobotsTag) headers['x-robots-tag'] = xRobotsTag;
-
-    return {
-      url,
-      status: response.status,
-      content,
-      error: null,
-      responseTime,
-      headers,
-    };
-  } catch (error) {
-    return {
-      url,
-      status: 0,
-      content: null,
-      error: error instanceof Error ? error.message : 'Fetch failed',
-      responseTime: Date.now() - startTime,
-    };
-  }
 }

@@ -6,7 +6,9 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const outputDir = new URL('./.generated/', import.meta.url);
 const outputFile = new URL('resource-fetch.mjs', outputDir);
+const workerOutputFile = new URL('health-worker.mjs', outputDir);
 let fetchTextResource;
+let healthWorker;
 
 before(async () => {
   await mkdir(outputDir, { recursive: true });
@@ -18,8 +20,17 @@ before(async () => {
     platform: 'browser',
     target: 'es2022',
   });
+  await build({
+    entryPoints: [fileURLToPath(new URL('../src/index.ts', import.meta.url))],
+    outfile: fileURLToPath(workerOutputFile),
+    bundle: true,
+    format: 'esm',
+    platform: 'browser',
+    target: 'es2022',
+  });
 
   ({ fetchTextResource } = await import(`${pathToFileURL(fileURLToPath(outputFile)).href}?t=${Date.now()}`));
+  ({ default: healthWorker } = await import(`${pathToFileURL(fileURLToPath(workerOutputFile)).href}?t=${Date.now()}`));
 });
 
 after(async () => {
@@ -129,4 +140,45 @@ test('blocks redirects to an unrelated host', async () => {
   assert.equal(result.availability, 'unavailable');
   assert.equal(result.status, 0);
   assert.match(result.error ?? '', /unsafe redirect/i);
+});
+
+test('health payload preserves found resources and marks a timeout as unavailable', async () => {
+  const originalFetch = globalThis.fetch;
+  const originalCaches = globalThis.caches;
+  let cacheWrites = 0;
+
+  globalThis.caches = {
+    default: {
+      match: async () => undefined,
+      put: async () => { cacheWrites += 1; },
+    },
+  };
+  globalThis.fetch = async input => {
+    if (String(input).includes('/sitemap.xml')) throw new Error('Body read timeout');
+    return new Response('<html lang="ru"><title>OK</title></html>', { status: 200 });
+  };
+
+  try {
+    const response = await healthWorker.fetch(new Request('https://worker.test/', {
+      method: 'POST',
+      headers: {
+        Origin: 'https://vlasdobry.ru',
+        'Content-Type': 'application/json',
+        'CF-Connecting-IP': '203.0.113.42',
+      },
+      body: JSON.stringify({ domain: 'example.com' }),
+    }), {
+      ALLOWED_ORIGINS: 'https://vlasdobry.ru',
+    });
+    const payload = await response.json();
+
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get('X-Partial-Result'), 'true');
+    assert.equal(payload.sitemapXml.availability, 'unavailable');
+    assert.equal(payload.homepage.availability, 'found');
+    assert.equal(cacheWrites, 0);
+  } finally {
+    globalThis.fetch = originalFetch;
+    globalThis.caches = originalCaches;
+  }
 });
