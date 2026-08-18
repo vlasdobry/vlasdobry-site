@@ -1,11 +1,15 @@
 // src/utils/healthScore/types.ts
 
+export type ResourceAvailability = 'found' | 'missing' | 'unavailable';
+
 export interface ResourceResult {
   url: string;
   status: number;
   content: string | null;
   error: string | null;
   responseTime: number;
+  availability?: ResourceAvailability;
+  attempts?: number;
   // Необязательное — Worker отдаёт только выбранные заголовки (x-robots-tag).
   // Старые версии Worker'а могут не возвращать это поле — scoring должен
   // корректно работать с undefined.
@@ -35,6 +39,12 @@ export interface ScoreResult {
 
 export interface SeoHealthScore {
   total: number;
+  rawScore: number;
+  availableWeight: number;
+  totalWeight: 100;
+  checkedCount: number;
+  totalChecks: number;
+  unavailableChecks: number;
   breakdown: {
     title: number;
     description: number;
@@ -52,6 +62,12 @@ export interface SeoHealthScore {
 
 export interface GeoHealthScore {
   total: number;
+  rawScore: number;
+  availableWeight: number;
+  totalWeight: 100;
+  checkedCount: number;
+  totalChecks: number;
+  unavailableChecks: number;
   breakdown: {
     llmFiles: number;
     schemaOrg: number;

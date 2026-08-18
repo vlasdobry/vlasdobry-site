@@ -454,56 +454,91 @@ export function calculateSeoScore(data: {
     sitemap: 0,
     schemaOrg: 0,
   };
+  let availableWeight = 100;
+  let unavailableChecks = 0;
 
-  if (!data.homepage.content) {
-    return {
-      total: 0,
-      breakdown,
-      issues: [{
-        severity: 'critical',
-        title: tr(lang, 'Сайт недоступен', 'Site is unavailable'),
-        description: tr(lang, 'Не удалось загрузить страницу', 'Could not load the page')
-      }],
-      status: 'critical',
-      statusLabel: tr(lang, 'Недоступен', 'Unavailable'),
-    };
+  const availability = (resource: ResourceResult) => {
+    if (resource.availability) return resource.availability;
+    if (resource.status === 0) return 'unavailable';
+    if (resource.status === 404) return 'missing';
+    return 'found';
+  };
+  const addUnavailableIssue = (titleRu: string, titleEn: string) => {
+    issues.push({
+      severity: 'info',
+      title: tr(lang, titleRu, titleEn),
+      description: tr(
+        lang,
+        'Временная ошибка проверки. Параметр не влияет на оценку.',
+        'Temporary check error. This parameter does not affect the score.',
+      ),
+    });
+  };
+
+  if (availability(data.homepage) === 'unavailable') {
+    availableWeight -= WEIGHTS.title + WEIGHTS.description + WEIGHTS.h1
+      + WEIGHTS.viewport + WEIGHTS.indexability + WEIGHTS.schemaOrg;
+    unavailableChecks += 6;
+    addUnavailableIssue(
+      'Главную страницу не удалось проверить',
+      'Homepage could not be checked',
+    );
+  } else if (!data.homepage.content) {
+    issues.push({
+      severity: 'critical',
+      title: tr(lang, 'Сайт недоступен', 'Site is unavailable'),
+      description: tr(lang, 'Не удалось загрузить страницу', 'Could not load the page'),
+    });
+  } else {
+    const html = data.homepage.content;
+
+    const titleResult = scoreTitle(html, lang);
+    breakdown.title = titleResult.score;
+    issues.push(...titleResult.issues);
+
+    const descResult = scoreDescription(html, lang);
+    breakdown.description = descResult.score;
+    issues.push(...descResult.issues);
+
+    const h1Result = scoreH1(html, lang);
+    breakdown.h1 = h1Result.score;
+    issues.push(...h1Result.issues);
+
+    const viewportResult = scoreViewport(html, lang);
+    breakdown.viewport = viewportResult.score;
+    issues.push(...viewportResult.issues);
+
+    const indexResult = scoreIndexability(html, data.homepage.headers, lang);
+    breakdown.indexability = indexResult.score;
+    issues.push(...indexResult.issues);
+
+    const schemaResult = scoreSchemaOrg(html, lang);
+    breakdown.schemaOrg = schemaResult.score;
+    issues.push(...schemaResult.issues);
   }
 
-  const html = data.homepage.content;
+  if (availability(data.robotsTxt) === 'unavailable') {
+    availableWeight -= WEIGHTS.robotsTxt;
+    unavailableChecks += 1;
+    addUnavailableIssue('robots.txt не удалось проверить', 'robots.txt could not be checked');
+  } else {
+    const robotsResult = scoreRobotsTxt(data.robotsTxt, lang);
+    breakdown.robotsTxt = robotsResult.score;
+    issues.push(...robotsResult.issues);
+  }
 
-  const titleResult = scoreTitle(html, lang);
-  breakdown.title = titleResult.score;
-  issues.push(...titleResult.issues);
+  if (availability(data.sitemapXml) === 'unavailable') {
+    availableWeight -= WEIGHTS.sitemap;
+    unavailableChecks += 1;
+    addUnavailableIssue('sitemap.xml не удалось проверить', 'sitemap.xml could not be checked');
+  } else {
+    const sitemapResult = scoreSitemap(data.sitemapXml, lang);
+    breakdown.sitemap = sitemapResult.score;
+    issues.push(...sitemapResult.issues);
+  }
 
-  const descResult = scoreDescription(html, lang);
-  breakdown.description = descResult.score;
-  issues.push(...descResult.issues);
-
-  const h1Result = scoreH1(html, lang);
-  breakdown.h1 = h1Result.score;
-  issues.push(...h1Result.issues);
-
-  const viewportResult = scoreViewport(html, lang);
-  breakdown.viewport = viewportResult.score;
-  issues.push(...viewportResult.issues);
-
-  const indexResult = scoreIndexability(html, data.homepage.headers, lang);
-  breakdown.indexability = indexResult.score;
-  issues.push(...indexResult.issues);
-
-  const robotsResult = scoreRobotsTxt(data.robotsTxt, lang);
-  breakdown.robotsTxt = robotsResult.score;
-  issues.push(...robotsResult.issues);
-
-  const sitemapResult = scoreSitemap(data.sitemapXml, lang);
-  breakdown.sitemap = sitemapResult.score;
-  issues.push(...sitemapResult.issues);
-
-  const schemaResult = scoreSchemaOrg(html, lang);
-  breakdown.schemaOrg = schemaResult.score;
-  issues.push(...schemaResult.issues);
-
-  const total = Object.values(breakdown).reduce((sum, val) => sum + val, 0);
+  const rawScore = Object.values(breakdown).reduce((sum, val) => sum + val, 0);
+  const total = availableWeight > 0 ? Math.round(rawScore / availableWeight * 100) : 0;
 
   let status: SeoHealthScore['status'];
   let statusLabel: string;
@@ -527,6 +562,12 @@ export function calculateSeoScore(data: {
 
   return {
     total,
+    rawScore,
+    availableWeight,
+    totalWeight: 100,
+    checkedCount: 8 - unavailableChecks,
+    totalChecks: 8,
+    unavailableChecks,
     breakdown,
     issues: issues.slice(0, 8),
     status,
