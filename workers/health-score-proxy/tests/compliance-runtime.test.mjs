@@ -26,7 +26,7 @@ async function checkHtml(html, { compressed = false } = {}) {
     .reply(200, () => { fetches++; return compressed ? gzipSync(html) : html; }, {
       headers: { 'content-type': 'text/html; charset=utf-8', ...(compressed ? { 'content-encoding': 'gzip' } : {}) },
     }).persist();
-  const worker = new Miniflare({ modules: true, scriptPath, compatibilityDate: '2026-07-01',
+  const worker = new Miniflare({ modules: true, modulesRoot: directory, scriptPath, compatibilityDate: '2026-07-01',
     fetchMock: mock, bindings: { ALLOWED_ORIGINS: 'https://vlasdobry.ru' } });
   try {
     const response = await worker.dispatchFetch('https://worker.test/api/compliance', {
