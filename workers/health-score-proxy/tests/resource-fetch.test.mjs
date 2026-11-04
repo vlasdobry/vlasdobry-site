@@ -7,9 +7,11 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const outputDir = new URL('./.generated/', import.meta.url);
 const outputFile = new URL('resource-fetch.mjs', outputDir);
 const workerOutputFile = new URL('health-worker.mjs', outputDir);
+const whitelistOutputFile = new URL('whitelist.mjs', outputDir);
 let fetchTextResource;
 let consumeResponseWithRetry;
 let healthWorker;
+let isWhitelisted;
 
 before(async () => {
   await mkdir(outputDir, { recursive: true });
@@ -32,10 +34,22 @@ before(async () => {
 
   ({ fetchTextResource, consumeResponseWithRetry } = await import(`${pathToFileURL(fileURLToPath(outputFile)).href}?t=${Date.now()}`));
   ({ default: healthWorker } = await import(`${pathToFileURL(fileURLToPath(workerOutputFile)).href}?t=${Date.now()}`));
+  await build({ entryPoints: [fileURLToPath(new URL('../src/compliance-whitelist.ts', import.meta.url))],
+    outfile: fileURLToPath(whitelistOutputFile), bundle: true, format: 'esm', platform: 'browser', target: 'es2022' });
+  ({ isWhitelisted } = await import(pathToFileURL(fileURLToPath(whitelistOutputFile)).href));
 });
 
 after(async () => {
   await rm(outputDir, { recursive: true, force: true });
+});
+
+test('email detection stays bounded for long non-email text and preserves embedded email matching', () => {
+  const text = 'x'.repeat(50_000);
+  const started = performance.now();
+  assert.equal(isWhitelisted(text), false);
+  assert.ok(performance.now() - started < 1000, 'email detection must not backtrack quadratically');
+  for (const value of ['Contact foo@example.com today', '@x@y.z', 'a@b..']) assert.equal(isWhitelisted(value), true);
+  for (const value of ['aa@.bb', 'aa@bb.', '@aa.bb']) assert.equal(isWhitelisted(value), false);
 });
 
 test('retries a timed out body twice and returns unavailable', async () => {
@@ -103,6 +117,17 @@ test('returns missing for HTTP 404 without retrying', async () => {
   assert.equal(result.content, null);
 });
 
+test('keeps successful empty 204 and 205 responses compatible without retries', async () => {
+  for (const status of [204, 205]) {
+    const result = await fetchTextResource('https://example.com/', 'example.com', {
+      fetchImpl: async () => new Response(null, { status }), retryDelayMs: 0,
+    });
+    assert.equal(result.availability, 'found');
+    assert.equal(result.content, '');
+    assert.equal(result.attempts, 1);
+  }
+});
+
 test('limits successful text responses to 50,000 characters', async () => {
   const result = await fetchTextResource('https://example.com/llms-full.txt', 'example.com', {
     fetchImpl: async () => new Response('x'.repeat(60_000), { status: 200 }),
@@ -110,6 +135,74 @@ test('limits successful text responses to 50,000 characters', async () => {
 
   assert.equal(result.availability, 'found');
   assert.equal(result.content?.length, 50_000);
+});
+
+test('rejects oversized streamed bodies before the consumer and never retries', async () => {
+  for (const headers of [{}, { 'Content-Length': '1' }]) {
+    let pulls = 0;
+    let cancellations = 0;
+    let calls = 0;
+    let consumed = false;
+    const result = await consumeResponseWithRetry('https://example.com/', 'example.com', async response => {
+      consumed = true;
+      return response.text();
+    }, {
+      maxBodyBytes: 1024,
+      retryDelayMs: 0,
+      fetchImpl: async () => {
+        calls++;
+        return new Response(new ReadableStream({
+          pull(controller) {
+            pulls++;
+            controller.enqueue(new Uint8Array(512));
+            if (pulls === 20) controller.close();
+          },
+          cancel() { cancellations++; },
+        }), { headers });
+      },
+    });
+    assert.equal(result.availability, 'unavailable');
+    assert.match(result.error, /size limit/i);
+    assert.equal(consumed, false);
+    assert.equal(calls, 1);
+    assert.equal(cancellations, 1);
+    assert.ok(pulls < 20);
+  }
+});
+
+test('accepts the exact byte boundary and preserves split UTF-8', async () => {
+  const bytes = new TextEncoder().encode('Привет');
+  const result = await fetchTextResource('https://example.com/', 'example.com', {
+    maxBodyBytes: bytes.length,
+    fetchImpl: async () => new Response(new ReadableStream({
+      start(controller) {
+        for (const byte of bytes) controller.enqueue(new Uint8Array([byte]));
+        controller.close();
+      },
+    })),
+  });
+  assert.equal(result.content, 'Привет');
+  assert.equal(result.availability, 'found');
+});
+
+test('a single oversized chunk is cancelled without retry', async () => {
+  let calls = 0;
+  let cancelled = false;
+  const result = await fetchTextResource('https://example.com/', 'example.com', {
+    maxBodyBytes: 1024,
+    fetchImpl: async () => {
+      calls++;
+      return new Response(new ReadableStream({
+        start(controller) { controller.enqueue(new Uint8Array(1025)); },
+        pull(controller) { controller.close(); },
+        cancel() { cancelled = true; },
+      }, { highWaterMark: 0 }));
+    },
+  });
+  assert.equal(result.availability, 'unavailable');
+  assert.equal(result.attempts, 1);
+  assert.equal(calls, 1);
+  assert.equal(cancelled, true);
 });
 
 test('retries HTTP 503 and returns unavailable after the last attempt', async () => {

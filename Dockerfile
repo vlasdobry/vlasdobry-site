@@ -1,6 +1,7 @@
 # Этап 1: Сборка
-FROM public.ecr.aws/docker/library/node:20-alpine AS build
+FROM public.ecr.aws/docker/library/node:24-alpine AS build
 WORKDIR /app
+ENV PUPPETEER_SKIP_DOWNLOAD=true
 COPY package*.json ./
 # Локальная зависимость @vlasdobry/geo-checker — vendored как tgz.
 # Копируем ДО npm ci, чтобы npm смог её найти.

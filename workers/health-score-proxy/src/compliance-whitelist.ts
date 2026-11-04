@@ -17,7 +17,6 @@ export const WHITELIST_PATTERNS: RegExp[] = [
   // URLs and emails
   /^https?:\/\//i,
   /^www\./i,
-  /\S+@\S+\.\S+/,
   // Domain-like strings
   /^[a-z0-9-]+\.[a-z]{2,}$/i,
   // Numbers with units (24h, 5km, 100m2)
@@ -43,6 +42,15 @@ export function stripHtmlEntities(text: string): string {
 export function isWhitelisted(text: string): boolean {
   const trimmed = text.trim();
   if (!trimmed) return true;
+
+  // Preserve the embedded-email rule without the quadratic backtracking of
+  // an unanchored greedy regex on long text without an @ delimiter.
+  for (const token of trimmed.split(/\s+/)) {
+    const at = token.indexOf('@', 1);
+    if (at < 1) continue;
+    const dot = token.indexOf('.', at + 2);
+    if (dot >= 0 && dot < token.length - 1) return true;
+  }
 
   // Check pattern matches
   for (const pattern of WHITELIST_PATTERNS) {

@@ -28,6 +28,7 @@ export interface FetchOptions {
   maxAttempts?: number;
   retryDelayMs?: number;
   maxRedirects?: number;
+  maxBodyBytes?: number;
 }
 
 const DEFAULT_TIMEOUT_MS = 10_000;
@@ -35,6 +36,7 @@ const DEFAULT_MAX_ATTEMPTS = 3;
 const DEFAULT_RETRY_DELAY_MS = 150;
 const DEFAULT_MAX_REDIRECTS = 5;
 const MAX_CONTENT_SIZE = 50_000;
+const DEFAULT_MAX_BODY_BYTES = 2 * 1024 * 1024;
 const RETRYABLE_STATUSES = new Set([408, 425, 429, 500, 502, 503, 504]);
 
 class FetchAttemptError extends Error {
@@ -45,6 +47,48 @@ class FetchAttemptError extends Error {
   ) {
     super(message);
   }
+}
+
+export class ResourceLimitError extends FetchAttemptError {
+  constructor(message = 'Response exceeds size limit') {
+    super(message, false);
+  }
+}
+
+// Bound the body before passing it to either text() or HTMLRewriter.
+// Fetch exposes decoded body bytes; Content-Length is not trusted.
+async function boundedResponse(response: Response, maxBytes: number): Promise<Response> {
+  if (!Number.isSafeInteger(maxBytes) || maxBytes <= 0) throw new ResourceLimitError();
+  const reader = response.body?.getReader();
+  let buffer = new Uint8Array(Math.min(65536, maxBytes));
+  let length = 0;
+  if (reader) {
+    try {
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        const nextLength = length + value.byteLength;
+        if (nextLength > maxBytes) throw new ResourceLimitError();
+        if (nextLength > buffer.length) {
+          const grown = new Uint8Array(Math.min(maxBytes, Math.max(nextLength, buffer.length * 2)));
+          grown.set(buffer.subarray(0, length));
+          buffer = grown;
+        }
+        buffer.set(value, length);
+        length = nextLength;
+      }
+    } catch (error) {
+      void reader.cancel(error).catch(() => undefined);
+      throw error;
+    } finally {
+      reader.releaseLock();
+    }
+  }
+  const headers = new Headers(response.headers);
+  headers.delete('Content-Length');
+  headers.delete('Content-Encoding');
+  return new Response(length ? buffer.subarray(0, length) : null,
+    { status: response.status, statusText: response.statusText, headers });
 }
 
 const wait = (delayMs: number) => new Promise(resolve => setTimeout(resolve, delayMs));
@@ -187,7 +231,9 @@ export async function consumeResponseWithRetry<T>(
         };
       }
 
-      const value = response.ok ? await consume(response) : null;
+      const value = response.ok
+        ? await consume(await boundedResponse(response, options.maxBodyBytes ?? DEFAULT_MAX_BODY_BYTES))
+        : null;
 
       return {
         url: fetched.finalUrl,

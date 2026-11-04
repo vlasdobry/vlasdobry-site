@@ -1,5 +1,5 @@
 import { isWhitelisted, stripHtmlEntities } from './compliance-whitelist';
-import { consumeResponseWithRetry, fetchTextResource } from './resource-fetch';
+import { consumeResponseWithRetry, fetchTextResource, ResourceLimitError } from './resource-fetch';
 
 export interface Env {
   ALLOWED_ORIGINS: string;
@@ -169,8 +169,21 @@ async function analyzeComplianceResponse(response: Response): Promise<{
   const findings: ComplianceFinding[] = [];
   const seenTexts = new Set<string>();
   let textElementCount = 0;
+  // HTMLRewriter may wrap callback exceptions in a native error. Keep the
+  // original deterministic limit error so the shared helper will not retry it.
+  const limits: { error?: ResourceLimitError } = {};
+  function failLimit(message: string): never {
+    limits.error = new ResourceLimitError(message);
+    throw limits.error;
+  }
+
+  function appendText(buffer: string, chunk: string): string {
+    if (buffer.length + chunk.length > 50_000) failLimit('Text exceeds size limit');
+    return buffer + chunk;
+  }
 
   function addFinding(text: string, element: string, severity: ComplianceSeverity, category: string): void {
+    if (text.length > 50_000) failLimit('Text exceeds size limit');
     // Strip HTML entities (&nbsp; &mdash; etc.) before analysis
     const cleaned = stripHtmlEntities(text);
     if (!cleaned) return;
@@ -179,6 +192,7 @@ async function analyzeComplianceResponse(response: Response): Promise<{
 
     const key = `${cleaned}|${element}|${category}`;
     if (seenTexts.has(key)) return;
+    if (findings.length >= 500) failLimit('Findings exceed size limit');
     seenTexts.add(key);
 
     findings.push({ text: cleaned, element, severity, category });
@@ -208,7 +222,7 @@ async function analyzeComplianceResponse(response: Response): Promise<{
     }
 
     text(chunk: Text): void {
-      this.buffer += chunk.text;
+      this.buffer = appendText(this.buffer, chunk.text);
       if (chunk.lastInTextNode) {
         const content = this.buffer.trim();
         if (content) {
@@ -252,7 +266,7 @@ async function analyzeComplianceResponse(response: Response): Promise<{
     }
 
     text(chunk: Text): void {
-      this.buffer += chunk.text;
+      this.buffer = appendText(this.buffer, chunk.text);
       if (chunk.lastInTextNode) {
         const content = this.buffer.trim();
         if (content) {
@@ -277,7 +291,7 @@ async function analyzeComplianceResponse(response: Response): Promise<{
     }
 
     text(chunk: Text): void {
-      this.buffer += chunk.text;
+      this.buffer = appendText(this.buffer, chunk.text);
       if (chunk.lastInTextNode) {
         const content = this.buffer.trim();
         if (content) {
@@ -298,7 +312,7 @@ async function analyzeComplianceResponse(response: Response): Promise<{
     }
 
     text(chunk: Text): void {
-      this.buffer += chunk.text;
+      this.buffer = appendText(this.buffer, chunk.text);
       if (chunk.lastInTextNode) {
         const content = this.buffer.trim();
         if (content) {
@@ -319,7 +333,7 @@ async function analyzeComplianceResponse(response: Response): Promise<{
     }
 
     text(chunk: Text): void {
-      this.buffer += chunk.text;
+      this.buffer = appendText(this.buffer, chunk.text);
       if (chunk.lastInTextNode) {
         const content = this.buffer.trim();
         if (content) {
@@ -396,7 +410,11 @@ async function analyzeComplianceResponse(response: Response): Promise<{
   // Transform the response to extract text (we don't need the output body)
   const transformed = rewriter.transform(response);
   // Consume the body to trigger HTMLRewriter processing
-  await transformed.text();
+  try {
+    await transformed.body?.pipeTo(new WritableStream({ write() {} }));
+  } catch (error) {
+    throw limits.error ?? error;
+  }
 
   // SPA detection:
   // 1. Framework marker + few visible elements → definitely SPA

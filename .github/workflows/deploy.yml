@@ -11,6 +11,8 @@ env:
 jobs:
   quality-gate:
     runs-on: ubuntu-latest
+    env:
+      PUPPETEER_SKIP_DOWNLOAD: 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -18,7 +20,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: npm
 
       - name: Install dependencies
@@ -93,7 +95,7 @@ jobs:
 
             # Скачать docker-compose если нет
             if [ ! -f docker-compose.prod.yml ]; then
-              curl -sL https://raw.githubusercontent.com/vlasdobry/vlasdobry-site/main/docker-compose.prod.yml -o docker-compose.prod.yml
+              curl --fail --silent --show-error --location https://raw.githubusercontent.com/vlasdobry/vlasdobry-site/${{ github.sha }}/docker-compose.prod.yml -o docker-compose.prod.yml
             fi
 
             sudo docker compose -f docker-compose.prod.yml pull

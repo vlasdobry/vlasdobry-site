@@ -36,3 +36,16 @@ public/blog/*/cover.jpg
 # Claude Code
 telemetry-id
 .mcp.json
+.codex/
+.claude/
+.env
+.env.*
+!.env.example
+private/
+**/.wrangler/
+**/.generated/
+.dev.vars*
+*.pem
+*.key
+*.p12
+*.pfx
